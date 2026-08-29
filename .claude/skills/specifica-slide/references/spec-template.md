@@ -1,6 +1,6 @@
 # Template della specifica slide
 
-La specifica è la **fonte di verità** del contenuto e dell'ordine delle slide. Un file per sezione, in `spec/`, nel formato qui sotto (identico allo stile usato nella lezione di aprile).
+La specifica è la **fonte di verità** del contenuto e dell'ordine delle slide. Un file per sezione, in `spec/`, nel formato qui sotto.
 
 Convenzioni:
 - Nome file: `spec/slide-specs-incontroNN-section-K.md` (NN = numero incontro, K = numero sezione).
@@ -55,7 +55,7 @@ Ogni slide segue **sempre** questi campi (nell'ordine). Ometti `Prompt per schem
 
 ---
 
-## Esempio completo (dalla lezione di aprile, slide 8)
+## Esempio completo
 
 > Questo è il livello di dettaglio atteso: testo pronto per la slide e prompt SVG che un agente può eseguire senza altre informazioni.
 

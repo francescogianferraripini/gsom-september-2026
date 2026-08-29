@@ -23,7 +23,7 @@ La skill **non** genera gli SVG né costruisce le slide HTML: produce la specifi
 2. Se esiste già una spec parziale in `spec/` per quella lezione, leggila: si **continua**, non si riparte.
 3. Leggi `references/spec-template.md` e `references/guida-prompt-svg.md`.
 4. Dal draft, ricava una **proposta di struttura**: le `#` di primo livello sono candidate sezioni, le sottovoci candidate slide. Tienila pronta come punto di partenza dell'intervista — non come verità.
-5. Se il draft rimanda a materiale esistente (slide di aprile, un diagramma "già disponibile", un repo), **esploralo tu** invece di chiederlo.
+5. Se il draft rimanda a materiale esistente (slide già fatte, un diagramma "già disponibile", un repo), **esploralo tu** invece di chiederlo.
 
 Poi annuncia brevemente il piano (numero di sezioni candidate, come procederai) e parti.
 
