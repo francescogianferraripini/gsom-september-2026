@@ -59,11 +59,11 @@ Harness = Context Initialization and Management + Memory Management + Loop + Too
  
 - Ribaltamento dell'incontro 1: ieri il modello (cosa sa, come genera, come impara a *volere* un tool). Oggi chi esegue quella volontà.
 - Ripresa breve della parte funzionale (aspettative da un agente: autonomia, affidabilità, verificabilità) riletta come **requisiti dell'harness**: sono le ragioni per cui esistono loop, sandbox, logging.
-- La formula Agent = LLM + Harness + Context + Tools + KB + Skills, con LLM sbiadito e Harness in evidenza.
+- La formula Agent = LLM + Harness + System Prompt + Tools + KB + Skills, con LLM sbiadito e Harness in evidenza.
 - Harness = Context Initialization + Tool Calling Execution + Execution Sandbox + Skills access + Context Management + Memory + Logging + Loop. L'ordine dei capitoli segue l'ordine in cui i problemi si presentano.
 # Loop e system prompt (Context Initialization)
  
-- Dal 1° loop (fino al token di stop) al 2° loop (fino al task completato). Continuità con l'incontro 1. Il 3° loop è quello conversazionale
+- Dal 1° loop (generazione, fino al token di stop) e dal 2° loop (conversazione, turno dopo turno) al 3° loop (task, fino al task completato): il loop agentico non si aggiunge in coda, si infila in mezzo — dentro un singolo turno di conversazione, N giri di tool call. Continuità con l'incontro 1 (numerazione storica dei loop; il 3° già anticipato nella parte RL agentico).
 - Il loop nudo: `while not done: chiama il modello, leggi, decidi`.
 - Il system prompt come contenuto della finestra al giro zero: ruolo, regole, definizioni dei tool.
 - Nota tecnica: le definizioni dei tool si passano come parametro API separato, il provider le renderizza nel formato su cui il modello è stato addestrato (aggancio GRPO). Concettualmente system prompt, tecnicamente un campo a parte — è il punto in cui MCP si innesta.
