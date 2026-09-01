@@ -13,18 +13,18 @@
 | File | Slide |
 |------|-------|
 | `slides/slide-div-sec4.html` | Separatore — Sezione 4: Come viene addestrato |
-| `slides/slide26-tre-fasi.html` | Slide 26 — Le tre fasi |
-| `slides/slide27-pretraining.html` | Slide 27 — Pretraining: indovinare il prossimo token |
-| `slides/slide28-gradient-descent.html` | Slide 28 — Gradient descent: sbaglia, misura, correggi |
-| `slides/slide29-rlhf.html` | Slide 29 — RLHF: arriva la mira |
-| `slides/slide30-rl-agentico.html` | Slide 30 — RL agentico: traiettorie |
-| `slides/slide31-terzo-loop.html` | Slide 31 — Nasce il 3° loop |
-| `slides/slide32-stateless.html` | Slide 32 — Il modello è stateless: il contesto è tutto |
-| `slides/slide33-figlio-dei-dati.html` | Slide 33 — Il modello è figlio dei suoi training set |
+| `slides/slide27-tre-fasi.html` | Slide 27 — Le tre fasi |
+| `slides/slide28-pretraining.html` | Slide 28 — Pretraining: indovinare il prossimo token |
+| `slides/slide29-gradient-descent.html` | Slide 29 — Gradient descent: sbaglia, misura, correggi |
+| `slides/slide30-rlhf.html` | Slide 30 — RLHF: arriva la mira |
+| `slides/slide31-rl-agentico.html` | Slide 31 — RL agentico: traiettorie |
+| `slides/slide32-terzo-loop.html` | Slide 32 — Nasce il 3° loop |
+| `slides/slide33-stateless.html` | Slide 33 — Il modello è stateless: il contesto è tutto |
+| `slides/slide34-figlio-dei-dati.html` | Slide 34 — Il modello è figlio dei suoi training set |
 
 ---
 
-## Slide 26 — Le tre fasi
+## Slide 27 — Le tre fasi
 
 **Layout**: titolo e sottotitolo in alto; visual-pipeline al centro (~65%); nota in basso.
 
@@ -36,7 +36,7 @@
   2. **RLHF** → *il conversatore*
   3. **RL agentico** → *il modello che sa usare i tool*
 
-**Visual**: pipeline orizzontale a tre stadi concatenati, ognuno che riceve in ingresso il modello prodotto dallo stadio precedente. Slide-mappa: verrà richiamata alle slide 27, 29 e 30 evidenziando lo stadio corrente.
+**Visual**: pipeline orizzontale a tre stadi concatenati, ognuno che riceve in ingresso il modello prodotto dallo stadio precedente. Slide-mappa: verrà richiamata alle slide 28, 30 e 31 evidenziando lo stadio corrente.
 
 **Prompt per schema SVG**:
 > Pipeline orizzontale a tre stadi-freccia concatenati, da sinistra a destra. La concatenazione è il punto: da ogni stadio esce un modello, e quel modello è l'ingresso dello stadio successivo.
@@ -51,7 +51,7 @@
 >
 > **Elementi focali**: le frecce di concatenazione modello→stadio successivo (ognuno si basa sul precedente) e la progressione delle tre etichette di uscita.
 
-## Slide 27 — Pretraining: indovinare il prossimo token
+## Slide 28 — Pretraining: indovinare il prossimo token
 
 **Layout**: titolo in alto; i quattro punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -81,7 +81,7 @@
 >
 > **Elementi focali**: il confronto tra la barra di `sul` e il token vero (il punteggio), e la freccia di correzione che tocca TUTTE le matrici in miniatura — l'apprendimento non aggiorna un archivio, aggiusta i pesi ovunque. Testi e token di natura token/codice.
 
-## Slide 28 — Gradient descent: sbaglia, misura, correggi
+## Slide 29 — Gradient descent: sbaglia, misura, correggi
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~40%); visual a destra (~55%); nota in basso.
 
@@ -104,7 +104,7 @@
 >
 > **Elemento focale**: la sequenza dei passetti — la discesa è fatta di correzioni piccole e ripetute, non di salti. La forma della valle è di supporto.
 
-## Slide 29 — RLHF: arriva la mira
+## Slide 30 — RLHF: arriva la mira
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -130,7 +130,7 @@
 >
 > **Elementi focali**: la linea di mira del golfista (la novità di fase: prima non c'era alcuna mira) e il fatto che il punteggio arrivi dal `reward model`, non direttamente dagli `umani` — gli umani sono due passi a monte.
 
-## Slide 30 — RL agentico: traiettorie
+## Slide 31 — RL agentico: traiettorie
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -157,7 +157,7 @@
 >
 > **Elemento focale**: la freccia di reward che scorre all'indietro sulla corsia vincente e "bagna" le tool call intermedie — è così che il modello impara a volere i tool. I nomi dei tool sono di natura token/codice.
 
-## Slide 31 — Nasce il 3° loop
+## Slide 32 — Nasce il 3° loop
 
 **Layout**: titolo in alto; i quattro punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota-cliffhanger in basso.
 
@@ -183,7 +183,7 @@
 >
 > **Elementi focali**: la corona di mezzo appena riempita (il diagramma "si completa" rispetto alla versione precedente) e l'etichetta `chi? → prossimo incontro` — il cliffhanger visivo della lezione.
 
-## Slide 32 — Il modello è stateless: il contesto è tutto
+## Slide 33 — Il modello è stateless: il contesto è tutto
 
 **Layout**: titolo in alto; i due punti di testo a sinistra (~30%); visual al centro-destra (~65%); nota in basso.
 
@@ -208,7 +208,7 @@
 >
 > **Elementi focali**: la crescita dell'altezza tra la foto 1 e la foto 4 (il contesto si accumula) e la freccia "rilegge tutta la pila da capo" (la statelessness). Gli strati stabili in fondo (`system prompt`, `tool dichiarati`) devono restare riconoscibili e identici in tutte le foto.
 
-## Slide 33 — Il modello è figlio dei suoi training set
+## Slide 34 — Il modello è figlio dei suoi training set
 
 **Layout**: titolo in alto; i tre punti di testo al centro; box di riflessione in basso (~30% della slide), visivamente distinto.
 

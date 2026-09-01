@@ -23,15 +23,16 @@
 | `slides/slide18-attention-qk.html` | Slide 18 — Attention: domande e chiavi (Q e K) |
 | `slides/slide19-softmax.html` | Slide 19 — Softmax: il budget di ascolto |
 | `slides/slide20-attention-v.html` | Slide 20 — V: la consegna |
-| `slides/slide21-reverse-embedding.html` | Slide 21 — Reverse embedding: tornare ai token |
-| `slides/slide22-costo-contesto.html` | Slide 22 — Il contesto ha un costo |
-| `slides/slide23-conoscenza-nei-pesi.html` | Slide 23 — La conoscenza è nei pesi |
-| `slides/slide24-compressore-lossy.html` | Slide 24 — L'LLM come compressore lossy |
-| `slides/slide25-moe.html` | Slide 25 — MoE: non tutti i pesi lavorano sempre |
+| `slides/slide21-positional-encoding.html` | Slide 21 — Positional encoding: l'ordine conta |
+| `slides/slide22-reverse-embedding.html` | Slide 22 — Reverse embedding: tornare ai token |
+| `slides/slide23-costo-contesto.html` | Slide 23 — Il contesto ha un costo |
+| `slides/slide24-conoscenza-nei-pesi.html` | Slide 24 — La conoscenza è nei pesi |
+| `slides/slide25-compressore-lossy.html` | Slide 25 — L'LLM come compressore lossy |
+| `slides/slide26-moe.html` | Slide 26 — MoE: non tutti i pesi lavorano sempre |
 
-> **Logica dell'ordine**: 10–13 i mattoni (parola→vettore, prodotto scalare, la scala del calcolo, spazio delle idee) → 14 la tokenizzazione corregge "parola" in "token" → 15 la mappa dell'architettura → 16–21 zoom sui blocchi della mappa (fanout, compressione, attention in tre tempi Q·K / softmax / V, reverse embedding) → 22 il costo del contesto → 23–24 la conoscenza e la sua natura compressa (fronte 2) → 25 MoE.
+> **Logica dell'ordine**: 10–13 i mattoni (parola→vettore, prodotto scalare, la scala del calcolo, spazio delle idee) → 14 la tokenizzazione corregge "parola" in "token" → 15 la mappa dell'architettura → 16–22 zoom sui blocchi della mappa (fanout, compressione, attention in tre tempi Q·K / softmax / V, positional encoding, reverse embedding) → 23 il costo del contesto → 24–25 la conoscenza e la sua natura compressa (fronte 2) → 26 MoE.
 >
-> **Filo rosso della sezione — le operazioni di manipolazione degli embeddings**: l'LLM come manipolatore di embeddings (punchline Slide 13) si articola in operazioni nominate slide per slide: **spostamento** (Slide 13, direzioni come relazioni), **matching/fanout** (Slide 16), **compressione/sovrapposizione** (Slide 17), e l'attention come manipolazione guidata dal contesto (Slide 18–20: match Q·K, budget softmax, consegna dei value).
+> **Filo rosso della sezione — le operazioni di manipolazione degli embeddings**: l'LLM come manipolatore di embeddings (punchline Slide 13) si articola in operazioni nominate slide per slide: **spostamento** (Slide 13, direzioni come relazioni), **matching/fanout** (Slide 16), **compressione/sovrapposizione** (Slide 17), e l'attention come manipolazione guidata dal contesto (Slide 18–20: match Q·K, budget softmax, consegna dei value); anche la posizione è uno spostamento (Slide 21).
 
 ---
 
@@ -315,7 +316,30 @@
 >
 > **Elementi focali**: la dimensione dei pacchi (il budget di ascolto che pesa la consegna) e le due frecce divergenti dallo stesso punto — lo stesso token, spostato in direzioni opposte dal contesto. Le frasi sono di natura token/codice.
 
-## Slide 21 — Reverse embedding: tornare ai token
+## Slide 21 — Positional encoding: l'ordine conta
+
+**Layout**: titolo in alto; i tre punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
+
+**Testo**:
+- Titolo: *Positional encoding: l'ordine conta*
+- Punti:
+  1. **L'attention è cieca all'ordine**: *nel match Q·K nulla dice chi viene prima: "il gatto morde il cane" e "il cane morde il gatto" sarebbero lo stesso sacchetto di embedding.*
+  2. **La correzione**: *a ogni embedding si somma un vettore che codifica la sua posizione nella sequenza.*
+  3. **Ancora uno spostamento**: *anche la posizione è una direzione nello spazio delle idee: "gatto, secondo token della frase" è il punto `gatto`, spostato un po'.*
+- Nota in basso: *È l'innesto "+ positional encoding" già visto nella mappa dell'architettura (Slide 15).*
+
+**Visual**: le due frasi-gemelle che senza posizione collassano nello stesso insieme di embedding, e che con la somma dei vettori di posizione tornano distinguibili.
+
+**Prompt per schema SVG**:
+> Diagramma a due scene sovrapposte (sopra/sotto), stesso impianto.
+>
+> **Scena superiore — `senza posizione`**: due frasi come sequenze di tessere-token, una accanto all'altra: `il gatto morde il cane` e `il cane morde il gatto`. Da entrambe partono frecce verso UN UNICO insieme non ordinato di 5 colonnine-embedding (un "sacchetto": le stesse 5 colonnine, disposte alla rinfusa). Etichetta: `stesso sacchetto: per l'attention sono indistinguibili`.
+>
+> **Scena inferiore — `con positional encoding`**: le stesse due frasi, ma ogni tessera-token passa per un nodo `+` dove si somma un piccolo vettore di posizione (`pos 1` … `pos 5`). Ora le frecce portano a DUE insiemi distinti di embedding, visivamente diversi tra loro. Etichetta: `due frasi diverse: l'ordine è entrato nei vettori`.
+>
+> **Elementi focali**: il sacchetto unico della scena superiore (il problema) e i nodi `+` con i vettori di posizione della scena inferiore (la soluzione). Le frasi sono di natura token/codice.
+
+## Slide 22 — Reverse embedding: tornare ai token
 
 **Layout**: titolo in alto; i due punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -341,7 +365,7 @@
 >
 > **Elementi focali**: la simmetria ingresso/uscita (da token a vettore, da vettore a token) e la distribuzione finale — la stessa già vista nella definizione di modello linguistico e nell'architettura. Il punteggio negativo di `Parigi` mostra che l'affinità può anche escludere. Token e numeri sono di natura token/codice.
 
-## Slide 22 — Il contesto ha un costo
+## Slide 23 — Il contesto ha un costo
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~30%); visual a due pannelli al centro-destra (~65%); nota in basso.
 
@@ -366,7 +390,7 @@
 >
 > **Elemento focale**: il contrasto tra le due aree accese — l'intera griglia a sinistra contro la singola colonna a destra: è la differenza di costo il messaggio della slide. Le etichette dei token sono di natura token/codice.
 
-## Slide 23 — La conoscenza è nei pesi
+## Slide 24 — La conoscenza è nei pesi
 
 **Layout**: titolo in alto; i due punti di testo a sinistra (~35%); visual a due pannelli al centro-destra (~60%); nota in basso.
 
@@ -391,12 +415,12 @@
 >
 > **Elemento focale**: il contrasto tra la riga selezionata del database (recupero) e la natura distribuita del pannello destro (ricostruzione) — è la differenza che prepara la slide sul compressore lossy.
 
-## Slide 24 — L'LLM come compressore lossy
+## Slide 25 — L'LLM come compressore lossy
 
 > **PLACEHOLDER** — da definire in un secondo passaggio. Appunti dall'intervista (non validati):
 > raccoglie il fronte 2 della compressione (seminato in Slide 5). Possibile taglio in tre battute: (1) i numeri non tornano — terabyte di testo dentro centinaia di GB di pesi; (2) si perdono i dettagli, restano pattern e geometria; (3) ricostruisce, non recupera — l'allucinazione come comportamento naturale di un compressore lossy. Visual candidato: paragone JPEG.
 
-## Slide 25 — MoE: non tutti i pesi lavorano sempre
+## Slide 26 — MoE: non tutti i pesi lavorano sempre
 
 **Layout**: titolo in alto; i due punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
