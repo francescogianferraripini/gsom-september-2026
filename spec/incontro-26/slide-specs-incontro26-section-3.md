@@ -28,9 +28,10 @@
 | `slides/slide23-costo-contesto.html` | Slide 23 — Il contesto ha un costo |
 | `slides/slide24-conoscenza-nei-pesi.html` | Slide 24 — La conoscenza è nei pesi |
 | `slides/slide25-compressore-lossy.html` | Slide 25 — L'LLM come compressore lossy |
-| `slides/slide26-moe.html` | Slide 26 — MoE: non tutti i pesi lavorano sempre |
+| `slides/slide26-conseguenze-compressione.html` | Slide 26 — Conseguenze della compressione |
+| `slides/slide27-moe.html` | Slide 27 — MoE: non tutti i pesi lavorano sempre |
 
-> **Logica dell'ordine**: 10–13 i mattoni (parola→vettore, prodotto scalare, la scala del calcolo, spazio delle idee) → 14 la tokenizzazione corregge "parola" in "token" → 15 la mappa dell'architettura → 16–22 zoom sui blocchi della mappa (fanout, compressione, attention in tre tempi Q·K / softmax / V, positional encoding, reverse embedding) → 23 il costo del contesto → 24–25 la conoscenza e la sua natura compressa (fronte 2) → 26 MoE.
+> **Logica dell'ordine**: 10–13 i mattoni (parola→vettore, prodotto scalare, la scala del calcolo, spazio delle idee) → 14 la tokenizzazione corregge "parola" in "token" → 15 la mappa dell'architettura → 16–22 zoom sui blocchi della mappa (fanout, compressione, attention in tre tempi Q·K / softmax / V, positional encoding, reverse embedding) → 23 il costo del contesto → 24–26 la conoscenza, la sua natura compressa e le conseguenze pratiche (fronte 2) → 27 MoE.
 >
 > **Filo rosso della sezione — le operazioni di manipolazione degli embeddings**: l'LLM come manipolatore di embeddings (punchline Slide 13) si articola in operazioni nominate slide per slide: **spostamento** (Slide 13, direzioni come relazioni), **matching/fanout** (Slide 16), **compressione/sovrapposizione** (Slide 17), e l'attention come manipolazione guidata dal contesto (Slide 18–20: match Q·K, budget softmax, consegna dei value); anche la posizione è uno spostamento (Slide 21).
 
@@ -417,10 +418,53 @@
 
 ## Slide 25 — L'LLM come compressore lossy
 
-> **PLACEHOLDER** — da definire in un secondo passaggio. Appunti dall'intervista (non validati):
-> raccoglie il fronte 2 della compressione (seminato in Slide 5). Possibile taglio in tre battute: (1) i numeri non tornano — terabyte di testo dentro centinaia di GB di pesi; (2) si perdono i dettagli, restano pattern e geometria; (3) ricostruisce, non recupera — l'allucinazione come comportamento naturale di un compressore lossy. Visual candidato: paragone JPEG.
+**Layout**: titolo in alto; concetto centrale in evidenza; tre punti sotto; visual a destra (~45%); pull-quote in basso.
 
-## Slide 26 — MoE: non tutti i pesi lavorano sempre
+**Testo**:
+- Titolo: *L'LLM come compressore lossy*
+- Concetto centrale (in evidenza): *Per far stare trilioni di token in miliardi di parametri, il modello è costretto ad astrarre: non memorizza, modella.*
+- Punti:
+  1. **I numeri non tornano**: *non c'è spazio per memorizzare letteralmente il training set.*
+  2. **Cosa resta**: *concetti, relazioni, regolarità — la geometria dello spazio delle idee.*
+  3. **Il sottoprodotto**: *le capacità emergenti — ragionamento, analogia, transfer tra domini — non sono programmate: sono un effetto collaterale della compressione.*
+- Pull-quote in basso: *"ChatGPT è un JPEG sfocato del web"* — Ted Chiang, The New Yorker. E per comprimere così, ha dovuto capire.
+
+**Visual**: l'imbuto di compressione: la materia prima eterogenea che entra, e in uscita qualcosa di qualitativamente diverso — una rete di concetti, non una miniatura.
+
+**Prompt per schema SVG**:
+> Diagramma verticale a imbuto.
+>
+> **Parte superiore — la materia prima**: un'area larga riempita densamente di piccoli pittogrammi eterogenei (documenti, libri, pagine web, snippet di codice — decine di elementi in griglia disordinata). Etichetta: `trilioni di token — web, libri, codice`.
+>
+> **Al centro — l'imbuto**: una grande forma a imbuto dall'area larga a un'area stretta, con etichetta `compressione per astrazione`.
+>
+> **Parte inferiore — il modello**: un'area piccola divisa in due sotto-zone:
+>   1. a sinistra, una rete di nodi concettuali connessi, con pochi nodi etichettati: `sintassi`, `causa-effetto`, `temporalità`, `oggetti e proprietà`, `analogia`;
+>   2. a destra, un piccolo riquadro sfocato/pixelato che suggerisce un'immagine riconoscibile ma non fedele, con etichetta `riconoscibile, non fedele`.
+>
+> **Punto visivo centrale (elemento focale)**: ciò che sta sotto l'imbuto NON è una versione rimpicciolita di ciò che sta sopra — è qualitativamente diverso. La compressione è concettuale, non letterale.
+
+## Slide 26 — Conseguenze della compressione
+
+**Layout**: titolo in alto; due colonne contrastive al centro; regola pratica in basso come blocco evidenziato.
+
+**Testo**:
+- Titolo: *Conseguenze della compressione*
+- **Colonna sinistra — Dove è forte**:
+  1. *Framing concettuali su qualunque dominio*
+  2. *Ragionamento e analogia*
+  3. *Trasformazione di testo: traduzione, sintesi, riformattazione*
+- **Colonna destra — Dove serve cautela**:
+  1. *Fatti puntuali: date, numeri, citazioni letterali*
+  2. *Conoscenza post-cutoff*
+  3. *Nicchie poco rappresentate nel training*
+  4. *Dati proprietari mai visti*
+  5. *Calcoli numerici precisi*
+- Regola pratica in basso (evidenziata): *Fidati del framing, verifica i fatti. Le allucinazioni non sono un bug morale del modello: sono il comportamento strutturale di un compressore lossy a cui chiedi di ricostruire ciò che non ha memorizzato bene.*
+
+**Visual**: nessuno. Il contrasto tra le due colonne è l'elemento visivo.
+
+## Slide 27 — MoE: non tutti i pesi lavorano sempre
 
 **Layout**: titolo in alto; i due punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 

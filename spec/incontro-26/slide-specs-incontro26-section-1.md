@@ -23,28 +23,6 @@
 
 > Slide interattiva: domanda aperta alla classe. Le ipotesi in slide sono semi di discussione (mix di naïf e mature, non distinte graficamente); la nota in basso è la frase d'atterraggio e compare solo alla fine della discussione.
 
-**Layout**: titolo in alto; domanda centrale grande al centro; le 8 ipotesi disposte sparse attorno alla domanda (stile appunti/post-it, leggermente disallineate, a suggerire un brainstorming, non un elenco chiuso); nota d'atterraggio in basso, a comparsa finale.
-
-**Testo**:
-- Titolo: *Cosa è un agente?*
-- Domanda centrale: *Che aspettative abbiamo da un agente?*
-- Ipotesi sparse (già visibili):
-  - *"Un chatbot, ma più intelligente"*
-  - *"Che risponda a qualsiasi domanda"*
-  - *"Che non sbagli mai"*
-  - *"Che sostituisca una persona"*
-  - *"Che faccia da solo, senza che io lo guidi passo passo"*
-  - *"Che usi i miei strumenti: mail, file, gestionali"*
-  - *"Che si accorga quando sbaglia — e ci riprovi"*
-  - *"Che sappia spiegarmi cosa ha fatto e perché"*
-- Nota in basso (a comparsa finale): *Ci aspettiamo che porti a termine un task — non che risponda a una domanda.*
-
-**Visual**: nessuno. La disposizione sparsa delle ipotesi attorno alla domanda è essa stessa l'elemento visivo.
-
----
-
-## Slide 1 — Cosa è un agente? Le aspettative
-
 **Layout**: titolo in alto; domanda centrale grande al centro; le 8 ipotesi disposte sparse attorno alla domanda (stile appunti/post-it, leggermente disallineate, a suggerire un brainstorming e non un elenco chiuso); nota d'atterraggio in basso.
 
 **Animazione** (3 step, guidata dal docente durante la discussione in aula):
@@ -70,9 +48,34 @@
 
 ## Slide 2 — Lo spazio delle soluzioni
 
-> **DA RAFFINARE** — messaggio concordato, il resto (testo, layout, visual) verrà definito in un secondo passaggio.
+**Layout**: titolo in alto; grande mappa 2D al centro (~75% della slide); nota ponte in basso.
 
-**Messaggio**: Gli agenti coprono uno spettro che si allarga: dal rispondere, all'assistere, al fare in autonomia — e la frontiera si sposta di mese in mese. (Non un elenco di use case: uno spazio con una frontiera mobile, che dà alla platea un criterio per posizionare i propri casi d'uso.)
+**Testo**:
+- Titolo: *Lo spazio delle soluzioni*
+- Didascalia (sotto il titolo): *Dove gli agenti funzionano già, e dove serve rinforzo: due assi — quanto contesto richiede il task, quanto è verificabile il risultato.*
+- Nota ponte in basso: *Tutto ciò che il corso costruisce — tool, knowledge base, skills, orchestrazione — è un modo di rinforzare i task dove il modello da solo è fragile. E la frontiera si sposta di mese in mese.*
+
+**Visual**: mappa 2D dei task (verificabilità × ampiezza di contesto), con 8 task posizionati come punti; coding come sweet spot evidenziato, conversazione stateful come quadrante difficile.
+
+**Prompt per schema SVG**:
+> Griglia 2D cartesiana, pulita e ariosa.
+>
+> **Asse X (orizzontale)**: `Ampiezza di contesto richiesta` — etichette agli estremi: `Basso` (sinistra), `Alto` (destra).
+> **Asse Y (verticale)**: `Verificabilità del risultato` — etichette agli estremi: `Bassa` (basso), `Alta` (alto).
+>
+> **8 punti** come cerchi pieni con etichetta accanto, coordinate indicative (x, y) su scala 0–100:
+>   1. `Q&A / recupero conoscenza` — (15, 85)
+>   2. `Classificazione / giudizio` — (20, 88)
+>   3. `Ragionamento` — (50, 80)
+>   4. `Coding` — (85, 90) — il punto in risalto: cerchio più grande, etichetta in evidenza
+>   5. `Trasformazione di testo` — (25, 55)
+>   6. `Multi-step planning / task agentici` — (80, 50)
+>   7. `Generazione (scrittura, email, brief)` — (40, 25)
+>   8. `Conversazione stateful (tutoring, consulenza)` — (85, 15) — reso attenuato/tratteggiato: il quadrante difficile
+>
+> Nessuna etichetta di quadrante: i punti parlano da soli.
+>
+> **Elementi focali**: `Coding` come estremo positivo (alta verificabilità + alto contesto: il sweet spot del lavoro agentico) e, per contrasto, `Conversazione stateful` come punto più difficile da automatizzare bene.
 
 ## Slide 3 — La formula: Agent =
 

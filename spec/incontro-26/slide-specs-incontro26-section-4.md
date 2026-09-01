@@ -13,18 +13,18 @@
 | File | Slide |
 |------|-------|
 | `slides/slide-div-sec4.html` | Separatore — Sezione 4: Come viene addestrato |
-| `slides/slide27-tre-fasi.html` | Slide 27 — Le tre fasi |
-| `slides/slide28-pretraining.html` | Slide 28 — Pretraining: indovinare il prossimo token |
-| `slides/slide29-gradient-descent.html` | Slide 29 — Gradient descent: sbaglia, misura, correggi |
-| `slides/slide30-rlhf.html` | Slide 30 — RLHF: arriva la mira |
-| `slides/slide31-rl-agentico.html` | Slide 31 — RL agentico: traiettorie |
-| `slides/slide32-terzo-loop.html` | Slide 32 — Nasce il 3° loop |
-| `slides/slide33-stateless.html` | Slide 33 — Il modello è stateless: il contesto è tutto |
-| `slides/slide34-figlio-dei-dati.html` | Slide 34 — Il modello è figlio dei suoi training set |
+| `slides/slide28-tre-fasi.html` | Slide 28 — Le tre fasi |
+| `slides/slide29-pretraining.html` | Slide 29 — Pretraining: indovinare il prossimo token |
+| `slides/slide30-gradient-descent.html` | Slide 30 — Gradient descent: sbaglia, misura, correggi |
+| `slides/slide31-rlhf.html` | Slide 31 — RLHF: arriva la mira |
+| `slides/slide32-rl-agentico.html` | Slide 32 — RL agentico: traiettorie |
+| `slides/slide33-terzo-loop.html` | Slide 33 — Nasce il 3° loop |
+| `slides/slide34-stateless.html` | Slide 34 — Il modello è stateless: il contesto è tutto |
+| `slides/slide35-figlio-dei-dati.html` | Slide 35 — Il modello è figlio dei suoi training set |
 
 ---
 
-## Slide 27 — Le tre fasi
+## Slide 28 — Le tre fasi
 
 **Layout**: titolo e sottotitolo in alto; visual-pipeline al centro (~65%); nota in basso.
 
@@ -36,7 +36,7 @@
   2. **RLHF** → *il conversatore*
   3. **RL agentico** → *il modello che sa usare i tool*
 
-**Visual**: pipeline orizzontale a tre stadi concatenati, ognuno che riceve in ingresso il modello prodotto dallo stadio precedente. Slide-mappa: verrà richiamata alle slide 28, 30 e 31 evidenziando lo stadio corrente.
+**Visual**: pipeline orizzontale a tre stadi concatenati, ognuno che riceve in ingresso il modello prodotto dallo stadio precedente. Slide-mappa: verrà richiamata alle slide 29, 31 e 32 evidenziando lo stadio corrente.
 
 **Prompt per schema SVG**:
 > Pipeline orizzontale a tre stadi-freccia concatenati, da sinistra a destra. La concatenazione è il punto: da ogni stadio esce un modello, e quel modello è l'ingresso dello stadio successivo.
@@ -51,7 +51,7 @@
 >
 > **Elementi focali**: le frecce di concatenazione modello→stadio successivo (ognuno si basa sul precedente) e la progressione delle tre etichette di uscita.
 
-## Slide 28 — Pretraining: indovinare il prossimo token
+## Slide 29 — Pretraining: indovinare il prossimo token
 
 **Layout**: titolo in alto; i quattro punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -62,9 +62,20 @@
   2. **Il punteggio (cross-entropy)**: *quanta probabilità hai dato al token che era davvero lì? Tanta: punteggio buono. Poca: penalità.*
   3. **La correzione (gradient descent)**: *un metodo sistematico e iterativo che, a ogni errore, aggiusta di poco i valori di tutte le matrici che abbiamo visto — embedding, Q, K, V, rilevatori.*
   4. **Cosa si impara davvero**: *il giudizio è sul singolo token successivo, ma ciò che alla fine viene stimata è l'intera distribuzione.*
-- Nota in basso: *Minimizzare la cross-entropy è letteralmente comprimere: è il fronte 1 della Slide 5. E tutto questo, ripetuto su trilioni di token.*
+- Nota in basso: *Minimizzare la cross-entropy è letteralmente comprimere: è il fronte 1 della Slide 5. E tutto questo, ripetuto su 25–50 trilioni di token.*
 
-**Visual**: il ciclo del gioco: testo vero troncato → distribuzione del modello → confronto col token vero → correzione che torna sulle matrici del modello.
+**Visual**: il ciclo del gioco: testo vero troncato → distribuzione del modello → confronto col token vero → correzione che torna sulle matrici del modello. In basso, una striscia-infografica sulla scala dei dati.
+
+**Visual secondario (striscia in basso, ~20% della slide)** — la scala del pretraining:
+
+**Prompt per infografica SVG (striscia)**:
+> Infografica a 5 righe orizzontali compatte. Ogni riga: etichetta a sinistra, barra orizzontale su scala logaritmica comune (da 10^8 a 10^14 parole/token), valore a destra.
+>   1. `Un lettore, nell'intera vita` — barra cortissima — `~200 milioni di parole`
+>   2. `Wikipedia, tutte le lingue` — `~10 miliardi di parole`
+>   3. `Una grande biblioteca universitaria (20M volumi)` — `~1 trilione di parole`
+>   4. `Training di un LLM di frontiera` — barra molto lunga, riga in risalto — `~25–50 trilioni di token`
+>   5. `Tutto il testo digitale di qualità sul web` — barra massima, resa attenuata — `~50–100 trilioni di token`, etichetta `la frontiera dei dati disponibili`
+> **Elementi focali**: la riga 4 (il punto della slide: la scala del training) e, come avvertimento, la riga 5 — ci stiamo avvicinando al limite del testo disponibile.
 
 **Prompt per schema SVG**:
 > Diagramma circolare del ciclo di pretraining, in quattro tappe.
@@ -81,7 +92,7 @@
 >
 > **Elementi focali**: il confronto tra la barra di `sul` e il token vero (il punteggio), e la freccia di correzione che tocca TUTTE le matrici in miniatura — l'apprendimento non aggiorna un archivio, aggiusta i pesi ovunque. Testi e token di natura token/codice.
 
-## Slide 29 — Gradient descent: sbaglia, misura, correggi
+## Slide 30 — Gradient descent: sbaglia, misura, correggi
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~40%); visual a destra (~55%); nota in basso.
 
@@ -104,17 +115,18 @@
 >
 > **Elemento focale**: la sequenza dei passetti — la discesa è fatta di correzioni piccole e ripetute, non di salti. La forma della valle è di supporto.
 
-## Slide 30 — RLHF: arriva la mira
+## Slide 31 — RLHF: arriva la mira
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
 **Testo**:
 - Titolo: *RLHF: arriva la mira*
 - Punti:
-  1. **Il problema**: *il completatore sa solo proseguire il testo: non risponde, completa.*
+  1. **Il problema**: *il completatore sa solo proseguire il testo: non risponde, completa. A "Come posso aumentare le vendite?" reagisce con altre domande — come farebbe un testo del web — non con una risposta.*
   2. **La mira**: *gli umani confrontano coppie di risposte e dicono quale preferiscono.*
   3. **Il trucco (reward model)**: *quelle preferenze addestrano un secondo modello, che impara a stimare il giudizio umano: è lui a dare la reward, milioni di volte, al posto nostro.*
 - Nota in basso: *Il modello non ottimizza verso il giudizio umano — ottimizza verso la stima che il reward model fa di quel giudizio. Il golfista ora mira alla buca: ma la bandierina l'ha piantata il reward model.*
+- Nota storica (piccola): *Novembre 2022, ChatGPT: non un nuovo modello — GPT-3 esisteva dal 2020. Un nuovo modo di addestrarlo a conversare.*
 
 **Visual**: il golfista della Slide 7 che evolve — compare la linea di mira verso la buca — affiancato dal meccanismo: preferenze umane → reward model → punteggio.
 
@@ -130,7 +142,7 @@
 >
 > **Elementi focali**: la linea di mira del golfista (la novità di fase: prima non c'era alcuna mira) e il fatto che il punteggio arrivi dal `reward model`, non direttamente dagli `umani` — gli umani sono due passi a monte.
 
-## Slide 31 — RL agentico: traiettorie
+## Slide 32 — RL agentico: traiettorie
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -157,7 +169,7 @@
 >
 > **Elemento focale**: la freccia di reward che scorre all'indietro sulla corsia vincente e "bagna" le tool call intermedie — è così che il modello impara a volere i tool. I nomi dei tool sono di natura token/codice.
 
-## Slide 32 — Nasce il 3° loop
+## Slide 33 — Nasce il 3° loop
 
 **Layout**: titolo in alto; i quattro punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota-cliffhanger in basso.
 
@@ -183,12 +195,13 @@
 >
 > **Elementi focali**: la corona di mezzo appena riempita (il diagramma "si completa" rispetto alla versione precedente) e l'etichetta `chi? → prossimo incontro` — il cliffhanger visivo della lezione.
 
-## Slide 33 — Il modello è stateless: il contesto è tutto
+## Slide 34 — Il modello è stateless: il contesto è tutto
 
-**Layout**: titolo in alto; i due punti di testo a sinistra (~30%); visual al centro-destra (~65%); nota in basso.
+**Layout**: titolo in alto; blocco analogia in apertura; i due punti di testo a sinistra (~30%); visual al centro-destra (~60%); nota in basso.
 
 **Testo**:
 - Titolo: *Il modello è stateless: il contesto è tutto*
+- Blocco analogia (apertura, in prosa): *Il protagonista di Memento: amnesia anterograda — ricorda la vita prima dell'incidente, ma ogni nuovo ricordo svanisce in minuti. Sopravvive scrivendo tutto su Polaroid e tatuaggi: ciò che gli serve sapere deve essere fisicamente davanti ai suoi occhi, ora. Un LLM funziona così: il training è la "vita prima" — enorme, ma congelata. Tutto il resto esiste solo se è nel contesto, in questo istante.*
 - Punti:
   1. **Nessuna memoria interna**: *a ogni chiamata il modello rilegge tutto da capo. L'unica sua memoria è il contesto che gli passi — la KV cache è un risparmio di calcolo, non un ricordo.*
   2. **E il contesto si accumula**: *turni di conversazione, dichiarazioni dei tool, tool call, risultati: ogni giro dei tre loop appende qualcosa. Può crescere moltissimo.*
@@ -208,7 +221,7 @@
 >
 > **Elementi focali**: la crescita dell'altezza tra la foto 1 e la foto 4 (il contesto si accumula) e la freccia "rilegge tutta la pila da capo" (la statelessness). Gli strati stabili in fondo (`system prompt`, `tool dichiarati`) devono restare riconoscibili e identici in tutte le foto.
 
-## Slide 34 — Il modello è figlio dei suoi training set
+## Slide 35 — Il modello è figlio dei suoi training set
 
 **Layout**: titolo in alto; i tre punti di testo al centro; box di riflessione in basso (~30% della slide), visivamente distinto.
 
@@ -217,7 +230,8 @@
 - Punti:
   1. **Tutto viene dai dati**: *ciò che il modello sa, come parla, cosa considera ovvio — è la conseguenza di ciò che ha letto, con i bias di chi quei testi li ha scritti.*
   2. **Il cut-off**: *il mondo del modello si ferma alla data di raccolta dei dati: di ciò che accade dopo, nei pesi non c'è nulla.*
-  3. **Anche il carattere**: *cosa risponde volentieri, come si comporta — viene anch'esso da un training set: le preferenze umane, stimate dal reward model.*
+  3. **Anche il carattere**: *cosa risponde volentieri, come si comporta — viene anch'esso da un training set: le preferenze umane, stimate dal reward model. Chi fornisce il feedback plasma l'AI: implicazioni etiche, geopolitiche, di business.*
+- Frase in evidenza: *Il modello che usi non è "l'AI": è una particolare AI, addestrata con particolari valori da particolari persone.*
 - Box di riflessione: *La conoscenza sui modelli fa parte dei training set: un'AI ha letto i paper che descrivono il suo stesso funzionamento interno. L'uomo non sa progettare un cervello — un'AI ha conoscenza di dettaglio del proprio.*
 
 **Visual**: nessuno. È una slide di riflessione: i tre punti e il box finale in evidenza sono essi stessi la struttura visiva; un diagramma diluirebbe il peso della chiusura.

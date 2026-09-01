@@ -2,9 +2,9 @@
 ## Francesco Gianferrari Pini — Corso PC AI
 
 **Sezione 5 — Chiusura: il modello nel mondo**
-**Obiettivo di apprendimento**: il partecipante rilegge il loop conversazionale alla luce del **context rot** (la pila della Slide 33 non solo costa: degrada il modello), conosce multimodality e reasoning, inquadra gli elementi economici (raccogliendo il seme GPU della Slide 12) e la scelta open vs closed, e riceve il cliffhanger verso l'harness (incontro 27).
+**Obiettivo di apprendimento**: il partecipante rilegge il loop conversazionale alla luce del **context rot** (la pila della Slide 34 non solo costa: degrada il modello), conosce multimodality e reasoning, inquadra gli elementi economici (raccogliendo il seme GPU della Slide 12) e la scelta open vs closed, e riceve il cliffhanger verso l'harness (incontro 27).
 **Messaggio chiave (takeaway)**: Più contesto non è meglio: oltre una soglia il modello degrada. Da questo limite — e dal "chi esegue?" — nasce il bisogno dell'harness.
-**Budget**: ~20–22 min, 10 slide. I contenuti "bonus" (multimodality, reasoning) NON sono sacrificabili.
+**Budget**: ~22–25 min, 12 slide. I contenuti "bonus" (multimodality, reasoning) NON sono sacrificabili.
 **Stato**: bozza
 
 ### Tabella file → slide
@@ -12,20 +12,22 @@
 | File | Slide |
 |------|-------|
 | `slides/slide-div-sec5.html` | Separatore — Sezione 5: Il modello nel mondo |
-| `slides/slide35-context-rot.html` | Slide 35 — Context rot |
-| `slides/slide36-multimodality.html` | Slide 36 — Multimodality |
-| `slides/slide37-reasoning.html` | Slide 37 — Reasoning |
-| `slides/slide38-costi-training-inferenza.html` | Slide 38 — I costi: training, inferenza, distillazione |
-| `slides/slide39-prezzo-per-token.html` | Slide 39 — Il prezzo per token |
-| `slides/slide40-closed-openweights-opensource.html` | Slide 40 — Closed, open weights, open source |
-| `slides/slide41-fine-tuning.html` | Slide 41 — Fine-tuning: riprendere la discesa |
-| `slides/slide42-lora.html` | Slide 42 — LoRA: la correzione a basso rango |
-| `slides/slide43-pareto.html` | Slide 43 — La fotografia del mercato: il Pareto qualità/costo |
-| `slides/slide44-chiusura.html` | Slide 44 — Chiusura: la formula riletta |
+| `slides/slide36-context-rot.html` | Slide 36 — Context rot |
+| `slides/slide37-multimodality.html` | Slide 37 — Multimodality |
+| `slides/slide38-reasoning.html` | Slide 38 — Reasoning |
+| `slides/slide39-costi-training-inferenza.html` | Slide 39 — I costi: training, inferenza, distillazione |
+| `slides/slide40-prezzo-per-token.html` | Slide 40 — Il prezzo per token |
+| `slides/slide41-valore-traiettorie.html` | Slide 41 — Il valore delle traiettorie |
+| `slides/slide42-closed-openweights-opensource.html` | Slide 42 — Closed, open weights, open source |
+| `slides/slide43-tradeoff-closed-open.html` | Slide 43 — Quando closed, quando open |
+| `slides/slide44-fine-tuning.html` | Slide 44 — Fine-tuning: riprendere la discesa |
+| `slides/slide45-lora.html` | Slide 45 — LoRA: la correzione a basso rango |
+| `slides/slide46-pareto.html` | Slide 46 — La fotografia del mercato: il Pareto qualità/costo |
+| `slides/slide47-chiusura.html` | Slide 47 — Chiusura: la formula riletta |
 
 ---
 
-## Slide 35 — Context rot
+## Slide 36 — Context rot
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~40%); grafico a destra (~55%); nota-cliffhanger in basso.
 
@@ -34,14 +36,17 @@
 - Punti:
   1. **Il fatto**: *con il contesto lungo, la qualità degrada: il modello trova peggio ciò che gli serve, anche se c'è.*
   2. **Perché**: *il budget di attenzione (la softmax della Slide 19) si diluisce su migliaia di token: tutto ascolta un po', niente abbastanza.*
-  3. **La conseguenza**: *il contesto è una risorsa da governare, non un sacco da riempire.*
+  3. **La conseguenza**: *il contesto è una risorsa scarsa da governare, non un cassetto infinito.*
+- Regole pratiche (evidenziate):
+  1. *Nuovo compito, nuova chat: "continuare" una conversazione lunga per comodità peggiora, non migliora.*
+  2. *Non riempire: seleziona ciò che entra.*
 - Nota in basso (cliffhanger): *Governarlo — decidere cosa entra, cosa esce, cosa si riassume — non lo fa il modello. Serve qualcuno fuori: l'harness.*
 
 **Visual**: **asset esterno** — il grafico già disponibile sul degrado delle performance al crescere della lunghezza del contesto (lo stesso citato nel draft dell'incontro 27, "Context Management"). Da inserire come immagine; eventuale rifacimento in stile deck da valutare a valle.
 
 **Prompt per schema SVG**: — (asset esterno; se si deciderà di rifarlo: curva qualità vs lunghezza del contesto con salita, plateau e declino evidente, e il punto di piega come elemento focale, marcato *prima del limite tecnico della finestra*).
 
-## Slide 36 — Multimodality
+## Slide 37 — Multimodality
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -66,7 +71,7 @@
 >
 > **Elemento focale**: la vicinanza dei due punti nel piano — due mezzi diversi, stessa posizione nello spazio del significato. La griglia di patch è il secondo elemento didattico (l'immagine "tokenizzata").
 
-## Slide 37 — Reasoning
+## Slide 38 — Reasoning
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -74,7 +79,7 @@
 - Titolo: *Reasoning*
 - Punti:
   1. **Pensare è generare**: *prima di rispondere, il modello genera token di ragionamento: restano nel contesto, ma non sono la risposta.*
-  2. **Da dove viene**: *è ancora RL: vengono premiate le traiettorie di pensiero che arrivano alla risposta giusta (Slide 31).*
+  2. **Da dove viene**: *è ancora RL: vengono premiate le traiettorie di pensiero che arrivano alla risposta giusta (Slide 32).*
   3. **Il prezzo**: *più qualità = più calcolo alla domanda — i token di pensiero si pagano come gli altri.*
 - Nota in basso: *È sempre il 1° loop: semplicemente, lo STOP arriva molto più tardi.*
 
@@ -89,7 +94,7 @@
 >
 > **Elementi focali**: il blocco di ragionamento interposto (la novità: il tempo/calcolo speso prima di rispondere) e il contrasto `✗` / `✓` tra le due corsie.
 
-## Slide 38 — I costi: training, inferenza, distillazione
+## Slide 39 — I costi: training, inferenza, distillazione
 
 **Layout**: titolo in alto; i quattro punti di testo a sinistra (~40%); visual al centro-destra (~55%); nota in basso.
 
@@ -115,7 +120,7 @@
 >
 > **Elementi focali**: il contrasto tra le due economie (l'investimento unico della zona 1 vs il flusso perpetuo della zona 2) e la freccia di distillazione — il meccanismo che le ricuce.
 
-## Slide 39 — Il prezzo per token
+## Slide 40 — Il prezzo per token
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~40%); visual-fattura a destra (~55%); nota in basso.
 
@@ -123,7 +128,7 @@
 - Titolo: *Il prezzo per token*
 - Punti:
   1. **Input e output hanno prezzi diversi**: *i token di output costano di più (~3–5×): vengono generati uno alla volta; quelli di input si processano in parallelo nel prefill (Slide 23).*
-  2. **Il contesto si ripaga a ogni chiamata**: *il modello è stateless (Slide 33): tutta la pila rientra — e si ripaga — a ogni giro.*
+  2. **Il contesto si ripaga a ogni chiamata**: *il modello è stateless (Slide 34): tutta la pila rientra — e si ripaga — a ogni giro.*
   3. **La cache sconta ciò che non cambia**: *il prefisso stabile (system prompt, tool) costa una frazione se riusato: è la KV cache diventata listino.*
 - Nota in basso: *Ordine di grandezza oggi: da centesimi a qualche dollaro per milione di token, a seconda del modello. Le cifre invecchiano in fretta: le regole no.*
 
@@ -143,7 +148,24 @@
 >
 > **Elementi focali**: il prezzo maggiorato delle voci di output (generati uno alla volta) e lo sconto-cache sulla voce 1 — le due regole economiche che discendono dalla meccanica vista. La postilla sul ripagarsi è il richiamo alla statelessness.
 
-## Slide 40 — Closed, open weights, open source
+## Slide 41 — Il valore delle traiettorie
+
+**Layout**: titolo in alto; mini-definizione sotto il titolo; due blocchi asimmetrici al centro (utente piccolo, provider grande); conclusione evidenziata; tre domande in chiusura.
+
+**Testo**:
+- Titolo: *Il valore delle traiettorie*
+- Mini-definizione (richiamo della Slide 32): *Ogni conversazione è una traiettoria: prompt, risposte, correzioni, approvazioni e rifiuti — una traccia ricca di segnali su cosa funziona.*
+- **Blocco 1 — Per l'utente** (piccolo): *un mezzo per risolvere un problema oggi; stateless, dimenticata domani.*
+- **Blocco 2 — Per il provider** (grande): *miliardi di traiettorie reali = il carburante del prossimo training; pattern d'uso che nessun test artificiale produce.*
+- Conclusione (evidenziata): *Il moat non è il modello — il modello diventa commodity. Il moat sono le traiettorie d'uso reale, che nessuno può replicare.*
+- **Tre domande da utente informato**:
+  1. *Nel contratto, i miei dati entrano nel prossimo training?*
+  2. *Se costruisco un prodotto AI, dove accumulo il mio flywheel di traiettorie?*
+  3. *Quando il modello sarà commodity, dove si sarà spostato il valore?*
+
+**Visual**: nessuno. L'asimmetria dei due blocchi (utente piccolo, provider grande) è l'elemento visivo.
+
+## Slide 42 — Closed, open weights, open source
 
 **Layout**: titolo in alto; tre colonne contrastive che occupano il corpo della slide; nota in basso.
 
@@ -168,19 +190,41 @@
 
 **Visual**: nessuno. Le tre colonne contrastive sono la struttura visiva; il gradiente di apertura (da closed a open source) si legge nell'ordine delle colonne.
 
-## Slide 41 — Fine-tuning: riprendere la discesa
+## Slide 43 — Quando closed, quando open
+
+**Layout**: titolo in alto; tabella comparativa nella metà superiore; nota moat sotto la tabella; take-home in chiusura evidenziato.
+
+**Testo**:
+- Titolo: *Quando closed, quando open*
+- Tabella a 3 colonne:
+
+| Dimensione | Closed | Open |
+|---|---|---|
+| Qualità di frontiera | In testa oggi | A ~6–12 mesi, ma il gap si chiude |
+| Costo a scala | Pay-per-token, lineare con l'uso | Infrastruttura fissa, marginale vicino a zero |
+| Privacy / data residency | Dati al provider (salvo piani enterprise) | Totalmente in casa |
+| Customization | Fine-tuning limitato, niente pesi | Fine-tuning completo, distillazione, LoRA |
+| Effort di adozione | Zero infrastruttura | GPU, MLOps, competenze |
+| Geopolitica / compliance | Dipendenza da vendor USA o Cina | Sovranità, compatibilità AI Act |
+
+- Nota moat (in evidenza, aggancio alla Slide 41): *Con closed paghi il token E regali le traiettorie. Con open paghi l'infrastruttura, e le traiettorie restano tue.*
+- Take-home (in chiusura): *Closed per sperimentare velocemente, open per scalare volumi, privacy, customization. La scelta è per use case, non ideologica.*
+
+**Visual**: nessuno. La tabella è l'elemento visivo.
+
+## Slide 44 — Fine-tuning: riprendere la discesa
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~40%); visual a destra (~55%); nota in basso.
 
 **Testo**:
 - Titolo: *Fine-tuning: riprendere la discesa*
 - Punti:
-  1. **L'idea**: *riprendere l'addestramento sui propri dati — stesso metodo di sempre, gradient descent (Slide 29) — per specializzare dominio, tono, formato.*
+  1. **L'idea**: *riprendere l'addestramento sui propri dati — stesso metodo di sempre, gradient descent (Slide 30) — per specializzare dominio, tono, formato.*
   2. **Il costo**: *aggiornare tutti i pesi richiede GPU e tempo da training, non da inferenza.*
   3. **Il rischio**: *correggendo tutto, il modello può disimparare il resto (catastrophic forgetting).*
 - Nota in basso: *Serve un'alternativa che corregga senza riscrivere. È la prossima slide.*
 
-**Visual**: la valle dell'errore della Slide 29 ripresa: il modello già addestrato riparte dal fondo valle e scende in una valletta laterale più piccola etichettata "i tuoi dati".
+**Visual**: la valle dell'errore della Slide 30 ripresa: il modello già addestrato riparte dal fondo valle e scende in una valletta laterale più piccola etichettata "i tuoi dati".
 
 **Prompt per schema SVG**:
 > Riprende il diagramma della valle dell'errore (stesso ambiente visivo della slide sul gradient descent): la curva ha un fondo valle principale dove sta una pallina etichettata `modello pre-addestrato`.
@@ -191,7 +235,7 @@
 >
 > **Elemento focale**: la brevità della discesa secondaria rispetto alla discesa originaria — il fine-tuning riparte da un modello già addestrato, non da zero.
 
-## Slide 42 — LoRA: la correzione a basso rango
+## Slide 45 — LoRA: la correzione a basso rango
 
 **Layout**: titolo in alto; i quattro punti di testo a sinistra (~40%); visual a destra (~55%); nota in basso.
 
@@ -202,7 +246,7 @@
   2. **Il vincolo (low-rank)**: *ΔW è costretta a essere il prodotto di due matrici sottili, A e B: poche direzioni nuove, non una riscrittura — la specializzazione è un piccolo insieme di spostamenti nello spazio delle idee.*
   3. **I numeri**: *r piccolo (8–64) contro dimensioni in migliaia: da d×d parametri a 2·d·r — meno dell'1%.*
   4. **In pratica**: *l'adattatore (A, B) è un file di pochi MB: si monta, si smonta, se ne tengono molti — uno per dominio.*
-- Nota in basso: *È questo a rendere davvero interessanti gli open weights (Slide 40): il modello resta condiviso, la specializzazione diventa tua.*
+- Nota in basso: *È questo a rendere davvero interessanti gli open weights (Slide 42): il modello resta condiviso, la specializzazione diventa tua.*
 
 **Visual**: la matrice W congelata e, in parallelo, il ramo LoRA con il collo di bottiglia a r dimensioni; accanto, la pila di adattatori intercambiabili.
 
@@ -219,7 +263,7 @@
 >
 > **Elementi focali**: la sproporzione visiva tra `W` (enorme, col lucchetto) e le strisce `A`/`B` (sottilissime), e il collo di bottiglia `r` — poche direzioni bastano a specializzare. I numeri di dimensione sono di natura token/codice.
 
-## Slide 43 — La fotografia del mercato: il Pareto qualità/costo
+## Slide 46 — La fotografia del mercato: il Pareto qualità/costo
 
 **Layout**: titolo in alto; il chart occupa quasi tutta la slide (~80%); didascalia in basso.
 
@@ -231,10 +275,10 @@
 
 **Lettura in aula (appunti per il docente, non testo slide)**:
 - evidenziare la frontiera di Pareto e il concetto di "dominato" (tutto ciò che sta sotto/destra della frontiera);
-- indicare un paio di closed di punta e almeno un open weights competitivo (aggancio Slide 40);
-- i punti in basso a destra della frontiera: è lì che lavora la distillazione (aggancio Slide 38).
+- indicare un paio di closed di punta e almeno un open weights competitivo (aggancio Slide 42);
+- i punti in basso a destra della frontiera: è lì che lavora la distillazione (aggancio Slide 39).
 
-## Slide 44 — Chiusura: la formula riletta
+## Slide 47 — Chiusura: la formula riletta
 
 **Layout**: titolo in alto; la formula grande al centro con la sintesi sotto il termine LLM; nota-cliffhanger in basso.
 
