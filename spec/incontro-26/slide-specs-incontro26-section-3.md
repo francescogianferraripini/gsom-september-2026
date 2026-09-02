@@ -50,7 +50,9 @@
 >
 > La griglia 4×3 non è decorativa: è letteralmente `vettore 4 × matrice 4×3 = vettore 3`, cioè il livello 2 della Slide 12. Chi ha visto quella slide riconosce l'operazione senza rispiegazioni.
 >
-> **Direzione di lettura: dal basso verso l'alto**, in *tutti* i diagrammi della sezione — l'input entra in fondo, il risultato esce in cima. Vale per la torre (15), per la griglia dell'attention (18–20b) e per la mini-mappa.
+> **Direzione di lettura: dal basso verso l'alto** in tutti i diagrammi che rappresentano un **flusso** — l'input entra in fondo, il risultato esce in cima. Vale per la torre (15), per la griglia dell'attention (18–20b), per la mini-mappa e per gli zoom 10, 14, 16, 17, 21, 22.
+>
+> **Unica eccezione: la Slide 12**, che va **dall'alto verso il basso**. Non è un flusso di dati ma una lista numerata di tre passi, e una lista si legge dall'alto. Livello 1 in cima, livello 3 in fondo.
 >
 > **Stato dell'allineamento**: rispettano l'alfabeto tutte le slide da **10 a 22**. Le Slide 10, 12 e 14 lo *insegnano* (il vettore a 4 celle, la griglia 4×3, la tessera-token); dalla 15 in poi lo *usano*. Restano fuori le Slide **23–27**, disegnate prima della revisione: la 23 in particolare guadagnerebbe molto, perché la sua griglia token × strati è già la torre.
 >
@@ -119,18 +121,18 @@
   3. **matrice × matrice = una matrice**: *la stessa operazione, ripetuta per molti vettori insieme.*
 - Nota in basso: *È tutto qui il calcolo di un LLM — ed è per questo che le GPU, fatte per moltiplicare matrici, sono il suo motore naturale.*
 
-**Visual**: tre gradini impilati **dal basso verso l'alto**, ognuno un'equazione. È la slide che insegna la griglia 4×3, quindi la forma dev'essere identica a quella che comparirà in W^Q, W^K e W^V.
+**Visual**: tre gradini impilati **dall'alto verso il basso** — è l'unica slide della sezione a leggersi in questo verso, perché è una lista numerata di passi e non un flusso di dati. È la slide che insegna la griglia 4×3, quindi la forma dev'essere identica a quella che comparirà in W^Q, W^K e W^V.
 
 **Prompt per schema SVG**:
-> Tre livelli, dal basso: a sinistra il disegno, a destra la spiegazione in due righe. Tutto in teal (vettori) e grigio (matrici): **i colori di ruolo non esistono ancora**, arrivano alla Slide 18.
+> Tre livelli, dall'alto: a sinistra il disegno, a destra la spiegazione in due righe, un filetto sottile a separarli. Tutto in teal (vettori) e grigio (matrici): **i colori di ruolo non esistono ancora**, arrivano alla Slide 18.
 >
-> **Livello 1 (in basso) — `vettore · vettore = numero`**: due vettori da 4 celle, il simbolo `·`, e in uscita un riquadro con `0,83`.
+> **Livello 1 (in cima) — `vettore · vettore = numero`**: il primo vettore **orizzontale** (4 celle), il simbolo `·`, il secondo vettore **verticale** (4 celle impilate), l'`=`, e in uscita un riquadro con `0,83`. Sotto i due vettori, due etichette: *una riga* e *per una colonna*. L'orientamento non è un vezzo: è la scrittura corretta del prodotto scalare, ed è ciò che rende leggibile il livello 2.
 >
-> **Livello 2 (al centro, il gradino focale) — `vettore × matrice = vettore`**: un vettore da **4 celle**, il `×`, una **matrice 4 righe × 3 colonne**, l'`=`, e in uscita un vettore da **3 celle**. Tre curve sottili collegano ogni cella in uscita alla colonna corrispondente della matrice, passando **sotto** la matrice. Sotto: *3 colonne = 3 rilevatori, lunghi 4 come il vettore in ingresso*. A destra: *Moltiplicare per una matrice significa interrogare una batteria di rilevatori, tutti insieme* e *è la stessa forma delle matrici Q, K e V dell'attention*.
+> **Livello 2 (al centro, il gradino focale) — `vettore × matrice = vettore`**: un vettore da **4 celle** orizzontale, il `×`, una **matrice 4 righe × 3 colonne**, l'`=`, e in uscita un vettore da **3 celle**. Tre curve sottili collegano ogni cella in uscita alla colonna corrispondente della matrice, passando **sotto** la matrice. Didascalia: *ogni colonna della matrice è una colonna come quella del livello 1: lo stesso prodotto scalare, fatto 3 volte in un colpo solo*. A destra: *Moltiplicare per una matrice significa interrogare una batteria di rilevatori, tutti insieme* e *è la stessa forma delle matrici Q, K e V dell'attention*.
 >
-> **Livello 3 (in alto) — `matrice × matrice = matrice`**: tre vettori da 4 celle impilati, la stessa matrice 4×3, tre vettori da 3 celle in uscita.
+> **Livello 3 (in fondo) — `matrice × matrice = matrice`**: tre vettori da 4 celle impilati, la stessa matrice 4×3, tre vettori da 3 celle in uscita.
 >
-> **Elemento focale**: il livello 2. È il gradino da cui dipende la leggibilità di tutta la griglia dell'attention.
+> **Elemento focale**: il livello 2, e il fatto che la sua matrice non sia altro che tre colonne del livello 1 messe in fila. È il gradino da cui dipende la leggibilità di tutta la griglia dell'attention.
 
 ---
 
