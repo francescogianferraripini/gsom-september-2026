@@ -16,6 +16,33 @@
     .visual { flex: 1 1 0; min-height: 0; min-width: 0; display: flex; align-items: center; justify-content: center; }
     .visual img { max-width: 100%; max-height: 100%; width: auto; height: auto; }
 
+    /* tre tempi sovrapposti (slide 15): stesso viewBox, nessun salto */
+    .visual.stack { position: relative; display: block; }
+    .visual.stack img {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 100%; max-height: 100%;
+    }
+
+
+    /* mini-mappa "sei qui": rimanda alla torre della slide 15 */
+    .youarehere {
+      display: flex; align-items: center; gap: 12px;
+      margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--q-line);
+    }
+    .youarehere img { height: 96px; width: auto; flex: none; }
+    .youarehere figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; flex: none; }
+    .youarehere figcaption {
+      font-size: 8pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--q-burgundy);
+    }
+    .youarehere.yh-side .story { margin: 0; }
+    .youarehere.yh-side { border-top: none; padding-top: 0; }
+    .youarehere.yh-side img { height: 88px; }
+    .youarehere p { margin: 0; font-size: 9.5pt; line-height: 1.35; color: var(--q-greydark); }
+    .youarehere strong {
+      display: block; color: var(--q-burgundy); font-size: 9pt;
+      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 3px;
+    }
     .pts { margin: 0; }
     .pts li { font-size: 12.5pt; line-height: 1.4; margin-bottom: 12px; }
     .pts li:last-child { margin-bottom: 0; }
@@ -413,12 +440,19 @@
         <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
         <h2>L'architettura, in un colpo d'occhio</h2>
         <div class="content">
-          <div class="visual"><img src="svg/slide15-architettura.svg" alt="Pipeline di un LLM decoder-only, dal testo alla distribuzione sul prossimo token"></div>
+          <div class="visual stack">
+            <img src="svg/slide15a-scatola-nera.svg"
+                 alt="L'LLM come scatola nera: dal testo alla distribuzione sul prossimo token">
+            <img class="fragment" src="svg/slide15b-torre.svg"
+                 alt="La torre: una corsia per token, il blocco ripetuto N volte, poi reverse embedding e softmax">
+            <img class="fragment" src="svg/slide15c-torre-aperta.svg"
+                 alt="Dentro il blocco: la self-attention collega le corsie, il fully connected lavora su ognuna separatamente">
+          </div>
           <p class="caption">Dal testo alla distribuzione sul prossimo token. Ogni pezzo di questo percorso è una delle prossime slide.</p>
           <div class="side-notes">
-            <p>Il blocco attention + fully connected è ripetuto N volte (nei modelli grandi, ~100).</p>
+            <p>Il canale centrale scorre: ogni sottoblocco non sostituisce l'embedding, gli somma il suo contributo.</p>
             <p>Dopo la distribuzione, il sampling sceglie il token effettivo.</p>
-            <p>Diagramma semplificato: omesse le normalizzazioni.</p>
+            <p>Semplificato: omesse le normalizzazioni e le teste dell'attention (Slide 18).</p>
           </div>
         </div>
         <div class="footnote">15 / Sezione 3</div>
@@ -435,6 +469,10 @@
                 <li><strong>Tutti in parallelo (fanout)</strong>migliaia di rilevatori scattano insieme, a ogni token, a ogni strato — lo spazio si espande.</li>
                 <li><strong>La non linearità è un gate</strong>passa solo ciò che è davvero affine; tutto il resto viene azzerato.</li>
               </ul>
+              <div class="youarehere">
+                <img src="svg/minimap-fc.svg" alt="Mini-mappa dell'architettura: il fully connected, dentro il blocco">
+                <p><strong>sei qui</strong>il fully connected, dentro il blocco</p>
+              </div>
             </div>
             <div class="visual"><img src="svg/slide16-fanout.svg" alt="Batteria di rilevatori concettuali e gate della non linearità"></div>
           </div>
@@ -453,6 +491,10 @@
                 <li><strong>Compressione</strong>i concetti sopravvissuti al gate vengono ri-sommati in un unico vettore: più significati coesistono, sovrapposti, nello stesso embedding.</li>
                 <li><strong>La somma è uno spostamento</strong>sommare quel contributo all'embedding originale — è il nodo <code>+</code> della skip connection — lo sposta nello spazio delle idee: il significato si muove, si arricchisce.</li>
               </ul>
+              <div class="youarehere">
+                <img src="svg/minimap-somma.svg" alt="Mini-mappa dell'architettura: la somma nel canale centrale">
+                <p><strong>sei qui</strong>la somma nel canale centrale</p>
+              </div>
             </div>
             <div class="visual"><img src="svg/slide17-compressione.svg" alt="I concetti si sommano in un contributo che sposta l'embedding"></div>
           </div>
@@ -467,16 +509,20 @@
         <div class="content">
           <div class="tv tv-35">
             <div class="col-text">
-              <ul class="pts tight">
+              <ul class="pts micro">
                 <li><strong>Ogni token emette una domanda (Q)</strong>"cosa sto cercando?" — e una chiave (K): "cosa offro a chi cerca?"</li>
                 <li><strong>L'affinità è ancora un prodotto scalare</strong>Q·K misura quanto la chiave di un token risponde alla domanda di un altro.</li>
                 <li><strong>Tre proiezioni semantiche apprese</strong>tre matrici, applicate all'embedding di ogni token, lo proiettano in tre vesti. Q e K sono ottimizzate — testa per testa — per trovare il token giusto nel contesto precedente. Ciò su cui fai match non è ciò che ricevi.</li>
               </ul>
-              <div class="story" style="margin-top: 12px;">
-                <p>Come in biblioteca: porti una richiesta al banco (Q), il match si fa sulle etichette dei dorsi (K). Il contenuto del libro (V) è un'altra cosa — e arriva dopo.</p>
+              <div class="youarehere yh-side">
+                <figure>
+                  <img src="svg/minimap-attn.svg" alt="Mini-mappa dell'architettura: la self-attention, dentro il blocco">
+                  <figcaption>sei qui</figcaption>
+                </figure>
+                <div class="story"><p>Come in biblioteca: porti una richiesta al banco (Q), il match si fa sulle etichette dei dorsi (K). Il contenuto del libro (V) è un'altra cosa — e arriva dopo.</p></div>
               </div>
-            </div>
-            <div class="visual"><img src="svg/slide18-attention-qk.svg" alt="Il token calcio emette una domanda; gli altri token espongono le loro chiavi"></div>
+</div>
+            <div class="visual"><img src="svg/slide18-griglia-qk.svg" alt="Griglia dell'attention: ogni token espone una chiave, calcio emette la domanda, q per k dà l'affinità"></div>
           </div>
           <div class="nota small">Ogni testa fa una domanda diversa — sintassi, riferimenti, tono: più ricerche in parallelo.</div>
         </div>
@@ -493,8 +539,12 @@
                 <li><strong>Da punteggi a percentuali</strong>la softmax trasforma le affinità grezze in pesi che sommano a 1 — un budget di ascolto da distribuire.</li>
                 <li><strong>Esagera le differenze</strong>chi è più affine prende quasi tutto il budget: è un "max morbido".</li>
               </ul>
+              <div class="youarehere">
+                <img src="svg/minimap-attn.svg" alt="Mini-mappa dell'architettura: la self-attention, dentro il blocco">
+                <p><strong>sei qui</strong>la self-attention, dentro il blocco</p>
+              </div>
             </div>
-            <div class="visual"><img src="svg/slide19-softmax.svg" alt="Dai punteggi grezzi al budget di ascolto che somma a 100%"></div>
+            <div class="visual"><img src="svg/slide19-griglia-softmax.svg" alt="Griglia dell'attention: la softmax trasforma le affinità grezze nel budget di ascolto"></div>
           </div>
           <div class="nota">La stessa macchina la ritroveremo all'uscita del modello, quando i punteggi diventeranno la distribuzione sul prossimo token.</div>
         </div>
@@ -511,12 +561,44 @@
                 <li><strong>Il terzo volto del token: il value</strong>la proiezione V è ottimizzata per estrarre la semantica di quel token in quel contesto — ciò che consegna, se ascoltato, per arricchire il token in arrivo. Il libro, non l'etichetta.</li>
                 <li><strong>La somma pesata è lo spostamento</strong>i value, pesati dal budget di ascolto, si sommano all'embedding: il significato si muove verso l'interpretazione giusta.</li>
               </ul>
+              <div class="youarehere">
+                <img src="svg/minimap-attn.svg" alt="Mini-mappa dell'architettura: la self-attention, dentro il blocco">
+                <p><strong>sei qui</strong>la self-attention, dentro il blocco</p>
+              </div>
             </div>
-            <div class="visual"><img src="svg/slide20-attention-v.svg" alt="I value pesati dal budget di ascolto spostano il token nello spazio delle idee"></div>
+            <div class="visual"><img src="svg/slide20-griglia-v.svg" alt="Griglia dell'attention: i value pesati si sommano nel nuovo embedding di calcio"></div>
           </div>
           <div class="nota">È la manipolazione della Slide 17 — ma qui guidata dal contesto: sono gli altri token a decidere la direzione.</div>
         </div>
         <div class="footnote">20 / Sezione 3</div>
+      </section>
+
+      <section id="slide-20b">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>Lo stesso token, due contesti</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Stessa macchina, altra frase</strong>le tre matrici di proiezione non cambiano: cambia solo ciò che entra.</li>
+                <li><strong>Il budget si sposta da solo</strong>nella prima frase «calcio» ascolta «portiere» al 63%; nella seconda ascolta «ossa» e «forti» — 78% in due.</li>
+                <li><strong>Ed è questo a decidere il significato</strong>lo stesso token esce dall'attention in due punti diversi dello spazio delle idee.</li>
+              </ul>
+              <div class="youarehere">
+                <img src="svg/minimap-attn.svg" alt="Mini-mappa dell'architettura: la self-attention, dentro il blocco">
+                <p><strong>sei qui</strong>la self-attention, dentro il blocco</p>
+              </div>
+            </div>
+            <div class="visual stack">
+              <img src="svg/slide20b-contesto-frase1.svg"
+                   alt="Attention completa su «il portiere diede un calcio»: il budget va a portiere, e calcio finisce nell'area dello sport">
+              <img class="fragment" src="svg/slide20b-contesto-frase2.svg"
+                   alt="Attention completa su «ossa forti con il calcio»: il budget va a ossa e forti, e calcio finisce nell'area dei minerali">
+            </div>
+          </div>
+          <div class="nota">Nessuno ha scritto da nessuna parte che «calcio» è ambiguo: l'ambiguità la scioglie il contesto, e lo strumento sono i pesi.</div>
+        </div>
+        <div class="footnote">20b / Sezione 3</div>
       </section>
 
       <section id="slide-21">
@@ -530,6 +612,10 @@
                 <li><strong>La correzione</strong>a ogni embedding si somma un vettore che codifica la sua posizione nella sequenza.</li>
                 <li><strong>Ancora uno spostamento</strong>anche la posizione è una direzione nello spazio delle idee: "gatto, secondo token della frase" è il punto <code>gatto</code>, spostato un po'.</li>
               </ul>
+              <div class="youarehere">
+                <img src="svg/minimap-pos.svg" alt="Mini-mappa dell'architettura: l'innesto della posizione, all'ingresso">
+                <p><strong>sei qui</strong>l'innesto della posizione, all'ingresso</p>
+              </div>
             </div>
             <div class="visual"><img src="svg/slide21-positional-encoding.svg" alt="Senza posizione le due frasi collassano; con la somma dei vettori di posizione tornano distinguibili"></div>
           </div>
@@ -548,6 +634,10 @@
                 <li><strong>L'operazione inversa della prima</strong>all'ingresso, da token a vettore; all'uscita, dal vettore finale a una preferenza su ogni token del vocabolario.</li>
                 <li><strong>Ancora prodotti scalari</strong>l'embedding finale viene confrontato con il vettore di ogni token del vocabolario: ~100.000 affinità — i logits — che la softmax trasforma nella distribuzione.</li>
               </ul>
+              <div class="youarehere">
+                <img src="svg/minimap-testa.svg" alt="Mini-mappa dell'architettura: la testa del modello, in uscita">
+                <p><strong>sei qui</strong>la testa del modello, in uscita</p>
+              </div>
             </div>
             <div class="visual"><img src="svg/slide22-reverse-embedding.svg" alt="Dall'embedding finale ai logits alla distribuzione"></div>
           </div>
