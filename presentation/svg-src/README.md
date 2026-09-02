@@ -19,6 +19,7 @@ Non servono dipendenze: solo Python 3.
 | `gen15.py` | slide 15 — la torre, nei tre tempi |
 | `gen_b.py` | slide 16, 17, 21, 22 — gli zoom |
 | `gen_griglia.py` | slide 18, 19, 20 e 20b — la griglia dell'attention |
+| `gen_c.py` | slide 23, 24, 27 — le slide che chiudono la sezione |
 | `gen_minimap.py` | le sei mini-mappe "sei qui" |
 
 ## L'alfabeto
@@ -28,7 +29,7 @@ Le regole stanno scritte per esteso nella spec
 visivo della sezione*). In sintesi: il vettore è una riga di **4 celle**, q/k/v
 sono **3 celle**, la matrice di proiezione è una griglia **4×3**, e i diagrammi
 di flusso si leggono **dal basso verso l'alto** (unica eccezione la slide 12,
-che è una lista numerata e va dall'alto).
+che è una lista numerata e va dall'alto; la 25 è una slide-metafora e non usa l'alfabeto).
 
 Il colore codifica il **ruolo**, non l'enfasi: teal = embedding, burgundy = q,
 grafite = k, lightblue = v, giallo = posizione.

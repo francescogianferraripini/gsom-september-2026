@@ -38,6 +38,8 @@
     .youarehere.yh-side .story { margin: 0; }
     .youarehere.yh-side { border-top: none; padding-top: 0; }
     .youarehere.yh-side img { height: 88px; }
+    .youarehere.yh-sm { margin-top: 8px; padding-top: 6px; }
+    .youarehere.yh-sm img { height: 62px; }
     .youarehere p { margin: 0; font-size: 9.5pt; line-height: 1.35; color: var(--q-greydark); }
     .youarehere strong {
       display: block; color: var(--q-burgundy); font-size: 9pt;
@@ -465,7 +467,7 @@
           <div class="tv tv-35">
             <div class="col-text">
               <ul class="pts">
-                <li><strong>Un rilevatore per concetto</strong>ogni riga della matrice è un pattern memorizzato; il prodotto scalare misura quanto l'embedding in transito gli somiglia.</li>
+                <li><strong>Un rilevatore per concetto</strong>ogni colonna della matrice è un pattern memorizzato; il prodotto scalare misura quanto l'embedding in transito gli somiglia.</li>
                 <li><strong>Tutti in parallelo (fanout)</strong>migliaia di rilevatori scattano insieme, a ogni token, a ogni strato — lo spazio si espande.</li>
                 <li><strong>La non linearità è un gate</strong>passa solo ciò che è davvero affine; tutto il resto viene azzerato.</li>
               </ul>
@@ -657,6 +659,10 @@
                 <li><strong>Prefill</strong>il costo iniziale di "leggere" il prompt: calcolare K e V di ogni token, a ogni strato.</li>
                 <li><strong>KV cache</strong>chiavi e valori dei token già visti si salvano: ogni giro del 1° loop paga solo il token nuovo.</li>
               </ul>
+              <div class="youarehere yh-sm">
+                <img src="svg/minimap-corsie.svg" alt="Mini-mappa dell'architettura: le corsie e gli strati, in tutta la torre">
+                <p><strong>sei qui</strong>le corsie e gli strati, in tutta la torre</p>
+              </div>
             </div>
             <div class="visual"><img src="svg/slide23-costo-contesto.svg" alt="Senza e con KV cache: cosa si ricalcola e cosa si riusa"></div>
           </div>
@@ -672,7 +678,7 @@
           <div class="tv tv-35">
             <div class="col-text">
               <ul class="pts">
-                <li><strong>Ciò che è scritto</strong>la conoscenza abita nei vettori appresi — gli embedding dei token e le righe delle matrici: i pattern dei rilevatori e i loro contributi.</li>
+                <li><strong>Ciò che è scritto</strong>la conoscenza abita nei vettori appresi — gli embedding dei token e le colonne delle matrici: i pattern dei rilevatori e i loro contributi.</li>
                 <li><strong>Ciò che emerge</strong>le regolarità geometriche tra quei vettori — le direzioni-relazione dello spazio delle idee. Nessuno le ha scritte: si sono formate perché servivano a predire.</li>
               </ul>
             </div>
@@ -744,6 +750,10 @@
                 <li><strong>Il perché</strong>il fanout è la parte più costosa — ma per un dato token la maggior parte dei rilevatori resta muta. Allora i pesi si spezzano in esperti, e si attivano solo i pochi rilevanti.</li>
                 <li><strong>Il router</strong>davanti agli esperti, un piccolo selettore decide a chi mandare ogni token.</li>
               </ul>
+              <div class="youarehere">
+                <img src="svg/minimap-fc.svg" alt="Mini-mappa dell'architettura: il fully connected, dentro il blocco">
+                <p><strong>sei qui</strong>il fully connected, dentro il blocco</p>
+              </div>
             </div>
             <div class="visual"><img src="svg/slide27-moe.svg" alt="Il router accende solo due esperti su otto"></div>
           </div>

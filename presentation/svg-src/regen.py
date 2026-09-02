@@ -10,7 +10,8 @@ e le due fonti hanno divergito."""
 import os, runpy, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SCRIPTS = ["gen_a.py", "gen15.py", "gen_b.py", "gen_griglia.py", "gen_minimap.py"]
+SCRIPTS = ["gen_a.py", "gen15.py", "gen_b.py", "gen_griglia.py", "gen_c.py",
+           "gen_minimap.py"]
 
 for name in SCRIPTS:
     print("\n· %s" % name)

@@ -54,7 +54,7 @@
 >
 > **Unica eccezione: la Slide 12**, che va **dall'alto verso il basso**. Non è un flusso di dati ma una lista numerata di tre passi, e una lista si legge dall'alto. Livello 1 in cima, livello 3 in fondo.
 >
-> **Stato dell'allineamento**: rispettano l'alfabeto tutte le slide da **10 a 22**. Le Slide 10, 12 e 14 lo *insegnano* (il vettore a 4 celle, la griglia 4×3, la tessera-token); dalla 15 in poi lo *usano*. Restano fuori le Slide **23–27**, disegnate prima della revisione: la 23 in particolare guadagnerebbe molto, perché la sua griglia token × strati è già la torre.
+> **Stato dell'allineamento**: la sezione è allineata per intero. Le Slide 10, 12 e 14 *insegnano* l'alfabeto (il vettore a 4 celle, la griglia 4×3, la tessera-token); dalla 15 alla 27 lo *usano*. Due eccezioni dichiarate: la **Slide 12** si legge dall'alto (è una lista di passi), e la **Slide 25** resta una slide-metafora, con l'imbuto della compressione che scende — non usa l'alfabeto perché non parla di vettori ma di che cosa succede a un archivio quando lo comprimi. La **Slide 26** non ha figura.
 >
 > **Mini-mappa "sei qui"**: le slide 16–22 portano, in fondo alla colonna di testo, la torre della Slide 15 ridotta a silhouette grigia con **un solo elemento in burgundy** — la parte trattata da quella slide. Varianti: `minimap-fc` (16), `minimap-somma` (17), `minimap-attn` (18, 19, 20, 20b), `minimap-pos` (21), `minimap-testa` (22). Esiste anche `minimap-corsie`, pronta per la Slide 23 ma non ancora cablata.
 
@@ -222,7 +222,7 @@
 **Testo**:
 - Titolo: *Fanout: il matching concettuale*
 - Bullet:
-  1. **Un rilevatore per concetto**: *ogni riga della matrice è un pattern memorizzato; il prodotto scalare misura quanto l'embedding in transito gli somiglia.*
+  1. **Un rilevatore per concetto**: *ogni colonna della matrice è un pattern memorizzato; il prodotto scalare misura quanto l'embedding in transito gli somiglia.*
   2. **Tutti in parallelo (fanout)**: *migliaia di rilevatori scattano insieme, a ogni token, a ogni strato — lo spazio si espande.*
   3. **La non linearità è un gate**: *passa solo ciò che è davvero affine; tutto il resto viene azzerato.*
 - Nota in basso: *È il rilevatore di affinità della Slide 11, moltiplicato per migliaia: da un rilevatore a una batteria di rilevatori.*
@@ -430,18 +430,22 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
   3. **KV cache**: *chiavi e valori dei token già visti si salvano: ogni giro del 1° loop paga solo il token nuovo.*
 - Nota in basso: *Funziona perché la masked attention rende il passato immutabile: i token precedenti non vedono il nuovo, quindi i loro K, V e fully connected non cambiano mai. Il contesto resta comunque una risorsa costosa — lo ritroveremo.*
 
-**Visual**: due pannelli a confronto — generare il token n-esimo senza e con KV cache — con evidenza di ciò che viene ricalcolato in un caso e riusato nell'altro.
+**Visual**: due griglie a confronto, **token sulle colonne e strati sulle righe** — è la stessa struttura della torre (Slide 15), con `strato 1` in basso e `strato N` in alto.
 
 **Prompt per schema SVG**:
-> Diagramma a due pannelli affiancati, stesso impianto: una griglia con i token del contesto sulle colonne (`Il`, `gatto`, `è`, `sul`, `tavolo`, `e`, e l'ultima colonna marcata `token nuovo`) e gli strati del modello sulle righe (3-4 righe etichettate `strato 1`, `strato 2`, `…`, `strato N`; ogni cella rappresenta i calcoli K, V, FC di quel token a quello strato).
+> Due pannelli affiancati, stessa griglia. **Colonne** = i token del contesto (`Il`, `gatto`, `è`, `sul`, `tavolo`, `e`) più una colonna finale marcata `token nuovo`; le etichette sono ruotate di 90° e allineate in basso. **Righe** = gli strati, **dal basso**: `strato 1`, `strato 2`, `⋯`, `strato N`. Le corsie verticali attraversano la griglia, come nella torre.
 >
-> **Pannello sinistro — `senza KV cache`**: TUTTE le celle della griglia sono accese/attive (da ricalcolare). Annotazioni puntate sulle celle del passato: `K e V: ricalcolate`, `fully connected: rifatti`, `Q del passato: calcolate e buttate`. Sotto il pannello: `costo del token n-esimo ≈ n² — ricalcoli tutto il passato, a ogni strato`.
+> **Ogni cella è la chiave e il valore di quel token a quello strato**: due barrette sovrapposte, grafite (`k`) e lightblue (`v`) — gli stessi oggetti della griglia dell'attention. In fondo alla slide, una legenda minima lo dichiara.
 >
-> **Pannello destro — `con KV cache`**: solo l'ultima colonna (`token nuovo`) è accesa; tutte le colonne del passato sono rese come archivio salvato (celle quiete, etichettate `K,V in cache`), con una freccia dal blocco-archivio verso l'attention del token nuovo: `riusate, non ricalcolate`. Sotto il pannello: `costo del token n-esimo ≈ n — paghi solo il token nuovo`.
+> **Pannello sinistro — `senza KV cache`**: ogni cella ha un anello burgundy: è tutta da ricalcolare. Annotazioni: *K e V: ricalcolate a ogni giro*, *fully connected: rifatti*, *Q del passato: calcolate e buttate*. Sotto: `costo del token n-esimo ≈ n²`.
 >
-> **In basso, tra i due pannelli**: una riga che spiega il perché: `la masked attention rende il passato immutabile → si può salvare`.
+> **Pannello destro — `con KV cache`**: le colonne del passato sono dentro un'area grigia etichettata `K, V in cache`, con le celle smorzate; **solo la colonna del token nuovo ha l'anello**. Una freccia dalla cache alla colonna nuova, etichettata *riusate, non ricalcolate*. Sotto: `costo del token n-esimo ≈ n`.
 >
-> **Elemento focale**: il contrasto tra le due aree accese — l'intera griglia a sinistra contro la singola colonna a destra: è la differenza di costo il messaggio della slide. Le etichette dei token sono di natura token/codice.
+> **In fondo**: *la masked attention rende il passato immutabile → si può salvare*.
+>
+> **Elemento focale**: il contrasto fra le aree accese — tutta la griglia a sinistra, una colonna sola a destra.
+
+---
 
 ## Slide 24 — La conoscenza è nei pesi
 
@@ -450,23 +454,24 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
 **Testo**:
 - Titolo: *La conoscenza è nei pesi*
 - Punti:
-  1. **Ciò che è scritto**: *la conoscenza abita nei vettori appresi — gli embedding dei token e le righe delle matrici: i pattern dei rilevatori e i loro contributi.*
+  1. **Ciò che è scritto**: *la conoscenza abita nei vettori appresi — gli embedding dei token e le colonne delle matrici: i pattern dei rilevatori e i loro contributi.*
   2. **Ciò che emerge**: *le regolarità geometriche tra quei vettori — le direzioni-relazione dello spazio delle idee. Nessuno le ha scritte: si sono formate perché servivano a predire.*
 - Nota in basso: *Niente archivio consultabile, niente righe di database. Ed è per questo che il recupero può sbagliare — prossima slide.*
 
-**Visual**: la stessa domanda — "qual è la capitale della Francia?" — risolta in due modi: a sinistra un database che trova la riga; a destra il modello, dove la risposta è distribuita tra rilevatori e geometria.
+**Visual**: due colonne a confronto, entrambe **dal basso verso l'alto**: in fondo la stessa domanda, in cima le due conclusioni, allineate alla stessa altezza perché il confronto si legga in orizzontale.
 
 **Prompt per schema SVG**:
-> Diagramma a due pannelli affiancati, stessa domanda in alto al centro: `Qual è la capitale della Francia?`.
+> **In basso, condivisa**: la domanda `Qual è la capitale della Francia?` in un riquadro nero, da cui partono due frecce verso i due lati.
 >
-> **Pannello sinistro — `un database`**: una tabella con righe `paese | capitale` (`Italia | Roma`, `Francia | Parigi`, `Germania | Berlino`); la riga `Francia | Parigi` è selezionata, con etichetta `trova la riga: recupero esatto`.
+> **A sinistra — `UN DATABASE`**: una tabella di tre righe (`Italia`/`Roma`, `Francia`/`Parigi`, `Germania`/`Berlino`) con la riga `Francia` evidenziata; sopra, *trova la riga: il recupero è esatto*; una freccia sale verso la conclusione: **la risposta è SCRITTA — esiste una riga che la contiene**.
 >
-> **Pannello destro — `un LLM`**: nessuna tabella. Due elementi che cooperano:
->   1. un rilevatore (riga di matrice) etichettato `pattern: "capitale della Francia"` che scatta e consegna un contributo-vettore che spinge verso `Parigi`;
->   2. un mini piano dello spazio delle idee con la freccia `Francia → Parigi` parallela a `Italia → Roma` (etichetta: `regolarità emersa, non scritta`).
-> Etichetta del pannello: `la risposta è distribuita: vettori scritti + geometria emersa`.
+> **A destra — `UN LLM`**, salendo: l'**embedding della domanda** (4 celle teal) → un **rilevatore disegnato come vettore-colonna** (4 celle grigie impilate), etichettato *un rilevatore = una colonna di matrice*, `pattern: «capitale della Francia»`, **scatta** → il **contributo** (4 celle teal) che *spinge verso Parigi* → un piano punteggiato con `Francia → Parigi` e `Italia → Roma`, due frecce **parallele**, etichetta *la stessa direzione: «capitale di»* → la conclusione: **la risposta è DISTRIBUITA — vettori appresi + una geometria emersa**.
 >
-> **Elemento focale**: il contrasto tra la riga selezionata del database (recupero) e la natura distribuita del pannello destro (ricostruzione) — è la differenza che prepara la slide sul compressore lossy.
+> Il rilevatore è una **colonna**, non una riga: è la convenzione fissata nella Slide 12 e usata nella Slide 16.
+>
+> **Elemento focale**: le due conclusioni alla stessa altezza. A sinistra la risposta esiste; a destra viene ricostruita.
+
+---
 
 ## Slide 25 — L'LLM come compressore lossy
 
@@ -514,7 +519,7 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
   5. *Calcoli numerici precisi*
 - Regola pratica in basso (evidenziata): *Fidati del framing, verifica i fatti. Le allucinazioni non sono un bug morale del modello: sono il comportamento strutturale di un compressore lossy a cui chiedi di ricostruire ciò che non ha memorizzato bene.*
 
-**Visual**: nessuno. Il contrasto tra le due colonne è l'elemento visivo.
+**Visual**: nessuno — è l'unica slide della sezione senza figura. Il contrasto tra le due colonne di testo è l'elemento visivo.
 
 ## Slide 27 — MoE: non tutti i pesi lavorano sempre
 
@@ -527,17 +532,15 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
   2. **Il router**: *davanti agli esperti, un piccolo selettore decide a chi mandare ogni token.*
 - Nota in basso: *Il risultato: modelli enormi nei parametri totali, ma con un costo per token da modello piccolo. Torneremo sul lato economico.*
 
-**Visual**: il blocco fully connected dell'architettura che si apre in una schiera di esperti con un router davanti: il token attraversa solo i due esperti accesi.
+**Visual**: il sottoblocco fully connected che si apre in una schiera di esperti, **dal basso verso l'alto**.
 
 **Prompt per schema SVG**:
-> Diagramma orizzontale: un token in transito attraversa un blocco fully connected trasformato in Mixture of Experts.
+> Dal basso: l'**embedding in transito** (4 celle teal) entra in un blocco `router` (*un piccolo selettore: decide chi lavora su questo token*).
 >
-> **A sinistra**: una colonnina-vettore etichettata `embedding in transito`, che entra in un piccolo blocco `router`.
+> Sopra, una **fila orizzontale di 8 esperti**, ognuno disegnato come un fully connected in miniatura (tre barrette), etichettati `E1` … `E8`. Dal router partono otto frecce, ma **solo due sono burgundy** e arrivano a esperti accesi (`E3` ed `E6`); le altre sei sono grigie e vanno a esperti spenti. Etichetta: *ogni esperto è un fully connected più piccolo*.
 >
-> **Al centro**: una schiera verticale di 8 blocchi identici etichettati `esperto 1` … `esperto 8`. Dal router partono frecce verso solo 2 esperti (es. `esperto 3` ed `esperto 6`), che sono accesi/attivi; gli altri 6 sono spenti/quiescenti. Etichetta sul gruppo: `ogni esperto: un fully connected più piccolo`.
+> Dai due esperti accesi, due frecce salgono in un nodo `+`, e da lì il **vettore in uscita** (4 celle teal).
 >
-> **A destra**: i contributi dei 2 esperti attivi convergono in un nodo `+` e proseguono come un unico vettore in uscita.
+> **In cima**, un riquadro nero: *parametri totali: tutti gli esperti* / *lavoro per token: solo 2* (la seconda riga in giallo).
 >
-> **Didascalia interna in basso**: `parametri totali: tutti gli esperti — lavoro per token: solo 2`.
->
-> **Elemento focale**: il contrasto tra i 2 esperti accesi e i 6 spenti, con il router come arbitro — è il messaggio della slide. Il richiamo visivo al blocco fully connected dell'architettura (Slide 15) deve essere riconoscibile.
+> **Elemento focale**: il contrasto fra i due esperti accesi e i sei spenti. La forma dev'essere riconoscibile come il sottoblocco `fully connected` della torre — per questo la slide porta la mini-mappa `minimap-fc`.
