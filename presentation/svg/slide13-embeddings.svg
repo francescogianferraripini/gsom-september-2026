@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 700" width="1260" height="700" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Spazio degli embedding: cluster di parole affini e frecce parallele che rappresentano la relazione "capitale di"</title>
+  <defs>
+    <pattern id="grid-idee" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1.4" fill="#dee2e6"/>
+    </pattern>
+    <marker id="ah-burgundy" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <g id="piano">
+    <rect x="12" y="12" width="1236" height="676" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="12" y="12" width="1236" height="676" rx="8" fill="url(#grid-idee)"/>
+    <text x="40" y="52" font-size="14" font-weight="600" letter-spacing="2" fill="#838383">SPAZIO DEGLI EMBEDDING</text>
+    <text x="1220" y="668" text-anchor="end" font-size="14" font-weight="400" fill="#838383">proiezione 2D di uno spazio a migliaia di dimensioni</text>
+  </g>
+
+  <g id="cluster-animali">
+    <ellipse cx="232" cy="232" rx="118" ry="112" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1" stroke-dasharray="5 5"/>
+    <text x="232" y="106" text-anchor="middle" font-size="14" font-weight="600" letter-spacing="1.6" fill="#838383">ANIMALI</text>
+    <circle cx="205" cy="175" r="7" fill="#212529"/>
+    <text x="205" y="205" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">gatto</text>
+    <circle cx="288" cy="228" r="7" fill="#212529"/>
+    <text x="288" y="258" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">cane</text>
+    <circle cx="188" cy="288" r="7" fill="#212529"/>
+    <text x="188" y="318" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">tigre</text>
+  </g>
+
+  <g id="cluster-nazioni">
+    <ellipse cx="680" cy="352" rx="108" ry="104" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1" stroke-dasharray="5 5"/>
+    <text x="680" y="482" text-anchor="middle" font-size="14" font-weight="600" letter-spacing="1.6" fill="#838383">NAZIONI</text>
+    <circle cx="690" cy="300" r="7" fill="#212529"/>
+    <text x="690" y="330" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">Francia</text>
+    <circle cx="630" cy="370" r="7" fill="#212529"/>
+    <text x="626" y="400" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">Italia</text>
+    <circle cx="730" cy="392" r="7" fill="#212529"/>
+    <text x="730" y="422" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">Germania</text>
+  </g>
+
+  <g id="cluster-capitali">
+    <ellipse cx="930" cy="282" rx="108" ry="104" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1" stroke-dasharray="5 5"/>
+    <text x="930" y="412" text-anchor="middle" font-size="14" font-weight="600" letter-spacing="1.6" fill="#838383">CAPITALI</text>
+    <circle cx="940" cy="230" r="7" fill="#212529"/>
+    <text x="940" y="260" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">Parigi</text>
+    <circle cx="880" cy="300" r="7" fill="#212529"/>
+    <text x="876" y="330" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">Roma</text>
+    <circle cx="980" cy="322" r="7" fill="#212529"/>
+    <text x="980" y="352" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">Berlino</text>
+  </g>
+
+  <g id="frecce-capitale-di" stroke="#a1245a" stroke-width="3" stroke-linecap="round" fill="none" marker-end="url(#ah-burgundy)">
+    <line x1="706" y1="296" x2="917" y2="237"/>
+    <line x1="646" y1="366" x2="857" y2="307"/>
+    <line x1="746" y1="388" x2="957" y2="329"/>
+  </g>
+
+  <g id="callout-direzione">
+    <rect x="756" y="58" width="484" height="70" rx="8" fill="#161719"/>
+    <rect x="756" y="58" width="4" height="70" fill="#ffbe0b"/>
+    <text x="784" y="90" font-size="19" font-weight="600" fill="#ffffff">stessa direzione = &#171;capitale di&#187;</text>
+    <text x="784" y="114" font-size="14" font-weight="400" fill="#838383">tre frecce parallele, stessa lunghezza</text>
+  </g>
+
+  <g id="parallelogramma">
+    <text x="180" y="492" font-size="14" font-weight="600" letter-spacing="1.6" fill="#838383">ANALOGIA</text>
+    <g stroke="#838383" stroke-width="1" stroke-dasharray="5 5">
+      <line x1="200" y1="600" x2="430" y2="612"/>
+      <line x1="330" y1="540" x2="560" y2="552"/>
+    </g>
+    <g stroke="#a1245a" stroke-width="2.5" stroke-linecap="round" fill="none" marker-end="url(#ah-burgundy)">
+      <line x1="215" y1="594" x2="311" y2="550"/>
+      <line x1="445" y1="606" x2="541" y2="562"/>
+    </g>
+    <circle cx="200" cy="600" r="7" fill="#212529"/>
+    <text x="200" y="632" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">man</text>
+    <circle cx="330" cy="540" r="7" fill="#212529"/>
+    <text x="330" y="522" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">woman</text>
+    <circle cx="430" cy="612" r="7" fill="#212529"/>
+    <text x="430" y="644" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">king</text>
+    <circle cx="560" cy="552" r="7" fill="#212529"/>
+    <text x="560" y="534" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">queen</text>
+  </g>
+
+  <g id="equazione">
+    <rect x="646" y="576" width="392" height="60" rx="8" fill="#f6f6f6"/>
+    <rect x="646" y="576" width="3" height="60" fill="#a1245a"/>
+    <text x="674" y="613" font-size="21" font-weight="600" fill="#a1245a">king &#8722; man + woman &#8776; queen</text>
+  </g>
+</svg>

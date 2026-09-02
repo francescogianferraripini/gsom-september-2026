@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Compressione: i concetti sopravvissuti al gate si sommano in un unico contributo che sposta il punto della parola nello spazio delle idee</title>
+  <defs>
+    <pattern id="grid-idee-17" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1.4" fill="#dee2e6"/>
+    </pattern>
+    <marker id="ah-grey-17" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#838383"/>
+    </marker>
+    <marker id="ah-burgundy-17" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- ============ STADIO 1 - LA SOMMA ============ -->
+  <g id="stadio1">
+    <text x="36" y="52" font-size="14" font-weight="700" letter-spacing="2" fill="#838383">STADIO 1 &#8212; LA SOMMA</text>
+    <text x="36" y="112" font-size="14" font-weight="600" letter-spacing="1.6" fill="#838383">CONCETTI SOPRAVVISSUTI AL GATE</text>
+
+    <g id="concetti">
+      <g>
+        <rect x="36" y="150" width="346" height="64" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <line x1="58" y1="188" x2="84" y2="176" stroke="#838383" stroke-width="2" stroke-linecap="round" marker-end="url(#ah-grey-17)"/>
+        <text x="100" y="189" font-size="17" font-weight="500" fill="#212529">animale domestico</text>
+      </g>
+      <g>
+        <rect x="36" y="250" width="346" height="64" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <line x1="58" y1="288" x2="84" y2="276" stroke="#838383" stroke-width="2" stroke-linecap="round" marker-end="url(#ah-grey-17)"/>
+        <text x="100" y="289" font-size="17" font-weight="500" fill="#212529">sta per arrivare un luogo</text>
+      </g>
+      <g>
+        <rect x="36" y="350" width="346" height="64" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <line x1="58" y1="388" x2="84" y2="376" stroke="#838383" stroke-width="2" stroke-linecap="round" marker-end="url(#ah-grey-17)"/>
+        <text x="100" y="389" font-size="17" font-weight="500" fill="#212529">frase al presente</text>
+      </g>
+    </g>
+
+    <g id="connettori" stroke="#838383" stroke-width="1.5" fill="none" marker-end="url(#ah-grey-17)">
+      <line x1="382" y1="182" x2="472" y2="272"/>
+      <line x1="382" y1="282" x2="461" y2="294"/>
+      <line x1="382" y1="382" x2="467" y2="323"/>
+    </g>
+
+    <g id="skip">
+      <text x="36" y="502" font-size="14" font-weight="600" letter-spacing="1.6" fill="#838383">SKIP CONNECTION</text>
+      <rect x="36" y="520" width="346" height="64" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="1"/>
+      <rect x="36" y="520" width="3" height="64" fill="#a1245a"/>
+      <text x="64" y="559" font-size="17" font-weight="600" fill="#a1245a">embedding originale</text>
+      <path d="M382 552 C 440 552, 476 400, 492 344" fill="none" stroke="#a1245a" stroke-width="2.5" stroke-linecap="round" marker-end="url(#ah-burgundy-17)"/>
+    </g>
+
+    <g id="nodo-somma">
+      <circle cx="500" cy="300" r="38" fill="#ffffff" stroke="#a1245a" stroke-width="2.5"/>
+      <text x="500" y="314" text-anchor="middle" font-size="34" font-weight="700" fill="#a1245a">+</text>
+    </g>
+
+    <g id="contributo">
+      <line x1="540" y1="282" x2="650" y2="238" stroke="#a1245a" stroke-width="3" stroke-linecap="round" marker-end="url(#ah-burgundy-17)"/>
+      <text x="654" y="206" text-anchor="end" font-size="19" font-weight="700" fill="#a1245a">contributo del blocco</text>
+    </g>
+
+    <g id="callout">
+      <rect x="36" y="676" width="600" height="88" rx="8" fill="#161719"/>
+      <rect x="36" y="676" width="4" height="88" fill="#ffbe0b"/>
+      <text x="66" y="714" font-size="19" font-weight="600" fill="#ffffff">sommare vettori significa spostare un punto</text>
+      <text x="66" y="742" font-size="14" font-weight="400" fill="#838383">il contributo del blocco &#232; una direzione nello spazio delle idee</text>
+    </g>
+  </g>
+
+  <!-- richiamo: la stessa freccia entra nel piano -->
+  <path d="M652 237 C 706 244, 726 420, 782 578" fill="none" stroke="#a1245a" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.55"/>
+
+  <!-- ============ STADIO 2 - LO SPOSTAMENTO ============ -->
+  <g id="stadio2">
+    <text x="690" y="52" font-size="14" font-weight="700" letter-spacing="2" fill="#838383">STADIO 2 &#8212; LO SPOSTAMENTO</text>
+
+    <rect x="690" y="100" width="578" height="688" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="690" y="100" width="578" height="688" rx="8" fill="url(#grid-idee-17)"/>
+    <text x="716" y="140" font-size="14" font-weight="600" letter-spacing="1.6" fill="#838383">SPAZIO DELLE IDEE</text>
+    <text x="1244" y="766" text-anchor="end" font-size="14" font-weight="400" fill="#838383">proiezione 2D dello spazio delle idee</text>
+
+    <g id="nuvola-contesto">
+      <ellipse cx="960" cy="282" rx="118" ry="86" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1" stroke-dasharray="5 5"/>
+      <text x="960" y="182" text-anchor="middle" font-size="14" font-weight="600" letter-spacing="1.6" fill="#838383">ANIMALI DOMESTICI</text>
+      <circle cx="918" cy="252" r="6" fill="#838383"/>
+      <circle cx="990" cy="272" r="6" fill="#838383"/>
+      <circle cx="944" cy="316" r="6" fill="#838383"/>
+
+      <ellipse cx="1146" cy="416" rx="106" ry="80" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1" stroke-dasharray="5 5"/>
+      <text x="1146" y="322" text-anchor="middle" font-size="14" font-weight="600" letter-spacing="1.6" fill="#838383">LUOGHI DELLA CASA</text>
+      <circle cx="1110" cy="392" r="6" fill="#838383"/>
+      <circle cx="1176" cy="410" r="6" fill="#838383"/>
+      <circle cx="1132" cy="450" r="6" fill="#838383"/>
+    </g>
+
+    <g id="spostamento">
+      <line x1="816" y1="592" x2="998" y2="519" stroke="#a1245a" stroke-width="3" stroke-linecap="round" marker-end="url(#ah-burgundy-17)"/>
+      <text x="880" y="644" font-size="15" font-weight="600" fill="#a1245a">= contributo del blocco</text>
+    </g>
+
+    <g id="punto-ingresso">
+      <circle cx="800" cy="598" r="7" fill="#212529"/>
+      <text x="800" y="634" text-anchor="middle" font-size="21" font-weight="600" fill="#212529">&#171;gatto&#187;</text>
+      <text x="800" y="658" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">in ingresso</text>
+    </g>
+
+    <g id="punto-dopo">
+      <circle cx="1010" cy="512" r="9" fill="#a1245a"/>
+      <text x="1032" y="548" font-size="21" font-weight="700" fill="#a1245a">&#171;gatto&#187;</text>
+      <text x="1032" y="572" font-size="15" font-weight="400" fill="#838383">dopo il blocco</text>
+    </g>
+  </g>
+</svg>

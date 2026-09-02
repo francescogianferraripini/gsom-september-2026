@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 224" width="1240" height="224" role="img" aria-labelledby="titolo">
+  <title id="titolo">La scala dei dati di pretraining: dalla lettura di una vita a tutto il testo digitale del web</title>
+
+  <g font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+
+    <!-- riga in risalto: training di un LLM di frontiera -->
+    <rect x="12" y="139" width="1216" height="34" rx="8" fill="#f6f6f6"/>
+    <rect x="12" y="139" width="3" height="34" fill="#a1245a"/>
+
+    <!-- scala e tacche -->
+    <text x="28" y="28" font-size="13" font-weight="600" fill="#838383" letter-spacing="0.6">SCALA LOGARITMICA</text>
+    <g font-size="13" font-weight="500" fill="#838383">
+      <text x="446" y="28">100 milioni</text>
+      <text x="602.7" y="28">10 miliardi</text>
+      <text x="759.3" y="28">1 trilione</text>
+      <text x="916" y="28" text-anchor="end">100 trilioni</text>
+    </g>
+
+    <!-- binari delle barre -->
+    <g fill="#f6f6f6">
+      <rect x="446" y="51" width="470" height="14" rx="3"/>
+      <rect x="446" y="83" width="470" height="14" rx="3"/>
+      <rect x="446" y="115" width="470" height="14" rx="3"/>
+      <rect x="446" y="149" width="470" height="14" rx="3"/>
+      <rect x="446" y="183" width="470" height="14" rx="3"/>
+    </g>
+
+    <!-- guide verticali della scala -->
+    <g stroke="#dee2e6" stroke-width="1">
+      <line x1="446.5" y1="38" x2="446.5" y2="201"/>
+      <line x1="603.2" y1="38" x2="603.2" y2="201"/>
+      <line x1="759.8" y1="38" x2="759.8" y2="201"/>
+      <line x1="915.5" y1="38" x2="915.5" y2="201"/>
+    </g>
+
+    <!-- barre -->
+    <g>
+      <rect x="446" y="51" width="23.6" height="14" rx="3" fill="#dee2e6"/>
+      <rect x="446" y="83" width="156.7" height="14" rx="3" fill="#dee2e6"/>
+      <rect x="446" y="115" width="313.3" height="14" rx="3" fill="#dee2e6"/>
+      <rect x="446" y="149" width="434.3" height="14" rx="3" fill="#a1245a"/>
+      <rect x="446.5" y="183.5" width="457" height="13" rx="3" fill="#ecd3de" stroke="#a1245a" stroke-width="1" stroke-dasharray="5 3"/>
+    </g>
+
+    <!-- etichette -->
+    <g font-size="16" font-weight="500" fill="#212529">
+      <text x="28" y="63">Un lettore, nell'intera vita</text>
+      <text x="28" y="95">Wikipedia, tutte le lingue</text>
+      <text x="28" y="127">Una grande biblioteca universitaria (20M volumi)</text>
+      <text x="28" y="161" font-weight="700" fill="#161719">Training di un LLM di frontiera</text>
+      <text x="28" y="189">Tutto il testo digitale di qualità sul web</text>
+    </g>
+    <text x="28" y="207" font-size="13" font-weight="500" fill="#838383">la frontiera dei dati disponibili</text>
+
+    <!-- valori -->
+    <g font-size="16" font-weight="500" fill="#212529" text-anchor="end">
+      <text x="1228" y="63">~200 milioni di parole</text>
+      <text x="1228" y="95">~10 miliardi di parole</text>
+      <text x="1228" y="127">~1 trilione di parole</text>
+      <text x="1228" y="161" font-weight="700" fill="#a1245a">~25–50 trilioni di token</text>
+      <text x="1228" y="189" fill="#838383">~50–100 trilioni di token</text>
+    </g>
+
+  </g>
+</svg>

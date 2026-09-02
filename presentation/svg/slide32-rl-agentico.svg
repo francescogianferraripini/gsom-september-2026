@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 800" width="1240" height="800">
+  <title>RL agentico: tre traiettorie dello stesso task; la reward della traiettoria vincente risale all'indietro e premia ogni passo, tool call comprese</title>
+  <defs>
+    <marker id="arrGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#838383"/>
+    </marker>
+    <marker id="arrBurg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <g font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+
+    <!-- ============ TASK ============ -->
+    <g id="task">
+      <rect x="12" y="332" width="200" height="146" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="12" y="332" width="3" height="146" fill="#161719"/>
+      <text x="32" y="364" font-size="14" font-weight="700" fill="#838383" letter-spacing="1.2">TASK</text>
+      <text x="32" y="398" font-size="19" font-weight="600" fill="#161719">trova il prezzo</text>
+      <text x="32" y="424" font-size="19" font-weight="600" fill="#161719">e aggiorna</text>
+      <text x="32" y="450" font-size="19" font-weight="600" fill="#161719">il foglio</text>
+    </g>
+
+    <!-- fan-out verso le tre corsie -->
+    <g fill="none" stroke="#838383" stroke-width="1.5">
+      <path d="M212 405 C 234 405 224 80 244 80" marker-end="url(#arrGray)"/>
+      <path d="M212 405 H 244" marker-end="url(#arrGray)"/>
+      <path d="M212 405 C 234 405 224 730 244 730" marker-end="url(#arrGray)"/>
+    </g>
+
+    <!-- ============ CORSIA 1 ============ -->
+    <g id="corsia1">
+      <text x="250" y="30" font-size="14" font-weight="700" fill="#838383" letter-spacing="1.2">TRAIETTORIA 1</text>
+
+      <rect x="250" y="43" width="112" height="74" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+      <text x="306" y="86" font-size="18" font-weight="500" fill="#212529" text-anchor="middle">pensiero</text>
+
+      <line x1="362" y1="80" x2="392" y2="80" stroke="#838383" stroke-width="1.5" marker-end="url(#arrGray)"/>
+
+      <rect x="396" y="43" width="112" height="74" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+      <text x="452" y="86" font-size="18" fill="#212529" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">cerca()</text>
+
+      <line x1="508" y1="80" x2="538" y2="80" stroke="#838383" stroke-width="1.5" marker-end="url(#arrGray)"/>
+
+      <rect x="542" y="43" width="112" height="74" rx="8" fill="#ffffff" stroke="#838383" stroke-dasharray="6 4"/>
+      <text x="598" y="86" font-size="18" font-weight="500" fill="#838383" text-anchor="middle">risultato</text>
+
+      <line x1="654" y1="80" x2="698" y2="80" stroke="#838383" stroke-width="1.5" stroke-dasharray="5 5"/>
+      <g stroke="#838383" stroke-width="2.5" stroke-linecap="round">
+        <line x1="708" y1="70" x2="728" y2="90"/>
+        <line x1="728" y1="70" x2="708" y2="90"/>
+      </g>
+      <text x="748" y="86" font-size="16" font-weight="500" fill="#838383">si perde: nessun premio</text>
+    </g>
+
+    <!-- ============ CORSIA 2 (vincente) ============ -->
+    <g id="corsia2">
+      <text x="250" y="355" font-size="14" font-weight="700" fill="#a1245a" letter-spacing="1.2">TRAIETTORIA 2</text>
+
+      <rect x="250" y="368" width="112" height="74" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="306" y="411" font-size="18" font-weight="500" fill="#161719" text-anchor="middle">pensiero</text>
+
+      <line x1="362" y1="405" x2="392" y2="405" stroke="#838383" stroke-width="1.5" marker-end="url(#arrGray)"/>
+
+      <rect x="396" y="368" width="112" height="74" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="452" y="411" font-size="18" fill="#161719" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">cerca()</text>
+
+      <line x1="508" y1="405" x2="538" y2="405" stroke="#838383" stroke-width="1.5" marker-end="url(#arrGray)"/>
+
+      <rect x="542" y="368" width="112" height="74" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="598" y="411" font-size="18" fill="#161719" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">leggi()</text>
+
+      <line x1="654" y1="405" x2="684" y2="405" stroke="#838383" stroke-width="1.5" marker-end="url(#arrGray)"/>
+
+      <rect x="688" y="368" width="112" height="74" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="744" y="411" font-size="18" fill="#161719" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">scrivi()</text>
+
+      <line x1="800" y1="405" x2="830" y2="405" stroke="#838383" stroke-width="1.5" marker-end="url(#arrGray)"/>
+
+      <rect x="834" y="368" width="190" height="74" rx="8" fill="#a1245a"/>
+      <text x="929" y="411" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">task completato</text>
+
+      <!-- freccia di reward all'indietro: elemento focale -->
+      <g stroke="#a1245a" fill="none">
+        <path d="M929 442 V 482 H 296" stroke-width="3" marker-end="url(#arrBurg)"/>
+        <g stroke-width="2.5">
+          <line x1="306" y1="442" x2="306" y2="482"/>
+          <line x1="452" y1="442" x2="452" y2="482"/>
+          <line x1="598" y1="442" x2="598" y2="482"/>
+          <line x1="744" y1="442" x2="744" y2="482"/>
+        </g>
+      </g>
+      <g fill="#a1245a">
+        <circle cx="306" cy="442" r="4"/>
+        <circle cx="452" cy="442" r="4"/>
+        <circle cx="598" cy="442" r="4"/>
+        <circle cx="744" cy="442" r="4"/>
+      </g>
+      <text x="296" y="514" font-size="17" font-weight="600" fill="#a1245a">la reward premia ogni passo della traiettoria vincente</text>
+      <text x="296" y="540" font-size="15" font-weight="500" fill="#838383">tool call intermedie comprese</text>
+    </g>
+
+    <!-- ============ CORSIA 3 ============ -->
+    <g id="corsia3">
+      <text x="250" y="680" font-size="14" font-weight="700" fill="#838383" letter-spacing="1.2">TRAIETTORIA 3</text>
+      <text x="688" y="681" font-size="16" font-weight="500" fill="#838383">fallisce: nessun premio</text>
+
+      <rect x="250" y="693" width="112" height="74" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+      <text x="306" y="736" font-size="18" font-weight="500" fill="#212529" text-anchor="middle">pensiero</text>
+
+      <line x1="362" y1="730" x2="392" y2="730" stroke="#838383" stroke-width="1.5" marker-end="url(#arrGray)"/>
+
+      <rect x="396" y="693" width="112" height="74" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+      <text x="452" y="736" font-size="18" fill="#212529" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">leggi()</text>
+
+      <line x1="508" y1="730" x2="538" y2="730" stroke="#838383" stroke-width="1.5" marker-end="url(#arrGray)"/>
+
+      <rect x="542" y="693" width="112" height="74" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+      <text x="598" y="736" font-size="18" fill="#212529" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">scrivi()</text>
+
+      <line x1="654" y1="730" x2="684" y2="730" stroke="#838383" stroke-width="1.5" marker-end="url(#arrGray)"/>
+
+      <rect x="688" y="693" width="190" height="74" rx="8" fill="#ffffff" stroke="#838383" stroke-dasharray="6 4"/>
+      <text x="783" y="736" font-size="18" font-weight="500" fill="#838383" text-anchor="middle">esito sbagliato</text>
+    </g>
+
+    <!-- ============ GRAFFA GRPO ============ -->
+    <g id="grpo">
+      <path d="M1046 26 q 20 0 20 20 v 329 q 0 20 20 20 q -20 0 -20 20 v 329 q 0 20 -20 20"
+            fill="none" stroke="#838383" stroke-width="1.5"/>
+      <text x="1092" y="355" font-size="14" font-weight="700" fill="#838383" letter-spacing="1.2">GRPO</text>
+      <text x="1092" y="390" font-size="18" font-weight="600" fill="#161719">i tentativi</text>
+      <text x="1092" y="416" font-size="18" font-weight="600" fill="#161719">si confrontano</text>
+      <text x="1092" y="442" font-size="18" font-weight="600" fill="#161719">tra loro</text>
+    </g>
+
+    <!-- ============ LEGENDA ============ -->
+    <g id="legenda">
+      <text x="12" y="524" font-size="14" font-weight="700" fill="#838383" letter-spacing="1.2">NODI</text>
+      <rect x="12" y="542" width="34" height="24" rx="6" fill="#ffffff" stroke="#dee2e6"/>
+      <text x="58" y="559" font-size="15" font-weight="500" fill="#212529">pensiero</text>
+      <rect x="12" y="582" width="34" height="24" rx="6" fill="#f6f6f6" stroke="#dee2e6"/>
+      <text x="58" y="599" font-size="15" font-weight="500" fill="#212529">tool call</text>
+      <rect x="12" y="622" width="34" height="24" rx="6" fill="#ffffff" stroke="#838383" stroke-dasharray="6 4"/>
+      <text x="58" y="639" font-size="15" font-weight="500" fill="#212529">risultato / esito</text>
+    </g>
+
+  </g>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 490" width="1300" height="490" role="img">
+  <title>Lo spazio delle soluzioni: verificabilità del risultato rispetto ad ampiezza di contesto richiesta</title>
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#212529"/>
+    </marker>
+  </defs>
+
+  <g id="griglia" stroke="#dee2e6" stroke-width="1">
+    <line x1="466" y1="42" x2="466" y2="400"/>
+    <line x1="733" y1="42" x2="733" y2="400"/>
+    <line x1="999" y1="42" x2="999" y2="400"/>
+    <line x1="200" y1="311" x2="1265" y2="311"/>
+    <line x1="200" y1="221" x2="1265" y2="221"/>
+    <line x1="200" y1="132" x2="1265" y2="132"/>
+  </g>
+
+  <g id="assi" stroke="#212529" stroke-width="1.5" fill="none" marker-end="url(#arw)">
+    <line x1="200" y1="400" x2="1285" y2="400"/>
+    <line x1="200" y1="400" x2="200" y2="32"/>
+  </g>
+
+  <g font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+    <!-- titoli assi -->
+    <text x="733" y="458" font-size="21" font-weight="600" fill="#212529" text-anchor="middle">Ampiezza di contesto richiesta</text>
+    <text transform="translate(40,221) rotate(-90)" font-size="21" font-weight="600" fill="#212529" text-anchor="middle">Verificabilità del risultato</text>
+    <!-- estremi -->
+    <text x="200" y="426" font-size="17" fill="#838383" text-anchor="start">Basso</text>
+    <text x="1265" y="426" font-size="17" fill="#838383" text-anchor="end">Alto</text>
+    <text x="178" y="400" font-size="17" fill="#838383" text-anchor="end">Bassa</text>
+    <text x="178" y="52" font-size="17" fill="#838383" text-anchor="end">Alta</text>
+
+    <!-- punti standard -->
+    <g fill="#161719">
+      <circle cx="360" cy="96" r="8"/>
+      <circle cx="413" cy="85" r="8"/>
+      <circle cx="733" cy="114" r="8"/>
+      <circle cx="466" cy="203" r="8"/>
+      <circle cx="1052" cy="221" r="8"/>
+      <circle cx="626" cy="311" r="8"/>
+    </g>
+
+    <g font-size="21" font-weight="500" fill="#212529">
+      <text x="360" y="132" text-anchor="middle">Q&amp;A / recupero conoscenza</text>
+      <text x="431" y="78" text-anchor="start">Classificazione / giudizio</text>
+      <text x="751" y="121" text-anchor="start">Ragionamento</text>
+      <text x="448" y="210" text-anchor="end">Trasformazione di testo</text>
+      <text x="1028" y="228" text-anchor="end">Multi-step planning / task agentici</text>
+      <text x="608" y="318" text-anchor="end">Generazione (scrittura, email, brief)</text>
+    </g>
+
+    <!-- punto attenuato: quadrante difficile -->
+    <g id="conversazione-stateful">
+      <circle cx="1105" cy="346" r="9" fill="#ffffff" stroke="#838383" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="1081" y="353" font-size="21" font-weight="400" fill="#838383" text-anchor="end">Conversazione stateful (tutoring, consulenza)</text>
+    </g>
+
+    <!-- punto focale -->
+    <g id="coding">
+      <circle cx="1105" cy="78" r="22" fill="#ecd3de"/>
+      <circle cx="1105" cy="78" r="12" fill="#a1245a"/>
+      <text x="1071" y="87" font-size="24" font-weight="700" fill="#a1245a" text-anchor="end">Coding</text>
+    </g>
+  </g>
+</svg>

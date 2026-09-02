@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1550 1000" width="1550" height="1000" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>RLHF: la stessa vignetta del golfista, ora con una linea di mira verso la buca piantata dal reward model, e il meccanismo che porta dalle preferenze umane al punteggio</title>
+
+  <!-- La scena del golfista riprende slide7-golfista.svg: stesso terreno (y=430),
+       stessi punti di atterraggio (x = 420, 680, 890, 1080), stessa buca (x=1220).
+       Novita di questa slide: la buca in primo piano e la mira tratteggiata. -->
+
+  <defs>
+    <marker id="freccia-grigia" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 1 L9 5 L0 9 Z" fill="#838383"/>
+    </marker>
+    <marker id="freccia-burgundy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 1 L9 5 L0 9 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <g id="eyebrow" font-size="15" font-weight="700" fill="#838383" letter-spacing="1.6">
+    <text x="12" y="60">IL GOLFISTA, EVOLUTO</text>
+    <text x="1070" y="60">IL MECCANISMO</text>
+  </g>
+
+  <line x1="1056" y1="76" x2="1056" y2="844" stroke="#dee2e6" stroke-width="1"/>
+
+  <!-- ================= PARTE SINISTRA: la vignetta ================= -->
+  <g id="scena-golfista" transform="translate(12,150) scale(0.792)">
+
+    <g id="terreno">
+      <line x1="12" y1="430" x2="1288" y2="430" stroke="#dee2e6" stroke-width="2"/>
+    </g>
+
+    <g id="mira" stroke="#a1245a" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-dasharray="10 10">
+      <line x1="420" y1="416" x2="1206" y2="320"/>
+      <line x1="680" y1="416" x2="1206" y2="320"/>
+      <line x1="890" y1="416" x2="1206" y2="320"/>
+      <line x1="1080" y1="416" x2="1206" y2="320"/>
+    </g>
+
+    <g id="buca">
+      <ellipse cx="1220" cy="430" rx="26" ry="7" fill="#f6f6f6" stroke="#838383" stroke-width="1.5"/>
+      <line x1="1220" y1="428" x2="1220" y2="300" stroke="#161719" stroke-width="2.5"/>
+      <path d="M1218 302 L1166 318 L1218 334 Z" fill="#ecd3de" stroke="#a1245a" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="1206" cy="320" r="6" fill="#a1245a"/>
+    </g>
+
+    <g id="golfista" fill="none" stroke="#161719" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="66" cy="250" r="17" fill="#161719" stroke="none"/>
+      <path d="M66 269 L60 336"/>
+      <path d="M60 336 L40 430"/>
+      <path d="M60 336 L84 430"/>
+      <path d="M64 290 L108 302"/>
+      <path d="M108 302 L146 420" stroke="#838383" stroke-width="2.5"/>
+      <path d="M146 420 L160 426" stroke="#838383" stroke-width="4"/>
+    </g>
+
+    <g id="catena-colpi" fill="none" stroke="#a1245a" stroke-width="3" stroke-linecap="round">
+      <path id="arco-1" d="M170 422 Q295 -332 420 422"/>
+      <path id="arco-2" d="M420 422 Q550 -212 680 422"/>
+      <path id="arco-3" d="M680 422 Q785 -352 890 422"/>
+      <path id="arco-4" d="M890 422 Q985 -172 1080 422"/>
+    </g>
+
+    <g id="palline" fill="#a1245a">
+      <circle cx="164" cy="422" r="6" fill="#ffffff" stroke="#a1245a" stroke-width="2.5"/>
+      <circle cx="420" cy="422" r="8"/>
+      <circle cx="680" cy="422" r="8"/>
+      <circle cx="890" cy="422" r="8"/>
+      <circle cx="1080" cy="422" r="8"/>
+    </g>
+
+    <g id="etichette-colpi" font-size="19" font-weight="600" fill="#212529" text-anchor="middle">
+      <text x="420" y="464">colpo 1</text>
+      <text x="680" y="464">colpo 2</text>
+      <text x="890" y="464">colpo 3</text>
+      <text x="1080" y="464">colpo 4</text>
+    </g>
+  </g>
+
+  <g id="annotazione-mira">
+    <rect x="676" y="666" width="4" height="102" fill="#a1245a"/>
+    <text x="706" y="714" font-size="34" font-weight="700" fill="#a1245a">ora c'è una mira</text>
+    <text x="706" y="752" font-size="21" font-weight="400" fill="#838383">piantata dal reward model</text>
+  </g>
+
+  <!-- ================= PARTE DESTRA: il meccanismo ================= -->
+
+  <g id="blocco-umani">
+    <rect x="1070" y="72" width="468" height="260" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <text x="1094" y="114" font-size="26" font-weight="700" fill="#161719">umani</text>
+    <text x="1094" y="140" font-size="15" font-weight="400" fill="#838383">confrontano due risposte e marcano la preferita</text>
+
+    <g id="risposta-a">
+      <rect x="1094" y="158" width="200" height="110" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+      <circle cx="1122" cy="186" r="15" fill="#a1245a"/>
+      <text x="1122" y="192" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">A</text>
+      <g stroke="#dee2e6" stroke-width="2" stroke-linecap="round">
+        <line x1="1112" y1="220" x2="1276" y2="220"/>
+        <line x1="1112" y1="238" x2="1276" y2="238"/>
+        <line x1="1112" y1="256" x2="1214" y2="256"/>
+      </g>
+    </g>
+
+    <g id="risposta-b">
+      <rect x="1310" y="158" width="200" height="110" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <circle cx="1338" cy="186" r="15" fill="#ffffff" stroke="#dee2e6" stroke-width="2"/>
+      <text x="1338" y="192" font-size="17" font-weight="700" fill="#838383" text-anchor="middle">B</text>
+      <g stroke="#dee2e6" stroke-width="2" stroke-linecap="round">
+        <line x1="1328" y1="220" x2="1492" y2="220"/>
+        <line x1="1328" y1="238" x2="1492" y2="238"/>
+        <line x1="1328" y1="256" x2="1430" y2="256"/>
+      </g>
+    </g>
+
+    <path d="M1096 300 L1104 309 L1119 292" fill="none" stroke="#a1245a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1131" y="308" font-size="19" font-weight="600" fill="#a1245a">A scelta</text>
+  </g>
+
+  <g id="freccia-preferenze">
+    <line x1="1140" y1="332" x2="1140" y2="416" stroke="#838383" stroke-width="2" marker-end="url(#freccia-grigia)"/>
+    <text x="1166" y="384" font-size="17" font-weight="500" fill="#838383">le preferenze addestrano…</text>
+  </g>
+
+  <g id="blocco-reward-model">
+    <rect x="1070" y="424" width="468" height="144" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="1070" y="440" width="4" height="112" fill="#a1245a"/>
+    <text x="1096" y="474" font-size="26" font-weight="700" fill="#a1245a">reward model</text>
+    <text x="1096" y="506" font-size="15" font-weight="400" fill="#838383">impara a prevedere quale risposta</text>
+    <text x="1096" y="528" font-size="15" font-weight="400" fill="#838383">preferirebbero gli umani</text>
+  </g>
+
+  <g id="freccia-reward">
+    <line x1="1140" y1="568" x2="1140" y2="676" stroke="#a1245a" stroke-width="3" marker-end="url(#freccia-burgundy)"/>
+    <text x="1168" y="602" font-size="21" font-weight="700" fill="#a1245a">reward</text>
+    <text x="1168" y="630" font-size="15" font-weight="400" fill="#838383">stesso metodo: gradient descent —</text>
+    <text x="1168" y="652" font-size="15" font-weight="400" fill="#838383">cambia solo il punteggio</text>
+  </g>
+
+  <g id="blocco-modello">
+    <rect x="1070" y="684" width="468" height="160" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <text x="1096" y="732" font-size="26" font-weight="700" fill="#161719">modello</text>
+    <text x="1096" y="762" font-size="17" font-weight="400" fill="#838383">aggiorna i pesi, un passo alla volta</text>
+    <g id="ciclo" fill="none" stroke="#838383" stroke-width="2.5" stroke-linecap="round">
+      <path d="M1478 749 A 30 30 0 1 1 1461 736" marker-end="url(#freccia-grigia)"/>
+    </g>
+  </g>
+
+  <g id="callout">
+    <rect x="12" y="880" width="1526" height="108" rx="8" fill="#161719"/>
+    <rect x="13" y="898" width="4" height="72" fill="#ffbe0b"/>
+    <text x="48" y="926" font-size="24" font-weight="600" fill="#ffffff">il punteggio non arriva dagli umani: arriva dal reward model.</text>
+    <text x="48" y="960" font-size="19" font-weight="400" fill="#dee2e6">gli umani sono due passi a monte — confrontano risposte, e da quei confronti si addestra il modello che assegna il reward.</text>
+  </g>
+</svg>

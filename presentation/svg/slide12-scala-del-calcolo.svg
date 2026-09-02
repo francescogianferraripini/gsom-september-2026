@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 526" width="1400" height="526" role="img">
+  <title>La scala del calcolo: da vettore per vettore a matrice per matrice</title>
+  <g font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+
+    <!-- separatori verticali tra i tre livelli -->
+    <line x1="340" y1="28" x2="340" y2="514" stroke="#dee2e6"/>
+    <line x1="984" y1="28" x2="984" y2="514" stroke="#dee2e6"/>
+
+    <!-- ================= LIVELLO 1 ================= -->
+    <g id="livello1">
+      <rect x="20" y="28" width="3" height="356" fill="#dee2e6"/>
+      <text x="44" y="42" font-size="13" font-weight="600" fill="#838383" letter-spacing="1.6">LIVELLO 1</text>
+      <text x="44" y="74" font-size="17" font-weight="500" fill="#161719" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">vettore · vettore = numero</text>
+
+      <g>
+        <rect x="44" y="156" width="36" height="120" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <line x1="44" y1="186" x2="80" y2="186" stroke="#dee2e6"/>
+        <line x1="44" y1="216" x2="80" y2="216" stroke="#dee2e6"/>
+        <line x1="44" y1="246" x2="80" y2="246" stroke="#dee2e6"/>
+      </g>
+      <text x="94" y="228" font-size="24" font-weight="700" fill="#161719">·</text>
+      <g>
+        <rect x="116" y="156" width="36" height="120" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <line x1="116" y1="186" x2="152" y2="186" stroke="#dee2e6"/>
+        <line x1="116" y1="216" x2="152" y2="216" stroke="#dee2e6"/>
+        <line x1="116" y1="246" x2="152" y2="246" stroke="#dee2e6"/>
+      </g>
+      <text x="168" y="226" font-size="20" font-weight="500" fill="#838383">=</text>
+      <rect x="200" y="194" width="86" height="44" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+      <text x="243" y="223" font-size="21" font-weight="600" fill="#161719" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">0,83</text>
+
+      <text x="44" y="306" font-size="13" font-weight="500" fill="#838383">vettore</text>
+      <text x="116" y="306" font-size="13" font-weight="500" fill="#838383">vettore</text>
+      <text x="200" y="306" font-size="13" font-weight="600" fill="#212529">allineamento</text>
+
+      <text x="44" y="344" font-size="15" font-weight="500" fill="#212529">Due vettori si incontrano</text>
+      <text x="44" y="366" font-size="15" font-weight="500" fill="#212529">e producono un solo numero:</text>
+      <text x="44" y="388" font-size="15" font-weight="500" fill="#212529">quanto sono allineati.</text>
+    </g>
+
+    <!-- ================= LIVELLO 2 (focale) ================= -->
+    <g id="livello2">
+      <rect x="364" y="28" width="3" height="486" fill="#a1245a"/>
+      <text x="388" y="42" font-size="13" font-weight="600" fill="#a1245a" letter-spacing="1.6">LIVELLO 2</text>
+      <text x="388" y="78" font-size="21" font-weight="500" fill="#a1245a" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">vettore × matrice = vettore</text>
+
+      <!-- vettore in ingresso -->
+      <g>
+        <rect x="388" y="156" width="36" height="120" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <line x1="388" y1="186" x2="424" y2="186" stroke="#dee2e6"/>
+        <line x1="388" y1="216" x2="424" y2="216" stroke="#dee2e6"/>
+        <line x1="388" y1="246" x2="424" y2="246" stroke="#dee2e6"/>
+      </g>
+      <text x="388" y="306" font-size="13" font-weight="500" fill="#838383">vettore</text>
+      <text x="440" y="224" font-size="22" font-weight="500" fill="#838383">×</text>
+
+      <!-- matrice = batteria di vettori -->
+      <rect x="470" y="146" width="190" height="140" rx="8" fill="none" stroke="#a1245a" stroke-width="2"/>
+      <g>
+        <rect x="480" y="156" width="36" height="120" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <line x1="480" y1="186" x2="516" y2="186" stroke="#dee2e6"/><line x1="480" y1="216" x2="516" y2="216" stroke="#dee2e6"/><line x1="480" y1="246" x2="516" y2="246" stroke="#dee2e6"/>
+        <rect x="524" y="156" width="36" height="120" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <line x1="524" y1="186" x2="560" y2="186" stroke="#dee2e6"/><line x1="524" y1="216" x2="560" y2="216" stroke="#dee2e6"/><line x1="524" y1="246" x2="560" y2="246" stroke="#dee2e6"/>
+        <rect x="568" y="156" width="36" height="120" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <line x1="568" y1="186" x2="604" y2="186" stroke="#dee2e6"/><line x1="568" y1="216" x2="604" y2="216" stroke="#dee2e6"/><line x1="568" y1="246" x2="604" y2="246" stroke="#dee2e6"/>
+        <rect x="612" y="156" width="36" height="120" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <line x1="612" y1="186" x2="648" y2="186" stroke="#dee2e6"/><line x1="612" y1="216" x2="648" y2="216" stroke="#dee2e6"/><line x1="612" y1="246" x2="648" y2="246" stroke="#dee2e6"/>
+      </g>
+      <text x="470" y="312" font-size="17" font-weight="600" fill="#a1245a">una matrice = una batteria di vettori</text>
+
+      <text x="698" y="224" font-size="22" font-weight="500" fill="#838383">=</text>
+
+      <!-- vettore in uscita -->
+      <g>
+        <rect x="760" y="156" width="44" height="120" rx="2" fill="#ecd3de" stroke="#a1245a" stroke-width="1.6"/>
+        <line x1="760" y1="186" x2="804" y2="186" stroke="#a1245a" stroke-opacity="0.45"/>
+        <line x1="760" y1="216" x2="804" y2="216" stroke="#a1245a" stroke-opacity="0.45"/>
+        <line x1="760" y1="246" x2="804" y2="246" stroke="#a1245a" stroke-opacity="0.45"/>
+      </g>
+
+      <!-- collegamenti colonna della batteria -> cella del risultato -->
+      <g fill="none" stroke="#a1245a" stroke-width="1.5">
+        <path d="M498 145 C 498 106 712 106 756 171"/>
+        <path d="M542 145 C 542 116 712 116 756 201"/>
+        <path d="M586 145 C 586 126 712 126 756 231"/>
+        <path d="M630 145 C 630 136 712 136 756 261"/>
+      </g>
+      <g fill="#a1245a">
+        <circle cx="498" cy="145" r="2.6"/><circle cx="542" cy="145" r="2.6"/>
+        <circle cx="586" cy="145" r="2.6"/><circle cx="630" cy="145" r="2.6"/>
+      </g>
+
+      <text x="700" y="346" font-size="17" font-weight="600" fill="#a1245a">ogni cella = l'allineamento</text>
+      <text x="700" y="368" font-size="17" font-weight="600" fill="#a1245a">con un vettore della batteria</text>
+
+      <!-- callout -->
+      <rect x="388" y="396" width="576" height="118" rx="8" fill="#161719"/>
+      <rect x="382" y="396" width="8" height="118" rx="4" fill="#ffbe0b"/>
+      <text x="412" y="424" font-size="13" font-weight="600" fill="#ffbe0b" letter-spacing="1.6">IL PUNTO</text>
+      <text x="412" y="456" font-size="17" font-weight="500" fill="#ffffff">Moltiplicare per una matrice significa interrogare</text>
+      <text x="412" y="482" font-size="17" font-weight="500" fill="#ffffff">una batteria di rilevatori, tutti insieme.</text>
+    </g>
+
+    <!-- ================= LIVELLO 3 ================= -->
+    <g id="livello3">
+      <rect x="1008" y="28" width="3" height="370" fill="#dee2e6"/>
+      <text x="1032" y="42" font-size="13" font-weight="600" fill="#838383" letter-spacing="1.6">LIVELLO 3</text>
+      <text x="1032" y="74" font-size="17" font-weight="500" fill="#161719" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">matrice × matrice = matrice</text>
+
+      <!-- matrice in ingresso: molti vettori -->
+      <rect x="1032" y="160" width="108" height="108" rx="8" fill="none" stroke="#dee2e6"/>
+      <g>
+        <rect x="1040" y="170" width="16" height="88" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.1"/>
+        <line x1="1040" y1="192" x2="1056" y2="192" stroke="#dee2e6"/><line x1="1040" y1="214" x2="1056" y2="214" stroke="#dee2e6"/><line x1="1040" y1="236" x2="1056" y2="236" stroke="#dee2e6"/>
+        <rect x="1059" y="170" width="16" height="88" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.1"/>
+        <line x1="1059" y1="192" x2="1075" y2="192" stroke="#dee2e6"/><line x1="1059" y1="214" x2="1075" y2="214" stroke="#dee2e6"/><line x1="1059" y1="236" x2="1075" y2="236" stroke="#dee2e6"/>
+        <rect x="1078" y="170" width="16" height="88" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.1"/>
+        <line x1="1078" y1="192" x2="1094" y2="192" stroke="#dee2e6"/><line x1="1078" y1="214" x2="1094" y2="214" stroke="#dee2e6"/><line x1="1078" y1="236" x2="1094" y2="236" stroke="#dee2e6"/>
+        <rect x="1097" y="170" width="16" height="88" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.1"/>
+        <line x1="1097" y1="192" x2="1113" y2="192" stroke="#dee2e6"/><line x1="1097" y1="214" x2="1113" y2="214" stroke="#dee2e6"/><line x1="1097" y1="236" x2="1113" y2="236" stroke="#dee2e6"/>
+        <rect x="1116" y="170" width="16" height="88" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.1"/>
+        <line x1="1116" y1="192" x2="1132" y2="192" stroke="#dee2e6"/><line x1="1116" y1="214" x2="1132" y2="214" stroke="#dee2e6"/><line x1="1116" y1="236" x2="1132" y2="236" stroke="#dee2e6"/>
+      </g>
+
+      <text x="1148" y="222" font-size="18" font-weight="500" fill="#838383">×</text>
+
+      <!-- la stessa batteria del livello 2 -->
+      <text x="1162" y="146" font-size="13" font-weight="600" fill="#a1245a">la stessa batteria</text>
+      <rect x="1162" y="160" width="89" height="108" rx="8" fill="none" stroke="#a1245a" stroke-width="1.5"/>
+      <g>
+        <rect x="1170" y="170" width="16" height="88" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.1"/>
+        <line x1="1170" y1="192" x2="1186" y2="192" stroke="#dee2e6"/><line x1="1170" y1="214" x2="1186" y2="214" stroke="#dee2e6"/><line x1="1170" y1="236" x2="1186" y2="236" stroke="#dee2e6"/>
+        <rect x="1189" y="170" width="16" height="88" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.1"/>
+        <line x1="1189" y1="192" x2="1205" y2="192" stroke="#dee2e6"/><line x1="1189" y1="214" x2="1205" y2="214" stroke="#dee2e6"/><line x1="1189" y1="236" x2="1205" y2="236" stroke="#dee2e6"/>
+        <rect x="1208" y="170" width="16" height="88" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.1"/>
+        <line x1="1208" y1="192" x2="1224" y2="192" stroke="#dee2e6"/><line x1="1208" y1="214" x2="1224" y2="214" stroke="#dee2e6"/><line x1="1208" y1="236" x2="1224" y2="236" stroke="#dee2e6"/>
+        <rect x="1227" y="170" width="16" height="88" rx="2" fill="#ffffff" stroke="#838383" stroke-width="1.1"/>
+        <line x1="1227" y1="192" x2="1243" y2="192" stroke="#dee2e6"/><line x1="1227" y1="214" x2="1243" y2="214" stroke="#dee2e6"/><line x1="1227" y1="236" x2="1243" y2="236" stroke="#dee2e6"/>
+      </g>
+
+      <text x="1259" y="222" font-size="18" font-weight="500" fill="#838383">=</text>
+
+      <!-- griglia in uscita -->
+      <rect x="1273" y="160" width="108" height="108" rx="8" fill="none" stroke="#a1245a" stroke-width="1.5"/>
+      <g>
+        <rect x="1281" y="170" width="16" height="88" rx="2" fill="#ecd3de" stroke="#a1245a" stroke-width="1.1"/>
+        <line x1="1281" y1="192" x2="1297" y2="192" stroke="#a1245a" stroke-opacity="0.4"/><line x1="1281" y1="214" x2="1297" y2="214" stroke="#a1245a" stroke-opacity="0.4"/><line x1="1281" y1="236" x2="1297" y2="236" stroke="#a1245a" stroke-opacity="0.4"/>
+        <rect x="1300" y="170" width="16" height="88" rx="2" fill="#ecd3de" stroke="#a1245a" stroke-width="1.1"/>
+        <line x1="1300" y1="192" x2="1316" y2="192" stroke="#a1245a" stroke-opacity="0.4"/><line x1="1300" y1="214" x2="1316" y2="214" stroke="#a1245a" stroke-opacity="0.4"/><line x1="1300" y1="236" x2="1316" y2="236" stroke="#a1245a" stroke-opacity="0.4"/>
+        <rect x="1319" y="170" width="16" height="88" rx="2" fill="#ecd3de" stroke="#a1245a" stroke-width="1.1"/>
+        <line x1="1319" y1="192" x2="1335" y2="192" stroke="#a1245a" stroke-opacity="0.4"/><line x1="1319" y1="214" x2="1335" y2="214" stroke="#a1245a" stroke-opacity="0.4"/><line x1="1319" y1="236" x2="1335" y2="236" stroke="#a1245a" stroke-opacity="0.4"/>
+        <rect x="1338" y="170" width="16" height="88" rx="2" fill="#ecd3de" stroke="#a1245a" stroke-width="1.1"/>
+        <line x1="1338" y1="192" x2="1354" y2="192" stroke="#a1245a" stroke-opacity="0.4"/><line x1="1338" y1="214" x2="1354" y2="214" stroke="#a1245a" stroke-opacity="0.4"/><line x1="1338" y1="236" x2="1354" y2="236" stroke="#a1245a" stroke-opacity="0.4"/>
+        <rect x="1357" y="170" width="16" height="88" rx="2" fill="#ecd3de" stroke="#a1245a" stroke-width="1.1"/>
+        <line x1="1357" y1="192" x2="1373" y2="192" stroke="#a1245a" stroke-opacity="0.4"/><line x1="1357" y1="214" x2="1373" y2="214" stroke="#a1245a" stroke-opacity="0.4"/><line x1="1357" y1="236" x2="1373" y2="236" stroke="#a1245a" stroke-opacity="0.4"/>
+      </g>
+
+      <text x="1032" y="296" font-size="13" font-weight="500" fill="#838383">molti vettori insieme —</text>
+      <text x="1032" y="314" font-size="13" font-weight="500" fill="#838383">es. tutti i token della frase</text>
+
+      <text x="1032" y="356" font-size="17" font-weight="600" fill="#212529">stessa operazione, ripetuta</text>
+      <text x="1032" y="378" font-size="17" font-weight="600" fill="#212529">per ogni vettore</text>
+    </g>
+  </g>
+</svg>

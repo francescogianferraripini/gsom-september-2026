@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 880" width="1280" height="880" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>I costi dei modelli: training una tantum, inferenza perpetua e distillazione come ponte</title>
+  <defs>
+    <marker id="ag" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#838383"/>
+    </marker>
+    <marker id="ab" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- pannelli zone -->
+  <g id="pannelli" fill="none" stroke="#dee2e6" stroke-width="1">
+    <rect x="12" y="12" width="446" height="856" rx="8"/>
+    <rect x="478" y="12" width="790" height="406" rx="8"/>
+    <rect x="478" y="442" width="790" height="426" rx="8"/>
+  </g>
+
+  <!-- ============ ZONA 1 — TRAINING ============ -->
+  <g id="zona-training">
+    <text x="40" y="58" font-size="17" font-weight="700" letter-spacing="1.4" fill="#212529">TRAINING (UNA TANTUM)</text>
+
+    <!-- cluster GPU -->
+    <g id="cluster-gpu">
+      <g fill="#ffffff" stroke="#dee2e6" stroke-width="1">
+        <rect x="56" y="96" width="62" height="44" rx="4"/><rect x="130" y="96" width="62" height="44" rx="4"/><rect x="204" y="96" width="62" height="44" rx="4"/><rect x="278" y="96" width="62" height="44" rx="4"/><rect x="352" y="96" width="62" height="44" rx="4"/>
+        <rect x="56" y="152" width="62" height="44" rx="4"/><rect x="130" y="152" width="62" height="44" rx="4"/><rect x="204" y="152" width="62" height="44" rx="4"/><rect x="278" y="152" width="62" height="44" rx="4"/><rect x="352" y="152" width="62" height="44" rx="4"/>
+        <rect x="56" y="208" width="62" height="44" rx="4"/><rect x="130" y="208" width="62" height="44" rx="4"/><rect x="204" y="208" width="62" height="44" rx="4"/><rect x="278" y="208" width="62" height="44" rx="4"/><rect x="352" y="208" width="62" height="44" rx="4"/>
+      </g>
+      <g stroke="#dee2e6" stroke-width="1">
+        <path d="M66 112h42M66 124h42M140 112h42M140 124h42M214 112h42M214 124h42M288 112h42M288 124h42M362 112h42M362 124h42"/>
+        <path d="M66 168h42M66 180h42M140 168h42M140 180h42M214 168h42M214 180h42M288 168h42M288 180h42M362 168h42M362 180h42"/>
+        <path d="M66 224h42M66 236h42M140 224h42M140 236h42M214 224h42M214 236h42M288 224h42M288 236h42M362 224h42M362 236h42"/>
+      </g>
+    </g>
+
+    <text x="235" y="288" font-size="17" font-weight="500" fill="#838383" text-anchor="middle">mesi di calcolo — decine di milioni</text>
+    <path d="M235 304 L235 340" stroke="#838383" stroke-width="2" marker-end="url(#ag)"/>
+
+    <!-- foundational model -->
+    <rect x="56" y="348" width="358" height="82" rx="8" fill="#161719"/>
+    <text x="235" y="396" font-size="21" font-weight="600" fill="#ffffff" text-anchor="middle">foundational model</text>
+
+    <!-- gemmazione RL -->
+    <g fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)">
+      <path d="M235 430 C235 470, 111 468, 111 500"/>
+      <path d="M235 430 L235 500"/>
+      <path d="M235 430 C235 470, 359 468, 359 500"/>
+    </g>
+    <g>
+      <rect x="56" y="508" width="110" height="72" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <rect x="180" y="508" width="110" height="72" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <rect x="304" y="508" width="110" height="72" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="111" y="550" font-size="17" font-weight="600" fill="#212529" text-anchor="middle">RL chat</text>
+      <text x="235" y="550" font-size="17" font-weight="600" fill="#212529" text-anchor="middle">RL coding</text>
+      <text x="359" y="550" font-size="17" font-weight="600" fill="#212529" text-anchor="middle">RL agentico</text>
+    </g>
+    <text x="235" y="614" font-size="17" font-weight="500" fill="#838383" text-anchor="middle">un pretraining, molti RL</text>
+
+    <!-- callout economia 1 -->
+    <g id="callout-1x">
+      <rect x="56" y="690" width="358" height="140" rx="8" fill="#f6f6f6"/>
+      <rect x="56" y="690" width="3" height="140" fill="#a1245a"/>
+      <text x="82" y="756" font-size="42" font-weight="900" fill="#a1245a">1 ×</text>
+      <text x="82" y="790" font-size="17" font-weight="500" fill="#212529">un investimento unico:</text>
+      <text x="82" y="812" font-size="17" font-weight="500" fill="#212529">si paga una volta, resta capitale</text>
+    </g>
+  </g>
+
+  <!-- ============ ZONA 2 — INFERENZA ============ -->
+  <g id="zona-inferenza">
+    <text x="506" y="58" font-size="17" font-weight="700" letter-spacing="1.4" fill="#212529">INFERENZA (PER TOKEN, PER SEMPRE)</text>
+    <text x="1240" y="66" font-size="42" font-weight="900" fill="#a1245a" text-anchor="end">∞</text>
+
+    <rect x="520" y="130" width="210" height="120" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <text x="625" y="182" font-size="21" font-weight="600" fill="#212529" text-anchor="middle">modello grande</text>
+    <text x="625" y="212" font-size="17" font-weight="500" fill="#838383" text-anchor="middle">una delle varianti</text>
+
+    <!-- flusso richieste -->
+    <g id="richieste-grande">
+      <g fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)">
+        <path d="M960 96 L742 176"/>
+        <path d="M960 122 L742 180"/>
+        <path d="M960 148 L742 184"/>
+        <path d="M960 174 L742 188"/>
+        <path d="M960 200 L742 192"/>
+        <path d="M960 226 L742 196"/>
+        <path d="M960 252 L742 200"/>
+        <path d="M960 278 L742 204"/>
+      </g>
+      <g fill="#f6f6f6" stroke="#dee2e6" stroke-width="1">
+        <rect x="966" y="88" width="52" height="16" rx="3"/>
+        <rect x="966" y="114" width="52" height="16" rx="3"/>
+        <rect x="966" y="140" width="52" height="16" rx="3"/>
+        <rect x="966" y="166" width="52" height="16" rx="3"/>
+        <rect x="966" y="192" width="52" height="16" rx="3"/>
+        <rect x="966" y="218" width="52" height="16" rx="3"/>
+        <rect x="966" y="244" width="52" height="16" rx="3"/>
+        <rect x="966" y="270" width="52" height="16" rx="3"/>
+      </g>
+      <text x="1038" y="150" font-size="17" font-weight="500" fill="#838383">richieste</text>
+      <text x="1038" y="176" font-size="17" font-weight="500" fill="#838383">in arrivo,</text>
+      <text x="1038" y="202" font-size="17" font-weight="500" fill="#838383">senza fine</text>
+      <text x="992" y="312" font-size="27" font-weight="700" fill="#838383" text-anchor="middle">⋮</text>
+    </g>
+
+    <text x="950" y="362" font-size="17" font-weight="600" fill="#212529" text-anchor="middle">centesimi a chiamata × miliardi di chiamate</text>
+  </g>
+
+  <!-- stesso modello, giù nella zona 3 -->
+  <path d="M625 250 L625 570" stroke="#dee2e6" stroke-width="1.5" stroke-dasharray="4 6"/>
+
+  <!-- ============ ZONA 3 — DISTILLAZIONE ============ -->
+  <g id="zona-distillazione">
+    <text x="506" y="488" font-size="17" font-weight="700" letter-spacing="1.4" fill="#212529">DISTILLAZIONE (IL PONTE)</text>
+
+    <rect x="545" y="578" width="160" height="84" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <text x="625" y="627" font-size="19" font-weight="600" fill="#212529" text-anchor="middle">modello grande</text>
+
+    <!-- freccia focale -->
+    <path d="M721 620 L894 620" stroke="#a1245a" stroke-width="3" marker-end="url(#ab)"/>
+    <text x="807" y="600" font-size="16" font-weight="700" fill="#a1245a" text-anchor="middle">genera esempi sintetici</text>
+
+    <rect x="910" y="583" width="152" height="74" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+    <text x="986" y="627" font-size="19" font-weight="700" fill="#161719" text-anchor="middle">modello piccolo</text>
+
+    <!-- stesso flusso di richieste -->
+    <g fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)">
+      <path d="M1144 581 L1074 610"/>
+      <path d="M1144 607 L1074 616"/>
+      <path d="M1144 633 L1074 622"/>
+      <path d="M1144 659 L1074 628"/>
+    </g>
+    <g fill="#f6f6f6" stroke="#dee2e6" stroke-width="1">
+      <rect x="1150" y="573" width="52" height="16" rx="3"/>
+      <rect x="1150" y="599" width="52" height="16" rx="3"/>
+      <rect x="1150" y="625" width="52" height="16" rx="3"/>
+      <rect x="1150" y="651" width="52" height="16" rx="3"/>
+    </g>
+    <text x="1176" y="700" font-size="17" font-weight="500" fill="#838383" text-anchor="middle">lo stesso flusso</text>
+
+    <!-- esito -->
+    <g>
+      <rect x="545" y="742" width="657" height="86" rx="8" fill="#f6f6f6"/>
+      <rect x="545" y="742" width="3" height="86" fill="#a1245a"/>
+      <text x="571" y="782" font-size="21" font-weight="600" fill="#212529">stesso lavoro, costo per token molto più basso</text>
+      <text x="571" y="810" font-size="17" font-weight="500" fill="#838383">il ponte tra l'investimento unico e il flusso perpetuo</text>
+    </g>
+  </g>
+</svg>

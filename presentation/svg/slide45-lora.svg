@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 800" width="1160" height="800" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>LoRA: accanto alla grande matrice W congelata scorre un ramo sottile A-B a basso rango, l'unico in addestramento</title>
+  <defs>
+    <pattern id="griglia-w-45" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M25 0 V25 M0 25 H25" fill="none" stroke="#dee2e6" stroke-width="1"/>
+    </pattern>
+    <marker id="ah-grigio-45" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#838383"/>
+    </marker>
+    <marker id="ah-burgundy-45" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- ingresso -->
+  <g id="ingresso">
+    <rect x="40" y="355" width="26" height="90" rx="4" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <g stroke="#dee2e6" stroke-width="1">
+      <path d="M40 373 H66 M40 391 H66 M40 409 H66 M40 427 H66"/>
+    </g>
+    <text x="24" y="400" font-size="15" font-weight="500" fill="#212529" text-anchor="middle" transform="rotate(-90 24 400)">vettore in ingresso</text>
+    <g fill="none" stroke="#838383" stroke-width="1.5">
+      <path d="M70 375 C120 375 150 190 194 190" marker-end="url(#ah-grigio-45)"/>
+    </g>
+    <path d="M70 420 C130 420 150 595 204 595" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#ah-burgundy-45)"/>
+  </g>
+
+  <!-- ramo principale: W congelata -->
+  <g id="ramo-congelato">
+    <text x="200" y="44" font-size="13" font-weight="600" letter-spacing="2" fill="#838383">RAMO PRINCIPALE</text>
+    <rect x="200" y="64" width="250" height="250" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="201" y="65" width="248" height="248" rx="7" fill="url(#griglia-w-45)" opacity="0.9"/>
+    <text x="298" y="212" font-size="76" font-weight="700" fill="#212529" text-anchor="middle">W</text>
+    <g id="lucchetto">
+      <path d="M382 172 v-12 a10 10 0 0 1 20 0 v12" fill="none" stroke="#838383" stroke-width="4"/>
+      <rect x="374" y="172" width="36" height="28" rx="4" fill="#838383"/>
+      <circle cx="392" cy="184" r="3.5" fill="#f6f6f6"/>
+    </g>
+    <text x="325" y="288" font-size="17" font-weight="600" fill="#838383" text-anchor="middle">congelata</text>
+    <text x="325" y="346" font-size="17" font-weight="500" fill="#838383" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">d &#215; d</text>
+    <text x="325" y="372" font-size="15" font-weight="500" fill="#838383" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">4096 &#215; 4096 &#8776; 17M parametri</text>
+    <path d="M456 190 C540 190 600 300 643 376" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ah-grigio-45)"/>
+  </g>
+
+  <!-- ramo LoRA -->
+  <g id="ramo-lora">
+    <rect x="180" y="450" width="420" height="310" rx="8" fill="none" stroke="#a1245a" stroke-width="1.5" stroke-dasharray="7 6"/>
+    <rect x="180" y="435" width="290" height="30" rx="8" fill="#a1245a"/>
+    <text x="325" y="455" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">ramo LoRA &#8212; in addestramento</text>
+
+    <rect x="210" y="520" width="46" height="150" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+    <text x="233" y="603" font-size="21" font-weight="700" fill="#a1245a" text-anchor="middle">A</text>
+    <text x="233" y="696" font-size="13" font-weight="500" fill="#838383" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">d &#215; r</text>
+
+    <path d="M262 595 H304" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#ah-burgundy-45)"/>
+    <rect x="310" y="575" width="20" height="40" rx="4" fill="#a1245a"/>
+    <path d="M336 595 H374" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#ah-burgundy-45)"/>
+
+    <rect x="380" y="573" width="190" height="44" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+    <text x="475" y="603" font-size="21" font-weight="700" fill="#a1245a" text-anchor="middle">B</text>
+    <text x="475" y="645" font-size="13" font-weight="500" fill="#838383" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">r &#215; d</text>
+
+    <path d="M320 615 V700" fill="none" stroke="#a1245a" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="320" y="722" font-size="15" font-weight="600" fill="#a1245a" text-anchor="middle">r direzioni nuove (es. r = 16)</text>
+
+    <path d="M576 590 C620 578 616 470 645 424" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#ah-burgundy-45)"/>
+  </g>
+
+  <text x="390" y="786" font-size="15" font-weight="500" fill="#a1245a" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">2&#183;d&#183;r &#8776; 131k parametri &#8212; meno dell&#8217;1%</text>
+
+  <!-- somma e uscita -->
+  <g id="somma">
+    <circle cx="660" cy="400" r="26" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <path d="M648 400 H672 M660 388 V412" stroke="#161719" stroke-width="2.5"/>
+    <path d="M688 400 H740" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ah-grigio-45)"/>
+    <rect x="746" y="355" width="26" height="90" rx="4" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+    <g stroke="#a1245a" stroke-width="1" opacity="0.5">
+      <path d="M746 373 H772 M746 391 H772 M746 409 H772 M746 427 H772"/>
+    </g>
+    <text x="759" y="475" font-size="15" font-weight="600" fill="#212529" text-anchor="middle">uscita corretta</text>
+  </g>
+
+  <!-- pila di adattatori -->
+  <g id="adattatori">
+    <rect x="848" y="64" width="300" height="696" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="848" y="64" width="3" height="696" fill="#a1245a"/>
+    <text x="876" y="118" font-size="17" font-weight="600" fill="#212529">un file piccolo per dominio</text>
+    <text x="876" y="144" font-size="15" font-weight="500" fill="#838383">si monta e si smonta</text>
+    <path d="M876 176 H1124" stroke="#dee2e6" stroke-width="1"/>
+
+    <g id="coppia-legale">
+      <rect x="880" y="228" width="18" height="64" rx="4" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+      <rect x="910" y="251" width="64" height="18" rx="4" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="990" y="267" font-size="19" font-weight="600" fill="#212529">legale</text>
+    </g>
+    <path d="M876 340 H1124" stroke="#dee2e6" stroke-width="1"/>
+    <g id="coppia-medico">
+      <rect x="880" y="388" width="18" height="64" rx="4" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+      <rect x="910" y="411" width="64" height="18" rx="4" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="990" y="427" font-size="19" font-weight="600" fill="#212529">medico</text>
+    </g>
+    <path d="M876 500 H1124" stroke="#dee2e6" stroke-width="1"/>
+    <g id="coppia-customer-care">
+      <rect x="880" y="548" width="18" height="64" rx="4" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+      <rect x="910" y="571" width="64" height="18" rx="4" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="990" y="587" font-size="19" font-weight="600" fill="#212529">customer care</text>
+    </g>
+
+    <text x="876" y="672" font-size="15" font-weight="500" fill="#838383">W resta la stessa:</text>
+    <text x="876" y="696" font-size="15" font-weight="500" fill="#838383">cambia solo la coppia A, B</text>
+  </g>
+  <path d="M842 730 C760 748 690 744 612 728" fill="none" stroke="#a1245a" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#ah-burgundy-45)"/>
+</svg>

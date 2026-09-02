@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1044 720" width="1044" height="720" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Fanout: l'embedding viene confrontato in parallelo con migliaia di rilevatori concettuali, poi filtrato dal gate della non linearità</title>
+
+  <defs>
+    <marker id="ah-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#838383"/>
+    </marker>
+    <marker id="ah-burgundy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- ============ STADIO 1 — l'embedding in transito ============ -->
+  <g id="stadio1-embedding">
+    <rect x="16" y="266" width="76" height="168" rx="8" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <g stroke="#dee2e6" stroke-width="1">
+      <line x1="16" y1="294" x2="92" y2="294"/>
+      <line x1="16" y1="322" x2="92" y2="322"/>
+      <line x1="16" y1="350" x2="92" y2="350"/>
+      <line x1="16" y1="378" x2="92" y2="378"/>
+      <line x1="16" y1="406" x2="92" y2="406"/>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13" fill="#212529" text-anchor="middle">
+      <text x="54" y="284.5">0.42</text>
+      <text x="54" y="312.5">-1.07</text>
+      <text x="54" y="340.5">0.88</text>
+      <text x="54" y="368.5">0.13</text>
+      <text x="54" y="396.5">-0.56</text>
+      <text x="54" y="424.5">0.94</text>
+    </g>
+    <g font-size="15" font-weight="600" fill="#161719" text-anchor="middle">
+      <text x="54" y="462">l'embedding</text>
+      <text x="54" y="482">in transito</text>
+    </g>
+  </g>
+
+  <!-- ============ collegamenti: stesso input a tutti i rilevatori ============ -->
+  <g id="fanout-collegamenti" fill="none" stroke="#dee2e6" stroke-width="1.5" marker-end="url(#ah-gray)">
+    <path d="M96 350 C 140 350, 148 70, 190 70"/>
+    <path d="M96 350 C 140 350, 148 186, 190 186"/>
+    <path d="M96 350 C 140 350, 148 302, 190 302"/>
+    <path d="M96 350 C 140 350, 148 418, 190 418"/>
+    <path d="M96 350 C 140 350, 148 534, 190 534"/>
+    <path d="M96 350 C 140 350, 148 650, 190 650"/>
+  </g>
+
+  <!-- ============ STADIO 2 — la pila dei rilevatori ============ -->
+
+  <!-- riga 1 — animale domestico (scattato) -->
+  <g id="rilevatore-1">
+    <rect x="196" y="28" width="444" height="84" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+    <rect x="196" y="36" width="3" height="68" fill="#a1245a"/>
+    <rect x="212" y="46" width="26" height="48" rx="4" fill="#ffffff" stroke="#a1245a" stroke-width="1"/>
+    <rect x="213" y="47" width="24" height="11" fill="#a1245a"/>
+    <rect x="213" y="59" width="24" height="11" fill="#ecd3de"/>
+    <rect x="213" y="71" width="24" height="11" fill="#a1245a"/>
+    <rect x="213" y="83" width="24" height="10" fill="#ecd3de"/>
+    <text x="250" y="78" font-size="24" font-weight="700" fill="#838383">·</text>
+    <text x="268" y="76" font-size="16" font-weight="600" fill="#161719">animale domestico</text>
+    <rect x="480" y="64" width="140" height="12" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="480" y="64" width="129" height="12" rx="6" fill="#a1245a"/>
+  </g>
+
+  <!-- riga 2 — sta per arrivare un luogo (scattato) -->
+  <g id="rilevatore-2">
+    <rect x="196" y="144" width="444" height="84" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+    <rect x="196" y="152" width="3" height="68" fill="#a1245a"/>
+    <rect x="212" y="162" width="26" height="48" rx="4" fill="#ffffff" stroke="#a1245a" stroke-width="1"/>
+    <rect x="213" y="163" width="24" height="11" fill="#ecd3de"/>
+    <rect x="213" y="175" width="24" height="11" fill="#a1245a"/>
+    <rect x="213" y="187" width="24" height="11" fill="#a1245a"/>
+    <rect x="213" y="199" width="24" height="10" fill="#ecd3de"/>
+    <text x="250" y="194" font-size="24" font-weight="700" fill="#838383">·</text>
+    <text x="268" y="192" font-size="16" font-weight="600" fill="#161719">sta per arrivare un luogo</text>
+    <rect x="480" y="180" width="140" height="12" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="480" y="180" width="118" height="12" rx="6" fill="#a1245a"/>
+  </g>
+
+  <!-- riga 3 — frase al presente (media) -->
+  <g id="rilevatore-3">
+    <rect x="196" y="260" width="444" height="84" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+    <rect x="196" y="268" width="3" height="68" fill="#a1245a"/>
+    <rect x="212" y="278" width="26" height="48" rx="4" fill="#ffffff" stroke="#a1245a" stroke-width="1"/>
+    <rect x="213" y="279" width="24" height="11" fill="#ecd3de"/>
+    <rect x="213" y="291" width="24" height="11" fill="#a1245a"/>
+    <rect x="213" y="303" width="24" height="11" fill="#ecd3de"/>
+    <rect x="213" y="315" width="24" height="10" fill="#ecd3de"/>
+    <text x="250" y="310" font-size="24" font-weight="700" fill="#838383">·</text>
+    <text x="268" y="308" font-size="16" font-weight="600" fill="#161719">frase al presente</text>
+    <rect x="480" y="296" width="140" height="12" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="480" y="296" width="72" height="12" rx="6" fill="#a1245a"/>
+  </g>
+
+  <!-- riga 4 — contesto giuridico (muto) -->
+  <g id="rilevatore-4">
+    <rect x="196" y="376" width="444" height="84" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="196" y="384" width="3" height="68" fill="#dee2e6"/>
+    <rect x="212" y="394" width="26" height="48" rx="4" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="213" y="395" width="24" height="11" fill="#f6f6f6"/>
+    <rect x="213" y="407" width="24" height="11" fill="#dee2e6"/>
+    <rect x="213" y="419" width="24" height="11" fill="#f6f6f6"/>
+    <rect x="213" y="431" width="24" height="10" fill="#dee2e6"/>
+    <text x="250" y="426" font-size="24" font-weight="700" fill="#dee2e6">·</text>
+    <text x="268" y="424" font-size="16" font-weight="500" fill="#838383">contesto giuridico</text>
+    <rect x="480" y="412" width="140" height="12" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="480" y="412" width="5" height="12" rx="2.5" fill="#dee2e6"/>
+  </g>
+
+  <!-- riga 5 — linguaggio matematico (muto) -->
+  <g id="rilevatore-5">
+    <rect x="196" y="492" width="444" height="84" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="196" y="500" width="3" height="68" fill="#dee2e6"/>
+    <rect x="212" y="510" width="26" height="48" rx="4" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="213" y="511" width="24" height="11" fill="#dee2e6"/>
+    <rect x="213" y="523" width="24" height="11" fill="#f6f6f6"/>
+    <rect x="213" y="535" width="24" height="11" fill="#f6f6f6"/>
+    <rect x="213" y="547" width="24" height="10" fill="#dee2e6"/>
+    <text x="250" y="542" font-size="24" font-weight="700" fill="#dee2e6">·</text>
+    <text x="268" y="540" font-size="16" font-weight="500" fill="#838383">linguaggio matematico</text>
+    <rect x="480" y="528" width="140" height="12" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="480" y="528" width="5" height="12" rx="2.5" fill="#dee2e6"/>
+  </g>
+
+  <!-- riga 6 — elisione -->
+  <g id="rilevatore-elisione">
+    <rect x="196" y="608" width="444" height="84" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1" stroke-dasharray="5 4"/>
+    <g fill="#838383">
+      <circle cx="219" cy="650" r="3"/>
+      <circle cx="231" cy="650" r="3"/>
+      <circle cx="243" cy="650" r="3"/>
+    </g>
+    <text x="268" y="656" font-size="16" font-weight="500" fill="#838383">e decine di migliaia di altri</text>
+  </g>
+
+  <!-- graffa del fanout -->
+  <g id="graffa-fanout">
+    <path d="M652 28 Q666 28 666 42 L666 346 Q666 360 674 360 Q666 360 666 374 L666 678 Q666 692 652 692"
+          fill="none" stroke="#838383" stroke-width="1.5"/>
+    <text x="694" y="360" font-size="16" font-weight="600" fill="#838383" text-anchor="middle"
+          transform="rotate(-90 694 360)">fanout: lo spazio si espande</text>
+  </g>
+
+  <!-- ============ frecce verso il gate ============ -->
+  <g id="frecce-passanti" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#ah-burgundy)">
+    <line x1="712" y1="70" x2="850" y2="70"/>
+    <line x1="712" y1="186" x2="850" y2="186"/>
+    <line x1="712" y1="302" x2="850" y2="302"/>
+  </g>
+
+  <g id="frecce-troncate">
+    <line x1="712" y1="418" x2="802" y2="418" stroke="#838383" stroke-width="1.5"/>
+    <line x1="712" y1="534" x2="802" y2="534" stroke="#838383" stroke-width="1.5"/>
+    <g fill="#ffffff" stroke="#838383" stroke-width="1.5">
+      <circle cx="778" cy="418" r="12"/>
+      <circle cx="778" cy="534" r="12"/>
+    </g>
+    <g font-size="14" font-weight="700" fill="#838383" text-anchor="middle">
+      <text x="778" y="423">0</text>
+      <text x="778" y="539">0</text>
+    </g>
+  </g>
+
+  <!-- ============ STADIO 3 — il gate ============ -->
+  <g id="gate">
+    <g fill="#161719">
+      <rect x="806" y="20" width="26" height="37" rx="6"/>
+      <rect x="806" y="83" width="26" height="90" rx="6"/>
+      <rect x="806" y="199" width="26" height="90" rx="6"/>
+      <rect x="806" y="315" width="26" height="385" rx="6"/>
+    </g>
+    <text x="819" y="507" font-size="16" font-weight="600" fill="#ffbe0b" text-anchor="middle"
+          transform="rotate(-90 819 507)">non linearità: il gate</text>
+  </g>
+
+  <!-- ============ concetti sopravvissuti ============ -->
+  <g id="concetti-in-uscita">
+    <text x="856" y="30" font-size="13" font-weight="600" fill="#838383" letter-spacing="1.2">CONCETTI IN USCITA</text>
+    <g fill="#ffffff" stroke="#a1245a" stroke-width="1.5">
+      <rect x="856" y="44" width="176" height="52" rx="8"/>
+      <rect x="856" y="160" width="176" height="52" rx="8"/>
+      <rect x="856" y="276" width="176" height="52" rx="8"/>
+    </g>
+    <g fill="#a1245a">
+      <rect x="856" y="52" width="3" height="36"/>
+      <rect x="856" y="168" width="3" height="36"/>
+      <rect x="856" y="284" width="3" height="36"/>
+    </g>
+    <g font-size="15" font-weight="600" fill="#161719">
+      <text x="872" y="75">animale domestico</text>
+      <text x="872" y="182">sta per arrivare</text>
+      <text x="872" y="200">un luogo</text>
+      <text x="872" y="307">frase al presente</text>
+    </g>
+    <rect x="856" y="400" width="3" height="56" fill="#dee2e6"/>
+    <g font-size="14" font-weight="500" fill="#838383">
+      <text x="872" y="418">le righe mute non</text>
+      <text x="872" y="436">attraversano il gate:</text>
+      <text x="872" y="454">contributo azzerato</text>
+    </g>
+  </g>
+</svg>

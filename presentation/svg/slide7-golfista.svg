@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 500" width="1300" height="500" role="img">
+  <title>Il golfista: quattro colpi concatenati, ognuno determinato da dove è atterrato il precedente, e la buca ignorata sullo sfondo</title>
+
+  <!-- Composizione riusabile: la slide 31 riprende questa scena aggiungendo la mira alla buca.
+       Non spostare terreno (y=430), punti di atterraggio (x = 420, 680, 890, 1080) né la buca (x=1220). -->
+
+  <g id="terreno">
+    <line x1="12" y1="430" x2="1288" y2="430" stroke="#dee2e6" stroke-width="2"/>
+  </g>
+
+  <g id="buca" opacity="0.55" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+    <ellipse cx="1220" cy="430" rx="26" ry="7" fill="#f6f6f6" stroke="#dee2e6"/>
+    <line x1="1220" y1="428" x2="1220" y2="300" stroke="#838383" stroke-width="2"/>
+    <path d="M1218 302 L1166 318 L1218 334 Z" fill="#f6f6f6" stroke="#838383" stroke-width="1.5" stroke-linejoin="round"/>
+    <text x="1288" y="252" text-anchor="end" font-size="19" font-weight="600" fill="#838383">la buca?</text>
+    <text x="1288" y="276" text-anchor="end" font-size="17" font-weight="400" fill="#838383">per ora, nessuna mira</text>
+  </g>
+
+  <g id="golfista" fill="none" stroke="#161719" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="66" cy="250" r="17" fill="#161719" stroke="none"/>
+    <path d="M66 269 L60 336"/>
+    <path d="M60 336 L40 430"/>
+    <path d="M60 336 L84 430"/>
+    <path d="M64 290 L108 302"/>
+    <path d="M108 302 L146 420" stroke="#838383" stroke-width="2.5"/>
+    <path d="M146 420 L160 426" stroke="#838383" stroke-width="4"/>
+  </g>
+
+  <g id="catena-colpi" fill="none" stroke="#a1245a" stroke-width="3" stroke-linecap="round">
+    <path id="arco-1" d="M170 422 Q295 -332 420 422"/>
+    <path id="arco-2" d="M420 422 Q550 -212 680 422"/>
+    <path id="arco-3" d="M680 422 Q785 -352 890 422"/>
+    <path id="arco-4" d="M890 422 Q985 -172 1080 422"/>
+  </g>
+
+  <g id="palline" fill="#a1245a">
+    <circle cx="164" cy="422" r="6" fill="#ffffff" stroke="#a1245a" stroke-width="2.5"/>
+    <circle cx="420" cy="422" r="8"/>
+    <circle cx="680" cy="422" r="8"/>
+    <circle cx="890" cy="422" r="8"/>
+    <circle cx="1080" cy="422" r="8"/>
+  </g>
+
+  <g id="etichette-colpi" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="600" fill="#212529" text-anchor="middle">
+    <text x="420" y="464">colpo 1</text>
+    <text x="680" y="464">colpo 2</text>
+    <text x="890" y="464">colpo 3</text>
+    <text x="1080" y="464">colpo 4</text>
+  </g>
+</svg>

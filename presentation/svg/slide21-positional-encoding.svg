@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 800" width="1080" height="800" role="img">
+<title>Positional encoding: senza posizione le due frasi collassano nello stesso insieme di embedding, con positional encoding diventano due sequenze distinte</title>
+<defs>
+<marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+<marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+</defs>
+<g id="scena-senza-posizione">
+<rect x="12" y="22" width="3" height="28" fill="#161719"/>
+<text x="28" y="45" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="21" font-weight="700" fill="#161719" text-anchor="start">senza posizione</text>
+<text x="30" y="80" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#838383" text-anchor="start">frase 1</text>
+<rect x="30" y="88" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="76" y="117" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">il</text><rect x="130" y="88" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="176" y="117" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">gatto</text><rect x="230" y="88" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="276" y="117" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">morde</text><rect x="330" y="88" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="376" y="117" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">il</text><rect x="430" y="88" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="476" y="117" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">cane</text>
+<text x="30" y="160" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#838383" text-anchor="start">frase 2</text>
+<rect x="30" y="168" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="76" y="197" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">il</text><rect x="130" y="168" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="176" y="197" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">cane</text><rect x="230" y="168" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="276" y="197" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">morde</text><rect x="330" y="168" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="376" y="197" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">il</text><rect x="430" y="168" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="476" y="197" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">gatto</text>
+<text x="30" y="254" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="500" fill="#838383" text-anchor="start">l&#8217;ordine delle tessere non entra nei vettori</text>
+<path d="M534 111 C 590 111, 600 150, 654 150" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#arrB)"/>
+<path d="M534 191 C 590 191, 600 150, 654 150" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#arrB)"/>
+<rect x="664" y="64" width="396" height="204" rx="8" fill="#ecd3de" fill-opacity="0.35" stroke="#a1245a" stroke-width="2" stroke-dasharray="7 6"/>
+<text x="684" y="90" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#a1245a" text-anchor="start" letter-spacing="1.2">UN SOLO INSIEME, NON ORDINATO</text>
+<g transform="rotate(-14 742 144)"><rect x="729" y="108" width="26" height="16" rx="3" fill="#a1245a"/><rect x="729" y="127" width="26" height="16" rx="3" fill="#ecd3de"/><rect x="729" y="146" width="26" height="16" rx="3" fill="#a1245a"/><rect x="729" y="165" width="26" height="16" rx="3" fill="#ecd3de"/></g>
+<g transform="rotate(9 838 138)"><rect x="825" y="102" width="26" height="16" rx="3" fill="#ecd3de"/><rect x="825" y="121" width="26" height="16" rx="3" fill="#a1245a"/><rect x="825" y="140" width="26" height="16" rx="3" fill="#a1245a"/><rect x="825" y="159" width="26" height="16" rx="3" fill="#ecd3de"/></g>
+<g transform="rotate(-7 936 152)"><rect x="923" y="116" width="26" height="16" rx="3" fill="#a1245a"/><rect x="923" y="135" width="26" height="16" rx="3" fill="#a1245a"/><rect x="923" y="154" width="26" height="16" rx="3" fill="#ecd3de"/><rect x="923" y="173" width="26" height="16" rx="3" fill="#a1245a"/></g>
+<g transform="rotate(16 1016 140)"><rect x="1003" y="104" width="26" height="16" rx="3" fill="#ecd3de"/><rect x="1003" y="123" width="26" height="16" rx="3" fill="#ecd3de"/><rect x="1003" y="142" width="26" height="16" rx="3" fill="#a1245a"/><rect x="1003" y="161" width="26" height="16" rx="3" fill="#a1245a"/></g>
+<g transform="rotate(-19 886 214)"><rect x="873" y="178" width="26" height="16" rx="3" fill="#a1245a"/><rect x="873" y="197" width="26" height="16" rx="3" fill="#ecd3de"/><rect x="873" y="216" width="26" height="16" rx="3" fill="#ecd3de"/><rect x="873" y="235" width="26" height="16" rx="3" fill="#a1245a"/></g>
+<text x="862" y="300" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="600" fill="#a1245a" text-anchor="middle">stesso sacchetto: per l&#8217;attention sono indistinguibili</text>
+</g>
+<line x1="12" y1="356" x2="1068" y2="356" stroke="#dee2e6" stroke-width="1"/>
+<g id="scena-con-positional-encoding">
+<rect x="12" y="398" width="3" height="28" fill="#161719"/>
+<text x="28" y="421" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="21" font-weight="700" fill="#161719" text-anchor="start">con positional encoding</text>
+<rect x="30" y="456" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="76" y="485" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">il</text><rect x="130" y="456" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="176" y="485" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">gatto</text><rect x="230" y="456" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="276" y="485" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">morde</text><rect x="330" y="456" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="376" y="485" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">il</text><rect x="430" y="456" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="476" y="485" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">cane</text>
+<line x1="76" y1="502" x2="76" y2="513" stroke="#a1245a" stroke-width="2"/>
+<line x1="76" y1="539" x2="76" y2="544" stroke="#a1245a" stroke-width="2"/>
+<circle cx="76" cy="526" r="13" fill="#a1245a"/>
+<text x="76" y="533" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">+</text>
+<rect x="44" y="544" width="64" height="26" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1"/>
+<text x="76" y="562" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="600" fill="#a1245a" text-anchor="middle">pos 1</text>
+<line x1="176" y1="502" x2="176" y2="513" stroke="#a1245a" stroke-width="2"/>
+<line x1="176" y1="539" x2="176" y2="544" stroke="#a1245a" stroke-width="2"/>
+<circle cx="176" cy="526" r="13" fill="#a1245a"/>
+<text x="176" y="533" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">+</text>
+<rect x="144" y="544" width="64" height="26" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1"/>
+<text x="176" y="562" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="600" fill="#a1245a" text-anchor="middle">pos 2</text>
+<line x1="276" y1="502" x2="276" y2="513" stroke="#a1245a" stroke-width="2"/>
+<line x1="276" y1="539" x2="276" y2="544" stroke="#a1245a" stroke-width="2"/>
+<circle cx="276" cy="526" r="13" fill="#a1245a"/>
+<text x="276" y="533" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">+</text>
+<rect x="244" y="544" width="64" height="26" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1"/>
+<text x="276" y="562" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="600" fill="#a1245a" text-anchor="middle">pos 3</text>
+<line x1="376" y1="502" x2="376" y2="513" stroke="#a1245a" stroke-width="2"/>
+<line x1="376" y1="539" x2="376" y2="544" stroke="#a1245a" stroke-width="2"/>
+<circle cx="376" cy="526" r="13" fill="#a1245a"/>
+<text x="376" y="533" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">+</text>
+<rect x="344" y="544" width="64" height="26" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1"/>
+<text x="376" y="562" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="600" fill="#a1245a" text-anchor="middle">pos 4</text>
+<line x1="476" y1="502" x2="476" y2="513" stroke="#a1245a" stroke-width="2"/>
+<line x1="476" y1="539" x2="476" y2="544" stroke="#a1245a" stroke-width="2"/>
+<circle cx="476" cy="526" r="13" fill="#a1245a"/>
+<text x="476" y="533" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">+</text>
+<rect x="444" y="544" width="64" height="26" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1"/>
+<text x="476" y="562" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="600" fill="#a1245a" text-anchor="middle">pos 5</text>
+<rect x="30" y="622" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="76" y="651" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">il</text><rect x="130" y="622" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="176" y="651" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">cane</text><rect x="230" y="622" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="276" y="651" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">morde</text><rect x="330" y="622" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="376" y="651" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">il</text><rect x="430" y="622" width="92" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/><text x="476" y="651" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="17" fill="#212529" text-anchor="middle">gatto</text>
+<line x1="76" y1="668" x2="76" y2="679" stroke="#a1245a" stroke-width="2"/>
+<line x1="76" y1="705" x2="76" y2="710" stroke="#a1245a" stroke-width="2"/>
+<circle cx="76" cy="692" r="13" fill="#a1245a"/>
+<text x="76" y="699" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">+</text>
+<rect x="44" y="710" width="64" height="26" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1"/>
+<text x="76" y="728" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="600" fill="#a1245a" text-anchor="middle">pos 1</text>
+<line x1="176" y1="668" x2="176" y2="679" stroke="#a1245a" stroke-width="2"/>
+<line x1="176" y1="705" x2="176" y2="710" stroke="#a1245a" stroke-width="2"/>
+<circle cx="176" cy="692" r="13" fill="#a1245a"/>
+<text x="176" y="699" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">+</text>
+<rect x="144" y="710" width="64" height="26" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1"/>
+<text x="176" y="728" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="600" fill="#a1245a" text-anchor="middle">pos 2</text>
+<line x1="276" y1="668" x2="276" y2="679" stroke="#a1245a" stroke-width="2"/>
+<line x1="276" y1="705" x2="276" y2="710" stroke="#a1245a" stroke-width="2"/>
+<circle cx="276" cy="692" r="13" fill="#a1245a"/>
+<text x="276" y="699" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">+</text>
+<rect x="244" y="710" width="64" height="26" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1"/>
+<text x="276" y="728" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="600" fill="#a1245a" text-anchor="middle">pos 3</text>
+<line x1="376" y1="668" x2="376" y2="679" stroke="#a1245a" stroke-width="2"/>
+<line x1="376" y1="705" x2="376" y2="710" stroke="#a1245a" stroke-width="2"/>
+<circle cx="376" cy="692" r="13" fill="#a1245a"/>
+<text x="376" y="699" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">+</text>
+<rect x="344" y="710" width="64" height="26" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1"/>
+<text x="376" y="728" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="600" fill="#a1245a" text-anchor="middle">pos 4</text>
+<line x1="476" y1="668" x2="476" y2="679" stroke="#a1245a" stroke-width="2"/>
+<line x1="476" y1="705" x2="476" y2="710" stroke="#a1245a" stroke-width="2"/>
+<circle cx="476" cy="692" r="13" fill="#a1245a"/>
+<text x="476" y="699" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">+</text>
+<rect x="444" y="710" width="64" height="26" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1"/>
+<text x="476" y="728" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="600" fill="#a1245a" text-anchor="middle">pos 5</text>
+<text x="30" y="448" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#838383" text-anchor="start">frase 1</text>
+<text x="30" y="614" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#838383" text-anchor="start">frase 2</text>
+<text x="30" y="772" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="500" fill="#838383" text-anchor="start">ogni tessera porta con s&#233; la sua posizione</text>
+<path d="M534 513 L 654 513" fill="none" stroke="#838383" stroke-width="2" marker-end="url(#arrG)"/>
+<path d="M534 679 L 654 679" fill="none" stroke="#838383" stroke-width="2" marker-end="url(#arrG)"/>
+<rect x="664" y="450" width="396" height="126" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="680" y="472" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#838383" text-anchor="start">frase 1</text>
+<rect x="691" y="476" width="30" height="20" rx="3" fill="#a1245a"/><rect x="691" y="500" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="691" y="524" width="30" height="20" rx="3" fill="#a1245a"/><rect x="691" y="548" width="30" height="20" rx="3" fill="#ecd3de"/>
+<rect x="763" y="476" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="763" y="500" width="30" height="20" rx="3" fill="#a1245a"/><rect x="763" y="524" width="30" height="20" rx="3" fill="#a1245a"/><rect x="763" y="548" width="30" height="20" rx="3" fill="#ecd3de"/>
+<rect x="835" y="476" width="30" height="20" rx="3" fill="#a1245a"/><rect x="835" y="500" width="30" height="20" rx="3" fill="#a1245a"/><rect x="835" y="524" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="835" y="548" width="30" height="20" rx="3" fill="#a1245a"/>
+<rect x="907" y="476" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="907" y="500" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="907" y="524" width="30" height="20" rx="3" fill="#a1245a"/><rect x="907" y="548" width="30" height="20" rx="3" fill="#a1245a"/>
+<rect x="979" y="476" width="30" height="20" rx="3" fill="#a1245a"/><rect x="979" y="500" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="979" y="524" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="979" y="548" width="30" height="20" rx="3" fill="#a1245a"/>
+<rect x="664" y="616" width="396" height="126" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+<text x="680" y="638" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#838383" text-anchor="start">frase 2</text>
+<rect x="691" y="642" width="30" height="20" rx="3" fill="#a1245a"/><rect x="691" y="666" width="30" height="20" rx="3" fill="#a1245a"/><rect x="691" y="690" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="691" y="714" width="30" height="20" rx="3" fill="#a1245a"/>
+<rect x="763" y="642" width="30" height="20" rx="3" fill="#a1245a"/><rect x="763" y="666" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="763" y="690" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="763" y="714" width="30" height="20" rx="3" fill="#a1245a"/>
+<rect x="835" y="642" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="835" y="666" width="30" height="20" rx="3" fill="#a1245a"/><rect x="835" y="690" width="30" height="20" rx="3" fill="#a1245a"/><rect x="835" y="714" width="30" height="20" rx="3" fill="#ecd3de"/>
+<rect x="907" y="642" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="907" y="666" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="907" y="690" width="30" height="20" rx="3" fill="#a1245a"/><rect x="907" y="714" width="30" height="20" rx="3" fill="#a1245a"/>
+<rect x="979" y="642" width="30" height="20" rx="3" fill="#a1245a"/><rect x="979" y="666" width="30" height="20" rx="3" fill="#ecd3de"/><rect x="979" y="690" width="30" height="20" rx="3" fill="#a1245a"/><rect x="979" y="714" width="30" height="20" rx="3" fill="#ecd3de"/>
+<text x="862" y="776" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="600" fill="#161719" text-anchor="middle">due frasi diverse: l&#8217;ordine &#232; entrato nei vettori</text>
+</g>
+</svg>

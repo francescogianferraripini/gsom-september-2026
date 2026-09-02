@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PC AI 26 — Agentic AI: da LLM ad agenti</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <style>
+    /* ===== Aggiunte locali: slide di lezione (testo + visual SVG) ===== */
+    .visual { flex: 1 1 0; min-height: 0; min-width: 0; display: flex; align-items: center; justify-content: center; }
+    .visual img { max-width: 100%; max-height: 100%; width: auto; height: auto; }
+
+    .pts { margin: 0; }
+    .pts li { font-size: 12.5pt; line-height: 1.4; margin-bottom: 12px; }
+    .pts li:last-child { margin-bottom: 0; }
+    .pts li strong { color: var(--q-black); display: block; margin-bottom: 1px; }
+    .pts.tight li { font-size: 11.5pt; margin-bottom: 9px; }
+    .pts.micro li { font-size: 10.5pt; line-height: 1.32; margin-bottom: 7px; }
+
+    .nota {
+      border-left: 3px solid var(--q-burgundy);
+      padding: 4px 0 4px 14px;
+      margin-top: 12px;
+      font-size: 11.5pt;
+      line-height: 1.4;
+      color: var(--q-body);
+    }
+    .nota.dark {
+      background: var(--q-black); color: var(--q-white);
+      border-left-color: var(--q-yellow);
+      border-radius: var(--box-radius);
+      padding: 10px 16px;
+    }
+    .nota.dark strong { color: var(--q-yellow); }
+    .nota.small { font-size: 10.5pt; }
+
+    .caption { font-size: 12.5pt; line-height: 1.45; color: var(--q-body); margin: 10px 0 0; }
+    .side-notes { display: flex; gap: 28px; margin-top: 8px; }
+    .side-notes p { font-size: 9.5pt; color: var(--q-greydark); margin: 0; line-height: 1.35; }
+    .side-notes p::before { content: '—'; color: var(--q-burgundy); margin-right: 6px; }
+
+    /* griglia testo + visual */
+    .tv { flex: 1; display: grid; gap: 34px; min-height: 0; }
+    .tv > div { min-height: 0; min-width: 0; }
+    .tv .col-text { display: flex; flex-direction: column; justify-content: center; }
+    .tv-35 { grid-template-columns: 35fr 62fr; }
+    .tv-30 { grid-template-columns: 30fr 67fr; }
+    .tv-40 { grid-template-columns: 40fr 57fr; }
+    .tv-45 { grid-template-columns: 45fr 52fr; }
+
+    /* definizione centrale in evidenza */
+    .defn {
+      font-size: 17pt; font-weight: 300; line-height: 1.35; color: var(--q-black);
+      border-left: 3px solid var(--q-burgundy); padding-left: 20px; margin: 0 0 14px;
+    }
+    .defn.center { border-left: 0; padding-left: 0; text-align: center; font-size: 20pt; }
+
+    /* box narrativo laterale */
+    .story {
+      background: var(--q-grey, #f6f6f6); border-radius: var(--box-radius);
+      padding: 16px 18px; font-size: 11pt; line-height: 1.45; color: var(--q-body);
+    }
+    .story .s-tag {
+      font-size: 9pt; font-weight: 700; letter-spacing: 0.2em;
+      color: var(--q-burgundy); margin: 0 0 6px; text-transform: uppercase;
+    }
+    .story p { font-size: 11pt; margin: 0; line-height: 1.45; }
+
+    /* colonne contrastive */
+    .cols { flex: 1; display: grid; gap: 30px; min-height: 0; align-content: start; }
+    .cols-2 { grid-template-columns: 1fr 1fr; }
+    .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .col-head {
+      font-size: 10pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--q-burgundy); margin: 0 0 12px; padding-bottom: 8px;
+      border-bottom: 1px solid var(--q-line);
+    }
+    .col-head.neutral { color: var(--q-greydark); }
+    .cols ul { margin: 0; }
+    .cols li { font-size: 12pt; line-height: 1.4; margin-bottom: 9px; }
+
+    /* pseudocodice */
+    .pseudo {
+      font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+      background: var(--q-black); color: var(--q-white);
+      border-radius: var(--box-radius); padding: 22px 26px;
+      font-size: 14pt; line-height: 1.75; letter-spacing: -0.01em;
+    }
+    .pseudo .kw { color: var(--q-yellow); }
+    .pseudo .in { padding-left: 28px; display: block; }
+    .pseudo .cm { color: #9aa0a6; }
+
+    /* formula tipografica */
+    .formula {
+      font-size: 26pt; font-weight: 700; letter-spacing: -0.02em; color: var(--q-black);
+      line-height: 1.35; text-align: center;
+    }
+    .formula .op { color: var(--q-greydark); font-weight: 400; margin: 0 6px; }
+    .formula .hl { color: var(--q-burgundy); }
+
+    /* brainstorming slide 1 */
+    .board { position: relative; flex: 1; min-height: 0; }
+    .board .q {
+      position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%);
+      font-size: 26pt; font-weight: 700; color: var(--q-black); text-align: center;
+      letter-spacing: -0.02em; z-index: 2; background: var(--q-white); padding: 6px 18px;
+    }
+    .board .note {
+      position: absolute; font-size: 11pt; line-height: 1.35; color: var(--q-body);
+      background: #f6f6f6; border-radius: var(--box-radius); padding: 9px 13px;
+      max-width: 230px;
+    }
+    .board .note.accent { border-left: 3px solid var(--q-burgundy); }
+
+    /* pull quote */
+    .pull {
+      font-size: 22pt; font-weight: 300; line-height: 1.3; color: var(--q-black);
+      border-left: 3px solid var(--q-burgundy); padding-left: 22px; margin: 0;
+    }
+    .pull .src { display: block; font-size: 11pt; color: var(--q-greydark); margin-top: 10px; font-weight: 500; }
+
+    /* asimmetria slide 41 */
+    .asym { flex: 1; display: grid; grid-template-columns: 32fr 65fr; gap: 30px; align-items: start; min-height: 0; }
+    .blk { border-radius: var(--box-radius); padding: 16px 20px; }
+    .blk .b-tag { font-size: 9pt; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 8px; }
+    .blk.small { background: #f6f6f6; }
+    .blk.small .b-tag { color: var(--q-greydark); }
+    .blk.small p { font-size: 12pt; margin: 0; }
+    .blk.big { background: var(--q-black); color: var(--q-white); }
+    .blk.big .b-tag { color: var(--q-yellow); }
+    .blk.big p { color: var(--q-white); font-size: 14pt; margin: 0; line-height: 1.45; }
+
+    /* tabella */
+    .reveal table { width: 100%; border-collapse: collapse; }
+    .reveal table th, .reveal table td {
+      font-size: 11.5pt; text-align: left; padding: 9px 12px;
+      border-bottom: 1px solid var(--q-line); line-height: 1.35;
+    }
+    .reveal table th { font-weight: 700; color: var(--q-black); border-bottom: 2px solid var(--q-burgundy); }
+    .reveal table td:first-child { font-weight: 600; color: var(--q-black); }
+
+    /* placeholder asset esterno */
+    .asset-ph {
+      flex: 1; min-height: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px;
+      border: 1px dashed var(--q-line); border-radius: var(--box-radius);
+      color: var(--q-greydark); text-align: center; padding: 24px;
+    }
+    .asset-ph .ph-tag { font-size: 10pt; font-weight: 700; letter-spacing: 0.2em; color: var(--q-burgundy); text-transform: uppercase; }
+    .asset-ph p { font-size: 11.5pt; margin: 0; max-width: 620px; }
+
+    /* riflessione finale */
+    .reflect {
+      background: #f6f6f6; border-radius: var(--box-radius); padding: 18px 22px;
+      border-left: 3px solid var(--q-burgundy);
+    }
+    .reflect p { font-size: 12.5pt; margin: 0; line-height: 1.45; }
+
+    .hl-line { font-size: 15pt; font-weight: 600; color: var(--q-burgundy); line-height: 1.35; margin: 14px 0 0; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ══════════ COPERTINA ══════════ -->
+      <section id="cover" class="hero no-chrome" data-transition="fade">
+        <p class="eyebrow">CORSO PROFESSIONAL AI · INCONTRO 26</p>
+        <h1>Agentic AI: da LLM ad agenti</h1>
+        <p class="hero-lead">Basi concettuali: cos'è un agente, cos'è un modello linguistico, perché funziona, come viene addestrato.</p>
+        <div class="hero-meta">
+          <span>DATA, AT CORE</span>
+          <span>FRANCESCO GIANFERRARI PINI</span>
+        </div>
+        <aside class="notes">Oggi apriamo il primo termine della formula: l'LLM. Il prossimo incontro apre il secondo: l'harness.</aside>
+      </section>
+
+      <!-- ══════════ SEZIONE 1 ══════════ -->
+      <section id="div-sec1" class="section-divider" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 01</p>
+        <h1>Cosa è<br>un agente?</h1>
+        <p>Cosa ci aspettiamo da un agente, e di cosa è fatto.</p>
+      </section>
+
+      <section id="slide-1">
+        <p class="eyebrow">SEZIONE 1 · COSA È UN AGENTE</p>
+        <h2>Cosa è un agente? Le aspettative</h2>
+        <div class="content">
+          <div class="board">
+            <p class="q fragment" data-fragment-index="1">Che aspettative abbiamo<br>da un agente?</p>
+            <div class="note fragment" data-fragment-index="2" style="left: 0; top: 2%;">"Un chatbot, ma più intelligente"</div>
+            <div class="note fragment" data-fragment-index="2" style="left: 30%; top: 0;">"Che risponda a qualsiasi domanda"</div>
+            <div class="note fragment" data-fragment-index="2" style="right: 2%; top: 4%;">"Che non sbagli mai"</div>
+            <div class="note fragment" data-fragment-index="2" style="left: 2%; top: 38%;">"Che sostituisca una persona"</div>
+            <div class="note accent fragment" data-fragment-index="2" style="right: 0; top: 36%;">"Che faccia da solo, senza che io lo guidi passo passo"</div>
+            <div class="note fragment" data-fragment-index="2" style="left: 6%; bottom: 6%;">"Che usi i miei strumenti: mail, file, gestionali"</div>
+            <div class="note accent fragment" data-fragment-index="2" style="left: 38%; bottom: 2%;">"Che si accorga quando sbaglia — e ci riprovi"</div>
+            <div class="note fragment" data-fragment-index="2" style="right: 4%; bottom: 5%;">"Che sappia spiegarmi cosa ha fatto e perché"</div>
+          </div>
+          <div class="nota fragment" data-fragment-index="3">Ci aspettiamo che porti a termine un task — non che risponda a una domanda.</div>
+        </div>
+        <div class="footnote">01 / Sezione 1</div>
+        <aside class="notes">Slide interattiva: domanda aperta alla classe. Le ipotesi sono semi di discussione, mix di naïf e mature. La nota d'atterraggio compare solo alla fine della discussione.</aside>
+      </section>
+
+      <section id="slide-2">
+        <p class="eyebrow">SEZIONE 1 · COSA È UN AGENTE</p>
+        <h2>Lo spazio delle soluzioni</h2>
+        <div class="content">
+          <p class="caption" style="margin: 0 0 10px;">Dove gli agenti funzionano già, e dove serve rinforzo: due assi — quanto contesto richiede il task, quanto è verificabile il risultato.</p>
+          <div class="visual"><img src="svg/slide2-spazio-soluzioni.svg" alt="Mappa dei task: verificabilità per ampiezza di contesto"></div>
+          <div class="nota">Tutto ciò che il corso costruisce — tool, knowledge base, skills, orchestrazione — è un modo di rinforzare i task dove il modello da solo è fragile. E la frontiera si sposta di mese in mese.</div>
+        </div>
+        <div class="footnote">02 / Sezione 1</div>
+      </section>
+
+      <section id="slide-3">
+        <p class="eyebrow">SEZIONE 1 · COSA È UN AGENTE</p>
+        <h2>Un agente è un sistema composto</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide3-formula-agent.svg" alt="Agent = LLM + Harness + System Prompt + Tools + KB + Skills"></div>
+          <div class="nota">LLM e Harness sono il sistema operativo. Il resto è il software installato — ed è il software che distingue un agente da un altro.</div>
+        </div>
+        <div class="footnote">03 / Sezione 1</div>
+      </section>
+
+      <section id="slide-4">
+        <p class="eyebrow">SEZIONE 1 · COSA È UN AGENTE</p>
+        <h2>Il ruolo dell'harness</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <p style="font-size: 13.5pt; line-height: 1.5; margin: 0;">L'Harness è un software "classico", deterministico, che orchestra le attività che fa l'agente sotto la direzione del LLM.</p>
+              <p style="font-size: 13.5pt; line-height: 1.5; margin: 14px 0 0;">Se pensiamo all'agente come un'entità neuro-simbolica, l'LLM è la parte <strong>Neuro</strong>, l'Harness quella <strong>simbolica</strong>.</p>
+              <p style="font-size: 13.5pt; line-height: 1.5; margin: 14px 0 0;">È come l'esoscheletro operativo, all'interno del quale c'è un cervello, l'LLM.</p>
+            </div>
+            <div class="visual"><img src="svg/slide4-ruolo-harness.svg" alt="L'harness come esoscheletro attorno all'LLM"></div>
+          </div>
+        </div>
+        <div class="footnote">04 / Sezione 1</div>
+        <aside class="notes">Passaggio a voce verso la sezione 2: oggi apriamo il primo termine della formula, l'LLM.</aside>
+      </section>
+
+      <!-- ══════════ SEZIONE 2 ══════════ -->
+      <section id="div-sec2" class="section-divider alt" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 02</p>
+        <h1>L'LLM: cos'è<br>e come genera</h1>
+        <p>Una distribuzione sul prossimo token, e un loop che non si ferma fino a STOP.</p>
+      </section>
+
+      <section id="slide-5">
+        <p class="eyebrow">SEZIONE 2 · L'LLM: COS'È E COME GENERA</p>
+        <h2>Che cos'è un modello linguistico</h2>
+        <div class="content">
+          <p class="defn">Un modello linguistico assegna una probabilità al prossimo token, dato il contesto che lo precede.</p>
+          <div class="tv tv-30" style="gap: 26px;">
+            <div class="col-text">
+              <div class="story">
+                <p class="s-tag">1951</p>
+                <p>Claude Shannon stima l'entropia dell'inglese con un gioco: mostrare un testo troncato a una persona e chiederle di indovinare la lettera successiva. Un LLM è la macchina che gioca a quel gioco — meglio di chiunque.</p>
+              </div>
+            </div>
+            <div class="visual"><img src="svg/slide5-modello-linguistico.svg" alt="Due contesti, due distribuzioni: bassa e alta entropia"></div>
+          </div>
+          <div class="nota">Prevedere bene significa comprimere bene: non è una metafora, è un teorema. Lo ritroveremo.</div>
+        </div>
+        <div class="footnote">05 / Sezione 2</div>
+      </section>
+
+      <section id="slide-6">
+        <p class="eyebrow">SEZIONE 2 · L'LLM: COS'È E COME GENERA</p>
+        <h2>La generazione: un token alla volta</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide6-generazione-autoregressiva.svg" alt="Il contesto cresce token dopo token"></div>
+          <p class="caption">Il modello non pianifica una risposta. Produce un token alla volta. Ogni nuovo token viene appeso al contesto e il contesto completo viene rivalutato per produrre il successivo.</p>
+        </div>
+        <div class="footnote">06 / Sezione 2</div>
+        <aside class="notes">L'esempio prosegue deliberatamente il contesto "Il gatto è…" della slide 5.</aside>
+      </section>
+
+      <section id="slide-7">
+        <p class="eyebrow">SEZIONE 2 · L'LLM: COS'È E COME GENERA</p>
+        <h2>Il golfista</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide7-golfista.svg" alt="Catena di colpi, ognuno dal punto d'atterraggio del precedente; la buca ignorata"></div>
+          <p class="caption">Come un golfista bravissimo a colpire la pallina: ogni colpo parte da dove è atterrata l'ultima, informato dalla storia di tutti i colpi precedenti. Ma alla buca, per ora, non mira nessuno.</p>
+        </div>
+        <div class="footnote">07 / Sezione 2</div>
+        <aside class="notes">In sezione 4 la stessa immagine torna con la mira alla buca: è l'RL ad aggiungerla.</aside>
+      </section>
+
+      <section id="slide-8">
+        <p class="eyebrow">SEZIONE 2 · L'LLM: COS'È E COME GENERA</p>
+        <h2>Il 1° loop: la generazione</h2>
+        <div class="content">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 0;">
+            <div class="pseudo">
+              <span class="kw">finché</span> non esce <strong>STOP</strong>:
+              <span class="in">leggi il contesto</span>
+              <span class="in">genera un token</span>
+              <span class="in">appendilo al contesto</span>
+            </div>
+          </div>
+          <div class="nota">Lo chiamiamo 1° loop perché ne arriveranno altri due.</div>
+        </div>
+        <div class="footnote">08 / Sezione 2</div>
+      </section>
+
+      <section id="slide-9">
+        <p class="eyebrow">SEZIONE 2 · L'LLM: COS'È E COME GENERA</p>
+        <h2>Il 2° loop: la conversazione</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <div class="pseudo" style="font-size: 12pt; line-height: 1.7;">
+                <span class="kw">finché</span> la conversazione continua:
+                <span class="in">l'utente scrive</span>
+                <span class="in" style="color: var(--q-yellow);">[1° loop: genera token fino a STOP]</span>
+                <span class="in">la risposta si accoda alla storia</span>
+              </div>
+              <p class="caption">Un chatbot è due loop annidati: dentro ogni turno, il loop di generazione; attorno, la conversazione che accumula contesto. I primi chatbot erano esattamente questo.</p>
+            </div>
+            <div class="visual"><img src="svg/slide9-secondo-loop.svg" alt="Due anelli annidati e la corona vuota riservata al terzo loop"></div>
+          </div>
+          <div class="nota">Il 3° loop — quello agentico — non si aggiungerà in coda: si infilerà in mezzo. Lo vedremo nascere oggi, e lo apriremo al prossimo incontro.</div>
+        </div>
+        <div class="footnote">09 / Sezione 2</div>
+      </section>
+
+      <!-- ══════════ SEZIONE 3 ══════════ -->
+      <section id="div-sec3" class="section-divider" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 03</p>
+        <h1>Perché<br>funziona</h1>
+        <p>Dentro il modello: il significato diventa geometria.</p>
+      </section>
+
+      <section id="slide-10">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>La base di tutto: a ogni parola il suo vettore</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide10-parola-vettore.svg" alt="Tre parole associate a tre vettori"></div>
+          <p class="caption">Per far entrare il linguaggio in una macchina che calcola, la mossa fondativa è: a ogni parola, una lista di numeri. Quell'associazione non la scrive nessuno a mano: viene appresa.</p>
+          <div class="nota small">Perché proprio dei numeri? Perché sui numeri si può calcolare — è la prossima slide.</div>
+        </div>
+        <div class="footnote">10 / Sezione 3</div>
+      </section>
+
+      <section id="slide-11">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>Vettori e prodotto scalare</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Vettore</strong>una lista di numeri — ovvero una direzione nello spazio.</li>
+                <li><strong>Prodotto scalare</strong>misura quanto due vettori si sovrappongono: è un rilevatore di affinità.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide11-vettori-prodotto-scalare.svg" alt="La doppia natura del vettore e i tre casi del prodotto scalare"></div>
+          </div>
+          <div class="nota">Tutto ciò che segue — embeddings, attention, fully connected — è questa operazione, ripetuta miliardi di volte.</div>
+        </div>
+        <div class="footnote">11 / Sezione 3</div>
+      </section>
+
+      <section id="slide-12">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>La scala del calcolo: vettori e matrici</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide12-scala-del-calcolo.svg" alt="Tre gradini: vettore per vettore, vettore per matrice, matrice per matrice"></div>
+          <div class="nota">È tutto qui il calcolo di un LLM — ed è per questo che le GPU, fatte per moltiplicare matrici, sono il suo motore naturale.</div>
+        </div>
+        <div class="footnote">12 / Sezione 3</div>
+      </section>
+
+      <section id="slide-13">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>Embeddings: lo spazio delle idee</h2>
+        <div class="content">
+          <p class="defn" style="font-size: 15pt; margin-bottom: 10px;">Un embedding è il vettore che rappresenta un token in uno spazio a migliaia di dimensioni.</p>
+          <div class="visual"><img src="svg/slide13-embeddings.svg" alt="Proiezione 2D dello spazio degli embedding: cluster e direzioni-relazione"></div>
+          <div class="nota">Un LLM, in fondo, è un manipolatore di embeddings.</div>
+        </div>
+        <div class="footnote">13 / Sezione 3</div>
+        <aside class="notes">Due proprietà: la vicinanza è affinità (concetti simili stanno vicini); le direzioni sono relazioni (king − man + woman ≈ queen).</aside>
+      </section>
+
+      <section id="slide-14">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>La tokenizzazione</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>L'unità non è la parola: è il token</strong>frammenti di testo da un vocabolario fisso, ~100.000 voci.</li>
+                <li><strong>Le parole comuni sono un token intero</strong>quelle rare vengono spezzate.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide14-tokenizzazione.svg" alt="Due frasi tokenizzate: parole comuni e una parola rara spezzata"></div>
+          </div>
+          <div class="nota">È per questo che a un modello riesce difficile contare le lettere di una parola: le lettere, lui, non le ha mai viste. D'ora in poi diremo: token.</div>
+        </div>
+        <div class="footnote">14 / Sezione 3</div>
+      </section>
+
+      <section id="slide-15">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>L'architettura, in un colpo d'occhio</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide15-architettura.svg" alt="Pipeline di un LLM decoder-only, dal testo alla distribuzione sul prossimo token"></div>
+          <p class="caption">Dal testo alla distribuzione sul prossimo token. Ogni pezzo di questo percorso è una delle prossime slide.</p>
+          <div class="side-notes">
+            <p>Il blocco attention + fully connected è ripetuto N volte (nei modelli grandi, ~100).</p>
+            <p>Dopo la distribuzione, il sampling sceglie il token effettivo.</p>
+            <p>Diagramma semplificato: omesse le normalizzazioni.</p>
+          </div>
+        </div>
+        <div class="footnote">15 / Sezione 3</div>
+      </section>
+
+      <section id="slide-16">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>Fanout: il matching concettuale</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Un rilevatore per concetto</strong>ogni riga della matrice è un pattern memorizzato; il prodotto scalare misura quanto l'embedding in transito gli somiglia.</li>
+                <li><strong>Tutti in parallelo (fanout)</strong>migliaia di rilevatori scattano insieme, a ogni token, a ogni strato — lo spazio si espande.</li>
+                <li><strong>La non linearità è un gate</strong>passa solo ciò che è davvero affine; tutto il resto viene azzerato.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide16-fanout.svg" alt="Batteria di rilevatori concettuali e gate della non linearità"></div>
+          </div>
+          <div class="nota">È il rilevatore di affinità della Slide 11, moltiplicato per migliaia: da un rilevatore a una batteria di rilevatori.</div>
+        </div>
+        <div class="footnote">16 / Sezione 3</div>
+      </section>
+
+      <section id="slide-17">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>Compressione: la sovrapposizione</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Compressione</strong>i concetti sopravvissuti al gate vengono ri-sommati in un unico vettore: più significati coesistono, sovrapposti, nello stesso embedding.</li>
+                <li><strong>La somma è uno spostamento</strong>sommare quel contributo all'embedding originale — è il nodo <code>+</code> della skip connection — lo sposta nello spazio delle idee: il significato si muove, si arricchisce.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide17-compressione.svg" alt="I concetti si sommano in un contributo che sposta l'embedding"></div>
+          </div>
+          <div class="nota">La stessa geometria della Slide 13: le relazioni sono direzioni. Il blocco calcola la direzione in cui muovere il significato.</div>
+        </div>
+        <div class="footnote">17 / Sezione 3</div>
+      </section>
+
+      <section id="slide-18">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>Attention: domande e chiavi</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Ogni token emette una domanda (Q)</strong>"cosa sto cercando?" — e una chiave (K): "cosa offro a chi cerca?"</li>
+                <li><strong>L'affinità è ancora un prodotto scalare</strong>Q·K misura quanto la chiave di un token risponde alla domanda di un altro.</li>
+                <li><strong>Tre proiezioni semantiche apprese</strong>tre matrici, applicate all'embedding di ogni token, lo proiettano in tre vesti. Q e K sono ottimizzate — testa per testa — per trovare il token giusto nel contesto precedente. Ciò su cui fai match non è ciò che ricevi.</li>
+              </ul>
+              <div class="story" style="margin-top: 12px;">
+                <p>Come in biblioteca: porti una richiesta al banco (Q), il match si fa sulle etichette dei dorsi (K). Il contenuto del libro (V) è un'altra cosa — e arriva dopo.</p>
+              </div>
+            </div>
+            <div class="visual"><img src="svg/slide18-attention-qk.svg" alt="Il token calcio emette una domanda; gli altri token espongono le loro chiavi"></div>
+          </div>
+          <div class="nota small">Ogni testa fa una domanda diversa — sintassi, riferimenti, tono: più ricerche in parallelo.</div>
+        </div>
+        <div class="footnote">18 / Sezione 3</div>
+      </section>
+
+      <section id="slide-19">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>Softmax: il budget di ascolto</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Da punteggi a percentuali</strong>la softmax trasforma le affinità grezze in pesi che sommano a 1 — un budget di ascolto da distribuire.</li>
+                <li><strong>Esagera le differenze</strong>chi è più affine prende quasi tutto il budget: è un "max morbido".</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide19-softmax.svg" alt="Dai punteggi grezzi al budget di ascolto che somma a 100%"></div>
+          </div>
+          <div class="nota">La stessa macchina la ritroveremo all'uscita del modello, quando i punteggi diventeranno la distribuzione sul prossimo token.</div>
+        </div>
+        <div class="footnote">19 / Sezione 3</div>
+      </section>
+
+      <section id="slide-20">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>V: la consegna</h2>
+        <div class="content">
+          <div class="tv tv-30">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Il terzo volto del token: il value</strong>la proiezione V è ottimizzata per estrarre la semantica di quel token in quel contesto — ciò che consegna, se ascoltato, per arricchire il token in arrivo. Il libro, non l'etichetta.</li>
+                <li><strong>La somma pesata è lo spostamento</strong>i value, pesati dal budget di ascolto, si sommano all'embedding: il significato si muove verso l'interpretazione giusta.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide20-attention-v.svg" alt="I value pesati dal budget di ascolto spostano il token nello spazio delle idee"></div>
+          </div>
+          <div class="nota">È la manipolazione della Slide 17 — ma qui guidata dal contesto: sono gli altri token a decidere la direzione.</div>
+        </div>
+        <div class="footnote">20 / Sezione 3</div>
+      </section>
+
+      <section id="slide-21">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>Positional encoding: l'ordine conta</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>L'attention è cieca all'ordine</strong>nel match Q·K nulla dice chi viene prima: "il gatto morde il cane" e "il cane morde il gatto" sarebbero lo stesso sacchetto di embedding.</li>
+                <li><strong>La correzione</strong>a ogni embedding si somma un vettore che codifica la sua posizione nella sequenza.</li>
+                <li><strong>Ancora uno spostamento</strong>anche la posizione è una direzione nello spazio delle idee: "gatto, secondo token della frase" è il punto <code>gatto</code>, spostato un po'.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide21-positional-encoding.svg" alt="Senza posizione le due frasi collassano; con la somma dei vettori di posizione tornano distinguibili"></div>
+          </div>
+          <div class="nota">È l'innesto "+ positional encoding" già visto nella mappa dell'architettura (Slide 15).</div>
+        </div>
+        <div class="footnote">21 / Sezione 3</div>
+      </section>
+
+      <section id="slide-22">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>Reverse embedding: tornare ai token</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>L'operazione inversa della prima</strong>all'ingresso, da token a vettore; all'uscita, dal vettore finale a una preferenza su ogni token del vocabolario.</li>
+                <li><strong>Ancora prodotti scalari</strong>l'embedding finale viene confrontato con il vettore di ogni token del vocabolario: ~100.000 affinità — i logits — che la softmax trasforma nella distribuzione.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide22-reverse-embedding.svg" alt="Dall'embedding finale ai logits alla distribuzione"></div>
+          </div>
+          <div class="nota">È la distribuzione da cui siamo partiti: il cerchio del "manipolatore di embeddings" si chiude.</div>
+        </div>
+        <div class="footnote">22 / Sezione 3</div>
+      </section>
+
+      <section id="slide-23">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>Il contesto ha un costo</h2>
+        <div class="content">
+          <div class="tv tv-30">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Il costo è quadratico</strong>ogni nuovo token fa Q·K con tutti i precedenti: raddoppi il contesto, quadruplichi il lavoro.</li>
+                <li><strong>Prefill</strong>il costo iniziale di "leggere" il prompt: calcolare K e V di ogni token, a ogni strato.</li>
+                <li><strong>KV cache</strong>chiavi e valori dei token già visti si salvano: ogni giro del 1° loop paga solo il token nuovo.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide23-costo-contesto.svg" alt="Senza e con KV cache: cosa si ricalcola e cosa si riusa"></div>
+          </div>
+          <div class="nota">Funziona perché la masked attention rende il passato immutabile: i token precedenti non vedono il nuovo, quindi i loro K, V e fully connected non cambiano mai. Il contesto resta comunque una risorsa costosa: lo ritroveremo.</div>
+        </div>
+        <div class="footnote">23 / Sezione 3</div>
+      </section>
+
+      <section id="slide-24">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>La conoscenza è nei pesi</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Ciò che è scritto</strong>la conoscenza abita nei vettori appresi — gli embedding dei token e le righe delle matrici: i pattern dei rilevatori e i loro contributi.</li>
+                <li><strong>Ciò che emerge</strong>le regolarità geometriche tra quei vettori — le direzioni-relazione dello spazio delle idee. Nessuno le ha scritte: si sono formate perché servivano a predire.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide24-conoscenza-nei-pesi.svg" alt="La stessa domanda risolta da un database e da un LLM"></div>
+          </div>
+          <div class="nota">Niente archivio consultabile, niente righe di database. Ed è per questo che il recupero può sbagliare — prossima slide.</div>
+        </div>
+        <div class="footnote">24 / Sezione 3</div>
+      </section>
+
+      <section id="slide-25">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>L'LLM come compressore lossy</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <p class="defn" style="font-size: 15pt;">Per far stare trilioni di token in miliardi di parametri, il modello è costretto ad astrarre: non memorizza, modella.</p>
+              <ul class="pts tight">
+                <li><strong>I numeri non tornano</strong>non c'è spazio per memorizzare letteralmente il training set.</li>
+                <li><strong>Cosa resta</strong>concetti, relazioni, regolarità — la geometria dello spazio delle idee.</li>
+                <li><strong>Il sottoprodotto</strong>le capacità emergenti — ragionamento, analogia, transfer tra domini — non sono programmate: sono un effetto collaterale della compressione.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide25-compressore-lossy.svg" alt="L'imbuto della compressione: da trilioni di token a una rete di concetti"></div>
+          </div>
+          <blockquote class="pull" style="font-size: 15pt; margin-top: 12px;">"ChatGPT è un JPEG sfocato del web"
+            <span class="src">Ted Chiang, The New Yorker — e per comprimere così, ha dovuto capire.</span>
+          </blockquote>
+        </div>
+        <div class="footnote">25 / Sezione 3</div>
+      </section>
+
+      <section id="slide-26">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>Conseguenze della compressione</h2>
+        <div class="content">
+          <div class="cols cols-2">
+            <div>
+              <p class="col-head">Dove è forte</p>
+              <ul>
+                <li>Framing concettuali su qualunque dominio</li>
+                <li>Ragionamento e analogia</li>
+                <li>Trasformazione di testo: traduzione, sintesi, riformattazione</li>
+              </ul>
+            </div>
+            <div>
+              <p class="col-head neutral">Dove serve cautela</p>
+              <ul>
+                <li>Fatti puntuali: date, numeri, citazioni letterali</li>
+                <li>Conoscenza post-cutoff</li>
+                <li>Nicchie poco rappresentate nel training</li>
+                <li>Dati proprietari mai visti</li>
+                <li>Calcoli numerici precisi</li>
+              </ul>
+            </div>
+          </div>
+          <div class="nota dark">Fidati del framing, verifica i fatti. Le allucinazioni non sono un bug morale del modello: sono il comportamento strutturale di un compressore lossy a cui chiedi di ricostruire ciò che non ha memorizzato bene.</div>
+        </div>
+        <div class="footnote">26 / Sezione 3</div>
+      </section>
+
+      <section id="slide-27">
+        <p class="eyebrow">SEZIONE 3 · PERCHÉ FUNZIONA</p>
+        <h2>MoE: non tutti i pesi lavorano sempre</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Il perché</strong>il fanout è la parte più costosa — ma per un dato token la maggior parte dei rilevatori resta muta. Allora i pesi si spezzano in esperti, e si attivano solo i pochi rilevanti.</li>
+                <li><strong>Il router</strong>davanti agli esperti, un piccolo selettore decide a chi mandare ogni token.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide27-moe.svg" alt="Il router accende solo due esperti su otto"></div>
+          </div>
+          <div class="nota">Il risultato: modelli enormi nei parametri totali, ma con un costo per token da modello piccolo. Torneremo sul lato economico.</div>
+        </div>
+        <div class="footnote">27 / Sezione 3</div>
+      </section>
+
+      <!-- ══════════ SEZIONE 4 ══════════ -->
+      <section id="div-sec4" class="section-divider dark" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 04</p>
+        <h1>Come viene<br>addestrato</h1>
+        <p>Tre fasi: da completatore di testo, a conversatore, a modello che sa volere i tool.</p>
+      </section>
+
+      <section id="slide-28">
+        <p class="eyebrow">SEZIONE 4 · COME VIENE ADDESTRATO</p>
+        <h2>Le tre fasi</h2>
+        <div class="content">
+          <p class="caption" style="margin: 0 0 10px;">Ogni fase produce un modello diverso — e ognuna parte dal modello prodotto dalla precedente.</p>
+          <div class="visual"><img src="svg/slide28-tre-fasi.svg" alt="Pipeline delle tre fasi di addestramento"></div>
+        </div>
+        <div class="footnote">28 / Sezione 4</div>
+        <aside class="notes">Slide-mappa: verrà richiamata alle slide 29, 31 e 32 evidenziando lo stadio corrente.</aside>
+      </section>
+
+      <section id="slide-29">
+        <p class="eyebrow">SEZIONE 4 · COME VIENE ADDESTRATO</p>
+        <h2>Pretraining: indovinare il prossimo token</h2>
+        <div class="content">
+          <div class="tv tv-35" style="flex: 1.55; min-height: 0;">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Il gioco</strong>prendi un testo vero, nascondi il seguito, chiedi al modello il prossimo token.</li>
+                <li><strong>Il punteggio (cross-entropy)</strong>quanta probabilità hai dato al token che era davvero lì? Tanta: punteggio buono. Poca: penalità.</li>
+                <li><strong>La correzione (gradient descent)</strong>un metodo sistematico e iterativo che, a ogni errore, aggiusta di poco i valori di tutte le matrici che abbiamo visto — embedding, Q, K, V, rilevatori.</li>
+                <li><strong>Cosa si impara davvero</strong>il giudizio è sul singolo token successivo, ma ciò che alla fine viene stimata è l'intera distribuzione.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide29-pretraining.svg" alt="Il ciclo del pretraining: testo, previsione, confronto, correzione"></div>
+          </div>
+          <div class="visual" style="flex: 0 0 96px; margin-top: 6px;"><img src="svg/slide29-scala-dati.svg" alt="La scala dei dati di pretraining, su scala logaritmica"></div>
+          <div class="nota small">Minimizzare la cross-entropy è letteralmente comprimere: è il fronte 1 della Slide 5. E tutto questo, ripetuto su 25–50 trilioni di token.</div>
+        </div>
+        <div class="footnote">29 / Sezione 4</div>
+      </section>
+
+      <section id="slide-30">
+        <p class="eyebrow">SEZIONE 4 · COME VIENE ADDESTRATO</p>
+        <h2>Gradient descent: sbaglia, misura, correggi</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>L'errore è un paesaggio</strong>immagina una valle: ogni punto è una configurazione dei pesi, l'altitudine è quanto il modello sbaglia.</li>
+                <li><strong>La discesa</strong>il gradiente dice, per ogni singolo peso, in che direzione muoverlo per sbagliare un po' meno. Un passetto, e si ricomincia.</li>
+                <li><strong>Sistematico, non intelligente</strong>nessuna comprensione: solo la pendenza locale, seguita miliardi di volte, su miliardi di pesi insieme.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide30-gradient-descent.svg" alt="La valle dell'errore e la discesa a passetti"></div>
+          </div>
+          <div class="nota">Sarà lo stesso metodo per tutte e tre le fasi: cambia solo il punteggio da migliorare.</div>
+        </div>
+        <div class="footnote">30 / Sezione 4</div>
+      </section>
+
+      <section id="slide-31">
+        <p class="eyebrow">SEZIONE 4 · COME VIENE ADDESTRATO</p>
+        <h2>RLHF: arriva la mira</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Il problema</strong>il completatore sa solo proseguire il testo: non risponde, completa. A "Come posso aumentare le vendite?" reagisce con altre domande — come farebbe un testo del web — non con una risposta.</li>
+                <li><strong>La mira</strong>gli umani confrontano coppie di risposte e dicono quale preferiscono.</li>
+                <li><strong>Il trucco (reward model)</strong>quelle preferenze addestrano un secondo modello, che impara a stimare il giudizio umano: è lui a dare la reward, milioni di volte, al posto nostro.</li>
+              </ul>
+              <div class="nota small" style="margin-top: 10px;">Novembre 2022, ChatGPT: non un nuovo modello — GPT-3 esisteva dal 2020. Un nuovo modo di addestrarlo a conversare.</div>
+            </div>
+            <div class="visual"><img src="svg/slide31-rlhf.svg" alt="Il golfista con la mira, e la catena preferenze umane, reward model, punteggio"></div>
+          </div>
+          <div class="nota">Il modello non ottimizza verso il giudizio umano — ottimizza verso la stima che il reward model fa di quel giudizio. Il golfista ora mira alla buca: ma la bandierina l'ha piantata il reward model.</div>
+        </div>
+        <div class="footnote">31 / Sezione 4</div>
+      </section>
+
+      <section id="slide-32">
+        <p class="eyebrow">SEZIONE 4 · COME VIENE ADDESTRATO</p>
+        <h2>RL agentico: traiettorie</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Cambia l'unità di giudizio</strong>non più la frase migliore, ma la traiettoria che completa il task.</li>
+                <li><strong>Come si allena</strong>il modello prova il task molte volte; le traiettorie che arrivano in fondo vengono premiate, le altre no (GRPO: si confrontano gruppi di tentativi).</li>
+                <li><strong>Cosa emerge</strong>il modello impara che chiamare un tool al momento giusto è ciò che fa vincere — nasce la "volontà" della tool call.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide32-rl-agentico.svg" alt="Tre traiettorie a confronto; la reward scorre all'indietro sulla vincente"></div>
+          </div>
+          <div class="nota">La traiettoria — non la risposta — diventa l'unità di valore. Ce lo ritroveremo: è l'artefatto primario di un agente.</div>
+        </div>
+        <div class="footnote">32 / Sezione 4</div>
+      </section>
+
+      <section id="slide-33">
+        <p class="eyebrow">SEZIONE 4 · COME VIENE ADDESTRATO</p>
+        <h2>Nasce il 3° loop</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Com'è fatta davvero</strong>una tool call è testo: il modello emette una richiesta strutturata — nome del tool, parametri — e si ferma.</li>
+                <li><strong>I tool vanno dichiarati</strong>il modello può volere solo i tool che conosce: l'elenco, con nome e descrizione di ciascuno, gli viene dato in apertura di contesto.</li>
+                <li><strong>Il giro</strong>qualcuno esegue, il risultato rientra nel contesto, il modello riparte: giro dopo giro, fino a task completato.</li>
+                <li><strong>Il loop che mancava</strong>è il 3° loop — e si infila esattamente lì, tra la generazione e la conversazione.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide33-terzo-loop.svg" alt="Tre loop annidati: conversazione, task, generazione"></div>
+          </div>
+          <div class="nota dark">Il modello sa solo chiedere. Chi esegue davvero — chi fa parsing, dispatch, sandbox — è il tema del prossimo incontro: l'harness.</div>
+        </div>
+        <div class="footnote">33 / Sezione 4</div>
+      </section>
+
+      <section id="slide-34">
+        <p class="eyebrow">SEZIONE 4 · COME VIENE ADDESTRATO</p>
+        <h2>Il modello è stateless: il contesto è tutto</h2>
+        <div class="content">
+          <div class="story" style="margin-bottom: 12px;">
+            <p>Il protagonista di <em>Memento</em>: amnesia anterograda — ricorda la vita prima dell'incidente, ma ogni nuovo ricordo svanisce in minuti. Sopravvive scrivendo tutto su Polaroid e tatuaggi: ciò che gli serve sapere deve essere fisicamente davanti ai suoi occhi, ora. Un LLM funziona così: il training è la "vita prima" — enorme, ma congelata. Tutto il resto esiste solo se è nel contesto, in questo istante.</p>
+          </div>
+          <div class="tv tv-30">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Nessuna memoria interna</strong>a ogni chiamata il modello rilegge tutto da capo. L'unica sua memoria è il contesto che gli passi — la KV cache è un risparmio di calcolo, non un ricordo.</li>
+                <li><strong>E il contesto si accumula</strong>turni di conversazione, dichiarazioni dei tool, tool call, risultati: ogni giro dei tre loop appende qualcosa. Può crescere moltissimo.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide34-stateless.svg" alt="La finestra di contesto fotografata a istanti successivi: la pila cresce"></div>
+          </div>
+          <div class="nota small">E abbiamo visto che il contesto costa — e vedremo tra poco che, oltre a costare, a un certo punto inizia a far male.</div>
+        </div>
+        <div class="footnote">34 / Sezione 4</div>
+      </section>
+
+      <section id="slide-35">
+        <p class="eyebrow">SEZIONE 4 · COME VIENE ADDESTRATO</p>
+        <h2>Il modello è figlio dei suoi training set</h2>
+        <div class="content">
+          <ul class="pts" style="font-size: 13pt;">
+            <li><strong>Tutto viene dai dati</strong>ciò che il modello sa, come parla, cosa considera ovvio — è la conseguenza di ciò che ha letto, con i bias di chi quei testi li ha scritti.</li>
+            <li><strong>Il cut-off</strong>il mondo del modello si ferma alla data di raccolta dei dati: di ciò che accade dopo, nei pesi non c'è nulla.</li>
+            <li><strong>Anche il carattere</strong>cosa risponde volentieri, come si comporta — viene anch'esso da un training set: le preferenze umane, stimate dal reward model. Chi fornisce il feedback plasma l'AI: implicazioni etiche, geopolitiche, di business.</li>
+          </ul>
+          <p class="hl-line">Il modello che usi non è "l'AI": è una particolare AI, addestrata con particolari valori da particolari persone.</p>
+          <div class="reflect" style="margin-top: 16px;">
+            <p>La conoscenza sui modelli fa parte dei training set: un'AI ha letto i paper che descrivono il suo stesso funzionamento interno. L'uomo non sa progettare un cervello — un'AI ha conoscenza di dettaglio del proprio.</p>
+          </div>
+        </div>
+        <div class="footnote">35 / Sezione 4</div>
+      </section>
+
+      <!-- ══════════ SEZIONE 5 ══════════ -->
+      <section id="div-sec5" class="section-divider" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 05</p>
+        <h1>Il modello<br>nel mondo</h1>
+        <p>Context rot, multimodality, reasoning, economia e mercato.</p>
+      </section>
+
+      <section id="slide-36">
+        <p class="eyebrow">SEZIONE 5 · IL MODELLO NEL MONDO</p>
+        <h2>Context rot</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Il fatto</strong>con il contesto lungo, la qualità degrada: il modello trova peggio ciò che gli serve, anche se c'è.</li>
+                <li><strong>Perché</strong>il budget di attenzione (la softmax della Slide 19) si diluisce su migliaia di token: tutto ascolta un po', niente abbastanza.</li>
+                <li><strong>La conseguenza</strong>il contesto è una risorsa scarsa da governare, non un cassetto infinito.</li>
+              </ul>
+              <div class="nota small" style="margin-top: 10px;"><strong>Regole pratiche.</strong> Nuovo compito, nuova chat: "continuare" una conversazione lunga per comodità peggiora, non migliora. Non riempire: seleziona ciò che entra.</div>
+            </div>
+            <div class="visual"><img src="svg/slide36-context-rot.svg" alt="La qualità in funzione della lunghezza del contesto: salita, plateau, declino"></div>
+          </div>
+          <div class="nota dark">Governarlo — decidere cosa entra, cosa esce, cosa si riassume — non lo fa il modello. Serve qualcuno fuori: l'harness.</div>
+        </div>
+        <div class="footnote">36 / Sezione 5</div>
+        <aside class="notes">Il visual è uno stand-in: la specifica prevede qui il grafico esterno già disponibile sul degrado con contesto lungo. Sostituirlo prima della lezione.</aside>
+      </section>
+
+      <section id="slide-37">
+        <p class="eyebrow">SEZIONE 5 · IL MODELLO NEL MONDO</p>
+        <h2>Multimodality</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Stessa macchina, ingressi diversi</strong>un'immagine viene spezzata in tessere (patch); ogni tessera diventa un embedding, come un token.</li>
+                <li><strong>Lo stesso spazio delle idee</strong>la foto di un gatto e la parola "gatto" finiscono vicine: il significato è la posizione, non il mezzo.</li>
+                <li><strong>E oltre</strong>vale anche per audio e video.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide37-multimodality.svg" alt="Testo e immagine convergono nello stesso spazio delle idee"></div>
+          </div>
+          <div class="nota">Per questo lo stesso modello può leggere un contratto e guardarne la scansione.</div>
+        </div>
+        <div class="footnote">37 / Sezione 5</div>
+      </section>
+
+      <section id="slide-38">
+        <p class="eyebrow">SEZIONE 5 · IL MODELLO NEL MONDO</p>
+        <h2>Reasoning</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Pensare è generare</strong>prima di rispondere, il modello genera token di ragionamento: restano nel contesto, ma non sono la risposta.</li>
+                <li><strong>Da dove viene</strong>è ancora RL: vengono premiate le traiettorie di pensiero che arrivano alla risposta giusta (Slide 32).</li>
+                <li><strong>Il prezzo</strong>più qualità = più calcolo alla domanda — i token di pensiero si pagano come gli altri.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide38-reasoning.svg" alt="Modello standard e modello di reasoning a confronto sulla stessa domanda"></div>
+          </div>
+          <div class="nota">È sempre il 1° loop: semplicemente, lo STOP arriva molto più tardi.</div>
+        </div>
+        <div class="footnote">38 / Sezione 5</div>
+      </section>
+
+      <section id="slide-39">
+        <p class="eyebrow">SEZIONE 5 · IL MODELLO NEL MONDO</p>
+        <h2>I costi: training, inferenza, distillazione</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Training</strong>investimento una tantum, enorme: mesi di cluster di GPU — ordine delle decine di milioni.</li>
+                <li><strong>Un pretraining, molti RL</strong>dallo stesso foundational model si addestrano poi più varianti via RL — conversazionale, coding, agentica: il grosso dell'investimento si paga una volta sola.</li>
+                <li><strong>Inferenza</strong>centesimi per chiamata, moltiplicati per miliardi di chiamate: è qui che si gioca il margine.</li>
+                <li><strong>Distillazione</strong>il ponte: il modello grande e costoso genera gli esempi su cui si addestra un modello piccolo ed economico — qualità simile, costo per token molto più basso.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide39-costi.svg" alt="Le due economie del training e dell'inferenza, e il ponte della distillazione"></div>
+          </div>
+          <div class="nota">Tutto è moltiplicazione di matrici (Slide 12): per questo l'economia dei modelli è, in fondo, economia di GPU.</div>
+        </div>
+        <div class="footnote">39 / Sezione 5</div>
+      </section>
+
+      <section id="slide-40">
+        <p class="eyebrow">SEZIONE 5 · IL MODELLO NEL MONDO</p>
+        <h2>Il prezzo per token</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Input e output hanno prezzi diversi</strong>i token di output costano di più (~3–5×): vengono generati uno alla volta; quelli di input si processano in parallelo nel prefill (Slide 23).</li>
+                <li><strong>Il contesto si ripaga a ogni chiamata</strong>il modello è stateless (Slide 34): tutta la pila rientra — e si ripaga — a ogni giro.</li>
+                <li><strong>La cache sconta ciò che non cambia</strong>il prefisso stabile (system prompt, tool) costa una frazione se riusato: è la KV cache diventata listino.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide40-prezzo-per-token.svg" alt="La fattura di una singola chiamata al modello"></div>
+          </div>
+          <div class="nota">Ordine di grandezza oggi: da centesimi a qualche dollaro per milione di token, a seconda del modello. Le cifre invecchiano in fretta: le regole no.</div>
+        </div>
+        <div class="footnote">40 / Sezione 5</div>
+      </section>
+
+      <section id="slide-41">
+        <p class="eyebrow">SEZIONE 5 · IL MODELLO NEL MONDO</p>
+        <h2>Il valore delle traiettorie</h2>
+        <div class="content">
+          <p class="caption" style="margin: 0 0 14px;">Ogni conversazione è una traiettoria: prompt, risposte, correzioni, approvazioni e rifiuti — una traccia ricca di segnali su cosa funziona.</p>
+          <div class="asym">
+            <div class="blk small">
+              <p class="b-tag">Per l'utente</p>
+              <p>Un mezzo per risolvere un problema oggi; stateless, dimenticata domani.</p>
+            </div>
+            <div class="blk big">
+              <p class="b-tag">Per il provider</p>
+              <p>Miliardi di traiettorie reali = il carburante del prossimo training; pattern d'uso che nessun test artificiale produce.</p>
+            </div>
+          </div>
+          <p class="hl-line">Il moat non è il modello — il modello diventa commodity. Il moat sono le traiettorie d'uso reale, che nessuno può replicare.</p>
+          <div class="nota small"><strong>Tre domande da utente informato.</strong> Nel contratto, i miei dati entrano nel prossimo training? Se costruisco un prodotto AI, dove accumulo il mio flywheel di traiettorie? Quando il modello sarà commodity, dove si sarà spostato il valore?</div>
+        </div>
+        <div class="footnote">41 / Sezione 5</div>
+      </section>
+
+      <section id="slide-42">
+        <p class="eyebrow">SEZIONE 5 · IL MODELLO NEL MONDO</p>
+        <h2>Closed, open weights, open source</h2>
+        <div class="content">
+          <div class="cols cols-3">
+            <div>
+              <p class="col-head">Closed (API)</p>
+              <ul>
+                <li>Paghi a token, zero infrastruttura</li>
+                <li>Qualità di frontiera</li>
+                <li>I dati passano dal provider</li>
+                <li>Dipendenza dal fornitore</li>
+              </ul>
+            </div>
+            <div>
+              <p class="col-head">Open weights</p>
+              <ul>
+                <li>Scarichi i pesi: giri dove vuoi, anche on-premise</li>
+                <li>Dati in casa; personalizzabile: fine-tuning, distillazione</li>
+                <li>Ma dati e ricetta di training restano privati</li>
+                <li>Licenze a volte con vincoli; infrastruttura a tuo carico</li>
+              </ul>
+            </div>
+            <div>
+              <p class="col-head neutral">Open source (vero)</p>
+              <ul>
+                <li>Pesi + dati + codice di training pubblici</li>
+                <li>Riproducibile e ispezionabile fino in fondo</li>
+                <li>Rari, e tipicamente lontani dalla frontiera</li>
+              </ul>
+            </div>
+          </div>
+          <div class="nota">Quasi tutto ciò che il mercato chiama "open source" è in realtà open weights. La scelta si fa sul caso d'uso — sensibilità dei dati, scala, competenze — non per principio. E la frontiera si muove: guardiamola.</div>
+        </div>
+        <div class="footnote">42 / Sezione 5</div>
+      </section>
+
+      <section id="slide-43">
+        <p class="eyebrow">SEZIONE 5 · IL MODELLO NEL MONDO</p>
+        <h2>Quando closed, quando open</h2>
+        <div class="content">
+          <table>
+            <thead>
+              <tr><th>Dimensione</th><th>Closed</th><th>Open</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Qualità di frontiera</td><td>In testa oggi</td><td>A ~6–12 mesi, ma il gap si chiude</td></tr>
+              <tr><td>Costo a scala</td><td>Pay-per-token, lineare con l'uso</td><td>Infrastruttura fissa, marginale vicino a zero</td></tr>
+              <tr><td>Privacy / data residency</td><td>Dati al provider (salvo piani enterprise)</td><td>Totalmente in casa</td></tr>
+              <tr><td>Customization</td><td>Fine-tuning limitato, niente pesi</td><td>Fine-tuning completo, distillazione, LoRA</td></tr>
+              <tr><td>Effort di adozione</td><td>Zero infrastruttura</td><td>GPU, MLOps, competenze</td></tr>
+              <tr><td>Geopolitica / compliance</td><td>Dipendenza da vendor USA o Cina</td><td>Sovranità, compatibilità AI Act</td></tr>
+            </tbody>
+          </table>
+          <div class="nota">Con closed paghi il token E regali le traiettorie. Con open paghi l'infrastruttura, e le traiettorie restano tue.</div>
+          <p class="hl-line" style="font-size: 13.5pt;">Closed per sperimentare velocemente, open per scalare volumi, privacy, customization. La scelta è per use case, non ideologica.</p>
+        </div>
+        <div class="footnote">43 / Sezione 5</div>
+      </section>
+
+      <section id="slide-44">
+        <p class="eyebrow">SEZIONE 5 · IL MODELLO NEL MONDO</p>
+        <h2>Fine-tuning: riprendere la discesa</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>L'idea</strong>riprendere l'addestramento sui propri dati — stesso metodo di sempre, gradient descent (Slide 30) — per specializzare dominio, tono, formato.</li>
+                <li><strong>Il costo</strong>aggiornare tutti i pesi richiede GPU e tempo da training, non da inferenza.</li>
+                <li><strong>Il rischio</strong>correggendo tutto, il modello può disimparare il resto (catastrophic forgetting).</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide44-fine-tuning.svg" alt="La valle dell'errore ripresa: discesa breve verso una valletta laterale"></div>
+          </div>
+          <div class="nota">Serve un'alternativa che corregga senza riscrivere. È la prossima slide.</div>
+        </div>
+        <div class="footnote">44 / Sezione 5</div>
+      </section>
+
+      <section id="slide-45">
+        <p class="eyebrow">SEZIONE 5 · IL MODELLO NEL MONDO</p>
+        <h2>LoRA: la correzione a basso rango</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Non toccare W</strong>la matrice originale resta congelata; si impara solo una correzione ΔW da sommarle.</li>
+                <li><strong>Il vincolo (low-rank)</strong>ΔW è costretta a essere il prodotto di due matrici sottili, A e B: poche direzioni nuove, non una riscrittura — la specializzazione è un piccolo insieme di spostamenti nello spazio delle idee.</li>
+                <li><strong>I numeri</strong>r piccolo (8–64) contro dimensioni in migliaia: da d×d parametri a 2·d·r — meno dell'1%.</li>
+                <li><strong>In pratica</strong>l'adattatore (A, B) è un file di pochi MB: si monta, si smonta, se ne tengono molti — uno per dominio.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide45-lora.svg" alt="La matrice W congelata e il ramo LoRA con il collo di bottiglia a r dimensioni"></div>
+          </div>
+          <div class="nota">È questo a rendere davvero interessanti gli open weights (Slide 42): il modello resta condiviso, la specializzazione diventa tua.</div>
+        </div>
+        <div class="footnote">45 / Sezione 5</div>
+      </section>
+
+      <section id="slide-46">
+        <p class="eyebrow">SEZIONE 5 · IL MODELLO NEL MONDO</p>
+        <h2>La fotografia del mercato</h2>
+        <div class="content">
+          <div class="asset-ph">
+            <p class="ph-tag">Asset esterno da inserire</p>
+            <p>Chart Pareto qualità/prezzo da <strong>arena.ai/leaderboard/text/pareto</strong> — screenshot o export da aggiornare a ridosso della lezione, proprio perché invecchia in fretta.</p>
+          </div>
+          <p class="caption">Qualità (Arena score) contro prezzo: contano i modelli sulla frontiera — a parità di qualità il meno caro, a parità di prezzo il migliore. La fotografia invecchia in settimane: il punto è saper leggere il grafico, non memorizzarlo.</p>
+        </div>
+        <div class="footnote">46 / Sezione 5</div>
+        <aside class="notes">Lettura in aula: evidenziare la frontiera di Pareto e il concetto di "dominato" (tutto ciò che sta sotto/destra della frontiera); indicare un paio di closed di punta e almeno un open weights competitivo (aggancio Slide 42); i punti in basso a destra della frontiera sono dove lavora la distillazione (aggancio Slide 39).</aside>
+      </section>
+
+      <section id="slide-47">
+        <p class="eyebrow">SEZIONE 5 · IL MODELLO NEL MONDO</p>
+        <h2>La formula, riletta</h2>
+        <div class="content">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 0;">
+            <p class="formula">Agent <span class="op">=</span> <span class="hl">LLM</span> <span class="op">+</span> Harness <span class="op">+</span> System Prompt<br><span class="op">+</span> Tools <span class="op">+</span> KB <span class="op">+</span> Skills</p>
+            <p style="text-align: center; font-size: 14pt; color: var(--q-burgundy); font-weight: 600; margin: 18px 0 0;">manipolatore di embeddings — stateless — addestrato in tre fasi a volere i tool</p>
+          </div>
+          <div class="nota dark">Il modello sa volere. Non sa eseguire. Chi fa parsing, dispatch, sandbox, memoria? Prossimo incontro: dentro l'harness.</div>
+        </div>
+        <div class="footnote">47 / Sezione 5</div>
+      </section>
+
+      <!-- ══════════ CHIUSURA ══════════ -->
+      <section id="closing" class="hero no-chrome" data-transition="fade">
+        <p class="eyebrow">FINE DELL'INCONTRO 26</p>
+        <h1>Il modello sa volere.<br>Non sa eseguire.</h1>
+        <p class="hero-lead">Prossimo incontro: tutto ciò che non è il modello — l'harness, i tool, MCP, l'orchestrazione.</p>
+        <div class="hero-meta">
+          <span>WWW.QUANTYCA.IT</span>
+          <span>PC AI · INCONTRO 27</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0,
+      controls: true,
+      progress: true,
+      slideNumber: 'c/t',
+      hash: true,
+      transition: 'slide',
+      center: false,
+      plugins: [ RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>

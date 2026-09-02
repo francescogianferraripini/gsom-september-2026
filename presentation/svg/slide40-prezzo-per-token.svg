@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" width="1000" height="800" role="img" aria-labelledby="t">
+  <title id="t">Il prezzo per token: fattura di una chiamata al modello, con sconto sulla cache e maggiorazione sui token di output</title>
+  <g font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+
+    <!-- card -->
+    <rect x="12" y="12" width="976" height="776" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+
+    <!-- intestazione -->
+    <g id="intestazione">
+      <rect x="12" y="12" width="976" height="76" rx="8" fill="#161719"/>
+      <rect x="12" y="72" width="976" height="16" fill="#161719"/>
+      <text x="44" y="60" font-size="27" font-weight="700" fill="#ffffff">una chiamata al modello</text>
+      <text x="956" y="57" font-size="13" font-weight="600" letter-spacing="1.6" fill="#838383" text-anchor="end">FATTURA</text>
+    </g>
+
+    <!-- intestazioni di colonna -->
+    <g id="colonne" font-size="13" font-weight="600" letter-spacing="1.4" fill="#838383">
+      <text x="44" y="126">VOCE</text>
+      <text x="520" y="126">TOKEN</text>
+      <text x="944" y="126" text-anchor="end">PREZZO</text>
+    </g>
+    <line x1="12" y1="138" x2="988" y2="138" stroke="#dee2e6"/>
+
+    <!-- banda output -->
+    <rect x="12" y="414" width="976" height="184" fill="#f6f6f6"/>
+    <!-- riga verticale voce in cache -->
+    <rect x="12" y="138" width="3" height="92" fill="#a1245a"/>
+
+    <line x1="12" y1="230" x2="988" y2="230" stroke="#dee2e6"/>
+    <line x1="12" y1="322" x2="988" y2="322" stroke="#dee2e6"/>
+    <line x1="12" y1="414" x2="988" y2="414" stroke="#dee2e6"/>
+    <line x1="12" y1="506" x2="988" y2="506" stroke="#dee2e6"/>
+
+    <!-- voce 1 -->
+    <g id="voce-1">
+      <text x="44" y="182" font-size="17" font-weight="600" fill="#838383">1</text>
+      <text x="76" y="182" font-size="19" font-weight="500" fill="#212529">input — system prompt + tool dichiarati</text>
+      <text x="76" y="206" font-size="14" font-weight="600" fill="#a1245a">in cache: riusato, scontato</text>
+      <rect x="520" y="168" width="185" height="16" rx="8" fill="#dee2e6"/>
+      <text x="944" y="183" font-size="21" font-weight="600" fill="#838383" text-anchor="end">€</text>
+      <line x1="922" y1="176" x2="950" y2="176" stroke="#a1245a" stroke-width="2.5"/>
+    </g>
+
+    <!-- voce 2 -->
+    <g id="voce-2">
+      <text x="44" y="274" font-size="17" font-weight="600" fill="#838383">2</text>
+      <text x="76" y="274" font-size="19" font-weight="500" fill="#212529">input — storia della conversazione</text>
+      <rect x="520" y="260" width="300" height="16" rx="8" fill="#dee2e6"/>
+      <text x="944" y="275" font-size="21" font-weight="600" fill="#838383" text-anchor="end">€</text>
+    </g>
+
+    <!-- voce 3 -->
+    <g id="voce-3">
+      <text x="44" y="366" font-size="17" font-weight="600" fill="#838383">3</text>
+      <text x="76" y="366" font-size="19" font-weight="500" fill="#212529">input — nuova domanda</text>
+      <rect x="520" y="352" width="95" height="16" rx="8" fill="#dee2e6"/>
+      <text x="944" y="367" font-size="21" font-weight="600" fill="#838383" text-anchor="end">€</text>
+    </g>
+
+    <!-- voce 4 -->
+    <g id="voce-4">
+      <text x="44" y="458" font-size="17" font-weight="600" fill="#838383">4</text>
+      <text x="76" y="458" font-size="19" font-weight="500" fill="#212529">output — token di ragionamento</text>
+      <text x="76" y="482" font-size="14" font-weight="600" fill="#a1245a">generati uno alla volta</text>
+      <rect x="520" y="444" width="300" height="16" rx="8" fill="#a1245a"/>
+      <text x="944" y="459" font-size="24" font-weight="700" letter-spacing="0.5" fill="#a1245a" text-anchor="end">€€€</text>
+    </g>
+
+    <!-- voce 5 -->
+    <g id="voce-5">
+      <text x="44" y="550" font-size="17" font-weight="600" fill="#838383">5</text>
+      <text x="76" y="550" font-size="19" font-weight="500" fill="#212529">output — risposta</text>
+      <text x="76" y="574" font-size="14" font-weight="600" fill="#a1245a">generati uno alla volta</text>
+      <rect x="520" y="536" width="185" height="16" rx="8" fill="#a1245a"/>
+      <text x="944" y="551" font-size="24" font-weight="700" letter-spacing="0.5" fill="#a1245a" text-anchor="end">€€€</text>
+    </g>
+
+    <!-- totale -->
+    <line x1="12" y1="598" x2="988" y2="598" stroke="#161719" stroke-width="1.5"/>
+    <g id="totale">
+      <text x="44" y="647" font-size="21" font-weight="700" fill="#161719">totale</text>
+      <rect x="520" y="632" width="320" height="16" rx="8" fill="#161719"/>
+      <text x="944" y="648" font-size="20" font-weight="700" letter-spacing="1" fill="#161719" text-anchor="end">€€€€€€€€</text>
+    </g>
+
+    <!-- postilla -->
+    <g id="postilla">
+      <rect x="44" y="698" width="912" height="74" rx="8" fill="#161719"/>
+      <rect x="44" y="698" width="3" height="74" fill="#ffbe0b"/>
+      <text x="72" y="726" font-size="13" font-weight="600" letter-spacing="1.4" fill="#ffbe0b">POSTILLA</text>
+      <text x="72" y="754" font-size="19" font-weight="500" fill="#ffffff">alla prossima chiamata, le voci 1–3 si ripagano (+ la risposta appena data)</text>
+    </g>
+
+  </g>
+</svg>

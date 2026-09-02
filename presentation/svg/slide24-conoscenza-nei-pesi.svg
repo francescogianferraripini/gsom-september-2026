@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Database contro LLM: la riga recuperata da una tabella contro la risposta distribuita tra vettori scritti e geometria emersa</title>
+  <defs>
+    <pattern id="grid-idee-24" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1.4" fill="#dee2e6"/>
+    </pattern>
+    <marker id="ah-burgundy-24" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#a1245a"/>
+    </marker>
+    <marker id="ah-grigio-24" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M1 1 L11 6 L1 11 Z" fill="#838383"/>
+    </marker>
+    <clipPath id="clip-tabella-24">
+      <rect x="44" y="214" width="552" height="310" rx="8"/>
+    </clipPath>
+  </defs>
+
+  <g id="domanda">
+    <text x="44" y="48" font-size="13" font-weight="600" letter-spacing="2" fill="#838383">STESSA DOMANDA</text>
+    <rect x="400" y="12" width="480" height="60" rx="8" fill="#161719"/>
+    <text x="640" y="51" text-anchor="middle" font-size="21" font-weight="600" fill="#ffffff">Qual &#232; la capitale della Francia?</text>
+    <g fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ah-grigio-24)">
+      <path d="M500 72 C500 94 320 80 320 98"/>
+      <path d="M780 72 C780 94 960 80 960 98"/>
+    </g>
+  </g>
+
+  <g id="pannello-database">
+    <rect x="12" y="100" width="616" height="688" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <text x="44" y="152" font-size="13" font-weight="600" letter-spacing="2" fill="#838383">RECUPERO</text>
+    <text x="44" y="186" font-size="27" font-weight="700" fill="#161719">un database</text>
+
+    <g id="tabella" clip-path="url(#clip-tabella-24)">
+      <rect x="44" y="214" width="552" height="52" fill="#f6f6f6"/>
+      <rect x="44" y="352" width="552" height="86" fill="#ecd3de"/>
+      <rect x="44" y="352" width="4" height="86" fill="#a1245a"/>
+      <g stroke="#dee2e6" stroke-width="1">
+        <line x1="44" y1="266" x2="596" y2="266"/>
+        <line x1="44" y1="352" x2="596" y2="352"/>
+        <line x1="44" y1="438" x2="596" y2="438"/>
+        <line x1="320" y1="214" x2="320" y2="524"/>
+      </g>
+    </g>
+    <rect x="44" y="214" width="552" height="310" rx="8" fill="none" stroke="#dee2e6" stroke-width="1"/>
+
+    <g font-size="17" font-weight="600" letter-spacing="1" fill="#838383">
+      <text x="76" y="247">paese</text>
+      <text x="352" y="247">capitale</text>
+    </g>
+    <g font-size="24" font-weight="600" fill="#212529">
+      <text x="76" y="317">Italia</text>
+      <text x="352" y="317">Roma</text>
+      <text x="76" y="489">Germania</text>
+      <text x="352" y="489">Berlino</text>
+    </g>
+    <g font-size="24" font-weight="700" fill="#a1245a">
+      <text x="76" y="403">Francia</text>
+      <text x="352" y="403">Parigi</text>
+    </g>
+
+    <line x1="320" y1="530" x2="320" y2="684" stroke="#a1245a" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#ah-burgundy-24)"/>
+
+    <rect x="44" y="690" width="552" height="86" rx="8" fill="#f6f6f6"/>
+    <rect x="44" y="690" width="3" height="86" fill="#a1245a"/>
+    <text x="76" y="741" font-size="21" font-weight="600" fill="#a1245a">trova la riga: recupero esatto</text>
+  </g>
+
+  <g id="pannello-llm">
+    <rect x="652" y="100" width="616" height="688" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <text x="684" y="152" font-size="13" font-weight="600" letter-spacing="2" fill="#838383">RICOSTRUZIONE</text>
+    <text x="684" y="186" font-size="27" font-weight="700" fill="#161719">un LLM</text>
+
+    <g id="rilevatore">
+      <rect x="684" y="214" width="552" height="138" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+      <text x="708" y="244" font-size="13" font-weight="600" letter-spacing="1.6" fill="#838383">RILEVATORE &#183; RIGA DI MATRICE</text>
+      <g stroke="#dee2e6" stroke-width="1">
+        <rect x="708" y="258" width="32" height="34" rx="3" fill="#f6f6f6"/>
+        <rect x="746" y="258" width="32" height="34" rx="3" fill="#f6f6f6"/>
+        <rect x="784" y="258" width="32" height="34" rx="3" fill="#a1245a" stroke="#a1245a"/>
+        <rect x="822" y="258" width="32" height="34" rx="3" fill="#f6f6f6"/>
+        <rect x="860" y="258" width="32" height="34" rx="3" fill="#f6f6f6"/>
+        <rect x="898" y="258" width="32" height="34" rx="3" fill="#a1245a" stroke="#a1245a"/>
+        <rect x="936" y="258" width="32" height="34" rx="3" fill="#a1245a" stroke="#a1245a"/>
+        <rect x="974" y="258" width="32" height="34" rx="3" fill="#f6f6f6"/>
+        <rect x="1012" y="258" width="32" height="34" rx="3" fill="#f6f6f6"/>
+        <rect x="1050" y="258" width="32" height="34" rx="3" fill="#a1245a" stroke="#a1245a"/>
+        <rect x="1088" y="258" width="32" height="34" rx="3" fill="#f6f6f6"/>
+        <rect x="1126" y="258" width="32" height="34" rx="3" fill="#f6f6f6"/>
+      </g>
+      <text x="1176" y="282" font-size="17" font-weight="600" fill="#a1245a">scatta</text>
+      <text x="708" y="330" font-size="21" font-weight="600" fill="#212529">pattern: &#171;capitale della Francia&#187;</text>
+    </g>
+
+    <g id="contributo">
+      <line x1="960" y1="358" x2="960" y2="416" stroke="#a1245a" stroke-width="3" marker-end="url(#ah-burgundy-24)"/>
+      <text x="942" y="392" text-anchor="end" font-size="17" font-weight="500" fill="#838383">contributo-vettore</text>
+      <text x="978" y="392" font-size="17" font-weight="600" fill="#a1245a">spinge verso Parigi</text>
+    </g>
+
+    <g id="mini-piano">
+      <rect x="684" y="424" width="552" height="260" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+      <rect x="684" y="424" width="552" height="260" rx="8" fill="url(#grid-idee-24)"/>
+      <text x="708" y="452" font-size="13" font-weight="600" letter-spacing="1.6" fill="#838383">SPAZIO DELLE IDEE</text>
+
+      <g stroke="#a1245a" fill="none" stroke-linecap="round" marker-end="url(#ah-burgundy-24)">
+        <line x1="811" y1="520" x2="1001" y2="469" stroke-width="3"/>
+        <line x1="781" y1="624" x2="971" y2="572" stroke-width="2.5"/>
+      </g>
+
+      <g fill="#212529">
+        <circle cx="796" cy="524" r="7"/>
+        <circle cx="1016" cy="464" r="7"/>
+        <circle cx="766" cy="628" r="7"/>
+        <circle cx="986" cy="568" r="7"/>
+      </g>
+      <g font-size="21" font-weight="600" fill="#212529" text-anchor="middle">
+        <text x="796" y="552">Francia</text>
+        <text x="1016" y="492">Parigi</text>
+        <text x="766" y="656">Italia</text>
+        <text x="986" y="596">Roma</text>
+      </g>
+      <text x="1212" y="664" text-anchor="end" font-size="17" font-weight="500" fill="#838383">regolarit&#224; emersa, non scritta</text>
+    </g>
+
+    <rect x="684" y="690" width="552" height="86" rx="8" fill="#161719"/>
+    <rect x="684" y="690" width="4" height="86" fill="#ffbe0b"/>
+    <text x="716" y="727" font-size="19" font-weight="600" fill="#ffffff">la risposta &#232; distribuita:</text>
+    <text x="716" y="753" font-size="17" font-weight="400" fill="#dee2e6">vettori scritti + geometria emersa</text>
+  </g>
+</svg>

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 700" width="1120" height="700" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Il modello e stateless: la finestra di contesto si accumula a ogni giro e viene riletta da capo a ogni chiamata</title>
+  <defs>
+    <marker id="arrowBurgundy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- ================= FOTO 1 - giro 0 ================= -->
+  <g id="foto1">
+    <rect x="12" y="526" width="206" height="34" rx="8" fill="#161719"/>
+    <text x="115" y="548" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">system prompt</text>
+    <rect x="12" y="488" width="206" height="34" rx="8" fill="#161719"/>
+    <text x="115" y="510" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">tool dichiarati</text>
+    <rect x="12" y="444" width="206" height="40" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="115" y="469" text-anchor="middle" font-size="15" font-weight="500" fill="#212529">domanda dell'utente</text>
+    <text x="115" y="588" text-anchor="middle" font-size="15" font-weight="700" fill="#212529">giro 0</text>
+  </g>
+
+  <!-- ================= FOTO 2 - dopo la 1a tool call ================= -->
+  <g id="foto2">
+    <rect x="244" y="526" width="206" height="34" rx="8" fill="#161719"/>
+    <text x="347" y="548" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">system prompt</text>
+    <rect x="244" y="488" width="206" height="34" rx="8" fill="#161719"/>
+    <text x="347" y="510" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">tool dichiarati</text>
+    <rect x="244" y="444" width="206" height="40" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="347" y="469" text-anchor="middle" font-size="15" font-weight="500" fill="#212529">domanda dell'utente</text>
+    <rect x="244" y="410" width="206" height="30" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="347" y="430" text-anchor="middle" font-size="14" font-weight="500" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#212529">tool call: cerca()</text>
+    <rect x="244" y="314" width="206" height="92" rx="8" fill="#ecd3de" stroke="#a1245a"/>
+    <text x="347" y="365" text-anchor="middle" font-size="15" font-weight="600" fill="#a1245a">risultato (lungo)</text>
+    <text x="347" y="588" text-anchor="middle" font-size="15" font-weight="700" fill="#212529">dopo la 1&#170; tool call</text>
+  </g>
+
+  <!-- ================= FOTO 3 - fine del 1o turno ================= -->
+  <g id="foto3">
+    <rect x="476" y="526" width="206" height="34" rx="8" fill="#161719"/>
+    <text x="579" y="548" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">system prompt</text>
+    <rect x="476" y="488" width="206" height="34" rx="8" fill="#161719"/>
+    <text x="579" y="510" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">tool dichiarati</text>
+    <rect x="476" y="444" width="206" height="40" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="579" y="469" text-anchor="middle" font-size="15" font-weight="500" fill="#212529">domanda dell'utente</text>
+    <rect x="476" y="410" width="206" height="30" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="579" y="430" text-anchor="middle" font-size="14" font-weight="500" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#212529">tool call: cerca()</text>
+    <rect x="476" y="314" width="206" height="92" rx="8" fill="#ecd3de" stroke="#a1245a"/>
+    <text x="579" y="365" text-anchor="middle" font-size="15" font-weight="600" fill="#a1245a">risultato (lungo)</text>
+    <rect x="476" y="280" width="206" height="30" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="579" y="300" text-anchor="middle" font-size="14" font-weight="500" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#212529">tool call: leggi()</text>
+    <rect x="476" y="220" width="206" height="56" rx="8" fill="#ecd3de" stroke="#a1245a"/>
+    <text x="579" y="253" text-anchor="middle" font-size="15" font-weight="600" fill="#a1245a">risultato</text>
+    <rect x="476" y="170" width="206" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="579" y="198" text-anchor="middle" font-size="15" font-weight="500" fill="#212529">risposta del modello</text>
+    <text x="579" y="588" text-anchor="middle" font-size="15" font-weight="700" fill="#212529">fine del 1&#176; turno</text>
+  </g>
+
+  <!-- ================= FOTO 4 - 3o turno di conversazione ================= -->
+  <g id="foto4">
+    <rect x="708" y="526" width="206" height="34" rx="8" fill="#161719"/>
+    <text x="811" y="548" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">system prompt</text>
+    <rect x="708" y="488" width="206" height="34" rx="8" fill="#161719"/>
+    <text x="811" y="510" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">tool dichiarati</text>
+    <rect x="708" y="444" width="206" height="40" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="811" y="469" text-anchor="middle" font-size="15" font-weight="500" fill="#212529">domanda dell'utente</text>
+
+    <!-- strati compressi: storia dei turni precedenti -->
+    <g id="strati-compressi">
+      <rect x="708" y="422" width="206" height="18" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="708" y="400" width="206" height="18" rx="4" fill="#ecd3de" stroke="#a1245a"/>
+      <rect x="708" y="378" width="206" height="18" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="708" y="356" width="206" height="18" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="708" y="334" width="206" height="18" rx="4" fill="#ecd3de" stroke="#a1245a"/>
+      <rect x="708" y="312" width="206" height="18" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="708" y="290" width="206" height="18" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="708" y="268" width="206" height="18" rx="4" fill="#ecd3de" stroke="#a1245a"/>
+      <rect x="708" y="246" width="206" height="18" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="708" y="224" width="206" height="18" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="708" y="202" width="206" height="18" rx="4" fill="#ecd3de" stroke="#a1245a"/>
+      <rect x="708" y="180" width="206" height="18" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="708" y="158" width="206" height="18" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="708" y="136" width="206" height="18" rx="4" fill="#ecd3de" stroke="#a1245a"/>
+      <rect x="708" y="114" width="206" height="18" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="708" y="92" width="206" height="18" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="708" y="70" width="206" height="18" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+      <text x="811" y="380" text-anchor="middle" font-size="13" font-weight="500" fill="#838383">tool call, risultati, risposte</text>
+      <text x="811" y="248" text-anchor="middle" font-size="13" font-weight="500" fill="#838383">di tutti i turni precedenti</text>
+    </g>
+
+    <rect x="708" y="26" width="206" height="40" rx="8" fill="#f6f6f6" stroke="#a1245a" stroke-width="1.5"/>
+    <text x="811" y="51" text-anchor="middle" font-size="14" font-weight="600" fill="#a1245a">nuova domanda dell'utente</text>
+    <text x="811" y="588" text-anchor="middle" font-size="15" font-weight="700" fill="#212529">3&#176; turno di conversazione</text>
+  </g>
+
+  <!-- ================= crescita: staircase tratteggiata ================= -->
+  <g id="crescita">
+    <polyline points="115,444 347,444 347,314 579,314 579,170 811,170 811,26" fill="none" stroke="#a1245a" stroke-width="2" stroke-dasharray="6 5" stroke-linejoin="round" opacity="0.85"/>
+    <circle cx="115" cy="444" r="4" fill="#a1245a"/>
+    <circle cx="347" cy="314" r="4" fill="#a1245a"/>
+    <circle cx="579" cy="170" r="4" fill="#a1245a"/>
+    <circle cx="811" cy="26" r="4" fill="#a1245a"/>
+  </g>
+
+  <!-- ================= callout laterale ================= -->
+  <g id="callout">
+    <line x1="914" y1="46" x2="934" y2="46" stroke="#838383" stroke-width="1.5"/>
+    <rect x="934" y="20" width="174" height="80" rx="8" fill="#161719"/>
+    <rect x="934" y="20" width="3" height="80" fill="#ffbe0b"/>
+    <text x="952" y="52" font-size="15" font-weight="600" fill="#ffffff">&#8230;e ogni giro</text>
+    <text x="952" y="76" font-size="15" font-weight="600" fill="#ffbe0b">appende ancora</text>
+  </g>
+
+  <!-- ================= freccia del tempo ================= -->
+  <g id="tempo">
+    <line x1="12" y1="630" x2="914" y2="630" stroke="#a1245a" stroke-width="3" marker-end="url(#arrowBurgundy)"/>
+    <text x="463" y="666" text-anchor="middle" font-size="19" font-weight="700" fill="#a1245a">ogni chiamata rilegge TUTTA la pila da capo</text>
+  </g>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="1000" height="520" role="img">
+  <title>A ogni parola corrisponde un vettore di numeri appreso durante l'addestramento</title>
+  <defs>
+    <marker id="arrowFocal" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0.5 L10 5 L0 9.5 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <g id="riga-gatto">
+    <rect x="12" y="40" width="250" height="92" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="137" y="86" text-anchor="middle" dominant-baseline="central" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="30" font-weight="600" fill="#161719">gatto</text>
+    <line x1="272" y1="86" x2="368" y2="86" stroke="#a1245a" stroke-width="3" marker-end="url(#arrowFocal)"/>
+    <rect x="380" y="40" width="608" height="92" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="408" y="86" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="34" fill="#838383">[</text>
+    <rect x="435" y="63" width="130" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="500" y="86" text-anchor="middle" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="24" fill="#212529">0.8</text>
+    <rect x="581" y="63" width="130" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="646" y="86" text-anchor="middle" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="24" fill="#212529">−1.3</text>
+    <rect x="727" y="63" width="130" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="792" y="86" text-anchor="middle" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="24" fill="#212529">2.1</text>
+    <text x="890" y="86" text-anchor="middle" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="24" fill="#838383">…</text>
+    <text x="945" y="86" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="34" fill="#838383">]</text>
+  </g>
+
+  <g id="riga-cane">
+    <rect x="12" y="176" width="250" height="92" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="137" y="222" text-anchor="middle" dominant-baseline="central" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="30" font-weight="600" fill="#161719">cane</text>
+    <line x1="272" y1="222" x2="368" y2="222" stroke="#a1245a" stroke-width="3" marker-end="url(#arrowFocal)"/>
+    <rect x="380" y="176" width="608" height="92" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="408" y="222" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="34" fill="#838383">[</text>
+    <rect x="435" y="199" width="130" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="500" y="222" text-anchor="middle" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="24" fill="#212529">0.7</text>
+    <rect x="581" y="199" width="130" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="646" y="222" text-anchor="middle" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="24" fill="#212529">−1.1</text>
+    <rect x="727" y="199" width="130" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="792" y="222" text-anchor="middle" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="24" fill="#212529">1.9</text>
+    <text x="890" y="222" text-anchor="middle" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="24" fill="#838383">…</text>
+    <text x="945" y="222" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="34" fill="#838383">]</text>
+  </g>
+
+  <g id="riga-parigi">
+    <rect x="12" y="312" width="250" height="92" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="137" y="358" text-anchor="middle" dominant-baseline="central" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="30" font-weight="600" fill="#161719">Parigi</text>
+    <line x1="272" y1="358" x2="368" y2="358" stroke="#a1245a" stroke-width="3" marker-end="url(#arrowFocal)"/>
+    <rect x="380" y="312" width="608" height="92" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="408" y="358" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="34" fill="#838383">[</text>
+    <rect x="435" y="335" width="130" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="500" y="358" text-anchor="middle" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="24" fill="#212529">−2.4</text>
+    <rect x="581" y="335" width="130" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="646" y="358" text-anchor="middle" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="24" fill="#212529">0.6</text>
+    <rect x="727" y="335" width="130" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="792" y="358" text-anchor="middle" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="24" fill="#212529">−0.3</text>
+    <text x="890" y="358" text-anchor="middle" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="24" fill="#838383">…</text>
+    <text x="945" y="358" dominant-baseline="central" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="34" fill="#838383">]</text>
+  </g>
+
+  <g id="nota">
+    <rect x="12" y="446" width="3" height="52" fill="#a1245a"/>
+    <text x="31" y="472" dominant-baseline="central" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="21" font-weight="500" fill="#212529">Associazione appresa durante l'addestramento, non scritta a mano</text>
+  </g>
+</svg>

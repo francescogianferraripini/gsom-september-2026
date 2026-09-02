@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" width="760" height="520" role="img">
+  <title>Il costo del contesto: senza KV cache si ricalcola tutto il passato a ogni strato, con KV cache si paga solo il token nuovo</title>
+
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#a1245a"/>
+    </marker>
+
+    <!-- cella attiva (calcoli da eseguire): K, V, fully connected -->
+    <g id="cA">
+      <rect width="31" height="34" rx="6" fill="#ecd3de" stroke="#a1245a" stroke-width="1"/>
+      <rect x="5" y="13" width="5" height="8" rx="1" fill="#a1245a"/>
+      <rect x="13" y="13" width="5" height="8" rx="1" fill="#a1245a"/>
+      <rect x="21" y="13" width="5" height="8" rx="1" fill="#a1245a"/>
+    </g>
+
+    <!-- cella quieta (gia' in cache) -->
+    <g id="cQ">
+      <rect width="31" height="34" rx="6" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+      <rect x="5" y="13" width="5" height="8" rx="1" fill="#838383"/>
+      <rect x="13" y="13" width="5" height="8" rx="1" fill="#838383"/>
+      <rect x="21" y="13" width="5" height="8" rx="1" fill="#838383"/>
+    </g>
+
+    <!-- cella attiva della colonna token nuovo (piu' larga) -->
+    <g id="cN">
+      <rect width="38" height="34" rx="6" fill="#ecd3de" stroke="#a1245a" stroke-width="1"/>
+      <rect x="8" y="13" width="5" height="8" rx="1" fill="#a1245a"/>
+      <rect x="16" y="13" width="5" height="8" rx="1" fill="#a1245a"/>
+      <rect x="24" y="13" width="5" height="8" rx="1" fill="#a1245a"/>
+    </g>
+  </defs>
+
+  <g font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+
+    <!-- ============ divisore fra i due pannelli ============ -->
+    <line x1="380" y1="6" x2="380" y2="442" stroke="#dee2e6" stroke-width="1"/>
+
+    <!-- ==================================================== -->
+    <!-- PANNELLO SINISTRO — senza KV cache                   -->
+    <!-- ==================================================== -->
+    <g id="pannello-senza-cache">
+      <text x="4" y="18" font-size="18" font-weight="600" fill="#161719">senza KV cache</text>
+
+      <!-- etichette dei token sulle colonne -->
+      <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13" fill="#838383">
+        <text transform="translate(90,106) rotate(-90)">Il</text>
+        <text transform="translate(124,106) rotate(-90)">gatto</text>
+        <text transform="translate(158,106) rotate(-90)">è</text>
+        <text transform="translate(192,106) rotate(-90)">sul</text>
+        <text transform="translate(226,106) rotate(-90)">tavolo</text>
+        <text transform="translate(260,106) rotate(-90)">e</text>
+      </g>
+      <text transform="translate(341,106) rotate(-90)" font-size="13" font-weight="600" fill="#a1245a">token nuovo</text>
+
+      <!-- etichette degli strati sulle righe -->
+      <g font-size="13" fill="#838383" text-anchor="end">
+        <text x="62" y="136">strato 1</text>
+        <text x="62" y="174">strato 2</text>
+        <text x="62" y="212">…</text>
+        <text x="62" y="250">strato N</text>
+      </g>
+
+      <!-- griglia: tutte le celle attive -->
+      <g>
+        <use href="#cA" x="70" y="114"/><use href="#cA" x="104" y="114"/><use href="#cA" x="138" y="114"/><use href="#cA" x="172" y="114"/><use href="#cA" x="206" y="114"/><use href="#cA" x="240" y="114"/><use href="#cN" x="318" y="114"/>
+        <use href="#cA" x="70" y="152"/><use href="#cA" x="104" y="152"/><use href="#cA" x="138" y="152"/><use href="#cA" x="172" y="152"/><use href="#cA" x="206" y="152"/><use href="#cA" x="240" y="152"/><use href="#cN" x="318" y="152"/>
+        <use href="#cA" x="70" y="190"/><use href="#cA" x="104" y="190"/><use href="#cA" x="138" y="190"/><use href="#cA" x="172" y="190"/><use href="#cA" x="206" y="190"/><use href="#cA" x="240" y="190"/><use href="#cN" x="318" y="190"/>
+        <use href="#cA" x="70" y="228"/><use href="#cA" x="104" y="228"/><use href="#cA" x="138" y="228"/><use href="#cA" x="172" y="228"/><use href="#cA" x="206" y="228"/><use href="#cA" x="240" y="228"/><use href="#cN" x="318" y="228"/>
+      </g>
+
+      <!-- graffa sulle colonne del passato + annotazioni -->
+      <path d="M70,266 L70,272 L271,272 L271,266" fill="none" stroke="#a1245a" stroke-width="1.5"/>
+      <path d="M170.5,272 L170.5,288" fill="none" stroke="#a1245a" stroke-width="1.5"/>
+
+      <g font-size="14" fill="#212529">
+        <rect x="70" y="301" width="8" height="2" fill="#a1245a"/>
+        <text x="84" y="307">K e V: ricalcolate</text>
+        <rect x="70" y="323" width="8" height="2" fill="#a1245a"/>
+        <text x="84" y="329">fully connected: rifatti</text>
+        <rect x="70" y="345" width="8" height="2" fill="#a1245a"/>
+        <text x="84" y="351">Q del passato: calcolate e buttate</text>
+      </g>
+
+      <!-- costo -->
+      <rect x="4" y="378" width="3" height="64" fill="#a1245a"/>
+      <text x="20" y="406" font-size="17" font-weight="600" fill="#161719">costo del token n-esimo ≈ n²</text>
+      <text x="20" y="428" font-size="13.5" fill="#838383">ricalcoli tutto il passato, a ogni strato</text>
+    </g>
+
+    <!-- ==================================================== -->
+    <!-- PANNELLO DESTRO — con KV cache                       -->
+    <!-- ==================================================== -->
+    <g id="pannello-con-cache">
+      <text x="404" y="18" font-size="18" font-weight="600" fill="#161719">con KV cache</text>
+
+      <!-- archivio salvato -->
+      <rect x="464" y="108" width="213" height="182" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="570.5" y="282" font-size="13.5" font-weight="500" fill="#838383" text-anchor="middle">K, V in cache</text>
+
+      <!-- etichette dei token sulle colonne -->
+      <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13" fill="#838383">
+        <text transform="translate(490,106) rotate(-90)">Il</text>
+        <text transform="translate(524,106) rotate(-90)">gatto</text>
+        <text transform="translate(558,106) rotate(-90)">è</text>
+        <text transform="translate(592,106) rotate(-90)">sul</text>
+        <text transform="translate(626,106) rotate(-90)">tavolo</text>
+        <text transform="translate(660,106) rotate(-90)">e</text>
+      </g>
+      <text transform="translate(741,106) rotate(-90)" font-size="13" font-weight="600" fill="#a1245a">token nuovo</text>
+
+      <!-- etichette degli strati sulle righe -->
+      <g font-size="13" fill="#838383" text-anchor="end">
+        <text x="462" y="136">strato 1</text>
+        <text x="462" y="174">strato 2</text>
+        <text x="462" y="212">…</text>
+        <text x="462" y="250">strato N</text>
+      </g>
+
+      <!-- griglia: passato quieto, solo il token nuovo attivo -->
+      <g>
+        <use href="#cQ" x="470" y="114"/><use href="#cQ" x="504" y="114"/><use href="#cQ" x="538" y="114"/><use href="#cQ" x="572" y="114"/><use href="#cQ" x="606" y="114"/><use href="#cQ" x="640" y="114"/><use href="#cN" x="718" y="114"/>
+        <use href="#cQ" x="470" y="152"/><use href="#cQ" x="504" y="152"/><use href="#cQ" x="538" y="152"/><use href="#cQ" x="572" y="152"/><use href="#cQ" x="606" y="152"/><use href="#cQ" x="640" y="152"/><use href="#cN" x="718" y="152"/>
+        <use href="#cQ" x="470" y="190"/><use href="#cQ" x="504" y="190"/><use href="#cQ" x="538" y="190"/><use href="#cQ" x="572" y="190"/><use href="#cQ" x="606" y="190"/><use href="#cQ" x="640" y="190"/><use href="#cN" x="718" y="190"/>
+        <use href="#cQ" x="470" y="228"/><use href="#cQ" x="504" y="228"/><use href="#cQ" x="538" y="228"/><use href="#cQ" x="572" y="228"/><use href="#cQ" x="606" y="228"/><use href="#cQ" x="640" y="228"/><use href="#cN" x="718" y="228"/>
+      </g>
+
+      <!-- riuso: dall'archivio all'attention del token nuovo -->
+      <line x1="682" y1="188" x2="707" y2="188" stroke="#a1245a" stroke-width="2.5" marker-end="url(#ah)"/>
+      <path d="M696,189 L696,302" fill="none" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="756" y="316" font-size="14" font-weight="500" fill="#a1245a" text-anchor="end">riusate, non ricalcolate</text>
+
+      <!-- costo -->
+      <rect x="404" y="378" width="3" height="64" fill="#a1245a"/>
+      <text x="420" y="406" font-size="17" font-weight="600" fill="#161719">costo del token n-esimo ≈ n</text>
+      <text x="420" y="428" font-size="13.5" fill="#838383">paghi solo il token nuovo</text>
+    </g>
+
+    <!-- ============ riga di chiusura, fra i due pannelli ============ -->
+    <line x1="0" y1="456" x2="760" y2="456" stroke="#dee2e6" stroke-width="1"/>
+    <text x="380" y="484" font-size="14.5" fill="#212529" text-anchor="middle">la <tspan font-weight="600">masked attention</tspan> rende il passato immutabile → si può salvare</text>
+    <text x="380" y="506" font-size="13" fill="#838383" text-anchor="middle">ogni cella = i calcoli K, V e fully connected di un token a uno strato</text>
+
+  </g>
+</svg>

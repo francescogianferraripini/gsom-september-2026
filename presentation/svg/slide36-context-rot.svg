@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 720" width="1080" height="720" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Context rot: la qualità della risposta cresce, si stabilizza e poi degrada molto prima del limite tecnico della finestra di contesto</title>
+
+  <defs>
+    <clipPath id="sottoCurva">
+      <path d="M110,500 C 200,502 252,182 360,172 C 470,166 540,168 620,170 C 716,176 800,296 962,414 L962,560 L110,560 Z"/>
+    </clipPath>
+    <marker id="frecciaSx" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M9,0 L0,4.5 L9,9 Z" fill="#a1245a"/>
+    </marker>
+    <marker id="frecciaDx" markerWidth="9" markerHeight="9" refX="1" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- zone sotto la curva -->
+  <g clip-path="url(#sottoCurva)">
+    <rect x="110" y="120" width="250" height="440" fill="#f6f6f6"/>
+    <rect x="360" y="120" width="260" height="440" fill="#f6f6f6"/>
+    <rect x="620" y="120" width="380" height="440" fill="#ecd3de"/>
+  </g>
+
+  <!-- divisori di zona -->
+  <g stroke="#dee2e6" stroke-width="1">
+    <line x1="360" y1="172" x2="360" y2="560"/>
+  </g>
+
+  <!-- assi -->
+  <g stroke="#dee2e6" stroke-width="1.5">
+    <line x1="110" y1="100" x2="110" y2="560"/>
+    <line x1="110" y1="560" x2="1030" y2="560"/>
+  </g>
+
+  <!-- etichette assi -->
+  <g fill="#838383" font-size="17" font-weight="500">
+    <text x="96" y="118" text-anchor="end">alta</text>
+    <text x="96" y="552" text-anchor="end">bassa</text>
+    <text x="112" y="588">corto</text>
+    <text x="1030" y="588" text-anchor="end">molto lungo</text>
+  </g>
+  <text x="34" y="330" fill="#212529" font-size="21" font-weight="600" text-anchor="middle" transform="rotate(-90 34 330)">qualità della risposta</text>
+  <text x="570" y="702" fill="#212529" font-size="21" font-weight="600" text-anchor="middle">lunghezza del contesto</text>
+
+  <!-- curva -->
+  <path d="M110,500 C 200,502 252,182 360,172 C 470,166 540,168 620,170 C 716,176 800,296 962,414"
+        fill="none" stroke="#161719" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- etichette di zona -->
+  <g font-size="19" font-weight="600" text-anchor="middle">
+    <text x="243" y="532" fill="#212529">il contesto che serve</text>
+    <text x="490" y="532" fill="#212529">abbastanza</text>
+    <text x="800" y="532" fill="#a1245a">troppo: il modello degrada</text>
+  </g>
+
+  <!-- limite tecnico -->
+  <line x1="990" y1="120" x2="990" y2="560" stroke="#838383" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="1014" y="560" fill="#838383" font-size="16" font-weight="500" transform="rotate(-90 1014 560)">limite tecnico della finestra di contesto</text>
+
+  <!-- punto di piega: elemento focale -->
+  <line x1="620" y1="170" x2="668" y2="122" stroke="#a1245a" stroke-width="2"/>
+  <circle cx="620" cy="170" r="11" fill="#ffffff"/>
+  <circle cx="620" cy="170" r="7.5" fill="#a1245a"/>
+  <rect x="663" y="86" width="3" height="46" fill="#a1245a"/>
+  <text x="680" y="118" fill="#a1245a" font-size="21" font-weight="700">da qui in poi, aggiungere peggiora</text>
+
+  <!-- distanza fra piega e limite tecnico -->
+  <g stroke="#a1245a" stroke-width="1.5" stroke-dasharray="4 5">
+    <line x1="620" y1="180" x2="620" y2="622"/>
+    <line x1="990" y1="180" x2="990" y2="622"/>
+  </g>
+  <line x1="620" y1="628" x2="990" y2="628" stroke="#a1245a" stroke-width="2.5" marker-start="url(#frecciaSx)" marker-end="url(#frecciaDx)"/>
+  <text x="805" y="664" fill="#a1245a" font-size="16" font-weight="600" text-anchor="middle">molto prima del limite tecnico della finestra</text>
+</svg>
