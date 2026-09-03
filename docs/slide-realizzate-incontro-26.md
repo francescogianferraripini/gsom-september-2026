@@ -42,9 +42,13 @@ Per commentare, scrivi sotto la riga della slide.
 - **05 · Che cos'è un modello linguistico** — `#slide-5` — `slide5-modello-linguistico.svg`
 	- *Testo* rimuovi : non è una metafora, è un teorema. Lo ritroveremo.
 - **06 · La generazione: un token alla volta** — `#slide-6` — `slide6-generazione-autoregressiva.svg`
+	  *Testo.* aggiungi dopo "successivo." "Da questo punto di vista il modello è stateless e ragiona solo in termini di parola successiva"
 - **07 · Il golfista** — `#slide-7` — `slide7-golfista.svg`
+	- *Figura* I colpi del golfista devono riflettere i colpi tipici. Primo colpo lungo, poi progressivamente più corto
 - **08 · Il 1° loop: la generazione** — `#slide-8` — *nessuna figura*
+	- RIMUOVERE LA SLIDE
 - **09 · Il 2° loop: la conversazione** — `#slide-9` — `slide9-secondo-loop.svg`
+	- Questa deve diventare una slide di comparazione. A sx ricopia la generazione come da `#slide-6` della frase sul gatto, a dx fai vedere un giro di conversazione come negli svg recuperati da https://francescogianferraripini.github.io/gsom-april-2026/lezione-mba/presentation.html#/slide-meccanica-conversazione, https://francescogianferraripini.github.io/gsom-april-2026/lezione-mba/presentation.html#/slide-meccanica-conversazione/0,https://francescogianferraripini.github.io/gsom-april-2026/lezione-mba/presentation.html#/slide-meccanica-conversazione/1
 
 ## Separatore di sezione — «Perché funziona»  
 `#div-sec3`
