@@ -100,40 +100,55 @@ def slide12():
 
 # ================= SLIDE 14 — la tokenizzazione =================
 def slide14():
-    W, H = 700, 420
+    W, H = 700, 322
+    RAW = "Il gatto ha un elettroencefalogramma"
+    X0, CW = 30, 640 / 36.0                 # 36 caratteri, allineati al pixel
+    TOKENS = [(0, 2, "243", False), (3, 5, "28741", False), (9, 2, "1274", False),
+              (12, 2, "553", False), (15, 7, "11621", True), (22, 7, "45093", True),
+              (29, 7, "30818", True)]
+    VY, VC = 44, 18                         # riga dei vettori
+    TY0, TY1 = 104, 156                     # riga delle tessere
+    PITCH = 640 / 7.0
     o = []
-    # il vocabolario: riferimento, non flusso — collegato con un tratteggio
-    vx0, vy0, vw, vh = 40, 16, 620, 80
-    o.append(rect(vx0, vy0, vw, vh, SOFT, LINE, rx=6))
-    for r in range(5):
-        for c in range(20):
-            hot = (r, c) in ((1, 4), (2, 11), (3, 17), (0, 8))
-            o.append(rect(vx0 + 12 + c * 30, vy0 + 10 + r * 13, 25, 8,
-                          BUR_F if hot else "#ffffff", BUR if hot else LINE, rx=1.5, sw=0.7))
-    o.append(txt(vx0 + vw / 2.0, vy0 + vh + 20, "vocabolario fisso: ~100.000 token — le tessere sono prese da qui",
-                 10, BODY, "middle", "600"))
-    o.append(arrow(350, vy0 + vh + 30, 350, 168, GREYD, 1.1))
 
-    def scene(y, toks, ids, text, tw, accent, label):
-        s, n = [], len(toks)
-        pitch, x0 = tw + 8, 40 + tw / 2.0
-        s.append(txt(40, y - 12, label, 10.5, BUR if accent else GREYD, "start", "700", ls="0.1em"))
-        for i, (t, d) in enumerate(zip(toks, ids)):
-            s.append(tile(x0 + i * pitch, y, tw, 44, t, 15,
-                          BUR if accent else LINE, BUR_F if accent else "#ffffff",
-                          BUR if accent else BODY, 1.5 if accent else 1.2, sub=d))
-        mid = x0 + (n - 1) * pitch / 2.0
-        s.append(arrow(mid, y + 76, mid, y + 52))
-        s.append(txt(mid, y + 92, text, 13, GREYD, "middle", "400", MONO))
-        return "".join(s)
+    o.append(txt(X0, 30, "ogni tessera diventa un vettore, sempre di 4 celle", 11, TEAL_D,
+                 "start", "600"))
+    o.append(txt(X0 + 640, 30, "id da un vocabolario fisso di ~100.000 voci", 10.5, GREYD, "end"))
 
-    o.append(scene(184, ["elettro", "encefal", "ogramma"], ["11621", "45093", "30818"],
-                   "elettroencefalogramma", 182, True, "PAROLA RARA: SPEZZATA IN FRAMMENTI"))
-    o.append(scene(312, ["Il", "gatto", "è", "sul", "tavolo"],
-                   ["243", "28741", "1105", "3387", "9152"], "Il gatto è sul tavolo",
-                   108, False, "PAROLE COMUNI: UN TOKEN CIASCUNA"))
+    for i, (start, ln, tid, rara) in enumerate(TOKENS):
+        x = X0 + start * CW
+        w = ln * CW
+        cxt = x + w / 2.0                                  # centro della tessera
+        cxv = X0 + PITCH / 2.0 + i * PITCH                 # centro del vettore
+        o.append(vec(cxv, VY, 4, VC, TEAL, TEAL_F))
+        o.append(curve(cxt, TY0 - 4, cxt, TY0 - 22, cxv, VY + VC + 20, cxv, VY + VC + 4,
+                       "#c3c8cd", 1.2))
+        o.append(rect(x + 1, TY0, w - 2, TY1 - TY0, BUR_F if rara else "#ffffff",
+                      BUR if rara else LINE, rx=5, sw=1.6 if rara else 1.2))
+        o.append(txt(cxt, TY0 + 30, RAW[start:start + ln], 22,
+                     BUR if rara else BODY, "middle", "500", MONO))
+        o.append(txt(cxt, TY0 + 46, tid, 9.5, BUR if rara else GREYD, "middle", "400", MONO))
+        o.append(arrow(cxt, 180, cxt, 162))
+
+    o.append('<text x="%s" y="206" textLength="640" lengthAdjust="spacingAndGlyphs" '
+             'font-family="%s" font-size="27" fill="%s">%s</text>' % (X0, MONO, BODY, RAW))
+    for cut in (22, 29):
+        o.append(line(X0 + cut * CW, 184, X0 + cut * CW, 212, BUR, 1.8))
+
+    # --- la nota, in fondo: il glifo e il testo insieme
+    o.append(rect(20, 226, 660, 82, BLACK, "none", rx=8))
+    o.append(txt(44, 262, "11621", 19, YEL, "start", "700", MONO))
+    o.append(txt(118, 261, "e non", 11, "#c9ccd1", "start"))
+    o.append(txt(158, 262, "e l e t t r o", 15, "#8a8f96", "start", "400", MONO))
+    o.append(line(156, 257, 272, 257, "#8a8f96", 1.4))
+    o.append(txt(44, 288, "dentro la tessera le lettere spariscono", 10, "#8a8f96", "start"))
+    o.append(txt(316, 250, "È per questo che a un modello riesce difficile contare le",
+                 11.5, "#ffffff", "start"))
+    o.append(txt(316, 267, "lettere di una parola: le lettere, lui, non le ha mai viste.",
+                 11.5, "#ffffff", "start"))
+    o.append(txt(316, 290, "D'ora in poi diremo: token.", 11.5, YEL, "start", "700"))
     return svg(W, H, "".join(o),
-               "Dal testo alle tessere-token: parole comuni un token ciascuna, parola rara spezzata in tre")
+               "Una frase sola: ogni tessera-token diventa un vettore di quattro celle; la parola rara e tagliata in tre tessere")
 
 for fn, body in (("slide10-parola-vettore.svg", slide10()),
                  ("slide12-scala-del-calcolo.svg", slide12()),

@@ -169,18 +169,26 @@
 - Punti:
   1. **L'unità non è la parola: è il token** — *frammenti di testo da un vocabolario fisso, ~100.000 voci.*
   2. **Le parole comuni sono un token intero; quelle rare vengono spezzate.**
-- Nota in basso: *È per questo che a un modello riesce difficile contare le lettere di una parola: le lettere, lui, non le ha mai viste. D'ora in poi diremo: token.*
+- Nota in basso: **non è un elemento HTML**: è entrata nella figura, in fondo, unita al glifo che la illustra — *È per questo che a un modello riesce difficile contare le lettere di una parola: le lettere, lui, non le ha mai viste. D'ora in poi diremo: token.*
 
-**Visual**: due scene impilate, ognuna dal basso verso l'alto — il testo grezzo in fondo, le tessere-token sopra.
+**Visual**: **una frase sola**, letta dal basso: il testo grezzo in fondo, le tessere-token sopra (con l'id dentro), e sopra ancora il vettore di ciascuna. Il contrasto parole comuni / parola rara sta dentro la stessa riga.
 
 **Prompt per schema SVG**:
-> **In cima**, una fascia larga: il **vocabolario**, una griglia di celle con tre evidenziate, etichetta *vocabolario fisso: ~100.000 token — le tessere sono prese da qui*, e una freccia che scende verso le tessere. È un riferimento, non un passo del flusso.
+> La frase è `Il gatto ha un elettroencefalogramma` — quattro parole comuni e una rara, così il contrasto non richiede due scene separate.
 >
-> **Scena superiore — parola rara**: dal basso il testo `elettroencefalogramma`, una freccia in su, e tre tessere burgundy `elettro` · `encefal` · `ogramma`. **L'id del vocabolario sta dentro la tessera**, sotto al testo: una tessera è un oggetto solo.
+> **In fondo**, il testo grezzo in monospaziato **grande**, disegnato con `textLength` in modo che ogni carattere occupi esattamente 15px: è questo che permette di allineare le tessere al carattere. Due tacche burgundy verticali lo attraversano nei punti in cui la parola lunga viene tagliata.
 >
-> **Scena inferiore — parole comuni**: dal basso `Il gatto è sul tavolo`, una freccia, e cinque tessere neutre con i loro id.
+> **Sopra**, le **tessere**, ognuna larga esattamente quanto la sua porzione di testo e allineata sopra di essa. Le quattro comuni sono neutre e separate da uno spazio; le tre della parola rara sono burgundy e **contigue** — si vede che erano una parola sola. Una freccia sale da ogni porzione di testo alla sua tessera.
 >
-> **Elemento focale**: il contrasto fra le due scene. Le tessere burgundy sono spezzate, quelle neutre no.
+> L'**id** sta dentro la tessera, sotto al testo: una tessera è un oggetto solo.
+>
+> **Sopra le tessere**, il **vettore di ogni token**: 4 celle teal, come nella Slide 10 e alla base della torre. I vettori sono **equispaziati e tutti della stessa larghezza**, mentre le tessere sotto hanno larghezze diverse; brevi curve grigie collegano ciascuna tessera al suo vettore. Questo disallineamento è deliberato ed è il secondo insegnamento della slide: *l'embedding non si allunga se il token è più lungo*.
+>
+> **In fondo**, un riquadro nero che riunisce il glifo e la nota: `11621` in giallo, *e non*, `e l e t t r o` sbarrato, con sotto *dentro la tessera le lettere spariscono*; a destra il testo della nota della slide. Non c'è un elemento `.nota` in HTML: sta tutto qui.
+>
+> **Elemento focale**: le tre tessere contigue sotto un'unica parola. Il secondo è la riga dei vettori, tutti uguali.
+
+> **Nota di revisione**: una versione precedente usava due scene impilate (parole comuni sotto, parola rara sopra) e un grande rettangolo-vocabolario in cima. Non funzionava: il vocabolario era l'elemento più grande e il meno informativo, le due scene avevano tessere di larghezze diverse — quindi non sembravano lo stesso oggetto — e chi guarda dall'alto incontrava l'eccezione prima del caso normale.
 
 ---
 
