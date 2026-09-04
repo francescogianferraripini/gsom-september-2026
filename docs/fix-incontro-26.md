@@ -263,3 +263,23 @@ Oltre ai numeri, le spec avevano contenuti fermi a prima:
 - **Sezione 5**: rinominata «Lo scenario, più o meno completo»; accolte le quattro slide in arrivo con una nota di provenienza; aggiunto il blocco della Slide 45 (tool e context rot); riscritti i blocchi 47 (reasoning) e 55 (Pareto, con le due accortezze per rifare lo screenshot); dichiarato che il deck non ha più né la formula riletta né la chiusura.
 
 **Controllo finale**: 55 slide nel deck, 55 blocchi nelle spec, nessuna in eccesso, nessuna nella sezione sbagliata, nessuna ancora `#slide-N` rotta.
+
+---
+
+## Fix aperto — slide di chiusura: la formula come avanzamento del corso
+
+- **56 · La formula, riletta** — *da aggiungere in fondo al deck, dopo la 55 (Pareto)* — figura: `slide3-formula-agent.svg` riusata
+	- ⬜ DA FARE — Riprendere il diagramma-formula della **slide 03** (`Agent = LLM + Harness + System Prompt + Tools + KB + Skills`) come **barra di avanzamento del corso**: nel 26 si accende solo il blocco `LLM`, gli altri cinque restano sbiaditi. È la stessa figura che l'incontro 27 apre con `Harness` acceso e chiude con `System Prompt`, `Tools`, `Skills` accesi e `KB` ancora spento, e che il 28 completa. Deve quindi essere **la stessa figura, stesso viewBox e stessa posizione dei blocchi**, con la sola opacità che cambia.
+	- Sotto il blocco `LLM`, la sintesi di giornata già prevista nella spec (sezione 5, blocco *Slide 47 (numerazione precedente), rimossa*): *manipolatore di embeddings — stateless — addestrato in tre fasi a volere i tool*.
+	- Nota in basso, senza cliffhanger esplicito sull'harness (il passaggio al 27 resta a voce, come deciso): basta la legenda *acceso = visto in questo incontro*.
+	- Aggiornare la spec della sezione 5 (tabella file → slide e blocco della slide) e il conteggio: il deck passa a **56** slide.
+	- Decisione presa durante la spec dell'incontro 27 (4 set 2026): la formula è il filo dei tre incontri e va accesa progressivamente.
+
+## Fix aperto — slide 03: CPU, sistema operativo, software
+
+- **03 · Un agente è un sistema composto** — `#slide-3` — `slide3-formula-agent.svg`
+	- ⬜ DA FARE — Cambiare la metafora, che oggi mette `LLM` e `Harness` insieme sotto la graffa *il sistema operativo*. La lettura nuova, a tre livelli: **`LLM` = la CPU** (calcola, non decide cosa gira), **`Harness` = il sistema operativo** (scheduler, memoria, I/O: il loop, il contesto, i tool), **`System Prompt` + `Tools` + `KB` + `Skills` = il software installato**.
+	- *Figura*: le due graffe diventano tre: una sotto `LLM` (*la CPU*), una sotto `Harness` (*il sistema operativo*), una sotto i quattro termini restanti (*il software installato*). I sei blocchi non si spostano: la figura deve restare sovrapponibile alle versioni "acceso/spento" usate come avanzamento del corso (vedi fix della slide 56).
+	- *Nota in basso* → «L'LLM è la CPU, l'harness il sistema operativo. Il resto è il software che, a parità di macchina, organizza il lavoro a seconda dell'obiettivo.»
+	- Aggiornare il blocco della Slide 3 nella spec della sezione 1 (testo della nota e prompt SVG: tre graffe).
+	- Decisione presa durante la spec dell'incontro 27 (4 set 2026): la stessa metafora regge l'apertura del 27 (la formula con `Harness` acceso: "oggi apriamo il sistema operativo").

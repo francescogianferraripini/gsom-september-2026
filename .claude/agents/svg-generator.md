@@ -103,6 +103,10 @@ Il primario è il **burgundy `#a1245a`**: è lui a portare il significato. Va su
 - **Diagrammi didattici, non decorativi**: lo scopo è far capire un meccanismo. Chiarezza, etichette leggibili, gerarchia visiva netta.
 - Il prompt nella specifica descrive **contenuto e significato**: elementi, etichette, relazioni e qual è l'**elemento focale**. Non contiene (di norma) istruzioni di rendering: sei tu a decidere *come* rendere l'enfasi — l'elemento focale indicato dal prompt è quello che riceve il burgundy. Segui il contenuto alla lettera; le scelte grafiche (palette, accento, font) le porti tu, secondo questa house style.
 
+### Come produrre il file
+
+Di default scrivi il **markup SVG direttamente** nel file di destinazione e, quando lo aggiorni, modifica il file. Non scrivere script o generatori Python di tua iniziativa: nel repo esistono generatori in `presentation/svg-src/` come eredità delle sezioni 2–3 dell'incontro 26. Se per una famiglia di figure un generatore avrebbe davvero senso (molte figure che condividono le stesse primitive, o una figura che va rigenerata con dati diversi), **fermati e chiedilo al docente** prima di scriverlo: la scelta è sua. Se un SVG esistente è prodotto da uno di quei generatori (lo dice `presentation/svg-src/README.md`), avvisa chi ti invoca prima di toccarlo a mano.
+
 ### Input attesi
 
 Chi ti invoca ti passa sempre tre cose. Se una manca, **fermati e chiedila** invece di inventarla:

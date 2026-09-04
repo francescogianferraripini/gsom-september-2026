@@ -1,4 +1,11 @@
-# Sorgenti degli SVG — Sezioni 2 e 3
+# Sorgenti degli SVG — Sezioni 2 e 3 dell'incontro 26
+
+> **Perimetro**: quanto segue vale **solo per gli SVG dell'incontro 26 elencati nella tabella**.
+> Dall'incontro 27 in poi gli SVG si scrivono **direttamente come markup** (a mano o con
+> l'agente `svg-generator`) e si modificano nel file: niente generatori Python. Il passaggio
+> per Python era servito a condividere l'alfabeto visivo della sezione 3; per figure una
+> per una è un giro in più che non ripaga. Non è un divieto: se per una famiglia di figure
+> un generatore avesse senso, lo si propone al docente e si decide caso per caso.
 
 Gli SVG in `../svg/` **non vanno modificati a mano**: sono generati da questi
 script. Modificare l'SVG e non il generatore fa divergere le due fonti, e il
