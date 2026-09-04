@@ -79,14 +79,16 @@
 
 ## Slide 3 — La formula: Agent =
 
-**Layout**: titolo in alto; il diagramma-formula occupa il centro della slide (~65%), protagonista assoluto; nota in basso. I sei termini della formula devono restare blocchi visivamente distinti e autonomi: l'incontro 27 riprenderà lo stesso diagramma con LLM sbiadito e Harness in evidenza.
+**Layout**: titolo in alto; il diagramma-formula occupa il centro della slide (~65%), protagonista assoluto; nota in basso. I sei termini della formula devono restare blocchi visivamente distinti e autonomi, **e alle coordinate fissate qui**: la stessa geometria è riusata dalla Slide 56 come barra di avanzamento del corso, e la riprendono gli incontri 27 e 28 cambiando solo quali blocchi sono accesi.
+
+**La metafora è a tre livelli, non a due** (decisione del 4 settembre 2026, presa mentre si specificava l'incontro 27): `LLM` = **la CPU** — calcola, non decide cosa gira; `Harness` = **il sistema operativo** — scheduler, memoria, I/O, cioè il loop, il contesto e i tool; `System Prompt` + `Tools` + `KB` + `Skills` = **il software installato**. La versione precedente metteva LLM e Harness insieme sotto *il sistema operativo*: separarli serve perché il 27 apre con «oggi apriamo il sistema operativo», e quella frase regge solo se il sistema operativo è l'harness e nient'altro.
 
 **Testo**:
 - Titolo: *Un agente è un sistema composto*
 - Formula (dentro il visual): `Agent = LLM + Harness + System Prompt + Tools + KB + Skills`
-- Nota in basso: *LLM e Harness sono il sistema operativo. Il resto è come se fosse il software che, a parità di infrastruttura, organizza il lavoro a seconda dell'obiettivo.*
+- Nota in basso: *L'LLM è la CPU, l'harness il sistema operativo. Il resto è il software che, a parità di macchina, organizza il lavoro a seconda dell'obiettivo.*
 
-**Visual**: diagramma-formula orizzontale a blocchi con due graffe di raggruppamento (sistema operativo / software installato).
+**Visual**: diagramma-formula orizzontale a blocchi con **tre** graffe di raggruppamento (la CPU / il sistema operativo / il software installato).
 
 **Prompt per schema SVG**:
 > Diagramma-formula orizzontale a blocchi, su una sola riga.
@@ -101,11 +103,14 @@
 >   5. `KB` — *ciò che l'organizzazione sa: il know-what*
 >   6. `Skills` — *il know-how procedurale*
 >
-> **Sotto la fila**, due graffe orizzontali di raggruppamento:
->   - una che abbraccia `LLM` e `Harness`, con etichetta *il sistema operativo*;
+> **Sotto la fila**, tre graffe orizzontali di raggruppamento:
+>   - una sotto il solo `LLM`, con etichetta *la CPU*;
+>   - una sotto il solo `Harness`, con etichetta *il sistema operativo*;
 >   - una che abbraccia `System Prompt`, `Tools`, `KB` e `Skills`, con etichetta *il software installato*.
 >
-> **Elementi focali**: le due graffe con le loro etichette — portano il messaggio (il modello è solo uno dei sei ingredienti; è il "software installato" a distinguere un agente da un altro). I sei blocchi devono essere visivamente distinti e autonomi (ognuno un rettangolo a sé), perché una versione futura dello stesso diagramma riprenderà i medesimi blocchi sbiadendo `LLM` ed evidenziando `Harness`.
+> **Elementi focali**: le tre graffe con le loro etichette — portano il messaggio (il modello è la CPU, cioè uno solo dei sei ingredienti e nemmeno quello che decide; è il "software installato" a distinguere un agente da un altro). I sei blocchi devono essere visivamente distinti e autonomi (ognuno un rettangolo a sé) e **non devono mai cambiare posizione**, perché la Slide 56 e gli incontri 27 e 28 riprendono i medesimi blocchi cambiando solo l'opacità.
+>
+> Le etichette *la CPU* e *il sistema operativo* stanno su blocchi adiacenti e larghi 150: vanno tenute a un corpo che lasci fra loro uno stacco visibile (nel file sono a 21, non a 24 come nella versione a due graffe).
 
 ## Slide 4 — Il ruolo dell'harness
 

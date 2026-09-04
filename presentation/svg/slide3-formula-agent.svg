@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1302 334" width="1302" height="334" role="img">
-  <title>La formula dell'agente: LLM piu Harness piu System Prompt piu Tools piu KB piu Skills, raggruppati in sistema operativo e software installato</title>
+  <title>La formula dell'agente: LLM piu Harness piu System Prompt piu Tools piu KB piu Skills, letti come CPU, sistema operativo e software installato</title>
 
   <g id="formula" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
 
@@ -68,13 +68,20 @@
       </g>
     </g>
 
-    <!-- Graffe di raggruppamento: elemento focale -->
+    <!-- Graffe di raggruppamento: elemento focale. TRE livelli, non due:
+         LLM = la CPU (calcola, non decide cosa gira) · Harness = il sistema
+         operativo (loop, contesto, tool) · gli altri quattro = il software.
+         I sei blocchi non si spostano mai: la stessa geometria e' riusata da
+         slide56-formula-avanzamento.svg (e dagli incontri 27 e 28), dove
+         l'unica cosa che cambia e' l'opacita' dei blocchi. -->
     <g id="raggruppamenti" fill="none" stroke="#a1245a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M210 252 q0 12 12 12 H366 q12 0 12 12 q0 -12 12 -12 H534 q12 0 12 -12"/>
+      <path d="M210 252 q0 12 12 12 H273 q12 0 12 12 q0 -12 12 -12 H348 q12 0 12 -12"/>
+      <path d="M396 252 q0 12 12 12 H459 q12 0 12 12 q0 -12 12 -12 H534 q12 0 12 -12"/>
       <path d="M582 252 q0 12 12 12 H924 q12 0 12 12 q0 -12 12 -12 H1278 q12 0 12 -12"/>
     </g>
-    <g id="etichette-gruppi" text-anchor="middle" font-size="24" font-weight="600" fill="#a1245a">
-      <text x="378" y="312">il sistema operativo</text>
+    <g id="etichette-gruppi" text-anchor="middle" font-size="21" font-weight="600" fill="#a1245a">
+      <text x="285" y="312">la CPU</text>
+      <text x="471" y="312">il sistema operativo</text>
       <text x="936" y="312">il software installato</text>
     </g>
 

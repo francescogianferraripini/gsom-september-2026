@@ -3,9 +3,9 @@
 
 **Sezione 5 — Lo scenario, più o meno completo**
 **Obiettivo di apprendimento**: il partecipante rilegge il loop conversazionale alla luce del **context rot** (la pila della Slide 42 non solo costa: degrada il modello), conosce multimodality e reasoning, inquadra gli elementi economici (raccogliendo il seme GPU della Slide 16) e la scelta open vs closed, e inquadra la scelta open vs closed.
-**Nota di chiusura**: il deck **non ha più** né la slide «La formula, riletta» né la slide di chiusura verso l'incontro 27; finisce sulla fotografia del mercato. Il passaggio all'incontro 27 si fa a voce.
+**Nota di chiusura**: il deck chiude sulla **Slide 56 — «La formula, riletta»**, che riprende il diagramma della Slide 3 come *barra di avanzamento del corso* (acceso il solo `LLM`). Non c'è invece nessuna slide-cliffhanger verso l'incontro 27: il passaggio si fa a voce, e in slide resta la sola legenda *acceso = visto in questo incontro*.
 **Messaggio chiave (takeaway)**: Più contesto non è meglio: oltre una soglia il modello degrada. Da questo limite — e dal "chi esegue?" — nasce il bisogno dell'harness.
-**Budget**: ~30 min, 16 slide. I contenuti "bonus" (multimodality, reasoning) NON sono sacrificabili.
+**Budget**: ~30 min, 17 slide. I contenuti "bonus" (multimodality, reasoning) NON sono sacrificabili.
 **Stato**: bozza
 
 ### Tabella file → slide
@@ -29,7 +29,8 @@
 | `slides/slide44-fine-tuning.html` | Slide 53 — Fine-tuning: riprendere la discesa |
 | `slides/slide45-lora.html` | Slide 54 — LoRA: la correzione a basso rango |
 | `slides/slide46-pareto.html` | Slide 55 — La fotografia del mercato: il Pareto qualità/costo |
-| ~~`slides/slide47-chiusura.html`~~ | *Slide 47 (numerazione precedente) — rimossa* |
+| `slides/slide56-formula-riletta.html` | Slide 56 — La formula, riletta (barra di avanzamento del corso) |
+| ~~`slides/slide47-chiusura.html`~~ | *Slide 47 (numerazione precedente) — rimossa: era la chiusura col cliffhanger sull'harness* |
 
 ---
 
@@ -426,14 +427,41 @@
 - indicare un paio di closed di punta e almeno un open weights competitivo (aggancio Slide 51);
 - i punti in basso a destra della frontiera: è lì che lavora la distillazione (aggancio Slide 48).
 
-## Slide 47 (numerazione precedente) — Chiusura: la formula riletta — **RIMOSSA**
+## Slide 56 — La formula, riletta
 
-**Layout**: titolo in alto; la formula grande al centro con la sintesi sotto il termine LLM; nota-cliffhanger in basso.
+> Slide di chiusura del deck. Non è un riepilogo dell'incontro: è **la barra di avanzamento del corso**. La formula della Slide 3 torna identica, con acceso il solo termine che abbiamo aperto oggi.
+
+**Layout**: titolo in alto; il diagramma-formula al centro, alle stesse coordinate della Slide 3, con `LLM` acceso e gli altri cinque termini sbiaditi; sotto il blocco acceso, la sintesi di giornata; didascalia breve in basso.
 
 **Testo**:
 - Titolo: *La formula, riletta*
-- Formula centrale (tipografica, come alla Slide 3): `Agent = LLM + Harness + System Prompt + Tools + KB + Skills`
-- Sotto il termine `LLM`, la sintesi di giornata: *manipolatore di embeddings — stateless — addestrato in tre fasi a volere i tool*
-- Nota in basso (cliffhanger): *Il modello sa volere. Non sa eseguire. Chi fa parsing, dispatch, sandbox, memoria? Prossimo incontro: dentro l'harness.*
+- Sintesi di giornata (dentro il visual, sotto il blocco `LLM`, con occhiello *QUELLO CHE ABBIAMO APERTO OGGI*): *manipolatore di embeddings · stateless · addestrato in tre fasi a volere i tool*
+- Legenda (dentro il visual, in basso a destra, con un campione del colore acceso): *acceso = visto in questo incontro*
+- Didascalia in basso: *Dei sei termini della formula, oggi ne abbiamo aperto **uno**.*
+- **Nessun cliffhanger in slide.** Il «chi fa parsing, dispatch, sandbox, memoria?» resta a voce: i cinque blocchi spenti dicono già che c'è un seguito.
 
-**Visual**: nessuno. La formula tipografica con la sintesi sotto LLM è la struttura; il cliffhanger sta nel testo.
+**Visual**: `slide56-formula-avanzamento.svg` — è `slide3-formula-agent.svg` con la sola opacità cambiata, più la sintesi e la legenda.
+
+**Prompt per schema SVG**:
+> Partire dal file della Slide 3 e **copiarne le coordinate**, non ricalcolarle: `Agent`, il segno `=`, i sei blocchi, i segni `+` e le tre graffe restano dove sono. Il canvas è più alto (428 invece di 334) solo per fare posto alla sintesi; l'origine e la geometria dei blocchi non cambiano.
+>
+> - **Acceso** (`<g id="accesi">`): il blocco `LLM` — fondo `#ecd3de`, bordo burgundy 2.5, titolo burgundy — con la sua graffa e l'etichetta *la CPU*.
+> - **Spento** (`<g id="spenti">`): gli altri cinque blocchi con le loro due graffe ed etichette, tutti dentro un unico gruppo a `opacity="0.3"` — leggibili, ma chiaramente non ancora aperti. I segni `+` a `0.4`. `Agent` e `=` restano a piena opacità: sono l'intestazione della formula, non un termine.
+> - **Sotto il blocco acceso**, allineata al suo bordo sinistro: una barra verticale burgundy con occhiello e le due righe della sintesi.
+> - **In basso a destra**: campione del colore acceso + legenda.
+
+**Contratto per gli incontri 27 e 28**: si parte da *questo* file, si sposta un blocco da `spenti` ad `accesi` e si riscrive la sola sintesi. Il 27 apre con `Harness` acceso («oggi apriamo il sistema operativo», la stessa metafora della Slide 3) e chiude con `System Prompt`, `Tools` e `Skills` accesi e `KB` ancora spento; il 28 completa. **Nient'altro si muove**: se un blocco cambia posizione, l'effetto «barra che si riempie» salta.
+
+**Due canvas, non uno.** Lo stato *apertura* (Slide 3 del 26, Slide 3 del 27) sta su `1302×334` e non porta sintesi; lo stato *chiusura* — questa slide, e la Slide 62 del 27 — sta su `1302×428`: i 94px in più sono la **fascia della sintesi**, sotto la fila dei blocchi. Origine e geometria dei blocchi sono identiche fra i due canvas, che è l'unica cosa che deve valere.
+
+Qui la fascia ha una voce sola, perché acceso c'è un blocco solo, e si allarga verso destra su spazio che nessun altro usa. Dal 27, con quattro blocchi accesi, va divisa in **una riga per colonna, larga quanto il blocco** (150px): le righe di sintesi previste dalla spec del 27 sono lunghe, e in 150px stanno in tre righe di corpo piccolo, non nelle «due al massimo» che quella spec ipotizza. È un conto da rifare lì, non qui.
+
+---
+
+## Slide 47 (numerazione precedente) — Chiusura: il cliffhanger sull'harness — **RIMOSSA**
+
+Era una seconda slide di chiusura, dopo la formula riletta. Il suo contenuto:
+
+- Nota-cliffhanger: *Il modello sa volere. Non sa eseguire. Chi fa parsing, dispatch, sandbox, memoria? Prossimo incontro: dentro l'harness.*
+
+**Rimossa e non recuperata**: il passaggio all'incontro 27 si fa a voce. La formula riletta, invece, è tornata come Slide 56 — non più tipografica ma come diagramma di avanzamento.

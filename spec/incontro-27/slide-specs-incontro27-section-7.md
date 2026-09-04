@@ -155,6 +155,8 @@
 
 **Visual**: `slide62-formula-riletta.svg` — `slide3-formula-harness.svg` con lo stato dei blocchi cambiato e le righe di sintesi.
 
+> **Da rifare qui il conto della fascia** (nota aggiunta il 4 set 2026, quando il 26 ha chiuso con la sua Slide 56). Le righe di sintesi stanno in una **fascia sotto la fila dei blocchi**, che porta il canvas da `1302×334` a `1302×428` — l'origine e la geometria dei blocchi non cambiano. Con quattro blocchi accesi la fascia va divisa in una riga per colonna, larga quanto il blocco: **150px**. Le righe previste sopra sono lunghe (la più lunga sfiora i 70 caratteri) e in 150px non stanno in «due righe al massimo»: o si accorciano, o la fascia si alza. Da decidere prima di disegnare.
+
 **Prompt per schema SVG**:
 > La stessa figura della Slide 3 (stesso viewBox, blocchi e graffe nella stessa posizione). Stato dei blocchi: `LLM` attenuato con la spunta e l'etichetta *incontro 26*; `Harness`, `System Prompt`, `Tools`, `Skills` pieni, accesi; `KB` attenuato con l'etichetta *incontro 28*. Sotto ogni blocco, al posto della glossa originale, la riga di sintesi elencata nel testo (in piccolo, due righe al massimo). Sotto `Harness`, in aggiunta, la mappa dell'harness in miniatura (l'esoscheletro con le tre zone, gli anelli e la fascia), a dire "questo l'abbiamo aperto tutto".
 >

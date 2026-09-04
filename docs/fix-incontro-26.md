@@ -24,6 +24,7 @@ Per commentare, scrivi sotto la riga della slide.
 		- Nota → "La frontiera si sposta costantemente. La verificabilità deterministica del risultato è l'elemento determinante per poter addestrare gli LLM ad abilitare correttamente gli agenti."
 - **03 · Un agente è un sistema composto** — `#slide-3` — `slide3-formula-agent.svg`
 	- ✅ FATTO — Nota → "LLM e Harness sono il sistema operativo. Il resto è come se fosse il software che, a parità di infrastruttura, organizza il lavoro a seconda dell'obiettivo."
+	- ✅ FATTO — **poi rifatta: la rilettura a tre livelli CPU / sistema operativo / software** — vedi il blocco in fondo al file. La nota di sopra non è più quella in slide.
 - **04 · Il ruolo dell'harness** — `#slide-4` — `slide4-ruolo-harness.svg`
 	- ✅ FATTO — *Figura* riprogettata: i blocchi intorno all'LLM sono raggruppati in 3 categorie distinte da colori
 		- **Context management** (teal `#1ab197` su `#d1efea`): Context Initialization · Context Optimization (compaction, pruning, etc.) · Memory management · Skill management
@@ -237,6 +238,9 @@ Per commentare, scrivi sotto la riga della slide.
 		- **Due accorgimenti sulla resa.** (1) Il sito è in tema scuro; ho emulato `prefers-color-scheme: light` via CDP e la pagina passa a fondo quasi bianco — così lo screenshot non stona in un deck tutto chiaro. (2) Al primo tentativo il ritaglio tagliava via l'asse dei prezzi, che è metà del senso del grafico; e con viewport 1700×1250 la card veniva 2308×1348 (rapporto 1.7), che nello slot largo e basso della slide si sarebbe resa a ~660px con le etichette illeggibili. Ho ricatturato con viewport **2400×980**, così la card stessa diventa panoramica: ora è 2700×1348 e in slide rende a **781px**.
 		- **Attribuzione in slide**: fonte e data (2 settembre 2026, 7.999.020 voti, 400 modelli) sono nella didascalia, insieme al promemoria che va rifatto a ridosso della lezione.
 
+- **56 · La formula, riletta** — `#slide-56` — `slide56-formula-avanzamento.svg` — **NUOVA**
+	- ✅ FATTO — vedi il blocco in fondo al file.
+
 
 ---
 
@@ -262,24 +266,35 @@ Oltre ai numeri, le spec avevano contenuti fermi a prima:
 - **Sezione 4**: uscite le Slide 42 e 43; budget da 8 a 6 slide; riscritto il blocco della 37 (RLHF) per la figura rifatta; tolto il riuso del golfista, che ora si disegna solo nella Slide 11.
 - **Sezione 5**: rinominata «Lo scenario, più o meno completo»; accolte le quattro slide in arrivo con una nota di provenienza; aggiunto il blocco della Slide 45 (tool e context rot); riscritti i blocchi 47 (reasoning) e 55 (Pareto, con le due accortezze per rifare lo screenshot); dichiarato che il deck non ha più né la formula riletta né la chiusura.
 
-**Controllo finale**: 55 slide nel deck, 55 blocchi nelle spec, nessuna in eccesso, nessuna nella sezione sbagliata, nessuna ancora `#slide-N` rotta.
+**Controllo finale**: 55 slide nel deck, 55 blocchi nelle spec, nessuna in eccesso, nessuna nella sezione sbagliata, nessuna ancora `#slide-N` rotta. *(Aggiornamento: con la slide di chiusura il deck è passato a **56**; il controllo è stato rifatto e regge — 56 slide nel deck, 56 blocchi nelle spec.)*
 
 ---
 
-## Fix aperto — slide di chiusura: la formula come avanzamento del corso
+## Fix chiuso — slide 56: la formula come barra di avanzamento del corso
 
-- **56 · La formula, riletta** — *da aggiungere in fondo al deck, dopo la 55 (Pareto)* — figura: `slide3-formula-agent.svg` riusata
-	- ⬜ DA FARE — Riprendere il diagramma-formula della **slide 03** (`Agent = LLM + Harness + System Prompt + Tools + KB + Skills`) come **barra di avanzamento del corso**: nel 26 si accende solo il blocco `LLM`, gli altri cinque restano sbiaditi. È la stessa figura che l'incontro 27 apre con `Harness` acceso e chiude con `System Prompt`, `Tools`, `Skills` accesi e `KB` ancora spento, e che il 28 completa. Deve quindi essere **la stessa figura, stesso viewBox e stessa posizione dei blocchi**, con la sola opacità che cambia.
-	- Sotto il blocco `LLM`, la sintesi di giornata già prevista nella spec (sezione 5, blocco *Slide 47 (numerazione precedente), rimossa*): *manipolatore di embeddings — stateless — addestrato in tre fasi a volere i tool*.
-	- Nota in basso, senza cliffhanger esplicito sull'harness (il passaggio al 27 resta a voce, come deciso): basta la legenda *acceso = visto in questo incontro*.
-	- Aggiornare la spec della sezione 5 (tabella file → slide e blocco della slide) e il conteggio: il deck passa a **56** slide.
-	- Decisione presa durante la spec dell'incontro 27 (4 set 2026): la formula è il filo dei tre incontri e va accesa progressivamente.
+- **56 · La formula, riletta** — `#slide-56` — `slide56-formula-avanzamento.svg` — **NUOVA, in fondo al deck**
+	- ✅ FATTO — «Riprendere il diagramma-formula della slide 03 come barra di avanzamento del corso: nel 26 si accende solo il blocco `LLM`, gli altri cinque restano sbiaditi.»
+		- La figura **non è ridisegnata**: `Agent`, il segno `=`, i cinque `+`, i sei blocchi e le tre graffe sono le coordinate della slide 3 **copiate**, non ricalcolate. Cambia l'opacità e basta: `<g id="accesi">` (solo `LLM`, fondo `#ecd3de` e bordo burgundy, con la sua graffa *la CPU*) contro `<g id="spenti">` a `opacity="0.3"` (gli altri cinque blocchi e le loro due graffe). I `+` scendono a `0.4`; `Agent` e `=` restano pieni, perché sono l'intestazione della formula e non un termine da accendere.
+		- **Sintesi di giornata** sotto il blocco acceso, allineata al suo bordo sinistro: barra verticale burgundy, occhiello *QUELLO CHE ABBIAMO APERTO OGGI*, e le due righe *manipolatore di embeddings · stateless* / *addestrato in tre fasi a volere i tool*.
+		- **Legenda** in basso a destra: campione del colore acceso + *acceso = visto in questo incontro*. Nessun cliffhanger in slide, come deciso; in didascalia solo *«Dei sei termini della formula, oggi ne abbiamo aperto uno.»* Il resto è nelle note del relatore.
+		- **Contratto scritto dentro il file** (commento in testa) per gli incontri 27 e 28: si parte da questo SVG, si sposta un blocco da `spenti` ad `accesi`, si riscrive la sola sintesi, e nient'altro si muove.
+	- ⚠️ **Una deroga, dichiarata: il viewBox non è identico.** Il fix chiedeva «stesso viewBox e stessa posizione dei blocchi». La posizione dei blocchi è identica al pixel; il canvas invece è **1302×428** contro i 1302×334 della slide 3, perché la sintesi di giornata sotto `LLM` non ci stava (sotto la graffa restavano 22px). Allargare in basso non tocca l'origine né la geometria, quindi il vincolo che conta — *i blocchi non si muovono fra un incontro e l'altro* — regge; ed è **questo** il canvas che il 27 e il 28 devono riusare.
+		- **Verificato a schermo che l'effetto non si rompe**: entrambe le figure sono vincolate in larghezza e rendono a **1140px CSS** — slide 3 e slide 56 disegnano i blocchi esattamente alla stessa scala, che è la condizione perché il richiamo funzioni. Se un domani si aggiunge testo alla 56, questa misura va ricontrollata (è lo stesso inciampo della slide 11).
+	- ⚠️ Il deck passa da 55 a **56 slide**. Aggiornati: tabella file → slide e blocco della slide nella spec della sezione 5, budget della sezione (16 → 17 slide) e la nota di chiusura, che diceva il contrario («il deck non ha più né la formula riletta né la chiusura»). Il vecchio blocco della *Slide 47 (numerazione precedente)* resta nella spec come traccia storica, ma ora descrive **solo il cliffhanger**, che è l'unica cosa davvero rimossa: la formula riletta è tornata, non più tipografica ma come diagramma.
 
-## Fix aperto — slide 03: CPU, sistema operativo, software
+## Fix chiuso — slide 03: CPU, sistema operativo, software
 
 - **03 · Un agente è un sistema composto** — `#slide-3` — `slide3-formula-agent.svg`
-	- ⬜ DA FARE — Cambiare la metafora, che oggi mette `LLM` e `Harness` insieme sotto la graffa *il sistema operativo*. La lettura nuova, a tre livelli: **`LLM` = la CPU** (calcola, non decide cosa gira), **`Harness` = il sistema operativo** (scheduler, memoria, I/O: il loop, il contesto, i tool), **`System Prompt` + `Tools` + `KB` + `Skills` = il software installato**.
-	- *Figura*: le due graffe diventano tre: una sotto `LLM` (*la CPU*), una sotto `Harness` (*il sistema operativo*), una sotto i quattro termini restanti (*il software installato*). I sei blocchi non si spostano: la figura deve restare sovrapponibile alle versioni "acceso/spento" usate come avanzamento del corso (vedi fix della slide 56).
-	- *Nota in basso* → «L'LLM è la CPU, l'harness il sistema operativo. Il resto è il software che, a parità di macchina, organizza il lavoro a seconda dell'obiettivo.»
-	- Aggiornare il blocco della Slide 3 nella spec della sezione 1 (testo della nota e prompt SVG: tre graffe).
-	- Decisione presa durante la spec dell'incontro 27 (4 set 2026): la stessa metafora regge l'apertura del 27 (la formula con `Harness` acceso: "oggi apriamo il sistema operativo").
+	- ✅ FATTO — Le graffe passano da due a **tre**: *la CPU* sotto il solo `LLM`, *il sistema operativo* sotto il solo `Harness`, *il software installato* sotto i quattro termini restanti. La terza graffa è invariata; le due nuove sono la stessa forma su un blocco solo.
+	- ✅ FATTO — Nota in basso → *«L'LLM è la CPU, l'harness il sistema operativo. Il resto è il software che, a parità di macchina, organizza il lavoro a seconda dell'obiettivo.»*
+	- I sei blocchi **non si sono spostati di un pixel**, come richiesto: è la condizione perché la figura resti sovrapponibile alla 56 e alle versioni degli incontri 27 e 28.
+	- ⚠️ **Un dettaglio di misura.** Le etichette *la CPU* e *il sistema operativo* stanno sotto due blocchi adiacenti larghi 150: a 24pt si sarebbero quasi toccate. Portate a **21**, lo stacco è netto (verificato a schermo). Se una delle due etichette si allunga, il corpo va ricontrollato.
+	- Aggiornato il blocco della Slide 3 nella spec della sezione 1: layout, nota, descrizione del visual e prompt SVG (tre graffe), più il perché della metafora a tre livelli — il 27 apre con «oggi apriamo il sistema operativo», e quella frase regge solo se il sistema operativo è l'harness da solo.
+
+---
+
+## Controllo dopo questi due fix
+
+- **56 slide** nel deck (`<section id="slide-…">`), 56 blocchi nelle spec.
+- **Nessuno sforo di testo** in tutto il deck: controllate `section`, `.content`, `.col-text`, `.cols` e `.tv` di tutte e 62 le sezioni (56 slide + copertina + 5 separatori) — zero.
+- Slide 3 e slide 56 rendono la figura a **1140px CSS** entrambe: i blocchi sono alla stessa scala.

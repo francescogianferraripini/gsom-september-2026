@@ -29,7 +29,7 @@
 >
 > **Riprese dal 26**: sempre **citazione letterale della figura** (stesso SVG o sua evoluzione con gli stessi elementi nella stessa posizione) e la slide dice solo che cosa cambia oggi; mai una rispiegazione. Eyebrow *dall'incontro 26*. Undici figure candidate: 1 (post-it), 3 (formula), 4 (esoscheletro), 39 (anelli), 9 (i due giri con la riga `[tool]`), 42 (la pila che cresce), 40 (KV cache), 41 (curve di costo), 44 (context rot), 45 (tool a scalini), 38 (traiettorie premiate), 50 (valore delle traiettorie).
 >
-> **La formula come avanzamento del corso**: il diagramma della slide 3 del 26 (`Agent = LLM + Harness + System Prompt + Tools + KB + Skills`, sei blocchi fermi, tre graffe *la CPU / il sistema operativo / il software installato* — fix aperto sul 26) si riaccende progressivamente: 26 chiusura `LLM`; 27 apertura `Harness`; 27 chiusura anche `System Prompt`, `Tools`, `Skills`; 28 `KB`.
+> **La formula come avanzamento del corso**: il diagramma della slide 3 del 26 (`Agent = LLM + Harness + System Prompt + Tools + KB + Skills`, sei blocchi fermi, tre graffe *la CPU / il sistema operativo / il software installato* — applicate sul 26 il 4 set 2026) si riaccende progressivamente: 26 chiusura `LLM`; 27 apertura `Harness`; 27 chiusura anche `System Prompt`, `Tools`, `Skills`; 28 `KB`.
 >
 > **Metafore del 26**: nessuna riportata di default; le propone il docente quando servono.
 >

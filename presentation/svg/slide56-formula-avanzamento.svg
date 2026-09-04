@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1302 428" width="1302" height="428" role="img">
+  <title>La formula dell'agente come barra di avanzamento del corso: in questo incontro e' acceso il solo blocco LLM, gli altri cinque restano spenti</title>
+
+  <!-- ============================================================
+       BARRA DI AVANZAMENTO DEL CORSO — incontro 26.
+
+       Questa figura e' slide3-formula-agent.svg con la SOLA opacita' cambiata,
+       piu' la sintesi di giornata sotto il blocco acceso. Le coordinate di
+       Agent, del segno =, dei sei blocchi e delle tre graffe sono IDENTICHE
+       a quelle della slide 3: copiate, non ricalcolate.
+
+       Contratto per gli incontri 27 e 28: si parte da QUESTO file, si cambia
+       quali blocchi stanno dentro <g id="accesi"> e quali dentro <g id="spenti">,
+       e si riscrive la sola sintesi. Nient'altro si muove — se un blocco si
+       sposta, l'effetto "barra che si riempie" salta.
+
+       Due canvas, non uno. Lo stato "apertura" (slide 3 del 26, slide 3 del 27)
+       sta su 1302x334 e non ha sintesi. Lo stato "chiusura" — questo — sta su
+       1302x428: i 94px in piu' sono la FASCIA DELLA SINTESI sotto la fila dei
+       blocchi. Origine e geometria dei blocchi non cambiano fra i due canvas.
+
+       Qui la fascia ha una voce sola, perche' acceso c'e' un blocco solo, e si
+       allarga verso destra su spazio che nessun altro usa. Dall'incontro 27 in
+       poi i blocchi accesi sono piu' d'uno: la fascia va divisa in una riga per
+       colonna, larga quanto il blocco. La fascia e' il contratto; come la si
+       riempie e' affare di ogni incontro.
+       ============================================================ -->
+
+  <g id="formula" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+
+    <!-- Soggetto: Agent — sempre acceso, e' l'intestazione della formula -->
+    <g id="agent">
+      <rect x="12" y="57" width="130" height="130" rx="8" fill="#161719"/>
+      <text x="77" y="134" text-anchor="middle" font-size="30" font-weight="700" fill="#ffffff">Agent</text>
+    </g>
+
+    <!-- Segno uguale -->
+    <text x="176" y="134" text-anchor="middle" font-size="36" font-weight="500" fill="#838383">=</text>
+
+    <!-- Segni piu: attenuati, seguono i blocchi che separano -->
+    <g id="operatori" font-size="28" font-weight="500" fill="#838383" text-anchor="middle" opacity="0.4">
+      <text x="378" y="132">+</text>
+      <text x="564" y="132">+</text>
+      <text x="750" y="132">+</text>
+      <text x="936" y="132">+</text>
+      <text x="1122" y="132">+</text>
+    </g>
+
+    <!-- ····· SPENTI: i cinque termini non ancora aperti ····· -->
+    <g id="spenti" opacity="0.3">
+      <g id="blocco-harness">
+        <rect x="396" y="12" width="150" height="220" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <text x="471" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#161719">Harness</text>
+        <text x="471" y="140" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">l'impalcatura</text>
+        <text x="471" y="162" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">che lo fa</text>
+        <text x="471" y="184" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">lavorare</text>
+      </g>
+
+      <g id="blocco-system-prompt">
+        <rect x="582" y="12" width="150" height="220" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <text x="657" y="88" text-anchor="middle" font-size="26" font-weight="700" fill="#161719">System</text>
+        <text x="657" y="118" text-anchor="middle" font-size="26" font-weight="700" fill="#161719">Prompt</text>
+        <text x="657" y="162" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">ruolo e regole</text>
+      </g>
+
+      <g id="blocco-tools">
+        <rect x="768" y="12" width="150" height="220" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <text x="843" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#161719">Tools</text>
+        <text x="843" y="151" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">interagire con</text>
+        <text x="843" y="173" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">l'ecosistema IT</text>
+      </g>
+
+      <g id="blocco-kb">
+        <rect x="954" y="12" width="150" height="220" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <text x="1029" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#161719">KB</text>
+        <text x="1029" y="140" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">ciò che</text>
+        <text x="1029" y="162" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">l'organizzazione</text>
+        <text x="1029" y="184" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">sa: il know-what</text>
+      </g>
+
+      <g id="blocco-skills">
+        <rect x="1140" y="12" width="150" height="220" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <text x="1215" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#161719">Skills</text>
+        <text x="1215" y="151" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">il know-how</text>
+        <text x="1215" y="173" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">procedurale</text>
+      </g>
+
+      <!-- le graffe dei gruppi ancora spenti -->
+      <g fill="none" stroke="#a1245a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M396 252 q0 12 12 12 H459 q12 0 12 12 q0 -12 12 -12 H534 q12 0 12 -12"/>
+        <path d="M582 252 q0 12 12 12 H924 q12 0 12 12 q0 -12 12 -12 H1278 q12 0 12 -12"/>
+      </g>
+      <g text-anchor="middle" font-size="21" font-weight="600" fill="#a1245a">
+        <text x="471" y="312">il sistema operativo</text>
+        <text x="936" y="312">il software installato</text>
+      </g>
+    </g>
+
+    <!-- ····· ACCESO: il termine aperto in questo incontro ····· -->
+    <g id="accesi">
+      <g id="blocco-llm">
+        <rect x="210" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+        <text x="285" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#a1245a">LLM</text>
+        <text x="285" y="151" text-anchor="middle" font-size="15" font-weight="400" fill="#212529">il motore</text>
+        <text x="285" y="173" text-anchor="middle" font-size="15" font-weight="400" fill="#212529">che genera</text>
+      </g>
+      <path d="M210 252 q0 12 12 12 H273 q12 0 12 12 q0 -12 12 -12 H348 q12 0 12 -12"
+            fill="none" stroke="#a1245a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="285" y="312" text-anchor="middle" font-size="21" font-weight="600" fill="#a1245a">la CPU</text>
+    </g>
+
+    <!-- ····· Sintesi di giornata, sotto il blocco acceso ····· -->
+    <g id="sintesi">
+      <rect x="210" y="332" width="4" height="84" fill="#a1245a"/>
+      <text x="234" y="352" font-size="13" font-weight="700" fill="#a1245a" letter-spacing="1.2">QUELLO CHE ABBIAMO APERTO OGGI</text>
+      <text x="234" y="384" font-size="20" font-weight="600" fill="#161719">manipolatore di embeddings · stateless</text>
+      <text x="234" y="410" font-size="20" font-weight="600" fill="#161719">addestrato in tre fasi a volere i tool</text>
+    </g>
+
+    <!-- ····· Legenda ····· -->
+    <g id="legenda">
+      <rect x="1016" y="396" width="18" height="18" rx="3" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+      <text x="1290" y="411" text-anchor="end" font-size="15" font-weight="400" fill="#838383">acceso = visto in questo incontro</text>
+    </g>
+
+  </g>
+</svg>
