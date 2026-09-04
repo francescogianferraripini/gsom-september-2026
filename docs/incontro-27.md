@@ -20,17 +20,22 @@
 - Errori come feedback: il risultato di un tool fallito rientra nel loop ed è informazione, non eccezione.
 - Chiamate parallele nello stesso giro.
 - Immagine: sequence diagram modello ↔ harness ↔ tool su due giri.
+- Gestione delle response grandi dei tool: salvataggio su storage e grep locale
+- Riflessione su relazione tra tool ed API
 # Execution Sandbox
  
 - Bash / code execution come tool universale: meccanicamente un tool come gli altri, ma quello che rende possibili tutti gli altri.
+- Spiegare che comunque sono esposti come tool al LLM, e dal suo punto di vista sono tool come gli altri
 - Perché non gira sulla macchina di produzione: isolamento, filesystem effimero, rete controllata.
 - Anticipazione: da qui in poi "tool" non vuol dire solo "funzione con schema JSON".
 # MCP
  
 - Il problema: ogni integrazione riscritta per ogni harness. MCP come standardizzazione del contratto tool appena visto.
 - Primitive: tools, resources, prompts. Client / server. Chi espone cosa.
+- Stateful (1.0) e Stateless (2.0) MCP
 - Perché esiste e cosa è diventato sul mercato (offerta di server, registry).
 - Il costo nascosto: N server = N definizioni nel prefisso a ogni giro, lette o no. Ponte al capitolo successivo.
+- La necessità di non mappare 1:1 le api legacy su tool MCP
 - Immagine: harness al centro, server MCP intorno, con il "peso" in token di ogni server nella finestra.
 # Skills
  
@@ -52,7 +57,7 @@ Confine con Memory: qui tutto ciò che succede *dentro* una sessione.
  
 Confine: tutto ciò che sopravvive *tra* sessioni.
  
-- Tesi deflazionistica: nella pratica attuale la memoria degli agenti è quasi sempre file (note, istruzioni di progetto, scratchpad), non database vettoriali.
+- Tesi deflazionistica: nella pratica attuale la memoria degli agenti è quasi sempre file (note, istruzioni di progetto, scratchpad), non database vettoriali. Grep e operatori unix su file system moltissime volte sono sufficienti
 - Le tre domande: cosa vale la pena ricordare, chi lo scrive, chi lo legge.
 - Ponte all'incontro 3: memoria di un agente e KB di un'organizzazione sono lo stesso problema a scale diverse. I requisiti (progressiva, non ridondante, veritiera, compounding) valgono per entrambe.
 # Come monitoro e miglioro la performance dell'agente?
@@ -72,7 +77,7 @@ Confine: tutto ciò che sopravvive *tra* sessioni.
 	- Un agente ha tipicamente accesso a dei tool. Alcuni di questi sono deterministici (e.g. API di sw applicativo) ed il fallimento è tipicamente legato a chiamate errate o non comprensione del tool. Altri tool sono a loro volta AI o simile: esempio classico la RAG, in cui il problema si scompone in qualità del retrieval/ranking e in qualità della sintesi successiva.
 	- Questi step vanno operazionalizzati, man mano che l'agente è in produzione i dataset aumentano di tracce, che vanno analizzzate a mano (e.g. 100 tracce al mese) incrementando il processo precedente.
 	- Chiaramente la catena di valutazione si fa rigirare se si tocca qualcosa (modifica ai prompt, cambio di modello e di tool, etc.) per individuare regressioni o miglioramenti se si tratta di fix
-- Tre usi del logging: debug (perché ha fatto quella chiamata?), eval (si confrontano traiettorie, non output), training set per RL privato (chiusura del cerchio con l'incontro 1: le traiettorie di oggi sono i dati di domani).
+- Tre usi del logging: debug (perché ha fatto quella chiamata?), eval (si confrontano traiettorie, non output), training set per RL privato (chiusura del cerchio con l'incontro 1: le traiettorie di oggi sono i dati di domani). Istruzione: fare ricerca online 
 - Immagine: una traiettoria reale annotata giro per giro.
 # Orchestrazione: quando un agente non basta
  
