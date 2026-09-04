@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Due zone separate da un confine: a sinistra l'harness in produzione con LLM, registro dei tool, credenziali e connessioni ai sistemi aziendali; a destra il sandbox effimero con shell, python, filesystem di sessione, rete controllata. Attraversano il confine solo il comando e stdout con exit code, più le frecce sottili di ciclo di vita git clone e git push verso il repository</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+  </defs>
+
+  <!-- ===== harness (produzione) ===== -->
+  <text x="12" y="22" font-size="12.5" font-weight="700" fill="#161719">harness <tspan font-weight="500" fill="#838383">(produzione)</tspan></text>
+  <rect x="12" y="32" width="290" height="304" rx="8" fill="#f6f6f6" stroke="#161719"/>
+  <rect x="28" y="48" width="104" height="52" rx="6" fill="#a1245a"/>
+  <text x="80" y="80" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">LLM</text>
+  <g fill="#ffffff" stroke="#dee2e6">
+    <rect x="148" y="48" width="140" height="36" rx="6"/>
+    <rect x="28" y="116" width="120" height="36" rx="6"/>
+    <rect x="160" y="100" width="128" height="68" rx="6"/>
+  </g>
+  <g font-size="11.5" font-weight="600" fill="#212529" text-anchor="middle">
+    <text x="218" y="70">registro dei tool</text>
+    <text x="88" y="138">credenziali</text>
+    <text x="224" y="124">connessioni ai</text>
+    <text x="224" y="139">sistemi aziendali</text>
+    <text x="224" y="157" font-size="10.5" font-weight="400" fill="#838383">CRM · posta · ordini</text>
+  </g>
+  <!-- lucchetto sulle credenziali -->
+  <rect x="34" y="128" width="10" height="8" rx="1.5" fill="#161719"/>
+  <path d="M36 128 v-3 a3 3 0 0 1 6 0 v3" fill="none" stroke="#161719" stroke-width="1.5"/>
+
+  <rect x="28" y="196" width="260" height="60" rx="6" fill="#fff2ce" stroke="#ffbe0b"/>
+  <text x="158" y="218" text-anchor="middle" font-size="11.5" font-weight="700" fill="#161719">tool bash</text>
+  <text x="158" y="234" text-anchor="middle" font-size="10.5" fill="#212529">riceve il tool_use, manda il comando</text>
+  <text x="158" y="247" text-anchor="middle" font-size="10.5" fill="#212529">oltre il confine, riporta il risultato</text>
+
+  <text x="28" y="306" font-size="10.5" fill="#838383">credenziali e sistemi restano qui:</text>
+  <text x="28" y="320" font-size="10.5" fill="#838383">nessun'altra freccia attraversa il confine</text>
+
+  <!-- ===== il confine ===== -->
+  <line x1="322" y1="32" x2="322" y2="424" stroke="#161719" stroke-width="4"/>
+  <text transform="rotate(-90 336 120)" x="336" y="120" text-anchor="middle" font-size="12" font-weight="700" letter-spacing="1.6" fill="#161719">CONFINE</text>
+
+  <!-- le due frecce di lavoro -->
+  <line x1="290" y1="214" x2="354" y2="214" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="364" y="210" font-size="10.5" font-weight="600" fill="#161719">comando <tspan font-weight="400" fill="#838383">(dal tool_use)</tspan></text>
+  <line x1="356" y1="246" x2="292" y2="246" stroke="#0e7c6a" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="364" y="260" font-size="10.5" font-weight="600" fill="#0e7c6a">stdout, exit code <tspan font-weight="400" fill="#838383">(nel tool_result)</tspan></text>
+
+  <!-- ===== sandbox (effimero) ===== -->
+  <text x="342" y="22" font-size="12.5" font-weight="700" fill="#161719">sandbox <tspan font-weight="500" fill="#838383">(effimero)</tspan></text>
+  <rect x="342" y="32" width="286" height="304" rx="8" fill="#ffffff" stroke="#838383" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <g fill="#f6f6f6" stroke="#dee2e6">
+    <rect x="358" y="48" width="80" height="32" rx="6"/>
+    <rect x="448" y="48" width="80" height="32" rx="6"/>
+  </g>
+  <g font-size="11.5" font-weight="600" fill="#212529" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">
+    <text x="398" y="69">shell</text>
+    <text x="488" y="69">python</text>
+  </g>
+  <!-- rete con lucchetto -->
+  <circle cx="590" cy="60" r="16" fill="none" stroke="#838383" stroke-width="1.5"/>
+  <path d="M574 60 h32 M590 44 v32 M580 49 c6 6 14 6 20 0 M580 71 c6 -6 14 -6 20 0" fill="none" stroke="#838383" stroke-width="1"/>
+  <rect x="597" y="66" width="12" height="10" rx="2" fill="#161719"/>
+  <path d="M599 66 v-3 a4 4 0 0 1 8 0 v3" fill="none" stroke="#161719" stroke-width="1.5"/>
+  <text x="612" y="92" text-anchor="end" font-size="10.5" font-weight="600" fill="#161719">rete: solo</text>
+  <text x="612" y="105" text-anchor="end" font-size="10.5" font-weight="600" fill="#161719">destinazioni ammesse</text>
+
+  <rect x="358" y="118" width="254" height="72" rx="6" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="370" y="136" font-size="11.5" font-weight="600" fill="#212529">filesystem di sessione</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#212529">
+    <text x="370" y="156">ordini_08.json</text>
+    <text x="500" y="156">export_4471.json</text>
+    <text x="370" y="174">report_36.md</text>
+    <text x="500" y="174" fill="#838383">…</text>
+  </g>
+
+  <!-- l'orologio: nasce e muore con la sessione -->
+  <circle cx="374" cy="302" r="12" fill="none" stroke="#838383" stroke-width="1.5"/>
+  <path d="M374 294 v8 h6" fill="none" stroke="#838383" stroke-width="1.5"/>
+  <text x="394" y="306" font-size="10.5" font-style="italic" fill="#838383">nasce e muore con la sessione</text>
+
+  <!-- ===== ciclo di vita: il repository sta fuori ===== -->
+  <g id="repository">
+    <path d="M24 362 v40 a36 8 0 0 0 72 0 v-40" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <ellipse cx="60" cy="362" rx="36" ry="8" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <text x="60" y="428" text-anchor="middle" font-size="11" font-weight="700" fill="#161719">repository</text>
+  </g>
+  <path d="M100 372 H470 V340" fill="none" stroke="#838383" stroke-width="1.2" marker-end="url(#ag)"/>
+  <text x="200" y="366" font-size="10.5" fill="#838383"><tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-weight="600" fill="#161719">git clone</tspan> all'inizio</text>
+  <path d="M520 340 V398 H102" fill="none" stroke="#838383" stroke-width="1.2" marker-end="url(#ag)"/>
+  <text x="200" y="412" font-size="10.5" fill="#838383"><tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-weight="600" fill="#161719">git push</tspan> alla fine</text>
+</svg>

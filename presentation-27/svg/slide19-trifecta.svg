@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 278" width="640" height="278" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>La lethal trifecta come diagramma di Venn: dati privati, contenuti non fidati, canale in uscita. Solo l'intersezione centrale è piena: qui l'attacco chiude</title>
+
+  <g fill="none" stroke-width="2.5">
+    <circle cx="150" cy="96" r="68" stroke="#a1245a"/>
+    <circle cx="250" cy="96" r="68" stroke="#d99a00"/>
+    <circle cx="200" cy="166" r="68" stroke="#4da0d7"/>
+  </g>
+  <!-- l'intersezione dei tre: elemento focale -->
+  <ellipse cx="200" cy="120" rx="14" ry="22" fill="#a1245a"/>
+  <path d="M212 126 C 260 180, 300 196, 328 200" fill="none" stroke="#a1245a" stroke-width="1.5"/>
+  <text x="336" y="204" font-size="12.5" font-weight="700" fill="#a1245a">qui l'attacco chiude</text>
+
+  <g font-size="12.5" font-weight="700">
+    <text x="118" y="22" text-anchor="middle" fill="#a1245a">dati privati</text>
+    <text x="282" y="22" text-anchor="middle" fill="#b8860b">contenuti non fidati</text>
+    <text x="200" y="250" text-anchor="middle" fill="#2f6f99">canale in uscita</text>
+  </g>
+
+  <!-- esempi -->
+  <g font-size="11.5" fill="#212529">
+    <circle cx="344" cy="58" r="5" fill="#a1245a"/>
+    <text x="356" y="62">il CRM, i file dell'utente</text>
+    <circle cx="344" cy="92" r="5" fill="#d99a00"/>
+    <text x="356" y="96">pagine web, mail in arrivo, documenti caricati</text>
+    <circle cx="344" cy="126" r="5" fill="#4da0d7"/>
+    <text x="356" y="130">invia_mail, richieste HTTP,</text>
+    <text x="356" y="146">scrittura fuori dal sandbox</text>
+  </g>
+
+  <text x="336" y="236" font-size="12" font-weight="600" fill="#161719">tre tool insieme nella stessa finestra</text>
+  <text x="336" y="252" font-size="12" font-weight="600" fill="#161719">= un agente attaccabile</text>
+
+  <text x="12" y="272" font-size="10.5" font-style="italic" fill="#838383">«The lethal trifecta: private data, untrusted content, exfiltration.» — Simon Willison, 2025</text>
+</svg>

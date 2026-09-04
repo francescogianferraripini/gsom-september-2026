@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 566" width="470" height="566" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>La finestra a strati, variante della slide 9: lo strato del system prompt diviso in due fasce, ruolo e regole (chi costruisce l'agente) attenuata e istruzioni di progetto CLAUDE.md (chi usa l'agente) in evidenza, con la freccia dalla cartella del progetto: l'harness lo appende a ogni sessione</title>
+  <!-- Stesso viewBox della famiglia; la colonna dei token lascia il posto alla cartella del progetto. -->
+  <defs>
+    <marker id="arr-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0e7c6a"/>
+    </marker>
+  </defs>
+
+  <text x="12" y="24" font-size="19" font-weight="600" fill="#161719">la finestra al giro zero</text>
+
+  <rect x="12" y="40" width="300" height="468" rx="8" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+
+  <!-- strato 1: due fasce -->
+  <rect x="24" y="52" width="276" height="96" rx="6" fill="#ffffff" stroke="#1ab197" stroke-width="2.5"/>
+  <text x="36" y="74" font-size="18" font-weight="600" fill="#0e7c6a">system prompt</text>
+  <rect x="32" y="84" width="260" height="26" rx="4" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="40" y="102" font-size="12.5" font-weight="500" fill="#838383">ruolo e regole (chi costruisce l'agente)</text>
+  <rect x="32" y="116" width="260" height="26" rx="4" fill="#d1efea" stroke="#1ab197" stroke-width="2"/>
+  <text x="40" y="134" font-size="12.5" font-weight="700" fill="#0e7c6a">+ istruzioni di progetto: CLAUDE.md</text>
+
+  <!-- la cartella del progetto e la freccia -->
+  <g id="cartella">
+    <path d="M340 104 h20 l6 6 h30 a4 4 0 0 1 4 4 v30 a4 4 0 0 1 -4 4 h-56 a4 4 0 0 1 -4 -4 v-36 a4 4 0 0 1 4 -4 z" fill="#fff2ce" stroke="#161719" stroke-width="1.5"/>
+    <text x="370" y="168" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13" fill="#161719">progetto/</text>
+    <text x="370" y="188" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" fill="#838383">CLAUDE.md</text>
+    <path d="M336 129 H300" fill="none" stroke="#0e7c6a" stroke-width="2" marker-end="url(#arr-t)"/>
+    <g font-size="12.5" font-weight="600" fill="#0e7c6a">
+      <text x="370" y="214" text-anchor="middle">l'harness lo appende</text>
+      <text x="370" y="230" text-anchor="middle">a ogni sessione</text>
+    </g>
+  </g>
+
+  <!-- strati 2-4: vuoti -->
+  <g fill="none" stroke="#838383" stroke-width="1.5" stroke-dasharray="6 5">
+    <rect x="24" y="160" width="276" height="96" rx="6"/>
+    <rect x="24" y="268" width="276" height="96" rx="6"/>
+    <rect x="24" y="376" width="276" height="120" rx="6"/>
+  </g>
+  <g font-size="20" font-weight="600" fill="#838383">
+    <text x="36" y="186">dichiarazione dei tool</text>
+    <text x="36" y="294">indice delle skill</text>
+    <text x="36" y="402">messaggi</text>
+  </g>
+  <text x="162" y="446" text-anchor="middle" font-size="16" font-style="italic" fill="#838383">ancora nessuno</text>
+
+  <text x="12" y="542" font-size="17" font-weight="500" fill="#838383">→ chiamata n. 1: non ancora</text>
+</svg>

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Lo stesso task, il report vendite della settimana, in tre pannelli. Con i tool: quattro giri, quattro risultati interi nella finestra, circa 12.000 token, le somme le fa il modello. Con bash al volo: un giro, uno script lungo scritto ogni volta dal modello, circa 1.000 token. Con skill e script: un giro, lo script già scritto, circa 400 token; il lavoro meccanico avviene nel sandbox, fuori dalla finestra</title>
+
+  <line x1="250" y1="12" x2="250" y2="432" stroke="#dee2e6"/>
+  <line x1="500" y1="12" x2="500" y2="432" stroke="#dee2e6"/>
+
+  <!-- ===== con i tool ===== -->
+  <text x="12" y="24" font-size="12" font-weight="700" letter-spacing="1.6" fill="#a1245a">CON I TOOL</text>
+  <text x="12" y="40" font-size="10.5" fill="#838383">quattro giri, quattro risultati interi</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5">
+    <rect x="12" y="52" width="226" height="16" rx="4" fill="#a1245a"/>
+    <text x="18" y="64" fill="#ffffff">→ esporta_vendite(settimana=36)</text>
+    <rect x="12" y="72" width="226" height="74" rx="4" fill="#d1efea" stroke="#1ab197"/>
+    <text x="18" y="85" fill="#212529"><tspan font-weight="600" fill="#0e7c6a">[tool]</tspan> 2.400 righe</text>
+    <text x="18" y="98" fill="#9aa0a6">{prod: "A-12", q: 4, tot: 118.0}</text>
+    <text x="18" y="111" fill="#9aa0a6">{prod: "B-07", q: 1, tot: 39.9}</text>
+    <text x="18" y="124" fill="#9aa0a6">{prod: "A-12", q: 2, tot: 59.0}</text>
+    <text x="18" y="137" fill="#9aa0a6">…</text>
+
+    <rect x="12" y="152" width="226" height="16" rx="4" fill="#a1245a"/>
+    <text x="18" y="164" fill="#ffffff">→ esporta_vendite(settimana=35)</text>
+    <rect x="12" y="172" width="226" height="74" rx="4" fill="#d1efea" stroke="#1ab197"/>
+    <text x="18" y="185" fill="#212529"><tspan font-weight="600" fill="#0e7c6a">[tool]</tspan> 2.300 righe</text>
+    <text x="18" y="198" fill="#9aa0a6">{prod: "A-12", q: 3, tot: 88.5}</text>
+    <text x="18" y="211" fill="#9aa0a6">{prod: "C-01", q: 6, tot: 210.0}</text>
+    <text x="18" y="224" fill="#9aa0a6">{prod: "B-07", q: 2, tot: 79.8}</text>
+    <text x="18" y="237" fill="#9aa0a6">…</text>
+
+    <rect x="12" y="252" width="226" height="16" rx="4" fill="#a1245a"/>
+    <text x="18" y="264" fill="#ffffff">→ calcola_totali(…)</text>
+    <rect x="12" y="272" width="226" height="26" rx="4" fill="#d1efea" stroke="#1ab197"/>
+    <text x="18" y="289" fill="#212529"><tspan font-weight="600" fill="#0e7c6a">[tool]</tspan> tabella per prodotto</text>
+
+    <rect x="12" y="304" width="226" height="16" rx="4" fill="#a1245a"/>
+    <text x="18" y="316" fill="#ffffff">→ formatta_report(…)</text>
+    <rect x="12" y="324" width="226" height="26" rx="4" fill="#d1efea" stroke="#1ab197"/>
+    <text x="18" y="341" fill="#212529"><tspan font-weight="600" fill="#0e7c6a">[tool]</tspan> documento</text>
+  </g>
+  <text x="12" y="404" font-size="11.5" font-weight="700" fill="#161719">4 giri · ~12.000 token nella finestra</text>
+  <text x="12" y="420" font-size="10.5" fill="#a1245a" font-weight="600">le somme le fa il modello</text>
+
+  <!-- ===== con bash, al volo ===== -->
+  <text x="262" y="24" font-size="12" font-weight="700" letter-spacing="1.6" fill="#a1245a">CON BASH, AL VOLO</text>
+  <text x="262" y="40" font-size="10.5" fill="#838383">un giro, uno script scritto lì per lì</text>
+  <rect x="262" y="52" width="226" height="212" rx="4" fill="#a1245a"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#ffffff">
+    <text x="268" y="65">→ bash("python3 -c \"</text>
+    <text x="276" y="78">import json, requests</text>
+    <text x="276" y="91">a = requests.get(API+'?w=36').json()</text>
+    <text x="276" y="104">b = requests.get(API+'?w=35').json()</text>
+    <text x="276" y="117">tot, prev = {}, {}</text>
+    <text x="276" y="130">for r in a:</text>
+    <text x="276" y="143">    tot[r['prod']] = tot.get(…)+r['tot']</text>
+    <text x="276" y="156">for r in b:</text>
+    <text x="276" y="169">    prev[r['prod']] = prev.get(…)+…</text>
+    <text x="276" y="182">delta = {k: tot[k]-prev.get(k,0) …}</text>
+    <text x="276" y="195">anom = [k for k in delta if …]</text>
+    <text x="276" y="208">righe = ['| '+k+' | '+… for k in tot]</text>
+    <text x="276" y="221">print(intesta(), *righe, piede(anom))</text>
+    <text x="276" y="234" fill="#ecd3de">… ~15 righe</text>
+    <text x="268" y="254">\"")</text>
+  </g>
+  <rect x="262" y="270" width="226" height="26" rx="4" fill="#d1efea" stroke="#1ab197"/>
+  <text x="268" y="287" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#212529"><tspan font-weight="600" fill="#0e7c6a">[tool]</tspan> report · totale 184.300 €</text>
+  <g font-size="10.5" font-weight="600" fill="#a1245a">
+    <text x="262" y="322">~600 token di output, ogni volta</text>
+    <text x="262" y="338">diverso ogni volta: può sbagliare</text>
+  </g>
+  <text x="262" y="404" font-size="11.5" font-weight="700" fill="#161719">1 giro · ~1.000 token</text>
+  <text x="262" y="420" font-size="10.5" fill="#a1245a" font-weight="600">lo script lo scrive il modello</text>
+
+  <!-- ===== skill + script ===== -->
+  <text x="512" y="24" font-size="12" font-weight="700" letter-spacing="1.6" fill="#a1245a">SKILL + SCRIPT</text>
+  <text x="512" y="40" font-size="10.5" fill="#838383">un giro, lo script è già scritto</text>
+  <rect x="512" y="52" width="236" height="54" rx="4" fill="#f6f6f6" stroke="#161719"/>
+  <text x="518" y="66" font-size="9.5" font-weight="700" fill="#161719">corpo: report-settimanale</text>
+  <g font-size="9.5" fill="#212529">
+    <text x="518" y="81">lancia <tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">report.py --settimana N</tspan>;</text>
+    <text x="518" y="95">commenta le anomalie al lettore</text>
+  </g>
+  <rect x="512" y="112" width="236" height="16" rx="4" fill="#a1245a"/>
+  <text x="518" y="124" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#ffffff">→ bash("python3 report.py --settimana 36")</text>
+  <rect x="512" y="134" width="236" height="48" rx="4" fill="#d1efea" stroke="#1ab197"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#212529">
+    <text x="518" y="148"><tspan font-weight="600" fill="#0e7c6a">[tool]</tspan> report_36.md generato</text>
+    <text x="518" y="162">totale 184.300 € (+6%)</text>
+    <text x="518" y="176">anomalia: SpedFast −40%</text>
+  </g>
+  <rect x="512" y="188" width="236" height="32" rx="4" fill="#a1245a"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#ffffff">
+    <text x="518" y="202"><tspan fill="#ecd3de">[assistant]</tspan> Settimana 36: +6%.</text>
+    <text x="518" y="215">Da verificare SpedFast: −40%.</text>
+  </g>
+  <!-- nel sandbox, fuori dalla finestra -->
+  <rect x="512" y="236" width="236" height="84" rx="4" fill="none" stroke="#838383" stroke-dasharray="5 4"/>
+  <text x="518" y="252" font-size="9.5" font-weight="700" fill="#838383">nel sandbox, fuori dalla finestra:</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#212529">
+    <text x="518" y="268">report.py: chiama l'API ×2</text>
+    <text x="518" y="282">→ aggrega → confronta → impagina</text>
+  </g>
+  <text x="518" y="304" font-size="9.5" font-weight="600" fill="#0e7c6a">zero token per i passaggi intermedi</text>
+  <text x="512" y="404" font-size="11.5" font-weight="700" fill="#161719">1 giro · ~400 token</text>
+  <text x="512" y="420" font-size="10.5" fill="#a1245a" font-weight="600">lo script è già scritto, ed è sempre lo stesso</text>
+</svg>

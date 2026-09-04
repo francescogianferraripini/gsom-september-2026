@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Linea del tempo di MCP: novembre 2024 nasce con sessione, marzo 2025 trasporto HTTP streamable, luglio 2026 stateless. Sopra, il confronto fra il protocollo con sessione, un canale aperto per client, e quello stateless, in cui ogni richiesta basta a sé stessa e passa da un gateway. Sotto l'ultima tacca: registry ufficiale, server nell'ordine delle decine di migliaia, SDK con centinaia di milioni di download al mese</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+  </defs>
+
+  <!-- ===== con sessione ===== -->
+  <rect x="20" y="36" width="270" height="244" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="32" y="58" font-size="12" font-weight="700" letter-spacing="1.6" fill="#838383">CON SESSIONE</text>
+  <g fill="#ffffff" stroke="#838383">
+    <rect x="36" y="72" width="130" height="26" rx="4"/>
+    <rect x="36" y="116" width="130" height="26" rx="4"/>
+    <rect x="36" y="160" width="130" height="26" rx="4"/>
+    <rect x="36" y="204" width="130" height="26" rx="4"/>
+  </g>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529" text-anchor="middle">
+    <text x="101" y="90">initialize</text>
+    <text x="101" y="134">session id</text>
+    <text x="101" y="178">richieste…</text>
+    <text x="101" y="222">stream dal server</text>
+  </g>
+  <g stroke="#161719" stroke-width="1.2">
+    <line x1="101" y1="98" x2="101" y2="114" marker-end="url(#a)"/>
+    <line x1="101" y1="142" x2="101" y2="158" marker-end="url(#a)"/>
+    <line x1="101" y1="186" x2="101" y2="202" marker-end="url(#a)"/>
+  </g>
+  <!-- client e server legati da un canale -->
+  <rect x="192" y="72" width="84" height="26" rx="4" fill="#161719"/>
+  <text x="234" y="90" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">client</text>
+  <rect x="192" y="204" width="84" height="26" rx="4" fill="#fff2ce" stroke="#ffbe0b"/>
+  <text x="234" y="222" text-anchor="middle" font-size="11" font-weight="700" fill="#161719">server</text>
+  <line x1="226" y1="98" x2="226" y2="204" stroke="#a1245a" stroke-width="2.5"/>
+  <line x1="242" y1="98" x2="242" y2="204" stroke="#a1245a" stroke-width="2.5"/>
+  <text transform="rotate(-90 260 151)" x="260" y="151" text-anchor="middle" font-size="10" fill="#a1245a" font-weight="600">canale aperto</text>
+  <text x="32" y="262" font-size="11.5" font-weight="600" fill="#161719">un canale aperto per client</text>
+
+  <!-- ===== stateless ===== -->
+  <rect x="330" y="36" width="290" height="244" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="342" y="58" font-size="12" font-weight="700" letter-spacing="1.6" fill="#a1245a">STATELESS</text>
+  <g fill="#ffffff" stroke="#838383">
+    <rect x="340" y="72" width="86" height="52" rx="4"/>
+    <rect x="432" y="72" width="86" height="52" rx="4"/>
+    <rect x="524" y="72" width="86" height="52" rx="4"/>
+  </g>
+  <g font-size="10" fill="#212529" text-anchor="middle">
+    <text x="383" y="88" font-weight="700">richiesta 1</text><text x="383" y="102">versione</text><text x="383" y="115">+ capacità</text>
+    <text x="475" y="88" font-weight="700">richiesta 2</text><text x="475" y="102">versione</text><text x="475" y="115">+ capacità</text>
+    <text x="567" y="88" font-weight="700">richiesta 3</text><text x="567" y="102">versione</text><text x="567" y="115">+ capacità</text>
+  </g>
+  <g stroke="#161719" stroke-width="1.2" fill="none">
+    <path d="M383 124 V150 H470 V162" marker-end="url(#a)"/>
+    <path d="M475 124 V162" marker-end="url(#a)"/>
+    <path d="M567 124 V150 H480 V162" marker-end="url(#a)"/>
+  </g>
+  <rect x="390" y="164" width="170" height="30" rx="4" fill="#161719"/>
+  <text x="475" y="184" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">gateway</text>
+  <line x1="475" y1="194" x2="475" y2="212" stroke="#161719" stroke-width="1.2" marker-end="url(#a)"/>
+  <rect x="390" y="214" width="170" height="26" rx="4" fill="#fff2ce" stroke="#ffbe0b"/>
+  <text x="475" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#161719">server</text>
+  <text x="342" y="262" font-size="11.5" font-weight="600" fill="#a1245a">ogni richiesta basta a sé stessa</text>
+
+  <!-- ===== la linea del tempo ===== -->
+  <line x1="90" y1="280" x2="90" y2="312" stroke="#838383" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="550" y1="280" x2="550" y2="312" stroke="#a1245a" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="30" y1="320" x2="610" y2="320" stroke="#161719" stroke-width="2" marker-end="url(#a)"/>
+  <g fill="#ffffff" stroke="#a1245a" stroke-width="2.5">
+    <circle cx="90" cy="320" r="7"/>
+    <circle cx="320" cy="320" r="7"/>
+    <circle cx="550" cy="320" r="7" fill="#a1245a"/>
+  </g>
+  <g font-size="11" text-anchor="middle">
+    <text x="90" y="344" font-weight="700" fill="#161719">nov 2024</text>
+    <text x="90" y="358" fill="#838383">nasce, con sessione</text>
+    <text x="320" y="344" font-weight="700" fill="#161719">mar 2025</text>
+    <text x="320" y="358" fill="#838383">trasporto HTTP streamable</text>
+    <text x="550" y="344" font-weight="700" fill="#a1245a">lug 2026</text>
+    <text x="550" y="358" fill="#a1245a">stateless</text>
+  </g>
+
+  <!-- che cosa è diventato -->
+  <g font-size="11" fill="#212529" text-anchor="end">
+    <text x="610" y="390"><tspan font-weight="700">registry</tspan> ufficiale</text>
+    <text x="610" y="408">server: <tspan font-weight="700">decine di migliaia</tspan></text>
+    <text x="610" y="426">SDK: <tspan font-weight="700">centinaia di milioni</tspan> di download al mese</text>
+  </g>
+</svg>

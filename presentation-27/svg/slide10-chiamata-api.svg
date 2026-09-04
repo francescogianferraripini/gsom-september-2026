@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 392" width="1140" height="392" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Com'è fatta una chiamata al modello: a sinistra la richiesta (model, system, tools, messages, max_tokens) che corrisponde campo per campo agli strati della finestra; a destra la risposta con i blocchi generati e lo stop_reason; sotto, la freccia del giro successivo con il tool_result</title>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#161719"/>
+    </marker>
+    <g id="flag">
+      <path d="M0 0 v-15 h11 l-3.5 4 l3.5 4 h-11" fill="#ffbe0b" stroke="#161719" stroke-width="1" stroke-linejoin="round"/>
+    </g>
+  </defs>
+
+  <!-- ===== la richiesta ===== -->
+  <text x="12" y="26" font-size="12" font-weight="700" letter-spacing="1.6" fill="#a1245a">LA RICHIESTA</text>
+  <text x="128" y="26" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="600" fill="#161719">POST /v1/messages</text>
+  <rect x="12" y="40" width="588" height="232" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13.5" fill="#212529">
+    <text x="28" y="74"><tspan fill="#a1245a" font-weight="600">model:</tspan>      "…"</text>
+    <text x="28" y="102"><tspan fill="#a1245a" font-weight="600">system:</tspan>     "Sei l'assistente di Acme…"</text>
+    <text x="28" y="130"><tspan fill="#a1245a" font-weight="600">tools:</tspan>      [ {name, description, input_schema}, … ]</text>
+    <text x="28" y="158"><tspan fill="#a1245a" font-weight="600">messages:</tspan>   [ {role: "user", content: "…"} ]</text>
+    <text x="28" y="186"><tspan fill="#a1245a" font-weight="600">max_tokens:</tspan> 4096</text>
+  </g>
+  <use href="#flag" x="366" y="104"/>
+  <use href="#flag" x="470" y="132"/>
+  <g text-anchor="end" font-size="12.5" font-weight="600" fill="#0e7c6a">
+    <text x="586" y="102">← lo strato 1</text>
+    <text x="586" y="130">← lo strato 2</text>
+    <text x="586" y="158">← la storia</text>
+  </g>
+  <use href="#flag" x="30" y="228"/>
+  <text x="48" y="226" font-size="12.5" font-weight="500" fill="#838383"><tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-weight="600" fill="#212529">cache_control</tspan>: fin qui non cambia, riusalo (il prefix caching: sezione 4)</text>
+  <text x="28" y="254" font-size="12" font-weight="400" fill="#838383">anche le skill entrano da qui (<tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">container.skills</tspan>) · anche i server MCP (<tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">mcp_servers</tspan>)</text>
+
+  <!-- ===== la risposta ===== -->
+  <text x="640" y="26" font-size="12" font-weight="700" letter-spacing="1.6" fill="#a1245a">LA RISPOSTA</text>
+  <rect x="640" y="40" width="488" height="232" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13.5" fill="#212529">
+    <text x="656" y="72"><tspan fill="#a1245a" font-weight="600">content:</tspan> [</text>
+    <text x="656" y="96">  { type: "text", text: "Controllo subito." },</text>
+    <text x="656" y="120">  { type: <tspan font-weight="700">"tool_use"</tspan>, id: "tu_01", name: "cerca_ordine",</text>
+    <text x="656" y="144">    input: {id_ordine: "4471"} }</text>
+    <text x="656" y="168">]</text>
+  </g>
+  <!-- stop_reason: l'elemento focale -->
+  <rect x="656" y="184" width="222" height="26" rx="6" fill="#a1245a"/>
+  <text x="666" y="202" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13.5" font-weight="700" fill="#ffffff">stop_reason: "tool_use"</text>
+  <g font-size="12.5" fill="#838383">
+    <text x="656" y="236"><tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-weight="600" fill="#212529">end_turn</tspan>  → ha finito: il turno è chiuso</text>
+    <text x="656" y="256" font-weight="700" fill="#a1245a"><tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">tool_use</tspan>  → vuole un tool, e aspetta</text>
+  </g>
+
+  <!-- ===== il giro successivo ===== -->
+  <path d="M884 272 V318 H306 V280" fill="none" stroke="#161719" stroke-width="2" stroke-linejoin="round" marker-end="url(#arr)"/>
+  <rect x="440" y="298" width="310" height="22" rx="11" fill="#ffffff"/>
+  <text x="595" y="313" text-anchor="middle" font-size="13" font-weight="600" fill="#161719">giro successivo: messages += tool_use + tool_result</text>
+  <rect x="355" y="332" width="480" height="26" rx="6" fill="#d1efea" stroke="#1ab197"/>
+  <text x="367" y="350" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" fill="#212529"><tspan font-weight="600" fill="#0e7c6a">{ type: "tool_result"</tspan>, tool_use_id: "tu_01", content: "…" }</text>
+  <text x="595" y="380" text-anchor="middle" font-size="12" font-weight="500" fill="#0e7c6a">la riga [tool] del 26: non l'ha scritta il modello</text>
+</svg>

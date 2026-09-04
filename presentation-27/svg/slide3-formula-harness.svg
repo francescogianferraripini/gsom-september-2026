@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1302 334" width="1302" height="334" role="img">
+  <title>La formula dell'agente all'apertura dell'incontro 27: LLM fatto nel 26, Harness acceso oggi, System Prompt, Tools e Skills in arrivo, KB per il 28</title>
+
+  <!-- Stato "apertura" del 27: slide3-formula-agent.svg del 26 con la sola opacita'
+       dei blocchi cambiata. Coordinate copiate, non ricalcolate. Canvas 1302x334 (senza fascia). -->
+
+  <g id="formula" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+
+    <g id="agent">
+      <rect x="12" y="57" width="130" height="130" rx="8" fill="#161719"/>
+      <text x="77" y="134" text-anchor="middle" font-size="30" font-weight="700" fill="#ffffff">Agent</text>
+    </g>
+
+    <text x="176" y="134" text-anchor="middle" font-size="36" font-weight="500" fill="#838383">=</text>
+
+    <g id="operatori" font-size="28" font-weight="500" fill="#838383" text-anchor="middle">
+      <text x="378" y="132">+</text>
+      <text x="564" y="132">+</text>
+      <text x="750" y="132">+</text>
+      <text x="936" y="132">+</text>
+      <text x="1122" y="132">+</text>
+    </g>
+
+    <!-- ····· FATTO: LLM, incontro 26 ····· -->
+    <g id="blocco-llm">
+      <g opacity="0.38">
+        <rect x="210" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+        <text x="285" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#a1245a">LLM</text>
+        <text x="285" y="151" text-anchor="middle" font-size="15" font-weight="400" fill="#212529">il motore</text>
+        <text x="285" y="173" text-anchor="middle" font-size="15" font-weight="400" fill="#212529">che genera</text>
+      </g>
+      <circle cx="343" cy="29" r="12" fill="#a1245a"/>
+      <path d="M337 29 l4 4 l8 -8" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="285" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">INCONTRO 26</text>
+    </g>
+
+    <!-- ····· ACCESO: Harness, l'elemento focale ····· -->
+    <g id="blocco-harness">
+      <rect x="396" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="3"/>
+      <text x="471" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#a1245a">Harness</text>
+      <text x="471" y="140" text-anchor="middle" font-size="15" font-weight="400" fill="#212529">l'impalcatura</text>
+      <text x="471" y="162" text-anchor="middle" font-size="15" font-weight="400" fill="#212529">che lo fa</text>
+      <text x="471" y="184" text-anchor="middle" font-size="15" font-weight="400" fill="#212529">lavorare</text>
+      <text x="471" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">OGGI: SI APRE</text>
+    </g>
+
+    <!-- ····· IN ARRIVO: System Prompt, Tools, Skills ····· -->
+    <g id="in-arrivo">
+      <g id="blocco-system-prompt">
+        <rect x="582" y="12" width="150" height="220" rx="8" fill="#f8eef2" stroke="#a1245a" stroke-width="1.5" stroke-dasharray="7 5"/>
+        <text x="657" y="88" text-anchor="middle" font-size="26" font-weight="700" fill="#161719">System</text>
+        <text x="657" y="118" text-anchor="middle" font-size="26" font-weight="700" fill="#161719">Prompt</text>
+        <text x="657" y="162" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">ruolo e regole</text>
+        <text x="657" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">OGGI</text>
+      </g>
+
+      <g id="blocco-tools">
+        <rect x="768" y="12" width="150" height="220" rx="8" fill="#f8eef2" stroke="#a1245a" stroke-width="1.5" stroke-dasharray="7 5"/>
+        <text x="843" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#161719">Tools</text>
+        <text x="843" y="151" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">interagire con</text>
+        <text x="843" y="173" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">l'ecosistema IT</text>
+        <text x="843" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">OGGI</text>
+      </g>
+
+      <g id="blocco-skills">
+        <rect x="1140" y="12" width="150" height="220" rx="8" fill="#f8eef2" stroke="#a1245a" stroke-width="1.5" stroke-dasharray="7 5"/>
+        <text x="1215" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#161719">Skills</text>
+        <text x="1215" y="151" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">il know-how</text>
+        <text x="1215" y="173" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">procedurale</text>
+        <text x="1215" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">OGGI</text>
+      </g>
+    </g>
+
+    <!-- ····· ASPETTA: KB, incontro 28 ····· -->
+    <g id="blocco-kb">
+      <g opacity="0.35">
+        <rect x="954" y="12" width="150" height="220" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <text x="1029" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#161719">KB</text>
+        <text x="1029" y="140" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">ciò che</text>
+        <text x="1029" y="162" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">l'organizzazione</text>
+        <text x="1029" y="184" text-anchor="middle" font-size="15" font-weight="400" fill="#838383">sa: il know-what</text>
+      </g>
+      <text x="1029" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#838383">INCONTRO 28</text>
+    </g>
+
+    <!-- Graffe: identiche alla slide 3 del 26 -->
+    <g id="raggruppamenti" fill="none" stroke="#a1245a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M210 252 q0 12 12 12 H273 q12 0 12 12 q0 -12 12 -12 H348 q12 0 12 -12" opacity="0.38"/>
+      <path d="M396 252 q0 12 12 12 H459 q12 0 12 12 q0 -12 12 -12 H534 q12 0 12 -12"/>
+      <path d="M582 252 q0 12 12 12 H924 q12 0 12 12 q0 -12 12 -12 H1278 q12 0 12 -12"/>
+    </g>
+    <g id="etichette-gruppi" text-anchor="middle" font-size="21" font-weight="600" fill="#a1245a">
+      <text x="285" y="312" opacity="0.38">la CPU</text>
+      <text x="471" y="312">il sistema operativo</text>
+      <text x="936" y="312">il software installato</text>
+    </g>
+
+  </g>
+</svg>

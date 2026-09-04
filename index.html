@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Professional AI — Agentic AI</title>
+  <meta name="description" content="Le slide degli incontri del Corso Professional AI dedicati all'Agentic AI: da LLM ad agenti, dentro l'harness, la conoscenza.">
+  <link rel="icon" type="image/png" href="presentation-26/assets/images/logo.png">
+  <style>
+    @font-face { font-family: 'Poppins'; font-weight: 300; font-display: swap; src: url('presentation-26/assets/fonts/Poppins-Regular.ttf') format('truetype'); }
+    @font-face { font-family: 'Poppins'; font-weight: 400; font-display: swap; src: url('presentation-26/assets/fonts/Poppins-Regular.ttf') format('truetype'); }
+    @font-face { font-family: 'Poppins'; font-weight: 500; font-display: swap; src: url('presentation-26/assets/fonts/Poppins-Medium.ttf') format('truetype'); }
+    @font-face { font-family: 'Poppins'; font-weight: 600; font-display: swap; src: url('presentation-26/assets/fonts/Poppins-SemiBold.ttf') format('truetype'); }
+    @font-face { font-family: 'Poppins'; font-weight: 700; font-display: swap; src: url('presentation-26/assets/fonts/Poppins-Bold.ttf') format('truetype'); }
+    @font-face { font-family: 'Poppins'; font-weight: 800; font-display: swap; src: url('presentation-26/assets/fonts/Poppins-ExtraBold.ttf') format('truetype'); }
+
+    :root {
+      --q-burgundy: #a1245a; --q-burgundy-hover: #cb2d71; --q-burgundy-tint: #ecd3de;
+      --q-black: #161719; --q-teal: #1ab197; --q-yellow: #ffbe0b;
+      --q-white: #ffffff; --q-grey: #f6f6f6; --q-greydark: #838383; --q-line: #dee2e6; --q-body: #212529;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      color: var(--q-body); background: var(--q-white);
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh; display: flex; flex-direction: column;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== banda hero, come la copertina dei deck ===== */
+    .hero {
+      position: relative; overflow: hidden;
+      background: var(--q-burgundy); color: var(--q-white);
+      padding: 72px 8vw 64px;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0 0 0 52%;
+      background: url('presentation-26/assets/images/uploads/page-header.svg') right center / cover no-repeat;
+      opacity: 0.8; pointer-events: none;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .eyebrow {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      margin: 0 0 18px; color: rgba(255,255,255,0.92);
+    }
+    .hero h1 {
+      font-size: clamp(38px, 5.2vw, 64px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.08;
+      margin: 0; max-width: 14ch;
+    }
+    .hero p.lead {
+      font-size: clamp(16px, 1.5vw, 20px); font-weight: 300; line-height: 1.5;
+      margin: 22px 0 0; max-width: 46ch; color: rgba(255,255,255,0.92);
+    }
+    .hero .meta {
+      display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      margin-top: 48px; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ===== i tre blocchi ===== */
+    main { flex: 1; padding: 56px 8vw 72px; }
+    .intro {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      margin: 0 0 28px; padding-bottom: 14px; border-bottom: 1px solid var(--q-line);
+    }
+    .intro h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin: 0; color: var(--q-black); }
+    .intro span { font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--q-greydark); }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .card {
+      position: relative; display: flex; flex-direction: column; gap: 12px;
+      background: var(--q-white); border: 1px solid var(--q-line); border-radius: var(--radius);
+      padding: 26px 26px 24px; min-height: 300px;
+      transition: box-shadow 160ms ease-in-out, border-color 160ms ease-in-out, transform 160ms ease-in-out;
+    }
+    .card.link:hover { border-color: var(--q-burgundy); box-shadow: 0 0 0 1px var(--q-burgundy); transform: translateY(-2px); }
+    .card .num {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--q-burgundy);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .card .num .state { font-weight: 600; letter-spacing: 0.14em; color: var(--q-greydark); }
+    .card h3 { font-size: 24px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 2px 0 0; color: var(--q-black); }
+    .card p { font-size: 14.5px; line-height: 1.55; margin: 0; color: var(--q-body); }
+    .card .cta {
+      margin-top: auto; display: inline-flex; align-items: center; gap: 10px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--q-burgundy);
+      padding-top: 16px;
+    }
+    .card .cta .arrow { display: inline-block; width: 22px; height: 2px; background: currentColor; position: relative; transition: transform 200ms ease-in-out; }
+    .card .cta .arrow::after {
+      content: ''; position: absolute; right: -1px; top: -4px; width: 8px; height: 8px;
+      border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg);
+    }
+    .card.link:hover .cta .arrow { transform: translateX(4px); }
+
+    .card.dark { background: var(--q-black); border-color: transparent; }
+    .card.dark h3, .card.dark p { color: var(--q-white); }
+    .card.dark .num { color: var(--q-yellow); }
+    .card.dark .num .state { color: rgba(255,255,255,0.7); }
+    .card.dark .cta { color: rgba(255,255,255,0.7); }
+    .card.soon { cursor: default; }
+    .card.soon .cta .arrow { display: none; }
+
+    .card .formula {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--q-greydark);
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;
+    }
+    .card .formula span { padding: 3px 8px; border-radius: 4px; background: var(--q-grey); border: 1px solid var(--q-line); }
+    .card .formula span.on { background: var(--q-burgundy-tint); border-color: var(--q-burgundy); color: var(--q-burgundy); }
+    .card.dark .formula span { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); color: rgba(255,255,255,0.7); }
+    .card.dark .formula span.on { background: var(--q-yellow); border-color: var(--q-yellow); color: var(--q-black); }
+
+    .hint { margin: 28px 0 0; font-size: 13px; line-height: 1.5; color: var(--q-greydark); }
+    .hint kbd {
+      font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, monospace; font-size: 12px;
+      background: var(--q-grey); border: 1px solid var(--q-line); border-radius: 4px; padding: 1px 6px;
+    }
+
+    footer {
+      padding: 22px 8vw; border-top: 1px solid var(--q-line);
+      display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--q-greydark);
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .card { min-height: 0; }
+      .hero { padding: 56px 6vw 48px; }
+      .hero::before { inset: 0 0 0 40%; opacity: 0.35; }
+      main { padding: 40px 6vw 56px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <p class="eyebrow">Corso Professional AI · Data, at core</p>
+    <h1>Agentic AI: da LLM ad agenti</h1>
+    <p class="lead">Tre incontri per aprire, un termine alla volta, la formula <strong>Agent = LLM + Harness + System Prompt + Tools + KB + Skills</strong>. Le slide si aprono nel browser; le frecce cambiano pagina.</p>
+    <div class="meta">
+      <span>Settembre 2026</span>
+      <span>Francesco Gianferrari Pini</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="intro">
+      <h2>Gli incontri</h2>
+      <span>tre lezioni, una formula</span>
+    </div>
+
+    <div class="grid">
+      <a class="card link" href="presentation-26/presentation.html">
+        <div class="num"><span>Incontro 26</span><span class="state">56 slide</span></div>
+        <h3>Da LLM ad agenti</h3>
+        <p>Le basi concettuali: che cos'è un agente, che cos'è un modello linguistico, perché funziona, come viene addestrato a volere i tool.</p>
+        <div class="formula">
+          <span class="on">LLM</span><span>Harness</span><span>System Prompt</span><span>Tools</span><span>KB</span><span>Skills</span>
+        </div>
+        <span class="cta">Apri le slide <span class="arrow"></span></span>
+      </a>
+
+      <a class="card link" href="presentation-27/presentation.html">
+        <div class="num"><span>Incontro 27</span><span class="state">in costruzione</span></div>
+        <h3>Dentro l'harness</h3>
+        <p>Agenti e pattern di orchestrazione, tool call, protocollo MCP: il loop, la finestra al giro zero, chi esegue, il contesto che cresce, l'osservabilità, l'offerta.</p>
+        <div class="formula">
+          <span>LLM</span><span class="on">Harness</span><span class="on">System Prompt</span><span class="on">Tools</span><span>KB</span><span class="on">Skills</span>
+        </div>
+        <span class="cta">Apri le slide <span class="arrow"></span></span>
+      </a>
+
+      <div class="card dark soon">
+        <div class="num"><span>Incontro 28</span><span class="state">coming soon</span></div>
+        <h3>Dietro i tool, la conoscenza</h3>
+        <p>L'ultimo termine della formula: come si organizza la conoscenza di un'organizzazione perché un agente la possa usare. Ricercabile in modo progressivo, non ridondante, veritiera, compounding.</p>
+        <div class="formula">
+          <span>LLM</span><span>Harness</span><span>System Prompt</span><span>Tools</span><span class="on">KB</span><span>Skills</span>
+        </div>
+        <span class="cta">Le slide arrivano a ridosso della lezione</span>
+      </div>
+    </div>
+
+    <p class="hint">Dentro un deck: <kbd>→</kbd> avanza, <kbd>Esc</kbd> mostra la panoramica, <kbd>S</kbd> apre le note del relatore, <kbd>F</kbd> va a schermo intero.</p>
+  </main>
+
+  <footer>
+    <span>Quantyca · Data, at core</span>
+    <span>Corso Professional AI · 2026</span>
+  </footer>
+
+</body>
+</html>

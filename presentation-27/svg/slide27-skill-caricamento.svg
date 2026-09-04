@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 432" width="700" height="432" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>La finestra a strati in tre fotogrammi. Giro 0: il prefisso con l'indice delle due skill e, nei messaggi, la richiesta del cliente. Giro 1: nei messaggi entra il corpo della skill risposta-reclami-acme, portato dall'harness. Giro 2: la risposta del modello al cliente, nessuna tool call. Sotto: indice circa 80 token, più corpo circa 300, più risposta circa 120; l'altra skill non è mai entrata</title>
+
+  <!-- ===== giro 0 ===== -->
+  <g id="giro-0">
+    <text x="12" y="22" font-size="12" font-weight="700" fill="#161719">giro 0</text>
+    <rect x="12" y="32" width="214" height="350" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="20" y="40" width="198" height="22" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="28" y="55" font-size="10.5" font-weight="600" fill="#838383">system prompt</text>
+    <rect x="20" y="68" width="198" height="22" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="28" y="83" font-size="10.5" font-weight="600" fill="#838383">dichiarazione dei tool</text>
+    <rect x="20" y="96" width="198" height="54" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="28" y="110" font-size="10.5" font-weight="600" fill="#0e7c6a">indice delle skill</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#212529">
+      <text x="28" y="126">- rimborsi-acme — …</text>
+      <text x="28" y="140">- risposta-reclami-acme — …</text>
+    </g>
+    <rect x="20" y="158" width="198" height="216" rx="3" fill="none" stroke="#838383" stroke-dasharray="4 3"/>
+    <text x="28" y="172" font-size="10.5" font-weight="600" fill="#838383">messaggi</text>
+    <rect x="26" y="180" width="186" height="56" rx="3" fill="#ffffff" stroke="#dee2e6"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#212529">
+      <text x="32" y="194"><tspan font-weight="600">[user]</tspan> Il cliente scrive:</text>
+      <text x="32" y="207">"Terza consegna in ritardo,</text>
+      <text x="32" y="220">sono furioso". Rispondigli.</text>
+    </g>
+  </g>
+
+  <!-- ===== giro 1 ===== -->
+  <g id="giro-1">
+    <text x="243" y="22" font-size="12" font-weight="700" fill="#161719">giro 1</text>
+    <rect x="243" y="32" width="214" height="350" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="251" y="40" width="198" height="22" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="259" y="55" font-size="10.5" font-weight="600" fill="#838383">system prompt</text>
+    <rect x="251" y="68" width="198" height="22" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="259" y="83" font-size="10.5" font-weight="600" fill="#838383">dichiarazione dei tool</text>
+    <rect x="251" y="96" width="198" height="54" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="259" y="110" font-size="10.5" font-weight="600" fill="#0e7c6a">indice delle skill</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#212529">
+      <text x="259" y="126">- rimborsi-acme — …</text>
+      <text x="259" y="140">- risposta-reclami-acme — …</text>
+    </g>
+    <rect x="251" y="158" width="198" height="216" rx="3" fill="none" stroke="#838383" stroke-dasharray="4 3"/>
+    <text x="259" y="172" font-size="10.5" font-weight="600" fill="#838383">messaggi</text>
+    <rect x="257" y="180" width="186" height="56" rx="3" fill="#ffffff" stroke="#dee2e6"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#9aa0a6">
+      <text x="263" y="194"><tspan font-weight="600">[user]</tspan> Il cliente scrive:</text>
+      <text x="263" y="207">"Terza consegna in ritardo,</text>
+      <text x="263" y="220">sono furioso". Rispondigli.</text>
+    </g>
+    <!-- il corpo della skill: elemento focale -->
+    <rect x="257" y="244" width="186" height="96" rx="3" fill="#f6f6f6" stroke="#161719" stroke-width="1.5"/>
+    <text x="263" y="258" font-size="9.5" font-weight="700" fill="#161719">corpo: risposta-reclami-acme</text>
+    <g font-size="9.5" fill="#212529">
+      <text x="263" y="273">· apri riconoscendo il fatto,</text>
+      <text x="263" y="285">  senza giustificarti</text>
+      <text x="263" y="298">· una sola azione concreta</text>
+      <text x="263" y="311">· chiudi con un contatto diretto</text>
+      <text x="263" y="324">· mai «ci scusiamo per il disagio»</text>
+    </g>
+    <text x="350" y="356" text-anchor="middle" font-size="9.5" font-weight="600" fill="#a1245a">il corpo entra qui, solo ora:</text>
+    <text x="350" y="368" text-anchor="middle" font-size="9.5" font-weight="600" fill="#a1245a">lo porta l'harness</text>
+  </g>
+
+  <!-- ===== giro 2 ===== -->
+  <g id="giro-2">
+    <text x="474" y="22" font-size="12" font-weight="700" fill="#161719">giro 2</text>
+    <rect x="474" y="32" width="214" height="350" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="482" y="40" width="198" height="22" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="490" y="55" font-size="10.5" font-weight="600" fill="#838383">system prompt</text>
+    <rect x="482" y="68" width="198" height="22" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="490" y="83" font-size="10.5" font-weight="600" fill="#838383">dichiarazione dei tool</text>
+    <rect x="482" y="96" width="198" height="54" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="490" y="110" font-size="10.5" font-weight="600" fill="#0e7c6a">indice delle skill</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#212529">
+      <text x="490" y="126">- rimborsi-acme — …</text>
+      <text x="490" y="140">- risposta-reclami-acme — …</text>
+    </g>
+    <rect x="482" y="158" width="198" height="216" rx="3" fill="none" stroke="#838383" stroke-dasharray="4 3"/>
+    <text x="490" y="172" font-size="10.5" font-weight="600" fill="#838383">messaggi</text>
+    <rect x="488" y="180" width="186" height="56" rx="3" fill="#ffffff" stroke="#dee2e6"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#9aa0a6">
+      <text x="494" y="194"><tspan font-weight="600">[user]</tspan> Il cliente scrive:</text>
+      <text x="494" y="207">"Terza consegna in ritardo,</text>
+      <text x="494" y="220">sono furioso". Rispondigli.</text>
+    </g>
+    <rect x="488" y="244" width="186" height="40" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="494" y="258" font-size="9.5" font-weight="700" fill="#9aa0a6">corpo: risposta-reclami-acme</text>
+    <text x="494" y="272" font-size="9.5" fill="#9aa0a6">· quattro punti, già letti</text>
+    <!-- la risposta del modello -->
+    <rect x="488" y="292" width="186" height="48" rx="4" fill="#a1245a"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#ffffff">
+      <text x="494" y="306"><tspan fill="#ecd3de">[assistant]</tspan> Ha ragione: tre</text>
+      <text x="494" y="319">ritardi sono inaccettabili.</text>
+      <text x="494" y="332">La richiamo io oggi al …</text>
+    </g>
+    <text x="581" y="356" text-anchor="middle" font-size="9.5" font-weight="600" fill="#a1245a">nessun tool: la skill era</text>
+    <text x="581" y="368" text-anchor="middle" font-size="9.5" font-weight="600" fill="#a1245a">solo istruzioni</text>
+  </g>
+
+  <!-- ===== i token ===== -->
+  <g font-size="11.5" font-weight="700" fill="#161719" text-anchor="middle">
+    <text x="119" y="404">indice: ~80</text>
+    <text x="350" y="404">+ corpo: ~300</text>
+    <text x="581" y="404">+ risposta: ~120</text>
+  </g>
+  <text x="581" y="422" text-anchor="middle" font-size="10.5" font-style="italic" fill="#838383">l'altra skill non è mai entrata</text>
+  <text x="119" y="422" text-anchor="middle" font-size="10.5" font-style="italic" fill="#838383">l'indice resta identico e piccolo</text>
+</svg>

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 304" width="1140" height="304" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>L'host, cioè l'harness, con l'LLM, la finestra a strati in miniatura e due client; a destra due server MCP, ordini locale via stdio e CRM remoto via HTTP, ognuno con tre scomparti: tools, resources, prompts. Tre frecce arrivano in tre strati diversi della finestra: i tools nella dichiarazione dei tool, le resources nei messaggi, i prompts nel system prompt. Una freccia sottile di elicitation torna dal server verso l'utente</title>
+  <defs>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+    <marker id="at" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1ab197"/></marker>
+    <marker id="al" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4da0d7"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+  </defs>
+
+  <!-- ===== host ===== -->
+  <text x="12" y="20" font-size="12.5" font-weight="700" fill="#161719">host <tspan font-weight="500" fill="#838383">(l'harness)</tspan></text>
+  <rect x="12" y="28" width="520" height="262" rx="8" fill="#f6f6f6" stroke="#161719"/>
+
+  <rect x="28" y="44" width="100" height="60" rx="6" fill="#a1245a"/>
+  <text x="78" y="80" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">LLM</text>
+
+  <!-- l'utente -->
+  <circle cx="78" cy="170" r="12" fill="none" stroke="#161719" stroke-width="1.5"/>
+  <path d="M56 206 a22 22 0 0 1 44 0" fill="none" stroke="#161719" stroke-width="1.5"/>
+  <text x="78" y="226" text-anchor="middle" font-size="11" font-weight="600" fill="#161719">l'utente</text>
+
+  <!-- la finestra a strati, in miniatura -->
+  <rect x="150" y="44" width="200" height="232" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+  <g fill="#e9ecef" stroke="#dee2e6">
+    <rect x="158" y="52" width="184" height="40" rx="4"/>
+    <rect x="158" y="100" width="184" height="40" rx="4"/>
+    <rect x="158" y="148" width="184" height="32" rx="4"/>
+  </g>
+  <rect x="158" y="188" width="184" height="80" rx="4" fill="none" stroke="#838383" stroke-dasharray="4 3"/>
+  <g font-size="11" font-weight="600" fill="#838383">
+    <text x="166" y="69">system prompt</text>
+    <text x="166" y="117">dichiarazione dei tool</text>
+    <text x="166" y="168">indice delle skill</text>
+    <text x="166" y="205">messaggi</text>
+  </g>
+
+  <!-- i client -->
+  <g fill="#ffffff" stroke="#161719">
+    <rect x="376" y="216" width="66" height="36" rx="5"/>
+    <rect x="452" y="216" width="66" height="36" rx="5"/>
+  </g>
+  <g font-size="11" font-weight="600" fill="#212529" text-anchor="middle">
+    <text x="409" y="238">client 1</text>
+    <text x="485" y="238">client 2</text>
+  </g>
+  <text x="447" y="270" text-anchor="middle" font-size="10" fill="#838383">un client per server</text>
+
+  <!-- connessioni client → server -->
+  <path d="M409 216 V196 H700 V110" fill="none" stroke="#838383" stroke-width="1.2"/>
+  <path d="M485 252 V262 H620 V248 H700" fill="none" stroke="#838383" stroke-width="1.2"/>
+
+  <!-- ===== i server ===== -->
+  <g id="server-ordini">
+    <rect x="700" y="28" width="428" height="120" rx="8" fill="#fff2ce" stroke="#ffbe0b"/>
+    <text x="712" y="48" font-size="12" font-weight="700" fill="#161719">server MCP «ordini»</text>
+    <text x="1116" y="48" text-anchor="end" font-size="10.5" font-weight="600" fill="#838383">locale · stdio</text>
+    <g fill="#ffffff" stroke="#dee2e6">
+      <rect x="712" y="58" width="404" height="24" rx="4"/>
+      <rect x="712" y="88" width="404" height="24" rx="4"/>
+      <rect x="712" y="118" width="404" height="24" rx="4"/>
+    </g>
+    <g font-size="11" font-weight="700">
+      <text x="722" y="75" fill="#a1245a">tools</text>
+      <text x="722" y="105" fill="#0e7c6a">resources</text>
+      <text x="722" y="135" fill="#2f6f99">prompts</text>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#212529">
+      <text x="820" y="75">cerca_ordine · crea_ticket</text>
+      <text x="820" y="105">scheda cliente · listino</text>
+      <text x="820" y="135">analizza-ordine</text>
+    </g>
+  </g>
+  <g id="server-crm">
+    <rect x="700" y="166" width="428" height="120" rx="8" fill="#fff2ce" stroke="#ffbe0b"/>
+    <text x="712" y="186" font-size="12" font-weight="700" fill="#161719">server MCP «CRM»</text>
+    <text x="1116" y="186" text-anchor="end" font-size="10.5" font-weight="600" fill="#838383">remoto · HTTP</text>
+    <g fill="#ffffff" stroke="#dee2e6">
+      <rect x="712" y="196" width="404" height="24" rx="4"/>
+      <rect x="712" y="226" width="404" height="24" rx="4"/>
+      <rect x="712" y="256" width="404" height="24" rx="4"/>
+    </g>
+    <g font-size="11" font-weight="700">
+      <text x="722" y="213" fill="#a1245a">tools</text>
+      <text x="722" y="243" fill="#0e7c6a">resources</text>
+      <text x="722" y="273" fill="#2f6f99">prompts</text>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#212529">
+      <text x="820" y="213">cerca_cliente · aggiorna_scheda</text>
+      <text x="820" y="243">anagrafica · storico contatti</text>
+      <text x="820" y="273">riassumi-cliente</text>
+    </g>
+  </g>
+
+  <!-- le tre frecce: tre primitive, tre strati diversi -->
+  <path d="M712 70 C 600 70, 480 120, 352 120" fill="none" stroke="#a1245a" stroke-width="2" marker-end="url(#ab)"/>
+  <text x="470" y="108" text-anchor="middle" font-size="10.5" font-weight="600" fill="#a1245a">li chiama il modello</text>
+  <path d="M712 100 C 620 100, 560 214, 352 214" fill="none" stroke="#1ab197" stroke-width="2" marker-end="url(#at)"/>
+  <text x="470" y="204" text-anchor="middle" font-size="10.5" font-weight="600" fill="#0e7c6a">li porta l'harness, o l'utente</text>
+  <path d="M712 130 C 660 130, 560 72, 352 72" fill="none" stroke="#4da0d7" stroke-width="2" marker-end="url(#al)"/>
+  <text x="470" y="64" text-anchor="middle" font-size="10.5" font-weight="600" fill="#2f6f99">istruzioni pronte, nel system prompt</text>
+
+  <!-- elicitation -->
+  <path d="M700 280 C 500 300, 300 300, 96 190" fill="none" stroke="#838383" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#ag)"/>
+  <text x="400" y="298" text-anchor="middle" font-size="10" font-style="italic" fill="#838383">elicitation: il server chiede un dato all'utente</text>
+</svg>

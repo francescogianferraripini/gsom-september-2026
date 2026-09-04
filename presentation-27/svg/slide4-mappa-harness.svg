@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 600" width="1500" height="600" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>La mappa dell'harness: tre zone attorno all'LLM (context management, agentic loop management con i tre anelli, environment management) e, sotto, la fascia trasversale observability con tracing, logging, metrics ed eval</title>
+
+  <!-- Evoluzione di slide4-ruolo-harness.svg del 26: stesse tre zone nello stesso ordine
+       (context a sinistra, loop al centro, environment a destra), riportate su un canvas
+       orizzontale per lasciare spazio alla fascia observability senza rimpicciolire il testo.
+       Le mini-mappe dei separatori (minimap-sec*.svg) usano queste stesse coordinate. -->
+
+  <!-- ===== Zona 1: Context management (teal) ===== -->
+  <g id="zona-context">
+    <rect x="12" y="12" width="470" height="500" rx="8" fill="#d1efea" stroke="#1ab197"/>
+    <path d="M12,20 a8,8 0 0 1 8,-8 h454 a8,8 0 0 1 8,8 v36 H12 Z" fill="#1ab197"/>
+    <text x="247" y="41" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="1" fill="#ffffff">CONTEXT MANAGEMENT</text>
+
+    <!-- Context Initialization, aperta in tre sottoblocchi -->
+    <g id="context-initialization">
+      <rect x="24" y="68" width="446" height="218" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+      <text x="247" y="92" text-anchor="middle" font-size="18" font-weight="600" fill="#212529">Context Initialization</text>
+      <g fill="#f6f6f6" stroke="#dee2e6">
+        <rect x="36" y="102" width="422" height="52" rx="6"/>
+        <rect x="36" y="162" width="422" height="52" rx="6"/>
+        <rect x="36" y="222" width="422" height="52" rx="6"/>
+      </g>
+      <g text-anchor="middle" font-size="18" font-weight="500" fill="#212529">
+        <text x="247" y="134">System prompt: ruolo e regole</text>
+        <text x="247" y="194">Dichiarazione dei tool: nativi e via MCP</text>
+        <text x="247" y="243">Skill initialization:</text>
+        <text x="247" y="265">indice nome + descrizione</text>
+      </g>
+    </g>
+
+    <g fill="#ffffff" stroke="#dee2e6">
+      <rect x="24" y="298" width="446" height="56" rx="8"/>
+      <rect x="24" y="366" width="446" height="48" rx="8"/>
+      <rect x="24" y="426" width="446" height="74" rx="8"/>
+    </g>
+    <g text-anchor="middle" font-size="18" font-weight="500" fill="#212529">
+      <text x="247" y="322">Context Optimization</text>
+      <text x="247" y="344">(compaction, pruning, offload)</text>
+      <text x="247" y="396">Memory management</text>
+      <text x="247" y="456">Skill progressive disclosure</text>
+      <text x="247" y="478">(runtime)</text>
+    </g>
+  </g>
+
+  <!-- ===== Zona 2: Agentic loop management (light blue) ===== -->
+  <g id="zona-loop">
+    <rect x="494" y="12" width="512" height="500" rx="8" fill="#dbecf7" stroke="#4da0d7"/>
+    <path d="M494,20 a8,8 0 0 1 8,-8 h496 a8,8 0 0 1 8,8 v36 H494 Z" fill="#4da0d7"/>
+    <text x="750" y="41" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="1" fill="#ffffff">AGENTIC LOOP MANAGEMENT</text>
+
+    <!-- i tre anelli: l'ordine e' l'annidamento, non la numerazione -->
+    <g id="anelli" fill="none" stroke="#4da0d7" stroke-width="2.5">
+      <rect x="506" y="72" width="488" height="424" rx="16"/>
+      <rect x="532" y="114" width="436" height="340" rx="14"/>
+      <rect x="558" y="156" width="384" height="256" rx="12"/>
+    </g>
+    <g id="frecce-anelli" fill="#4da0d7">
+      <polygon points="744,63 762,72 744,81"/>
+      <polygon points="756,487 738,496 756,505"/>
+      <polygon points="744,105 762,114 744,123"/>
+      <polygon points="756,445 738,454 756,463"/>
+      <polygon points="744,147 762,156 744,165"/>
+      <polygon points="756,403 738,412 756,421"/>
+    </g>
+    <g id="etichette-anelli" text-anchor="middle" font-size="18" font-weight="600" fill="#1f5f86">
+      <text x="750" y="100">2° loop · conversazione (turno dopo turno)</text>
+      <text x="750" y="142">3° loop · task (giro dopo giro di tool call)</text>
+      <text x="750" y="184">1° loop · generazione (fino a STOP)</text>
+    </g>
+
+    <!-- il centro: la CPU -->
+    <g id="centro" text-anchor="middle">
+      <rect x="596" y="200" width="308" height="170" rx="8" fill="#a1245a"/>
+      <text x="750" y="296" font-size="54" font-weight="700" fill="#ffffff">LLM</text>
+      <text x="750" y="334" font-size="19" font-weight="500" fill="#ecd3de">la CPU</text>
+    </g>
+  </g>
+
+  <!-- ===== Zona 3: Environment management (amber) ===== -->
+  <g id="zona-environment">
+    <rect x="1018" y="12" width="470" height="500" rx="8" fill="#fff2ce" stroke="#ffbe0b"/>
+    <path d="M1018,20 a8,8 0 0 1 8,-8 h454 a8,8 0 0 1 8,8 v36 H1018 Z" fill="#ffbe0b"/>
+    <text x="1253" y="41" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="1" fill="#161719">ENVIRONMENT MANAGEMENT</text>
+
+    <g fill="#ffffff" stroke="#dee2e6">
+      <rect x="1030" y="68" width="446" height="136" rx="8"/>
+      <rect x="1030" y="216" width="446" height="136" rx="8"/>
+      <rect x="1030" y="364" width="446" height="136" rx="8"/>
+    </g>
+    <g text-anchor="middle" font-size="18" font-weight="500" fill="#212529">
+      <text x="1253" y="130">Tool Calling execution</text>
+      <text x="1253" y="152">and response management</text>
+      <text x="1253" y="290">Execution Sandbox</text>
+      <text x="1253" y="438">Skill execution management</text>
+    </g>
+  </g>
+
+  <!-- ===== Fascia trasversale: Observability ===== -->
+  <g id="fascia-observability">
+    <rect x="12" y="524" width="1476" height="64" rx="8" fill="#f6f6f6" stroke="#161719"/>
+    <path d="M12,532 a8,8 0 0 1 8,-8 h196 v64 h-196 a8,8 0 0 1 -8,-8 Z" fill="#161719"/>
+    <text x="114" y="562" text-anchor="middle" font-size="18" font-weight="700" letter-spacing="1" fill="#ffffff">OBSERVABILITY</text>
+    <g fill="#ffffff" stroke="#dee2e6">
+      <rect x="240" y="534" width="288" height="44" rx="6"/>
+      <rect x="552" y="534" width="288" height="44" rx="6"/>
+      <rect x="864" y="534" width="288" height="44" rx="6"/>
+      <rect x="1176" y="534" width="288" height="44" rx="6"/>
+    </g>
+    <g text-anchor="middle" font-size="18" font-weight="500" fill="#212529">
+      <text x="384" y="562">Tracing</text>
+      <text x="696" y="562">Logging</text>
+      <text x="1008" y="562">Metrics</text>
+      <text x="1320" y="562">Eval</text>
+    </g>
+  </g>
+</svg>

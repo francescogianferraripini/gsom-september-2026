@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 540" width="700" height="540" role="img">
+  <title>Tre loop annidati: conversazione, task, generazione. Sul passo «qualcuno la esegue» l'etichetta che nel 26 diceva «chi? prossimo incontro» ora dice: l'harness</title>
+
+  <!-- Citazione letterale di slide33-terzo-loop.svg del 26: stessi anelli, stesse etichette,
+       stesse posizioni. Cambia solo il callout, che chiude la domanda lasciata aperta. -->
+
+  <g font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+
+    <g id="anelli" fill="none">
+      <circle cx="335" cy="272" r="225" stroke="#dee2e6" stroke-width="2"/>
+      <circle cx="335" cy="272" r="135" stroke="#a1245a" stroke-width="2.5"/>
+      <circle cx="335" cy="272" r="62" fill="#f6f6f6" stroke="#838383" stroke-width="1.5"/>
+    </g>
+
+    <g id="frecce-esterne" fill="#838383">
+      <polygon points="0,-5 11,0 0,5" transform="translate(529.9,159.5) rotate(60)"/>
+      <polygon points="0,-5 11,0 0,5" transform="translate(447.5,467) rotate(150)"/>
+      <polygon points="0,-5 11,0 0,5" transform="translate(222.5,467) rotate(-150)"/>
+      <polygon points="0,-5 11,0 0,5" transform="translate(113,233) rotate(-80)"/>
+    </g>
+    <g id="frecce-mezzo" fill="#a1245a">
+      <polygon points="0,-5 11,0 0,5" transform="translate(430.5,176.5) rotate(45)"/>
+      <polygon points="0,-5 11,0 0,5" transform="translate(239.5,367.5) rotate(-135)"/>
+      <polygon points="0,-5 11,0 0,5" transform="translate(430.5,367.5) rotate(135)"/>
+    </g>
+    <g id="frecce-interne" fill="#838383">
+      <polygon points="0,-4 8,0 0,4" transform="translate(378.8,228.2) rotate(45)"/>
+      <polygon points="0,-4 8,0 0,4" transform="translate(291.2,315.8) rotate(-135)"/>
+    </g>
+
+    <!-- anello esterno: 2° loop, conversazione -->
+    <g id="loop-esterno">
+      <g fill="#f6f6f6" stroke="#dee2e6" stroke-width="1">
+        <rect x="257" y="27" width="156" height="40" rx="8"/>
+        <rect x="452" y="364.5" width="156" height="40" rx="8"/>
+        <rect x="80" y="350.5" width="120" height="68" rx="8"/>
+      </g>
+      <g text-anchor="middle" font-size="15" font-weight="500" fill="#212529">
+        <text x="335" y="52.5">l'utente scrive</text>
+        <text x="530" y="389.5">il modello lavora</text>
+        <text x="140" y="370.5">la risposta</text>
+        <text x="140" y="389.5">si accoda</text>
+        <text x="140" y="408.5">alla storia</text>
+      </g>
+      <rect x="211" y="483" width="248" height="28" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+      <text x="335" y="501.5" text-anchor="middle" font-size="13" font-weight="700"
+            letter-spacing="0.9" fill="#838383">2° LOOP — CONVERSAZIONE</text>
+    </g>
+
+    <!-- corona di mezzo: 3° loop, task -->
+    <g id="loop-mezzo">
+      <g fill="#ecd3de" stroke="#a1245a" stroke-width="1.5">
+        <rect x="231" y="114" width="208" height="46" rx="8"/>
+        <rect x="408" y="249" width="124" height="46" rx="8"/>
+        <rect x="231" y="384" width="208" height="46" rx="8"/>
+      </g>
+      <g text-anchor="middle" font-size="15" font-weight="600" fill="#161719">
+        <text x="335" y="133">il modello emette</text>
+        <text x="335" y="152">una tool call</text>
+        <text x="470" y="268">qualcuno</text>
+        <text x="470" y="287">la esegue</text>
+        <text x="335" y="403">il risultato rientra</text>
+        <text x="335" y="422">nel contesto</text>
+      </g>
+
+      <rect x="128" y="248" width="138" height="48" rx="8" fill="#ecd3de"/>
+      <g text-anchor="middle" font-size="14" font-weight="600" fill="#a1245a">
+        <text x="197" y="268">ripeti fino a</text>
+        <text x="197" y="286">task completato</text>
+      </g>
+
+      <rect x="156" y="179" width="152" height="26" rx="8" fill="#a1245a"/>
+      <text x="232" y="197" text-anchor="middle" font-size="13" font-weight="700"
+            letter-spacing="0.9" fill="#ffffff">3° LOOP — TASK</text>
+    </g>
+
+    <!-- nucleo: 1° loop, generazione -->
+    <g id="loop-interno" text-anchor="middle">
+      <text x="335" y="252" font-size="13" font-weight="700" letter-spacing="0.9" fill="#838383">1° LOOP</text>
+      <text x="335" y="275" font-size="16" font-weight="700" fill="#161719">generazione</text>
+      <text x="335" y="297" font-size="13" font-weight="500" fill="#838383">fino a <tspan
+        font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace"
+        font-size="13" font-weight="600" fill="#212529">STOP</tspan></text>
+    </g>
+
+    <!-- callout: la domanda del 26, chiusa (elemento focale) -->
+    <g id="callout">
+      <path d="M532 272 H645 V449" fill="none" stroke="#ffffff" stroke-width="6"/>
+      <path d="M532 272 H645 V449" fill="none" stroke="#a1245a" stroke-width="2.5" stroke-linejoin="round"/>
+      <polygon points="645,458 638.5,446 651.5,446" fill="#a1245a"/>
+      <rect x="478" y="458" width="12" height="74" rx="8" fill="#ffbe0b"/>
+      <rect x="482" y="458" width="212" height="74" rx="8" fill="#161719"/>
+      <text x="502" y="489" font-size="20" font-weight="700" fill="#ffffff">l'harness</text>
+      <text x="502" y="513" font-size="14" font-weight="600" fill="#ffbe0b">chi? → risposto</text>
+    </g>
+
+  </g>
+</svg>

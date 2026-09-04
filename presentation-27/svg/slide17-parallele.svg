@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 440" width="700" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Confronto fra tre giri sequenziali, ognuno con una chiamata al modello, e un giro solo con tre tool_use eseguiti in parallelo dall'harness e tre tool_result in un unico messaggio</title>
+
+  <line x1="350" y1="12" x2="350" y2="432" stroke="#dee2e6"/>
+
+  <!-- ===== uno alla volta ===== -->
+  <text x="12" y="26" font-size="12" font-weight="700" letter-spacing="1.6" fill="#a1245a">UNO ALLA VOLTA</text>
+  <text x="12" y="42" font-size="11" fill="#838383">tre giri, tre attese</text>
+
+  <g id="giro-1">
+    <rect x="12" y="56" width="318" height="18" rx="5" fill="#a1245a"/>
+    <text x="20" y="69" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#ffffff">→ cerca_ordine("004471")</text>
+    <rect x="12" y="80" width="318" height="28" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="171" y="98" text-anchor="middle" font-size="11" fill="#838383">l'harness esegue · il modello aspetta</text>
+    <rect x="12" y="114" width="318" height="18" rx="5" fill="#d1efea" stroke="#1ab197"/>
+    <text x="20" y="127" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529"><tspan font-weight="600" fill="#0e7c6a">[tool]</tspan> {stato: "in consegna", …}</text>
+    <rect x="12" y="138" width="318" height="18" rx="5" fill="#ffffff" stroke="#838383" stroke-dasharray="4 3"/>
+    <text x="171" y="151" text-anchor="middle" font-size="11" font-weight="600" fill="#161719">chiamata al modello</text>
+  </g>
+  <g id="giro-2" transform="translate(0 116)">
+    <rect x="12" y="56" width="318" height="18" rx="5" fill="#a1245a"/>
+    <text x="20" y="69" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#ffffff">→ cerca_ordine("004472")</text>
+    <rect x="12" y="80" width="318" height="28" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="171" y="98" text-anchor="middle" font-size="11" fill="#838383">l'harness esegue · il modello aspetta</text>
+    <rect x="12" y="114" width="318" height="18" rx="5" fill="#d1efea" stroke="#1ab197"/>
+    <text x="20" y="127" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529"><tspan font-weight="600" fill="#0e7c6a">[tool]</tspan> {stato: "consegnato", …}</text>
+    <rect x="12" y="138" width="318" height="18" rx="5" fill="#ffffff" stroke="#838383" stroke-dasharray="4 3"/>
+    <text x="171" y="151" text-anchor="middle" font-size="11" font-weight="600" fill="#161719">chiamata al modello</text>
+  </g>
+  <g id="giro-3" transform="translate(0 232)">
+    <rect x="12" y="56" width="318" height="18" rx="5" fill="#a1245a"/>
+    <text x="20" y="69" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#ffffff">→ cerca_ordine("004473")</text>
+    <rect x="12" y="80" width="318" height="28" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="171" y="98" text-anchor="middle" font-size="11" fill="#838383">l'harness esegue · il modello aspetta</text>
+    <rect x="12" y="114" width="318" height="18" rx="5" fill="#d1efea" stroke="#1ab197"/>
+    <text x="20" y="127" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529"><tspan font-weight="600" fill="#0e7c6a">[tool]</tspan> {stato: "in transito", …}</text>
+    <rect x="12" y="138" width="318" height="18" rx="5" fill="#ffffff" stroke="#838383" stroke-dasharray="4 3"/>
+    <text x="171" y="151" text-anchor="middle" font-size="11" font-weight="600" fill="#161719">chiamata al modello</text>
+  </g>
+  <text x="12" y="424" font-size="12" font-weight="700" fill="#161719">3 giri · 3 chiamate al modello</text>
+
+  <!-- ===== in parallelo ===== -->
+  <text x="370" y="26" font-size="12" font-weight="700" letter-spacing="1.6" fill="#a1245a">IN PARALLELO</text>
+  <text x="370" y="42" font-size="11" fill="#838383">un giro, tre corsie</text>
+
+  <g fill="#a1245a">
+    <rect x="370" y="56" width="100" height="32" rx="5"/>
+    <rect x="479" y="56" width="100" height="32" rx="5"/>
+    <rect x="588" y="56" width="100" height="32" rx="5"/>
+  </g>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#ffffff" text-anchor="middle">
+    <text x="420" y="69">→ cerca_ordine</text><text x="420" y="82">("004471")</text>
+    <text x="529" y="69">→ cerca_ordine</text><text x="529" y="82">("004472")</text>
+    <text x="638" y="69">→ cerca_ordine</text><text x="638" y="82">("004473")</text>
+  </g>
+  <text x="529" y="102" text-anchor="middle" font-size="10.5" fill="#838383">una risposta, tre tool_use, un solo stop_reason</text>
+
+  <g fill="#f6f6f6" stroke="#dee2e6">
+    <rect x="370" y="110" width="100" height="56" rx="5"/>
+    <rect x="479" y="110" width="100" height="56" rx="5"/>
+    <rect x="588" y="110" width="100" height="56" rx="5"/>
+  </g>
+  <g font-size="11" fill="#838383" text-anchor="middle">
+    <text x="420" y="134">l'harness</text><text x="420" y="148">esegue</text>
+    <text x="529" y="134">l'harness</text><text x="529" y="148">esegue</text>
+    <text x="638" y="134">l'harness</text><text x="638" y="148">esegue</text>
+  </g>
+  <text x="529" y="180" text-anchor="middle" font-size="10.5" fill="#838383">tre thread, insieme</text>
+
+  <rect x="370" y="188" width="318" height="40" rx="5" fill="#d1efea" stroke="#1ab197"/>
+  <text x="378" y="201" font-size="10" font-weight="600" fill="#0e7c6a">un unico messaggio, tre tool_result</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#212529" text-anchor="middle">
+    <text x="420" y="219">tu_01 {…}</text>
+    <text x="529" y="219">tu_02 {…}</text>
+    <text x="638" y="219">tu_03 {…}</text>
+  </g>
+
+  <rect x="370" y="236" width="318" height="18" rx="5" fill="#ffffff" stroke="#838383" stroke-dasharray="4 3"/>
+  <text x="529" y="249" text-anchor="middle" font-size="11" font-weight="600" fill="#161719">chiamata al modello</text>
+
+  <!-- il tempo risparmiato -->
+  <path d="M700 262 V400" stroke="#a1245a" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <text x="529" y="300" text-anchor="middle" font-size="11" font-style="italic" fill="#a1245a">circa un terzo del tempo,</text>
+  <text x="529" y="316" text-anchor="middle" font-size="11" font-style="italic" fill="#a1245a">e la finestra riletta una volta sola</text>
+  <text x="370" y="424" font-size="12" font-weight="700" fill="#a1245a">1 giro · 1 chiamata al modello</text>
+</svg>
