@@ -28,7 +28,7 @@
 >
 > **MCP in questa sezione**: una riga sola (nella Slide 9 e nella Slide 10, "è lì che MCP si innesta"), senza spiegare che cos'è: la sezione 2 mostra *che cosa c'è nella finestra*, la 3 spiega *da dove arriva e chi lo esegue*.
 >
-> **L'esempio che attraversa la sezione**: l'assistente clienti di Acme, il tool `cerca_ordine` (lo stesso della slide 9 del 26) e la skill `rimborsi-acme`, che rima con il limite del system prompt ("non promettere mai rimborsi").
+> **L'esempio che attraversa la sezione**: l'assistente clienti di Acme, il tool `cerca_ordine` (lo stesso della slide 9 del 26) e le skill `rimborsi-acme` (che rima con il limite del system prompt) e `risposta-reclami-acme` (di sole istruzioni, usata nella Slide 26) ("non promettere mai rimborsi").
 
 ---
 
@@ -175,15 +175,15 @@
   skills disponibili:
   - rimborsi-acme — Procedura per gestire una richiesta di rimborso:
     verifica, soglie, quando passare a un operatore.
-  - report-settimanale — Come compilare il report vendite del lunedì
-    dai dati del gestionale.
+  - risposta-reclami-acme — Come rispondere a un reclamo: struttura,
+    tono, cosa non dire mai.
   ```
   A lato, sbiadito e tratteggiato, un blocco più grande etichettato `corpo della skill: non ancora nella finestra`.
 - Nota in basso: *Un tool si dichiara con uno schema; una skill si dichiara con una frase. In entrambi i casi, la descrizione è ciò che decide se verrà scelta.*
 
 **Visual**: riquadro-indice (HTML) + `slide7-finestra-strati-3.svg` (tempo 4).
 
-**Prompt per schema SVG** (tempo 4): stessa figura, con lo strato `indice delle skill` pieno e in evidenza (dentro: `rimborsi-acme`, `report-settimanale`), i due strati sopra pieni ma attenuati, `messaggi` ancora vuoto.
+**Prompt per schema SVG** (tempo 4): stessa figura, con lo strato `indice delle skill` pieno e in evidenza (dentro: `rimborsi-acme`, `risposta-reclami-acme`), i due strati sopra pieni ma attenuati, `messaggi` ancora vuoto.
 
 ## Slide 12 — La finestra piena, e l'utente non ha ancora scritto
 
