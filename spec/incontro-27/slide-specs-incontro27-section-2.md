@@ -2,9 +2,9 @@
 ## Francesco Gianferrari Pini — Corso PC AI
 
 **Sezione 2 — Context Initialization: la finestra al giro zero**
-**Obiettivo di apprendimento**: il partecipante sa elencare gli strati della finestra prima che l'utente scriva una parola (system prompt, dichiarazioni dei tool, indice delle skill), sa com'è fatta una chiamata al modello (richiesta, risposta, `stop_reason`), sa che le definizioni dei tool sono un campo API a parte reso nel formato dell'addestramento, e sa che quanti tool e skill esporre è una decisione di progetto.
+**Obiettivo di apprendimento**: il partecipante sa elencare gli strati della finestra prima che l'utente scriva una parola (system prompt, dichiarazioni dei tool, indice delle skill), sa che il system prompt ha due autori (chi costruisce l'agente e i file di istruzioni del progetto, che l'harness appende sempre), sa com'è fatta una chiamata al modello (richiesta, risposta, `stop_reason`), sa che le definizioni dei tool sono un campo API a parte reso nel formato dell'addestramento, e sa che quanti tool e skill esporre è una decisione di progetto.
 **Messaggio chiave (takeaway)**: Al giro zero il modello non sa nulla del tuo mondo: sa solo ciò che l'harness gli ha messo davanti. Tutto ciò che può volere, deve essere già dichiarato lì.
-**Budget**: ~15 min, 7 slide + separatore.
+**Budget**: ~17 min, 8 slide + separatore.
 **Stato**: bozza
 
 ### Tabella file → slide
@@ -14,21 +14,22 @@
 | `slides/slide-div-sec2.html` | Separatore — Sezione 2: Context Initialization |
 | `slides/slide7-finestra-vuota.html` | Slide 7 — La finestra al giro zero |
 | `slides/slide8-system-prompt.html` | Slide 8 — Il system prompt: ruolo e regole |
-| `slides/slide9-chiamata-api.html` | Slide 9 — Com'è fatta una chiamata al modello |
-| `slides/slide10-dichiarazione-tool.html` | Slide 10 — La dichiarazione dei tool: un contratto |
-| `slides/slide11-indice-skill.html` | Slide 11 — Le skill, al giro zero: solo l'indice |
-| `slides/slide12-finestra-piena.html` | Slide 12 — La finestra piena, e l'utente non ha ancora scritto |
-| `slides/slide13-utente-scrive.html` | Slide 13 — Ora l'utente scrive |
+| `slides/slide9-istruzioni-progetto.html` | Slide 9 — Le istruzioni di progetto: AGENTS.md, CLAUDE.md |
+| `slides/slide10-chiamata-api.html` | Slide 10 — Com'è fatta una chiamata al modello |
+| `slides/slide11-dichiarazione-tool.html` | Slide 11 — La dichiarazione dei tool: un contratto |
+| `slides/slide12-indice-skill.html` | Slide 12 — Le skill, al giro zero: solo l'indice |
+| `slides/slide13-finestra-piena.html` | Slide 13 — La finestra piena, e l'utente non ha ancora scritto |
+| `slides/slide14-utente-scrive.html` | Slide 14 — Ora l'utente scrive |
 
 ---
 
-> **Filo della sezione — la finestra a strati, in cinque tempi.** Le Slide 7, 8, 10, 11 e 12 portano la stessa figura (`slide7-finestra-strati-{0..4}.svg`, stesso viewBox, pattern `.visual.stack` + fragment come la torre della slide 20 del 26): uno scheletro di strati vuoti che si riempie uno strato per slide. **Si legge dall'alto**, come i riquadri di payload delle slide 8 e 9 del 26 dove `[system]` è la prima riga: `system prompt` in cima, poi `dichiarazione dei tool`, `indice delle skill`, e `messaggi` in fondo, che crescono verso il basso.
+> **Filo della sezione — la finestra a strati, in cinque tempi.** Le Slide 7, 8, 11, 12 e 13 portano la stessa figura (`slide7-finestra-strati-{0..4}.svg`, stesso viewBox, pattern `.visual.stack` + fragment come la torre della slide 20 del 26): uno scheletro di strati vuoti che si riempie uno strato per slide. **Si legge dall'alto**, come i riquadri di payload delle slide 8 e 9 del 26 dove `[system]` è la prima riga: `system prompt` in cima, poi `dichiarazione dei tool`, `indice delle skill`, e `messaggi` in fondo, che crescono verso il basso.
 >
 > ⚠️ **Coerenza con il 26**: la slide 42 del 26 (la pila che cresce) ha gli strati stabili **in fondo**. Quando viene ripresa in sezione 4 va ridisegnata dall'alto, altrimenti contraddice questa figura.
 >
-> **MCP in questa sezione**: una riga sola (nella Slide 9 e nella Slide 10, "è lì che MCP si innesta"), senza spiegare che cos'è: la sezione 2 mostra *che cosa c'è nella finestra*, la 3 spiega *da dove arriva e chi lo esegue*.
+> **MCP in questa sezione**: una riga sola (nella Slide 10 e nella Slide 11, "è lì che MCP si innesta"), senza spiegare che cos'è: la sezione 2 mostra *che cosa c'è nella finestra*, la 3 spiega *da dove arriva e chi lo esegue*.
 >
-> **L'esempio che attraversa la sezione**: l'assistente clienti di Acme, il tool `cerca_ordine` (lo stesso della slide 9 del 26) e le skill `rimborsi-acme` (che rima con il limite del system prompt) e `risposta-reclami-acme` (di sole istruzioni, usata nella Slide 26) ("non promettere mai rimborsi").
+> **L'esempio che attraversa la sezione**: l'assistente clienti di Acme, il tool `cerca_ordine` (lo stesso della slide 9 del 26) e le skill `rimborsi-acme` (che rima con il limite del system prompt) e `risposta-reclami-acme` (di sole istruzioni, usata nella Slide 27) ("non promettere mai rimborsi").
 
 ---
 
@@ -55,7 +56,7 @@
 > 3. `indice delle skill`
 > 4. `messaggi` (in fondo, vuoto: *ancora nessuno*; è lo strato che crescerà verso il basso)
 >
-> A destra della finestra, una colonna sottile etichettata `token`, vuota, allineata agli strati: si riempirà nella Slide 12.
+> A destra della finestra, una colonna sottile etichettata `token`, vuota, allineata agli strati: si riempirà nella Slide 13.
 >
 > In basso, fuori dalla finestra: `→ chiamata n. 1: non ancora`.
 >
@@ -88,7 +89,36 @@
 
 **Prompt per schema SVG** (tempo 2): stessa figura della Slide 7, con lo strato `system prompt: ruolo e regole` pieno e in evidenza, il testo abbreviato dentro (`Sei l'assistente di Acme…`), gli altri tre ancora tratteggiati.
 
-## Slide 9 — Com'è fatta una chiamata al modello
+## Slide 9 — Le istruzioni di progetto: AGENTS.md, CLAUDE.md
+
+> Slide aggiunta in intervista: le istruzioni di progetto sono esplicite e gestite dall'harness, e vanno distinte dalla memoria (sezione 4, Slide 37: la memoria è ciò che l'agente salva da solo).
+
+**Messaggio**: il system prompt ha due autori. Chi costruisce l'agente scrive ruolo e regole generali; chi lo usa su un progetto scrive un file di istruzioni nella cartella del progetto, e l'harness lo appende sempre al system prompt, a ogni sessione, senza che il modello debba chiederlo.
+
+**Layout**: titolo in alto; i tre punti di testo a sinistra (~40%); a destra (~55%) il file di istruzioni reale nell'idioma dei riquadri e, sotto, la finestra a strati con il file che entra nello strato in cima; nota in basso.
+
+**Testo**:
+- Titolo: *Le istruzioni di progetto: AGENTS.md, CLAUDE.md*
+- Punti:
+  1. **Un file nella cartella del progetto**: *si chiama `AGENTS.md`, `CLAUDE.md`, o come l'harness si aspetta. Lo scrive chi lavora sul progetto, in linguaggio naturale: convenzioni, comandi, cose da non toccare. È versionato con il codice e lo leggono persone e agenti.*
+  2. **L'harness lo appende sempre**: *al giro zero lo legge e lo mette nel system prompt, sotto le regole generali dell'agente. Non c'è nulla da chiedere: è lì a ogni sessione, e ha lo stesso peso delle regole (Slide 8).*
+  3. **Non è memoria**: *è un'istruzione esplicita, scritta da una persona. Ciò che l'agente decide di annotare da solo mentre lavora è un'altra cosa, e la vediamo nella sezione 4.*
+- Riquadro-file (HTML, testo esatto):
+  ```
+  # CLAUDE.md
+  - Il deck sta in presentation/; gli SVG in presentation/svg/.
+  - Per verificare le slide: decktape, non puppeteer.
+  - Non rinominare i file SVG: il nome identifica il contenuto.
+  - Commit solo quando te lo chiedo.
+  ```
+  con l'etichetta a lato: *scritto da chi lavora sul progetto, letto da ogni agente che ci entra*.
+- Nota in basso: *È la forma più semplice di know-how condiviso: quattro righe che ogni sessione rilegge. Le skill (Slide 12 e sezione 3) sono lo stesso principio, a richiesta invece che sempre.*
+
+**Visual**: riquadro-file (HTML) + `slide7-finestra-strati-1b.svg`: la finestra della Slide 8 con, dentro lo strato del system prompt, una seconda fascia `+ istruzioni di progetto (CLAUDE.md)` in evidenza sotto le regole generali.
+
+**Prompt per schema SVG**: stessa figura della Slide 8 (tempo 2), con lo strato `system prompt` diviso in due fasce: `ruolo e regole (chi costruisce l'agente)` attenuata, e `istruzioni di progetto: CLAUDE.md (chi usa l'agente)` piena e in evidenza; una freccia dall'esterno, da un'icona di cartella `progetto/`, entra nella seconda fascia con l'etichetta *l'harness lo appende a ogni sessione*. **Elemento focale**: la seconda fascia e la freccia dalla cartella.
+
+## Slide 10 — Com'è fatta una chiamata al modello
 
 > Slide nuova nel corso: il 26 non ha mai mostrato la struttura dell'API (la sua slide 41 parla solo di costo). I nomi sono quelli dell'API Messages di Anthropic (verificati a set 2026); gli altri provider hanno la stessa forma con nomi diversi.
 
@@ -100,7 +130,7 @@
 - Titolo: *Com'è fatta una chiamata al modello*
 - Didascalia: *I nomi sono quelli dell'API di Anthropic; gli altri provider hanno la stessa forma con nomi diversi. La richiesta è la finestra a strati, campo per campo. La risposta porta i blocchi generati e uno `stop_reason`: è il bit che l'harness legge per decidere se il giro continua.*
 
-**Visual**: `slide9-chiamata-api.svg`.
+**Visual**: `slide10-chiamata-api.svg`.
 
 **Prompt per schema SVG**:
 > **A sinistra, la richiesta** (`POST /v1/messages`), un riquadro in monospaziato con i soli campi che contano, ognuno con la glossa a lato:
@@ -129,7 +159,7 @@
 >
 > **Elemento focale**: `stop_reason: "tool_use"`, e la corrispondenza uno-a-uno fra i campi della richiesta e gli strati della finestra.
 
-## Slide 10 — La dichiarazione dei tool: un contratto
+## Slide 11 — La dichiarazione dei tool: un contratto
 
 **Messaggio**: un tool, per il modello, è solo la sua definizione: nome, descrizione, parametri. È documentazione scritta per un lettore che non può fare domande, e viene resa nel formato su cui il modello è stato addestrato.
 
@@ -157,7 +187,7 @@
 
 **Prompt per schema SVG** (tempo 3): stessa figura, con lo strato `dichiarazione dei tool` pieno e in evidenza (dentro: `cerca_ordine`, `…`), `system prompt` pieno ma attenuato, gli altri due tratteggiati.
 
-## Slide 11 — Le skill, al giro zero: solo l'indice
+## Slide 12 — Le skill, al giro zero: solo l'indice
 
 > Qui solo l'inizializzazione. Che cos'è una skill per esteso (istruzioni, e a volte uno script) è in sezione 3; il conto della progressive disclosure è in sezione 4.
 
@@ -185,7 +215,7 @@
 
 **Prompt per schema SVG** (tempo 4): stessa figura, con lo strato `indice delle skill` pieno e in evidenza (dentro: `rimborsi-acme`, `risposta-reclami-acme`), i due strati sopra pieni ma attenuati, `messaggi` ancora vuoto.
 
-## Slide 12 — La finestra piena, e l'utente non ha ancora scritto
+## Slide 13 — La finestra piena, e l'utente non ha ancora scritto
 
 **Messaggio**: prima della prima parola dell'utente, la finestra pesa già migliaia di token, torna a ogni giro, e più voci ci sono, peggio il modello sceglie.
 
@@ -209,7 +239,7 @@
 
 > I numeri sono ordini di grandezza plausibili, non misure; va detto in aula. In Fase 3 si possono sostituire con numeri misurati su un agente reale (endpoint di conteggio token).
 
-## Slide 13 — Ora l'utente scrive
+## Slide 14 — Ora l'utente scrive
 
 > Ripresa della slide 9 del 26 (i due giri), **solo la metà destra e solo il `giro 1`**. È la cerniera verso la sezione 3.
 
@@ -222,10 +252,10 @@
 - Didascalia: *La stessa scena del 26: il system prompt in testa con il tool dichiarato, la domanda dell'utente, e la richiesta del modello: `cerca_ordine("4471")`. Lì il modello si ferma, con `stop_reason: tool_use`. Nel 26 dicevamo "qualcun altro esegue". Ora entriamo nella zona gialla della mappa.*
 - Blocco nero centrato: *Il modello ha chiesto. Chi esegue, come, e che cosa torna indietro: sezione 3.*
 
-**Visual**: `slide13-giro-uno.svg` — ripresa di `slide9b-tool-call.svg` del 26.
+**Visual**: `slide14-giro-uno.svg` — ripresa di `slide9b-tool-call.svg` del 26.
 
 **Prompt per schema SVG**:
-> Riprende il riquadro `giro 1` della metà destra della slide 9 dell'incontro 26, alla stessa scala. Le prime righe del riquadro sono ora i tre strati della finestra della Slide 12 (system prompt, dichiarazione dei tool, indice delle skill) in forma compatta; poi la riga `[user] Dov'è il mio ordine 4471?`; poi la pill del modello con la richiesta `→ cerca_ordine("4471")` e, accanto, in piccolo, `stop_reason: tool_use`.
+> Riprende il riquadro `giro 1` della metà destra della slide 9 dell'incontro 26, alla stessa scala. Le prime righe del riquadro sono ora i tre strati della finestra della Slide 13 (system prompt, dichiarazione dei tool, indice delle skill) in forma compatta; poi la riga `[user] Dov'è il mio ordine 4471?`; poi la pill del modello con la richiesta `→ cerca_ordine("4471")` e, accanto, in piccolo, `stop_reason: tool_use`.
 >
 > A destra, dove nel 26 stava il `giro 2`, un riquadro tratteggiato vuoto con un `?` al centro.
 >

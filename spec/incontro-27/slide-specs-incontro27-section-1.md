@@ -23,7 +23,7 @@
 
 > **Impianto della lezione (decisioni prese in intervista, 4 set 2026 — valgono per tutte le sezioni):**
 >
-> **Le sette sezioni seguono la mappa dell'harness** (la slide 4 del 26, estesa nella Slide 4 di questa lezione): 1 Apertura e anello · 2 Context Initialization · 3 Environment management · 4 Context management a runtime · 5 Observability · 6 Orchestrazione · 7 L'offerta di harness. Budget: 6 / 7 / 14 / 12 / 9 / 7 / 6 = **61 slide**, ±2 per sezione. Ogni separatore ripropone la mappa in miniatura con la zona corrente accesa (mini-mappa "sei qui", come le `minimap-*` della sezione 3 del 26).
+> **Le sette sezioni seguono la mappa dell'harness** (la slide 4 del 26, estesa nella Slide 4 di questa lezione): 1 Apertura e anello · 2 Context Initialization · 3 Environment management · 4 Context management a runtime · 5 Observability · 6 Orchestrazione · 7 L'offerta di harness. Budget: 6 / 8 / 14 / 11 / 9 / 7 / 6 = **61 slide**, ±2 per sezione. Ogni separatore ripropone la mappa in miniatura con la zona corrente accesa (mini-mappa "sei qui", come le `minimap-*` della sezione 3 del 26).
 >
 > **La mappa estesa**: tre zone del 26 (`Context management` teal, `Agentic loop management` lightblue, `Environment management` giallo) attorno all'`LLM`, con: i **tre anelli concentrici** al posto dell'anello singolo; `Context Initialization` aperta in tre sottoblocchi (`System prompt: ruolo e regole` · `Dichiarazione dei tool: nativi e via MCP` · `Skill initialization: indice nome + descrizione`); `Skill management` rinominato **`Skill progressive disclosure (runtime)`**; una **fascia trasversale `Observability`** sotto le tre zone, con quattro sottoblocchi `Tracing · Logging · Metrics · Eval`. MCP non è un blocco: le sue definizioni entrano in Context Initialization, le sue chiamate in Tool Calling execution. Nessun numero di sezione dentro la figura.
 >
@@ -187,4 +187,4 @@
 >
 > **Elemento focale**: il rombo di decisione e la freccia di ritorno. Il resto dell'harness (chi prepara la finestra, chi esegue, chi decide quando la finestra è troppo piena) è tutto nascosto in tre parole di questo flusso: `finestra`, `esegui`, `done`.
 
-> Nota: il flusso legge lo `stop_reason` della risposta (la Slide 9, in sezione 2, lo chiamerà per nome); qui si dice "è una tool call?" e basta.
+> Nota: il flusso legge lo `stop_reason` della risposta (la Slide 10, in sezione 2, lo chiamerà per nome); qui si dice "è una tool call?" e basta.
