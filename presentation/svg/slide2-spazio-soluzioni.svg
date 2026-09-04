@@ -34,7 +34,6 @@
     <g fill="#161719">
       <circle cx="360" cy="96" r="8"/>
       <circle cx="413" cy="85" r="8"/>
-      <circle cx="733" cy="114" r="8"/>
       <circle cx="466" cy="203" r="8"/>
       <circle cx="1052" cy="221" r="8"/>
       <circle cx="626" cy="311" r="8"/>
@@ -43,23 +42,28 @@
     <g font-size="21" font-weight="500" fill="#212529">
       <text x="360" y="132" text-anchor="middle">Q&amp;A / recupero conoscenza</text>
       <text x="431" y="78" text-anchor="start">Classificazione / giudizio</text>
-      <text x="751" y="121" text-anchor="start">Ragionamento</text>
       <text x="448" y="210" text-anchor="end">Trasformazione di testo</text>
       <text x="1028" y="228" text-anchor="end">Multi-step planning / task agentici</text>
       <text x="608" y="318" text-anchor="end">Generazione (scrittura, email, brief)</text>
     </g>
 
     <!-- punto attenuato: quadrante difficile -->
-    <g id="conversazione-stateful">
+    <g id="ragionamento-strategico">
       <circle cx="1105" cy="346" r="9" fill="#ffffff" stroke="#838383" stroke-width="1.5" stroke-dasharray="4 3"/>
-      <text x="1081" y="353" font-size="21" font-weight="400" fill="#838383" text-anchor="end">Conversazione stateful (tutoring, consulenza)</text>
+      <text x="1081" y="353" font-size="21" font-weight="400" fill="#838383" text-anchor="end">Ragionamento strategico aziendale</text>
     </g>
 
-    <!-- punto focale -->
+    <!-- punti focali -->
     <g id="coding">
       <circle cx="1105" cy="78" r="22" fill="#ecd3de"/>
       <circle cx="1105" cy="78" r="12" fill="#a1245a"/>
       <text x="1071" y="87" font-size="24" font-weight="700" fill="#a1245a" text-anchor="end">Coding</text>
+    </g>
+
+    <g id="ragionamento-matematico">
+      <circle cx="1105" cy="170" r="22" fill="#ecd3de"/>
+      <circle cx="1105" cy="170" r="12" fill="#a1245a"/>
+      <text x="1071" y="179" font-size="24" font-weight="700" fill="#a1245a" text-anchor="end">Ragionamento matematico</text>
     </g>
   </g>
 </svg>

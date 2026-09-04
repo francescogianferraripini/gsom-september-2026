@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Genera i tre tempi della slide 15 (la torre) con geometria condivisa."""
+"""Genera i tre tempi della slide 20 (la torre) con geometria condivisa."""
 import os
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, "svg")

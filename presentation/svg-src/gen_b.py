@@ -43,8 +43,26 @@ def slide16():
 
     # il gate
     o.append(rect(GUT, GATE0, W - GUT - 10, GATE1 - GATE0, BLACK, "none", rx=5))
-    o.append(txt(GUT - 8, GATE0 + 14, "non linearità", 11, BODY, "end", "700"))
-    o.append(txt(GUT - 8, GATE0 + 26, "il gate", 9.5, GREYD, "end"))
+    o.append(txt(GUT - 8, 48, "non linearità · ReLU", 10.5, BODY, "end", "700"))
+
+    # la ReLU come FUNZIONE, nel gutter: e' lei a decidere chi passa
+    IX, IY, IW, IH = 42, 54, 112, 64
+    ox, oy = IX + 36, IY + 48
+    o.append(rect(IX, IY, IW, IH, OFF_F, LINE, rx=4))
+    o.append(line(IX + 6, oy, IX + IW - 6, oy, OFF_T, 1))
+    o.append(line(ox, IY + 8, ox, IY + IH - 6, OFF_T, 1))
+    o.append('<path d="M %s %s L %s %s L %s %s" fill="none" stroke="%s" stroke-width="2.2" '
+             'stroke-linejoin="round" stroke-linecap="round"/>'
+             % (IX + 8, oy, ox, oy, ox + 36, oy - 36, BUR))
+    o.append(txt(ox - 5, oy + 11, "0", 8, GREYD, "end", "500", MONO))
+    o.append(txt(IX + IW - 7, oy + 11, "in", 8, GREYD, "end"))
+    o.append(txt(ox + 6, IY + 14, "out", 8, GREYD, "start"))
+    # i due esiti, marcati sui due rami
+    o.append('<circle cx="%s" cy="%s" r="3.4" fill="%s"/>' % (ox + 28, oy - 28, BUR))
+    o.append('<circle cx="%s" cy="%s" r="3.4" fill="#ffffff" stroke="%s" stroke-width="1.4"/>'
+             % (ox - 24, oy, GREYD))
+    o.append(txt(IX + 2, IY + IH + 13, "sotto zero azzera,", 8.5, GREYD))
+    o.append(txt(IX + 2, IY + IH + 23, "sopra zero passa invariata", 8.5, GREYD))
     for cx, a in zip(COLS, ACTV):
         if a > 40:
             o.append(arrow(cx, GATE1 + 6, cx, GATE0 - 22, BUR, 1.6, marker="ab"))
@@ -60,53 +78,38 @@ def slide16():
 
 # ================= SLIDE 17 — Compressione =================
 def slide17():
-    W, H = 700, 440
+    """Solo il collo di bottiglia: molti rilevatori accesi -> un vettore di 4 celle.
+    Lo spazio delle idee e la skip connection sono stati rimossi: erano due messaggi
+    in piu' su una slide che ne ha uno solo (il nodo + sta nella torre, Slide 20)."""
+    W, H = 700, 322
+    GUT = 150
+    BASE = 296
+    COLS = [196, 264, 332, 400, 468, 536, 604]
+    CONC = ["animale domestico", "arriva un luogo", "frase al presente",
+            "soggetto singolare", "registro informale", "spazio chiuso",
+            "… e altre migliaia"]
+    ACTV = [110, 100, 62, 84, 71, 95, 48]
     o = []
-    # --- spazio delle idee, in cima: il significato che si sposta
-    o.append(rect(0, 16, W, 186, "url(#dots)", LINE, rx=6))
-    o.append(eyebrow(12, 34, "SPAZIO DELLE IDEE", GREYD))
-    o.append('<ellipse cx="215" cy="78" rx="105" ry="38" fill="#f0f1f2"/>')
-    o.append(txt(215, 50, "ANIMALI DOMESTICI", 8.5, GREYD, "middle", "700", ls="0.1em"))
-    o.append('<ellipse cx="520" cy="96" rx="105" ry="38" fill="#f0f1f2"/>')
-    o.append(txt(520, 68, "LUOGHI DELLA CASA", 8.5, GREYD, "middle", "700", ls="0.1em"))
-    for x, y in ((178, 88), (232, 74), (258, 98)):
-        o.append('<circle cx="%s" cy="%s" r="3" fill="%s"/>' % (x, y, GREYD))
-    for x, y in ((486, 106), (540, 92), (566, 114)):
-        o.append('<circle cx="%s" cy="%s" r="3" fill="%s"/>' % (x, y, GREYD))
-    o.append('<circle cx="150" cy="170" r="5" fill="%s"/>' % BODY)
-    o.append(txt(150, 188, "«gatto» in ingresso", 9.5, BODY, "middle"))
-    o.append(arrow(158, 165, 342, 122, BUR, 2, marker="ab"))
-    o.append('<circle cx="350" cy="118" r="5.5" fill="%s"/>' % BUR)
-    o.append(txt(362, 122, "«gatto» dopo il blocco", 9.5, BUR, "start", "600"))
-    o.append(txt(232, 124, "= il contributo del blocco", 9, BUR, "middle"))
 
-    # --- la somma, dal basso: concetti -> contributo -> + skip -> embedding spostato
-    o.append(line(250, 222, 250, 202, "#c3c8cd", 1.2, dash="3 3"))
-    o.append(txt(262, 214, "→ nello spazio delle idee", 8.5, GREYD))
-    o.append(vec(250, 226, 4, 22, BUR, TEAL_F))
-    o.append(txt(310, 234, "l'embedding, spostato", 11.5, BODY, "start", "600"))
-    o.append(txt(310, 247, "è quello che esce dal blocco", 9.5, GREYD))
-    o.append(plus(250, 274))
-    o.append(arrow(250, 266, 250, 252))
-    o.append(vec(84, 262, 4, 22, TEAL, TEAL_F))
-    o.append(txt(84, 296, "embedding originale", 9.5, GREYD, "middle"))
-    o.append(txt(84, 308, "(skip connection)", 9.5, GREYD, "middle"))
-    o.append(arrow(132, 273, 238, 273))
-    o.append(vec(250, 306, 4, 22, TEAL, TEAL_F))
-    o.append(txt(310, 314, "contributo del blocco", 11.5, BUR, "start", "600"))
-    o.append(txt(310, 327, "una direzione nello spazio delle idee", 9.5, GREYD))
-    o.append(arrow(250, 302, 250, 288))
-    conc = [(120, "animale domestico", 38), (250, "arriva un luogo", 34), (380, "frase al presente", 22)]
-    for cx, lab, h in conc:
-        o.append(rect(cx - 11, 410 - h, 22, h, BUR, "none", rx=3))
-        o.append(txt(cx, 426, lab, 9, GREYD, "middle"))
-        o.append(curve(cx, 406 - h, cx, 372, 250, 366, 250, 340, ARROW, 1.1))
-    o.append(txt(96, 372, "le attivazioni sopravvissute al gate (Slide 16)", 9, GREYD))
-    o.append(txt(470, 392, "i concetti sopravvissuti al gate", 11, BODY, "start", "600"))
-    o.append(txt(470, 405, "si ri-sommano in un vettore solo:", 9.5, GREYD))
-    o.append(txt(470, 417, "più significati, sovrapposti", 9.5, GREYD))
+    # --- in basso: i rilevatori accesi, disegnati come nella Slide 22
+    o.append(txt(GUT - 8, 214, "le attivazioni", 11, BUR, "end", "700"))
+    o.append(txt(GUT - 8, 226, "sopravvissute al gate", 9.5, GREYD, "end"))
+    o.append(txt(GUT - 8, 238, "(Slide 22) — sono migliaia", 9.5, GREYD, "end"))
+    for cx, a, c in zip(COLS, ACTV, CONC):
+        o.append(rect(cx - 13, BASE - a, 26, a, BUR, "none", rx=3))
+        o.append(txt(cx - 22, BASE - 2, c, 9, BODY, "start", "500", rot=-90))
+        o.append(curve(cx, BASE - a - 6, cx, 150, 350, 138, 350, 116, ARROW, 1.1))
+
+    # --- in cima: un vettore solo, di quattro celle
+    o.append(vec(350, 78, 4, 26, TEAL, TEAL_F))
+    o.append(txt(350, 62, "UN VETTORE DI QUATTRO CELLE", 9, TEAL_D, "middle", "700", ls="0.1em"))
+
+    # Il contrasto e' portato dalle due sole etichette strutturali (le attivazioni in
+    # basso, il vettore in cima): il titolo e la sovrapposizione li dicono i bullet
+    # dell'HTML, e ripeterli qui era un doppione a schermo.
+    o.append(txt(350, 116, "molti rilevatori accesi → quattro celle", 10, BUR, "middle", "600"))
     return svg(W, H, "".join(o),
-               "Dal basso: i concetti sopravvissuti si sommano nel contributo del blocco, che sommato all'embedding lo sposta nello spazio delle idee")
+               "Dal basso: i molti rilevatori accesi convergono e si ri-sommano in un unico vettore di quattro celle")
 
 # ================= SLIDE 21 — Positional encoding =================
 def slide21():
@@ -168,38 +171,53 @@ def slide21():
 
 # ================= SLIDE 22 — Reverse embedding =================
 def slide22():
-    W, H = 700, 430
+    W, H = 700, 444
     o = []
     VOC = [("sul", "4.2"), ("un", "3.9"), ("morbido", "3.5"), ("nero", "3.3"),
            ("stanco", "2.8"), ("Parigi", "−3.1")]
     DIST = [("sul", 30), ("un", 22), ("morbido", 15), ("nero", 12), ("stanco", 8)]
 
     # embedding finale (in basso)
-    o.append(vec(350, 398, 4, 22, TEAL, TEAL_F))
-    o.append(txt(296, 408, "embedding finale", 11, TEAL_D, "end", "700"))
-    o.append(txt(296, 420, "dopo tutti i blocchi", 9.5, GREYD, "end"))
-    o.append(arrow(350, 394, 350, 378))
-    o.append(txt(424, 406, "Simmetria: all'ingresso da token a vettore.", 9.5, BODY, "start", "600"))
-    o.append(txt(424, 418, "Qui il percorso si inverte: da vettore a token.", 9.5, GREYD))
+    o.append(vec(350, 412, 4, 22, TEAL, TEAL_F))
+    o.append(txt(296, 422, "embedding finale", 11, TEAL_D, "end", "700"))
+    o.append(txt(296, 434, "dopo tutti i blocchi", 9.5, GREYD, "end"))
+    o.append(arrow(350, 408, 350, 392))
+    o.append(txt(424, 420, "Simmetria: all'ingresso da token a vettore.", 9.5, BODY, "start", "600"))
+    o.append(txt(424, 432, "Qui il percorso si inverte: da vettore a token.", 9.5, GREYD))
 
-    # il vocabolario: un prodotto scalare per riga
-    o.append(rect(40, 232, 620, 142, "#ffffff", LINE, rx=6))
-    o.append(txt(54, 250, "IL VOCABOLARIO — UNA RIGA PER TOKEN, OGNUNA COL SUO VETTORE",
-                 8.5, GREYD, "start", "700", ls="0.1em"))
+    # il vocabolario: una COLONNA per token, e le colonne CONTIGUE, cosi' si legge
+    # come una matrice rettangolare (riga per colonna, convenzione della Slide 16).
+    # Il logit sta in cima alla colonna, il nome del token sotto.
+    # NOTA sull'alfabeto: qui le celle sono 42x20, non quadrate come altrove. E' il
+    # prezzo per avere insieme colonne contigue e nomi orizzontali leggibili: "morbido"
+    # in monospaziato non sta sotto una colonna quadrata abbastanza bassa da starci in 4 righe.
+    o.append(rect(40, 232, 620, 156, "#ffffff", LINE, rx=6))
+    o.append(txt(54, 250, "IL VOCABOLARIO — UNA COLONNA PER TOKEN", 8.5, GREYD,
+                 "start", "700", ls="0.1em"))
+    CW, CH, CTOP = 42, 20, 278
+    X0 = 350 - (len(VOC) * CW) / 2.0
     for i, (tok, lg) in enumerate(VOC):
-        y = 262 + i * 16
+        cx = X0 + i * CW + CW / 2.0
         neg = lg.startswith("−")
-        o.append(txt(150, y + 11, tok, 10.5, GREYD if neg else BODY, "end", "400", MONO))
-        o.append(vec(190, y, 4, 13, GREYD, SOFT, sw=0.9))
-        o.append(txt(256, y + 11, "·", 12, GREYD, "middle", "600"))
-        o.append(txt(322, y + 11, lg, 11, GREYD if neg else BUR, "end", "700", MONO))
-    o.append(txt(150, 262 + 6 * 16 + 11, "⋯", 11, GREYD, "end"))
-    o.append(txt(190, 262 + 6 * 16 + 11, "~100.000 righe", 9.5, GREYD, "start"))
-    o.append(txt(360, 276, "ogni riga: un prodotto scalare", 11, BODY, "start", "600"))
-    o.append(txt(360, 289, "fra l'embedding finale e il vettore del token.", 9.5, GREYD))
-    o.append(txt(360, 309, "Il risultato è il logit: l'affinità grezza.", 9.5, GREYD))
-    o.append(txt(360, 331, "Parigi ha logit negativo:", 10, BUR, "start", "600"))
-    o.append(txt(360, 344, "l'affinità non seleziona soltanto, esclude.", 9.5, GREYD))
+        o.append(txt(cx, 270, lg, 10, GREYD if neg else BUR, "middle", "700", MONO))
+        for r in range(4):
+            o.append(rect(X0 + i * CW, CTOP + r * CH, CW, CH, SOFT, GREYD, rx=2.4, sw=1.0))
+        o.append(txt(cx, 374, tok, 9.5, GREYD if neg else BODY, "middle", "400", MONO))
+    # il seguito della matrice: una colonna tratteggiata, e sono centomila
+    XC = X0 + len(VOC) * CW + 10
+    o.append(rect(XC, CTOP, CW, 4 * CH, "none", OFF_T, rx=2.4, sw=1.0, dash="3 3"))
+    o.append(txt(XC + CW / 2.0, CTOP + 2 * CH + 4, "⋯", 13, GREYD, "middle"))
+    o.append(txt(XC + CW / 2.0, 374, "~100.000", 8.5, GREYD, "middle"))
+    # le note, nel gutter di sinistra come nel resto della sezione
+    o.append(txt(54, 270, "ogni colonna: un prodotto", 10, BODY, "start", "600"))
+    o.append(txt(54, 283, "scalare fra l'embedding", 9.5, GREYD))
+    o.append(txt(54, 295, "finale e il vettore", 9.5, GREYD))
+    o.append(txt(54, 307, "del token.", 9.5, GREYD))
+    o.append(txt(54, 325, "Il risultato è il logit:", 9.5, GREYD))
+    o.append(txt(54, 337, "l'affinità grezza.", 9.5, GREYD))
+    o.append(txt(54, 355, "Parigi ha logit negativo:", 10, BUR, "start", "600"))
+    o.append(txt(54, 368, "l'affinità non seleziona", 9.5, GREYD))
+    o.append(txt(54, 380, "soltanto, esclude.", 9.5, GREYD))
     o.append(arrow(350, 228, 350, 214))
 
     # softmax

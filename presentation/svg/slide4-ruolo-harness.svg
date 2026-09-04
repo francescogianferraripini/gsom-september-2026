@@ -1,49 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 720" width="900" height="720" role="img">
-  <title>Il ruolo dell'harness: l'anello simbolico che racchiude l'LLM</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 714" width="1000" height="714" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Il ruolo dell'harness: le tre aree dell'esoscheletro (context management, agentic loop management, environment management) che racchiudono l'LLM</title>
 
-  <g id="titolo" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
-    <rect x="12" y="20" width="3" height="60" fill="#161719"/>
-    <text x="30" y="47" font-size="27" font-weight="700" fill="#161719">Harness</text>
-    <text x="30" y="73" font-size="17" font-weight="400" fill="#838383">l'esoscheletro (simbolico)</text>
+  <!-- ===== Categoria 1 - Context management (teal) ===== -->
+  <g id="cat-context">
+    <rect x="12" y="12" width="322" height="648" rx="8" fill="#d1efea" stroke="#1ab197"/>
+    <path d="M12,20 a8,8 0 0 1 8,-8 h306 a8,8 0 0 1 8,8 v36 H12 Z" fill="#1ab197"/>
+    <text x="173" y="40" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="1" fill="#ffffff">CONTEXT MANAGEMENT</text>
+
+    <g fill="#ffffff" stroke="#dee2e6">
+      <rect x="24" y="68" width="298" height="134" rx="8"/>
+      <rect x="24" y="216" width="298" height="134" rx="8"/>
+      <rect x="24" y="364" width="298" height="134" rx="8"/>
+      <rect x="24" y="512" width="298" height="134" rx="8"/>
+    </g>
+
+    <g text-anchor="middle" font-size="18" font-weight="500" fill="#212529">
+      <text x="173" y="141">Context Initialization</text>
+      <text x="173" y="276">Context Optimization</text>
+      <text x="173" y="301">(compaction, pruning, etc.)</text>
+      <text x="173" y="437">Memory management</text>
+      <text x="173" y="585">Skill management</text>
+    </g>
   </g>
 
-  <g id="connettori" stroke="#838383" stroke-width="1.5">
-    <line x1="450" y1="210" x2="450" y2="256"/>
-    <line x1="450" y1="500" x2="450" y2="546"/>
-    <line x1="208" y1="378" x2="272" y2="378"/>
-    <line x1="628" y1="378" x2="692" y2="378"/>
+  <!-- ===== Categoria 2 - Agentic loop management (light blue) ===== -->
+  <g id="cat-loop">
+    <rect x="340" y="12" width="320" height="648" rx="8" fill="#dbecf7" stroke="#4da0d7"/>
+    <path d="M340,20 a8,8 0 0 1 8,-8 h304 a8,8 0 0 1 8,8 v36 H340 Z" fill="#4da0d7"/>
+    <text x="500" y="40" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="1" fill="#ffffff">AGENTIC LOOP MANAGEMENT</text>
+
+    <g id="loop-ring">
+      <rect x="354" y="192" width="292" height="330" rx="14" fill="none" stroke="#4da0d7" stroke-width="2.5"/>
+      <polygon points="492,183 510,192 492,201" fill="#4da0d7"/>
+      <polygon points="508,513 490,522 508,531" fill="#4da0d7"/>
+    </g>
+
+    <g id="centro" text-anchor="middle">
+      <rect x="380" y="226" width="240" height="262" rx="8" fill="#a1245a"/>
+      <text x="500" y="346" font-size="58" font-weight="700" fill="#ffffff">LLM</text>
+      <text x="500" y="388" font-size="19" font-weight="500" fill="#ecd3de">il cervello (neuro)</text>
+    </g>
   </g>
 
-  <g id="anello" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="21" font-weight="600" fill="#212529" text-anchor="middle">
-    <rect x="16" y="100" width="284" height="102" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
-    <text x="158" y="144">Context Initialization</text>
-    <text x="158" y="171">&amp; Management</text>
+  <!-- ===== Categoria 3 - Environment management (amber) ===== -->
+  <g id="cat-environment">
+    <rect x="666" y="12" width="322" height="648" rx="8" fill="#fff2ce" stroke="#ffbe0b"/>
+    <path d="M666,20 a8,8 0 0 1 8,-8 h306 a8,8 0 0 1 8,8 v36 H666 Z" fill="#ffbe0b"/>
+    <text x="827" y="40" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="1" fill="#161719">ENVIRONMENT MANAGEMENT</text>
 
-    <rect x="308" y="100" width="284" height="102" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
-    <text x="450" y="158">Memory Management</text>
+    <g fill="#ffffff" stroke="#dee2e6">
+      <rect x="678" y="68" width="298" height="160" rx="8"/>
+      <rect x="678" y="277" width="298" height="160" rx="8"/>
+      <rect x="678" y="486" width="298" height="160" rx="8"/>
+    </g>
 
-    <rect x="600" y="100" width="284" height="102" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
-    <text x="742" y="158">Loop</text>
-
-    <rect x="692" y="210" width="192" height="336" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
-    <text x="788" y="366">Tool Calling</text>
-    <text x="788" y="393">Execution</text>
-
-    <rect x="454" y="554" width="430" height="102" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
-    <text x="669" y="612">Skills access</text>
-
-    <rect x="16" y="554" width="430" height="102" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
-    <text x="231" y="612">Execution Sandbox</text>
-
-    <rect x="16" y="210" width="192" height="336" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
-    <text x="112" y="385">Logging</text>
+    <g text-anchor="middle" font-size="18" font-weight="500" fill="#212529">
+      <text x="827" y="142">Tool Calling execution</text>
+      <text x="827" y="167">and response management</text>
+      <text x="827" y="363">Execution Sandbox</text>
+      <text x="827" y="572">Skill execution management</text>
+    </g>
   </g>
 
-  <g id="centro" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">
-    <rect x="272" y="256" width="356" height="244" rx="8" fill="#a1245a"/>
-    <text x="450" y="372" font-size="52" font-weight="700" fill="#ffffff">LLM</text>
-    <text x="450" y="410" font-size="17" font-weight="500" fill="#ecd3de">il cervello (neuro)</text>
-  </g>
-
-  <text x="12" y="694" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="400" fill="#838383">L'LLM non tocca il mondo: ogni interazione passa dall'anello deterministico che lo racchiude.</text>
+  <text x="12" y="700" font-size="17" font-weight="400" fill="#838383">L'LLM non tocca il mondo: ogni interazione passa dall'anello deterministico che lo racchiude.</text>
 </svg>

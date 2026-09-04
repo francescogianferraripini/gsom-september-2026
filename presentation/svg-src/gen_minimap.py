@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Mini-mappa "sei qui": la torre della slide 15 ridotta a localizzatore."""
+"""Mini-mappa "sei qui": la torre della slide 20 ridotta a localizzatore."""
 import os
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, "svg")
 

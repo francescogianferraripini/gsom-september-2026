@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """Griglia-calcolo dell'attention, dal basso verso l'alto.
-Slide 18-19-20: i tre stadi sulla frase del portiere.
-Slide 20b: la stessa griglia su due frasi, in due fotogrammi."""
+Slide 25-19-20: i tre stadi sulla frase del portiere.
+Slide 28: la stessa griglia su due frasi, in due fotogrammi.
+Slide 27 (secondo tempo): la stessa griglia ripetuta in profondita', le teste."""
 import os
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, "svg")
 
-W, H = 700, 440
+W, H = 756, 440
 
 TEAL, TEAL_F, TEAL_D = "#1ab197", "#d1efea", "#0e7c6a"
 BUR,  BUR_F, BUR_M   = "#a1245a", "#ecd3de", "#d9a3bb"
@@ -19,7 +20,7 @@ BLACK_BG             = "#161719"
 FONT = "Poppins, system-ui, -apple-system, 'Segoe UI', sans-serif"
 MONO = "'SFMono-Regular', Menlo, Monaco, Consolas, monospace"
 
-GUT, FEED_X = 106, 116
+GUT = 106
 COLS = [170, 287, 404, 521, 637]
 ACT = 4
 
@@ -35,6 +36,16 @@ W_V_Y = 210
 R_V   = (178, 194)
 R_VW  = (144, 166)
 R_SUM = (112, 130)
+
+# Il rack delle matrici di proiezione: fuori dalle colonne dei token, a destra.
+RK_X0  = 694     # angolo sinistro della griglia 4x3
+RK_C   = 5.5     # lato della cella
+RK_CX  = 702     # centro del box: da qui l'alimentazione entra dal basso
+RK_OUT = 690     # da qui parte la distribuzione, verso sinistra
+BUS_Y  = 388     # quota della riga embedding: la sorgente delle tre proiezioni
+BUS_X0 = 669     # bordo destro dell'embedding di «calcio»
+BUS_X1 = 736     # ultima corsia di risalita (quella di W^V)
+RISE_K, RISE_V = 722, 736
 
 SENT1 = {"tokens": ["Il", "portiere", "diede", "un", "calcio"],
          "qk": ["0.1", "3.1", "1.4", "0.2", "1.9"],
@@ -77,25 +88,35 @@ def rowlabel(y, label, sub, col, on, cur):
         o.append(txt(GUT - 8, y + 11, sub, 8, (GREYD if on else OFF_T), "end"))
     return "".join(o)
 
-def wmatrix(ycent, stroke, fill, sup, cols_out, y_out, on=True):
-    """4 celle in ingresso, 3 in uscita: la moltiplicazione della slide 12."""
+def wmatrix(ycent, stroke, fill, sup, cols_out, y_out, rise, on=True):
+    """4 celle in ingresso, 3 in uscita: la moltiplicazione della slide 16.
+    Sta a destra della griglia: si alimenta dal basso, dalla riga embedding,
+    e distribuisce verso sinistra con una freccia per colonna."""
     if not on:
         stroke, fill = OFF_S, OFF_F
-    o, c, x0 = [], 4.5, 110
-    y0 = ycent - 9
+    o, c, x0 = [], RK_C, RK_X0
+    y0 = ycent - 2 * c
     for r in range(4):
         for cc in range(3):
             o.append(rect(x0 + cc * c, y0 + r * c, c, c, fill, stroke, rx=0.6, sw=0.5))
     o.append(rect(x0 - 2, y0 - 2, 3 * c + 4, 4 * c + 4, "none", stroke, rx=1.5, sw=1.1))
-    o.append('<text x="132" y="%s" font-family="%s" font-size="9.5" fill="%s" '
-             'text-anchor="start" font-weight="700">&#215; W'
-             '<tspan font-size="6.5" dy="-4">%s</tspan></text>' % (ycent + 3, FONT, stroke, sup))
-    o.append('<path d="M %s %s V %s" stroke="#c3c8cd" stroke-width="1.2" marker-end="url(#a3)"/>'
-             % (FEED_X, ycent + 15, ycent + 10))
-    o.append(line(162, ycent, cols_out[-1], ycent, OFF_S if not on else FEED, 1.0))
+    o.append('<text x="%s" y="%s" font-family="%s" font-size="9.5" fill="%s" '
+             'text-anchor="end" font-weight="700">&#215; W'
+             '<tspan font-size="6.5" dy="-4">%s</tspan></text>'
+             % (RK_OUT - 2, ycent - 6, FONT, stroke, sup))
+    # alimentazione: dal bus dell'embedding, sempre dal basso, una corsia per matrice
+    fbot = y0 + 4 * c + 2
+    if rise is None:
+        d = "M %s %s V %s" % (RK_CX, BUS_Y, fbot + 3)
+    else:
+        d = "M %s %s V %s H %s V %s" % (rise, BUS_Y, fbot + 8, RK_CX, fbot + 3)
+    o.append('<path d="%s" fill="none" stroke="%s" stroke-width="1.2" marker-end="url(#%s)"/>'
+             % (d, "#c3c8cd" if on else OFF_S, "a3" if on else "a4"))
+    # distribuzione: la stessa matrice per tutte le colonne servite
+    o.append(line(RK_OUT, ycent, cols_out[0], ycent, FEED if on else OFF_S, 1.0))
     for cx in cols_out:
         o.append('<path d="M %s %s V %s" stroke="%s" stroke-width="1.1" marker-end="url(#a)"/>'
-                 % (cx, ycent - 3, y_out + 3, OFF_S if not on else ARROW))
+                 % (cx, ycent - 3, y_out + 3, ARROW if on else OFF_S))
     return "".join(o)
 
 CALLOUT = {
@@ -109,7 +130,7 @@ CALLOUT = {
 
 def band_callout(stage):
     a, b = CALLOUT[stage]
-    return (rect(58, 20, 584, 56, BLACK_BG, "none", rx=8)
+    return (rect(58, 20, W - 116, 56, BLACK_BG, "none", rx=8)
             + txt(78, 42, a, 12, "#ffffff", "start", "600")
             + txt(78, 60, b, 10.5, "#c9ccd1"))
 
@@ -121,33 +142,42 @@ def band_cloud(sent):
     o.append(txt(px, py + 22, "calcio", 11, BUR, "middle", "600", MONO))
     o.append(txt(px, py + 34, "(dal vocabolario)", 8.5, GREYD, "middle"))
     o.append('<path d="M %s %s H %s" stroke="%s" stroke-width="2" marker-end="url(#a2)"/>'
-             % (px + 13, py, 312, BUR))
-    o.append('<ellipse cx="490" cy="%s" rx="166" ry="26" fill="#f6f6f6"/>' % py)
-    o.append(txt(490, py - 8, title, 8.5, BUR, "middle", "700", ls="0.1em"))
+             % (px + 13, py, 330, BUR))
+    o.append('<ellipse cx="540" cy="%s" rx="180" ry="26" fill="#f6f6f6"/>' % py)
+    o.append(txt(540, py - 8, title, 8.5, BUR, "middle", "700", ls="0.1em"))
     for j, w in enumerate(words):
-        wx = 380 + j * 110
+        wx = 430 + j * 110
         o.append('<circle cx="%s" cy="%s" r="2.4" fill="%s"/>' % (wx, py + 4, BODY))
         o.append(txt(wx, py + 19, w, 9.5, BODY, "middle"))
     return "".join(o)
 
-def build(stage, sent, band):
+DEFS = ('<defs>'
+        '<marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" '
+        'orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="%s"/></marker>'
+        '<marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" '
+        'orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="%s"/></marker>'
+        '<marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" '
+        'markerHeight="4.5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" '
+        'fill="#c3c8cd"/></marker>'
+        '<marker id="a4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" '
+        'markerHeight="4.5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" '
+        'fill="%s"/></marker>'
+        '</defs>' % (ARROW, BUR, OFF_S))
+
+def build(stage, sent, band, bg=True):
     on_sm, on_v = stage >= 19, stage >= 20
     tokens, QK, PCT = sent["tokens"], sent["qk"], sent["pct"]
     imax = PCT.index(max(PCT))
-    o = ['<rect width="%s" height="%s" fill="#ffffff"/>' % (W, H),
-         '<defs>'
-         '<marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" '
-         'orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="%s"/></marker>'
-         '<marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" '
-         'orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="%s"/></marker>'
-         '<marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" '
-         'markerHeight="4.5" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" '
-         'fill="#c3c8cd"/></marker>'
-         '</defs>' % (ARROW, BUR)]
+    o = []
+    if bg:
+        o.append('<rect width="%s" height="%s" fill="#ffffff"/>' % (W, H))
+    o.append(DEFS)
 
-    o.append(line(146, 388, FEED_X, 388, "#c3c8cd", 1.2))
-    o.append(line(FEED_X, 388, FEED_X, (W_V_Y if on_v else W_K_Y), "#c3c8cd", 1.2))
-    o.append('<circle cx="146" cy="388" r="2" fill="#c3c8cd"/>')
+    # il bus: le tre proiezioni partono tutte dall'embedding di «calcio»
+    o.append(line(BUS_X0, BUS_Y, BUS_X1, BUS_Y, "#c3c8cd", 1.2))
+    o.append('<circle cx="%s" cy="%s" r="2" fill="#c3c8cd"/>' % (BUS_X0, BUS_Y))
+    for j, s in enumerate(("tre proiezioni", "dello stesso", "embedding")):
+        o.append(txt(744, 400 + j * 11, s, 8.5, GREYD, "end"))
 
     for i, cx in enumerate(COLS):
         act = (i == ACT)
@@ -163,8 +193,8 @@ def build(stage, sent, band):
         else:
             o.append(txt(cx, R_Q[0] + 12, "—", 11, OFF_T, "middle"))
         o.append(cells(cx, R_K[0], 3, 16, GRA, GRA_F, True))
-    o.append(wmatrix(W_Q_Y, BUR, BUR_F, "Q", [COLS[ACT]], R_Q[1]))
-    o.append(wmatrix(W_K_Y, GRA, GRA_F, "K", COLS, R_K[1]))
+    o.append(wmatrix(W_Q_Y, BUR, BUR_F, "Q", [COLS[ACT]], R_Q[1], None))
+    o.append(wmatrix(W_K_Y, GRA, GRA_F, "K", COLS, R_K[1], RISE_K))
     o.append(rowlabel(R_EMB[0] + 11, "embedding", "4 celle, come nella torre", TEAL_D, True, False))
     o.append(rowlabel(R_Q[0] + 11, "q — la domanda", "solo il token che cerca", BUR, True, stage == 18))
     o.append(rowlabel(R_K[0] + 11, "k — la chiave", "una per ogni token", GRA, True, stage == 18))
@@ -194,7 +224,7 @@ def build(stage, sent, band):
         o.append(cells(cx, R_V[0], 3, 16, BLU, BLU_F, on_v))
         o.append(cells(cx, R_VW[0] + 3, 3, 16, BLU, BLU_F, on_v,
                        op=(0.16 + 0.84 * (PCT[i] / mx)) if on_v else None))
-    o.append(wmatrix(W_V_Y, BLU, BLU_F, "V", COLS, R_V[1], on=on_v))
+    o.append(wmatrix(W_V_Y, BLU, BLU_F, "V", COLS, R_V[1], RISE_V, on=on_v))
     o.append(rowlabel(R_V[0] + 11, "v — il contenuto", "ciò che il token consegna", BLU_D, on_v, stage == 20))
     o.append(rowlabel(R_VW[0] + 14, "v × peso", "consegna proporzionata", BLU_D, on_v, stage == 20))
 
@@ -213,6 +243,48 @@ def build(stage, sent, band):
     o.append(band)
     return "".join(o)
 
+# --- Slide 27, secondo tempo: le teste in parallelo ---------------------------
+
+FRONT_TOP = 100   # bordo alto della griglia in primo piano
+STEP = 24         # quanto sporge ogni testa sul fondo
+
+def head_card(cbot):
+    return ('<path d="M 1 %s V 108 Q 1 100 9 100 H %s Q %s 100 %s 108 V %s Z" '
+            'fill="%s" stroke="%s" stroke-width="1"/>'
+            % (cbot, W - 9, W - 1, W - 1, cbot, OFF_F, OFF_S))
+
+GHOST_LAB = {1: "testa 2 · sintassi", 2: "testa 3 · riferimenti", 3: "testa 4 · tono"}
+
+def ghost(k):
+    """Una testa sul fondo: la stessa griglia, un po' più piccola e più in alto.
+    Se ne vede solo la fascia che sporge sopra la griglia in primo piano."""
+    s = round(1 - 0.02 * k, 3)
+    ty = round((R_SUM[0] - STEP * k) - R_SUM[0] * s, 2)
+    tx = round((W / 2.0) * (1 - s), 2)
+    cbot = round((FRONT_TOP - ty) / s, 2)                      # fondo della card
+    vbot = round((FRONT_TOP - STEP * (k - 1) - ty) / s, 2)     # fondo della fascia visibile
+    op = round(0.85 - 0.2 * k, 2)
+    g = [head_card(cbot)]
+    x0 = COLS[ACT] - 36
+    for i in range(4):                                          # la riga «somma», smorzata
+        g.append(rect(x0 + i * 18, R_SUM[0], 18, round(vbot - R_SUM[0], 2), TEAL_F,
+                      "none", rx=2.5, op=op))
+    g.append(rect(52, 114, 46, 4.5, OFF_S, "none", rx=2.2))     # dove starebbe l'etichetta
+    g.append(rect(505, 114, 70, 4, OFF_S, "none", rx=2))
+    g.append(txt(112, 118, GHOST_LAB[k], 11, GREYD, "start", "500"))
+    return '<g transform="translate(%s,%s) scale(%s)">%s</g>' % (tx, ty, s, "".join(g))
+
+def multihead():
+    o = ['<rect width="%s" height="%s" fill="#ffffff"/>' % (W, H)]
+    for k in (3, 2, 1):
+        o.append(ghost(k))
+    o.append(txt(133, 20, "⋯", 13, GREYD, "start", "600"))
+    o.append('<path d="M 1 108 Q 1 100 9 100 H %s Q %s 100 %s 108" fill="none" '
+             'stroke="%s" stroke-width="1"/>' % (W - 9, W - 1, W - 1, LINE))
+    o.append(build(20, SENT1, "", bg=False))
+    o.append(txt(112, 118, "testa 1", 11, BUR, "start", "700"))
+    return "".join(o)
+
 def svg(body, alt):
     return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %s %s" width="%s" height="%s" '
             'role="img" aria-label="%s">%s</svg>' % (W, H, W, H, esc(alt), body))
@@ -224,6 +296,8 @@ FILES = [
   "Griglia dell'attention dal basso: la softmax trasforma le affinita grezze nel budget di ascolto"),
  ("slide20-griglia-v.svg", build(20, SENT1, band_callout(20)),
   "Griglia dell'attention dal basso: W V produce i value, che pesati si sommano nel nuovo embedding di calcio"),
+ ("slide20-multihead.svg", multihead(),
+  "La stessa griglia ripetuta in profondita: la testa 1 in primo piano e altre teste sullo sfondo, ognuna con una domanda diversa (sintassi, riferimenti, tono)"),
  ("slide20b-contesto-frase1.svg", build(20, SENT1, band_cloud(SENT1)),
   "Attention completa sulla frase il portiere diede un calcio: il budget va a portiere e calcio finisce nell'area dello sport"),
  ("slide20b-contesto-frase2.svg", build(20, SENT2, band_cloud(SENT2)),

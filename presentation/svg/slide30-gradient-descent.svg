@@ -2,12 +2,12 @@
      font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
   <title>Gradient descent: la valle dell'errore percorsa con passi piccoli e decrescenti, dal modello che sbaglia molto al modello addestrato</title>
 
-  <!-- COMPOSIZIONE RIUSABILE (slide 44, fine-tuning).
+  <!-- COMPOSIZIONE RIUSABILE (slide 53, fine-tuning).
        Il profilo della valle e' l'id "profilo-valle": non modificarlo.
        Il minimo principale e' a (640, 560), ball finale della sequenza.
        A destra del minimo la curva risale (massimo locale ~x=850, y=458) e presenta
        una conca secondaria poco profonda intorno a x=900-960 (y ~ 481-494):
-       e' li' che la slide 44 innestera' la discesa secondaria verso la valletta laterale
+       e' li' che la slide 53 innestera' la discesa secondaria verso la valletta laterale
        (nuovo gruppo da aggiungere, es. id="discesa-fine-tuning", partendo da (640,560)).
        Non occupare con testo la fascia x 700-1050 / y 300-460: e' riservata a quell'evoluzione. -->
 

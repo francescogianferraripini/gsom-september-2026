@@ -1,8 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 500" width="1300" height="500" role="img">
-  <title>Il golfista: quattro colpi concatenati, ognuno determinato da dove è atterrato il precedente, e la buca ignorata sullo sfondo</title>
+  <title>Il golfista: quattro colpi concatenati e progressivamente più corti, ognuno determinato da dove è atterrato il precedente, e la buca ignorata sullo sfondo</title>
 
-  <!-- Composizione riusabile: la slide 31 riprende questa scena aggiungendo la mira alla buca.
-       Non spostare terreno (y=430), punti di atterraggio (x = 420, 680, 890, 1080) né la buca (x=1220). -->
+  <!-- Composizione riusabile, ora in TRE file: questo (senza mira, il pretraining),
+       slide9d-golfista-mira.svg e il gruppo id="scena-golfista" dentro slide31-rlhf.svg
+       (entrambi con la mira). Se cambi qui, cambia anche la'.
+       Non spostare terreno (y=430), punti di atterraggio (x = 560, 830, 1000, 1080) né la buca (x=1220).
+       Gittate decrescenti (390, 270, 170, 80) e apici decrescenti (y = 42, 162, 267, 362):
+       colpo 1 è il drive, colpo 4 un chip corto e teso. -->
 
   <g id="terreno">
     <line x1="12" y1="430" x2="1288" y2="430" stroke="#dee2e6" stroke-width="2"/>
@@ -27,24 +31,27 @@
   </g>
 
   <g id="catena-colpi" fill="none" stroke="#a1245a" stroke-width="3" stroke-linecap="round">
-    <path id="arco-1" d="M170 422 Q295 -332 420 422"/>
-    <path id="arco-2" d="M420 422 Q550 -212 680 422"/>
-    <path id="arco-3" d="M680 422 Q785 -352 890 422"/>
-    <path id="arco-4" d="M890 422 Q985 -172 1080 422"/>
+    <path id="arco-1" d="M170 422 Q365 -338 560 422"/>
+    <path id="arco-2" d="M560 422 Q695 -98 830 422"/>
+    <path id="arco-3" d="M830 422 Q915 112 1000 422"/>
+    <path id="arco-4" d="M1000 422 Q1040 302 1080 422"/>
   </g>
 
   <g id="palline" fill="#a1245a">
     <circle cx="164" cy="422" r="6" fill="#ffffff" stroke="#a1245a" stroke-width="2.5"/>
-    <circle cx="420" cy="422" r="8"/>
-    <circle cx="680" cy="422" r="8"/>
-    <circle cx="890" cy="422" r="8"/>
+    <circle cx="560" cy="422" r="8"/>
+    <circle cx="830" cy="422" r="8"/>
+    <circle cx="1000" cy="422" r="8"/>
     <circle cx="1080" cy="422" r="8"/>
   </g>
 
+  <!-- colpo 4 sfalsato di una riga più in basso, con linea di richiamo:
+       a x=1000 e x=1080 le due etichette si sovrapporrebbero sulla stessa baseline. -->
   <g id="etichette-colpi" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="600" fill="#212529" text-anchor="middle">
-    <text x="420" y="464">colpo 1</text>
-    <text x="680" y="464">colpo 2</text>
-    <text x="890" y="464">colpo 3</text>
-    <text x="1080" y="464">colpo 4</text>
+    <text x="560" y="464">colpo 1</text>
+    <text x="830" y="464">colpo 2</text>
+    <text x="1000" y="464">colpo 3</text>
+    <line x1="1080" y1="438" x2="1080" y2="474" stroke="#dee2e6" stroke-width="1.5"/>
+    <text x="1080" y="490">colpo 4</text>
   </g>
 </svg>

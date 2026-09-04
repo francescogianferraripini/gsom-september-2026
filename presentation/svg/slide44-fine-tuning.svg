@@ -45,7 +45,7 @@
     <circle cx="910" cy="486" r="6"/>
   </g>
 
-  <!-- palline: stesso trattamento della slide 30 -->
+  <!-- palline: stesso trattamento della slide 36 -->
   <circle id="pre-addestrato" cx="640" cy="560" r="11" fill="#a1245a"/>
   <circle id="specializzato" cx="933" cy="497" r="11" fill="#a1245a"/>
 

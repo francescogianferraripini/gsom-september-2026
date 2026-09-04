@@ -42,7 +42,7 @@
   - *"Che usi i miei strumenti: mail, file, gestionali"*
   - *"Che si accorga quando sbaglia — e ci riprovi"*
   - *"Che sappia spiegarmi cosa ha fatto e perché"*
-- Nota in basso (a comparsa finale): *Ci aspettiamo che porti a termine un task — non che risponda a una domanda.*
+- Nota in basso (a comparsa finale): *Ci aspettiamo che porti a termine un task — non che risponda a una domanda.* — resa come **blocco nero pieno, testo bianco centrato** (`.nota.dark.center`): è la frase d'atterraggio della discussione e deve staccarsi dai post-it.
 
 **Visual**: nessuno. La disposizione sparsa delle ipotesi attorno alla domanda è essa stessa l'elemento visivo (brainstorming), un diagramma non aggiungerebbe comprensione.
 
@@ -52,10 +52,10 @@
 
 **Testo**:
 - Titolo: *Lo spazio delle soluzioni*
-- Didascalia (sotto il titolo): *Dove gli agenti funzionano già, e dove serve rinforzo: due assi — quanto contesto richiede il task, quanto è verificabile il risultato.*
-- Nota ponte in basso: *Tutto ciò che il corso costruisce — tool, knowledge base, skills, orchestrazione — è un modo di rinforzare i task dove il modello da solo è fragile. E la frontiera si sposta di mese in mese.*
+- Didascalia (sotto il titolo): *La jagged frontier: non tutti i task sono uguali.*
+- Nota ponte in basso: *La frontiera si sposta costantemente. La verificabilità deterministica del risultato è l'elemento determinante per poter addestrare gli LLM ad abilitare correttamente gli agenti.*
 
-**Visual**: mappa 2D dei task (verificabilità × ampiezza di contesto), con 8 task posizionati come punti; coding come sweet spot evidenziato, conversazione stateful come quadrante difficile.
+**Visual**: mappa 2D dei task (verificabilità × ampiezza di contesto), con 8 task posizionati come punti; coding e ragionamento matematico come sweet spot evidenziati, ragionamento strategico aziendale come quadrante difficile.
 
 **Prompt per schema SVG**:
 > Griglia 2D cartesiana, pulita e ariosa.
@@ -66,16 +66,16 @@
 > **8 punti** come cerchi pieni con etichetta accanto, coordinate indicative (x, y) su scala 0–100:
 >   1. `Q&A / recupero conoscenza` — (15, 85)
 >   2. `Classificazione / giudizio` — (20, 88)
->   3. `Ragionamento` — (50, 80)
+>   3. `Ragionamento matematico` — (85, 65) — **stessa ampiezza di contesto di `Coding`** (stessa X) e **stesso trattamento grafico**: cerchio grande, etichetta in evidenza
 >   4. `Coding` — (85, 90) — il punto in risalto: cerchio più grande, etichetta in evidenza
 >   5. `Trasformazione di testo` — (25, 55)
 >   6. `Multi-step planning / task agentici` — (80, 50)
 >   7. `Generazione (scrittura, email, brief)` — (40, 25)
->   8. `Conversazione stateful (tutoring, consulenza)` — (85, 15) — reso attenuato/tratteggiato: il quadrante difficile
+>   8. `Ragionamento strategico aziendale` — (85, 15) — reso attenuato/tratteggiato: il quadrante difficile
 >
 > Nessuna etichetta di quadrante: i punti parlano da soli.
 >
-> **Elementi focali**: `Coding` come estremo positivo (alta verificabilità + alto contesto: il sweet spot del lavoro agentico) e, per contrasto, `Conversazione stateful` come punto più difficile da automatizzare bene.
+> **Elementi focali**: `Coding` e `Ragionamento matematico` come estremo positivo (alta verificabilità + alto contesto: il sweet spot del lavoro agentico — sono verificabili in modo deterministico, ed è questo che permette di addestrarci sopra gli LLM) e, per contrasto, `Ragionamento strategico aziendale` come punto più difficile da automatizzare bene.
 
 ## Slide 3 — La formula: Agent =
 
@@ -84,7 +84,7 @@
 **Testo**:
 - Titolo: *Un agente è un sistema composto*
 - Formula (dentro il visual): `Agent = LLM + Harness + System Prompt + Tools + KB + Skills`
-- Nota in basso: *LLM e Harness sono il sistema operativo. Il resto è il software installato — ed è il software che distingue un agente da un altro.*
+- Nota in basso: *LLM e Harness sono il sistema operativo. Il resto è come se fosse il software che, a parità di infrastruttura, organizza il lavoro a seconda dell'obiettivo.*
 
 **Visual**: diagramma-formula orizzontale a blocchi con due graffe di raggruppamento (sistema operativo / software installato).
 
@@ -115,24 +115,23 @@
 - Titolo: *Il ruolo dell'harness*
 - Testo: *L'Harness è un software "classico", deterministico, che orchestra le attività che fa l'agente sotto la direzione del LLM. Se pensiamo all'agente come un'entità neuro-simbolica, l'LLM è la parte Neuro, l'Harness quella simbolica. È come l'esoscheletro operativo, all'interno del quale c'è un cervello, l'LLM.*
 
-**Visual**: l'esoscheletro a blocchi — cornice `Harness` composta dai 7 componenti, con al centro il blocco `LLM` (il cervello).
+**Visual**: l'esoscheletro a blocchi — cornice composta dalle **3 categorie** di componenti, con al centro il blocco `LLM` (il cervello). Nessun blocco-titolo `Harness` dentro la figura: il titolo della slide basta.
 
 **Prompt per schema SVG**:
-> Diagramma "esoscheletro": una cornice ad anello che racchiude un blocco centrale.
+> Diagramma "esoscheletro": una cornice che racchiude un blocco centrale, organizzata in **tre categorie distinte da colori**.
 >
-> **Al centro**: un blocco `LLM`, con sotto-etichetta *il cervello (neuro)*.
+> **Al centro**: un blocco `LLM`, con sotto-etichetta *il cervello (neuro)*, in burgundy — colore riservato a lui.
 >
-> **Intorno**, a formare una cornice/anello chiusa etichettata `Harness` (con sotto-etichetta *l'esoscheletro (simbolico)*), sette blocchi adiacenti che compongono l'anello stesso:
->   1. `Context Initialization & Management`
->   2. `Memory Management`
->   3. `Loop`
->   4. `Tool Calling Execution`
->   5. `Skills access`
->   6. `Execution Sandbox`
->   7. `Logging`
+> **Intorno**, tre zone contigue che insieme formano l'involucro. Ogni zona ha un'intestazione col nome della categoria, nel colore pieno della categoria, e contiene i propri sotto-blocchi:
 >
-> I sette blocchi non sono satelliti staccati: sono i segmenti della cornice, a comunicare che l'harness *è* l'involucro. Il blocco `LLM` è dentro, completamente racchiuso.
+>   1. **`Context management`** — quattro sotto-blocchi:
+>      `Context Initialization` · `Context Optimization (compaction, pruning, etc.)` · `Memory management` · `Skill management`
+>   2. **`Agentic loop management`** — blocco unico, senza sotto-blocchi: è l'anello che gira attorno all'LLM.
+>   3. **`Environment management`** — tre sotto-blocchi:
+>      `Tool Calling execution and response management` · `Execution Sandbox` · `Skill execution management`
 >
-> **Elemento focale**: il contrasto tra il centro (`LLM`, la parte neuro) e l'anello (`Harness`, la parte simbolica/deterministica) — le due nature devono leggersi come zone distinte. I nomi dei sette segmenti sono etichette esatte, da non parafrasare.
+> Le tre zone non sono satelliti staccati: sono i segmenti della cornice, a comunicare che l'harness *è* l'involucro. Il blocco `LLM` è dentro, completamente racchiuso.
+>
+> **Elemento focale**: il contrasto tra il centro (`LLM`, la parte neuro) e la cornice (la parte simbolica/deterministica) — le due nature devono leggersi come zone distinte; e, dentro la cornice, la tripartizione per colore. I nomi delle categorie e dei sotto-blocchi sono etichette esatte, da non parafrasare.
 
 <!-- I blocchi slide successivi verranno aggiunti qui durante l'intervista (Fase 2). -->

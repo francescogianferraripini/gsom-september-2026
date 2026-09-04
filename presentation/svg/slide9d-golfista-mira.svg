@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 500" width="1300" height="500" role="img">
+  <title>Lo stesso golfista, ora con la mira: ogni colpo punta alla buca, e a essere ottimizzato è il percorso intero e non il singolo colpo</title>
+
+  <!-- TERZA COPIA della scena del golfista. Le altre due sono slide7-golfista.svg (senza mira,
+       il pretraining) e il gruppo id="scena-golfista" dentro slide31-rlhf.svg (con mira, RLHF).
+       Se cambiano terreno (y=430), atterraggi (x = 560, 830, 1000, 1080), archi o buca (x=1220),
+       vanno cambiati in tutti e tre. Qui rispetto alla slide 7 si aggiungono solo il gruppo
+       "mira" e la buca in primo piano, entrambi presi pari pari dalla slide 37. -->
+
+  <g id="terreno">
+    <line x1="12" y1="430" x2="1288" y2="430" stroke="#dee2e6" stroke-width="2"/>
+  </g>
+
+  <g id="mira" stroke="#a1245a" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-dasharray="10 10">
+    <line x1="560" y1="416" x2="1206" y2="320"/>
+    <line x1="830" y1="416" x2="1206" y2="320"/>
+    <line x1="1000" y1="416" x2="1206" y2="320"/>
+    <line x1="1080" y1="416" x2="1206" y2="320"/>
+  </g>
+
+  <g id="buca">
+    <ellipse cx="1220" cy="430" rx="26" ry="7" fill="#f6f6f6" stroke="#838383" stroke-width="1.5"/>
+    <line x1="1220" y1="428" x2="1220" y2="300" stroke="#161719" stroke-width="2.5"/>
+    <path d="M1218 302 L1166 318 L1218 334 Z" fill="#ecd3de" stroke="#a1245a" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="1206" cy="320" r="6" fill="#a1245a"/>
+  </g>
+
+  <g id="golfista" fill="none" stroke="#161719" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="66" cy="250" r="17" fill="#161719" stroke="none"/>
+    <path d="M66 269 L60 336"/>
+    <path d="M60 336 L40 430"/>
+    <path d="M60 336 L84 430"/>
+    <path d="M64 290 L108 302"/>
+    <path d="M108 302 L146 420" stroke="#838383" stroke-width="2.5"/>
+    <path d="M146 420 L160 426" stroke="#838383" stroke-width="4"/>
+  </g>
+
+  <g id="catena-colpi" fill="none" stroke="#a1245a" stroke-width="3" stroke-linecap="round">
+    <path id="arco-1" d="M170 422 Q365 -338 560 422"/>
+    <path id="arco-2" d="M560 422 Q695 -98 830 422"/>
+    <path id="arco-3" d="M830 422 Q915 112 1000 422"/>
+    <path id="arco-4" d="M1000 422 Q1040 302 1080 422"/>
+  </g>
+
+  <g id="palline" fill="#a1245a">
+    <circle cx="164" cy="422" r="6" fill="#ffffff" stroke="#a1245a" stroke-width="2.5"/>
+    <circle cx="560" cy="422" r="8"/>
+    <circle cx="830" cy="422" r="8"/>
+    <circle cx="1000" cy="422" r="8"/>
+    <circle cx="1080" cy="422" r="8"/>
+  </g>
+
+  <!-- Prende il posto del "la buca? / per ora, nessuna mira" della slide 7: e' la stessa
+       inquadratura, e nello stesso angolo si legge che cosa e' cambiato. -->
+  <g id="annotazione" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" text-anchor="end">
+    <text x="1288" y="206" font-size="19" font-weight="700" fill="#a1245a">ora ogni colpo mira alla buca</text>
+    <text x="1288" y="232" font-size="17" font-weight="400" fill="#838383">e a essere ottimizzato è il percorso,</text>
+    <text x="1288" y="254" font-size="17" font-weight="400" fill="#838383">non il singolo colpo</text>
+  </g>
+
+  <g id="etichette-colpi" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="600" fill="#212529" text-anchor="middle">
+    <text x="560" y="464">colpo 1</text>
+    <text x="830" y="464">colpo 2</text>
+    <text x="1000" y="464">colpo 3</text>
+    <line x1="1080" y1="438" x2="1080" y2="474" stroke="#dee2e6" stroke-width="1.5"/>
+    <text x="1080" y="490">colpo 4</text>
+  </g>
+</svg>

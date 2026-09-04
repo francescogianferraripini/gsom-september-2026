@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 420" width="620" height="420" role="img">
+  <title>Il costo del singolo turno al crescere della conversazione: quadratico senza KV cache, lineare con la cache, e quello che l'utente vede in fattura</title>
+
+  <!-- Adattato da slide18-cost-curves.svg del deck gsom-april-2026, riportato alla palette e ai font di questo deck. -->
+
+  <line x1="78" y1="268.0" x2="596" y2="268.0" stroke="#dee2e6" stroke-width="1"/>
+  <line x1="78" y1="192.0" x2="596" y2="192.0" stroke="#dee2e6" stroke-width="1"/>
+  <line x1="78" y1="116.0" x2="596" y2="116.0" stroke="#dee2e6" stroke-width="1"/>
+  <line x1="78" y1="344" x2="604" y2="344" stroke="#838383" stroke-width="1.5"/>
+  <line x1="78" y1="344" x2="78" y2="32" stroke="#838383" stroke-width="1.5"/>
+  <polyline points="78.0,344.0 86.6,343.9 95.3,343.7 103.9,343.3 112.5,342.7 121.2,342.0 129.8,341.1 138.4,340.1 147.1,338.9 155.7,337.6 164.3,336.1 173.0,334.4 181.6,332.6 190.2,330.6 198.9,328.4 207.5,326.1 216.1,323.7 224.8,321.1 233.4,318.3 242.0,315.3 250.7,312.2 259.3,309.0 267.9,305.6 276.6,302.0 285.2,298.3 293.8,294.4 302.5,290.3 311.1,286.1 319.7,281.8 328.4,277.2 337.0,272.6 345.6,267.7 354.3,262.7 362.9,257.6 371.5,252.2 380.2,246.8 388.8,241.1 397.4,235.3 406.1,229.4 414.7,223.3 423.3,217.0 432.0,210.6 440.6,204.0 449.2,197.2 457.9,190.3 466.5,183.3 475.1,176.0 483.8,168.7 492.4,161.1 501.0,153.4 509.7,145.6 518.3,137.5 526.9,129.4 535.6,121.0 544.2,112.5 552.8,103.9 561.5,95.1 570.1,86.1 578.7,77.0 587.4,67.7 596.0,58.2" fill="none" stroke="#1ab197" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 4"/>
+  <polyline points="78.0,344.0 86.6,341.1 95.3,338.1 103.9,335.2 112.5,332.2 121.2,329.3 129.8,326.4 138.4,323.4 147.1,320.5 155.7,317.6 164.3,314.6 173.0,311.7 181.6,308.7 190.2,305.8 198.9,302.9 207.5,299.9 216.1,297.0 224.8,294.0 233.4,291.1 242.0,288.2 250.7,285.2 259.3,282.3 267.9,279.3 276.6,276.4 285.2,273.5 293.8,270.5 302.5,267.6 311.1,264.7 319.7,261.7 328.4,258.8 337.0,255.8 345.6,252.9 354.3,250.0 362.9,247.0 371.5,244.1 380.2,241.1 388.8,238.2 397.4,235.3 406.1,232.3 414.7,229.4 423.3,226.5 432.0,223.5 440.6,220.6 449.2,217.6 457.9,214.7 466.5,211.8 475.1,208.8 483.8,205.9 492.4,202.9 501.0,200.0 509.7,197.1 518.3,194.1 526.9,191.2 535.6,188.3 544.2,185.3 552.8,182.4 561.5,179.4 570.1,176.5 578.7,173.6 587.4,170.6 596.0,167.7" fill="none" stroke="#838383" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="78.0,344.0 86.6,342.7 95.3,341.4 103.9,340.0 112.5,338.7 121.2,337.4 129.8,336.1 138.4,334.8 147.1,333.5 155.7,332.1 164.3,330.8 173.0,329.5 181.6,328.2 190.2,326.9 198.9,325.6 207.5,324.2 216.1,322.9 224.8,321.6 233.4,320.3 242.0,319.0 250.7,317.7 259.3,316.3 267.9,315.0 276.6,313.7 285.2,312.4 293.8,311.1 302.5,309.7 311.1,308.4 319.7,307.1 328.4,305.8 337.0,304.5 345.6,303.2 354.3,301.8 362.9,300.5 371.5,299.2 380.2,297.9 388.8,296.6 397.4,295.3 406.1,293.9 414.7,292.6 423.3,291.3 432.0,290.0 440.6,288.7 449.2,287.4 457.9,286.0 466.5,284.7 475.1,283.4 483.8,282.1 492.4,280.8 501.0,279.5 509.7,278.1 518.3,276.8 526.9,275.5 535.6,274.2 544.2,272.9 552.8,271.5 561.5,270.2 570.1,268.9 578.7,267.6 587.4,266.3 596.0,265.0" fill="none" stroke="#a1245a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="337" y="378" text-anchor="middle" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="400" fill="#838383">numero di turno</text>
+  <text transform="rotate(-90 44 192)" x="44" y="192" text-anchor="middle" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" fill="#838383">costo del singolo turno</text>
+  <line x1="94" y1="62" x2="130" y2="62" stroke="#1ab197" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="8 4"/>
+  <text x="140" y="67" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#212529">costo teorico del provider</text>
+  <text x="140" y="84" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="400" fill="#838383">senza KV cache: quadratico</text>
+  <line x1="94" y1="102" x2="130" y2="102" stroke="#838383" stroke-width="2.2" stroke-linecap="round"/>
+  <text x="140" y="107" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#212529">costo in fattura per l'utente</text>
+  <text x="140" y="124" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="400" fill="#838383">lineare: paghi tutto il contesto</text>
+  <line x1="94" y1="142" x2="130" y2="142" stroke="#a1245a" stroke-width="2.8" stroke-linecap="round"/>
+  <text x="140" y="147" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#212529">costo reale del provider</text>
+  <text x="140" y="164" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="400" fill="#838383">con KV cache: lineare, e più basso</text>
+  <line x1="590" y1="58.24" x2="590" y2="264.96" stroke="#161719" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="580" y="161.6" text-anchor="end" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#161719">il risparmio</text>
+  <text x="580" y="178.6" text-anchor="end" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#161719">della cache</text>
+</svg>
