@@ -37,7 +37,7 @@
 >
 > **Le skill** sono nella maggior parte dei casi solo istruzioni; lo script è l'eccezione. Per questo la Slide 26 le introduce in generale, la 26 mostra una skill di sole istruzioni, e solo la 27 arriva allo script.
 >
-> **Fatti verificati (set 2026)** per le slide MCP: nessuna versione numerata, solo revisioni datate (nov 2024 con sessione → mar 2025 trasporto HTTP streamable → lug 2026 stateless); primitive server tools / resources / prompts, client elicitation; sampling e roots deprecati (solo nelle note del relatore); registry ufficiale, offerta nell'ordine delle decine di migliaia di server. Fonti nel file di ricerca in scratchpad, da riportare nelle note del relatore.
+> **Fatti verificati (set 2026)** per le slide MCP: nessuna versione numerata, solo revisioni datate (nov 2024 con sessione → mar 2025 trasporto HTTP streamable → lug 2026 stateless); primitive server tools / resources / prompts, client elicitation; sampling e roots deprecati (solo nelle note del relatore); registry ufficiale, offerta nell'ordine delle decine di migliaia di server. Fonti in `docs/ricerche-27/`, da riportare nelle note del relatore.
 >
 > **L'esempio che attraversa la sezione**: l'assistente di Acme, `cerca_ordine("4471")` (dal 26), gli identificativi a 6 cifre (`004471`), l'export `ordini_08.json`, le skill `rimborsi-acme`, `risposta-reclami-acme` e `report-settimanale`.
 

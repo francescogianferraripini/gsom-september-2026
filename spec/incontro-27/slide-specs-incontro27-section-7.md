@@ -23,7 +23,7 @@
 
 > **Filo della sezione.** La mappa si riaccende tutta e diventa la griglia di confronto dei prodotti (le righe delle tabelle sono le zone della mappa); poi la formula della Slide 3 con quattro termini accesi; l'ultima slide è il blocco nero: `KB` è l'unico termine non ancora aperto, e il 28 è tutto lì.
 >
-> **Dati verificati** (4 set 2026): tutte le celle delle tabelle vengono dalla matrice in `scratchpad/research-offering-matrix.md` (49 fonti ufficiali: docs Anthropic, Claude Code, Managed Agents, Help Center; docs smolagents, LangChain/LangGraph, Agno). Le fonti vanno riportate nelle note del relatore. Le celle marcate non verificabili nella matrice sono state rese in forma prudente ("come chat", "nessuno documentato").
+> **Dati verificati** (4 set 2026): tutte le celle delle tabelle vengono dalla matrice in `docs/ricerche-27/research-offering-matrix.md` (49 fonti ufficiali: docs Anthropic, Claude Code, Managed Agents, Help Center; docs smolagents, LangChain/LangGraph, Agno). Le fonti vanno riportate nelle note del relatore. Le celle marcate non verificabili nella matrice sono state rese in forma prudente ("come chat", "nessuno documentato").
 >
 > **Liste**: i cinque prodotti Anthropic e i tre framework del brief, più Managed Agents come sesta colonna (è l'unico caso in cui harness e sandbox sono entrambi ospitati e si chiama un'API). Claude in Chrome e in Slack restano nelle note del relatore.
 

@@ -180,7 +180,7 @@
 >
 > **Elemento focale**: la fila dei ricercatori paralleli con le finestre alte, e il lead con la finestra corta sopra.
 
-> Fonte: Anthropic Engineering, "How we built our multi-agent research system", 13 giugno 2025 (URL nel file di ricerca in scratchpad); da citare nelle note del relatore.
+> Fonte: Anthropic Engineering, "How we built our multi-agent research system", 13 giugno 2025 (URL in `docs/ricerche-27/research-deep-research.md`); da citare nelle note del relatore.
 
 ## Slide 57 — Deep research: i tre pattern, colorati
 

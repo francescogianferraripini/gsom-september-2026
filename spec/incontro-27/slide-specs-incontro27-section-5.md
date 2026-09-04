@@ -314,4 +314,4 @@
 >
 > **Elemento focale**: le tre lenti sulla stessa traccia.
 
-> Note del relatore: a settembre 2026 le tracce di produzione si usano come insieme di task con verificatore (RFT e simili), non come traiettorie da imitare grezze; serve un grader, e il rischio è il reward hacking. Fonti nel file di ricerca in scratchpad.
+> Note del relatore: a settembre 2026 le tracce di produzione si usano come insieme di task con verificatore (RFT e simili), non come traiettorie da imitare grezze; serve un grader, e il rischio è il reward hacking. Fonti in `docs/ricerche-27/`.
