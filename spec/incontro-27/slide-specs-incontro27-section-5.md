@@ -146,16 +146,17 @@
 
 **Messaggio**: il primo passo è organizzativo, non tecnico: una persona decide che cosa è giusto, e lo fa leggendo le tracce delle prime prove dell'agente, una per una.
 
-**Layout**: titolo in alto; i due punti di testo a sinistra (~40%); a destra (~55%) una traccia reale con le annotazioni a margine; nota in basso. La pipeline della Slide 43 in miniatura, con la tappa 1 accesa, in fondo alla colonna di testo.
+**Layout**: titolo in alto; i due punti di testo a sinistra (~30%); la traccia di Acme annotata al centro (~40%); a destra (~30%) il riquadro *esempio reale* (screenshot ridotto e due citazioni); nota in basso. La pipeline della Slide 43 in miniatura, con la tappa 1 accesa, in fondo alla colonna di testo.
 
 **Testo**:
 - Titolo: *Chi giudica: una persona sola, e le tracce a mano*
 - Punti:
   1. **Una persona sola**: *nel caso il compito sia di dominio, l'esperto di quel dominio: decide lei che cosa è una risposta giusta. Non un comitato: un comitato non converge, e l'agente ha bisogno di un giudizio coerente. La persona può cambiare; il fatto che sia una no.*
-  2. **Le tracce delle prime prove, lette a mano**: *nelle prime fasi di test l'agente viene usato da utenti di prova; ogni sessione lascia una traccia. L'esperto le apre e le legge, giro per giro, e per ciascuna dice se è andata bene e perché. Non un dashboard: la traccia. È lì che si vede la tool call sbagliata dietro la risposta giusta.*
+  2. **Le tracce delle prime prove, lette a mano**: *nelle prime fasi di test l'agente viene usato da utenti di prova; ogni sessione lascia una traccia. L'esperto le apre e le legge, giro per giro, e per ciascuna dice se è andata bene e perché. Non un dashboard: la traccia. È lì che si vede la tool call sbagliata dietro la risposta giusta. Uno strumento su misura per farlo (la traccia esplosa, un verdetto binario, un campo per le note) è il primo investimento da fare, ed è piccolo.*
+- Riquadro *esempio reale* (a destra): lo screenshot ridotto dell'interfaccia di annotazione di Hamel Husain sul caso NurtureBoss (fonte: hamel.dev, *A Field Guide to Rapidly Improving AI Products*, immagine `nboss_annotate.png`; lista di 315 messaggi con spunte, traccia esplosa in card con la tool call, bottoni **Good / Bad**, campo **Notes**), e sotto due note reali di annotazione, virgolettate in inglese: *"Should have handed off to a human"* · *"told user that it would check on bathrooms but didn't do it"*. Didascalia del riquadro: *un'interfaccia da pochi giorni di lavoro: la traccia, due bottoni, un campo note. "L'investimento più utile", secondo chi lo fa da anni.*
 - Nota in basso: *È il passo che tutti saltano perché sembra lento. È il più veloce: nelle prime trenta tracce si trovano già i cluster di fallimento della Slide 46.*
 
-**Visual**: `slide44-traccia-annotata.svg` — la prima versione della traccia annotata; torna completa nella Slide 50.
+**Visual**: `slide44-traccia-annotata.svg` — la prima versione della traccia annotata; torna completa nella Slide 50. Più l'asset esterno `assets/images/uploads/hamel-nboss-annotate.png` (da scaricare da hamel.dev; attribuzione in slide).
 
 **Prompt per schema SVG**:
 > Una traccia disegnata come il riquadro-payload del 26, in verticale, con i tag di ruolo: `[user]`, `[assistant] → tool`, `[tool]`, `[assistant]`, per due turni; in testa, un'etichetta `sessione di prova · utente 7 · 2 set`. A margine destro, **annotazioni a mano** (stile penna, in un colore diverso da tutto il resto): accanto a una tool call, *"parametro sbagliato: 4471 invece di 004471"*; accanto a un `[tool]` lungo, *"12.000 token per una riga"*; accanto alla risposta finale, *"giusta, ma per caso"*; in fondo, il verdetto: *"FAIL"* con una riga di motivazione. In alto a sinistra, la persona (una sagoma) con l'etichetta `l'esperto di dominio`.
@@ -200,13 +201,15 @@
 - Punti:
   1. **Si raggruppano per tipo**: *si rileggono i casi falliti e si dà un nome a ciò che è andato storto: "parametro sbagliato", "promette il rimborso", "non trova il documento". Già al primo giro i cluster evidenti ci sono; si continua finché non emergono categorie nuove.*
   2. **Tipicamente un cluster è legato a una leva**: *un cluster di regole ignorate punta al prompt; uno di fatti sbagliati alla KB; uno di chiamate errate al tool; uno di vincoli persi a metà sessione all'harness. Ciò che resta dopo tutto questo punta al modello.*
-  3. **I frequenti sono spesso i facili**: *le categorie più numerose, molte volte, si correggono specificando meglio una riga nel system prompt o nella descrizione di un tool. Si parte da lì: il guadagno maggiore al costo minore.*
-- Nota in basso: *È il passo che trasforma "non funziona" in una lista di cose da fare, ordinata. Ed è quello che va rifatto ogni volta che il dataset cresce (Slide 49).*
+  3. **I frequenti sono spesso i facili**: *le categorie più numerose, molte volte, si correggono specificando meglio una riga nel system prompt o nella descrizione di un tool. Si parte da lì: il guadagno maggiore al costo minore. Nell'esempio reale, il cluster "rescheduling", 60 casi, era un problema di gestione delle date: corretto nel prompt, il successo su quei casi è passato dal 33% al 95%.*
+- Nota in basso: *È il passo che trasforma "non funziona" in una lista di cose da fare, ordinata. Ed è quello che va rifatto ogni volta che il dataset cresce (Slide 49). "Una pivot di Excel è uno strumento semplice, ma funziona." (Hamel Husain)*
 
 **Visual**: `slide46-cluster-leve.svg`.
 
 **Prompt per schema SVG**:
 > **A sinistra**, i fallimenti sparsi: una trentina di punti disordinati, ognuno con un'etichetta brevissima (`"4471 invece di 004471"`, `"promette rimborso"`, `"non cita il listino"`, `"loop di 12 chiamate"`, …). **Al centro**, una freccia `si raggruppano`, e gli stessi punti riordinati in cinque gruppi di dimensione diversa, con un nome e un conteggio: `regola ignorata · 11`, `parametro sbagliato · 7`, `fatto mancante · 5`, `vincolo perso a metà sessione · 3`, `altro · 2`. **A destra**, la scala delle cinque leve della Slide 40 in miniatura, e da ogni cluster una freccia verso una leva: `regola ignorata → Prompt`, `parametro sbagliato → Tool`, `fatto mancante → Knowledge base`, `vincolo perso → Harness`, `altro → Modello` (tratteggiata). Il cluster più grande (`regola ignorata · 11`) e la sua freccia verso `Prompt` sono in evidenza, con l'etichetta *il più frequente, e il più facile*.
+>
+> **In un angolo, il riquadro `esempio reale`**: la tabella di error analysis di NurtureBoss (fonte: hamel.dev, Field Guide, immagine `pivot.png`) ridisegnata a due colonne: `conversation-flow · 110` · `handoff · 70` · `rescheduling · 60`, con sotto *le tre categorie spiegano più del 60% dei problemi* e *dopo il fix sulle date: dal 33% al 95%*. Deve avere la **stessa forma** dei cluster di Acme al centro: è il punto, il metodo è lo stesso in qualsiasi dominio.
 >
 > **Elemento focale**: il passaggio da punti sparsi a gruppi contati, e le frecce verso le leve.
 
@@ -289,7 +292,8 @@
 - Le tre colonne:
   1. **Debug**: *"perché ha fatto quella chiamata?" La risposta sta nella finestra che il modello aveva davanti a quel giro: la traccia la conserva. Senza, si tira a indovinare.*
   2. **Eval**: *si confrontano traiettorie, non output: due versioni dell'agente sullo stesso caso, giro per giro. Una risposta finale identica può venire da due percorsi molto diversi, uno dei quali fragile.*
-  3. **Training set per un RL privato**: *nel 26: il modello impara a volere i tool dalle traiettorie premiate. Le tracce di produzione, con il verdetto dell'esperto o del checker, sono esattamente quel materiale: i task veri, con un modo per dire se sono riusciti. È l'ultima leva, e le tracce ne sono la materia prima.*
+  3. **Training set per un RL privato**: *nel 26: il modello impara a volere i tool dalle traiettorie premiate. Le tracce di produzione, con il verdetto dell'esperto o del checker, sono esattamente quel materiale: i task veri, con un modo per dire se sono riusciti. È l'ultima leva, e le tracce ne sono la materia prima. Un esempio pubblico: ottantamila traiettorie di un agente di coding, ognuna con l'esito dei test; e nel reinforcement fine-tuning il reward è la somma pesata di un checker e di un giudice. Le stesse due cose della Slide 47.*
+- Didascalia piccola sotto il visual: *fonti: dataset nebius/SWE-agent-trajectories (Hugging Face, CC-BY-4.0); OpenAI, guida al reinforcement fine-tuning.*
 - Nota in basso: *Ed è il motivo per cui la traiettoria è l'artefatto primario dell'agente, non la risposta: la risposta serve all'utente una volta; la traiettoria serve a chi lo costruisce, per sempre.*
 
 **Visual**: `slide50-traccia-tre-usi.svg` — la traccia della Slide 44, completa e annotata giro per giro, con tre lettori.
@@ -297,7 +301,16 @@
 **Prompt per schema SVG**:
 > Al centro, la traccia della Slide 44, **completa**: tre turni con i tag di ruolo, ogni giro numerato (`giro 1` … `giro 7`), e per ogni giro, a margine, una riga di annotazione (parametri, token, esito). In fondo, il verdetto `PASS` con motivazione.
 >
-> Intorno, tre lettori, ognuno con una lente puntata su una parte diversa della traccia: **`debug`** (a sinistra, in alto) con la lente sul `giro 3` e il fumetto *"aveva 12.000 token di export davanti: per questo ha scelto male"*; **`eval`** (a destra) con due copie sottili della stessa traccia affiancate, `versione A` e `versione B`, e la lente sul punto in cui divergono: *"stessa risposta, percorsi diversi"*; **`training`** (in basso) con una freccia che dalla traccia intera, col suo verdetto, va verso un blocco `dataset di traiettorie premiate`, e da lì verso un blocco `modello`, con l'etichetta *le traiettorie di oggi sono i dati di domani*, disegnata come la reward che scorre all'indietro nella slide 38 del 26.
+> Intorno, tre lettori, ognuno con una lente puntata su una parte diversa della traccia: **`debug`** (a sinistra, in alto) con la lente sul `giro 3` e il fumetto *"aveva 12.000 token di export davanti: per questo ha scelto male"*; **`eval`** (a destra) con due copie sottili della stessa traccia affiancate, `versione A` e `versione B`, e la lente sul punto in cui divergono: *"stessa risposta, percorsi diversi"*; **`training`** (in basso): al posto del blocco astratto, **una traiettoria reale** dal dataset pubblico nebius/SWE-agent-trajectories (riga `Melevir__cognitive_complexity-15`, 43 turni), abbreviata in sei righe monospaziate:
+> ```
+> task:  ISSUE: Incorrect counting for sequences of binary logical operators …
+> ai:    search_dir "def process_node_itself("   → Found 1 match: utils/ast.py
+> ai:    open cognitive_complexity/utils/ast.py  → [File: 92 lines]
+> ai:    edit 88:88  base_complexity = inner_boolops_amount
+> ai:    pytest                                  → 20 passed
+> ai:    submit                                  → target: True    reward 1
+> ```
+> con a lato, sbiadita, una seconda riga-riassunto del contro-esempio: `93 turni · target: False · reward 0`. Accanto, un riquadro piccolo `il grader` con la formula, nel formato del reinforcement fine-tuning: `reward = 0.5 · checker + 0.5 · giudice`, e la glossa *il checker e il giudice della Slide 47, diventati funzione di reward*. Dalla traiettoria con il reward parte la freccia verso un blocco `modello`, con l'etichetta *le traiettorie di oggi sono i dati di domani*, disegnata come la reward che scorre all'indietro nella slide 38 del 26.
 >
 > **Elemento focale**: le tre lenti sulla stessa traccia.
 
