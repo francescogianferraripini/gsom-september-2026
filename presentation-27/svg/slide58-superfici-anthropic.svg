@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 262" width="1140" height="262" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Un asse orizzontale, chi ospita l'harness, da Anthropic a sinistra a tu a destra. Sei riquadri-prodotto lungo l'asse: Claude.ai, chat, Anthropic ospita tutto; Claude Cowork, lavoro d'ufficio, nel cloud Anthropic di default, in locale su desktop; Managed Agents, harness e sandbox ospitati, tu chiami un'API, riquadro tratteggiato e altri; Claude Desktop, chat più MCP locali, l'app sul tuo computer; Claude Code, harness sul tuo computer, o nel cloud a scelta; Agent SDK, il loop di Claude Code nel tuo processo, sandbox e hosting tuoi. Ogni riquadro porta l'etichetta per chi usa o per chi costruisce. Sotto, una fascia unica: lo stesso loop agentico, gli stessi modelli</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+  </defs>
+  <!-- l'asse -->
+  <line x1="40" y1="40" x2="1100" y2="40" stroke="#161719" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+  <text x="570" y="24" text-anchor="middle" font-size="12" font-weight="700" letter-spacing="1" fill="#161719">CHI OSPITA L'HARNESS</text>
+  <text x="40" y="62" font-size="11" font-weight="700" fill="#a1245a">Anthropic</text>
+  <text x="1100" y="62" text-anchor="end" font-size="11" font-weight="700" fill="#a1245a">tu</text>
+  <text x="570" y="62" text-anchor="middle" font-size="9.5" font-style="italic" fill="#838383">e il sandbox segue l'harness, tranne dove indicato</text>
+
+  <!-- i sei prodotti -->
+  <g font-size="9" fill="#212529">
+    <!-- Claude.ai -->
+    <rect x="30" y="66" width="170" height="126" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="30" y="66" width="170" height="18" rx="6" fill="#a1245a"/><text x="115" y="79" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1" fill="#ffffff">PER CHI USA</text>
+    <text x="115" y="104" text-anchor="middle" font-size="12" font-weight="700" fill="#161719">Claude.ai</text>
+    <text x="115" y="117" text-anchor="middle" font-size="8.5" fill="#838383">browser</text>
+    <rect x="94" y="122" width="42" height="24" rx="3" fill="#f6f6f6" stroke="#838383"/><rect x="100" y="126" width="30" height="16" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="115" y="160" text-anchor="middle">chat</text>
+    <text x="115" y="172" text-anchor="middle">Anthropic ospita tutto,</text>
+    <text x="115" y="184" text-anchor="middle">sandbox compreso</text>
+    <!-- Cowork -->
+    <rect x="216" y="66" width="170" height="126" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="216" y="66" width="170" height="18" rx="6" fill="#a1245a"/><text x="301" y="79" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1" fill="#ffffff">PER CHI USA</text>
+    <text x="301" y="104" text-anchor="middle" font-size="12" font-weight="700" fill="#161719">Claude Cowork</text>
+    <text x="301" y="117" text-anchor="middle" font-size="8.5" fill="#838383">desktop, web, mobile</text>
+    <rect x="280" y="122" width="42" height="24" rx="3" fill="#f6f6f6" stroke="#838383"/><rect x="286" y="126" width="12" height="16" fill="#ffffff" stroke="#dee2e6"/><rect x="302" y="126" width="14" height="16" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="301" y="160" text-anchor="middle">lavoro d'ufficio, senza codice</text>
+    <text x="301" y="172" text-anchor="middle">nel cloud Anthropic di default,</text>
+    <text x="301" y="184" text-anchor="middle">in locale su desktop</text>
+    <!-- Managed Agents -->
+    <rect x="402" y="66" width="170" height="126" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2" stroke-dasharray="6 4"/>
+    <rect x="402" y="66" width="170" height="18" rx="6" fill="#161719"/><text x="487" y="79" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1" fill="#ffffff">PER CHI COSTRUISCE</text>
+    <text x="487" y="104" text-anchor="middle" font-size="12" font-weight="700" fill="#161719">Managed Agents</text>
+    <text x="487" y="117" text-anchor="middle" font-size="8.5" fill="#838383">API</text>
+    <rect x="466" y="122" width="42" height="24" rx="3" fill="#f6f6f6" stroke="#838383"/><text x="487" y="138" text-anchor="middle" font-family="'SFMono-Regular', Menlo, monospace" font-size="8" fill="#161719">POST</text>
+    <text x="487" y="160" text-anchor="middle">harness e sandbox ospitati,</text>
+    <text x="487" y="172" text-anchor="middle">tu chiami un'API</text>
+    <text x="487" y="184" text-anchor="middle" font-style="italic" fill="#838383">la sesta via; e altri</text>
+    <!-- Desktop -->
+    <rect x="588" y="66" width="170" height="126" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="588" y="66" width="170" height="18" rx="6" fill="#a1245a"/><text x="673" y="79" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1" fill="#ffffff">PER CHI USA</text>
+    <text x="673" y="104" text-anchor="middle" font-size="12" font-weight="700" fill="#161719">Claude Desktop</text>
+    <text x="673" y="117" text-anchor="middle" font-size="8.5" fill="#838383">app</text>
+    <rect x="652" y="122" width="42" height="24" rx="3" fill="#f6f6f6" stroke="#838383"/><rect x="658" y="126" width="30" height="16" fill="#ffffff" stroke="#dee2e6"/><rect x="668" y="146" width="10" height="3" fill="#838383"/>
+    <text x="673" y="160" text-anchor="middle">chat + server MCP locali</text>
+    <text x="673" y="172" text-anchor="middle">l'app sul tuo computer;</text>
+    <text x="673" y="184" text-anchor="middle">il sandbox della chat da Anthropic</text>
+    <!-- Claude Code -->
+    <rect x="774" y="66" width="170" height="126" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="774" y="66" width="170" height="18" rx="6" fill="#161719"/><text x="859" y="79" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1" fill="#ffffff">PER CHI COSTRUISCE</text>
+    <text x="859" y="104" text-anchor="middle" font-size="12" font-weight="700" fill="#161719">Claude Code</text>
+    <text x="859" y="117" text-anchor="middle" font-size="8.5" fill="#838383">terminale, IDE</text>
+    <rect x="838" y="122" width="42" height="24" rx="3" fill="#161719"/><text x="859" y="138" text-anchor="middle" font-family="'SFMono-Regular', Menlo, monospace" font-size="9" fill="#ffbe0b">&gt;_</text>
+    <text x="859" y="160" text-anchor="middle">harness sul tuo computer,</text>
+    <text x="859" y="172" text-anchor="middle">o nel cloud a scelta;</text>
+    <text x="859" y="184" text-anchor="middle">sandbox locale, opt-in</text>
+    <!-- Agent SDK -->
+    <rect x="960" y="66" width="170" height="126" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="960" y="66" width="170" height="18" rx="6" fill="#161719"/><text x="1045" y="79" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1" fill="#ffffff">PER CHI COSTRUISCE</text>
+    <text x="1045" y="104" text-anchor="middle" font-size="12" font-weight="700" fill="#161719">Agent SDK</text>
+    <text x="1045" y="117" text-anchor="middle" font-size="8.5" fill="#838383">libreria</text>
+    <rect x="1024" y="122" width="42" height="24" rx="3" fill="#f6f6f6" stroke="#838383"/><text x="1045" y="138" text-anchor="middle" font-family="'SFMono-Regular', Menlo, monospace" font-size="8" fill="#161719">import</text>
+    <text x="1045" y="160" text-anchor="middle">il loop di Claude Code</text>
+    <text x="1045" y="172" text-anchor="middle">nel tuo processo:</text>
+    <text x="1045" y="184" text-anchor="middle" font-weight="700" fill="#a1245a">sandbox e hosting tuoi</text>
+  </g>
+
+  <!-- la fascia comune -->
+  <g stroke="#838383" stroke-width="1" stroke-dasharray="3 3">
+    <line x1="115" y1="192" x2="115" y2="204"/><line x1="301" y1="192" x2="301" y2="204"/><line x1="487" y1="192" x2="487" y2="204"/>
+    <line x1="673" y1="192" x2="673" y2="204"/><line x1="859" y1="192" x2="859" y2="204"/><line x1="1045" y1="192" x2="1045" y2="204"/>
+  </g>
+  <rect x="30" y="206" width="1100" height="50" rx="6" fill="#161719"/>
+  <text x="580" y="227" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">lo stesso loop agentico · gli stessi modelli</text>
+  <text x="580" y="246" text-anchor="middle" font-size="9.5" fill="#ffbe0b">la differenza fra i prodotti non è mai il modello: è l'harness, e chi lo ospita</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 400" width="1140" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Sopra la figura della slide 56, tre zone colorate traslucide: pattern 1, il subagente come tool, sulla coppia lead più un singolo ricercatore con il paragrafo di ritorno, e una seconda zona più piccola sulla freccia di rilancio, di nuovo; pattern 2, worker paralleli, su tutta la fila dei ricercatori, nessuna freccia fra loro, e un cerchietto sul lead dove assembla: il merge; pattern 3, evaluator reviewer, intorno al citation agent: finestra pulita. Solo l'utente resta senza colore</title>
+  <!-- pattern 2: worker paralleli -->
+  <rect x="342" y="24" width="440" height="302" rx="8" fill="#4da0d7" fill-opacity="0.16" stroke="#4da0d7" stroke-width="2"/>
+  <rect x="348" y="30" width="188" height="20" rx="4" fill="#4da0d7"/>
+  <text x="442" y="44" text-anchor="middle" font-size="9.5" font-weight="700" fill="#ffffff">pattern 2 · worker paralleli</text>
+  <circle cx="208" cy="310" r="34" fill="#4da0d7" fill-opacity="0.16" stroke="#4da0d7" stroke-width="2"/>
+  <text x="104" y="306" text-anchor="end" font-size="9" font-weight="700" fill="#1d5f8a">il merge</text>
+  <text x="104" y="318" text-anchor="end" font-size="8" fill="#1d5f8a">è lavoro del lead</text>
+  <!-- pattern 1: il subagente come tool -->
+  <rect x="112" y="142" width="336" height="140" rx="8" fill="#1ab197" fill-opacity="0.18" stroke="#1ab197" stroke-width="2"/>
+  <rect x="118" y="148" width="224" height="20" rx="4" fill="#0e7c6a"/>
+  <text x="230" y="162" text-anchor="middle" font-size="9.5" font-weight="700" fill="#ffffff">pattern 1 · il subagente come tool</text>
+  <rect x="300" y="52" width="60" height="60" rx="8" fill="#1ab197" fill-opacity="0.22" stroke="#1ab197" stroke-width="2" stroke-dasharray="5 3"/>
+  <text x="330" y="126" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0e7c6a">di nuovo</text>
+  <!-- pattern 3: evaluator / reviewer -->
+  <rect x="812" y="188" width="166" height="190" rx="8" fill="#ffbe0b" fill-opacity="0.26" stroke="#ffbe0b" stroke-width="2"/>
+  <rect x="818" y="194" width="154" height="20" rx="4" fill="#ffbe0b"/>
+  <text x="895" y="208" text-anchor="middle" font-size="9" font-weight="700" fill="#161719">pattern 3 · reviewer</text>
+  <text x="895" y="392" text-anchor="middle" font-size="9" font-weight="700" fill="#161719">finestra pulita: giudica ciò che non ha fatto</text>
+</svg>

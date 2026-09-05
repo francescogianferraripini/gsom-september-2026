@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1302 428" width="1302" height="428" role="img">
+  <title>La formula dell'agente alla chiusura dell'incontro 27: LLM attenuato con la spunta, incontro 26; Harness, System Prompt, Tools e Skills pieni, accesi; KB attenuato, incontro 28. Sotto ogni blocco acceso una riga di sintesi: il sistema operativo che prepara la finestra, esegue, la governa, la osserva; ruolo e regole più le istruzioni di progetto, il primo strato; un contratto dichiarato al giro zero, eseguito dall'harness, standardizzato da MCP; il know-how a richiesta, istruzioni e a volte uno script. Dentro Harness la mappa in miniatura. Si deve leggere: manca uno</title>
+
+  <!-- Stato "chiusura" del 27: stessi blocchi e stesse coordinate di slide3-formula-harness.svg
+       (e della slide 3 del 26); canvas 1302x428 con la fascia della sintesi divisa per colonna (150px). -->
+
+  <g id="formula" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+
+    <g id="agent">
+      <rect x="12" y="57" width="130" height="130" rx="8" fill="#161719"/>
+      <text x="77" y="134" text-anchor="middle" font-size="30" font-weight="700" fill="#ffffff">Agent</text>
+    </g>
+    <text x="176" y="134" text-anchor="middle" font-size="36" font-weight="500" fill="#838383">=</text>
+    <g id="operatori" font-size="28" font-weight="500" fill="#838383" text-anchor="middle">
+      <text x="378" y="132">+</text>
+      <text x="564" y="132">+</text>
+      <text x="750" y="132">+</text>
+      <text x="936" y="132">+</text>
+      <text x="1122" y="132">+</text>
+    </g>
+
+    <!-- ····· FATTO: LLM, incontro 26 ····· -->
+    <g id="blocco-llm">
+      <g opacity="0.38">
+        <rect x="210" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+        <text x="285" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#a1245a">LLM</text>
+        <text x="285" y="151" text-anchor="middle" font-size="15" fill="#212529">il motore</text>
+        <text x="285" y="173" text-anchor="middle" font-size="15" fill="#212529">che genera</text>
+      </g>
+      <circle cx="343" cy="29" r="12" fill="#a1245a"/>
+      <path d="M337 29 l4 4 l8 -8" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="285" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">INCONTRO 26</text>
+    </g>
+
+    <!-- ····· ACCESI: Harness, System Prompt, Tools, Skills ····· -->
+    <g id="accesi">
+      <g id="blocco-harness">
+        <rect x="396" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+        <text x="471" y="62" text-anchor="middle" font-size="30" font-weight="700" fill="#a1245a">Harness</text>
+        <!-- la mappa in miniatura: questo l'abbiamo aperto tutto -->
+        <g transform="translate(411 80) scale(0.08)" fill="none" stroke="#a1245a" stroke-width="12">
+          <rect x="12" y="12" width="470" height="500" rx="8" fill="#ffffff"/>
+          <rect x="24" y="68" width="446" height="218" rx="8"/>
+          <rect x="24" y="298" width="446" height="56" rx="8"/><rect x="24" y="366" width="446" height="48" rx="8"/><rect x="24" y="426" width="446" height="74" rx="8"/>
+          <rect x="494" y="12" width="512" height="500" rx="8" fill="#ffffff"/>
+          <rect x="506" y="72" width="488" height="424" rx="16"/><rect x="532" y="114" width="436" height="340" rx="14"/><rect x="558" y="156" width="384" height="256" rx="12"/>
+          <rect x="596" y="200" width="308" height="170" rx="8" fill="#a1245a"/>
+          <rect x="1018" y="12" width="470" height="500" rx="8" fill="#ffffff"/>
+          <rect x="1030" y="68" width="446" height="136" rx="8"/><rect x="1030" y="216" width="446" height="136" rx="8"/><rect x="1030" y="364" width="446" height="136" rx="8"/>
+          <rect x="12" y="524" width="1476" height="64" rx="8" fill="#ffffff"/>
+        </g>
+        <text x="471" y="152" text-anchor="middle" font-size="13" fill="#212529">aperto tutto, oggi</text>
+        <text x="471" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">INCONTRO 27</text>
+      </g>
+      <g id="blocco-system-prompt">
+        <rect x="582" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+        <text x="657" y="88" text-anchor="middle" font-size="26" font-weight="700" fill="#a1245a">System</text>
+        <text x="657" y="118" text-anchor="middle" font-size="26" font-weight="700" fill="#a1245a">Prompt</text>
+        <text x="657" y="162" text-anchor="middle" font-size="15" fill="#212529">ruolo e regole</text>
+        <text x="657" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">INCONTRO 27</text>
+      </g>
+      <g id="blocco-tools">
+        <rect x="768" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+        <text x="843" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#a1245a">Tools</text>
+        <text x="843" y="151" text-anchor="middle" font-size="15" fill="#212529">interagire con</text>
+        <text x="843" y="173" text-anchor="middle" font-size="15" fill="#212529">l'ecosistema IT</text>
+        <text x="843" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">INCONTRO 27</text>
+      </g>
+      <g id="blocco-skills">
+        <rect x="1140" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+        <text x="1215" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#a1245a">Skills</text>
+        <text x="1215" y="151" text-anchor="middle" font-size="15" fill="#212529">il know-how</text>
+        <text x="1215" y="173" text-anchor="middle" font-size="15" fill="#212529">procedurale</text>
+        <text x="1215" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">INCONTRO 27</text>
+      </g>
+    </g>
+
+    <!-- ····· ASPETTA: KB, incontro 28 ····· -->
+    <g id="blocco-kb">
+      <g opacity="0.35">
+        <rect x="954" y="12" width="150" height="220" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <text x="1029" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#161719">KB</text>
+        <text x="1029" y="140" text-anchor="middle" font-size="15" fill="#838383">ciò che</text>
+        <text x="1029" y="162" text-anchor="middle" font-size="15" fill="#838383">l'organizzazione</text>
+        <text x="1029" y="184" text-anchor="middle" font-size="15" fill="#838383">sa: il know-what</text>
+      </g>
+      <text x="1029" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#838383">INCONTRO 28</text>
+    </g>
+
+    <!-- Graffe: identiche alla slide 3 -->
+    <g id="raggruppamenti" fill="none" stroke="#a1245a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M210 252 q0 12 12 12 H273 q12 0 12 12 q0 -12 12 -12 H348 q12 0 12 -12" opacity="0.38"/>
+      <path d="M396 252 q0 12 12 12 H459 q12 0 12 12 q0 -12 12 -12 H534 q12 0 12 -12"/>
+      <path d="M582 252 q0 12 12 12 H924 q12 0 12 12 q0 -12 12 -12 H1278 q12 0 12 -12"/>
+    </g>
+    <g id="etichette-gruppi" text-anchor="middle" font-size="21" font-weight="600" fill="#a1245a">
+      <text x="285" y="312" opacity="0.38">la CPU</text>
+      <text x="471" y="312">il sistema operativo</text>
+      <text x="936" y="312">il software installato</text>
+    </g>
+
+    <!-- ····· La fascia della sintesi: una riga per colonna, 150px ····· -->
+    <g id="sintesi" font-size="12.5" fill="#161719">
+      <g opacity="0.45" text-anchor="middle">
+        <text x="285" y="352">sa volere,</text>
+        <text x="285" y="369">non sa eseguire:</text>
+        <text x="285" y="386">aspetta la chiamata</text>
+      </g>
+      <g text-anchor="middle" font-weight="600">
+        <text x="471" y="352">il sistema operativo:</text>
+        <text x="471" y="369">prepara la finestra,</text>
+        <text x="471" y="386">esegue, governa, osserva</text>
+        <text x="657" y="352">ruolo e regole, più le</text>
+        <text x="657" y="369">istruzioni di progetto:</text>
+        <text x="657" y="386">il primo strato, fisso</text>
+        <text x="843" y="352">un contratto: dichiarato</text>
+        <text x="843" y="369">al giro zero, eseguito</text>
+        <text x="843" y="386">dall'harness, via MCP</text>
+        <text x="1215" y="352">il know-how, a richiesta:</text>
+        <text x="1215" y="369">istruzioni, e a volte</text>
+        <text x="1215" y="386">uno script</text>
+      </g>
+      <text x="1029" y="369" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#838383" opacity="0.6">INCONTRO 28</text>
+    </g>
+
+    <!-- ····· Legenda ····· -->
+    <g id="legenda">
+      <rect x="12" y="360" width="18" height="18" rx="3" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+      <text x="38" y="374" font-size="14" fill="#838383">acceso = aperto nel corso</text>
+      <text x="12" y="412" font-size="14" font-weight="600" fill="#161719">quattro su sei, oggi. Ne manca uno.</text>
+    </g>
+  </g>
+</svg>

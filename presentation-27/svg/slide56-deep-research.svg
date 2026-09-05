@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 400" width="1140" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Il sistema di ricerca multi-agente di Anthropic, da sinistra a destra: l'utente chiede; il lead researcher, un modello più grande, pianifica e delega con quattro pill ricerca in parallelo; quattro ricercatori affiancati, un modello più economico, ognuno con la propria finestra alta piena di giri di cerca_web e leggi e in fondo un paragrafo, senza frecce fra loro; i paragrafi risalgono al lead, che legge, trova i buchi e rilancia, poi scrive la bozza; il citation agent riceve bozza e fonti e restituisce il report con citazioni verificate; l'utente riceve il report. A destra la scala del tempo: in sequenza contro così, meno 90 per cento; in tutto circa 15 volte i token di una chat</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+    <marker id="at" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0e7c6a"/></marker>
+    <g id="eso">
+      <rect x="0" y="0" width="72" height="52" rx="4" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+      <rect x="3" y="3" width="15" height="46" rx="2" fill="#d1efea" stroke="#1ab197"/>
+      <rect x="54" y="3" width="15" height="46" rx="2" fill="#fff2ce" stroke="#ffbe0b"/>
+      <rect x="22" y="6" width="28" height="40" rx="5" fill="none" stroke="#4da0d7" stroke-width="1.3"/>
+      <rect x="28" y="18" width="16" height="16" rx="2" fill="#a1245a"/>
+    </g>
+    <g id="person"><circle cx="0" cy="-10" r="7" fill="#ffffff" stroke="#161719" stroke-width="1.3"/><path d="M-10 9 a10 10 0 0 1 20 0" fill="#ffffff" stroke="#161719" stroke-width="1.3"/></g>
+    <g id="ric">
+      <use href="#eso" x="9" y="0" transform="translate(9 0) scale(0.75) translate(-9 0)"/>
+      <rect x="0" y="46" width="90" height="196" rx="4" fill="#ffffff" stroke="#161719" stroke-width="1.1"/>
+      <rect x="4" y="50" width="82" height="26" rx="2" fill="#d1efea" stroke="#1ab197"/>
+      <text x="8" y="60" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="7.5" fill="#0e7c6a">ricercatore</text>
+      <text x="8" y="71" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="7.5" fill="#0e7c6a">cerca_web · leggi</text>
+      <rect x="4" y="82" width="56" height="9" rx="4" fill="#a1245a"/><rect x="4" y="95" width="82" height="9" rx="1" fill="#d1efea"/>
+      <rect x="4" y="108" width="62" height="9" rx="4" fill="#a1245a"/><rect x="4" y="121" width="82" height="16" rx="1" fill="#d1efea"/>
+      <rect x="4" y="141" width="56" height="9" rx="4" fill="#a1245a"/><rect x="4" y="154" width="82" height="16" rx="1" fill="#d1efea"/>
+      <rect x="4" y="174" width="62" height="9" rx="4" fill="#a1245a"/><rect x="4" y="187" width="82" height="9" rx="1" fill="#d1efea"/>
+      <text x="45" y="210" text-anchor="middle" font-size="11" fill="#838383">⋯</text>
+      <rect x="4" y="218" width="82" height="20" rx="2" fill="#ffffff" stroke="#a1245a" stroke-width="1.2"/>
+      <text x="45" y="231" text-anchor="middle" font-size="7.5" fill="#a1245a">paragrafo</text>
+    </g>
+  </defs>
+
+  <!-- ===== l'utente, a sinistra ===== -->
+  <use href="#person" x="50" y="70"/>
+  <text x="50" y="98" text-anchor="middle" font-size="9.5" font-weight="700" fill="#161719">l'utente</text>
+  <rect x="8" y="106" width="86" height="34" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="51" y="120" text-anchor="middle" font-size="8.5" font-style="italic" fill="#212529">"Quali sono le</text>
+  <text x="51" y="132" text-anchor="middle" font-size="8.5" font-style="italic" fill="#212529">opzioni per…?"</text>
+  <line x1="94" y1="123" x2="108" y2="123" stroke="#161719" stroke-width="1.3" marker-end="url(#a)"/>
+
+  <!-- ===== lead researcher ===== -->
+  <rect x="110" y="30" width="196" height="250" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.3"/>
+  <text x="208" y="48" text-anchor="middle" font-size="11" font-weight="700" fill="#161719">lead researcher</text>
+  <use href="#eso" x="172" y="56"/>
+  <text x="208" y="126" text-anchor="middle" font-size="8.5" fill="#212529">pianifica, delega, poi assembla</text>
+  <text x="208" y="138" text-anchor="middle" font-size="8.5" font-style="italic" fill="#838383">un modello più grande</text>
+  <rect x="118" y="146" width="180" height="128" rx="4" fill="#ffffff" stroke="#161719" stroke-width="1"/>
+  <rect x="122" y="150" width="172" height="18" rx="2" fill="#d1efea" stroke="#1ab197"/>
+  <text x="127" y="162" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8" fill="#0e7c6a">pianifica · ricerca(compito) · scrivi</text>
+  <text x="127" y="181" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8" fill="#6c757d">[user] Quali sono le opzioni per…?</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8" fill="#ffffff">
+    <rect x="122" y="188" width="150" height="12" rx="6" fill="#a1245a"/><text x="127" y="197">→ ricerca(compito_1)</text>
+    <rect x="122" y="204" width="150" height="12" rx="6" fill="#a1245a"/><text x="127" y="213">→ ricerca(compito_2)</text>
+    <rect x="122" y="220" width="150" height="12" rx="6" fill="#a1245a"/><text x="127" y="229">→ ricerca(compito_3)</text>
+    <rect x="122" y="236" width="150" height="12" rx="6" fill="#a1245a"/><text x="127" y="245">→ ricerca(compito_4)</text>
+  </g>
+  <rect x="122" y="254" width="172" height="14" rx="1" fill="#d1efea" stroke="#1ab197"/>
+  <text x="127" y="264" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8" fill="#0e7c6a">[tool ×4] i paragrafi</text>
+  <!-- seconda fase, sotto il lead -->
+  <g font-size="8.5" fill="#212529">
+    <text x="208" y="298" text-anchor="middle" font-weight="700">seconda fase</text>
+    <text x="208" y="311" text-anchor="middle">legge, trova i buchi, rilancia;</text>
+    <text x="208" y="324" text-anchor="middle">poi scrive la bozza del report</text>
+  </g>
+
+  <!-- ===== bus in parallelo ===== -->
+  <path d="M272 194 H326 V16 H700" fill="none" stroke="#a1245a" stroke-width="1.4"/>
+  <g stroke="#a1245a" stroke-width="1.4" marker-end="url(#ab)" fill="none">
+    <line x1="395" y1="16" x2="395" y2="28"/>
+    <line x1="497" y1="16" x2="497" y2="28"/>
+    <line x1="599" y1="16" x2="599" y2="28"/>
+    <line x1="701" y1="16" x2="701" y2="28"/>
+  </g>
+  <text x="340" y="12" font-size="8.5" font-weight="600" fill="#a1245a">quattro compiti, nello stesso giro, in parallelo</text>
+  <!-- rilancio -->
+  <path d="M306 100 C 330 100, 330 60, 340 30" fill="none" stroke="#a1245a" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ab)"/>
+  <text x="318" y="86" font-size="7.5" font-style="italic" fill="#a1245a" transform="rotate(-70 318 86)">rilancia: compito nuovo</text>
+
+  <!-- ===== i ricercatori ===== -->
+  <use href="#ric" x="350" y="32"/>
+  <use href="#ric" x="452" y="32"/>
+  <use href="#ric" x="554" y="32"/>
+  <use href="#ric" x="656" y="32"/>
+  <text x="770" y="160" text-anchor="middle" font-size="16" fill="#838383">⋯</text>
+  <text x="770" y="180" text-anchor="middle" font-size="8" fill="#838383">da 3 a 10+</text>
+  <!-- ritorno dei paragrafi -->
+  <g fill="none" stroke="#0e7c6a" stroke-width="1.3">
+    <path d="M395 274 V288 H330 V262 H300"/>
+    <line x1="497" y1="274" x2="497" y2="288"/>
+    <line x1="599" y1="274" x2="599" y2="288"/>
+    <line x1="701" y1="274" x2="701" y2="288"/>
+    <line x1="395" y1="288" x2="701" y2="288"/>
+  </g>
+  <path d="M312 262 h-8" stroke="#0e7c6a" stroke-width="1.3" marker-end="url(#at)"/>
+  <text x="548" y="304" text-anchor="middle" font-size="8.5" font-weight="600" fill="#0e7c6a">i paragrafi risalgono al lead · nessuna freccia fra i ricercatori</text>
+  <text x="548" y="318" text-anchor="middle" font-size="8.5" font-style="italic" fill="#838383">un modello più economico, contesto proprio · in tutto ~15× i token di una chat</text>
+
+  <!-- ===== bozza → citation agent ===== -->
+  <path d="M208 332 V356 H816" fill="none" stroke="#161719" stroke-width="1.3" marker-end="url(#a)"/>
+  <text x="520" y="350" text-anchor="middle" font-size="8.5" font-weight="600" fill="#161719">bozza del report + le fonti</text>
+  <rect x="820" y="196" width="150" height="176" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.3"/>
+  <text x="895" y="214" text-anchor="middle" font-size="11" font-weight="700" fill="#161719">citation agent</text>
+  <use href="#eso" x="859" y="222"/>
+  <rect x="828" y="282" width="134" height="60" rx="3" fill="#ffffff" stroke="#161719" stroke-width="1"/>
+  <rect x="832" y="286" width="126" height="16" rx="2" fill="#d1efea" stroke="#1ab197"/>
+  <text x="836" y="297" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="7.5" fill="#0e7c6a">verifica ogni citazione</text>
+  <text x="836" y="315" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="7.5" fill="#6c757d">bozza + fonti</text>
+  <rect x="832" y="322" width="126" height="16" rx="2" fill="#ffffff" stroke="#a1245a" stroke-width="1.2"/>
+  <text x="836" y="333" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="7.5" fill="#a1245a">report verificato</text>
+  <text x="895" y="360" text-anchor="middle" font-size="8" font-style="italic" fill="#838383">non ha fatto la ricerca</text>
+  <line x1="970" y1="330" x2="1004" y2="330" stroke="#161719" stroke-width="1.3" marker-end="url(#a)"/>
+
+  <!-- ===== l'utente, a destra ===== -->
+  <use href="#person" x="1050" y="300"/>
+  <text x="1050" y="328" text-anchor="middle" font-size="9.5" font-weight="700" fill="#161719">l'utente</text>
+  <rect x="1008" y="336" width="86" height="34" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="1051" y="350" text-anchor="middle" font-size="8.5" font-style="italic" fill="#212529">il report, con</text>
+  <text x="1051" y="362" text-anchor="middle" font-size="8.5" font-style="italic" fill="#212529">citazioni verificate</text>
+
+  <!-- ===== la scala del tempo ===== -->
+  <text x="820" y="48" font-size="10" font-weight="700" fill="#161719">il tempo</text>
+  <text x="820" y="72" font-size="8.5" fill="#838383">in sequenza, un agente solo</text>
+  <rect x="820" y="78" width="300" height="12" rx="2" fill="#dee2e6"/>
+  <text x="820" y="112" font-size="8.5" fill="#0e7c6a">così: ricercatori in parallelo</text>
+  <rect x="820" y="118" width="32" height="12" rx="2" fill="#1ab197"/>
+  <text x="860" y="128" font-size="10" font-weight="700" fill="#0e7c6a">fino a −90%</text>
+  <text x="820" y="154" font-size="8.5" fill="#838383">e ~90% in più di risultato,</text>
+  <text x="820" y="166" font-size="8.5" fill="#838383">rispetto a un agente solo</text>
+</svg>

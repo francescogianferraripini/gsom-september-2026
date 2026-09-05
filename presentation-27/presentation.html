@@ -182,6 +182,7 @@
     .tbl td:first-child { font-weight: 700; color: var(--q-black); white-space: nowrap; }
     .tbl td:first-child small { display: block; font-weight: 400; font-size: 9.5pt; color: var(--q-greydark); }
     .tbl.micro th, .tbl.micro td { font-size: 9.5pt; padding: 5px 8px; }
+    .tbl.small th, .tbl.small td { font-size: 10.5pt; padding: 7px 10px; }
     /* sì / no (slide 39) */
     .reveal p.yn { margin: 0 0 14px; font-size: 12.5pt; line-height: 1.45; }
     .yn strong { display: inline-block; min-width: 26px; font-size: 9.5pt; letter-spacing: 0.12em; text-transform: uppercase; margin-right: 6px; }
@@ -221,6 +222,16 @@
     .under3.micro p { font-size: 10pt; line-height: 1.35; }
     .under3.micro { gap: 22px; margin-top: 8px; }
     .reveal p.srcline { margin: 6px 0 0; font-size: 8.5pt; line-height: 1.35; color: var(--q-greydark); }
+
+    /* ===== sezioni 6-7 ===== */
+    .under2 { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 10px; }
+    .under2 p { margin: 0; font-size: 10.5pt; line-height: 1.38; }
+    .under2 p strong { color: var(--q-black); display: block; margin-bottom: 1px; }
+    .under3 p em { font-style: normal; color: var(--q-greydark); }
+    .nota.dark.center.big { font-size: 17pt; padding: 26px 40px; line-height: 1.45; }
+    .nota.dark.center.big code { color: var(--q-yellow); background: transparent; }
+    .reveal p.reqline { margin: 26px 0 0; text-align: center; font-size: 15pt; font-weight: 700; color: var(--q-burgundy); letter-spacing: 0.02em; }
+    .reveal p.reqline-gloss { margin: 6px 0 0; text-align: center; font-size: 10.5pt; color: var(--q-greydark); }
   </style>
 </head>
 <body>
@@ -1379,6 +1390,248 @@
         </div>
         <div class="footnote">50 / Sezione 5</div>
         <aside class="notes">Chiude la sezione e il cerchio con il 26 (slide 38 e 50). Layout: i tre usi sono tre paragrafi a sinistra invece che tre colonne sotto la figura, perché la figura a tutta larghezza si riduceva a un terzo. A settembre 2026 le tracce di produzione si usano come insieme di task con verificatore (RFT e simili: OpenAI reinforcement fine-tuning con grader, Amazon Bedrock RFT, CoreWeave Serverless RL), non come traiettorie da imitare grezze; serve un grader, e il rischio è il reward hacking (Mako: sette tipi di hack scoperti sui kernel). La riga reale: nebius/SWE-agent-trajectories, instance Melevir__cognitive_complexity-15, 43 turni, 20 test passati, target true; il contro-esempio AnalogJ__lexicon-336, 93 turni, target false. Il grader "multi" di OpenAI: 0.5 · string_check + 0.5 · score_model. Fonti in docs/ricerche-27/research-tracce-esempi.md e research-eval-hamel.md.</aside>
+      </section>
+
+      <!-- ══════════ SEZIONE 6 ══════════ -->
+      <section id="div-sec6" class="section-divider dark" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 06</p>
+        <h1>Orchestrazione:<br>quando un agente non basta</h1>
+        <p>Un secondo agente si aggiunge quando il contesto del primo non basta, non prima. E un agente, per un altro agente, è un tool.</p>
+        <div class="divmap"><img src="svg/minimap-sec6.svg" alt="Mini-mappa dell'harness: la mappa si duplica, un esoscheletro padre e un esoscheletro figlio più piccolo, collegati"><span>sei qui · fuori dalla figura singola</span></div>
+      </section>
+
+      <section id="slide-51">
+        <p class="eyebrow">SEZIONE 6 · ORCHESTRAZIONE</p>
+        <h2>Quando un agente non basta: il criterio</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Il criterio</strong>un secondo agente si aggiunge quando il contesto del primo non basta più: troppi risultati da tenere, troppi tool da esporre insieme, un giudizio che il contesto che ha lavorato non può dare. Non prima. Ogni pattern che vedremo è motivato da un problema di harness già visto.</li>
+                <li><strong>Un <code>if</code> non è un agente</strong>se l'harness decide con una regola (chaining: prima A poi B; routing: se la richiesta è di tipo X va ad A, altrimenti a B) e chiama il modello in sequenza, è un workflow: deterministico, prevedibile, economico. Va usato ogni volta che basta.</li>
+                <li><strong>Un agente è chi decide</strong>si ha un secondo agente quando è un modello, non una regola, a decidere quando e se chiamarlo, con che compito, e a leggere ciò che torna. Cioè: quando il secondo agente è un tool del primo.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide51-workflow-vs-agente.svg" alt="Due pannelli: a sinistra il workflow, un rombo tipo di richiesta con due rami verso due chiamate al modello con prompt diversi, poi unisci e uscita: l'if è dell'harness; a destra l'agente padre con nella lista dei tool un secondo esoscheletro più piccolo, ricerca_approfondita, una pill burgundy e una riga tool di ritorno con un paragrafo: il secondo agente è un tool del primo"></div>
+          </div>
+          <div class="nota">La prima domanda, sempre: "lo può fare un <code>if</code>?" Se sì, non serve un agente. Il multi-agente costa di più, è più lento e si spiega peggio: si giustifica solo con il contesto.</div>
+        </div>
+        <div class="footnote">51 / Sezione 6</div>
+        <aside class="notes">Nella mappa questa sezione non accende una zona: la duplica (due esoscheletri). I tre pattern che seguono sono motivati da tre problemi già visti: contesto (sezione 4), tempo (slide 17), giudizio (sezione 5).</aside>
+      </section>
+
+      <section id="slide-52">
+        <p class="eyebrow">SEZIONE 6 · ORCHESTRAZIONE</p>
+        <h2>Pattern 1: il subagente come tool</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>La motivazione: isolamento del contesto</strong>una ricerca fatta bene sono venti giri, venti risultati, decine di migliaia di token. Se li fa il padre, la sua finestra è piena prima di aver iniziato il lavoro vero. Se li fa un figlio, nella finestra del padre entra solo un paragrafo.</li>
+                <li><strong>Stesso contratto del tool calling</strong>il figlio si dichiara come un tool: nome, descrizione, un parametro (il compito). Il padre lo chiama con un <code>tool_use</code>, aspetta, riceve un <code>tool_result</code>. Non sa e non deve sapere quanti giri ha fatto il figlio.</li>
+                <li><strong>Il figlio è un harness completo</strong>ha la propria finestra, i propri tool (spesso meno del padre: è anche un confine di fiducia, slide 19), il proprio system prompt. Quando finisce, la sua finestra muore: resta solo ciò che ha riportato.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide52-subagente-tool.svg" alt="A sinistra la finestra corta del padre: prefisso con ricerca(compito) in evidenza, una pill ricerca normativa resi 2026 e una riga tool di tre righe, il paragrafo. A destra la finestra molto alta del figlio: il proprio system prompt, i propri tool, venti giri abbreviati e la risposta finale; una freccia dal fondo torna alla riga tool del padre: solo questo torna indietro. Sotto: circa 60.000 token che il padre non vede mai, poi la finestra del figlio muore"></div>
+          </div>
+          <div class="nota">È il pattern che copre quasi tutti i casi reali. Gli altri due sono sue varianti: molti figli insieme, o un figlio che giudica.</div>
+        </div>
+        <div class="footnote">52 / Sezione 6</div>
+      </section>
+
+      <section id="slide-53">
+        <p class="eyebrow">SEZIONE 6 · ORCHESTRAZIONE</p>
+        <h2>Pattern 2: worker paralleli</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>La motivazione: il tempo</strong>tre ricerche da venti giri l'una, in sequenza, sono un'ora. Tre figli insieme, venti minuti. È la slide 17 (le chiamate parallele) applicata agli agenti: il padre emette tre <code>tool_use</code> nello stesso giro, l'harness lancia tre figli.</li>
+                <li><strong>Solo se indipendenti</strong>se il secondo figlio ha bisogno del risultato del primo, il parallelo è un'illusione: aspetta, o lavora su un'ipotesi. Il padre deve decomporre il compito in parti che non si parlano.</li>
+                <li><strong>Il merge è il punto fragile</strong>tre paragrafi tornano insieme, e possono contraddirsi, sovrapporsi, usare fonti diverse per lo stesso fatto. Rimetterli insieme è un lavoro del padre, e spesso è il passaggio in cui si sbaglia.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide53-worker-paralleli.svg" alt="In alto la finestra del padre con tre pill affiancate nello stesso giro; al centro tre finestre-figlio di altezze diverse con la linea del tempo, 20 minuti contro 60 in sequenza, e il cartello indipendenti: nessuna freccia fra loro; in basso i tre risultati entrano nel padre in un unico messaggio e il blocco merge tratteggiato con due frasi che si contraddicono, 30 giorni e 14 giorni: il punto fragile"></div>
+          </div>
+          <div class="nota">Regola pratica: prima si prova con un figlio solo (pattern 1). Si passa al parallelo quando il tempo è il problema, e si è capito come si decompone il compito.</div>
+        </div>
+        <div class="footnote">53 / Sezione 6</div>
+      </section>
+
+      <section id="slide-54">
+        <p class="eyebrow">SEZIONE 6 · ORCHESTRAZIONE</p>
+        <h2>Pattern 3: evaluator / reviewer</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>La motivazione: un contesto pulito giudica meglio</strong>il lavoratore ha in finestra venti giri di tentativi, false partenze e risultati parziali: quando rilegge il proprio output, lo legge con quegli occhi. Il reviewer riceve solo il compito e il risultato, e vede ciò che il lavoratore non vede più.</li>
+                <li><strong>Il reviewer legge la traiettoria</strong>non solo l'output: la traccia (sezione 5). "Ha aperto il ticket prima o dopo aver risposto al cliente? Ha verificato l'ordine?" Le domande del checker e del giudice, fatte da un agente dentro il loop, prima che il risultato esca.</li>
+                <li><strong>Chiude un ciclo, con un limite</strong>il verdetto torna al lavoratore, che corregge e riprova: uno, due giri. Non di più: un reviewer che boccia all'infinito è un loop, e un reviewer che promuove sempre è decorazione. Il numero di giri lo fissa l'harness.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide54-reviewer.svg" alt="A sinistra la finestra alta e piena del lavoratore, con in fondo il risultato; a destra la finestra corta e pulita del reviewer: il proprio system prompt, il compito, il risultato e la traccia del lavoratore in forma compatta: legge la traiettoria, non solo l'output. Dal reviewer esce il verdetto rivedi, motivo: il ticket è stato aperto dopo la risposta, che torna nella finestra del lavoratore come riga tool, con il contatore giro 1 di 2"></div>
+          </div>
+          <div class="nota">È l'LLM-as-a-judge della slide 47 messo in linea: stesso prompt, stessa validazione, un momento diverso: prima della consegna invece che dopo.</div>
+        </div>
+        <div class="footnote">54 / Sezione 6</div>
+      </section>
+
+      <section id="slide-55">
+        <p class="eyebrow">SEZIONE 6 · ORCHESTRAZIONE</p>
+        <h2>Swarm e multi-agente conversazionale: un giudizio</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Che cosa sono</strong>N agenti con ruoli ("il ricercatore", "il critico", "il redattore") che si scambiano messaggi in una conversazione condivisa, senza un padre: chi parla dopo lo decide il turno, o un agente moderatore.</li>
+                <li><strong>Perché non funzionano bene</strong>instabili: due agenti possono rimpallarsi all'infinito, o convincersi a vicenda di una cosa sbagliata. Costosi: ogni messaggio entra nella finestra di tutti, e la finestra condivisa cresce come la peggiore della slide 31. Opachi: nessuna traiettoria singola da leggere, e il debug diventa una lettura di dialoghi.</li>
+                <li><strong>Quasi sempre sostituibili dal pattern 1</strong>un padre che chiama figli-tool con compiti chiari fa lo stesso lavoro con contesti isolati, una traccia leggibile e un punto di decisione solo. La "conversazione fra agenti" era un modo di non progettare la decomposizione.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide55-swarm.svg" alt="Due pannelli. Swarm: quattro esoscheletri in cerchio con un groviglio di frecce e al centro una finestra condivisa alta e piena, entra tutto per tutti, con un anello per dodici, si rimpallano, e la domanda chi decide? Orchestrator-workers: un padre in alto e tre figli sotto, collegati solo al padre da frecce verticali, compito in giù e paragrafo in su, nessuna freccia fra i figli: un punto di decisione, contesti isolati, una traccia per figlio"></div>
+          </div>
+          <div class="nota dark center">Se non sai dire chi decide, non hai un'architettura: hai una chat.</div>
+        </div>
+        <div class="footnote">55 / Sezione 6</div>
+      </section>
+
+      <section id="slide-56">
+        <p class="eyebrow">SEZIONE 6 · ORCHESTRAZIONE</p>
+        <h2>Deep research: com'è fatto davvero</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide56-deep-research.svg" alt="Il sistema di ricerca multi-agente di Anthropic, da sinistra a destra: l'utente chiede; il lead researcher, un modello più grande, pianifica e delega con quattro pill ricerca in parallelo; quattro ricercatori affiancati, un modello più economico, ognuno con la propria finestra alta piena di giri e un paragrafo in fondo, senza frecce fra loro; i paragrafi risalgono al lead, che legge, trova i buchi e rilancia, poi scrive la bozza; il citation agent verifica le citazioni; l'utente riceve il report. A destra la scala del tempo: fino a meno 90 per cento"></div>
+          <p class="caption small">Il sistema di ricerca di Anthropic, come lo descrive chi lo ha costruito (giugno 2025). Un lead pianifica e delega; i ricercatori lavorano in parallelo, ognuno nella propria finestra; un agente finale verifica le citazioni. Circa quindici volte i token di una chat, e un miglioramento di circa il 90% rispetto a un agente solo. Verosimilmente gli altri sistemi di deep research lavorano allo stesso modo; questo è l'unico documentato con i ruoli e i numeri.</p>
+        </div>
+        <div class="footnote">56 / Sezione 6</div>
+        <aside class="notes">Fonte: Anthropic Engineering, "How we built our multi-agent research system", 13 giugno 2025 (URL in docs/ricerche-27/research-deep-research.md): lead researcher (Opus 4) + 3-10+ subagenti paralleli (Sonnet 4) con contesto proprio + citation agent; +90,2% rispetto a un Opus singolo; ~15× i token di una chat; fino a -90% di tempo. Google non documenta Gemini Deep Research come multi-agente a ruoli (le fonti lo descrivono come un unico modello con loop plan/search/read/iterate e tool call parallele); OpenAI deep research è un modello singolo addestrato end-to-end. Per questo in slide si dice "verosimilmente".</aside>
+      </section>
+
+      <section id="slide-57">
+        <p class="eyebrow">SEZIONE 6 · ORCHESTRAZIONE</p>
+        <h2>Deep research: i tre pattern, colorati</h2>
+        <div class="content">
+          <div class="visual stack">
+            <img src="svg/slide56-deep-research.svg" alt="La stessa figura della slide 56">
+            <img class="fragment" data-fragment-index="1" src="svg/slide57-deep-research-pattern.svg" alt="Sopra la figura, tre zone colorate: pattern 1, il subagente come tool, sulla coppia lead e un singolo ricercatore, più una zona piccola sulla freccia di rilancio; pattern 2, worker paralleli, su tutta la fila dei ricercatori, con il cerchietto sul lead dove assembla: il merge; pattern 3, reviewer, intorno al citation agent: finestra pulita">
+          </div>
+          <div class="under3 micro fragment" data-fragment-index="1">
+            <p><strong>Pattern 1, il subagente come tool</strong>ogni ricercatore è un tool del lead: riceve un compito, riporta un paragrafo, e la sua finestra muore. Il rilancio è lo stesso pattern, una seconda volta.</p>
+            <p><strong>Pattern 2, i worker paralleli</strong>i ricercatori partono insieme, nello stesso giro del lead, e non si parlano. Il merge è il lavoro del lead: leggere i paragrafi, trovare i buchi, assemblare.</p>
+            <p><strong>Pattern 3, il reviewer</strong>il citation agent non ha fatto la ricerca: riceve bozza e fonti con una finestra pulita, e verifica. È il giudice messo in linea.</p>
+          </div>
+          <div class="nota dark center">Gli "agenti" sono ruoli dell'harness: stesso tipo di macchina, con finestre e tool diversi. La differenza è tutta in ciò che ogni finestra contiene.</div>
+        </div>
+        <div class="footnote">57 / Sezione 6</div>
+        <aside class="notes">Secondo tempo della slide 56: stesso viewBox, al click si sovrappongono le tre zone colorate e compaiono i tre punti. Niente resta senza colore tranne l'utente: tre pattern, e nient'altro.</aside>
+      </section>
+
+      <!-- ══════════ SEZIONE 7 ══════════ -->
+      <section id="div-sec7" class="section-divider" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 07</p>
+        <h1>L'offerta<br>di harness</h1>
+        <p>Sono tutti lo stesso harness con superfici diverse, e gli stessi modelli. Ciò che li distingue è chi ospita, e il software installato.</p>
+        <div class="divmap"><img src="svg/minimap-sec7.svg" alt="Mini-mappa dell'harness: tutte le zone accese, la mappa intera come griglia di confronto"><span>sei qui · tutta la mappa</span></div>
+      </section>
+
+      <section id="slide-58">
+        <p class="eyebrow">SEZIONE 7 · L'OFFERTA DI HARNESS</p>
+        <h2>L'offerta Anthropic: stesso harness, superfici diverse</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide58-superfici-anthropic.svg" alt="Un asse orizzontale, chi ospita l'harness, da Anthropic a tu, con sei riquadri-prodotto: Claude.ai, Claude Cowork, Managed Agents (tratteggiato), Claude Desktop, Claude Code, Agent SDK, ognuno con l'etichetta per chi usa o per chi costruisce e una riga su chi ospita; sotto, la fascia comune: lo stesso loop agentico, gli stessi modelli"></div>
+          <div class="under2">
+            <p><strong>Cinque superfici, un harness</strong>Claude.ai (la chat nel browser), Claude Desktop (l'app, con i server MCP locali), Claude Cowork (il lavoro d'ufficio senza codice), Claude Code (il terminale e l'IDE), l'Agent SDK (lo stesso loop di Claude Code come libreria, nel tuo processo). Il loop è lo stesso; cambia chi lo usa e da dove. E sotto girano gli stessi modelli: la differenza fra i prodotti non è mai il modello, è l'harness e chi lo ospita.</p>
+            <p><strong>La variabile che conta: chi ospita</strong>nella chat e in Cowork ospita Anthropic, sandbox compreso; su Desktop e in Claude Code l'harness gira sul tuo computer; con l'Agent SDK gira nella tua infrastruttura, e il sandbox lo porti tu. E c'è la sesta via: Managed Agents, dove Anthropic ospita harness e sandbox e tu chiami un'API.</p>
+          </div>
+          <div class="nota small">Leggetela con la mappa della slide 4: ogni prodotto è la stessa figura, con alcune zone che stanno da Anthropic e altre da voi. La tabella della prossima slide dice quali.</div>
+        </div>
+        <div class="footnote">58 / Sezione 7</div>
+        <aside class="notes">Claude in Chrome e in Slack restano fuori slide: sono superfici della stessa chat. Dati verificati il 4 settembre 2026 su documentazione ufficiale (docs.claude.com, code.claude.com, platform.claude.com, Help Center): docs/ricerche-27/research-offering-matrix.md.</aside>
+      </section>
+
+      <section id="slide-59">
+        <p class="eyebrow">SEZIONE 7 · L'OFFERTA DI HARNESS</p>
+        <h2>L'offerta Anthropic: che cosa espongono</h2>
+        <div class="content">
+          <table class="tbl micro">
+            <thead><tr><th></th><th>Claude.ai</th><th>Claude Desktop</th><th>Claude Cowork</th><th>Claude Code</th><th>Agent SDK</th><th>Managed Agents</th></tr></thead>
+            <tbody>
+              <tr><td>Harness ospitato da</td><td>Anthropic</td><td>tu (l'app)</td><td>Anthropic; locale a scelta</td><td>tu; cloud a scelta</td><td>tu (tua infra)</td><td>Anthropic</td></tr>
+              <tr><td>Sandbox</td><td>Anthropic</td><td>Anthropic (chat), VM locale (Cowork)</td><td>Anthropic; VM locale</td><td>sul tuo computer, opt-in; o cloud</td><td><strong>nessuno incluso</strong>: lo porti tu</td><td>Anthropic, o self-hosted</td></tr>
+              <tr><td>MCP</td><td>solo server remoti</td><td>remoti + <strong>locali</strong></td><td>remoti; locali solo in locale</td><td>remoti + locali; è anche server</td><td>remoti + locali + in-process</td><td>solo remoti (locali in anteprima)</td></tr>
+              <tr><td>Skill</td><td>sì</td><td>sì</td><td>sì</td><td>sì (<code>.claude/skills</code>)</td><td>sì (come Claude Code)</td><td>sì (API + repo)</td></tr>
+              <tr><td>Memoria</td><td>memoria di chat</td><td>come chat</td><td>solo se in cloud</td><td><code>CLAUDE.md</code> + memoria automatica su file</td><td>file locali del container</td><td>memory store montato</td></tr>
+              <tr><td>Observability</td><td>Compliance API (enterprise)</td><td>come chat</td><td>Compliance API</td><td>OpenTelemetry, hooks, trascrizioni</td><td>OpenTelemetry (eredita)</td><td>event stream, webhook</td></tr>
+              <tr><td>Subagenti</td><td>no</td><td>via Cowork/Code</td><td>sì</td><td>sì (<code>.claude/agents</code>, max 20)</td><td>sì</td><td>sì (coordinator, 1 livello, max 20)</td></tr>
+              <tr><td>Stato</td><td>GA</td><td>GA</td><td>beta (web/mobile)</td><td>GA (web in anteprima)</td><td>libreria &lt; 1.0</td><td>beta pubblica</td></tr>
+            </tbody>
+          </table>
+          <div class="nota small">Le righe sono le zone della mappa. Due letture: scendendo, ogni prodotto è un harness completo; attraversando, la stessa zona cambia solo per chi la ospita. La riga da guardare prima di scegliere è "Sandbox": è quella che decide che cosa devi costruire tu.</div>
+        </div>
+        <div class="footnote">59 / Sezione 7</div>
+        <aside class="notes">Dati verificati su documentazione ufficiale al 4 settembre 2026 (49 fonti, elencate in docs/ricerche-27/research-offering-matrix.md). Le celle non verificabili sono rese in forma prudente ("come chat"). Se la tabella non regge a schermo, si tolgono le righe Skill (tutti sì) e Stato.</aside>
+      </section>
+
+      <section id="slide-60">
+        <p class="eyebrow">SEZIONE 7 · L'OFFERTA DI HARNESS</p>
+        <h2>L'offerta open: tre filosofie</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide60-tre-filosofie.svg" alt="Tre pannelli con un piccolo esoscheletro ciascuno. smolagents: al posto della pill tool_use in JSON, una pill con tre righe di Python e la freccia verso esegui il codice: l'azione è codice. LangGraph: l'anello è sostituito da un grafo di quattro nodi con un rombo di decisione e un'icona di checkpoint: il loop è un grafo, con stato. Agno: l'esoscheletro dentro un contenitore AgentOS con tre porte in uscita, REST, MCP, chat, e un piccolo database: agenti più runtime"></div>
+          <div class="under3 micro">
+            <p><strong>smolagents</strong><em>Hugging Face.</em> Il code-agent: il modello non emette <code>tool_use</code> in JSON, scrive un blocco di Python che chiama i tool, e l'harness lo esegue. È il sandbox come tool universale portato all'estremo (slide 20). Piccolo (circa mille righe di core), multi-provider. Attenzione: l'esecuzione locale è dichiaratamente non sicura; il sandbox remoto si aggiunge.</p>
+            <p><strong>LangChain / LangGraph</strong>il loop diventa un grafo esplicito: stato, nodi, archi, con esecuzione durevole (si può fermare e riprendere). È la scelta di chi vuole vedere e controllare ogni passo dell'harness; memoria per sessione e fra sessioni con checkpointer e store; observability con LangSmith. Nessun sandbox: lo porti tu. Il più maturo (LangGraph v1).</p>
+            <p><strong>Agno</strong>agenti, team e workflow più un runtime, AgentOS, che li espone come servizio nella tua infrastruttura (REST, MCP, chat). Implementa lo standard Agent Skills, tracing OpenTelemetry nativo, memoria in database. Multi-provider.</p>
+          </div>
+          <div class="nota small">Tutti e tre parlano MCP e girano con qualsiasi modello: qui la libertà di cambiare LLM (slide 40) è la regola. In cambio, ospitare, isolare e osservare è tutto lavoro tuo.</div>
+        </div>
+        <div class="footnote">60 / Sezione 7</div>
+        <aside class="notes">Verificato sulla documentazione dei tre framework (4 settembre 2026): smolagents v1.26 (CodeAgent, executor locale AST-based "no local python sandbox can ever be completely secure", executor remoti E2B/Modal/Docker/Blaxel); LangGraph v1 (grafo, durable execution, checkpointer e store, MCPAdapter in beta); Agno v3.x (AgentOS, Teams, Agent Skills, tracing OTel in database).</aside>
+      </section>
+
+      <section id="slide-61">
+        <p class="eyebrow">SEZIONE 7 · L'OFFERTA DI HARNESS</p>
+        <h2>L'offerta open: sulle stesse colonne</h2>
+        <div class="content">
+          <table class="tbl small">
+            <thead><tr><th></th><th>smolagents</th><th>LangChain / LangGraph</th><th>Agno</th></tr></thead>
+            <tbody>
+              <tr><td>Filosofia</td><td>l'azione è codice</td><td>il loop è un grafo, con stato</td><td>agenti + runtime (AgentOS)</td></tr>
+              <tr><td>Harness ospitato da</td><td>tu</td><td>tu; hosting gestito a pagamento (LangSmith)</td><td>tu (AgentOS nella tua infra)</td></tr>
+              <tr><td>Sandbox</td><td>locale, <strong>non sicuro</strong> di default; remoto opzionale</td><td><strong>nessuno</strong>: lo porti tu</td><td>nessuno documentato</td></tr>
+              <tr><td>MCP</td><td>sì: locali e remoti</td><td>sì (adattatore ancora in beta)</td><td>sì: locali e remoti; AgentOS è anche server</td></tr>
+              <tr><td>Skill</td><td>no</td><td>pattern di prompt a richiesta, non lo standard</td><td>sì, standard Agent Skills</td></tr>
+              <tr><td>Memoria</td><td>solo in RAM, per esecuzione</td><td>checkpointer (sessione) + store (fra sessioni)</td><td>in database, automatica o agentica</td></tr>
+              <tr><td>Observability</td><td>OpenTelemetry, replay</td><td>LangSmith; OTLP</td><td>OpenTelemetry nativo, in database</td></tr>
+              <tr><td>Subagenti</td><td>manager con agenti gestiti come tool</td><td>5 pattern: subagenti, handoff, router, …</td><td>Teams (delega, routing, broadcast)</td></tr>
+            </tbody>
+          </table>
+          <div class="nota small">Confrontate la riga "Sandbox" con quella della slide 59: nei prodotti la porta Anthropic, nell'open non la porta nessuno. È lì che si decide se un framework open costa meno di un prodotto, o di più.</div>
+        </div>
+        <div class="footnote">61 / Sezione 7</div>
+        <aside class="notes">Dati verificati al 4 settembre 2026 (docs smolagents, LangChain/LangGraph, Agno): docs/ricerche-27/research-offering-matrix.md, tabella B. Le righe Modelli e Maturità sono tolte dalla tabella per farla stare a corpo leggibile: modelli, qualsiasi per tutti e tre (detto nella nota); maturità: smolagents v1.x senza dichiarazione di produzione, LangGraph v1 stabile, Agno v3.x.</aside>
+      </section>
+
+      <section id="slide-62">
+        <p class="eyebrow">SEZIONE 7 · L'OFFERTA DI HARNESS</p>
+        <h2>La formula, riletta</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide62-formula-riletta.svg" alt="La formula Agent = LLM + Harness + System Prompt + Tools + KB + Skills alla chiusura dell'incontro 27: LLM attenuato con la spunta, incontro 26; Harness, System Prompt, Tools e Skills accesi, incontro 27, con dentro Harness la mappa in miniatura; KB attenuato, incontro 28. Sotto ogni blocco acceso una riga di sintesi. Quattro su sei: ne manca uno"></div>
+          <div class="nota">L'LLM è la CPU, l'harness il sistema operativo, il resto il software installato. Oggi abbiamo aperto il sistema operativo e tre programmi. Ne manca uno.</div>
+        </div>
+        <div class="footnote">62 / Sezione 7</div>
+        <aside class="notes">Terzo dei quattro stati della formula lungo il corso: 26 chiusura LLM; 27 apertura Harness (slide 3); 27 chiusura anche System Prompt, Tools, Skills; 28 KB. Stesse coordinate della slide 3, canvas 1302×428 con la fascia della sintesi divisa per colonna; le righe di sintesi sono state accorciate a tre righe da 150px.</aside>
+      </section>
+
+      <section id="slide-63">
+        <p class="eyebrow">SEZIONE 7 · L'OFFERTA DI HARNESS</p>
+        <h2>Dietro i tool, la conoscenza</h2>
+        <div class="content">
+          <div class="nota dark center big" style="margin-top: auto;">Abbiamo dato all'agente un loop, dei tool, delle skill, una memoria. Ma quando chiama <code>cerca_ordine</code>, o <code>cerca_documenti</code>, che cosa trova dall'altra parte? La conoscenza dell'organizzazione: dati, documenti, procedure. Come va organizzata perché un agente la possa usare: incontro 28.</div>
+          <p class="reqline">ricercabile in modo progressivo · non ridondante · veritiera · compounding</p>
+          <p class="reqline-gloss" style="margin-bottom: auto;">i requisiti di una conoscenza utile, per una persona e per un agente</p>
+        </div>
+        <div class="footnote">63 / Sezione 7</div>
+        <aside class="notes">Chiude la lezione: il blocco nero è la struttura, e il deck si chiude su una frase, non su una figura. I quattro requisiti sono l'anticipazione del 28.</aside>
       </section>
 
     </div>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>A sinistra la finestra a strati del padre, corta: prefisso con la definizione ricerca(compito) in evidenza, storia, una pill ricerca normativa resi 2026, e una riga tool di tre righe: il paragrafo di risposta; etichetta: nel padre, una richiesta e un paragrafo. A destra, collegata alla pill da una freccia, la finestra del figlio, molto alta: il proprio system prompt, i propri tool cerca_web e leggi_pagina, venti giri abbreviati e in fondo la risposta finale. Una freccia dal fondo torna alla riga tool del padre: solo questo torna indietro. Sotto: circa 60.000 token che il padre non vede mai; poi la finestra del figlio muore</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+    <marker id="at" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0e7c6a"/></marker>
+  </defs>
+
+  <!-- ===== il padre ===== -->
+  <text x="14" y="22" font-size="12" font-weight="700" fill="#161719">la finestra del padre</text>
+  <text x="14" y="36" font-size="9" fill="#838383">corta</text>
+  <rect x="14" y="44" width="300" height="224" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+  <rect x="20" y="50" width="288" height="78" rx="3" fill="#d1efea" stroke="#1ab197"/>
+  <text x="28" y="64" font-size="9.5" font-weight="700" fill="#0e7c6a">prefisso</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#0e7c6a">
+    <text x="28" y="80">system prompt: assistente Acme…</text>
+    <text x="28" y="94">tools: cerca_ordine, crea_ticket,</text>
+  </g>
+  <rect x="26" y="100" width="150" height="14" rx="2" fill="#ffffff" stroke="#a1245a" stroke-width="1.2"/>
+  <text x="30" y="110" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" font-weight="700" fill="#a1245a">ricerca(compito)</text>
+  <text x="182" y="110" font-size="8" font-style="italic" fill="#838383">← un tool come gli altri</text>
+  <rect x="20" y="134" width="288" height="30" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="28" y="146" font-size="9" font-weight="600" fill="#838383">storia</text>
+  <text x="28" y="159" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">[user] i resi del 2026: cosa cambia?</text>
+  <rect x="20" y="170" width="250" height="16" rx="8" fill="#a1245a"/>
+  <text x="28" y="182" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#ffffff">→ ricerca("normativa resi 2026")</text>
+  <rect x="20" y="192" width="288" height="46" rx="3" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#0e7c6a">
+    <text x="28" y="206">[tool] Dal 1° marzo 2026 il recesso</text>
+    <text x="28" y="219">passa da 14 a 30 giorni per gli</text>
+    <text x="28" y="232">acquisti online (3 fonti: …)</text>
+  </g>
+  <text x="28" y="258" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">[assistant] Dal 1° marzo …</text>
+  <text x="164" y="288" text-anchor="middle" font-size="10" font-weight="600" fill="#161719">nel padre: una richiesta e un paragrafo</text>
+  <text x="164" y="304" text-anchor="middle" font-size="9" fill="#838383">~300 token in tutto</text>
+
+  <!-- ===== il figlio ===== -->
+  <text x="440" y="22" font-size="12" font-weight="700" fill="#161719">la finestra del figlio</text>
+  <text x="440" y="36" font-size="9" fill="#838383">molto alta: un harness completo</text>
+  <path d="M270 178 C 340 178, 360 60, 436 60" fill="none" stroke="#a1245a" stroke-width="1.5" marker-end="url(#ab)"/>
+  <text x="352" y="120" text-anchor="middle" font-size="9" font-weight="600" fill="#a1245a">il compito</text>
+  <rect x="440" y="44" width="300" height="352" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+  <rect x="446" y="50" width="288" height="56" rx="3" fill="#d1efea" stroke="#1ab197"/>
+  <text x="454" y="64" font-size="9.5" font-weight="700" fill="#0e7c6a">il proprio prefisso</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#0e7c6a">
+    <text x="454" y="80">system prompt: sei un ricercatore…</text>
+    <text x="454" y="94">tools: cerca_web, leggi_pagina</text>
+  </g>
+  <text x="640" y="94" font-size="8" font-style="italic" fill="#838383">meno del padre</text>
+  <rect x="446" y="112" width="288" height="18" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="454" y="125" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">[user] normativa resi 2026</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9">
+    <rect x="446" y="136" width="170" height="14" rx="7" fill="#a1245a"/><text x="452" y="146" fill="#ffffff">→ cerca_web("resi 2026")</text>
+    <rect x="446" y="154" width="288" height="14" rx="2" fill="#d1efea" stroke="#1ab197"/><text x="452" y="164" fill="#0e7c6a">[tool] 10 risultati (1.200 token)</text>
+    <rect x="446" y="172" width="180" height="14" rx="7" fill="#a1245a"/><text x="452" y="182" fill="#ffffff">→ leggi_pagina(url_1)</text>
+    <rect x="446" y="190" width="288" height="30" rx="2" fill="#d1efea" stroke="#1ab197"/><text x="452" y="200" fill="#0e7c6a">[tool] … 4.000 token …</text><text x="452" y="213" fill="#0e7c6a">…</text>
+    <rect x="446" y="226" width="180" height="14" rx="7" fill="#a1245a"/><text x="452" y="236" fill="#ffffff">→ leggi_pagina(url_2)</text>
+    <rect x="446" y="244" width="288" height="30" rx="2" fill="#d1efea" stroke="#1ab197"/><text x="452" y="254" fill="#0e7c6a">[tool] … 3.500 token …</text><text x="452" y="267" fill="#0e7c6a">…</text>
+    <text x="590" y="296" text-anchor="middle" font-size="12" fill="#838383">⋯</text>
+    <text x="590" y="312" text-anchor="middle" font-size="8.5" fill="#838383" font-family="Poppins, sans-serif" font-style="italic">venti giri, decine di pagine</text>
+    <rect x="446" y="322" width="288" height="14" rx="2" fill="#d1efea" stroke="#1ab197"/><text x="452" y="332" fill="#0e7c6a">[tool] … 2.800 token …</text>
+    <rect x="446" y="342" width="288" height="46" rx="3" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+    <text x="452" y="356" fill="#a1245a">[assistant] Dal 1° marzo 2026 il</text>
+    <text x="452" y="369" fill="#a1245a">recesso passa da 14 a 30 giorni per</text>
+    <text x="452" y="382" fill="#a1245a">gli acquisti online (3 fonti: …)</text>
+  </g>
+  <!-- ritorno -->
+  <path d="M440 365 C 380 365, 340 300, 312 215" fill="none" stroke="#0e7c6a" stroke-width="1.5" marker-end="url(#at)"/>
+  <text x="372" y="336" text-anchor="middle" font-size="9" font-weight="700" fill="#0e7c6a">solo questo</text>
+  <text x="372" y="348" text-anchor="middle" font-size="9" font-weight="700" fill="#0e7c6a">torna indietro</text>
+  <!-- sotto -->
+  <text x="590" y="414" text-anchor="middle" font-size="10" font-weight="600" fill="#161719">~60.000 token, che il padre non vede mai</text>
+  <path d="M440 424 l4 6 l-8 4 l8 4 l-4 6" fill="none" stroke="#a1245a" stroke-width="1.5"/>
+  <text x="452" y="434" font-size="9" font-style="italic" fill="#a1245a">poi la finestra del figlio muore: resta solo ciò che ha riportato</text>
+</svg>

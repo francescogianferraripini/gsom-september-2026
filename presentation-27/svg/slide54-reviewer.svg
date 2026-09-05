@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>A sinistra la finestra del lavoratore, alta e piena di giri, tentativi, risultati dei tool, correzioni, con in fondo il risultato. A destra la finestra del reviewer, corta e pulita: il proprio system prompt, sei un revisore, il compito, il risultato del lavoratore e la sua traccia in forma compatta: legge la traiettoria, non solo l'output. Dal reviewer esce un verdetto, rivedi, motivo: il ticket è stato aperto dopo la risposta, che torna con una freccia nella finestra del lavoratore come riga tool; sulla freccia il contatore giro 1 di 2. In alto: stesso modello, due contesti, uno sporco e uno pulito</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+  </defs>
+  <text x="380" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#161719">stesso modello, due contesti: uno sporco, uno pulito</text>
+
+  <!-- ===== il lavoratore ===== -->
+  <text x="20" y="44" font-size="11" font-weight="700" fill="#161719">il lavoratore</text>
+  <text x="104" y="44" font-size="9" font-style="italic" fill="#838383">venti giri di tentativi</text>
+  <rect x="20" y="50" width="300" height="382" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+  <rect x="26" y="56" width="288" height="30" rx="3" fill="#d1efea" stroke="#1ab197"/>
+  <text x="34" y="68" font-size="9" font-weight="700" fill="#0e7c6a">prefisso</text>
+  <text x="34" y="80" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#0e7c6a">assistente Acme · cerca_ordine, crea_ticket, invia_mail</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5">
+    <text x="34" y="102" fill="#6c757d">[user] gestisci il reclamo del cliente 004471</text>
+    <rect x="26" y="108" width="150" height="12" rx="6" fill="#a1245a"/><text x="32" y="117" fill="#ffffff">→ cerca_ordine("4471")</text>
+    <rect x="26" y="124" width="288" height="12" rx="1" fill="#d1efea"/><text x="32" y="133" fill="#0e7c6a">[tool] ERRORE: 6 cifre</text>
+    <rect x="26" y="140" width="160" height="12" rx="6" fill="#a1245a"/><text x="32" y="149" fill="#ffffff">→ cerca_ordine("004471")</text>
+    <rect x="26" y="156" width="288" height="12" rx="1" fill="#d1efea"/><text x="32" y="165" fill="#0e7c6a">[tool] {stato: "smarrito", …}</text>
+    <rect x="26" y="172" width="160" height="12" rx="6" fill="#a1245a"/><text x="32" y="181" fill="#ffffff">→ storico_ordini("004471")</text>
+    <rect x="26" y="188" width="288" height="24" rx="1" fill="#d1efea"/><text x="32" y="197" fill="#0e7c6a">[tool] [ … 12.000 token … ]</text>
+    <rect x="26" y="216" width="190" height="12" rx="6" fill="#a1245a"/><text x="32" y="225" fill="#ffffff">→ invia_mail(cliente, "Gentile…")</text>
+    <rect x="26" y="232" width="288" height="12" rx="1" fill="#d1efea"/><text x="32" y="241" fill="#0e7c6a">[tool] inviata</text>
+    <rect x="26" y="248" width="150" height="12" rx="6" fill="#a1245a"/><text x="32" y="257" fill="#ffffff">→ crea_ticket("004471")</text>
+    <rect x="26" y="264" width="288" height="12" rx="1" fill="#d1efea"/><text x="32" y="273" fill="#0e7c6a">[tool] {ticket: "T-2291"}</text>
+    <text x="170" y="292" text-anchor="middle" font-size="11" fill="#838383">⋯</text>
+    <rect x="26" y="300" width="288" height="36" rx="3" fill="#ffffff" stroke="#a1245a" stroke-width="1.3"/>
+    <text x="32" y="313" fill="#a1245a">risultato: "Gentile cliente, il suo ordine risulta</text>
+    <text x="32" y="325" fill="#a1245a">smarrito; abbiamo aperto il ticket T-2291 …"</text>
+    <!-- il verdetto rientra -->
+    <rect x="26" y="346" width="288" height="40" rx="3" fill="#fbe3ec" stroke="#a1245a" stroke-width="1.3"/>
+    <text x="32" y="359" fill="#a1245a">[tool] verdetto: rivedi · motivo: il ticket</text>
+    <text x="32" y="371" fill="#a1245a">è stato aperto dopo la risposta al cliente,</text>
+    <text x="32" y="383" fill="#a1245a">che quindi non cita il numero del ticket</text>
+    <rect x="26" y="394" width="150" height="12" rx="6" fill="#a1245a"/><text x="32" y="403" fill="#ffffff">→ invia_mail(cliente, …)</text>
+    <text x="34" y="424" fill="#838383" font-family="Poppins, sans-serif" font-style="italic">corregge e riprova: un giro, forse due</text>
+  </g>
+
+  <!-- ===== il reviewer ===== -->
+  <text x="440" y="44" font-size="11" font-weight="700" fill="#161719">il reviewer</text>
+  <text x="514" y="44" font-size="9" font-style="italic" fill="#838383">una finestra pulita</text>
+  <rect x="440" y="50" width="300" height="230" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+  <rect x="446" y="56" width="288" height="42" rx="3" fill="#d1efea" stroke="#1ab197"/>
+  <text x="454" y="68" font-size="9" font-weight="700" fill="#0e7c6a">il proprio prefisso</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#0e7c6a">
+    <text x="454" y="81">sei un revisore: verifica che ordine, ticket</text>
+    <text x="454" y="93">e risposta siano coerenti e in questo ordine</text>
+  </g>
+  <rect x="446" y="104" width="288" height="14" rx="1" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="454" y="114" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#6c757d">compito: gestisci il reclamo del cliente 004471</text>
+  <rect x="446" y="124" width="288" height="26" rx="1" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="454" y="134" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#6c757d">risultato: "Gentile cliente, il suo ordine risulta</text>
+  <text x="454" y="145" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#6c757d">smarrito; abbiamo aperto il ticket T-2291 …"</text>
+  <rect x="446" y="156" width="288" height="72" rx="2" fill="#fff2ce" stroke="#ffbe0b"/>
+  <text x="454" y="168" font-size="8.5" font-weight="700" fill="#161719">la traccia del lavoratore, compatta</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8" fill="#212529">
+    <text x="454" y="181">1 cerca_ordine ✗  2 cerca_ordine ✓  3 storico (12k)</text>
+    <text x="454" y="193">4 invia_mail ✓  5 crea_ticket ✓  → risposta</text>
+    <text x="454" y="206">ordine dei passi: mail (4) prima del ticket (5)</text>
+  </g>
+  <text x="454" y="222" font-size="8" font-style="italic" fill="#838383">legge la traiettoria, non solo l'output</text>
+  <rect x="446" y="236" width="288" height="36" rx="3" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+  <text x="454" y="250" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700" fill="#a1245a">verdetto: rivedi</text>
+  <text x="454" y="263" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#a1245a">motivo: il ticket è stato aperto dopo la risposta</text>
+  <!-- freccia del verdetto -->
+  <path d="M440 254 C 400 254, 380 366, 322 366" fill="none" stroke="#a1245a" stroke-width="1.6" marker-end="url(#ab)"/>
+  <rect x="352" y="300" width="70" height="18" rx="9" fill="#161719"/>
+  <text x="387" y="313" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">giro 1 di 2</text>
+  <!-- freccia compito + risultato verso il reviewer -->
+  <path d="M320 318 C 380 318, 380 130, 438 130" fill="none" stroke="#161719" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#a)"/>
+  <text x="380" y="214" text-anchor="middle" font-size="8.5" fill="#161719">compito, risultato,</text>
+  <text x="380" y="226" text-anchor="middle" font-size="8.5" fill="#161719">traccia</text>
+  <!-- sotto il reviewer -->
+  <g font-size="9.5" fill="#212529">
+    <text x="440" y="306" font-weight="700">perché giudica meglio</text>
+    <text x="440" y="322">non ha davanti i venti giri di tentativi:</text>
+    <text x="440" y="336">vede ciò che il lavoratore non vede più.</text>
+    <text x="440" y="358" font-weight="700">il limite</text>
+    <text x="440" y="374">un reviewer che boccia all'infinito è un loop;</text>
+    <text x="440" y="388">uno che promuove sempre è decorazione.</text>
+    <text x="440" y="402">Il numero di giri lo fissa l'harness.</text>
+  </g>
+</svg>
