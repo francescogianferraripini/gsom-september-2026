@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" width="600" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>A sinistra la traccia completa di una sessione, annotata giro per giro, con in fondo il verdetto PASS. A destra, tre lettori. Debug: una lente sul giro 3 e il fumetto: aveva 12.000 token di export davanti, per questo il giro dopo è lento. Eval: due copie sottili della stessa traccia, versione A e versione B, con la lente sul punto in cui divergono: stessa risposta, percorsi diversi. Training: una traiettoria reale dal dataset pubblico nebius SWE-agent-trajectories in quattro righe monospaziate con reward 1, il contro-esempio con reward 0, il grader con reward uguale 0,5 checker più 0,5 giudice, e la freccia verso il blocco modello: le traiettorie di oggi sono i dati di domani</title>
+  <defs>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+    <g id="lens"><circle r="9" fill="#ffffff" fill-opacity="0.5" stroke="#161719" stroke-width="2"/><line x1="6.5" y1="6.5" x2="14" y2="14" stroke="#161719" stroke-width="3" stroke-linecap="round"/></g>
+  </defs>
+
+  <!-- ===================== la traccia ===================== -->
+  <rect x="6" y="6" width="256" height="428" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+  <rect x="6" y="6" width="256" height="18" rx="5" fill="#161719"/>
+  <text x="12" y="19" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8" fill="#ffffff">sessione di prova · utente 12 · 3 set</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8">
+    <text x="11" y="40" fill="#adb5bd">1</text>
+    <text x="22" y="40" fill="#838383">[user]</text><text x="64" y="40" fill="#212529">Dov'è il 4471? Voglio un rimborso.</text>
+    <rect x="62" y="46" width="128" height="13" rx="6" fill="#a1245a"/><text x="68" y="55.5" fill="#ffffff">→ cerca_ordine("4471")</text>
+    <text x="11" y="76" fill="#adb5bd">2</text>
+    <rect x="62" y="66" width="192" height="13" rx="2" fill="#d1efea" stroke="#1ab197"/><text x="22" y="76" fill="#0e7c6a">[tool]</text><text x="68" y="76" fill="#0e7c6a">ERRORE: servono 6 cifre</text>
+    <rect x="62" y="84" width="140" height="13" rx="6" fill="#a1245a"/><text x="68" y="93.5" fill="#ffffff">→ cerca_ordine("004471")</text>
+    <text x="11" y="114" fill="#adb5bd">3</text>
+    <rect x="62" y="104" width="192" height="13" rx="2" fill="#d1efea" stroke="#1ab197"/><text x="22" y="114" fill="#0e7c6a">[tool]</text><text x="68" y="114" fill="#0e7c6a">{stato: "in consegna", data: "6 set"}</text>
+    <rect x="62" y="122" width="150" height="13" rx="6" fill="#a1245a"/><text x="68" y="131.5" fill="#ffffff">→ storico_ordini("004471")</text>
+    <text x="11" y="154" fill="#adb5bd">4</text>
+    <rect x="62" y="142" width="192" height="30" rx="2" fill="#d1efea" stroke="#1ab197"/><text x="22" y="158" fill="#0e7c6a">[tool]</text><text x="68" y="153" fill="#0e7c6a">[ {id: "003912", …}, {id: "004102",</text><text x="68" y="166" fill="#0e7c6a" font-style="italic">…}, … ] (12.000 token)</text>
+    <text x="22" y="188" fill="#838383">[assist.]</text><text x="64" y="188" fill="#212529">Arriva il 6. Per il rimborso la</text><text x="64" y="199" fill="#212529">contatta un operatore entro oggi.</text>
+    <line x1="11" y1="208" x2="256" y2="208" stroke="#dee2e6" stroke-dasharray="3 3"/>
+    <text x="11" y="226" fill="#adb5bd">5</text>
+    <text x="22" y="226" fill="#838383">[user]</text><text x="64" y="226" fill="#212529">È la terza volta. Un ticket.</text>
+    <rect x="62" y="232" width="150" height="13" rx="6" fill="#a1245a"/><text x="68" y="241.5" fill="#ffffff">→ crea_ticket("004471", …)</text>
+    <text x="11" y="262" fill="#adb5bd">6</text>
+    <rect x="62" y="252" width="192" height="13" rx="2" fill="#d1efea" stroke="#1ab197"/><text x="22" y="262" fill="#0e7c6a">[tool]</text><text x="68" y="262" fill="#0e7c6a">{ticket: "T-2291", op: "M. Rossi"}</text>
+    <text x="22" y="284" fill="#838383">[assist.]</text><text x="64" y="284" fill="#212529">Ticket T-2291 aperto: la contatta</text><text x="64" y="295" fill="#212529">M. Rossi entro oggi.</text>
+  </g>
+  <!-- annotazioni -->
+  <g font-family="'Bradley Hand', 'Segoe Script', 'Comic Sans MS', cursive" font-size="8.5" fill="#c2410c">
+    <text x="196" y="56">corto!</text>
+    <text x="208" y="94">ok ✓</text>
+    <text x="216" y="142">perché?</text>
+    <text x="220" y="243">ticket ✓</text>
+  </g>
+  <!-- verdetto -->
+  <rect x="6" y="306" width="256" height="34" fill="#d1efea"/>
+  <text x="12" y="321" font-family="'Bradley Hand', 'Segoe Script', 'Comic Sans MS', cursive" font-size="12" font-weight="700" fill="#0e7c6a">PASS</text>
+  <text x="48" y="319" font-family="'Bradley Hand', 'Segoe Script', 'Comic Sans MS', cursive" font-size="9" fill="#0e7c6a">si è corretto, niente promesse,</text>
+  <text x="48" y="332" font-family="'Bradley Hand', 'Segoe Script', 'Comic Sans MS', cursive" font-size="9" fill="#0e7c6a">ticket aperto · da rivedere: il giro 3</text>
+  <!-- uscite della traccia -->
+  <text x="12" y="362" font-size="9" font-weight="700" fill="#161719">la stessa traccia, letta da tre lati</text>
+  <g font-size="8.5" fill="#838383">
+    <text x="12" y="378">→ per capire un giro (debug)</text>
+    <text x="12" y="392">→ per confrontare due versioni (eval)</text>
+    <text x="12" y="406">→ per addestrare, con il verdetto (training)</text>
+  </g>
+  <text x="12" y="426" font-size="8" font-style="italic" fill="#838383">la traiettoria è l'artefatto, la risposta è l'ultima riga</text>
+
+  <!-- ===================== DEBUG ===================== -->
+  <text x="282" y="18" font-size="11" font-weight="700" letter-spacing="1" fill="#161719">DEBUG</text>
+  <text x="334" y="18" font-size="8.5" font-style="italic" fill="#838383">"perché ha fatto quella chiamata?"</text>
+  <use href="#lens" x="246" y="114"/>
+  <path d="M256 114 C 270 106, 274 74, 284 60" fill="none" stroke="#161719" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="284" y="26" width="308" height="66" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+  <text x="292" y="44" font-size="9" font-style="italic" fill="#161719">"al giro 3 aveva la domanda sul rimborso e nessuno</text>
+  <text x="292" y="58" font-size="9" font-style="italic" fill="#161719">storico: ha chiesto tutto. Al giro 4 aveva 12.000 token</text>
+  <text x="292" y="72" font-size="9" font-style="italic" fill="#161719">di export davanti: per questo è lento e costoso."</text>
+  <text x="292" y="86" font-size="8" fill="#838383">la finestra che il modello aveva davanti a quel giro: la traccia la conserva</text>
+
+  <!-- ===================== EVAL ===================== -->
+  <text x="282" y="118" font-size="11" font-weight="700" letter-spacing="1" fill="#161719">EVAL</text>
+  <text x="322" y="118" font-size="8.5" font-style="italic" fill="#838383">si confrontano traiettorie, non output</text>
+  <!-- versione A -->
+  <text x="284" y="134" font-size="8.5" font-weight="700" fill="#161719">versione A</text>
+  <text x="342" y="134" font-size="7.5" fill="#838383">prompt di ieri</text>
+  <rect x="284" y="138" width="130" height="92" rx="4" fill="#ffffff" stroke="#838383"/>
+  <g>
+    <rect x="289" y="143" width="120" height="6" rx="1" fill="#f6f6f6"/>
+    <rect x="289" y="152" width="70" height="6" rx="3" fill="#a1245a" fill-opacity="0.8"/>
+    <rect x="289" y="161" width="100" height="6" rx="1" fill="#d1efea"/>
+    <rect x="289" y="170" width="76" height="6" rx="3" fill="#a1245a" fill-opacity="0.8"/>
+    <rect x="289" y="179" width="120" height="16" rx="1" fill="#d1efea" stroke="#a1245a" stroke-width="1.2"/>
+    <rect x="289" y="198" width="120" height="6" rx="1" fill="#f6f6f6"/>
+    <rect x="289" y="207" width="80" height="6" rx="3" fill="#a1245a" fill-opacity="0.8"/>
+    <rect x="289" y="216" width="120" height="10" rx="1" fill="#161719"/>
+  </g>
+  <!-- versione B -->
+  <text x="446" y="134" font-size="8.5" font-weight="700" fill="#161719">versione B</text>
+  <text x="504" y="134" font-size="7.5" fill="#838383">prompt di oggi</text>
+  <rect x="446" y="138" width="130" height="92" rx="4" fill="#ffffff" stroke="#838383"/>
+  <g>
+    <rect x="451" y="143" width="120" height="6" rx="1" fill="#f6f6f6"/>
+    <rect x="451" y="152" width="76" height="6" rx="3" fill="#a1245a" fill-opacity="0.8"/>
+    <rect x="451" y="161" width="100" height="6" rx="1" fill="#d1efea"/>
+    <rect x="451" y="198" width="120" height="6" rx="1" fill="#f6f6f6"/>
+    <rect x="451" y="207" width="80" height="6" rx="3" fill="#a1245a" fill-opacity="0.8"/>
+    <rect x="451" y="216" width="120" height="10" rx="1" fill="#161719"/>
+  </g>
+  <text x="511" y="182" text-anchor="middle" font-size="7.5" font-style="italic" fill="#0e7c6a">un giro in meno, niente export</text>
+  <use href="#lens" x="430" y="186"/>
+  <text x="284" y="246" font-size="8.5" font-style="italic" fill="#161719">"stessa risposta, percorsi diversi: la A ha chiesto 12.000 token inutili."</text>
+  <text x="284" y="258" font-size="8" fill="#838383">sul dataset: A 74/100, B 81/100 · la risposta finale, da sola, non lo direbbe</text>
+
+  <!-- ===================== TRAINING ===================== -->
+  <text x="282" y="286" font-size="11" font-weight="700" letter-spacing="1" fill="#161719">TRAINING</text>
+  <text x="352" y="286" font-size="8.5" font-style="italic" fill="#838383">una traiettoria reale, con l'esito dei test</text>
+  <rect x="284" y="292" width="308" height="60" rx="4" fill="#161719"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8" fill="#ffffff">
+    <text x="290" y="305">task: ISSUE: Incorrect counting for sequences of …</text>
+    <text x="290" y="317">ai:   search_dir "def process_node_itself("  → 1 match</text>
+    <text x="290" y="329">ai:   edit 88:88  base_complexity = inner_boolops_amount</text>
+    <text x="290" y="341">ai:   pytest → 20 passed · submit <tspan fill="#ffbe0b">→ target: True · reward 1</tspan></text>
+  </g>
+  <text x="284" y="364" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="7.5" fill="#adb5bd">accanto: AnalogJ__lexicon-336 · 93 turni · target: False · reward 0</text>
+  <rect x="284" y="372" width="204" height="40" rx="4" fill="#ffffff" stroke="#a1245a" stroke-width="1.2"/>
+  <text x="290" y="386" font-size="8.5" font-weight="700" fill="#a1245a">il grader</text>
+  <text x="290" y="400" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#161719">reward = 0.5·checker + 0.5·giudice</text>
+  <text x="290" y="409" font-size="7" font-style="italic" fill="#838383">checker e giudice della slide 47, come reward</text>
+  <path d="M488 392 h24" fill="none" stroke="#a1245a" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="516" y="374" width="76" height="36" rx="5" fill="#a1245a"/>
+  <text x="554" y="390" text-anchor="middle" font-size="10" font-weight="700" fill="#ffffff">modello</text>
+  <text x="554" y="402" text-anchor="middle" font-size="7" fill="#ffffff">RL sulle traiettorie</text>
+  <text x="284" y="430" font-size="9" font-weight="700" fill="#a1245a">le traiettorie di oggi sono i dati di domani</text>
+</svg>

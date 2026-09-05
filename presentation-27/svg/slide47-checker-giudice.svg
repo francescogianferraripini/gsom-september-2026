@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>La traccia di un caso entra da sinistra e si biforca in due vie in sequenza. Via 1, checker deterministico: tre assert in monospaziato e un verdetto pass o fail: gratis, ripetibile, esatto; copre i cluster verificabili. Via 2, LLM-as-a-judge: un modello giudice con un prompt abbreviato e un verdetto pass o fail: copre ciò che il codice non vede. Sotto, il riquadro di validazione: i verdetti dell'esperto e quelli del giudice sulle stesse venti tracce, con le tre righe discordi in evidenza, concordanza 17 su 20, e una freccia di ritorno verso il prompt del giudice: se non basta, si corregge il giudice</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+  </defs>
+
+  <!-- ===== la traccia in ingresso ===== -->
+  <rect x="12" y="110" width="100" height="70" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+  <rect x="12" y="110" width="100" height="16" rx="5" fill="#161719"/>
+  <text x="18" y="122" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8" fill="#ffffff">#037 · traccia</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="7.5" fill="#6c757d">
+    <text x="18" y="138">[user] …</text>
+    <text x="18" y="150" fill="#a1245a">→ cerca_ordine</text>
+    <text x="18" y="162" fill="#0e7c6a">[tool] …</text>
+    <text x="18" y="174">[assistant] …</text>
+  </g>
+  <path d="M112 130 C 130 130, 130 66, 152 66" fill="none" stroke="#161719" stroke-width="1.3" marker-end="url(#a)"/>
+  <path d="M112 160 C 130 160, 130 222, 152 222" fill="none" stroke="#161719" stroke-width="1.3" marker-end="url(#a)"/>
+
+  <!-- ===== via 1: checker ===== -->
+  <text x="156" y="24" font-size="11" font-weight="700" fill="#161719">1 · checker deterministico</text>
+  <text x="330" y="24" font-size="9" font-style="italic" fill="#838383">prima, per ogni cluster che lo permette</text>
+  <rect x="156" y="32" width="300" height="70" rx="5" fill="#161719"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#ffffff">
+    <text x="168" y="54">assert len(id_ordine) == 6</text>
+    <text x="168" y="72">assert "rimborso" not in risposta</text>
+    <text x="168" y="90">assert ticket_aperto</text>
+  </g>
+  <line x1="456" y1="66" x2="486" y2="66" stroke="#161719" stroke-width="1.3" marker-end="url(#a)"/>
+  <rect x="488" y="48" width="96" height="36" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+  <text x="536" y="71" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700" fill="#161719">PASS / FAIL</text>
+  <text x="600" y="58" font-size="9.5" font-weight="700" fill="#0e7c6a">gratis, ripetibile, esatto</text>
+  <text x="600" y="74" font-size="9" fill="#212529">copre i cluster verificabili</text>
+  <text x="600" y="88" font-size="8.5" font-style="italic" fill="#838383">anche scritto con l'aiuto dell'AI</text>
+
+  <!-- ===== via 2: giudice ===== -->
+  <text x="156" y="176" font-size="11" font-weight="700" fill="#161719">2 · LLM-as-a-judge</text>
+  <text x="290" y="176" font-size="9" font-style="italic" fill="#838383">poi, per ciò che un checker non può vedere</text>
+  <rect x="156" y="184" width="300" height="76" rx="5" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+  <text x="168" y="202" font-size="9.5" font-weight="700" fill="#a1245a">modello giudice</text>
+  <text x="168" y="218" font-size="9" font-style="italic" fill="#212529">"Data la traccia, la risposta riconosce il fatto</text>
+  <text x="168" y="232" font-size="9" font-style="italic" fill="#212529">senza giustificarsi? Rispondi pass o fail,</text>
+  <text x="168" y="246" font-size="9" font-style="italic" fill="#212529">e il motivo."</text>
+  <line x1="456" y1="222" x2="486" y2="222" stroke="#161719" stroke-width="1.3" marker-end="url(#a)"/>
+  <rect x="488" y="204" width="96" height="36" rx="5" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+  <text x="536" y="227" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700" fill="#a1245a">PASS / FAIL</text>
+  <text x="600" y="214" font-size="9.5" font-weight="700" fill="#a1245a">una chiamata per caso</text>
+  <text x="600" y="230" font-size="9" fill="#212529">copre ciò che il codice</text>
+  <text x="600" y="244" font-size="9" fill="#212529">non vede: tono, pertinenza</text>
+
+  <!-- ===== validazione ===== -->
+  <rect x="156" y="284" width="592" height="146" rx="6" fill="#f6f6f6" stroke="#838383"/>
+  <text x="168" y="304" font-size="10.5" font-weight="700" fill="#161719">validato, non creduto</text>
+  <text x="318" y="304" font-size="9" font-style="italic" fill="#838383">le stesse venti tracce, già giudicate dall'esperto</text>
+  <g font-size="9" font-weight="600" fill="#212529">
+    <text x="168" y="330">verdetti dell'esperto</text>
+    <text x="168" y="362">verdetti del giudice</text>
+  </g>
+  <!-- 20 celle esperto -->
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8" text-anchor="middle">
+    <g fill="#d1efea" stroke="#1ab197">
+      <rect x="300" y="318" width="18" height="16" rx="2"/><rect x="321" y="318" width="18" height="16" rx="2"/><rect x="342" y="318" width="18" height="16" rx="2"/><rect x="363" y="318" width="18" height="16" rx="2"/><rect x="384" y="318" width="18" height="16" rx="2"/><rect x="405" y="318" width="18" height="16" rx="2"/><rect x="426" y="318" width="18" height="16" rx="2"/><rect x="447" y="318" width="18" height="16" rx="2"/><rect x="468" y="318" width="18" height="16" rx="2"/><rect x="489" y="318" width="18" height="16" rx="2"/>
+      <rect x="510" y="318" width="18" height="16" rx="2"/><rect x="531" y="318" width="18" height="16" rx="2"/><rect x="552" y="318" width="18" height="16" rx="2"/><rect x="573" y="318" width="18" height="16" rx="2"/><rect x="594" y="318" width="18" height="16" rx="2"/><rect x="615" y="318" width="18" height="16" rx="2"/><rect x="636" y="318" width="18" height="16" rx="2"/><rect x="657" y="318" width="18" height="16" rx="2"/><rect x="678" y="318" width="18" height="16" rx="2"/><rect x="699" y="318" width="18" height="16" rx="2"/>
+    </g>
+    <g fill="#0e7c6a">
+      <text x="309" y="330">P</text><text x="330" y="330">P</text><text x="351" y="330">F</text><text x="372" y="330">P</text><text x="393" y="330">F</text><text x="414" y="330">P</text><text x="435" y="330">P</text><text x="456" y="330">P</text><text x="477" y="330">F</text><text x="498" y="330">P</text>
+      <text x="519" y="330">P</text><text x="540" y="330">F</text><text x="561" y="330">P</text><text x="582" y="330">P</text><text x="603" y="330">P</text><text x="624" y="330">F</text><text x="645" y="330">P</text><text x="666" y="330">P</text><text x="687" y="330">F</text><text x="708" y="330">P</text>
+    </g>
+    <!-- 20 celle giudice -->
+    <g fill="#d1efea" stroke="#1ab197">
+      <rect x="300" y="350" width="18" height="16" rx="2"/><rect x="321" y="350" width="18" height="16" rx="2"/><rect x="342" y="350" width="18" height="16" rx="2"/><rect x="363" y="350" width="18" height="16" rx="2"/><rect x="405" y="350" width="18" height="16" rx="2"/><rect x="426" y="350" width="18" height="16" rx="2"/><rect x="447" y="350" width="18" height="16" rx="2"/><rect x="468" y="350" width="18" height="16" rx="2"/><rect x="489" y="350" width="18" height="16" rx="2"/>
+      <rect x="510" y="350" width="18" height="16" rx="2"/><rect x="531" y="350" width="18" height="16" rx="2"/><rect x="552" y="350" width="18" height="16" rx="2"/><rect x="573" y="350" width="18" height="16" rx="2"/><rect x="615" y="350" width="18" height="16" rx="2"/><rect x="636" y="350" width="18" height="16" rx="2"/><rect x="657" y="350" width="18" height="16" rx="2"/><rect x="699" y="350" width="18" height="16" rx="2"/>
+    </g>
+    <g fill="#fbe3ec" stroke="#a1245a" stroke-width="1.5">
+      <rect x="384" y="350" width="18" height="16" rx="2"/><rect x="594" y="350" width="18" height="16" rx="2"/><rect x="678" y="350" width="18" height="16" rx="2"/>
+    </g>
+    <g fill="#0e7c6a">
+      <text x="309" y="362">P</text><text x="330" y="362">P</text><text x="351" y="362">F</text><text x="372" y="362">P</text><text x="393" y="362" fill="#a1245a" font-weight="700">P</text><text x="414" y="362">P</text><text x="435" y="362">P</text><text x="456" y="362">P</text><text x="477" y="362">F</text><text x="498" y="362">P</text>
+      <text x="519" y="362">P</text><text x="540" y="362">F</text><text x="561" y="362">P</text><text x="582" y="362">P</text><text x="603" y="362" fill="#a1245a" font-weight="700">F</text><text x="624" y="362">F</text><text x="645" y="362">P</text><text x="666" y="362">P</text><text x="687" y="362" fill="#a1245a" font-weight="700">P</text><text x="708" y="362">P</text>
+    </g>
+  </g>
+  <text x="168" y="396" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700" fill="#161719">concordanza: 17/20</text>
+  <text x="300" y="396" font-size="9" fill="#212529">tre tracce su cui il giudice sbaglia: si guardano una per una</text>
+  <!-- freccia di ritorno verso il giudice -->
+  <path d="M736 384 C 758 384, 758 262, 740 262 C 700 262, 700 250, 458 250" fill="none" stroke="#a1245a" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#ab)"/>
+  <text x="168" y="420" font-size="9.5" font-weight="700" fill="#a1245a">se non basta: si corregge il giudice, non si abbassa l'asticella</text>
+</svg>

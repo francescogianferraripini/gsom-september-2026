@@ -172,12 +172,27 @@
     .under3 p strong { color: var(--q-black); display: block; margin-bottom: 1px; }
     .quote-line { font-size: 11pt; font-style: italic; color: var(--q-greydark); margin: 8px 0 0; }
     .quote-line span { font-style: normal; font-size: 9.5pt; }
-    .boxlab {
+    /* due figure affiancate (slide 34) */
+    .visual.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
+    .visual.duo img { max-width: 100%; max-height: 100%; }
+    /* tabella comparativa (slide 30, 59, 61) */
+    .tbl { width: 100%; border-collapse: collapse; margin: 6px 0 0; }
+    .tbl th, .tbl td { font-size: 11.5pt; line-height: 1.35; padding: 8px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--q-line); }
+    .tbl thead th { font-size: 9.5pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--q-greydark); border-bottom: 2px solid var(--q-black); }
+    .tbl td:first-child { font-weight: 700; color: var(--q-black); white-space: nowrap; }
+    .tbl td:first-child small { display: block; font-weight: 400; font-size: 9.5pt; color: var(--q-greydark); }
+    .tbl.micro th, .tbl.micro td { font-size: 9.5pt; padding: 5px 8px; }
+    /* sì / no (slide 39) */
+    .reveal p.yn { margin: 0 0 14px; font-size: 12.5pt; line-height: 1.45; }
+    .yn strong { display: inline-block; min-width: 26px; font-size: 9.5pt; letter-spacing: 0.12em; text-transform: uppercase; margin-right: 6px; }
+    .yn.si strong { color: var(--q-teal); }
+    .yn.no strong { color: var(--q-burgundy); }
+    .reveal p.boxlab {
       font-size: 9pt; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--q-burgundy); margin: 0 0 6px;
+      color: var(--q-burgundy); margin: 0 0 6px; line-height: 1.3;
     }
-    .boxlab.muted { color: var(--q-greydark); }
-    .boxlab.after { margin: 6px 0 0; font-weight: 500; letter-spacing: 0.06em; text-transform: none; font-size: 9.5pt; }
+    .reveal p.boxlab.muted { color: var(--q-greydark); }
+    .reveal p.boxlab.after { margin: 6px 0 0; font-weight: 500; letter-spacing: 0.06em; text-transform: none; font-size: 9.5pt; }
 
     /* colonna destra delle slide 8-12: riquadro + finestra a strati affiancati */
     .side2 { display: grid; grid-template-columns: 1fr 290px; gap: 18px; min-height: 0; align-items: stretch; }
@@ -191,6 +206,21 @@
       color: rgba(255,255,255,0.85); font-size: 9.5pt; font-weight: 600;
       letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: 6px;
     }
+
+    /* ===== sezione 5: pipeline in miniatura, slide a tre colonne, riquadro esempio reale ===== */
+    .pipemini { flex: none; margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--q-line); }
+    .pipemini img { display: block; width: 100%; max-width: 260px; height: auto; }
+    .pts.micro.dense li { font-size: 10pt; line-height: 1.28; margin-bottom: 6px; }
+    .tv-3c { grid-template-columns: 30fr 37fr 29fr; gap: 24px; }
+    .reale { display: flex; flex-direction: column; justify-content: center; gap: 8px; min-height: 0; }
+    .reale .visual { flex: none; }
+    .reale .visual img { width: 100%; height: auto; border: 1px solid var(--q-line); border-radius: 4px; }
+    .reale .q { margin: 0; font-size: 10pt; line-height: 1.35; font-style: italic; color: var(--q-body); }
+    .reale .q::before { content: "\201C"; color: var(--q-burgundy); font-weight: 700; margin-right: 2px; }
+    .reale .src { margin: 0; font-size: 8.5pt; line-height: 1.35; color: var(--q-greydark); }
+    .under3.micro p { font-size: 10pt; line-height: 1.35; }
+    .under3.micro { gap: 22px; margin-top: 8px; }
+    .reveal p.srcline { margin: 6px 0 0; font-size: 8.5pt; line-height: 1.35; color: var(--q-greydark); }
   </style>
 </head>
 <body>
@@ -868,6 +898,487 @@
           <div class="nota">È la stessa lezione della slide 20, vista dal lato di chi progetta: se un compito si può scrivere come script, scrivilo una volta e mettilo nella skill. Il modello non deve reinventarlo a ogni sessione.</div>
         </div>
         <div class="footnote">28 / Sezione 3</div>
+      </section>
+
+      <!-- ══════════ SEZIONE 4 ══════════ -->
+      <section id="div-sec4" class="section-divider" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 04</p>
+        <h1>Context<br>management</h1>
+        <p>La finestra che cresce: il prefisso, la cache, il degrado, le tre tecniche, e ciò che sopravvive fra una sessione e l'altra.</p>
+        <div class="divmap"><img src="svg/minimap-sec4.svg" alt="Mini-mappa dell'harness: accesi context optimization, memory management e skill progressive disclosure"><span>sei qui · context management a runtime</span></div>
+      </section>
+
+      <section id="slide-29">
+        <p class="eyebrow">SEZIONE 4 · CONTEXT MANAGEMENT</p>
+        <h2>Costo fisso e costo a richiesta</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Il tool paga sempre</strong>una definizione sta nel prefisso e rientra a ogni giro, che il tool venga chiamato o no. Cinquanta tool: novemila token letti venti volte in una sessione da venti giri.</li>
+                <li><strong>La skill paga quando serve</strong>nel prefisso ci sono due righe per skill; il corpo entra una volta, solo per quella scelta, e da lì resta nella storia come un messaggio qualsiasi. Venti skill: ottocento token a giro, più trecento una tantum.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide29-costo-fisso-richiesta.svg" alt="Tabella-figura: cinquanta tool MCP nel prefisso costano circa novemila token a ogni giro, centottantamila in venti giri; venti skill con indice e un corpo costano circa ottocento a giro, diciannovemila in venti giri: dieci volte meno"></div>
+          </div>
+          <div class="nota">La cache abbatte il prezzo del prefisso, non la sua lunghezza: il modello lo rilegge comunque, e sceglie fra cinquanta nomi invece che fra venti descrizioni. È il conto della confusione decisionale della slide 13.</div>
+        </div>
+        <div class="footnote">29 / Sezione 4</div>
+        <aside class="notes">I numeri sono ordini di grandezza coerenti con la slide 13 (prefisso ~4.000) e la slide 25; vanno dichiarati come tali.</aside>
+      </section>
+
+      <section id="slide-30">
+        <p class="eyebrow">SEZIONE 4 · CONTEXT MANAGEMENT</p>
+        <h2>Quando conviene cosa</h2>
+        <div class="content">
+          <table class="tbl">
+            <thead><tr><th></th><th>Dove sta</th><th>Quando conviene</th><th>Che cosa costa</th></tr></thead>
+            <tbody>
+              <tr><td>Tool<small>nativo o MCP</small></td><td>nel prefisso, sempre</td><td>azioni brevi che il modello deve poter chiamare in qualsiasi momento: cercare, creare, inviare</td><td>una definizione a giro, letta o no</td></tr>
+              <tr><td>Skill</td><td>indice nel prefisso, corpo a richiesta</td><td>procedure lunghe che servono in pochi task: come si fa una cosa, con soglie e regole</td><td>due righe a giro; il corpo una volta</td></tr>
+              <tr><td>Script nella skill</td><td>nel sandbox, fuori dalla finestra</td><td>la parte meccanica di una procedura: chiamare un'API, aggregare, formattare</td><td>zero token per i passaggi intermedi</td></tr>
+            </tbody>
+          </table>
+          <ul class="pts tight" style="margin-top: 18px;">
+            <li><strong>La domanda da farsi</strong>"il modello deve poterlo chiamare in qualsiasi momento?" Se sì, è un tool. Se serve in un caso su cento ed è lungo da spiegare, è una skill. Se è meccanico e sempre uguale, è uno script.</li>
+            <li><strong>La terza via, per i tool</strong>quando i tool sono davvero tanti, alcune API permettono di caricarne le definizioni a richiesta: nel prefisso resta un tool di ricerca, e il modello cerca il tool che gli serve. È la progressive disclosure applicata ai tool.</li>
+          </ul>
+          <div class="nota">Nessuna di queste scelte è del modello: è chi progetta l'agente che decide che cosa sta nel prefisso e che cosa no. È la seconda leva di miglioramento, dopo il prompt: torna nella sezione 5.</div>
+        </div>
+        <div class="footnote">30 / Sezione 4</div>
+        <aside class="notes">Il punto 2 è il caricamento differito delle definizioni (nell'API di Anthropic: tool search con defer_loading; esempio ufficiale da 55.000 a 8.700 token).</aside>
+      </section>
+
+      <section id="slide-31">
+        <p class="eyebrow">SEZIONE 4 · DALL'INCONTRO 26</p>
+        <h2>La finestra a ogni giro: tre parti, tre velocità</h2>
+        <div class="content">
+          <div class="tv tv-30">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Il prefisso</strong>system prompt, tool, indice delle skill: identico a ogni giro. È la parte che si mette in cache.</li>
+                <li><strong>La storia</strong>domande, risposte, richieste di tool: cresce di qualche riga per turno. È la conversazione.</li>
+                <li><strong>I risultati dei tool</strong>ogni <code>tool_result</code> resta lì per tutta la sessione, e uno solo può pesare quanto tutta la storia. È la parte che cresce più in fretta, e quella su cui si interviene per prima.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide31-finestra-giri.svg" alt="Tre fotogrammi della finestra a strati al giro 1, 5 e 20, di altezza crescente: il prefisso resta uguale, la storia cresce poco, i risultati dei tool crescono molto, con un export mai ripulito nel terzo fotogramma"></div>
+          </div>
+          <div class="nota">Nel 26: "il modello rilegge tutta la pila da capo, a ogni chiamata". Ora la pila ha un nome per ogni strato, e un responsabile: l'harness decide che cosa ci resta dentro.</div>
+        </div>
+        <div class="footnote">31 / Sezione 4</div>
+        <aside class="notes">Ripresa della slide 42 del 26 (la pila che cresce), ridisegnata dall'alto per coerenza con la finestra a strati della sezione 2.</aside>
+      </section>
+
+      <section id="slide-32">
+        <p class="eyebrow">SEZIONE 4 · DALL'INCONTRO 26</p>
+        <h2>Il prefisso non si tocca: prefix caching</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>La stessa cache, vista dall'API</strong>nel 26: di ogni token già visto si salvano K e V, e non si rifà nulla. Il provider conserva quel calcolo fra una chiamata e l'altra: se le prime N migliaia di token sono identiche a prima, riparte da lì.</li>
+                <li><strong>Solo un prefisso esatto</strong>è un confronto byte per byte dall'inizio: cambia una virgola nel system prompt e tutto ciò che segue si ricalcola. Per questo il prefisso sta in cima e non si tocca mai.</li>
+                <li><strong>Sconto, non cancellazione</strong>i token in cache costano circa un decimo (sconto del 90%, e su alcuni modelli di più); la prima scrittura costa un po' più del normale, e conviene già dalla seconda chiamata. Ma sono ancora nella finestra: il modello li rilegge, e i cinquanta tool MCP inutilizzati pesano sulla scelta come prima.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide32-prefix-caching.svg" alt="A sinistra due chiamate consecutive con il prefisso identico: K e V sono in cache e si calcola solo la riga nuova. A destra la stessa coppia con una riga diversa nel system prompt: la cache sparisce e tutta la finestra si ricalcola"></div>
+          </div>
+          <div class="nota">Le curve del 26 avevano tre linee: teorica, in fattura, reale. La cache sposta quella in fattura verso quella reale, e vale solo se l'harness non tocca il prefisso.</div>
+        </div>
+        <div class="footnote">32 / Sezione 4</div>
+        <aside class="notes">Numeri esatti per l'API di Anthropic: lettura 0,1× (0,025× su Claude Fable 5.1), scrittura 1,25× a 5 minuti e 2× a un'ora; pareggio dalla seconda chiamata con la cache a 5 minuti.</aside>
+      </section>
+
+      <section id="slide-33">
+        <p class="eyebrow">SEZIONE 4 · CONTEXT MANAGEMENT</p>
+        <h2>Che cosa rompe la cache</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>L'ordine è fisso</strong>l'API rende la finestra sempre nello stesso ordine: prima i tool, poi il system prompt, poi i messaggi. Il confronto parte dall'inizio: ciò che sta in alto deve essere identico, ciò che cambia va in fondo.</li>
+                <li><strong>I checkpoint</strong>le bandierine <code>cache_control</code> della slide 10 dicono al provider "fin qui salva". Al massimo quattro per chiamata; la si mette in fondo alla parte condivisa, non in fondo a tutto, altrimenti si scrive una cache che nessuno rileggerà.</li>
+                <li><strong>I tre errori classici</strong>una data o un'ora nel system prompt (cambia a ogni chiamata); la lista dei tool in ordine diverso (per esempio perché un server MCP la restituisce così); un prefisso troppo corto per essere salvato (sotto le poche centinaia o migliaia di token, dipende dal modello).</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide33-cache-regole.svg" alt="La finestra a strati con una scala da stabile a cambia ogni volta, due bandierine cache_control dopo l'indice delle skill e dopo la penultima riga della storia, e tre vignette di errore: una data nel system prompt, la lista dei tool in ordine diverso, un prefisso troppo corto"></div>
+          </div>
+          <div class="nota">Come si verifica: la risposta dell'API riporta quanti token sono stati letti dalla cache. Se è zero per due chiamate identiche di fila, qualcosa nel prefisso cambia senza che nessuno se ne accorga. È il primo numero da guardare in produzione: torna nella sezione 5.</div>
+        </div>
+        <div class="footnote">33 / Sezione 4</div>
+      </section>
+
+      <section id="slide-34">
+        <p class="eyebrow">SEZIONE 4 · DALL'INCONTRO 26</p>
+        <h2>Non basta che ci stia: il context rot</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Il fatto, dal 26</strong>oltre una certa lunghezza il modello trova peggio ciò che gli serve, anche se c'è: il budget di attenzione si diluisce. E la soglia arriva molto prima del limite tecnico della finestra.</li>
+                <li><strong>Chi la riempie</strong>non la conversazione, che cresce piano: i risultati dei tool, a scalini. Nella slide 31, al giro 20, erano quattro quinti della finestra.</li>
+                <li><strong>Che cosa non risolve la cache</strong>lo sconto vale sul prezzo. Il modello legge tutto lo stesso, e il degrado dipende da quanto legge, non da quanto paga.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide36b-tool-context-rot.svg" alt="Due grafici del 26: la conversazione pura fa crescere il contesto lineare e piano, con i tool cresce a scalini e molto più in fretta"></div>
+          </div>
+          <div class="nota">Nel 26 le regole erano per chi usa un chatbot: nuova chat, non riempire. Qui le regole sono per l'harness, che deve decidere da solo che cosa togliere. Sono le prossime due slide.</div>
+        </div>
+        <div class="footnote">34 / Sezione 4</div>
+        <aside class="notes">La figura è l'SVG della slide 45 del 26, riusato tale e quale. Il grafico del context rot (slide 44 del 26) affiancato non reggeva lo spazio: resta come richiamo verbale nel primo punto, come previsto dalla spec.</aside>
+      </section>
+
+      <section id="slide-35">
+        <p class="eyebrow">SEZIONE 4 · CONTEXT MANAGEMENT</p>
+        <h2>Pruning e compaction: togliere e riassumere</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Pruning</strong>i risultati dei tool sono i primi a diventare inutili: ciò che contava, il modello l'ha già scritto nella propria risposta. L'harness sostituisce i più vecchi con una riga ("risultato rimosso: 9.000 token"), tenendo intatti gli ultimi. Alcuni harness, invece della riga, mettono un breve riassunto del risultato: costa una chiamata in più, serve quando il modello non l'aveva ancora sfruttato.</li>
+                <li><strong>Compaction</strong>quando anche la storia è lunga, l'harness chiede al modello di riassumere tutto ciò che è successo finora (decisioni prese, cose ancora aperte, file toccati) e sostituisce la storia con quel riassunto. La sessione continua da lì.</li>
+                <li><strong>Che cosa si perde</strong>il pruning perde dettagli che forse servivano; la compaction perde sfumature e a volte un vincolo detto a metà conversazione. Per questo si fa a soglie (a una certa frazione della finestra) e mai sul prefisso, che deve restare identico per la cache.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide35-pruning-compaction.svg" alt="Tre finestre a strati: prima, con tre risultati di tool di cui uno enorme; dopo il pruning, con i risultati vecchi ridotti a un segnaposto o a un riassunto breve; dopo la compaction, con la storia sostituita da un riassunto della sessione. Il prefisso è identico nelle tre; i token scendono da circa 49.000 a 14.000 a 6.000"></div>
+          </div>
+          <div class="nota small">Alcune API offrono entrambe come servizio: l'harness dichiara una strategia e il provider cancella o riassume prima di chiamare il modello. Il principio non cambia: qualcuno, fuori dal modello, decide che cosa il modello vedrà.</div>
+        </div>
+        <div class="footnote">35 / Sezione 4</div>
+        <aside class="notes">Nell'API di Anthropic esistono come servizio il context editing (cancella i risultati vecchi dei tool con un segnaposto, tenendo gli ultimi N) e la compaction server-side; Claude Code fa lo stesso in locale.</aside>
+      </section>
+
+      <section id="slide-36">
+        <p class="eyebrow">SEZIONE 4 · CONTEXT MANAGEMENT</p>
+        <h2>Offload su file: spostare, non perdere</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Il pattern</strong>un risultato grande, un documento letto, un piano di lavoro: l'harness (o il modello stesso, con bash) lo scrive su un file nel sandbox e in finestra lascia una riga: nome, dimensione, come cercarci dentro. È la slide 18, promossa a regola generale.</li>
+                <li><strong>Niente si perde</strong>a differenza di pruning e compaction, il contenuto esiste ancora: il modello lo riapre con <code>grep</code>, <code>head</code>, o rileggendolo per intero se serve. La finestra resta corta, l'informazione resta intera.</li>
+                <li><strong>Anche ciò che il modello produce</strong>non solo risultati in ingresso: appunti, decisioni, la lista di cose fatte e da fare. Un agente che lavora a lungo scrive per sé stesso, perché sa che la finestra non basterà.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide36-offload.svg" alt="A sinistra la finestra corta con tre righe puntatore; a destra i tre file nel sandbox con le dimensioni reali, e le frecce scrive e rilegge quando serve. In basso la linea del tempo con due sessioni: la finestra muore, i file attraversano il taglio"></div>
+          </div>
+          <div class="nota dark center">Un file scritto in questa sessione e letto nella prossima non è più contesto. È memoria.</div>
+        </div>
+        <div class="footnote">36 / Sezione 4</div>
+        <aside class="notes">Da dire a voce: il sandbox è effimero (slide 21); l'harness porta i file fuori dal sandbox, in uno spazio persistente suo, ed è a quello spazio che il tool di memoria (slide 38) accede.</aside>
+      </section>
+
+      <section id="slide-37">
+        <p class="eyebrow">SEZIONE 4 · CONTEXT MANAGEMENT</p>
+        <h2>La memoria: ciò che l'agente salva da solo</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Il confine</strong>Context management è tutto ciò che succede dentro una sessione. Memory è ciò che sopravvive fra una sessione e l'altra: la finestra muore, il sandbox muore, il modello non ricorda nulla (nel 26: stateless). Resta solo ciò che è stato scritto.</li>
+                <li><strong>Non le istruzioni</strong><code>AGENTS.md</code> e simili li scrive una persona e li porta l'harness, sempre (slide 9). La memoria è l'altra cosa: ciò che l'agente decide di annotare mentre lavora: un fatto sull'utente, una scelta presa e il perché, una cosa imparata a proprie spese, lo stato di un lavoro a metà, e le tracce delle sessioni passate.</li>
+                <li><strong>Quasi sempre un file</strong>file piccoli, nomi parlanti, una cartella che l'harness conosce, e <code>grep</code>. "Memoria" evoca embedding e ricerca semantica; nella pratica attuale è l'eccezione: un indice quando i file sono troppi, un tool di ricerca sulla memoria, non la memoria.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide37-memoria-agente.svg" alt="Tre sessioni sulla linea del tempo, ognuna con la propria finestra che nasce vuota e muore; sotto tutte, la cartella persistente memoria con note, scelte, stato del lavoro e sessioni passate. Le frecce scrive partono dal modello. In un angolo AGENTS.md, che non è memoria, e un database vettoriale sbiadito: un indice, quando i file sono troppi"></div>
+          </div>
+          <div class="nota">È lo stesso schema del sandbox: il modello non ha uno stato, l'harness glielo mette davanti. Il file è la forma più semplice di stato che sopravvive.</div>
+        </div>
+        <div class="footnote">37 / Sezione 4</div>
+      </section>
+
+      <section id="slide-38">
+        <p class="eyebrow">SEZIONE 4 · CONTEXT MANAGEMENT</p>
+        <h2>La memoria è un tool</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Dichiarata al giro zero, come gli altri</strong>nella lista dei tool c'è anche la memoria, con le operazioni che l'harness ha deciso di permettere: cercare, leggere, scrivere. Non per forza tutte: un agente può poter leggere senza poter scrivere.</li>
+                <li><strong>Il caso più comune: cercare nel passato</strong>un tool che cerca nelle conversazioni e nelle note delle sessioni precedenti e restituisce i passaggi che corrispondono. Dietro, molto spesso, è <code>grep</code> su una cartella di file: nomi parlanti, testo semplice, operatori Unix. Basta quasi sempre.</li>
+                <li><strong>Stesso contratto, stesso giro</strong>il modello chiede, l'harness esegue, il risultato rientra come <code>tool_result</code>. La memoria non "si accende": si legge quando serve, e pesa nella finestra come qualsiasi altro risultato.</li>
+              </ul>
+            </div>
+            <div class="col-text" style="gap: 8px;">
+              <div class="payload plain micro"><span class="k">name:</span>        <span class="em">memoria_cerca</span>
+<span class="k">description:</span> Cerca nelle note e nelle conversazioni delle sessioni
+             precedenti. Usalo quando l'utente si riferisce a qualcosa
+             di già discusso, o prima di rifare un lavoro già fatto.
+<span class="k">input_schema:</span>
+  query: string <span class="c">— parole o frase da cercare</span>
+
+<span class="k">name:</span>        <span class="em">memoria_scrivi</span>
+<span class="k">description:</span> Salva una nota breve da ritrovare nelle prossime sessioni.
+<span class="k">input_schema:</span>
+  testo: string</div>
+              <div class="payload micro">
+                <div class="row u"><span class="tg">[user]</span><span>Riprendiamo il report che stavamo preparando.</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>→ memoria_cerca("report")</span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>sessioni/2026-09-01.md: "report vendite settimana 35: totali fatti,<br>manca il confronto con SpedFast" · scratch/stato-lavoro.md: "report:<br>bozza in report_35.md"</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>Ripartiamo dal confronto con SpedFast: la bozza è in report_35.md.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="nota small">Ed è così che la memoria si può avvelenare: chi riesce a farci scrivere una riga (slide 19) la ritrova in ogni sessione futura. Il permesso di scrittura è la decisione più delicata di questa slide.</div>
+        </div>
+        <div class="footnote">38 / Sezione 4</div>
+      </section>
+
+      <section id="slide-39">
+        <p class="eyebrow">SEZIONE 4 · CONTEXT MANAGEMENT</p>
+        <h2>Le tre domande della memoria</h2>
+        <div class="content">
+          <div class="cols cols-3">
+            <div>
+              <p class="col-head">Che cosa vale la pena ricordare?</p>
+              <p class="yn si"><strong>Sì</strong>ciò che cambia il lavoro futuro: una preferenza dell'utente, una decisione presa e il suo perché, un errore fatto e come evitarlo, lo stato di un lavoro a metà.</p>
+              <p class="yn no"><strong>No</strong>ciò che è già altrove (nel codice, nei file di istruzioni, nella KB), ciò che vale solo per questa sessione, i risultati grezzi dei tool.</p>
+            </div>
+            <div>
+              <p class="col-head">Chi lo scrive?</p>
+              <p class="yn si"><strong>Sì</strong>l'agente, alla fine di un passaggio, con una nota breve e datata; oppure l'utente, quando dice "ricordati che…".</p>
+              <p class="yn no"><strong>No</strong>tutto in automatico, a ogni giro: la memoria diventa un log, e un log non è memoria.</p>
+            </div>
+            <div>
+              <p class="col-head">Chi lo legge, e quando?</p>
+              <p class="yn si"><strong>Sì</strong>il modello, quando cerca (slide 38); poche note stabili possono entrare al giro zero, ma sono l'eccezione.</p>
+              <p class="yn no"><strong>No</strong>tutto nel prefisso a ogni sessione: è il costo fisso della slide 29, applicato alla memoria.</p>
+            </div>
+          </div>
+          <div class="nota">Tre domande, e una quarta implicita: chi la ripulisce? Una memoria che nessuno pota si riempie di note vecchie, doppie, o false. È lo stesso problema di una base di conoscenza, ed è materia del prossimo incontro.</div>
+        </div>
+        <div class="footnote">39 / Sezione 4</div>
+      </section>
+
+      <!-- ══════════ SEZIONE 5 ══════════ -->
+      <section id="div-sec5" class="section-divider alt" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 05</p>
+        <h1>Observability:<br>osservare e migliorare</h1>
+        <p>Non si migliora ciò che non si legge. La traiettoria è il prodotto dell'agente: leggila a mano, classifica i fallimenti, automatizza solo dopo.</p>
+        <div class="divmap"><img src="svg/minimap-sec5.svg" alt="Mini-mappa dell'harness: accesa la fascia observability con tracing, logging, metrics ed eval"><span>sei qui · observability</span></div>
+      </section>
+
+      <section id="slide-40">
+        <p class="eyebrow">SEZIONE 5 · OBSERVABILITY</p>
+        <h2>Le leve di miglioramento</h2>
+        <div class="content">
+          <div class="tv tv-rev">
+            <div class="visual"><img src="svg/slide40-leve.svg" alt="Cinque leve disegnate come una scala dal basso: Prompt, Knowledge base, Tool, Harness, Modello, con costo e tempo che crescono salendo. Una graffa abbraccia i primi quattro gradini: restano tuoi quando cambi modello; il quinto cambia con il fornitore. In alto la formula in miniatura con i quattro termini corrispondenti accesi e LLM attenuato"></div>
+            <div class="col-text">
+              <ul class="pts">
+                <li><strong>Cinque leve, in ordine</strong>prompt, knowledge base, tool, harness, modello. Dal più economico al più costoso: cambiare una riga del system prompt costa minuti; cambiare modello costa una rivalidazione di tutto.</li>
+                <li><strong>La libertà di cambiare modello</strong>le prime quattro leve sono tue: system prompt, KB, tool e harness restano quando sotto cambi l'LLM. Chi ha investito lì cambia modello in un giorno; chi ha investito solo nel modello (fine-tuning, prompt cuciti su un comportamento) ricomincia.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="nota">Migliorare e restare liberi sono lo stesso lavoro: ogni fix messo in una leva alta è un fix che sopravvive al prossimo modello. Ma per sapere quale leva tirare, prima bisogna misurare: è il resto della sezione.</div>
+        </div>
+        <div class="footnote">40 / Sezione 5</div>
+        <aside class="notes">Apre la sezione con il menu delle leve; la slide 46 chiude il cerchio: tipicamente un cluster di fallimento è legato a una leva. La formula in miniatura nell'angolo: accesi Harness, System Prompt, Tools e KB (le quattro leve alte), LLM attenuato.</aside>
+      </section>
+
+      <section id="slide-41">
+        <p class="eyebrow">SEZIONE 5 · DALL'INCONTRO 26</p>
+        <h2>Tre livelli di successo, e la traiettoria</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Il task single shot</strong>una domanda, una risposta: è giusta? È il livello a cui si valutano i modelli, e il più facile da misurare.</li>
+                <li><strong>Il turno, end-to-end</strong>dentro un turno, N tool call: ha scelto i tool giusti, con i parametri giusti, nell'ordine giusto, e ha usato i risultati? Una risposta finale corretta può nascondere tre chiamate sbagliate e una fortunata.</li>
+                <li><strong>Il processo complessivo</strong>più turni, più sessioni, un obiettivo di business: il rimborso è stato gestito, il report è arrivato, il cliente non ha richiamato. È il livello che conta per chi paga, e il più lento da misurare.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide41-tre-livelli.svg" alt="Una sola traiettoria orizzontale con nodi pensiero, tool call, risultato e risposta, che attraversa tre turni e finisce nel traguardo rimborso gestito. Sopra, tre graffe a scale diverse: la piccola su una sola risposta, la media su un turno intero, la grande su tutto il processo. Una tool call del turno 2 è marcata con una croce: una chiamata sbagliata, e la risposta finale era giusta lo stesso"></div>
+          </div>
+          <div class="nota">Nel 26: la traiettoria è l'unità di valore del RL agentico. Oggi è l'unità di valutazione: la risposta è l'ultima riga di una traiettoria, e da sola non dice quasi niente.</div>
+        </div>
+        <div class="footnote">41 / Sezione 5</div>
+        <aside class="notes">Ripresa delle slide 38 (le traiettorie premiate) e 50 (il valore delle traiettorie) del 26: stessa traiettoria a nodi, riletta a tre livelli. Il punto è la croce a metà del turno 2: valutare solo l'ultima riga non l'avrebbe vista.</aside>
+      </section>
+
+      <section id="slide-42">
+        <p class="eyebrow">SEZIONE 5 · OBSERVABILITY</p>
+        <h2>Il rischio del vibe eval</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Non è stabile</strong>si provano dieci domande, oggi sembra meglio, domani peggio: senza un insieme fisso di casi non si sa se è cambiato l'agente o le domande.</li>
+                <li><strong>Tipicamente un campione distorto</strong>chi prova sceglie i casi che ha in mente, cioè quelli su cui l'agente è già stato messo a punto. I fallimenti veri stanno nei casi che nessuno ha pensato di provare.</li>
+                <li><strong>E il whack-a-mole</strong>si corregge il caso visto, e senza saperlo se ne rompe un altro: non c'è modo di accorgersene, perché non c'è nulla da rieseguire.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide42-vibe-eval.svg" alt="Due riquadri. A sinistra, vibe eval: lunedì la domanda A passa, martedì la domanda B fallisce e si corregge, mercoledì B passa ma A, riprovata, fallisce: il fix del martedì ha rotto il lunedì e nessuno lo sa; un punto interrogativo grande: è migliorato? A destra, eval: una griglia fissa di cento casi rieseguita tre volte, 72, 74 e 81 su 100, e una freccia che sale: è migliorato; dieci caselle evidenziate: i casi che nessuno avrebbe provato a mano"></div>
+          </div>
+          <div class="nota dark center">"Sembra che funzioni" non è una misura. Serve un insieme di casi fisso, un giudizio ripetibile, e qualcuno che guardi le tracce.</div>
+        </div>
+        <div class="footnote">42 / Sezione 5</div>
+        <aside class="notes">Fonte del termine e della critica: Hamel Husain, "Your AI Product Needs Evals" (caso Lucy/Rechat: "vibe checks" e correzione dei bug "resembling a game of whack-a-mole"). Le metriche generiche (helpfulness 1-5, hallucination score) fanno lo stesso danno: danno "a false sense of measurement and progress".</aside>
+      </section>
+
+      <section id="slide-43">
+        <p class="eyebrow">SEZIONE 5 · OBSERVABILITY</p>
+        <h2>Il processo, in un colpo d'occhio</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide43-processo-eval.svg" alt="Pipeline di sei tappe: chi giudica, il dataset di test, i cluster di fallimento, checker deterministici, il giudice, in produzione; ognuna con che cosa si fa, che cosa ne esce e la slide. Dall'ultima tappa una freccia di ritorno verso la terza: a ogni modifica si rigira tutto. Sopra, due fasce di ownership: l'esperto di dominio sulle tappe 1, 2, 3 e 5; il team di sviluppo dell'agente sulle tappe 4, 5, 6. Sotto, la fascia observability con i quattro sottoblocchi e le tappe che alimentano"></div>
+          <p class="caption small">Sei passi, in quest'ordine, e poi un ciclo. Nessun passo si salta: ognuno produce ciò che serve al successivo. Il primo non è tecnico: è decidere chi giudica.</p>
+          <div class="nota small">Due responsabilità, non una: l'esperto di dominio decide che cosa è giusto e costruisce i casi; il team dell'agente rende quel giudizio automatico e lo riesegue. Senza il primo si misura la cosa sbagliata; senza il secondo si misura una volta sola.</div>
+        </div>
+        <div class="footnote">43 / Sezione 5</div>
+        <aside class="notes">Slide-mappa della sezione: le slide 44-49 la richiamano in miniatura con la tappa corrente accesa. La sequenza dei passi è quella del brief (docs/incontro-27.md, "Come monitoro e miglioro"), che segue il processo di Hamel Husain: tracce e strumentazione, benevolent dictator, dataset anche sintetico e dimensionale, error analysis (open coding, axial coding), assertion prima, LLM-as-judge validato dopo, ciclo in produzione.</aside>
+      </section>
+
+      <section id="slide-44">
+        <p class="eyebrow">SEZIONE 5 · OBSERVABILITY</p>
+        <h2>Chi giudica: una persona sola, e le tracce a mano</h2>
+        <div class="content">
+          <div class="tv tv-3c">
+            <div class="col-text">
+              <ul class="pts micro dense">
+                <li><strong>Una persona sola</strong>nel caso il compito sia di dominio, l'esperto di quel dominio: decide lei che cosa è una risposta giusta. Non un comitato: un comitato non converge, e l'agente ha bisogno di un giudizio coerente. La persona può cambiare; il fatto che sia una no.</li>
+                <li><strong>Le tracce delle prime prove, lette a mano</strong>nelle prime fasi di test l'agente viene usato da utenti di prova; ogni sessione lascia una traccia. L'esperto le apre e le legge, giro per giro, e per ciascuna dice se è andata bene e perché. Non un dashboard: la traccia. È lì che si vede la tool call sbagliata dietro la risposta giusta. Uno strumento su misura per farlo (la traccia esplosa, un verdetto binario, un campo per le note) è il primo investimento da fare, ed è piccolo.</li>
+              </ul>
+              <div class="pipemini"><img src="svg/slide43-mini-1.svg" alt="La pipeline della slide 43 in miniatura: accesa la tappa 1, chi giudica"></div>
+            </div>
+            <div class="visual"><img src="svg/slide44-traccia-annotata.svg" alt="Una traccia di prova in verticale, con i tag di ruolo, per due turni. A margine destro, annotazioni a mano dell'esperto di dominio: parametro sbagliato, 4471 invece di 004471; 12.000 token per una riga; giusta, ma per caso. In fondo il verdetto FAIL con la motivazione"></div>
+            <div class="reale">
+              <p class="boxlab">esempio reale</p>
+              <div class="visual"><img src="svg/slide44-annotazione-ui.svg" alt="Schema dell'interfaccia di annotazione di Hamel Husain sul caso NurtureBoss: la lista di 315 messaggi con spunte, la traccia esplosa in card con la tool call, i bottoni Good e Bad e il campo Notes"></div>
+              <p class="q">Should have handed off to a human</p>
+              <p class="q">told user that it would check on bathrooms but didn't do it</p>
+              <p class="src">Un'interfaccia da pochi giorni di lavoro: la traccia, due bottoni, un campo note. "L'investimento più utile", secondo chi lo fa da anni. Ridisegno dello strumento di Hamel Husain per NurtureBoss (hamel.dev, <em>A Field Guide to Rapidly Improving AI Products</em>); le due note sono annotazioni reali.</p>
+            </div>
+          </div>
+          <div class="nota small">È il passo che tutti saltano perché sembra lento. È il più veloce: nelle prime trenta tracce si trovano già i cluster di fallimento della slide 46.</div>
+        </div>
+        <div class="footnote">44 / Sezione 5</div>
+        <aside class="notes">"Benevolent dictator": per la maggior parte delle organizzazioni un solo esperto di dominio che annota; più annotatori solo in organizzazioni grandi con domini distinti. Almeno 30 tracce a mano prima di farsi aiutare da un LLM, ~100 finché non emergono più failure mode nuovi (saturazione). Il tool custom: "the single most impactful investment", i team che ce l'hanno iterano ~10 volte più in fretta. Verdetto binario, non scala 1-5. L'interfaccia originale (nboss_annotate.png su hamel.dev) è qui ridisegnata in schema; se si vuole lo screenshot vero va scaricato in assets/images/uploads/ e sostituito. Fonti: docs/ricerche-27/research-eval-hamel.md e research-tracce-esempi.md.</aside>
+      </section>
+
+      <section id="slide-45">
+        <p class="eyebrow">SEZIONE 5 · OBSERVABILITY</p>
+        <h2>Il dataset di test: cento casi, per dimensioni</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro dense">
+                <li><strong>Circa cento casi</strong>abbastanza per vedere i cluster, pochi abbastanza da leggerli tutti a mano. Ogni caso: la richiesta dell'utente, il contesto che serve, e ciò che l'esperto considera un esito giusto.</li>
+                <li><strong>Anche sintetici, per dimensioni</strong>si elencano le dimensioni del compito (tipo di richiesta, stato dell'ordine, tono del cliente, canale) e si combinano. Con l'ispirazione delle tracce originali (slide 44) e con la competenza di dominio dell'esperto, si scrivono i casi sintetici: le dimensioni danno la copertura, le tracce vere danno il realismo. Vale in contesti semplici; in medicina o in legge un caso inventato è un caso falso.</li>
+                <li><strong>Insieme al design dell'agente</strong>i casi si scrivono quando si decide che cosa l'agente deve fare, non quando è finito: definire l'esito giusto è già progettare. Un dataset scritto dopo misura ciò che l'agente fa, non ciò che dovrebbe fare.</li>
+              </ul>
+              <div class="pipemini"><img src="svg/slide43-mini-2.svg" alt="La pipeline della slide 43 in miniatura: accesa la tappa 2, il dataset di test"></div>
+            </div>
+            <div class="visual"><img src="svg/slide45-dataset-dimensioni.svg" alt="A sinistra una griglia di tre dimensioni, tipo di richiesta, stato dell'ordine, tono del cliente, con in ingresso le tracce di prova che ispirano i casi. Da una cella per riga tre linee convergono nella scheda del caso 037: rimborso, ordine smarrito, cliente arrabbiato, con la richiesta e, a parte, l'esito giusto secondo l'esperto. A destra la pila dei cento casi, leggibili tutti a mano. Sotto: 4 per 4 per 3 uguale 48 combinazioni, si scelgono le circa 100 che contano"></div>
+          </div>
+          <div class="nota">Il dataset è dell'esperto di dominio: è la sua definizione di "giusto", scritta in cento esempi. Il team dell'agente lo esegue.</div>
+        </div>
+        <div class="footnote">45 / Sezione 5</div>
+        <aside class="notes">Metodo del sintetico "dimensionale" (Husain): si definiscono le dimensioni (features, scenari, persone), si scrivono ~20 tuple a mano, poi si fa generare all'LLM le tuple strutturate e solo dopo le si converte in linguaggio naturale. Il sintetico non stima le frequenze dei fallimenti reali: va validato contro dati veri appena esistono.</aside>
+      </section>
+
+      <section id="slide-46">
+        <p class="eyebrow">SEZIONE 5 · OBSERVABILITY</p>
+        <h2>Clusterizzare i fallimenti, e risalire alla leva</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts micro dense">
+                <li><strong>Si raggruppano per tipo</strong>si rileggono i casi falliti e si dà un nome a ciò che è andato storto: "parametro sbagliato", "promette il rimborso", "non trova il documento". Già al primo giro i cluster evidenti ci sono; si continua finché non emergono categorie nuove.</li>
+                <li><strong>Tipicamente un cluster è legato a una leva</strong>un cluster di regole ignorate punta al prompt; uno di fatti sbagliati alla KB; uno di chiamate errate al tool; uno di vincoli persi a metà sessione all'harness. Ciò che resta dopo tutto questo punta al modello.</li>
+                <li><strong>I frequenti sono spesso i facili</strong>le categorie più numerose, molte volte, si correggono specificando meglio una riga nel system prompt o nella descrizione di un tool. Si parte da lì: il guadagno maggiore al costo minore. Nell'esempio reale in figura: il cluster "rescheduling", corretto nel prompt, dal 33% al 95%.</li>
+              </ul>
+              <div class="pipemini"><img src="svg/slide43-mini-3.svg" alt="La pipeline della slide 43 in miniatura: accesa la tappa 3, i cluster di fallimento"></div>
+            </div>
+            <div class="visual"><img src="svg/slide46-cluster-leve.svg" alt="A sinistra i fallimenti sparsi con etichette brevi; al centro, si raggruppano, gli stessi punti in cinque gruppi con nome e conteggio: regola ignorata 11, parametro sbagliato 7, fatto mancante 5, vincolo perso 3, altro 2; a destra la scala delle cinque leve e da ogni cluster una freccia verso una leva, con regola ignorata verso Prompt in evidenza: il più frequente, e il più facile. In basso il riquadro esempio reale: la tabella di error analysis di NurtureBoss, conversation-flow 110, handoff 70, rescheduling 60"></div>
+          </div>
+          <div class="nota small">È il passo che trasforma "non funziona" in una lista di cose da fare, ordinata. Ed è quello che va rifatto ogni volta che il dataset cresce (slide 49). "Una pivot di Excel è uno strumento semplice, ma funziona." (Hamel Husain)</div>
+        </div>
+        <div class="footnote">46 / Sezione 5</div>
+        <aside class="notes">Nel metodo di Husain: open coding (note libere su ogni traccia) e poi axial coding (le note raggruppate in una tassonomia dei failure mode, contati): "the most important step". Esempio NurtureBoss (Field Guide): ogni riga una conversazione, note aperte sui comportamenti indesiderati, tassonomia costruita con un LLM, conteggio in una pivot Excel: conversation-flow 110, handoff 70, rescheduling 60, oltre il 60% dei problemi; il fix sulle date ha portato quel cluster dal 33% al 95%. Fonte: docs/ricerche-27/research-tracce-esempi.md.</aside>
+      </section>
+
+      <section id="slide-47">
+        <p class="eyebrow">SEZIONE 5 · OBSERVABILITY</p>
+        <h2>Checker deterministici, poi il giudice</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts micro dense">
+                <li><strong>Prima i checker</strong>il prima possibile, per ogni cluster che lo permette, un pezzo di codice che dice pass o fail: la tool call ha il parametro a sei cifre? La risposta contiene la parola "rimborso"? Il ticket è stato aperto? Deterministico, gratis, ripetibile. Anche scritto con l'aiuto dell'AI.</li>
+                <li><strong>Poi il giudice</strong>per ciò che un checker non può vedere (il tono, la pertinenza, "ha risposto alla domanda vera?") si costruisce un LLM-as-a-judge: un modello con un prompt che dà pass o fail su una traccia.</li>
+                <li><strong>Validato, non creduto</strong>il giudice si valida statisticamente: si prendono le tracce già giudicate dall'esperto, si confrontano con i suoi verdetti, e si misura quanto concorda. Se non concorda abbastanza, si corregge il prompt del giudice, non si abbassa l'asticella.</li>
+              </ul>
+              <div class="pipemini"><img src="svg/slide43-mini-45.svg" alt="La pipeline della slide 43 in miniatura: accese le tappe 4 e 5, checker e giudice"></div>
+            </div>
+            <div class="visual"><img src="svg/slide47-checker-giudice.svg" alt="La traccia di un caso entra da sinistra e si biforca in due vie in sequenza. Via 1, checker deterministico: tre assert e un verdetto pass o fail, gratis, ripetibile, esatto. Via 2, LLM-as-a-judge: un modello giudice con un prompt abbreviato e un verdetto pass o fail: copre ciò che il codice non vede. Sotto, il riquadro di validazione: i verdetti dell'esperto e quelli del giudice sulle stesse venti tracce, tre righe discordi in evidenza, concordanza 17 su 20, e la freccia di ritorno: se non basta, si corregge il giudice"></div>
+          </div>
+          <div class="nota small">L'ordine conta: un giudice costa una chiamata per caso ed è meno affidabile di un <code>if</code>. Si usa solo dove l'<code>if</code> non arriva. Ed è il punto in cui i due ruoli si incontrano: il team scrive il giudice, l'esperto lo valida.</div>
+        </div>
+        <div class="footnote">47 / Sezione 5</div>
+        <aside class="notes">Dettagli della validazione, fuori slide: un giudice per failure mode, con esempi few-shot presi dalle critiche dell'esperto; si misurano separatamente il tasso di veri positivi e di veri negativi, perché l'accordo grezzo inganna quando le classi sono sbilanciate; ~100 esempi etichettati per failure mode; si itera sul prompt del giudice finché l'accordo supera il 90% (Husain arriva sopra il 90% in tre iterazioni sul caso Honeycomb). Nella CI: assertion deterministiche prima dei giudici LLM, che costano. Fonte: docs/ricerche-27/research-eval-hamel.md.</aside>
+      </section>
+
+      <section id="slide-48">
+        <p class="eyebrow">SEZIONE 5 · OBSERVABILITY</p>
+        <h2>Gli errori nei tool deterministici e nei tool non deterministici</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Tool deterministici</strong>un'API applicativa fa sempre la stessa cosa: se fallisce, il modello l'ha chiamata male o non ha capito a che cosa serve. Il fix è nella descrizione o nello schema del tool (la leva Tool), e il checker lo verifica.</li>
+                <li><strong>Tool che sono a loro volta AI</strong>l'esempio classico è la RAG: una ricerca che restituisce documenti, e una sintesi. Un fallimento si scompone in due domande diverse: il retrieval ha trovato i documenti giusti, e li ha messi in cima? E la sintesi li ha usati bene? Si misurano separatamente, perché si correggono in posti diversi.</li>
+              </ul>
+              <div class="pipemini"><img src="svg/slide43-mini-3.svg" alt="La pipeline della slide 43 in miniatura: accesa la tappa 3, i cluster di fallimento: questa slide è un approfondimento dei cluster"></div>
+            </div>
+            <div class="visual"><img src="svg/slide48-errori-tool.svg" alt="Due riquadri. Tool deterministico, cerca_ordine: chiamata in ingresso, risultato sempre lo stesso; due modi di fallire, parametri sbagliati e tool scelto male, con la freccia verso la leva Tool: lo verifica un checker. Tool non deterministico, cerca_documenti, una RAG: due stadi in fila, retrieval e ranking poi sintesi, ognuno con la propria domanda di valutazione e il proprio strumento, e due frecce verso due leve diverse: KB per il retrieval, Prompt per la sintesi"></div>
+          </div>
+          <div class="nota">Separare i due tipi serve a non correggere nel posto sbagliato: un retrieval che sbaglia non si aggiusta nel prompt della sintesi.</div>
+        </div>
+        <div class="footnote">48 / Sezione 5</div>
+        <aside class="notes">Approfondimento della tappa 3 (i cluster): i fallimenti sui tool si separano per natura del tool. Per la RAG, il retrieval si misura con un checker (i documenti attesi sono in cima?), la sintesi con il giudice della slide 47. Il 28 riprende la KB dal lato della conoscenza.</aside>
+      </section>
+
+      <section id="slide-49">
+        <p class="eyebrow">SEZIONE 5 · OBSERVABILITY</p>
+        <h2>In produzione: il ciclo che non finisce</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Le tracce arrivano da sole</strong>in produzione ogni sessione lascia una traccia. Se ne campionano circa cento al mese e si rileggono a mano, con l'esperto: come nella slide 44, ma per sempre.</li>
+                <li><strong>Il dataset cresce</strong>i fallimenti nuovi diventano casi nuovi; i cluster si aggiornano, e con loro i checker e il giudice. Il processo delle slide 44-47 si ripete, incrementale.</li>
+                <li><strong>A ogni modifica, si rigira tutto</strong>un prompt cambiato, un modello nuovo, un tool aggiunto: la catena si riesegue per intero, per trovare le regressioni e per sapere se un fix ha funzionato davvero. Senza, si torna al vibe eval della slide 42.</li>
+              </ul>
+              <div class="pipemini"><img src="svg/slide43-mini-6.svg" alt="La pipeline della slide 43 in miniatura: accesa la tappa 6, in produzione, con la freccia di ritorno verso la tappa 3 in evidenza"></div>
+            </div>
+            <div class="visual"><img src="svg/slide49-ciclo-produzione.svg" alt="Un anello con quattro tappe in senso orario: tracce di produzione, circa cento al mese lette a mano con l'esperto, dataset e cluster aggiornati, checker e giudice rieseguiti. Tre tacche esterne, modifica al prompt, cambio di modello, tool nuovo, entrano nella tappa rieseguiti: ogni modifica rigira la catena. In uscita, regressioni trovate e fix confermati. Al centro un calendario, ogni mese, e una persona, un responsabile"></div>
+          </div>
+          <div class="nota">Non è un progetto: è un'attività che ha un costo fisso mensile e un responsabile nel team dell'agente. Un agente senza questo ciclo peggiora in silenzio, perché il mondo intorno cambia e nessuno lo misura.</div>
+        </div>
+        <div class="footnote">49 / Sezione 5</div>
+        <aside class="notes">Il numero da guardare per primo in produzione, promesso nella slide 33: i token letti dalla cache; se è zero per due chiamate identiche, qualcosa nel prefisso cambia senza che nessuno se ne accorga. È la fascia Metrics della mappa, che alimenta questa tappa.</aside>
+      </section>
+
+      <section id="slide-50">
+        <p class="eyebrow">SEZIONE 5 · OBSERVABILITY</p>
+        <h2>Tre usi del logging</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <ul class="pts micro dense">
+                <li><strong>Debug</strong>"perché ha fatto quella chiamata?" La risposta sta nella finestra che il modello aveva davanti a quel giro: la traccia la conserva. Senza, si tira a indovinare.</li>
+                <li><strong>Eval</strong>si confrontano traiettorie, non output: due versioni dell'agente sullo stesso caso, giro per giro. Una risposta finale identica può venire da due percorsi molto diversi, uno dei quali fragile.</li>
+                <li><strong>Training set per un RL privato</strong>nel 26: il modello impara a volere i tool dalle traiettorie premiate. Le tracce di produzione, con il verdetto dell'esperto o del checker, sono esattamente quel materiale: i task veri, con un modo per dire se sono riusciti. È l'ultima leva, e le tracce ne sono la materia prima. Un esempio pubblico: ottantamila traiettorie di un agente di coding, ognuna con l'esito dei test; e nel reinforcement fine-tuning il reward è la somma pesata di un checker e di un giudice. Le stesse due cose della slide 47.</li>
+              </ul>
+              <p class="srcline">Fonti: dataset nebius/SWE-agent-trajectories (Hugging Face, CC-BY-4.0); OpenAI, guida al reinforcement fine-tuning.</p>
+            </div>
+            <div class="visual"><img src="svg/slide50-traccia-tre-usi.svg" alt="A sinistra la traccia completa di una sessione, annotata giro per giro, con in fondo il verdetto PASS. A destra, tre lettori. Debug: una lente sul giro 3 e il fumetto sul perché di quella chiamata. Eval: due copie sottili della stessa traccia, versione A e versione B, con la lente sul punto in cui divergono: stessa risposta, percorsi diversi. Training: una traiettoria reale dal dataset pubblico nebius SWE-agent-trajectories con reward 1, il contro-esempio con reward 0, il grader con reward uguale 0,5 checker più 0,5 giudice, e la freccia verso il modello: le traiettorie di oggi sono i dati di domani"></div>
+          </div>
+          <div class="nota small">Ed è il motivo per cui la traiettoria è l'artefatto primario dell'agente, non la risposta: la risposta serve all'utente una volta; la traiettoria serve a chi lo costruisce, per sempre.</div>
+        </div>
+        <div class="footnote">50 / Sezione 5</div>
+        <aside class="notes">Chiude la sezione e il cerchio con il 26 (slide 38 e 50). Layout: i tre usi sono tre paragrafi a sinistra invece che tre colonne sotto la figura, perché la figura a tutta larghezza si riduceva a un terzo. A settembre 2026 le tracce di produzione si usano come insieme di task con verificatore (RFT e simili: OpenAI reinforcement fine-tuning con grader, Amazon Bedrock RFT, CoreWeave Serverless RL), non come traiettorie da imitare grezze; serve un grader, e il rischio è il reward hacking (Mako: sette tipi di hack scoperti sui kernel). La riga reale: nebius/SWE-agent-trajectories, instance Melevir__cognitive_complexity-15, 43 turni, 20 test passati, target true; il contro-esempio AnalogJ__lexicon-336, 93 turni, target false. Il grader "multi" di OpenAI: 0.5 · string_check + 0.5 · score_model. Fonti in docs/ricerche-27/research-tracce-esempi.md e research-eval-hamel.md.</aside>
       </section>
 
     </div>

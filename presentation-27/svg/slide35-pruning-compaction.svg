@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 450" width="700" height="450" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Tre finestre a strati affiancate: prima, con la storia e quattro risultati di tool di cui un export enorme da novemila token; dopo il pruning, con i risultati vecchi ridotti a un segnaposto o a un riassunto di tre righe e l'ultimo intatto; dopo la compaction, con la storia sostituita da un riassunto della sessione e solo gli ultimi due messaggi. Il prefisso è identico nelle tre e non si tocca. Token: circa 49.000, 14.000, 6.000</title>
+
+  <!-- ===== prima ===== -->
+  <g id="prima">
+    <text x="12" y="24" font-size="12" font-weight="700" letter-spacing="1.4" fill="#838383">PRIMA</text>
+    <rect x="12" y="34" width="200" height="386" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="18" y="40" width="188" height="52" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="26" y="62" font-size="10.5" font-weight="700" fill="#0e7c6a">prefisso</text>
+    <text x="26" y="78" font-size="9.5" fill="#0e7c6a">non si tocca</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">
+      <text x="26" y="110">[user] Dov'è il 4471?</text>
+      <text x="26" y="124">[assistant] → cerca_ordine</text>
+    </g>
+    <rect x="18" y="130" width="188" height="24" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="26" y="146" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#212529">[tool] {stato: …}</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">
+      <text x="26" y="170">[user] E agosto?</text>
+      <text x="26" y="184">[assistant] → esporta_ordini</text>
+    </g>
+    <rect x="18" y="190" width="188" height="120" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="26" y="206" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#212529">[tool] export,</text>
+    <text x="112" y="258" text-anchor="middle" font-size="11" font-weight="700" fill="#0e7c6a">9.000 token</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">
+      <text x="26" y="326">[assistant] → conta_ritardi</text>
+    </g>
+    <rect x="18" y="332" width="188" height="30" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="26" y="350" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#212529">[tool] 187 ritardi …</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">
+      <text x="26" y="378">[user] Per corriere?</text>
+      <text x="26" y="392">[assistant] → per_corriere</text>
+    </g>
+    <rect x="18" y="398" width="188" height="16" rx="3" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+    <text x="26" y="410" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#212529">[tool] SpedFast 121 …</text>
+    <text x="112" y="440" text-anchor="middle" font-size="13" font-weight="700" fill="#161719">~49.000</text>
+  </g>
+
+  <!-- ===== dopo il pruning ===== -->
+  <g id="pruning">
+    <text x="250" y="24" font-size="12" font-weight="700" letter-spacing="1.4" fill="#a1245a">DOPO IL PRUNING</text>
+    <rect x="250" y="34" width="200" height="248" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="256" y="40" width="188" height="52" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="264" y="62" font-size="10.5" font-weight="700" fill="#0e7c6a">prefisso</text>
+    <text x="264" y="78" font-size="9.5" fill="#0e7c6a">non si tocca</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">
+      <text x="264" y="110">[user] Dov'è il 4471?</text>
+      <text x="264" y="124">[assistant] → cerca_ordine</text>
+    </g>
+    <rect x="256" y="130" width="188" height="12" rx="2" fill="#e9ecef"/>
+    <text x="264" y="139" font-size="8.5" fill="#838383">risultato rimosso · 40 token</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">
+      <text x="264" y="158">[user] E agosto?</text>
+      <text x="264" y="172">[assistant] → esporta_ordini</text>
+    </g>
+    <rect x="256" y="178" width="188" height="12" rx="2" fill="#e9ecef"/>
+    <text x="264" y="187" font-size="8.5" fill="#838383">risultato rimosso · 9.000 token</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">
+      <text x="264" y="206">[assistant] → conta_ritardi</text>
+    </g>
+    <rect x="256" y="212" width="188" height="30" rx="3" fill="#f6f6f6" stroke="#1ab197" stroke-dasharray="3 2"/>
+    <text x="264" y="224" font-size="8.5" font-weight="600" fill="#0e7c6a">riassunto: 3 righe</text>
+    <text x="264" y="236" font-size="8.5" fill="#838383">187 ritardi su 12.480 in agosto</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">
+      <text x="264" y="256">[assistant] → per_corriere</text>
+    </g>
+    <rect x="256" y="260" width="188" height="16" rx="3" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+    <text x="264" y="272" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#212529">[tool] SpedFast 121 …</text>
+    <g font-size="9.5" font-weight="600" fill="#a1245a">
+      <text x="350" y="304" text-anchor="middle">le richieste restano;</text>
+      <text x="350" y="316" text-anchor="middle">i contenuti vecchi diventano</text>
+      <text x="350" y="328" text-anchor="middle">un segnaposto, o un riassunto</text>
+    </g>
+    <text x="350" y="440" text-anchor="middle" font-size="13" font-weight="700" fill="#161719">~14.000</text>
+  </g>
+
+  <!-- ===== dopo la compaction ===== -->
+  <g id="compaction">
+    <text x="488" y="24" font-size="12" font-weight="700" letter-spacing="1.4" fill="#a1245a">DOPO LA COMPACTION</text>
+    <rect x="488" y="34" width="200" height="190" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="494" y="40" width="188" height="52" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="502" y="62" font-size="10.5" font-weight="700" fill="#0e7c6a">prefisso</text>
+    <text x="502" y="78" font-size="9.5" fill="#0e7c6a">non si tocca</text>
+    <rect x="494" y="98" width="188" height="66" rx="3" fill="#f6f6f6" stroke="#161719"/>
+    <text x="502" y="112" font-size="9.5" font-weight="700" fill="#161719">riassunto della sessione</text>
+    <g font-size="9" fill="#212529">
+      <text x="502" y="127">deciso: ordine 4471 in consegna</text>
+      <text x="502" y="140">aperto: i ritardi per corriere</text>
+      <text x="502" y="153">file toccati: ordini_08.json</text>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">
+      <text x="502" y="184">[assistant] → per_corriere</text>
+    </g>
+    <rect x="494" y="190" width="188" height="16" rx="3" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+    <text x="502" y="202" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#212529">[tool] SpedFast 121 …</text>
+    <g font-size="9.5" font-weight="600" fill="#a1245a">
+      <text x="588" y="246" text-anchor="middle">la storia diventa</text>
+      <text x="588" y="258" text-anchor="middle">un riassunto</text>
+    </g>
+    <text x="588" y="440" text-anchor="middle" font-size="13" font-weight="700" fill="#161719">~6.000</text>
+  </g>
+
+  <!-- il prefisso, identico -->
+  <g stroke="#1ab197" stroke-width="1" stroke-dasharray="3 3">
+    <line x1="212" y1="66" x2="250" y2="66"/>
+    <line x1="450" y1="66" x2="488" y2="66"/>
+  </g>
+</svg>

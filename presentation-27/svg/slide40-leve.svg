@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 410" width="640" height="410" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Cinque leve di miglioramento disegnate come una scala dal basso verso l'alto: Prompt, Knowledge base, Tool, Harness, Modello; accanto a ogni gradino costo e tempo crescenti. Una graffa abbraccia i primi quattro: restano tuoi quando cambi modello; il quinto cambia con il fornitore. In alto la formula con i quattro termini corrispondenti accesi</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+  </defs>
+
+  <!-- ===== formula in miniatura ===== -->
+  <text x="12" y="24" font-size="11" font-weight="600" fill="#838383">Agent =
+    <tspan fill="#c9c9c9">LLM</tspan> + <tspan fill="#0e7c6a" font-weight="700">Harness</tspan> + <tspan fill="#0e7c6a" font-weight="700">System Prompt</tspan> + <tspan fill="#0e7c6a" font-weight="700">Tools</tspan> + <tspan fill="#0e7c6a" font-weight="700">KB</tspan> + <tspan fill="#161719">Skills</tspan></text>
+  <text x="12" y="40" font-size="9" fill="#838383">accesi: le quattro leve che restano tue</text>
+
+  <!-- ===== i gradini ===== -->
+  <!-- 5 Modello -->
+  <rect x="270" y="92" width="250" height="56" rx="5" fill="#f6f6f6" stroke="#838383" stroke-width="1.2" stroke-dasharray="5 3"/>
+  <text x="282" y="112" font-size="12" font-weight="700" fill="#161719">5 · Modello</text>
+  <text x="282" y="128" font-size="9.5" font-style="italic" fill="#6c757d">cambiarlo, o addestrarlo</text>
+  <text x="282" y="140" font-size="9.5" font-style="italic" fill="#6c757d">sulle tue traiettorie</text>
+  <!-- 4 Harness -->
+  <rect x="240" y="154" width="250" height="56" rx="5" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+  <text x="252" y="174" font-size="12" font-weight="700" fill="#0e7c6a">4 · Harness</text>
+  <text x="252" y="190" font-size="9.5" font-style="italic" fill="#212529">una soglia di pruning, una regola</text>
+  <text x="252" y="202" font-size="9.5" font-style="italic" fill="#212529">di memoria, un subagente</text>
+  <!-- 3 Tool -->
+  <rect x="210" y="216" width="250" height="56" rx="5" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+  <text x="222" y="236" font-size="12" font-weight="700" fill="#0e7c6a">3 · Tool</text>
+  <text x="222" y="252" font-size="9.5" font-style="italic" fill="#212529">uno schema più chiaro, un adattatore che</text>
+  <text x="222" y="264" font-size="9.5" font-style="italic" fill="#212529">restituisce meno, un errore scritto meglio</text>
+  <!-- 2 Knowledge base -->
+  <rect x="180" y="278" width="250" height="56" rx="5" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+  <text x="192" y="298" font-size="12" font-weight="700" fill="#0e7c6a">2 · Knowledge base</text>
+  <text x="192" y="314" font-size="9.5" font-style="italic" fill="#212529">un documento in più, un documento</text>
+  <text x="192" y="326" font-size="9.5" font-style="italic" fill="#212529">corretto, un indice migliore</text>
+  <!-- 1 Prompt -->
+  <rect x="150" y="340" width="250" height="56" rx="5" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+  <text x="162" y="360" font-size="12" font-weight="700" fill="#0e7c6a">1 · Prompt</text>
+  <text x="162" y="376" font-size="9.5" font-style="italic" fill="#212529">una riga nel system prompt, una descrizione</text>
+  <text x="162" y="388" font-size="9.5" font-style="italic" fill="#212529">di tool, il corpo di una skill</text>
+
+  <!-- ===== costo e tempo ===== -->
+  <g fill="#a1245a">
+    <rect x="410" y="356" width="8" height="10"/><rect x="410" y="372" width="8" height="10"/>
+    <rect x="440" y="294" width="8" height="10"/><rect x="450" y="294" width="8" height="10"/>
+    <rect x="440" y="310" width="8" height="10"/><rect x="450" y="310" width="8" height="10"/>
+    <rect x="470" y="232" width="8" height="10"/><rect x="480" y="232" width="8" height="10"/><rect x="490" y="232" width="8" height="10"/>
+    <rect x="470" y="248" width="8" height="10"/><rect x="480" y="248" width="8" height="10"/><rect x="490" y="248" width="8" height="10"/>
+    <rect x="500" y="170" width="8" height="10"/><rect x="510" y="170" width="8" height="10"/><rect x="520" y="170" width="8" height="10"/><rect x="530" y="170" width="8" height="10"/>
+    <rect x="500" y="186" width="8" height="10"/><rect x="510" y="186" width="8" height="10"/><rect x="520" y="186" width="8" height="10"/><rect x="530" y="186" width="8" height="10"/>
+    <rect x="530" y="108" width="8" height="10"/><rect x="540" y="108" width="8" height="10"/><rect x="550" y="108" width="8" height="10"/><rect x="560" y="108" width="8" height="10"/><rect x="570" y="108" width="8" height="10"/>
+    <rect x="530" y="124" width="8" height="10"/><rect x="540" y="124" width="8" height="10"/><rect x="550" y="124" width="8" height="10"/><rect x="560" y="124" width="8" height="10"/><rect x="570" y="124" width="8" height="10"/>
+  </g>
+  <g font-size="8" fill="#838383">
+    <text x="420" y="365">costo</text><text x="420" y="381">tempo</text>
+    <text x="462" y="303">costo</text><text x="462" y="319">tempo</text>
+    <text x="502" y="241">costo</text><text x="502" y="257">tempo</text>
+    <text x="542" y="179">costo</text><text x="542" y="195">tempo</text>
+    <text x="582" y="117">costo</text><text x="582" y="133">tempo</text>
+  </g>
+  <line x1="612" y1="396" x2="612" y2="160" stroke="#838383" stroke-width="1" marker-end="url(#a)"/>
+  <text x="622" y="278" transform="rotate(-90 622 278)" text-anchor="middle" font-size="9" fill="#838383">dal più economico al più costoso</text>
+
+  <!-- ===== la graffa: resta tuo ===== -->
+  <path d="M140 396 h-8 v-113 l-6 -4 l6 -4 v-113 h8" fill="none" stroke="#0e7c6a" stroke-width="1.8"/>
+  <text x="118" y="275" transform="rotate(-90 118 275)" text-anchor="middle" font-size="11" font-weight="700" fill="#0e7c6a">resta tuo quando cambi modello</text>
+  <text x="90" y="275" transform="rotate(-90 90 275)" text-anchor="middle" font-size="9" fill="#0e7c6a">system prompt, KB, tool, harness</text>
+
+  <!-- modello: fuori dalla graffa -->
+  <text x="262" y="114" text-anchor="end" font-size="10" font-weight="600" fill="#838383">cambia con il fornitore</text>
+  <text x="262" y="128" text-anchor="end" font-size="9" fill="#838383">fuori dalla graffa</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 210" width="330" height="210" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Schema dell'interfaccia di annotazione di Hamel Husain sul caso NurtureBoss: a sinistra la lista di 315 messaggi con spunte, al centro la traccia esplosa in card con la tool call, a destra i bottoni Good e Bad e il campo Notes</title>
+  <rect x="1" y="1" width="328" height="208" rx="5" fill="#ffffff" stroke="#838383"/>
+  <rect x="1" y="1" width="328" height="18" rx="5" fill="#f6f6f6"/>
+  <text x="10" y="13" font-size="8.5" font-weight="700" fill="#161719">LLM Grader</text>
+  <text x="80" y="13" font-size="7.5" fill="#838383">Home · Runs · Annotation Queues</text>
+  <!-- lista -->
+  <rect x="6" y="26" width="90" height="178" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="11" y="38" font-size="7.5" font-weight="700" fill="#161719">All Text Messages</text>
+  <text x="11" y="48" font-size="7.5" fill="#838383">315</text>
+  <g font-size="7" fill="#6c757d">
+    <rect x="11" y="56" width="80" height="12" fill="#ffffff"/><text x="14" y="65">thread 7a2 · 2/5</text><text x="82" y="65" fill="#0e7c6a" font-weight="700">✓</text>
+    <rect x="11" y="71" width="80" height="12" fill="#ffffff"/><text x="14" y="80">thread 7a3 · 2/5</text><text x="82" y="80" fill="#a1245a" font-weight="700">✗</text>
+    <rect x="11" y="86" width="80" height="12" fill="#ffffff" stroke="#a1245a"/><text x="14" y="95">thread 7a4 · 2/5</text><text x="82" y="95" fill="#a1245a" font-weight="700">✗</text>
+    <rect x="11" y="101" width="80" height="12" fill="#ffffff"/><text x="14" y="110">thread 7a5 · 2/6</text><text x="82" y="110" fill="#0e7c6a" font-weight="700">✓</text>
+    <rect x="11" y="116" width="80" height="12" fill="#ffffff"/><text x="14" y="125">thread 7a6 · 2/6</text>
+    <rect x="11" y="131" width="80" height="12" fill="#ffffff"/><text x="14" y="140">⋯</text>
+  </g>
+  <rect x="11" y="186" width="80" height="12" rx="2" fill="#ffffff" stroke="#838383"/>
+  <text x="51" y="195" text-anchor="middle" font-size="6.5" fill="#161719">Show Unannotated</text>
+  <!-- traccia esplosa -->
+  <g font-size="7" fill="#212529">
+    <rect x="102" y="26" width="132" height="14" rx="2" fill="#ffffff" stroke="#dee2e6"/><text x="106" y="36" fill="#838383">AI Settings &amp; Metadata</text>
+    <rect x="102" y="44" width="132" height="14" rx="2" fill="#ffffff" stroke="#dee2e6"/><text x="106" y="54" fill="#838383">Prompt</text>
+    <rect x="102" y="62" width="132" height="24" rx="2" fill="#ffffff" stroke="#dee2e6"/><text x="106" y="72" font-weight="700">Human</text><text x="106" y="82">What is your availability</text>
+    <rect x="102" y="90" width="132" height="34" rx="2" fill="#fbe3ec" stroke="#a1245a"/><text x="106" y="100" font-weight="700" fill="#a1245a">Tool Call</text><text x="106" y="110" font-family="'SFMono-Regular', Menlo, monospace" font-size="6.5">getCommunitiesAvailability</text><text x="106" y="119" font-family="'SFMono-Regular', Menlo, monospace" font-size="6.5">{}</text>
+    <rect x="102" y="128" width="132" height="24" rx="2" fill="#d1efea" stroke="#1ab197"/><text x="106" y="138" font-weight="700" fill="#0e7c6a">Tool Response</text><text x="106" y="148" fill="#0e7c6a">{ units: [ … ] }</text>
+    <rect x="102" y="156" width="132" height="34" rx="2" fill="#ffffff" stroke="#dee2e6"/><text x="106" y="166" font-weight="700">AI</text><text x="106" y="176">We have 2-bedroom units</text><text x="106" y="185">available from March…</text>
+  </g>
+  <!-- rate -->
+  <rect x="240" y="26" width="84" height="178" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="246" y="38" font-size="7.5" font-weight="700" fill="#161719">Rate Conversation</text>
+  <rect x="246" y="46" width="34" height="16" rx="3" fill="#0e7c6a"/><text x="263" y="57" text-anchor="middle" font-size="7.5" font-weight="700" fill="#ffffff">Good</text>
+  <rect x="284" y="46" width="34" height="16" rx="3" fill="#a1245a"/><text x="301" y="57" text-anchor="middle" font-size="7.5" font-weight="700" fill="#ffffff">Bad</text>
+  <text x="246" y="76" font-size="7.5" font-weight="700" fill="#161719">Notes</text>
+  <rect x="246" y="80" width="72" height="70" rx="2" fill="#ffffff" stroke="#838383"/>
+  <text x="250" y="91" font-size="6.5" font-style="italic" fill="#adb5bd">Add your notes here…</text>
+  <rect x="246" y="156" width="72" height="12" rx="2" fill="#ffffff" stroke="#dee2e6"/><text x="282" y="165" text-anchor="middle" font-size="6.5" fill="#838383">Add Tags</text>
+  <rect x="246" y="172" width="72" height="12" rx="2" fill="#161719"/><text x="282" y="181" text-anchor="middle" font-size="6.5" fill="#ffffff">Update Annotation</text>
+  <text x="246" y="198" font-size="6.5" fill="#838383">‹ Back</text><text x="318" y="198" text-anchor="end" font-size="6.5" fill="#838383">Next ›</text>
+</svg>

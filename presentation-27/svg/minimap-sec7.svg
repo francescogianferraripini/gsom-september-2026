@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 600" width="1500" height="600" role="img">
+  <title>Mini-mappa dell'harness: sezione 7, tutte le zone accese: la mappa intera come griglia di confronto dei prodotti</title>
+  <g fill="#ffffff" fill-opacity="0.92">
+    <rect x="12" y="12" width="470" height="500" rx="8"/>
+    <rect x="494" y="12" width="512" height="500" rx="8"/>
+    <rect x="1018" y="12" width="470" height="500" rx="8"/>
+    <rect x="12" y="524" width="1476" height="64" rx="8"/>
+  </g>
+  <g fill="none" stroke="#a1245a" stroke-opacity="0.45" stroke-width="3">
+    <rect x="24" y="68" width="446" height="218" rx="8"/>
+    <rect x="36" y="102" width="422" height="52" rx="6"/>
+    <rect x="36" y="162" width="422" height="52" rx="6"/>
+    <rect x="36" y="222" width="422" height="52" rx="6"/>
+    <rect x="24" y="298" width="446" height="56" rx="8"/>
+    <rect x="24" y="366" width="446" height="48" rx="8"/>
+    <rect x="24" y="426" width="446" height="74" rx="8"/>
+    <rect x="506" y="72" width="488" height="424" rx="16"/>
+    <rect x="532" y="114" width="436" height="340" rx="14"/>
+    <rect x="558" y="156" width="384" height="256" rx="12"/>
+    <rect x="596" y="200" width="308" height="170" rx="8"/>
+    <rect x="1030" y="68" width="446" height="136" rx="8"/>
+    <rect x="1030" y="216" width="446" height="136" rx="8"/>
+    <rect x="1030" y="364" width="446" height="136" rx="8"/>
+    <rect x="240" y="534" width="288" height="44" rx="6"/>
+    <rect x="552" y="534" width="288" height="44" rx="6"/>
+    <rect x="864" y="534" width="288" height="44" rx="6"/>
+    <rect x="1176" y="534" width="288" height="44" rx="6"/>
+  </g>
+</svg>

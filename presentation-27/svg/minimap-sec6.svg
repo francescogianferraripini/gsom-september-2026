@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 600" width="1500" height="600" role="img">
+  <title>Mini-mappa dell'harness: sezione 6, la mappa si duplica: un esoscheletro padre e un esoscheletro figlio più piccolo, collegati</title>
+  <g id="padre" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="3" transform="translate(0,60) scale(0.72)">
+    <rect x="12" y="12" width="470" height="500" rx="8"/>
+    <rect x="24" y="68" width="446" height="218" rx="8"/>
+    <rect x="36" y="102" width="422" height="52" rx="6"/>
+    <rect x="36" y="162" width="422" height="52" rx="6"/>
+    <rect x="36" y="222" width="422" height="52" rx="6"/>
+    <rect x="24" y="298" width="446" height="56" rx="8"/>
+    <rect x="24" y="366" width="446" height="48" rx="8"/>
+    <rect x="24" y="426" width="446" height="74" rx="8"/>
+    <rect x="494" y="12" width="512" height="500" rx="8"/>
+    <rect x="506" y="72" width="488" height="424" rx="16"/>
+    <rect x="532" y="114" width="436" height="340" rx="14"/>
+    <rect x="558" y="156" width="384" height="256" rx="12"/>
+    <rect x="596" y="200" width="308" height="170" rx="8"/>
+    <rect x="1018" y="12" width="470" height="500" rx="8"/>
+    <rect x="1030" y="68" width="446" height="136" rx="8"/>
+    <rect x="1030" y="216" width="446" height="136" rx="8"/>
+    <rect x="1030" y="364" width="446" height="136" rx="8"/>
+    <rect x="12" y="524" width="1476" height="64" rx="8"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.92" transform="translate(0,60) scale(0.72)">
+    <rect x="1030" y="216" width="446" height="136" rx="8"/>
+  </g>
+  <path d="M1100 300 C 1140 300, 1140 220, 1180 220" fill="none" stroke="#ffffff" stroke-opacity="0.9" stroke-width="4"/>
+  <path d="M1180 220 l-14 -9 l3 9 l-3 9 z" fill="#ffffff" fill-opacity="0.9"/>
+  <g id="figlio" fill="none" stroke="#ffffff" stroke-opacity="0.9" stroke-width="4" transform="translate(1180,60) scale(0.21)">
+    <rect x="12" y="12" width="470" height="500" rx="8"/>
+    <rect x="24" y="68" width="446" height="218" rx="8"/>
+    <rect x="494" y="12" width="512" height="500" rx="8"/>
+    <rect x="506" y="72" width="488" height="424" rx="16"/>
+    <rect x="532" y="114" width="436" height="340" rx="14"/>
+    <rect x="558" y="156" width="384" height="256" rx="12"/>
+    <rect x="596" y="200" width="308" height="170" rx="8"/>
+    <rect x="1018" y="12" width="470" height="500" rx="8"/>
+    <rect x="12" y="524" width="1476" height="64" rx="8"/>
+  </g>
+</svg>

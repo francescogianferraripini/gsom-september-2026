@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>A sinistra i fallimenti sparsi, una trentina di punti con etichette brevi. Al centro, una freccia si raggruppano e gli stessi punti riordinati in cinque gruppi con nome e conteggio: regola ignorata 11, parametro sbagliato 7, fatto mancante 5, vincolo perso a metà sessione 3, altro 2. A destra la scala delle cinque leve in miniatura e da ogni cluster una freccia verso una leva; il cluster più grande, regola ignorata, e la sua freccia verso Prompt sono in evidenza: il più frequente, e il più facile. In basso a destra il riquadro esempio reale: la tabella di error analysis di NurtureBoss, conversation-flow 110, handoff 70, rescheduling 60</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+  </defs>
+
+  <!-- ===== i fallimenti sparsi ===== -->
+  <text x="12" y="22" font-size="11" font-weight="700" fill="#161719">i casi falliti</text>
+  <text x="12" y="36" font-size="9" fill="#838383">28 su 100, riletti uno per uno</text>
+  <g fill="#a1245a" fill-opacity="0.75">
+    <circle cx="30" cy="70" r="4"/><circle cx="92" cy="58" r="4"/><circle cx="150" cy="76" r="4"/><circle cx="200" cy="62" r="4"/>
+    <circle cx="48" cy="118" r="4"/><circle cx="118" cy="104" r="4"/><circle cx="176" cy="126" r="4"/><circle cx="222" cy="108" r="4"/>
+    <circle cx="26" cy="166" r="4"/><circle cx="86" cy="152" r="4"/><circle cx="140" cy="176" r="4"/><circle cx="206" cy="160" r="4"/>
+    <circle cx="60" cy="212" r="4"/><circle cx="112" cy="228" r="4"/><circle cx="172" cy="206" r="4"/><circle cx="228" cy="228" r="4"/>
+    <circle cx="34" cy="262" r="4"/><circle cx="96" cy="276" r="4"/><circle cx="154" cy="258" r="4"/><circle cx="212" cy="278" r="4"/>
+    <circle cx="52" cy="318" r="4"/><circle cx="124" cy="306" r="4"/><circle cx="184" cy="326" r="4"/><circle cx="230" cy="310" r="4"/>
+    <circle cx="28" cy="366" r="4"/><circle cx="100" cy="376" r="4"/><circle cx="160" cy="362" r="4"/><circle cx="216" cy="372" r="4"/>
+  </g>
+  <g font-size="7.5" font-style="italic" fill="#6c757d">
+    <text x="38" y="73">"4471 invece di 004471"</text>
+    <text x="100" y="61">"promette il rimborso"</text>
+    <text x="56" y="121">"non cita il listino"</text>
+    <text x="126" y="107">"loop di 12 chiamate"</text>
+    <text x="34" y="169">"ignora: mai scusarsi"</text>
+    <text x="148" y="179">"data in formato USA"</text>
+    <text x="68" y="215">"dimentica il tono"</text>
+    <text x="42" y="265">"promette tempi"</text>
+    <text x="104" y="279">"documento sbagliato"</text>
+    <text x="60" y="321">"tool scelto male"</text>
+    <text x="36" y="369">"risposta in inglese"</text>
+    <text x="168" y="365">"perde il vincolo"</text>
+  </g>
+
+  <!-- ===== si raggruppano ===== -->
+  <line x1="248" y1="200" x2="282" y2="200" stroke="#161719" stroke-width="1.6" marker-end="url(#a)"/>
+  <text x="265" y="188" text-anchor="middle" font-size="9" font-weight="600" fill="#161719">si</text>
+  <text x="265" y="218" text-anchor="middle" font-size="9" font-weight="600" fill="#161719">raggruppano</text>
+
+  <!-- ===== i cluster (allineati alle leve) ===== -->
+  <text x="300" y="22" font-size="11" font-weight="700" fill="#161719">i cluster</text>
+  <text x="300" y="36" font-size="9" fill="#838383">un nome, un conteggio</text>
+  <!-- altro · 2 -> Modello y=70 -->
+  <g fill="#a1245a" fill-opacity="0.75"><circle cx="306" cy="70" r="4"/><circle cx="317" cy="70" r="4"/></g>
+  <text x="330" y="74" font-size="9.5" fill="#212529">altro · <tspan font-weight="700">2</tspan></text>
+  <!-- vincolo perso · 3 -> Harness y=120 -->
+  <g fill="#a1245a" fill-opacity="0.75"><circle cx="306" cy="120" r="4"/><circle cx="317" cy="120" r="4"/><circle cx="328" cy="120" r="4"/></g>
+  <text x="340" y="124" font-size="9.5" fill="#212529">vincolo perso a metà sessione · <tspan font-weight="700">3</tspan></text>
+  <!-- parametro sbagliato · 7 -> Tool y=170 -->
+  <g fill="#a1245a" fill-opacity="0.75"><circle cx="306" cy="170" r="4"/><circle cx="317" cy="170" r="4"/><circle cx="328" cy="170" r="4"/><circle cx="339" cy="170" r="4"/><circle cx="350" cy="170" r="4"/><circle cx="361" cy="170" r="4"/><circle cx="372" cy="170" r="4"/></g>
+  <text x="384" y="174" font-size="9.5" fill="#212529">parametro sbagliato · <tspan font-weight="700">7</tspan></text>
+  <!-- fatto mancante · 5 -> KB y=220 -->
+  <g fill="#a1245a" fill-opacity="0.75"><circle cx="306" cy="220" r="4"/><circle cx="317" cy="220" r="4"/><circle cx="328" cy="220" r="4"/><circle cx="339" cy="220" r="4"/><circle cx="350" cy="220" r="4"/></g>
+  <text x="362" y="224" font-size="9.5" fill="#212529">fatto mancante · <tspan font-weight="700">5</tspan></text>
+  <!-- regola ignorata · 11 -> Prompt y=270 (in evidenza) -->
+  <rect x="296" y="252" width="240" height="40" rx="5" fill="#fff2ce" stroke="#ffbe0b" stroke-width="1.5"/>
+  <g fill="#a1245a"><circle cx="306" cy="266" r="4"/><circle cx="317" cy="266" r="4"/><circle cx="328" cy="266" r="4"/><circle cx="339" cy="266" r="4"/><circle cx="350" cy="266" r="4"/><circle cx="361" cy="266" r="4"/><circle cx="372" cy="266" r="4"/><circle cx="383" cy="266" r="4"/><circle cx="394" cy="266" r="4"/><circle cx="405" cy="266" r="4"/><circle cx="416" cy="266" r="4"/></g>
+  <text x="428" y="270" font-size="9.5" fill="#212529">regola ignorata · <tspan font-weight="700">11</tspan></text>
+  <text x="306" y="285" font-size="9" font-weight="700" fill="#a1245a">il più frequente, e il più facile</text>
+
+  <!-- ===== la scala delle leve ===== -->
+  <text x="596" y="22" font-size="11" font-weight="700" fill="#161719">la leva (Slide 40)</text>
+  <g font-size="9.5" font-weight="700" text-anchor="middle">
+    <rect x="600" y="56" width="120" height="28" rx="4" fill="#f6f6f6" stroke="#838383" stroke-dasharray="4 3"/><text x="660" y="74" fill="#6c757d">5 · Modello</text>
+    <rect x="590" y="106" width="120" height="28" rx="4" fill="#d1efea" stroke="#1ab197"/><text x="650" y="124" fill="#0e7c6a">4 · Harness</text>
+    <rect x="580" y="156" width="120" height="28" rx="4" fill="#d1efea" stroke="#1ab197"/><text x="640" y="174" fill="#0e7c6a">3 · Tool</text>
+    <rect x="570" y="206" width="120" height="28" rx="4" fill="#d1efea" stroke="#1ab197"/><text x="630" y="224" fill="#0e7c6a">2 · Knowledge base</text>
+    <rect x="560" y="256" width="120" height="28" rx="4" fill="#d1efea" stroke="#1ab197" stroke-width="2.5"/><text x="620" y="274" fill="#0e7c6a">1 · Prompt</text>
+  </g>
+  <!-- frecce cluster -> leva -->
+  <g stroke="#838383" stroke-width="1.2" marker-end="url(#a)" fill="none">
+    <line x1="372" y1="70" x2="596" y2="70" stroke-dasharray="4 3"/>
+    <line x1="520" y1="120" x2="586" y2="120"/>
+    <line x1="510" y1="170" x2="576" y2="170"/>
+    <line x1="460" y1="220" x2="566" y2="220"/>
+  </g>
+  <line x1="538" y1="270" x2="556" y2="270" stroke="#a1245a" stroke-width="2.2" marker-end="url(#ab)"/>
+  <text x="484" y="66" font-size="8" font-style="italic" fill="#838383">ciò che resta dopo tutto il resto</text>
+
+  <!-- ===== esempio reale ===== -->
+  <rect x="300" y="308" width="448" height="122" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+  <rect x="300" y="308" width="448" height="20" rx="6" fill="#161719"/>
+  <text x="310" y="322" font-size="9.5" font-weight="700" fill="#ffffff">esempio reale · NurtureBoss, assistente per affitti (hamel.dev, Field Guide)</text>
+  <g font-size="9.5" fill="#212529">
+    <rect x="310" y="336" width="110" height="14" fill="#a1245a" fill-opacity="0.75"/><text x="428" y="347" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">conversation-flow · <tspan font-weight="700">110</tspan></text>
+    <rect x="310" y="354" width="70" height="14" fill="#a1245a" fill-opacity="0.75"/><text x="428" y="365" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">handoff · <tspan font-weight="700">70</tspan></text>
+    <rect x="310" y="372" width="60" height="14" fill="#a1245a" fill-opacity="0.75"/><text x="428" y="383" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">rescheduling · <tspan font-weight="700">60</tspan></text>
+  </g>
+  <text x="310" y="404" font-size="9" font-style="italic" fill="#161719">le tre categorie spiegano più del 60% dei problemi</text>
+  <text x="310" y="420" font-size="9" font-style="italic" fill="#0e7c6a">dopo il fix sulle date (nel prompt): rescheduling dal 33% al 95% di successo</text>
+  <text x="740" y="365" text-anchor="end" font-size="8.5" fill="#838383">stesso metodo,</text>
+  <text x="740" y="378" text-anchor="end" font-size="8.5" fill="#838383">qualsiasi dominio</text>
+</svg>

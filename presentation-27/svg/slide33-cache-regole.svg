@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>La finestra a strati letta dall'alto, con a sinistra una scala da stabile a cambia ogni volta. Due bandierine cache_control: una dopo l'indice delle skill, condivisa da tutte le sessioni; una dopo la penultima riga della storia, condivisa dai giri di questa sessione. A destra tre vignette di errore: una data nel system prompt, la lista dei tool in ordine diverso, un prefisso troppo corto</title>
+  <defs>
+    <linearGradient id="scala" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1ab197"/>
+      <stop offset="1" stop-color="#a1245a"/>
+    </linearGradient>
+    <g id="flag">
+      <path d="M0 0 v-16 h12 l-4 4.5 l4 4.5 h-12" fill="#ffbe0b" stroke="#161719" stroke-width="1" stroke-linejoin="round"/>
+    </g>
+  </defs>
+
+  <!-- la scala stabile / cambia ogni volta -->
+  <rect x="14" y="52" width="8" height="360" rx="4" fill="url(#scala)"/>
+  <text transform="rotate(-90 32 90)" x="32" y="90" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0e7c6a">stabile</text>
+  <text transform="rotate(-90 32 370)" x="32" y="370" text-anchor="middle" font-size="10.5" font-weight="700" fill="#a1245a">cambia ogni volta</text>
+
+  <!-- la finestra -->
+  <text x="50" y="40" font-size="12" font-weight="700" fill="#161719">la finestra, nell'ordine dell'API</text>
+  <rect x="50" y="48" width="250" height="368" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+  <g fill="#d1efea" stroke="#1ab197">
+    <rect x="58" y="56" width="234" height="50" rx="3"/>
+    <rect x="58" y="112" width="234" height="50" rx="3"/>
+    <rect x="58" y="168" width="234" height="36" rx="3"/>
+  </g>
+  <g font-size="11" font-weight="600" fill="#0e7c6a">
+    <text x="66" y="74">tool</text>
+    <text x="66" y="130">system prompt</text>
+    <text x="66" y="190">indice delle skill</text>
+  </g>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#212529">
+    <text x="66" y="90">cerca_ordine · crea_ticket · bash</text>
+    <text x="66" y="146">Sei l'assistente di Acme…</text>
+  </g>
+  <rect x="58" y="212" width="234" height="132" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="66" y="228" font-size="11" font-weight="600" fill="#838383">storia</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#6c757d">
+    <text x="66" y="246">[user] …</text>
+    <text x="66" y="262">[assistant] …</text>
+    <text x="66" y="278">[tool] …</text>
+    <text x="66" y="294">[assistant] …</text>
+    <text x="66" y="310">[user] …</text>
+    <text x="66" y="326">[assistant] …</text>
+  </g>
+  <rect x="58" y="352" width="234" height="56" rx="3" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+  <text x="66" y="370" font-size="11" font-weight="600" fill="#a1245a">ultimo messaggio</text>
+  <text x="66" y="388" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#212529">[user] E il 4472?</text>
+
+  <!-- le bandierine: elemento focale -->
+  <use href="#flag" x="300" y="206"/>
+  <g font-size="10" fill="#161719">
+    <text x="316" y="196" font-weight="700">cache_control</text>
+    <text x="316" y="208">fin qui: condiviso da</text>
+    <text x="316" y="220">tutte le sessioni</text>
+  </g>
+  <use href="#flag" x="300" y="336"/>
+  <g font-size="10" fill="#161719">
+    <text x="316" y="326" font-weight="700">cache_control</text>
+    <text x="316" y="338">fin qui: condiviso dai</text>
+    <text x="316" y="350">giri di questa sessione</text>
+  </g>
+
+  <!-- le tre vignette-errore -->
+  <g id="err-1">
+    <rect x="440" y="48" width="188" height="100" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="450" y="66" font-size="10.5" font-weight="700" fill="#161719">system prompt</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#6c757d">
+      <text x="450" y="82">Sei l'assistente…</text>
+      <text x="450" y="112">Rispondi in italiano…</text>
+    </g>
+    <rect x="448" y="88" width="150" height="14" rx="2" fill="#fff2ce"/>
+    <text x="450" y="98" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700" fill="#161719">data: 4 set 2026 10:41</text>
+    <text x="616" y="98" text-anchor="middle" font-size="14" font-weight="800" fill="#a1245a">✗</text>
+    <text x="450" y="136" font-size="10" font-weight="600" fill="#a1245a">cambia a ogni chiamata</text>
+  </g>
+  <g id="err-2">
+    <rect x="440" y="160" width="188" height="118" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#212529">
+      <text x="450" y="178">cerca_ordine</text><text x="540" y="178">bash</text>
+      <text x="450" y="192">crea_ticket</text><text x="540" y="192">cerca_ordine</text>
+      <text x="450" y="206">bash</text><text x="540" y="206">crea_ticket</text>
+    </g>
+    <line x1="530" y1="168" x2="530" y2="212" stroke="#dee2e6"/>
+    <text x="616" y="196" text-anchor="middle" font-size="14" font-weight="800" fill="#a1245a">✗</text>
+    <text x="450" y="230" font-size="10" font-weight="600" fill="#a1245a">stessi tool, ordine diverso:</text>
+    <text x="450" y="243" font-size="10" font-weight="600" fill="#a1245a">prefisso diverso</text>
+    <text x="450" y="262" font-size="9.5" fill="#838383">(capita con un server MCP)</text>
+  </g>
+  <g id="err-3">
+    <rect x="440" y="290" width="188" height="100" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+    <rect x="450" y="300" width="90" height="34" rx="3" fill="#ffffff" stroke="#838383" stroke-dasharray="3 2"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#6c757d">
+      <text x="456" y="312">Sei utile.</text>
+      <text x="456" y="323">Rispondi.</text>
+    </g>
+    <text x="616" y="322" text-anchor="middle" font-size="14" font-weight="800" fill="#a1245a">✗</text>
+    <text x="450" y="356" font-size="10" font-weight="600" fill="#a1245a">troppo corto per essere</text>
+    <text x="450" y="369" font-size="10" font-weight="600" fill="#a1245a">salvato</text>
+    <text x="450" y="384" font-size="9.5" fill="#838383">(la soglia dipende dal modello)</text>
+  </g>
+  <text x="440" y="416" font-size="10.5" font-weight="700" letter-spacing="1.4" fill="#838383">I TRE ERRORI CLASSICI</text>
+</svg>

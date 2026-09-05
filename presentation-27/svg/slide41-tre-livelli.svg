@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Una sola traiettoria orizzontale, con nodi pensiero, tool call, risultato e risposta, che attraversa tre turni dell'utente e finisce nel traguardo rimborso gestito. Sopra, tre graffe a scale diverse: la piccola su una sola risposta (task single shot), la media su un turno intero con le sue tool call, la grande su tutto il processo. Una tool call del turno 2 è marcata con una croce: una chiamata sbagliata, e la risposta finale era giusta lo stesso</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+    <g id="pens"><circle r="14" fill="#f6f6f6" stroke="#838383" stroke-width="1.2"/><text y="4" text-anchor="middle" font-size="8.5" fill="#6c757d">pensa</text></g>
+    <g id="tool"><rect x="-16" y="-14" width="32" height="28" rx="14" fill="#a1245a"/><text y="4" text-anchor="middle" font-size="8.5" fill="#ffffff">tool</text></g>
+    <g id="res"><rect x="-16" y="-14" width="32" height="28" rx="3" fill="#d1efea" stroke="#1ab197"/><text y="4" text-anchor="middle" font-size="8" fill="#0e7c6a">[tool]</text></g>
+    <g id="risp"><rect x="-16" y="-14" width="32" height="28" rx="3" fill="#161719"/><text y="4" text-anchor="middle" font-size="7.5" fill="#ffffff">risposta</text></g>
+  </defs>
+
+  <!-- ===== le tre graffe ===== -->
+  <!-- 3: il processo -->
+  <text x="330" y="60" text-anchor="middle" font-size="11.5" font-weight="700" fill="#161719">3 · il processo: l'obiettivo è raggiunto?</text>
+  <path d="M20 84 v-8 h300 l6 -6 l6 6 h308 v8" fill="none" stroke="#161719" stroke-width="1.6"/>
+  <!-- 2: il turno -->
+  <text x="314" y="126" text-anchor="middle" font-size="11.5" font-weight="700" fill="#a1245a">2 · il turno: tool giusti, ordine giusto, risultati usati?</text>
+  <path d="M200 150 v-8 h108 l6 -6 l6 6 h108 v8" fill="none" stroke="#a1245a" stroke-width="1.6"/>
+  <!-- 1: single shot -->
+  <text x="598" y="196" text-anchor="end" font-size="11.5" font-weight="700" fill="#0e7c6a">1 · task single shot: la risposta è giusta?</text>
+  <path d="M558 220 v-8 h14 l6 -6 l6 6 h14 v8" fill="none" stroke="#0e7c6a" stroke-width="1.6"/>
+
+  <!-- ===== la traiettoria ===== -->
+  <line x1="20" y1="290" x2="616" y2="290" stroke="#dee2e6" stroke-width="2"/>
+  <!-- tacche dei turni -->
+  <g stroke="#161719" stroke-width="1.5">
+    <line x1="20" y1="262" x2="20" y2="318"/>
+    <line x1="190" y1="262" x2="190" y2="318"/>
+    <line x1="436" y1="262" x2="436" y2="318"/>
+  </g>
+  <g font-size="9.5" font-weight="700" fill="#161719">
+    <text x="26" y="336">turno 1</text>
+    <text x="196" y="336">turno 2</text>
+    <text x="442" y="336">turno 3</text>
+  </g>
+  <g font-size="8.5" fill="#838383">
+    <text x="26" y="348">l'utente scrive</text>
+    <text x="196" y="348">l'utente scrive</text>
+    <text x="442" y="348">l'utente scrive</text>
+  </g>
+  <!-- turno 1 -->
+  <use href="#pens" x="48" y="290"/>
+  <use href="#tool" x="86" y="290"/>
+  <use href="#res" x="124" y="290"/>
+  <use href="#risp" x="162" y="290"/>
+  <!-- turno 2 -->
+  <use href="#pens" x="218" y="290"/>
+  <use href="#tool" x="256" y="290"/>
+  <use href="#res" x="294" y="290"/>
+  <use href="#tool" x="332" y="290"/>
+  <use href="#res" x="370" y="290"/>
+  <use href="#risp" x="408" y="290"/>
+  <!-- turno 3 -->
+  <use href="#pens" x="464" y="290"/>
+  <use href="#tool" x="502" y="290"/>
+  <use href="#res" x="540" y="290"/>
+  <use href="#risp" x="578" y="290"/>
+  <!-- traguardo -->
+  <line x1="616" y1="290" x2="640" y2="290" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="644" y="270" width="104" height="40" rx="5" fill="#fff2ce" stroke="#ffbe0b" stroke-width="1.5"/>
+  <text x="696" y="287" text-anchor="middle" font-size="10" font-weight="700" fill="#161719">rimborso</text>
+  <text x="696" y="301" text-anchor="middle" font-size="10" font-weight="700" fill="#161719">gestito ✓</text>
+
+  <!-- la chiamata sbagliata -->
+  <circle cx="345" cy="277" r="8" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+  <text x="345" y="281" text-anchor="middle" font-size="10" font-weight="700" fill="#a1245a">✗</text>
+  <line x1="332" y1="308" x2="332" y2="360" stroke="#a1245a" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="332" y="374" text-anchor="middle" font-size="9.5" font-style="italic" fill="#a1245a">una chiamata sbagliata, e la risposta finale era giusta lo stesso</text>
+
+  <!-- ===== legenda ===== -->
+  <g transform="translate(20,404)">
+    <circle cx="8" cy="0" r="6" fill="#f6f6f6" stroke="#838383"/><text x="20" y="3.5" font-size="9" fill="#6c757d">pensiero</text>
+    <rect x="76" y="-6" width="16" height="12" rx="6" fill="#a1245a"/><text x="98" y="3.5" font-size="9" fill="#6c757d">tool call</text>
+    <rect x="150" y="-6" width="16" height="12" rx="2" fill="#d1efea" stroke="#1ab197"/><text x="172" y="3.5" font-size="9" fill="#6c757d">risultato</text>
+    <rect x="226" y="-6" width="16" height="12" rx="2" fill="#161719"/><text x="248" y="3.5" font-size="9" fill="#6c757d">risposta</text>
+  </g>
+  <text x="748" y="408" text-anchor="end" font-size="10.5" font-weight="700" fill="#161719">quello che si valuta è la traiettoria, non l'ultima riga</text>
+</svg>

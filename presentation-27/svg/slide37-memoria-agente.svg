@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Tre sessioni sulla linea del tempo, lunedì, martedì e giovedì, ognuna con la propria finestra che nasce vuota e muore alla fine. Sotto tutte e tre, la cartella persistente memoria con note sull'utente, scelte, stato del lavoro e sessioni passate. Le frecce scrive partono dal modello; la memoria si legge cercando. In un angolo AGENTS.md, che non è memoria: istruzioni esplicite portate dall'harness. In un altro, sbiadito, un database vettoriale: un indice, quando i file sono troppi</title>
+  <defs>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+    <g id="sessione">
+      <rect x="0" y="0" width="140" height="150" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+      <rect x="6" y="6" width="128" height="34" rx="3" fill="#d1efea" stroke="#1ab197"/>
+      <text x="12" y="27" font-size="9.5" font-weight="600" fill="#0e7c6a">prefisso</text>
+      <rect x="6" y="46" width="128" height="62" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+      <text x="12" y="62" font-size="9.5" font-weight="600" fill="#838383">messaggi</text>
+      <rect x="6" y="114" width="128" height="16" rx="3" fill="#a1245a"/>
+      <text x="12" y="126" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#ffffff">→ memoria_scrivi(…)</text>
+    </g>
+  </defs>
+
+  <!-- ===== le tre sessioni ===== -->
+  <g font-size="11.5" font-weight="700" fill="#161719">
+    <text x="20" y="22">lunedì</text>
+    <text x="200" y="22">martedì</text>
+    <text x="380" y="22">giovedì</text>
+  </g>
+  <use href="#sessione" x="20" y="30"/>
+  <use href="#sessione" x="200" y="30"/>
+  <use href="#sessione" x="380" y="30"/>
+  <!-- i tagli: la finestra muore -->
+  <g stroke="#a1245a" stroke-width="2" fill="none">
+    <path d="M176 36 l-5 10 l10 10 l-10 10 l10 10 l-10 10 l10 10 l-10 10 l10 10 l-10 10 l10 10 l-10 10 l10 10 l-5 8"/>
+    <path d="M356 36 l-5 10 l10 10 l-10 10 l10 10 l-10 10 l10 10 l-10 10 l10 10 l-10 10 l10 10 l-10 10 l10 10 l-5 8"/>
+    <path d="M536 36 l-5 10 l10 10 l-10 10 l10 10 l-10 10 l10 10 l-10 10 l10 10 l-10 10 l10 10 l-10 10 l10 10 l-5 8"/>
+  </g>
+  <text x="560" y="110" font-size="9.5" font-style="italic" fill="#a1245a">la finestra</text>
+  <text x="560" y="122" font-size="9.5" font-style="italic" fill="#a1245a">muore</text>
+
+  <!-- le frecce «scrive», dal modello -->
+  <g stroke="#a1245a" stroke-width="1.5" fill="none">
+    <path d="M90 180 V262" marker-end="url(#ab)"/>
+    <path d="M270 180 V262" marker-end="url(#ab)"/>
+    <path d="M450 180 V262" marker-end="url(#ab)"/>
+  </g>
+  <g font-size="9.5" font-weight="600" fill="#a1245a">
+    <text x="98" y="226">scrive</text>
+    <text x="278" y="226">scrive</text>
+    <text x="458" y="226">scrive</text>
+  </g>
+  <text x="20" y="250" font-size="9.5" font-style="italic" fill="#838383">nessuna lettura al giro zero: si legge cercando → slide 38</text>
+
+  <!-- ===== la cartella persistente ===== -->
+  <path d="M20 268 h48 l8 8 h380 a5 5 0 0 1 5 5 v104 a5 5 0 0 1 -5 5 h-436 a5 5 0 0 1 -5 -5 v-112 a5 5 0 0 1 5 -5 z" fill="#fff2ce" stroke="#161719" stroke-width="1.5"/>
+  <text x="32" y="298" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#161719">memoria/</text>
+  <text x="120" y="298" font-size="10" fill="#838383">persistente: sotto tutte le sessioni</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10" fill="#161719">
+    <text x="40" y="322">note/utente.md</text>
+    <text x="40" y="340">note/scelte.md</text>
+    <text x="40" y="358">scratch/stato-lavoro.md</text>
+    <text x="40" y="376">sessioni/</text>
+  </g>
+  <g font-size="10" fill="#838383">
+    <text x="240" y="322">preferenze, contesto</text>
+    <text x="240" y="340">decisioni e perché</text>
+    <text x="240" y="358">a che punto ero</text>
+    <text x="240" y="376">le conversazioni passate</text>
+  </g>
+
+  <!-- AGENTS.md: non è memoria -->
+  <rect x="490" y="268" width="138" height="52" rx="4" fill="#ffffff" stroke="#838383"/>
+  <text x="500" y="286" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="700" fill="#161719">AGENTS.md</text>
+  <text x="500" y="300" font-size="9" fill="#838383">istruzioni esplicite,</text>
+  <text x="500" y="311" font-size="9" fill="#838383">le porta l'harness</text>
+  <text x="559" y="336" text-anchor="middle" font-size="10" font-weight="700" fill="#a1245a">non è memoria</text>
+  <path d="M490 280 C 470 250, 470 60, 512 56" fill="none" stroke="#838383" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ag)"/>
+
+  <!-- il database vettoriale: l'eccezione -->
+  <g opacity="0.45">
+    <path d="M500 366 v40 a30 7 0 0 0 60 0 v-40" fill="#ffffff" stroke="#161719" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <ellipse cx="530" cy="366" rx="30" ry="7" fill="#ffffff" stroke="#161719" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <text x="530" y="428" text-anchor="middle" font-size="9" fill="#161719">database vettoriale</text>
+    <text x="530" y="439" text-anchor="middle" font-size="9" fill="#161719">un indice, quando i file sono troppi</text>
+  </g>
+  <line x1="462" y1="390" x2="498" y2="390" stroke="#838383" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#ag)"/>
+</svg>

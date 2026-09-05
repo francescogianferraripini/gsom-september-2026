@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 440" width="700" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Tabella-figura a due righe: cinquanta tool MCP nel prefisso costano circa novemila token a ogni giro, centottantamila letti in venti giri; venti skill con indice e un corpo costano circa ottocento a giro e millecento al giro venti, diciannovemila in tutto: circa dieci volte meno</title>
+
+  <!-- intestazioni di colonna -->
+  <g font-size="11" font-weight="700" letter-spacing="1.4" fill="#838383" text-anchor="middle">
+    <text x="250" y="30">GIRO 1</text>
+    <text x="360" y="30">GIRO 5</text>
+    <text x="470" y="30">GIRO 20</text>
+    <text x="590" y="30">LETTI IN 20 GIRI</text>
+  </g>
+  <line x1="12" y1="40" x2="688" y2="40" stroke="#161719" stroke-width="1.5"/>
+
+  <!-- riga 1: 50 tool MCP nel prefisso -->
+  <g font-size="12.5" font-weight="700" fill="#161719">
+    <text x="12" y="120">50 tool MCP</text>
+    <text x="12" y="138">nel prefisso</text>
+  </g>
+  <g fill="#a1245a">
+    <rect x="220" y="80" width="60" height="120" rx="3"/>
+    <rect x="330" y="80" width="60" height="120" rx="3"/>
+    <rect x="440" y="80" width="60" height="120" rx="3"/>
+  </g>
+  <g font-size="12" font-weight="700" fill="#a1245a" text-anchor="middle">
+    <text x="250" y="70">~9.000</text>
+    <text x="360" y="70">~9.000</text>
+    <text x="470" y="70">~9.000</text>
+  </g>
+  <text x="590" y="146" text-anchor="middle" font-size="18" font-weight="800" fill="#a1245a">~180.000</text>
+  <text x="590" y="164" text-anchor="middle" font-size="11" fill="#838383">token</text>
+  <text x="250" y="220" font-size="10.5" font-style="italic" fill="#838383" text-anchor="start" transform="translate(-30 0)">ogni giro rilegge tutte le definizioni, usate o no</text>
+  <line x1="12" y1="232" x2="688" y2="232" stroke="#dee2e6"/>
+
+  <!-- riga 2: 20 skill, indice + un corpo -->
+  <g font-size="12.5" font-weight="700" fill="#161719">
+    <text x="12" y="310">20 skill:</text>
+    <text x="12" y="328">indice + un corpo</text>
+  </g>
+  <g fill="#1ab197">
+    <rect x="220" y="381" width="60" height="11" rx="2"/>
+    <rect x="330" y="381" width="60" height="11" rx="2"/>
+    <rect x="440" y="377" width="60" height="15" rx="2"/>
+  </g>
+  <g font-size="12" font-weight="700" fill="#0e7c6a" text-anchor="middle">
+    <text x="250" y="372">~800</text>
+    <text x="360" y="372">~800</text>
+    <text x="470" y="368">~1.100</text>
+  </g>
+  <text x="470" y="408" text-anchor="middle" font-size="10" fill="#838383">+ il corpo scelto</text>
+  <text x="590" y="338" text-anchor="middle" font-size="18" font-weight="800" fill="#0e7c6a">~19.000</text>
+  <text x="590" y="356" text-anchor="middle" font-size="11" fill="#838383">token</text>
+  <text x="220" y="424" font-size="10.5" font-style="italic" fill="#838383">l'indice ogni giro; il corpo una volta, e solo quello scelto</text>
+
+  <!-- il rapporto -->
+  <rect x="640" y="200" width="56" height="64" rx="8" fill="#161719"/>
+  <text x="668" y="232" text-anchor="middle" font-size="20" font-weight="800" fill="#ffbe0b">~10×</text>
+  <text x="668" y="250" text-anchor="middle" font-size="9" fill="#ffffff">in token letti</text>
+
+  <line x1="12" y1="392" x2="688" y2="392" stroke="#161719" stroke-width="1.5"/>
+  <text x="12" y="438" font-size="11.5" font-weight="600" fill="#161719">con la cache il prezzo cambia, il numero di token letti no</text>
+</svg>

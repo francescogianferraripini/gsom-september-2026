@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Tre fotogrammi della finestra a strati al giro 1, 5 e 20, letti dall'alto e di altezza crescente: il prefisso resta uguale (circa 4.000 token), la storia cresce poco (300, 1.500, 5.000), i risultati dei tool crescono molto (800, 9.000, 40.000, con un export mai ripulito). Totali: 5.100, 14.500, 49.000. Ogni chiamata rilegge tutta la pila da capo</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+  </defs>
+
+  <!-- ===== giro 1 ===== -->
+  <g id="giro-1">
+    <text x="12" y="26" font-size="12.5" font-weight="700" fill="#161719">giro 1</text>
+    <rect x="12" y="36" width="180" height="76" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="18" y="42" width="168" height="46" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="26" y="70" font-size="11" font-weight="600" fill="#0e7c6a">prefisso</text>
+    <rect x="18" y="92" width="168" height="6" fill="#e9ecef"/>
+    <rect x="18" y="100" width="168" height="8" fill="#1ab197"/>
+    <g font-size="10" fill="#838383">
+      <text x="200" y="72">prefisso ~4.000</text>
+      <text x="200" y="97">storia ~300</text>
+      <text x="200" y="108">risultati ~800</text>
+    </g>
+    <text x="102" y="136" text-anchor="middle" font-size="13" font-weight="700" fill="#161719">~5.100</text>
+  </g>
+
+  <!-- ===== giro 5 ===== -->
+  <g id="giro-5">
+    <text x="284" y="26" font-size="12.5" font-weight="700" fill="#161719">giro 5</text>
+    <rect x="284" y="36" width="180" height="176" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="290" y="42" width="168" height="46" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="298" y="70" font-size="11" font-weight="600" fill="#0e7c6a">prefisso</text>
+    <rect x="290" y="92" width="168" height="20" fill="#e9ecef"/>
+    <text x="298" y="106" font-size="9.5" fill="#6c757d">storia: 5 turni</text>
+    <g fill="#1ab197">
+      <rect x="290" y="116" width="168" height="14"/>
+      <rect x="290" y="133" width="168" height="40"/>
+      <rect x="290" y="176" width="168" height="10"/>
+      <rect x="290" y="189" width="168" height="18"/>
+    </g>
+    <g font-size="10" fill="#838383">
+      <text x="472" y="104">storia ~1.500</text>
+      <text x="472" y="164">risultati ~9.000</text>
+    </g>
+    <text x="374" y="236" text-anchor="middle" font-size="13" font-weight="700" fill="#161719">~14.500</text>
+  </g>
+
+  <!-- ===== giro 20 ===== -->
+  <g id="giro-20">
+    <text x="556" y="26" font-size="12.5" font-weight="700" fill="#161719">giro 20</text>
+    <rect x="556" y="36" width="180" height="356" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="562" y="42" width="168" height="46" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="570" y="70" font-size="11" font-weight="600" fill="#0e7c6a">prefisso</text>
+    <rect x="562" y="92" width="168" height="52" fill="#e9ecef"/>
+    <text x="570" y="122" font-size="9.5" fill="#6c757d">storia: 20 turni</text>
+    <g fill="#1ab197">
+      <rect x="562" y="148" width="168" height="10"/>
+      <rect x="562" y="161" width="168" height="24"/>
+      <rect x="562" y="188" width="168" height="8"/>
+      <rect x="562" y="199" width="168" height="120"/>
+      <rect x="562" y="322" width="168" height="14"/>
+      <rect x="562" y="339" width="168" height="26"/>
+      <rect x="562" y="368" width="168" height="18"/>
+    </g>
+    <text x="646" y="255" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">un export</text>
+    <text x="646" y="269" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">mai ripulito</text>
+    <g font-size="10" fill="#838383" text-anchor="end">
+      <text x="550" y="134">storia ~5.000</text>
+      <text x="550" y="290">risultati ~40.000</text>
+    </g>
+    <text x="646" y="416" text-anchor="middle" font-size="13" font-weight="700" fill="#a1245a">~49.000</text>
+  </g>
+
+  <!-- il prefisso non cambia -->
+  <line x1="192" y1="48" x2="284" y2="48" stroke="#1ab197" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="464" y1="48" x2="556" y2="48" stroke="#1ab197" stroke-width="1" stroke-dasharray="3 3"/>
+  <!-- la freccia del tempo -->
+  <line x1="12" y1="434" x2="470" y2="434" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="12" y="426" font-size="11" font-style="italic" fill="#161719">ogni chiamata rilegge tutta la pila da capo</text>
+</svg>

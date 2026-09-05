@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 440" width="440" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Una traccia di prova in verticale, con i tag di ruolo user, assistant, tool, per due turni. A margine destro, annotazioni a mano dell'esperto di dominio: parametro sbagliato, 4471 invece di 004471; 12.000 token per una riga; giusta, ma per caso. In fondo il verdetto FAIL con la motivazione</title>
+  <defs>
+    <g id="person"><circle cx="0" cy="-10" r="7" fill="#ffffff" stroke="#161719" stroke-width="1.3"/><path d="M-10 9 a10 10 0 0 1 20 0" fill="#ffffff" stroke="#161719" stroke-width="1.3"/></g>
+  </defs>
+  <!-- l'esperto -->
+  <use href="#person" x="22" y="26"/>
+  <text x="40" y="22" font-size="10.5" font-weight="700" fill="#161719">l'esperto di dominio</text>
+  <text x="40" y="35" font-size="9" fill="#838383">legge, giro per giro</text>
+
+  <!-- la traccia -->
+  <rect x="10" y="48" width="292" height="384" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+  <rect x="10" y="48" width="292" height="20" rx="5" fill="#161719"/>
+  <text x="18" y="62" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#ffffff">sessione di prova · utente 7 · 2 set</text>
+
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5">
+    <!-- turno 1 -->
+    <text x="18" y="86" fill="#838383">[user]</text>
+    <text x="76" y="86" fill="#212529">Dov'è il mio ordine 4471?</text>
+    <text x="76" y="98" fill="#212529">Voglio un rimborso.</text>
+
+    <rect x="70" y="106" width="150" height="16" rx="8" fill="#a1245a"/>
+    <text x="18" y="118" fill="#838383">[assist.]</text>
+    <text x="78" y="118" fill="#ffffff">→ cerca_ordine("4471")</text>
+
+    <rect x="70" y="128" width="226" height="28" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="18" y="146" fill="#0e7c6a">[tool]</text>
+    <text x="78" y="140" fill="#0e7c6a">ERRORE: ordine non trovato.</text>
+    <text x="78" y="151" fill="#0e7c6a">Gli identificativi hanno 6 cifre.</text>
+
+    <rect x="70" y="162" width="164" height="16" rx="8" fill="#a1245a"/>
+    <text x="18" y="174" fill="#838383">[assist.]</text>
+    <text x="78" y="174" fill="#ffffff">→ cerca_ordine("004471")</text>
+
+    <rect x="70" y="184" width="226" height="16" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="18" y="196" fill="#0e7c6a">[tool]</text>
+    <text x="78" y="196" fill="#0e7c6a">{stato: "in consegna", data: "6 set"}</text>
+
+    <text x="18" y="220" fill="#838383">[assist.]</text>
+    <text x="76" y="220" fill="#212529">Arriva il 6 settembre. Per il</text>
+    <text x="76" y="232" fill="#212529">rimborso verifico lo storico.</text>
+
+    <!-- turno 2 -->
+    <line x1="18" y1="244" x2="294" y2="244" stroke="#dee2e6" stroke-dasharray="3 3"/>
+    <text x="18" y="262" fill="#838383">[user]</text>
+    <text x="76" y="262" fill="#212529">È la terza volta. Rimborsatemi.</text>
+
+    <rect x="70" y="270" width="184" height="16" rx="8" fill="#a1245a"/>
+    <text x="18" y="282" fill="#838383">[assist.]</text>
+    <text x="78" y="282" fill="#ffffff">→ storico_ordini("004471")</text>
+
+    <rect x="70" y="292" width="226" height="52" rx="3" fill="#d1efea" stroke="#1ab197"/>
+    <text x="18" y="322" fill="#0e7c6a">[tool]</text>
+    <text x="78" y="306" fill="#0e7c6a">[ {id: "003912", …}, {id: "004102",</text>
+    <text x="78" y="318" fill="#0e7c6a">…}, {id: "004471", …}, … ]</text>
+    <text x="78" y="336" fill="#0e7c6a" font-style="italic">(12.000 token)</text>
+
+    <text x="18" y="362" fill="#838383">[assist.]</text>
+    <text x="76" y="362" fill="#212529">Capisco. Il rimborso lo valuta</text>
+    <text x="76" y="374" fill="#212529">un operatore: la contatta oggi.</text>
+  </g>
+
+  <!-- verdetto -->
+  <rect x="10" y="390" width="292" height="42" fill="#fbe3ec"/>
+  <text x="18" y="409" font-family="'Bradley Hand', 'Segoe Script', 'Comic Sans MS', cursive" font-size="15" font-weight="700" fill="#c2410c">FAIL</text>
+  <text x="62" y="406" font-family="'Bradley Hand', 'Segoe Script', 'Comic Sans MS', cursive" font-size="10.5" fill="#c2410c">giusta, ma due chiamate su tre sbagliate:</text>
+  <text x="62" y="422" font-family="'Bradley Hand', 'Segoe Script', 'Comic Sans MS', cursive" font-size="10.5" fill="#c2410c">con un export più lungo avrebbe promesso</text>
+
+  <!-- annotazioni a margine -->
+  <g font-family="'Bradley Hand', 'Segoe Script', 'Comic Sans MS', cursive" font-size="11" fill="#c2410c">
+    <path d="M222 114 h28" stroke="#c2410c" stroke-width="1" fill="none"/>
+    <text x="308" y="110">parametro</text>
+    <text x="308" y="124">sbagliato: 4471</text>
+    <text x="308" y="138">invece di 004471</text>
+    <path d="M298 192 h6" stroke="#c2410c" stroke-width="1" fill="none"/>
+    <text x="308" y="196">ok, si è corretto</text>
+    <path d="M298 318 h6" stroke="#c2410c" stroke-width="1" fill="none"/>
+    <text x="308" y="312">12.000 token</text>
+    <text x="308" y="326">per una riga</text>
+    <path d="M298 368 h6" stroke="#c2410c" stroke-width="1" fill="none"/>
+    <text x="308" y="364">giusta,</text>
+    <text x="308" y="378">ma per caso</text>
+  </g>
+</svg>
