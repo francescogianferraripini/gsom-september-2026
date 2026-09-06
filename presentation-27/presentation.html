@@ -271,7 +271,7 @@
           <p class="hl-line">Chi lo chiama, chi esegue, chi lo richiama?</p>
           <div class="nota dark center" style="margin-top: auto;">Il modello sa volere. Non sa eseguire. Oggi: tutto ciò che sta intorno.</div>
         </div>
-        <div class="footnote">01 / Sezione 1</div>
+        <div class="footnote">01 / Sezione 1 · <span class="sid">#slide-1</span></div>
         <aside class="notes">Tre righe chiuse (il 26), una riga aperta (oggi). Nessuna figura: gli anelli tornano nella slide 5.</aside>
       </section>
 
@@ -320,7 +320,7 @@
           </div>
           <div class="nota">Sono le ragioni per cui esistono loop, sandbox e logging. Non funzioni "in più": è l'harness che rende un modello un agente.</div>
         </div>
-        <div class="footnote">02 / Sezione 1</div>
+        <div class="footnote">02 / Sezione 1 · <span class="sid">#slide-2</span></div>
         <aside class="notes">Due tempi: prima i post-it sparsi come nella slide 1 del 26, al click si riordinano in tre colonne. Le aspettative non erano desideri: sono requisiti, e ognuno esiste nell'harness come un pezzo preciso.</aside>
       </section>
 
@@ -331,7 +331,7 @@
           <div class="visual"><img src="svg/slide3-formula-harness.svg" alt="Agent = LLM + Harness + System Prompt + Tools + KB + Skills: LLM fatto nel 26, Harness acceso oggi, System Prompt, Tools e Skills in arrivo, KB per il 28"></div>
           <div class="nota">L'LLM è la CPU: calcola, non decide che cosa gira. L'harness è il sistema operativo: chiama la CPU, le mette davanti la memoria, esegue l'I/O. Oggi apriamo il sistema operativo, e con lui tre pezzi del software installato.</div>
         </div>
-        <div class="footnote">03 / Sezione 1</div>
+        <div class="footnote">03 / Sezione 1 · <span class="sid">#slide-3</span></div>
         <aside class="notes">Secondo dei quattro stati della formula lungo il corso: 26 chiusura LLM; 27 apertura Harness; 27 chiusura anche System Prompt, Tools, Skills; 28 KB. Stessa figura della slide 3 del 26, cambia solo lo stato dei blocchi.</aside>
       </section>
 
@@ -342,7 +342,7 @@
           <div class="visual"><img src="svg/slide4-mappa-harness.svg" alt="La mappa dell'harness: tre zone attorno all'LLM (context management, agentic loop management con tre anelli, environment management) e la fascia trasversale observability"></div>
           <p class="caption small">La figura dell'incontro 26, con ciò che oggi si aggiunge: i tre anelli del loop, gli strati dell'inizializzazione, la fascia di observability. L'ordine delle sezioni segue l'ordine in cui i problemi si presentano: prima si prepara la finestra, poi si esegue, poi la finestra cresce, poi si guarda che cosa è successo.</p>
         </div>
-        <div class="footnote">04 / Sezione 1</div>
+        <div class="footnote">04 / Sezione 1 · <span class="sid">#slide-4</span></div>
         <aside class="notes">È la figura madre della lezione e il suo indice: ogni separatore la ripropone in miniatura con la zona corrente accesa. MCP non è un blocco: le sue definizioni entrano in Context Initialization, le sue chiamate in Tool Calling execution.</aside>
       </section>
 
@@ -362,7 +362,7 @@
           </div>
           <div class="nota">I numeri sono storici, l'annidamento no: conversazione ⊃ task ⊃ generazione. Il 3° è nato per ultimo ma sta in mezzo. E "qualcuno" adesso ha un nome: l'harness.</div>
         </div>
-        <div class="footnote">05 / Sezione 1</div>
+        <div class="footnote">05 / Sezione 1 · <span class="sid">#slide-5</span></div>
         <aside class="notes">Stessi anelli della slide 39 del 26: l'unica differenza è l'etichetta che chiude la domanda lasciata aperta.</aside>
       </section>
 
@@ -374,7 +374,7 @@
           <p class="caption small">Un processo che chiama il modello, legge la risposta e decide: se è testo, il turno è finito; se è una tool call, esegue, appende il risultato e richiama. È l'unica volta in cui vediamo codice: da qui in poi vedremo solo che cosa entra ed esce dalla finestra.</p>
           <div class="nota dark center">Questo è il minimo. Senza, il modello aspetta per sempre.</div>
         </div>
-        <div class="footnote">06 / Sezione 1</div>
+        <div class="footnote">06 / Sezione 1 · <span class="sid">#slide-6</span></div>
         <aside class="notes">Il flusso legge lo stop_reason della risposta (la slide 10 lo chiamerà per nome); qui si dice "è una tool call?" e basta. Il resto dell'harness è nascosto in tre parole: finestra, esegui, done.</aside>
       </section>
 
@@ -401,7 +401,7 @@
           </div>
           <div class="nota">Nel 26 abbiamo visto il contesto come una pila che cresce. Oggi guardiamo la testa della pila: chi l'ha messa lì, e perché.</div>
         </div>
-        <div class="footnote">07 / Sezione 2</div>
+        <div class="footnote">07 / Sezione 2 · <span class="sid">#slide-7</span></div>
         <aside class="notes">Tempo 1 della finestra a strati. La figura torna nelle slide 8, 9, 11, 12 e 13, e si riempie uno strato per slide. Si legge dall'alto, come i riquadri del 26.</aside>
       </section>
 
@@ -432,7 +432,7 @@
           </div>
           <div class="nota">Nel 26, la mira arrivava con il RL. Qui la vediamo all'opera: la gerarchia fra system e user è una cosa che il modello ha imparato, non una regola del software.</div>
         </div>
-        <div class="footnote">08 / Sezione 2</div>
+        <div class="footnote">08 / Sezione 2 · <span class="sid">#slide-8</span></div>
       </section>
 
       <section id="slide-9">
@@ -465,7 +465,7 @@
           </div>
           <div class="nota">È la forma più semplice di know-how condiviso: quattro righe che ogni sessione rilegge. Le skill (slide 12 e sezione 3) sono lo stesso principio, a richiesta invece che sempre.</div>
         </div>
-        <div class="footnote">09 / Sezione 2</div>
+        <div class="footnote">09 / Sezione 2 · <span class="sid">#slide-9</span></div>
         <aside class="notes">Le istruzioni di progetto sono esplicite e gestite dall'harness, e vanno distinte dalla memoria (sezione 4, slide 37): la memoria è ciò che l'agente salva da solo.</aside>
       </section>
 
@@ -476,7 +476,7 @@
           <div class="visual"><img src="svg/slide10-chiamata-api.svg" alt="La richiesta all'API (system, tools, messages) corrisponde uno a uno agli strati della finestra; la risposta porta i blocchi generati e lo stop_reason; sotto, la freccia del giro successivo con il tool_result"></div>
           <p class="caption small">I nomi sono quelli dell'API di Anthropic; gli altri provider hanno la stessa forma con nomi diversi. La richiesta è la finestra a strati, campo per campo. La risposta porta i blocchi generati e uno <code>stop_reason</code>: è il bit che l'harness legge per decidere se il giro continua.</p>
         </div>
-        <div class="footnote">10 / Sezione 2</div>
+        <div class="footnote">10 / Sezione 2 · <span class="sid">#slide-10</span></div>
         <aside class="notes">Slide nuova nel corso: il 26 non ha mai mostrato la struttura dell'API. Nomi dell'API Messages di Anthropic, verificati a settembre 2026. Le bandierine cache_control anticipano il prefix caching della sezione 4.</aside>
       </section>
 
@@ -509,7 +509,7 @@
           </div>
           <div class="nota">Ogni definizione entra nella finestra a ogni giro, letta o no. Segnatevelo: torna nella sezione 4.</div>
         </div>
-        <div class="footnote">11 / Sezione 2</div>
+        <div class="footnote">11 / Sezione 2 · <span class="sid">#slide-11</span></div>
       </section>
 
       <section id="slide-12">
@@ -543,7 +543,7 @@
           </div>
           <div class="nota">Un tool si dichiara con uno schema; una skill si dichiara con una frase. In entrambi i casi, la descrizione è ciò che decide se verrà scelta.</div>
         </div>
-        <div class="footnote">12 / Sezione 2</div>
+        <div class="footnote">12 / Sezione 2 · <span class="sid">#slide-12</span></div>
         <aside class="notes">Qui solo l'inizializzazione. Che cos'è una skill per esteso è in sezione 3; il conto della progressive disclosure è in sezione 4.</aside>
       </section>
 
@@ -563,7 +563,7 @@
           </div>
           <div class="nota">Quanti tool e quante skill esporre è una decisione di progetto, non un accumulo: ogni voce in più deve giustificare il suo posto nell'indice.</div>
         </div>
-        <div class="footnote">13 / Sezione 2</div>
+        <div class="footnote">13 / Sezione 2 · <span class="sid">#slide-13</span></div>
         <aside class="notes">I numeri sono ordini di grandezza plausibili, non misure: va detto in aula. Si possono sostituire con numeri misurati su un agente reale (endpoint di conteggio token).</aside>
       </section>
 
@@ -575,7 +575,7 @@
           <p class="caption small">La stessa scena del 26: il system prompt in testa con il tool dichiarato, la domanda dell'utente, e la richiesta del modello: <code>cerca_ordine("4471")</code>. Lì il modello si ferma, con <code>stop_reason: tool_use</code>. Nel 26 dicevamo "qualcun altro esegue". Ora entriamo nella zona gialla della mappa.</p>
           <div class="nota dark center">Il modello ha chiesto. Chi esegue, come, e che cosa torna indietro: sezione 3.</div>
         </div>
-        <div class="footnote">14 / Sezione 2</div>
+        <div class="footnote">14 / Sezione 2 · <span class="sid">#slide-14</span></div>
         <aside class="notes">Ripresa della slide 9 del 26, solo la metà destra e solo il giro 1. È la cerniera verso la sezione 3.</aside>
       </section>
 
@@ -604,7 +604,7 @@
           </div>
           <div class="nota">Il modello ha generato testo. Tutto il resto, dal parsing alla nuova chiamata, è software deterministico: la parte simbolica dell'esoscheletro. Un tool è codice dell'harness; il caso più comune: un adattatore fra il modello e un'API.</div>
         </div>
-        <div class="footnote">15 / Sezione 3</div>
+        <div class="footnote">15 / Sezione 3 · <span class="sid">#slide-15</span></div>
         <aside class="notes">È il riquadro «?» della slide 14, aperto. La linea API dietro il tool torna nelle slide 18, 22 e 28: ciò che cambia è dove sta la funzione che chiama l'API, mai ciò che vede il modello.</aside>
       </section>
 
@@ -633,7 +633,7 @@
           </div>
           <div class="nota">Vale anche al contrario: un errore che l'harness nasconde al modello è un'informazione persa. Il messaggio d'errore va scritto per il modello come la descrizione del tool: dice che cosa è andato storto e, se possibile, che cosa fare.</div>
         </div>
-        <div class="footnote">16 / Sezione 3</div>
+        <div class="footnote">16 / Sezione 3 · <span class="sid">#slide-16</span></div>
       </section>
 
       <section id="slide-17">
@@ -652,7 +652,7 @@
           </div>
           <div class="nota">Anche questo il modello lo ha imparato nel RL agentico: le traiettorie che chiedevano in parallelo finivano prima. L'harness deve solo non tradirlo.</div>
         </div>
-        <div class="footnote">17 / Sezione 3</div>
+        <div class="footnote">17 / Sezione 3 · <span class="sid">#slide-17</span></div>
       </section>
 
       <section id="slide-18">
@@ -671,7 +671,7 @@
           </div>
           <div class="nota">È il primo caso in cui il sandbox serve a governare il contesto, non a eseguire un compito. Lo ritroveremo: l'offload su file è la tecnica principe della sezione 4.</div>
         </div>
-        <div class="footnote">18 / Sezione 3</div>
+        <div class="footnote">18 / Sezione 3 · <span class="sid">#slide-18</span></div>
       </section>
 
       <section id="slide-19">
@@ -698,7 +698,7 @@
           </div>
           <div class="nota small">È una decisione dell'harness: quali tool esporre insieme, in quale sandbox, con quale rete. Lo ritroveremo alla slide 21 (isolamento), nella memoria (che si può avvelenare) e nell'orchestrazione (un subagente con pochi tool è anche un confine di fiducia).</div>
         </div>
-        <div class="footnote">19 / Sezione 3</div>
+        <div class="footnote">19 / Sezione 3 · <span class="sid">#slide-19</span></div>
         <aside class="notes">Citazione: "The lethal trifecta: private data, untrusted content, exfiltration." Simon Willison, 2025 (in figura).</aside>
       </section>
 
@@ -732,7 +732,7 @@
           </div>
           <div class="nota small">Il modello ha scritto quattro righe di Python per fare in un giro ciò che con tool dedicati avrebbe richiesto un tool "conta ritardi per corriere" che nessuno aveva previsto. È questo il senso di "universale": copre i casi che non avevi immaginato. Da qui in poi "tool" non vuol dire più solo "funzione con schema JSON".</div>
         </div>
-        <div class="footnote">20 / Sezione 3</div>
+        <div class="footnote">20 / Sezione 3 · <span class="sid">#slide-20</span></div>
       </section>
 
       <section id="slide-21">
@@ -751,7 +751,7 @@
           </div>
           <div class="nota">Il sandbox non è una precauzione in più: è ciò che rende accettabile dare al modello un tool universale. Senza, il punto 2 della slide precedente sarebbe una minaccia, non una capacità.</div>
         </div>
-        <div class="footnote">21 / Sezione 3</div>
+        <div class="footnote">21 / Sezione 3 · <span class="sid">#slide-21</span></div>
       </section>
 
       <section id="slide-22">
@@ -769,7 +769,7 @@
           </div>
           <div class="nota">Dal punto di vista dell'LLM non cambia nulla: nella finestra trova la stessa definizione e riceve lo stesso <code>tool_result</code>. MCP è un accordo fra harness e fornitori di tool; il modello non è parte del contratto.</div>
         </div>
-        <div class="footnote">22 / Sezione 3</div>
+        <div class="footnote">22 / Sezione 3 · <span class="sid">#slide-22</span></div>
         <aside class="notes">MCP standardizza dichiarazione ed esecuzione, le due metà mostrate nelle slide 11 e 15. Sandbox e MCP non sono in gerarchia: due porte, quale si usa lo decide chi possiede l'accesso.</aside>
       </section>
 
@@ -785,7 +785,7 @@
           </div>
           <div class="nota small">I ruoli: l'<strong>host</strong> è l'applicazione (l'harness); apre un <strong>client</strong> per ogni <strong>server</strong> a cui si collega. Il server può girare in locale, come processo lanciato dall'host, o in remoto, dietro HTTP. Esiste anche una primitiva lato client, l'elicitation: il server può chiedere all'utente un dato che gli manca.</div>
         </div>
-        <div class="footnote">23 / Sezione 3</div>
+        <div class="footnote">23 / Sezione 3 · <span class="sid">#slide-23</span></div>
         <aside class="notes">Sampling e roots (primitive lato client) sono deprecate dalla revisione 2026-07; estensioni opt-in (tasks, apps, skills over MCP) esistono ma non entrano in slide. Fonti in docs/ricerche-27/research-mcp-offering.md.</aside>
       </section>
 
@@ -805,7 +805,7 @@
           </div>
           <div class="nota">Perché ve lo racconto: chi compra o costruisce un agente oggi trova server "vecchio stile" e server nuovi; e chi espone un'API ai propri agenti deve decidere quale forma dare al server. La direzione è chiara: remoto, stateless, dietro un gateway.</div>
         </div>
-        <div class="footnote">24 / Sezione 3</div>
+        <div class="footnote">24 / Sezione 3 · <span class="sid">#slide-24</span></div>
         <aside class="notes">Nessuna versione numerata, solo revisioni datate. Numeri da fonti ufficiali a settembre 2026 (blog MCP, annuncio Anthropic di dicembre 2025); in slide restano ordini di grandezza.</aside>
       </section>
 
@@ -825,7 +825,7 @@
           </div>
           <div class="nota">La cache riduce il costo in denaro del prefisso, ma non la confusione decisionale, e non il fatto che la finestra cresce. Come si governa una finestra che cresce: sezione 4.</div>
         </div>
-        <div class="footnote">25 / Sezione 3</div>
+        <div class="footnote">25 / Sezione 3 · <span class="sid">#slide-25</span></div>
       </section>
 
       <section id="slide-26">
@@ -868,7 +868,7 @@
           </div>
           <div class="nota">Se il system prompt è il regolamento generale, la skill è il manuale operativo di un compito: sta chiusa finché quel compito non arriva.</div>
         </div>
-        <div class="footnote">26 / Sezione 3</div>
+        <div class="footnote">26 / Sezione 3 · <span class="sid">#slide-26</span></div>
         <aside class="notes">La skill chiama i tool cerca_ordine, crea_rimborso, crea_ticket: è il legame fra skill e tool, detto senza dirlo.</aside>
       </section>
 
@@ -888,7 +888,7 @@
           </div>
           <div class="nota">Il conto preciso, e il confronto con cinquanta tool MCP sempre presenti, è la prima slide della sezione 4.</div>
         </div>
-        <div class="footnote">27 / Sezione 3</div>
+        <div class="footnote">27 / Sezione 3 · <span class="sid">#slide-27</span></div>
         <aside class="notes">I due meccanismi di caricamento con esempi: in Claude Code il modello chiama uno strumento Skill e il corpo torna come risultato; nell'API di Anthropic i file della skill sono montati nel sandbox e il modello li legge con il tool di esecuzione codice; in altri harness il corpo è appeso dall'harness su match della descrizione.</aside>
       </section>
 
@@ -908,7 +908,7 @@
           </div>
           <div class="nota">È la stessa lezione della slide 20, vista dal lato di chi progetta: se un compito si può scrivere come script, scrivilo una volta e mettilo nella skill. Il modello non deve reinventarlo a ogni sessione.</div>
         </div>
-        <div class="footnote">28 / Sezione 3</div>
+        <div class="footnote">28 / Sezione 3 · <span class="sid">#slide-28</span></div>
       </section>
 
       <!-- ══════════ SEZIONE 4 ══════════ -->
@@ -934,7 +934,7 @@
           </div>
           <div class="nota">La cache abbatte il prezzo del prefisso, non la sua lunghezza: il modello lo rilegge comunque, e sceglie fra cinquanta nomi invece che fra venti descrizioni. È il conto della confusione decisionale della slide 13.</div>
         </div>
-        <div class="footnote">29 / Sezione 4</div>
+        <div class="footnote">29 / Sezione 4 · <span class="sid">#slide-29</span></div>
         <aside class="notes">I numeri sono ordini di grandezza coerenti con la slide 13 (prefisso ~4.000) e la slide 25; vanno dichiarati come tali.</aside>
       </section>
 
@@ -956,7 +956,7 @@
           </ul>
           <div class="nota">Nessuna di queste scelte è del modello: è chi progetta l'agente che decide che cosa sta nel prefisso e che cosa no. È la seconda leva di miglioramento, dopo il prompt: torna nella sezione 5.</div>
         </div>
-        <div class="footnote">30 / Sezione 4</div>
+        <div class="footnote">30 / Sezione 4 · <span class="sid">#slide-30</span></div>
         <aside class="notes">Il punto 2 è il caricamento differito delle definizioni (nell'API di Anthropic: tool search con defer_loading; esempio ufficiale da 55.000 a 8.700 token).</aside>
       </section>
 
@@ -976,7 +976,7 @@
           </div>
           <div class="nota">Nel 26: "il modello rilegge tutta la pila da capo, a ogni chiamata". Ora la pila ha un nome per ogni strato, e un responsabile: l'harness decide che cosa ci resta dentro.</div>
         </div>
-        <div class="footnote">31 / Sezione 4</div>
+        <div class="footnote">31 / Sezione 4 · <span class="sid">#slide-31</span></div>
         <aside class="notes">Ripresa della slide 42 del 26 (la pila che cresce), ridisegnata dall'alto per coerenza con la finestra a strati della sezione 2.</aside>
       </section>
 
@@ -996,7 +996,7 @@
           </div>
           <div class="nota">Le curve del 26 avevano tre linee: teorica, in fattura, reale. La cache sposta quella in fattura verso quella reale, e vale solo se l'harness non tocca il prefisso.</div>
         </div>
-        <div class="footnote">32 / Sezione 4</div>
+        <div class="footnote">32 / Sezione 4 · <span class="sid">#slide-32</span></div>
         <aside class="notes">Numeri esatti per l'API di Anthropic: lettura 0,1× (0,025× su Claude Fable 5.1), scrittura 1,25× a 5 minuti e 2× a un'ora; pareggio dalla seconda chiamata con la cache a 5 minuti.</aside>
       </section>
 
@@ -1016,7 +1016,7 @@
           </div>
           <div class="nota">Come si verifica: la risposta dell'API riporta quanti token sono stati letti dalla cache. Se è zero per due chiamate identiche di fila, qualcosa nel prefisso cambia senza che nessuno se ne accorga. È il primo numero da guardare in produzione: torna nella sezione 5.</div>
         </div>
-        <div class="footnote">33 / Sezione 4</div>
+        <div class="footnote">33 / Sezione 4 · <span class="sid">#slide-33</span></div>
       </section>
 
       <section id="slide-34">
@@ -1035,7 +1035,7 @@
           </div>
           <div class="nota">Nel 26 le regole erano per chi usa un chatbot: nuova chat, non riempire. Qui le regole sono per l'harness, che deve decidere da solo che cosa togliere. Sono le prossime due slide.</div>
         </div>
-        <div class="footnote">34 / Sezione 4</div>
+        <div class="footnote">34 / Sezione 4 · <span class="sid">#slide-34</span></div>
         <aside class="notes">La figura è l'SVG della slide 45 del 26, riusato tale e quale. Il grafico del context rot (slide 44 del 26) affiancato non reggeva lo spazio: resta come richiamo verbale nel primo punto, come previsto dalla spec.</aside>
       </section>
 
@@ -1055,7 +1055,7 @@
           </div>
           <div class="nota small">Alcune API offrono entrambe come servizio: l'harness dichiara una strategia e il provider cancella o riassume prima di chiamare il modello. Il principio non cambia: qualcuno, fuori dal modello, decide che cosa il modello vedrà.</div>
         </div>
-        <div class="footnote">35 / Sezione 4</div>
+        <div class="footnote">35 / Sezione 4 · <span class="sid">#slide-35</span></div>
         <aside class="notes">Nell'API di Anthropic esistono come servizio il context editing (cancella i risultati vecchi dei tool con un segnaposto, tenendo gli ultimi N) e la compaction server-side; Claude Code fa lo stesso in locale.</aside>
       </section>
 
@@ -1075,7 +1075,7 @@
           </div>
           <div class="nota dark center">Un file scritto in questa sessione e letto nella prossima non è più contesto. È memoria.</div>
         </div>
-        <div class="footnote">36 / Sezione 4</div>
+        <div class="footnote">36 / Sezione 4 · <span class="sid">#slide-36</span></div>
         <aside class="notes">Da dire a voce: il sandbox è effimero (slide 21); l'harness porta i file fuori dal sandbox, in uno spazio persistente suo, ed è a quello spazio che il tool di memoria (slide 38) accede.</aside>
       </section>
 
@@ -1095,7 +1095,7 @@
           </div>
           <div class="nota">È lo stesso schema del sandbox: il modello non ha uno stato, l'harness glielo mette davanti. Il file è la forma più semplice di stato che sopravvive.</div>
         </div>
-        <div class="footnote">37 / Sezione 4</div>
+        <div class="footnote">37 / Sezione 4 · <span class="sid">#slide-37</span></div>
       </section>
 
       <section id="slide-38">
@@ -1132,7 +1132,7 @@
           </div>
           <div class="nota small">Ed è così che la memoria si può avvelenare: chi riesce a farci scrivere una riga (slide 19) la ritrova in ogni sessione futura. Il permesso di scrittura è la decisione più delicata di questa slide.</div>
         </div>
-        <div class="footnote">38 / Sezione 4</div>
+        <div class="footnote">38 / Sezione 4 · <span class="sid">#slide-38</span></div>
       </section>
 
       <section id="slide-39">
@@ -1158,7 +1158,7 @@
           </div>
           <div class="nota">Tre domande, e una quarta implicita: chi la ripulisce? Una memoria che nessuno pota si riempie di note vecchie, doppie, o false. È lo stesso problema di una base di conoscenza, ed è materia del prossimo incontro.</div>
         </div>
-        <div class="footnote">39 / Sezione 4</div>
+        <div class="footnote">39 / Sezione 4 · <span class="sid">#slide-39</span></div>
       </section>
 
       <!-- ══════════ SEZIONE 5 ══════════ -->
@@ -1184,7 +1184,7 @@
           </div>
           <div class="nota">Migliorare e restare liberi sono lo stesso lavoro: ogni fix messo in una leva alta è un fix che sopravvive al prossimo modello. Ma per sapere quale leva tirare, prima bisogna misurare: è il resto della sezione.</div>
         </div>
-        <div class="footnote">40 / Sezione 5</div>
+        <div class="footnote">40 / Sezione 5 · <span class="sid">#slide-40</span></div>
         <aside class="notes">Apre la sezione con il menu delle leve; la slide 46 chiude il cerchio: tipicamente un cluster di fallimento è legato a una leva. La formula in miniatura nell'angolo: accesi Harness, System Prompt, Tools e KB (le quattro leve alte), LLM attenuato.</aside>
       </section>
 
@@ -1204,7 +1204,7 @@
           </div>
           <div class="nota">Nel 26: la traiettoria è l'unità di valore del RL agentico. Oggi è l'unità di valutazione: la risposta è l'ultima riga di una traiettoria, e da sola non dice quasi niente.</div>
         </div>
-        <div class="footnote">41 / Sezione 5</div>
+        <div class="footnote">41 / Sezione 5 · <span class="sid">#slide-41</span></div>
         <aside class="notes">Ripresa delle slide 38 (le traiettorie premiate) e 50 (il valore delle traiettorie) del 26: stessa traiettoria a nodi, riletta a tre livelli. Il punto è la croce a metà del turno 2: valutare solo l'ultima riga non l'avrebbe vista.</aside>
       </section>
 
@@ -1224,7 +1224,7 @@
           </div>
           <div class="nota dark center">"Sembra che funzioni" non è una misura. Serve un insieme di casi fisso, un giudizio ripetibile, e qualcuno che guardi le tracce.</div>
         </div>
-        <div class="footnote">42 / Sezione 5</div>
+        <div class="footnote">42 / Sezione 5 · <span class="sid">#slide-42</span></div>
         <aside class="notes">Fonte del termine e della critica: Hamel Husain, "Your AI Product Needs Evals" (caso Lucy/Rechat: "vibe checks" e correzione dei bug "resembling a game of whack-a-mole"). Le metriche generiche (helpfulness 1-5, hallucination score) fanno lo stesso danno: danno "a false sense of measurement and progress".</aside>
       </section>
 
@@ -1236,7 +1236,7 @@
           <p class="caption small">Sei passi, in quest'ordine, e poi un ciclo. Nessun passo si salta: ognuno produce ciò che serve al successivo. Il primo non è tecnico: è decidere chi giudica.</p>
           <div class="nota small">Due responsabilità, non una: l'esperto di dominio decide che cosa è giusto e costruisce i casi; il team dell'agente rende quel giudizio automatico e lo riesegue. Senza il primo si misura la cosa sbagliata; senza il secondo si misura una volta sola.</div>
         </div>
-        <div class="footnote">43 / Sezione 5</div>
+        <div class="footnote">43 / Sezione 5 · <span class="sid">#slide-43</span></div>
         <aside class="notes">Slide-mappa della sezione: le slide 44-49 la richiamano in miniatura con la tappa corrente accesa. La sequenza dei passi è quella del brief (docs/incontro-27.md, "Come monitoro e miglioro"), che segue il processo di Hamel Husain: tracce e strumentazione, benevolent dictator, dataset anche sintetico e dimensionale, error analysis (open coding, axial coding), assertion prima, LLM-as-judge validato dopo, ciclo in produzione.</aside>
       </section>
 
@@ -1263,7 +1263,7 @@
           </div>
           <div class="nota small">È il passo che tutti saltano perché sembra lento. È il più veloce: nelle prime trenta tracce si trovano già i cluster di fallimento della slide 46.</div>
         </div>
-        <div class="footnote">44 / Sezione 5</div>
+        <div class="footnote">44 / Sezione 5 · <span class="sid">#slide-44</span></div>
         <aside class="notes">"Benevolent dictator": per la maggior parte delle organizzazioni un solo esperto di dominio che annota; più annotatori solo in organizzazioni grandi con domini distinti. Almeno 30 tracce a mano prima di farsi aiutare da un LLM, ~100 finché non emergono più failure mode nuovi (saturazione). Il tool custom: "the single most impactful investment", i team che ce l'hanno iterano ~10 volte più in fretta. Verdetto binario, non scala 1-5. L'interfaccia originale (nboss_annotate.png su hamel.dev) è qui ridisegnata in schema; se si vuole lo screenshot vero va scaricato in assets/images/uploads/ e sostituito. Fonti: docs/ricerche-27/research-eval-hamel.md e research-tracce-esempi.md.</aside>
       </section>
 
@@ -1284,7 +1284,7 @@
           </div>
           <div class="nota">Il dataset è dell'esperto di dominio: è la sua definizione di "giusto", scritta in cento esempi. Il team dell'agente lo esegue.</div>
         </div>
-        <div class="footnote">45 / Sezione 5</div>
+        <div class="footnote">45 / Sezione 5 · <span class="sid">#slide-45</span></div>
         <aside class="notes">Metodo del sintetico "dimensionale" (Husain): si definiscono le dimensioni (features, scenari, persone), si scrivono ~20 tuple a mano, poi si fa generare all'LLM le tuple strutturate e solo dopo le si converte in linguaggio naturale. Il sintetico non stima le frequenze dei fallimenti reali: va validato contro dati veri appena esistono.</aside>
       </section>
 
@@ -1305,7 +1305,7 @@
           </div>
           <div class="nota small">È il passo che trasforma "non funziona" in una lista di cose da fare, ordinata. Ed è quello che va rifatto ogni volta che il dataset cresce (slide 49). "Una pivot di Excel è uno strumento semplice, ma funziona." (Hamel Husain)</div>
         </div>
-        <div class="footnote">46 / Sezione 5</div>
+        <div class="footnote">46 / Sezione 5 · <span class="sid">#slide-46</span></div>
         <aside class="notes">Nel metodo di Husain: open coding (note libere su ogni traccia) e poi axial coding (le note raggruppate in una tassonomia dei failure mode, contati): "the most important step". Esempio NurtureBoss (Field Guide): ogni riga una conversazione, note aperte sui comportamenti indesiderati, tassonomia costruita con un LLM, conteggio in una pivot Excel: conversation-flow 110, handoff 70, rescheduling 60, oltre il 60% dei problemi; il fix sulle date ha portato quel cluster dal 33% al 95%. Fonte: docs/ricerche-27/research-tracce-esempi.md.</aside>
       </section>
 
@@ -1326,7 +1326,7 @@
           </div>
           <div class="nota small">L'ordine conta: un giudice costa una chiamata per caso ed è meno affidabile di un <code>if</code>. Si usa solo dove l'<code>if</code> non arriva. Ed è il punto in cui i due ruoli si incontrano: il team scrive il giudice, l'esperto lo valida.</div>
         </div>
-        <div class="footnote">47 / Sezione 5</div>
+        <div class="footnote">47 / Sezione 5 · <span class="sid">#slide-47</span></div>
         <aside class="notes">Dettagli della validazione, fuori slide: un giudice per failure mode, con esempi few-shot presi dalle critiche dell'esperto; si misurano separatamente il tasso di veri positivi e di veri negativi, perché l'accordo grezzo inganna quando le classi sono sbilanciate; ~100 esempi etichettati per failure mode; si itera sul prompt del giudice finché l'accordo supera il 90% (Husain arriva sopra il 90% in tre iterazioni sul caso Honeycomb). Nella CI: assertion deterministiche prima dei giudici LLM, che costano. Fonte: docs/ricerche-27/research-eval-hamel.md.</aside>
       </section>
 
@@ -1346,7 +1346,7 @@
           </div>
           <div class="nota">Separare i due tipi serve a non correggere nel posto sbagliato: un retrieval che sbaglia non si aggiusta nel prompt della sintesi.</div>
         </div>
-        <div class="footnote">48 / Sezione 5</div>
+        <div class="footnote">48 / Sezione 5 · <span class="sid">#slide-48</span></div>
         <aside class="notes">Approfondimento della tappa 3 (i cluster): i fallimenti sui tool si separano per natura del tool. Per la RAG, il retrieval si misura con un checker (i documenti attesi sono in cima?), la sintesi con il giudice della slide 47. Il 28 riprende la KB dal lato della conoscenza.</aside>
       </section>
 
@@ -1367,7 +1367,7 @@
           </div>
           <div class="nota">Non è un progetto: è un'attività che ha un costo fisso mensile e un responsabile nel team dell'agente. Un agente senza questo ciclo peggiora in silenzio, perché il mondo intorno cambia e nessuno lo misura.</div>
         </div>
-        <div class="footnote">49 / Sezione 5</div>
+        <div class="footnote">49 / Sezione 5 · <span class="sid">#slide-49</span></div>
         <aside class="notes">Il numero da guardare per primo in produzione, promesso nella slide 33: i token letti dalla cache; se è zero per due chiamate identiche, qualcosa nel prefisso cambia senza che nessuno se ne accorga. È la fascia Metrics della mappa, che alimenta questa tappa.</aside>
       </section>
 
@@ -1388,7 +1388,7 @@
           </div>
           <div class="nota small">Ed è il motivo per cui la traiettoria è l'artefatto primario dell'agente, non la risposta: la risposta serve all'utente una volta; la traiettoria serve a chi lo costruisce, per sempre.</div>
         </div>
-        <div class="footnote">50 / Sezione 5</div>
+        <div class="footnote">50 / Sezione 5 · <span class="sid">#slide-50</span></div>
         <aside class="notes">Chiude la sezione e il cerchio con il 26 (slide 38 e 50). Layout: i tre usi sono tre paragrafi a sinistra invece che tre colonne sotto la figura, perché la figura a tutta larghezza si riduceva a un terzo. A settembre 2026 le tracce di produzione si usano come insieme di task con verificatore (RFT e simili: OpenAI reinforcement fine-tuning con grader, Amazon Bedrock RFT, CoreWeave Serverless RL), non come traiettorie da imitare grezze; serve un grader, e il rischio è il reward hacking (Mako: sette tipi di hack scoperti sui kernel). La riga reale: nebius/SWE-agent-trajectories, instance Melevir__cognitive_complexity-15, 43 turni, 20 test passati, target true; il contro-esempio AnalogJ__lexicon-336, 93 turni, target false. Il grader "multi" di OpenAI: 0.5 · string_check + 0.5 · score_model. Fonti in docs/ricerche-27/research-tracce-esempi.md e research-eval-hamel.md.</aside>
       </section>
 
@@ -1416,7 +1416,7 @@
           </div>
           <div class="nota">La prima domanda, sempre: "lo può fare un <code>if</code>?" Se sì, non serve un agente. Il multi-agente costa di più, è più lento e si spiega peggio: si giustifica solo con il contesto.</div>
         </div>
-        <div class="footnote">51 / Sezione 6</div>
+        <div class="footnote">51 / Sezione 6 · <span class="sid">#slide-51</span></div>
         <aside class="notes">Nella mappa questa sezione non accende una zona: la duplica (due esoscheletri). I tre pattern che seguono sono motivati da tre problemi già visti: contesto (sezione 4), tempo (slide 17), giudizio (sezione 5).</aside>
       </section>
 
@@ -1436,7 +1436,7 @@
           </div>
           <div class="nota">È il pattern che copre quasi tutti i casi reali. Gli altri due sono sue varianti: molti figli insieme, o un figlio che giudica.</div>
         </div>
-        <div class="footnote">52 / Sezione 6</div>
+        <div class="footnote">52 / Sezione 6 · <span class="sid">#slide-52</span></div>
       </section>
 
       <section id="slide-53">
@@ -1455,7 +1455,7 @@
           </div>
           <div class="nota">Regola pratica: prima si prova con un figlio solo (pattern 1). Si passa al parallelo quando il tempo è il problema, e si è capito come si decompone il compito.</div>
         </div>
-        <div class="footnote">53 / Sezione 6</div>
+        <div class="footnote">53 / Sezione 6 · <span class="sid">#slide-53</span></div>
       </section>
 
       <section id="slide-54">
@@ -1474,7 +1474,7 @@
           </div>
           <div class="nota">È l'LLM-as-a-judge della slide 47 messo in linea: stesso prompt, stessa validazione, un momento diverso: prima della consegna invece che dopo.</div>
         </div>
-        <div class="footnote">54 / Sezione 6</div>
+        <div class="footnote">54 / Sezione 6 · <span class="sid">#slide-54</span></div>
       </section>
 
       <section id="slide-55">
@@ -1493,7 +1493,7 @@
           </div>
           <div class="nota dark center">Se non sai dire chi decide, non hai un'architettura: hai una chat.</div>
         </div>
-        <div class="footnote">55 / Sezione 6</div>
+        <div class="footnote">55 / Sezione 6 · <span class="sid">#slide-55</span></div>
       </section>
 
       <section id="slide-56">
@@ -1503,7 +1503,7 @@
           <div class="visual"><img src="svg/slide56-deep-research.svg" alt="Il sistema di ricerca multi-agente di Anthropic, da sinistra a destra: l'utente chiede; il lead researcher, un modello più grande, pianifica e delega con quattro pill ricerca in parallelo; quattro ricercatori affiancati, un modello più economico, ognuno con la propria finestra alta piena di giri e un paragrafo in fondo, senza frecce fra loro; i paragrafi risalgono al lead, che legge, trova i buchi e rilancia, poi scrive la bozza; il citation agent verifica le citazioni; l'utente riceve il report. A destra la scala del tempo: fino a meno 90 per cento"></div>
           <p class="caption small">Il sistema di ricerca di Anthropic, come lo descrive chi lo ha costruito (giugno 2025). Un lead pianifica e delega; i ricercatori lavorano in parallelo, ognuno nella propria finestra; un agente finale verifica le citazioni. Circa quindici volte i token di una chat, e un miglioramento di circa il 90% rispetto a un agente solo. Verosimilmente gli altri sistemi di deep research lavorano allo stesso modo; questo è l'unico documentato con i ruoli e i numeri.</p>
         </div>
-        <div class="footnote">56 / Sezione 6</div>
+        <div class="footnote">56 / Sezione 6 · <span class="sid">#slide-56</span></div>
         <aside class="notes">Fonte: Anthropic Engineering, "How we built our multi-agent research system", 13 giugno 2025 (URL in docs/ricerche-27/research-deep-research.md): lead researcher (Opus 4) + 3-10+ subagenti paralleli (Sonnet 4) con contesto proprio + citation agent; +90,2% rispetto a un Opus singolo; ~15× i token di una chat; fino a -90% di tempo. Google non documenta Gemini Deep Research come multi-agente a ruoli (le fonti lo descrivono come un unico modello con loop plan/search/read/iterate e tool call parallele); OpenAI deep research è un modello singolo addestrato end-to-end. Per questo in slide si dice "verosimilmente".</aside>
       </section>
 
@@ -1522,7 +1522,7 @@
           </div>
           <div class="nota dark center">Gli "agenti" sono ruoli dell'harness: stesso tipo di macchina, con finestre e tool diversi. La differenza è tutta in ciò che ogni finestra contiene.</div>
         </div>
-        <div class="footnote">57 / Sezione 6</div>
+        <div class="footnote">57 / Sezione 6 · <span class="sid">#slide-57</span></div>
         <aside class="notes">Secondo tempo della slide 56: stesso viewBox, al click si sovrappongono le tre zone colorate e compaiono i tre punti. Niente resta senza colore tranne l'utente: tre pattern, e nient'altro.</aside>
       </section>
 
@@ -1545,7 +1545,7 @@
           </div>
           <div class="nota small">Leggetela con la mappa della slide 4: ogni prodotto è la stessa figura, con alcune zone che stanno da Anthropic e altre da voi. La tabella della prossima slide dice quali.</div>
         </div>
-        <div class="footnote">58 / Sezione 7</div>
+        <div class="footnote">58 / Sezione 7 · <span class="sid">#slide-58</span></div>
         <aside class="notes">Claude in Chrome e in Slack restano fuori slide: sono superfici della stessa chat. Dati verificati il 4 settembre 2026 su documentazione ufficiale (docs.claude.com, code.claude.com, platform.claude.com, Help Center): docs/ricerche-27/research-offering-matrix.md.</aside>
       </section>
 
@@ -1568,7 +1568,7 @@
           </table>
           <div class="nota small">Le righe sono le zone della mappa. Due letture: scendendo, ogni prodotto è un harness completo; attraversando, la stessa zona cambia solo per chi la ospita. La riga da guardare prima di scegliere è "Sandbox": è quella che decide che cosa devi costruire tu.</div>
         </div>
-        <div class="footnote">59 / Sezione 7</div>
+        <div class="footnote">59 / Sezione 7 · <span class="sid">#slide-59</span></div>
         <aside class="notes">Dati verificati su documentazione ufficiale al 4 settembre 2026 (49 fonti, elencate in docs/ricerche-27/research-offering-matrix.md). Le celle non verificabili sono rese in forma prudente ("come chat"). Se la tabella non regge a schermo, si tolgono le righe Skill (tutti sì) e Stato.</aside>
       </section>
 
@@ -1584,7 +1584,7 @@
           </div>
           <div class="nota small">Tutti e tre parlano MCP e girano con qualsiasi modello: qui la libertà di cambiare LLM (slide 40) è la regola. In cambio, ospitare, isolare e osservare è tutto lavoro tuo.</div>
         </div>
-        <div class="footnote">60 / Sezione 7</div>
+        <div class="footnote">60 / Sezione 7 · <span class="sid">#slide-60</span></div>
         <aside class="notes">Verificato sulla documentazione dei tre framework (4 settembre 2026): smolagents v1.26 (CodeAgent, executor locale AST-based "no local python sandbox can ever be completely secure", executor remoti E2B/Modal/Docker/Blaxel); LangGraph v1 (grafo, durable execution, checkpointer e store, MCPAdapter in beta); Agno v3.x (AgentOS, Teams, Agent Skills, tracing OTel in database).</aside>
       </section>
 
@@ -1607,7 +1607,7 @@
           </table>
           <div class="nota small">Confrontate la riga "Sandbox" con quella della slide 59: nei prodotti la porta Anthropic, nell'open non la porta nessuno. È lì che si decide se un framework open costa meno di un prodotto, o di più.</div>
         </div>
-        <div class="footnote">61 / Sezione 7</div>
+        <div class="footnote">61 / Sezione 7 · <span class="sid">#slide-61</span></div>
         <aside class="notes">Dati verificati al 4 settembre 2026 (docs smolagents, LangChain/LangGraph, Agno): docs/ricerche-27/research-offering-matrix.md, tabella B. Le righe Modelli e Maturità sono tolte dalla tabella per farla stare a corpo leggibile: modelli, qualsiasi per tutti e tre (detto nella nota); maturità: smolagents v1.x senza dichiarazione di produzione, LangGraph v1 stabile, Agno v3.x.</aside>
       </section>
 
@@ -1618,7 +1618,7 @@
           <div class="visual"><img src="svg/slide62-formula-riletta.svg" alt="La formula Agent = LLM + Harness + System Prompt + Tools + KB + Skills alla chiusura dell'incontro 27: LLM attenuato con la spunta, incontro 26; Harness, System Prompt, Tools e Skills accesi, incontro 27, con dentro Harness la mappa in miniatura; KB attenuato, incontro 28. Sotto ogni blocco acceso una riga di sintesi. Quattro su sei: ne manca uno"></div>
           <div class="nota">L'LLM è la CPU, l'harness il sistema operativo, il resto il software installato. Oggi abbiamo aperto il sistema operativo e tre programmi. Ne manca uno.</div>
         </div>
-        <div class="footnote">62 / Sezione 7</div>
+        <div class="footnote">62 / Sezione 7 · <span class="sid">#slide-62</span></div>
         <aside class="notes">Terzo dei quattro stati della formula lungo il corso: 26 chiusura LLM; 27 apertura Harness (slide 3); 27 chiusura anche System Prompt, Tools, Skills; 28 KB. Stesse coordinate della slide 3, canvas 1302×428 con la fascia della sintesi divisa per colonna; le righe di sintesi sono state accorciate a tre righe da 150px.</aside>
       </section>
 
@@ -1630,7 +1630,7 @@
           <p class="reqline">ricercabile in modo progressivo · non ridondante · veritiera · compounding</p>
           <p class="reqline-gloss" style="margin-bottom: auto;">i requisiti di una conoscenza utile, per una persona e per un agente</p>
         </div>
-        <div class="footnote">63 / Sezione 7</div>
+        <div class="footnote">63 / Sezione 7 · <span class="sid">#slide-63</span></div>
         <aside class="notes">Chiude la lezione: il blocco nero è la struttura, e il deck si chiude su una frase, non su una figura. I quattro requisiti sono l'anticipazione del 28.</aside>
       </section>
 

@@ -173,6 +173,11 @@
   color: var(--muted-color);
   letter-spacing: 0.04em;
 }
+.reveal .slides section > .footnote .sid {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  letter-spacing: 0;
+  opacity: 0.8;
+}
 
 /* Corner brand mark, shown on content slides */
 .reveal .slides section:not(.section-divider):not(.hero):not(.no-chrome)::after {
