@@ -1,6 +1,6 @@
 # Slide realizzate — Incontro 26
 
-Lista di lavoro nell'ordine del deck. Ogni riga: numero, titolo, ancora HTML in `presentation/presentation.html`, figure usate.
+Lista di lavoro nell'ordine del deck. Ogni riga: numero, titolo, ancora HTML in `presentation-26/presentation.html`, figure usate.
 Per commentare, scrivi sotto la riga della slide.
 
 ---
@@ -183,54 +183,74 @@ Per commentare, scrivi sotto la riga della slide.
 		- **Le due risposte sono le stesse della 10**, di proposito: là erano il prima e il dopo dell'addestramento, qui sono la coppia che gli umani confrontano. Stesso esempio, due letture — il primo bullet della 37 ora lo dichiara.
 		- Layout della slide da `tv-35` a `tv-30`, perché la figura è diventata orizzontale.
 		- ⚠️ Il golfista è così sceso da tre copie a **due**: `slide7-golfista.svg` (senza mira) e `slide9d-golfista-mira.svg` (con). La 37 non lo disegna più.
+	- ✅ FATTO — «Riporta qui in piccolo nella figura, nel blocco Modello, le 3 matricine con embedding, fully connected ed qkv presenti anche in slide 35»
+		- Le tre matrici 3×3 sono **ricopiate** dalla TAPPA 4 della Slide 35, non ridisegnate: stesse etichette (`embedding` · `Q K V` · `rilevatori`, i nomi che usa la 35 — «rilevatori» è il fully connected), stesso schema di celle gialle, stesse proporzioni. È una citazione: chi guarda deve riconoscere l'oggetto del pretraining e vedere che l'unica cosa a cambiare è **da dove arriva il punteggio**.
+		- Il blocco `modello` è diventato **nero**, come quello della 35. Non è un vezzo: le celle sono `#f6f6f6` su `#ffbe0b`, e il giallo su fondo bianco non tiene il contrasto. Nero, la figura combacia con quella della 35 anche di colore.
+		- **Non ho riportato la linea gialla di distribuzione** con le tre frecce che nella 35 salgono dentro le matrici: il blocco è alto 130 e non c'è lo spazio. La freccia burgundy `reward` che arriva da sopra fa già quel lavoro — ed è anzi il punto, perché lì il punteggio veniva dalla cross-entropy e qui dal reward model.
+		- ⚠️ **Ora le matrici sono in due file**: `slide29-pretraining.svg` (tappa 4) e `slide31-rlhf.svg`. Se cambiano di là, vanno cambiate anche qui — commento di sincronizzazione aggiunto in tutti e due.
+	- ⚠️ **Trovato e corretto un difetto preesistente nella stessa figura**: la riga *«stesso metodo: gradient descent —»* era lunga 33 caratteri a 14px partendo da x=910, e finiva a 1141 dentro un viewBox largo 1100. Veniva **tagliata a schermo**. Stesse parole, ora su tre righe a 12.5.
 - **38 · RL agentico: traiettorie** — `#slide-38` — `slide32-rl-agentico.svg`
+
+--> inserisci qui la slide per parlare di RL tramite GRPO, voglio parlare di reward su completmento di task verificabili su più, facendo vedere un training simile a slide 37 con aggiornamento matricine simile
+
 - **39 · Nasce il 3° loop** — `#slide-39` — `slide33-terzo-loop.svg`
 
 
 ## Separatore di sezione — «Lo scenario, più o meno completo»
+
 	- ✅ FATTO — titolo cambiato. Il separatore ora dice «Lo scenario, / più o meno completo» e il sottotitolo elenca anche il costo del contesto. Gli eyebrow di tutte le slide della sezione sono passati a `SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO`.
-	- ✅ FATTO — **spostate qui 23, 23b, 34 e 35**, in quest'ordine, prima della 44. Eyebrow e footnote aggiornati a «Sezione 5».
+	- ✅ FATTO — **spostate qui 23, 23b, 34 e 35**, in quest'ordine, prima della 44 *(tutti numeri della numerazione di allora)*. Eyebrow e footnote aggiornati a «Sezione 5».
 		- ⚠️ **La numerazione ora è fuori ordine e si vede**: dopo «33 / Sezione 4» il pubblico legge «23 / Sezione 5», poi 23b, 34, 35, 36… Non ho rinumerato perché toccherebbe tutte le ancore citate in questo file e nelle spec. Ma con la 08 e la 24 rimosse, sei slide nuove aggiunte e ora quattro spostate, **una passata di rinumerazione globale è diventata la cosa giusta da fare**: dimmi quando e la faccio in un colpo solo, aggiornando anche fix e spec.
 		- ⚠️ La 40 si porta dietro la mini-mappa «sei qui» della torre (`minimap-corsie.svg`), che è un dispositivo della sezione 3. In sezione 5 non è sbagliata — rimanda comunque all'architettura — ma è l'unica slide della sezione ad averla.
 `#div-sec5`
 
-**23 · Il contesto ha un costo** — `#slide-40` — `minimap-corsie.svg`, `slide23-costo-contesto.svg`
+- **40 · L'API: come si parla al modello** — `#slide-40` — `slide23c-api-formato.svg` — **NUOVA**
+	- ✅ FATTO — «aggiungi qui una slide, in cui introduciamo un concetto che vedremo anche dopo, ovvero quello delle api con cui chiamiamo il modello. Parliamo delle api originali di openai, che erano stateless, e facciamo vedere un esempio di 2 successive call con quel formato.»
+		- Due colonne, `CHIAMATA 1` e `CHIAMATA 2 — SUBITO DOPO`, ognuna con endpoint (`POST /v1/chat/completions`), riquadro `richiesta` col JSON e riquadro `risposta · 200 OK`.
+		- **Riusa l'idioma dei payload della sezione 2** (slide 8 e 9), qui però sul formato vero: grigio attenuato = messaggio già spedito, nero = il turno nuovo, burgundy = ciò che il modello ha appena generato. Chi ha visto i tre riquadri della slide 8 riconosce la stessa cosa scritta come la scrive la macchina — la didascalia lo dichiara.
+		- **Il punto è la differenza di altezza**: cinque righe contro sette. I due riquadri `risposta` invece partono alla stessa y, così le due righe `usage` si confrontano a colpo d'occhio: `prompt_tokens` 24 → 71. Fascia in chiusura: *«Nessun identificatore di sessione, da nessuna parte.»*
+		- Nelle note del relatore: la primissima API (2020) era ancora più semplice — un solo campo `prompt`, una stringa; `messages` e i ruoli arrivano nel 2023. Le API recenti offrono anche uno stato lato server, ma **opzionale**: il modello mentale che conta resta questo.
+		- ⚠️ **Niente testo sopra la figura.** Con una `.defn` in testa la figura scendeva a **935px** e il monospaziato a 9.85px CSS; togliendola rende **1:1 (1140×380) e il mono a 12px**. Tutto il testo è finito nella didascalia sotto. Se ci aggiungi una riga, ricontrolla questa misura.
+		- ⚠️ **Ordine da valutare.** L'ho messa **prima** della 41 («Il contesto ha un costo»), come dice il tuo marcatore. Ma la 42 è «L'API è stateless: cosa significa davvero», quindi la sequenza è API → KV cache → API stateless. Se preferisci tenere insieme le due slide sull'API, basta scambiarla con la 41.
+		- ⚠️ **Si sovrappone di proposito con l'incontro 27**, che alla sua slide 3a mostra la stessa cosa con l'API di Anthropic. La divisione ora è: qui il formato di OpenAI per dire *stateless*, là la richiesta **con i tool** (`tools`, blocchi della risposta, `stop_reason`). La spec del 27 diceva «il 26 non ha mai mostrato la struttura dell'API»: non è più vero, l'ho riscritta.
+
+- **41 · Il contesto ha un costo** — `#slide-41` — `minimap-corsie.svg`, `slide23-costo-contesto.svg`
 	- ✅ FATTO — «esplicita che salvando nella KV cache i valori, per ogni testa e blocco, delle attivazioni K e V si evita tutto il passaggio dai fully connected layer (molto costoso) e la moltiplicazione di Wq, Wk e Wv di tutti i token precedenti. se non è corretto dimmelo.»
 		- **È corretto, tranne un punto: le Wq.** La cache non "evita" le Q dei token precedenti — quelle Q semplicemente **non servono più**. La query di un token serve solo a calcolare l'output *di quel token*, che con la masked attention non può più cambiare: in prefill vengono calcolate e buttate (è già quello che dice il pannello sinistro della figura), in decoding non vengono calcolate affatto. Tutto il resto sì: la cache evita, per i token già visti, le proiezioni W^K e W^V **e** l'intero passaggio dai fully connected layer — ed è quest'ultimo la voce di costo più grossa, perché il FFN è la maggior parte dei parametri di un blocco. Per il token nuovo si paga tutto una volta: W^Q, W^K, W^V e FFN.
 		- Testo in slide riscritto con questa distinzione; la precisione completa è finita anche nella spec, come nota.
 		- ⚠️ La slide sforava di parecchio con il testo in più: colonna portata a `pts micro` e nota a `nota small`. Verificato: nessuno sforo.
 	--> spostare da sezione precedente
-- **41 · L'API è stateless: cosa significa davvero** — `#slide-41` — `slide23b-curve-costo.svg` — **NUOVA**
+- **42 · L'API è stateless: cosa significa davvero** — `#slide-42` — `slide23b-curve-costo.svg` — **NUOVA**
 	- ✅ FATTO — «Qui aggiungi la slide presa da qui: …/gsom-april-2026/lezione-mba/presentation.html#/slide-api-stateless»
 		- Ripresa dal repo locale `gsom-april-2026` (`slide18-api-stateless.html`) invece che dall'URL. Le tre curve di costo sono state **riadattate** alla palette e ai font di questo deck in `slide23b-curve-costo.svg`: quella di aprile aveva fondo `#f2f2f2` e font sans-serif generici.
-		- ⚠️ Sovrapposizione da valutare: la **slide 42** («Il modello è stateless: il contesto è tutto», sezione 4) dice una cosa vicina, dal lato del modello. Qui l'ho impostata come "lo stesso costo visto dalla conversazione e dalla bolletta" e l'ho dichiarato nelle note del relatore, ma se vuoi le si può fondere.
+		- ⚠️ Sovrapposizione da valutare: la **slide 43** («Il modello è stateless: il contesto è tutto», sezione 4) dice una cosa vicina, dal lato del modello. Qui l'ho impostata come "lo stesso costo visto dalla conversazione e dalla bolletta" e l'ho dichiarato nelle note del relatore, ma se vuoi le si può fondere.
 	--> spostare da sezione precedente
 
-- **42 · Il modello è stateless: il contesto è tutto** — `#slide-42` — `slide34-stateless.svg`
+- **43 · Il modello è stateless: il contesto è tutto** — `#slide-43` — `slide34-stateless.svg`
 	- spostare da sezione precedente
-- **43 · Il modello è figlio dei suoi training set** — `#slide-43` — *nessuna figura*
+- **44 · Il modello è figlio dei suoi training set** — `#slide-44` — *nessuna figura*
 	- spostare da sezione precedente
 
-- **44 · Context rot** — `#slide-44` — `slide36-context-rot.svg`
-- **45 · I tool accelerano il context rot** — `#slide-45` — `slide36b-tool-context-rot.svg` — **NUOVA**
+- **45 · Context rot** — `#slide-45` — `slide36-context-rot.svg`
+- **46 · I tool accelerano il context rot** — `#slide-46` — `slide36b-tool-context-rot.svg` — **NUOVA**
 	- ✅ FATTO — «aggiungi qui la slide …/slide-context-rot»
 		- Ripresa dal repo locale (`slide27-context-rot.html`). Il grafico è stato **rifatto** invece che copiato: quello di aprile importava Poppins da Google Fonts (qui il font è già in locale) e usava grigi generici. Ora sono due pannelli — *conversazione pura*, crescita lineare in teal, e *con i tool*, a scalini in burgundy — con la stessa scala, così il confronto si legge.
 		- Tenuti i tre consigli pratici (esporre solo i tool necessari · dimensionare i tool result · meglio tool specifici che generici) e la nota sul perché i tool servono comunque.
 		- La chiusa di aprile rimandava ai sub-agent: qui è tolta, perché i sub-agent sono materia dell'incontro 27. L'ho annotato nelle note del relatore.
-- **46 · Multimodality** — `#slide-46` — `slide37-multimodality.svg`
-- **47 · Reasoning** — `#slide-47` — `slide38-reasoning.svg`
+- **47 · Multimodality** — `#slide-47` — `slide37-multimodality.svg`
+- **48 · Reasoning** — `#slide-48` — `slide38-reasoning.svg`
 	- ✅ FATTO — «sostituisci il visual con un esempio di conversazione con e senza reasoning»
 		- Due colonne sulla stessa domanda: *«Un prodotto costa 80€. Applico −25%, poi +25%. Quanto costa?»*. A sinistra risponde subito **80€** — e sbaglia; a destra genera prima il blocco `[thinking]` (−25% → 60, +25% → 75, il secondo % si applica a 60) e poi risponde **75€**.
 		- L'esempio è scelto perché la risposta intuitiva è anche quella sbagliata: si vede *a che cosa serve* il ragionamento, non solo che c'è.
 		- Il blocco `[thinking]` è tratteggiato e grigio, con una graffa burgundy a lato: *token che paghi e non vedi*. Riusa l'idioma dei payload della sezione 2 (riquadri con tag di ruolo, burgundy per ciò che il modello genera adesso), così le due sezioni si parlano.
-- **48 · I costi: training, inferenza, distillazione** — `#slide-48` — `slide39-costi.svg`
-- **49 · Il prezzo per token** — `#slide-49` — `slide40-prezzo-per-token.svg`
-- **50 · Il valore delle traiettorie** — `#slide-50` — *nessuna figura*
-- **51 · Closed, open weights, open source** — `#slide-51` — *nessuna figura*
-- **52 · Quando closed, quando open** — `#slide-52` — *nessuna figura*
-- **53 · Fine-tuning: riprendere la discesa** — `#slide-53` — `slide44-fine-tuning.svg`
-- **54 · LoRA: la correzione a basso rango** — `#slide-54` — `slide45-lora.svg`
-- **55 · La fotografia del mercato** — `#slide-55` — *nessuna figura*
+- **49 · I costi: training, inferenza, distillazione** — `#slide-49` — `slide39-costi.svg`
+- **50 · Il prezzo per token** — `#slide-50` — `slide40-prezzo-per-token.svg`
+- **51 · Il valore delle traiettorie** — `#slide-51` — *nessuna figura*
+- **52 · Closed, open weights, open source** — `#slide-52` — *nessuna figura*
+- **53 · Quando closed, quando open** — `#slide-53` — *nessuna figura*
+- **54 · Fine-tuning: riprendere la discesa** — `#slide-54` — `slide44-fine-tuning.svg`
+- **55 · LoRA: la correzione a basso rango** — `#slide-55` — `slide45-lora.svg`
+- **56 · La fotografia del mercato** — `#slide-56` — *nessuna figura*
 	- ✅ FATTO — «Immagine: fare screenshot ed includere da https://arena.ai/leaderboard/text/pareto»
 		- Lo screenshot è in `presentation/assets/images/uploads/arena-pareto-2026-09-02.png` (2700×1348, cablato nella slide al posto del placeholder `.asset-ph`).
 		- **Il banner cookie**: col tuo via libera l'ho gestito scegliendo l'opzione conservativa — *Manage Cookies*, tutte e quattro le categorie opzionali (Functionality, Advertising, Analytics, Social Media) portate su **off**, poi *Save Preferences*. Erano tutte attive di default.
@@ -238,7 +258,7 @@ Per commentare, scrivi sotto la riga della slide.
 		- **Due accorgimenti sulla resa.** (1) Il sito è in tema scuro; ho emulato `prefers-color-scheme: light` via CDP e la pagina passa a fondo quasi bianco — così lo screenshot non stona in un deck tutto chiaro. (2) Al primo tentativo il ritaglio tagliava via l'asse dei prezzi, che è metà del senso del grafico; e con viewport 1700×1250 la card veniva 2308×1348 (rapporto 1.7), che nello slot largo e basso della slide si sarebbe resa a ~660px con le etichette illeggibili. Ho ricatturato con viewport **2400×980**, così la card stessa diventa panoramica: ora è 2700×1348 e in slide rende a **781px**.
 		- **Attribuzione in slide**: fonte e data (2 settembre 2026, 7.999.020 voti, 400 modelli) sono nella didascalia, insieme al promemoria che va rifatto a ridosso della lezione.
 
-- **56 · La formula, riletta** — `#slide-56` — `slide56-formula-avanzamento.svg` — **NUOVA**
+- **57 · La formula, riletta** — `#slide-57` — `slide56-formula-avanzamento.svg` — **NUOVA**
 	- ✅ FATTO — vedi il blocco in fondo al file.
 
 
@@ -262,24 +282,38 @@ Fatta: le slide ora sono **01…55** nell'ordine del deck, senza buchi e senza n
 Oltre ai numeri, le spec avevano contenuti fermi a prima:
 
 - **Sezione 2**: mancava del tutto il blocco della Slide 10 («Perché serve un secondo addestramento») — quando l'avevo inserita avevo aggiornato solo la tabella. E il golfista era rimasto numerato 10 invece di 11. Corretti entrambi.
-- **Sezione 3**: le Slide 40 e 41 (costo del contesto, API stateless) sono uscite, spostate in Sezione 5.
-- **Sezione 4**: uscite le Slide 42 e 43; budget da 8 a 6 slide; riscritto il blocco della 37 (RLHF) per la figura rifatta; tolto il riuso del golfista, che ora si disegna solo nella Slide 11.
-- **Sezione 5**: rinominata «Lo scenario, più o meno completo»; accolte le quattro slide in arrivo con una nota di provenienza; aggiunto il blocco della Slide 45 (tool e context rot); riscritti i blocchi 47 (reasoning) e 55 (Pareto, con le due accortezze per rifare lo screenshot); dichiarato che il deck non ha più né la formula riletta né la chiusura.
+- **Sezione 3**: le Slide 41 e 41 (costo del contesto, API stateless) sono uscite, spostate in Sezione 5.
+- **Sezione 4**: uscite le Slide 43 e 43; budget da 8 a 6 slide; riscritto il blocco della 37 (RLHF) per la figura rifatta; tolto il riuso del golfista, che ora si disegna solo nella Slide 11.
+- **Sezione 5**: rinominata «Lo scenario, più o meno completo»; accolte le quattro slide in arrivo con una nota di provenienza; aggiunto il blocco della Slide 46 (tool e context rot); riscritti i blocchi 47 (reasoning) e 55 (Pareto, con le due accortezze per rifare lo screenshot); dichiarato che il deck non ha più né la formula riletta né la chiusura.
 
 **Controllo finale**: 55 slide nel deck, 55 blocchi nelle spec, nessuna in eccesso, nessuna nella sezione sbagliata, nessuna ancora `#slide-N` rotta. *(Aggiornamento: con la slide di chiusura il deck è passato a **56**; il controllo è stato rifatto e regge — 56 slide nel deck, 56 blocchi nelle spec.)*
 
 ---
 
-## Fix chiuso — slide 56: la formula come barra di avanzamento del corso
+## Nota — seconda rinumerazione (6 set 2026)
 
-- **56 · La formula, riletta** — `#slide-56` — `slide56-formula-avanzamento.svg` — **NUOVA, in fondo al deck**
+L'inserimento della Slide 40 ha spostato di uno tutte le slide da 40 in su: il deck passa da 56 a **57**, numerate 1…57 senza buchi. Rimappati in un passaggio solo e **in ordine decrescente** — l'errore dell'altra volta era un secondo passaggio che rimappava numeri già cambiati — 17 `id`, 17 `.sid`, 17 footnote e i riferimenti in prosa in deck, spec e in questo file.
+
+**Che cosa è rimasto fermo, di proposito:**
+
+- **I nomi dei file.** `slide23-costo-contesto.svg` resta tale anche se ora è la Slide 41: il nome dice il contenuto, non la posizione. Vale anche per la nuova figura, `slide23c-api-formato.svg`, che sta accanto alle sue sorelle `23` e `23b` invece di chiamarsi `slide40-`.
+- **«Slide 47 (numerazione precedente)»**, il blocco della vecchia chiusura rimossa: quel 47 appartiene a una numerazione che non c'è più. Protetto con un sentinella prima del remap.
+- **I numeri che non sono slide**: conteggi («da 55 a 56 slide»), minuti, percentuali. Per questo il remap ha girato solo dentro pattern espliciti — `id="slide-N"`, `#slide-N`, `footnote">N /`, `Slide N` — e mai su un numero nudo. Le scorciatoie in minuscolo («la slide 42», «la 44») e le voci di elenco sono state corrette a mano, una per una.
+
+**Anche il 27 ne risente**: le sue spec citavano dieci volte le slide del 26 con numero ≥ 40 (KV cache, curve di costo, context rot, la pila che cresce, la tabella closed/open, il valore delle traiettorie). Aggiornate. Il **deck** del 27 e `fix-incontro-27.md` non sono stati toccati: citano solo slide del 26 sotto la 40.
+
+---
+
+## Fix chiuso — slide 57 (allora 56): la formula come barra di avanzamento del corso
+
+- **57 · La formula, riletta** — `#slide-57` — `slide56-formula-avanzamento.svg` — **NUOVA, in fondo al deck**
 	- ✅ FATTO — «Riprendere il diagramma-formula della slide 03 come barra di avanzamento del corso: nel 26 si accende solo il blocco `LLM`, gli altri cinque restano sbiaditi.»
 		- La figura **non è ridisegnata**: `Agent`, il segno `=`, i cinque `+`, i sei blocchi e le tre graffe sono le coordinate della slide 3 **copiate**, non ricalcolate. Cambia l'opacità e basta: `<g id="accesi">` (solo `LLM`, fondo `#ecd3de` e bordo burgundy, con la sua graffa *la CPU*) contro `<g id="spenti">` a `opacity="0.3"` (gli altri cinque blocchi e le loro due graffe). I `+` scendono a `0.4`; `Agent` e `=` restano pieni, perché sono l'intestazione della formula e non un termine da accendere.
 		- **Sintesi di giornata** sotto il blocco acceso, allineata al suo bordo sinistro: barra verticale burgundy, occhiello *QUELLO CHE ABBIAMO APERTO OGGI*, e le due righe *manipolatore di embeddings · stateless* / *addestrato in tre fasi a volere i tool*.
 		- **Legenda** in basso a destra: campione del colore acceso + *acceso = visto in questo incontro*. Nessun cliffhanger in slide, come deciso; in didascalia solo *«Dei sei termini della formula, oggi ne abbiamo aperto uno.»* Il resto è nelle note del relatore.
 		- **Contratto scritto dentro il file** (commento in testa) per gli incontri 27 e 28: si parte da questo SVG, si sposta un blocco da `spenti` ad `accesi`, si riscrive la sola sintesi, e nient'altro si muove.
 	- ⚠️ **Una deroga, dichiarata: il viewBox non è identico.** Il fix chiedeva «stesso viewBox e stessa posizione dei blocchi». La posizione dei blocchi è identica al pixel; il canvas invece è **1302×428** contro i 1302×334 della slide 3, perché la sintesi di giornata sotto `LLM` non ci stava (sotto la graffa restavano 22px). Allargare in basso non tocca l'origine né la geometria, quindi il vincolo che conta — *i blocchi non si muovono fra un incontro e l'altro* — regge; ed è **questo** il canvas che il 27 e il 28 devono riusare.
-		- **Verificato a schermo che l'effetto non si rompe**: entrambe le figure sono vincolate in larghezza e rendono a **1140px CSS** — slide 3 e slide 56 disegnano i blocchi esattamente alla stessa scala, che è la condizione perché il richiamo funzioni. Se un domani si aggiunge testo alla 56, questa misura va ricontrollata (è lo stesso inciampo della slide 11).
+		- **Verificato a schermo che l'effetto non si rompe**: entrambe le figure sono vincolate in larghezza e rendono a **1140px CSS** — slide 3 e slide 57 disegnano i blocchi esattamente alla stessa scala, che è la condizione perché il richiamo funzioni. Se un domani si aggiunge testo alla 57, questa misura va ricontrollata (è lo stesso inciampo della slide 11).
 	- ⚠️ Il deck passa da 55 a **56 slide**. Aggiornati: tabella file → slide e blocco della slide nella spec della sezione 5, budget della sezione (16 → 17 slide) e la nota di chiusura, che diceva il contrario («il deck non ha più né la formula riletta né la chiusura»). Il vecchio blocco della *Slide 47 (numerazione precedente)* resta nella spec come traccia storica, ma ora descrive **solo il cliffhanger**, che è l'unica cosa davvero rimossa: la formula riletta è tornata, non più tipografica ma come diagramma.
 
 ## Fix chiuso — slide 03: CPU, sistema operativo, software
@@ -287,14 +321,16 @@ Oltre ai numeri, le spec avevano contenuti fermi a prima:
 - **03 · Un agente è un sistema composto** — `#slide-3` — `slide3-formula-agent.svg`
 	- ✅ FATTO — Le graffe passano da due a **tre**: *la CPU* sotto il solo `LLM`, *il sistema operativo* sotto il solo `Harness`, *il software installato* sotto i quattro termini restanti. La terza graffa è invariata; le due nuove sono la stessa forma su un blocco solo.
 	- ✅ FATTO — Nota in basso → *«L'LLM è la CPU, l'harness il sistema operativo. Il resto è il software che, a parità di macchina, organizza il lavoro a seconda dell'obiettivo.»*
-	- I sei blocchi **non si sono spostati di un pixel**, come richiesto: è la condizione perché la figura resti sovrapponibile alla 56 e alle versioni degli incontri 27 e 28.
+	- I sei blocchi **non si sono spostati di un pixel**, come richiesto: è la condizione perché la figura resti sovrapponibile alla 57 e alle versioni degli incontri 27 e 28.
 	- ⚠️ **Un dettaglio di misura.** Le etichette *la CPU* e *il sistema operativo* stanno sotto due blocchi adiacenti larghi 150: a 24pt si sarebbero quasi toccate. Portate a **21**, lo stacco è netto (verificato a schermo). Se una delle due etichette si allunga, il corpo va ricontrollato.
 	- Aggiornato il blocco della Slide 3 nella spec della sezione 1: layout, nota, descrizione del visual e prompt SVG (tre graffe), più il perché della metafora a tre livelli — il 27 apre con «oggi apriamo il sistema operativo», e quella frase regge solo se il sistema operativo è l'harness da solo.
 
 ---
 
-## Controllo dopo questi due fix
+## Controllo
 
-- **56 slide** nel deck (`<section id="slide-…">`), 56 blocchi nelle spec.
-- **Nessuno sforo di testo** in tutto il deck: controllate `section`, `.content`, `.col-text`, `.cols` e `.tv` di tutte e 62 le sezioni (56 slide + copertina + 5 separatori) — zero.
-- Slide 3 e slide 56 rendono la figura a **1140px CSS** entrambe: i blocchi sono alla stessa scala.
+- **57 slide** nel deck (`<section id="slide-…">`), **57 blocchi** nelle spec, numerati 1…57 senza buchi né doppioni.
+- **`id`, footnote e `.sid` coerenti** su tutte e 57.
+- **Nessuno sforo di testo** in tutto il deck: controllate `section`, `.content`, `.col-text`, `.cols` e `.tv` di tutte e 63 le sezioni (57 slide + copertina + 5 separatori) — zero.
+- Slide 3 e slide 57 rendono la figura a **1140px CSS** entrambe: i blocchi sono alla stessa scala.
+- Slide 40: la figura rende **1:1**, 1140×380, monospaziato a 12px CSS.

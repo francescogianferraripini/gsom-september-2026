@@ -31,7 +31,7 @@
 >
 > **Due ruoli** (decisi in intervista): l'**esperto di dominio** costruisce i dataset, decide i pass/fail e valida il giudice; il **team di sviluppo dell'agente** scrive checker e giudice, esegue i test e li rigira a ogni modifica. Si incontrano sulla validazione del giudice (Slide 47).
 >
-> **Riprese dal 26**: le traiettorie premiate (slide 38) e il valore delle traiettorie (slide 50) → Slide 41 e Slide 50.
+> **Riprese dal 26**: le traiettorie premiate (slide 38) e il valore delle traiettorie (slide 51) → Slide 41 e Slide 50.
 >
 > **La traccia annotata** (l'immagine del brief) compare due volte: incompleta nella Slide 44, completa e letta da tre lati nella Slide 50.
 
@@ -64,7 +64,7 @@
 
 ## Slide 41 — Tre livelli di successo, e la traiettoria
 
-> Ripresa delle slide 38 e 50 del 26.
+> Ripresa delle slide 38 e 51 del 26.
 
 **Messaggio**: "funziona?" ha tre risposte a scale diverse: il singolo colpo, il turno con le sue tool call, il processo intero. E l'oggetto da guardare per rispondere non è mai la risposta finale: è la traiettoria.
 

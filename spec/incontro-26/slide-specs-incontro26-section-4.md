@@ -6,7 +6,7 @@
 **Messaggio chiave (takeaway)**: Tre fasi lo trasformano: da completatore di testo, a conversatore, a modello che *sa volere* i tool — ed è qui che nasce il 3° loop.
 **Budget**: ~20 min, 6 slide.
 **Riusi narrativi**: il seme di Shannon della Slide 5 (cross-entropy = fronte 1 della compressione).
-**Nota di perimetro**: le vecchie Slide 42 e 43 (*Il modello è stateless* e *Il modello è figlio dei suoi training set*) sono passate alla **Sezione 5**. E il golfista non si disegna più qui: la vignetta con la mira è la **Slide 11**, in Sezione 2 — questa sezione spiega da dove quella mira arriva.
+**Nota di perimetro**: le vecchie Slide 43 e 43 (*Il modello è stateless* e *Il modello è figlio dei suoi training set*) sono passate alla **Sezione 5**. E il golfista non si disegna più qui: la vignetta con la mira è la **Slide 11**, in Sezione 2 — questa sezione spiega da dove quella mira arriva.
 **Stato**: bozza
 
 ### Tabella file → slide

@@ -158,7 +158,7 @@
     }
     .pull .src { display: block; font-size: 11pt; color: var(--q-greydark); margin-top: 10px; font-weight: 500; }
 
-    /* asimmetria slide 50 */
+    /* asimmetria slide 51 */
     .asym { flex: 1; display: grid; grid-template-columns: 32fr 65fr; gap: 30px; align-items: start; min-height: 0; }
     .blk { border-radius: var(--box-radius); padding: 16px 20px; }
     .blk .b-tag { font-size: 9pt; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 8px; }
@@ -989,6 +989,17 @@
 
       <section id="slide-40">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
+        <h2>L'API: come si parla al modello</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide23c-api-formato.svg" alt="Due chiamate successive all'API chat/completions di OpenAI: la seconda rispedisce per intero i messaggi della prima piu’ il turno nuovo, e prompt_tokens passa da 24 a 71"></div>
+          <p class="caption" style="font-size: 11.5pt;">Un modello non si &laquo;usa&raquo;: si chiama. Una richiesta HTTP con dentro un JSON, e dentro il JSON tutta la conversazione. Sono le API di OpenAI, nel formato che tutti hanno poi copiato: <strong>stateless per costruzione</strong> &mdash; il server non tiene niente fra una chiamata e l&rsquo;altra, quindi la storia la rimetti tu, ogni volta, per intero. È il meccanismo dietro i tre riquadri della Slide 8, qui sul formato vero.</p>
+        </div>
+        <div class="footnote">40 / Sezione 5 · <span class="sid">#slide-40</span></div>
+        <aside class="notes">Concetto che torna due volte: subito, nelle due slide dopo (il costo del contesto e che cosa significa davvero stateless), e nell'incontro 27, dove la stessa richiesta porta anche i tool. La primissima API di OpenAI (2020) era ancora piu’ semplice: un solo campo prompt, una stringa di testo; il formato con messages e i ruoli arriva nel 2023. Le API piu’ recenti offrono anche uno stato lato server, ma opzionale: il modello mentale che conta resta questo. Il nome del modello nell'esempio non conta — conta la forma della chiamata.</aside>
+      </section>
+
+      <section id="slide-41">
+        <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>Il contesto ha un costo</h2>
         <div class="content">
           <div class="tv tv-30">
@@ -1007,10 +1018,10 @@
           </div>
           <div class="nota small">Funziona perché la masked attention rende il passato immutabile: K, V e fully connected dei token precedenti non cambiano mai. Le Q del passato, invece, non si salvano affatto — non servono più: servivano solo a produrre l'output di quel token, che non può più cambiare.</div>
         </div>
-        <div class="footnote">40 / Sezione 5 · <span class="sid">#slide-40</span></div>
+        <div class="footnote">41 / Sezione 5 · <span class="sid">#slide-41</span></div>
       </section>
 
-      <section id="slide-41">
+      <section id="slide-42">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>L'API è stateless: cosa significa davvero</h2>
         <div class="content">
@@ -1026,11 +1037,11 @@
           </div>
           <div class="nota dark">Il costo di un turno e la qualità della risposta dipendono dalla dimensione cumulativa del contesto, non dalla singola domanda.</div>
         </div>
-        <div class="footnote">41 / Sezione 5 · <span class="sid">#slide-41</span></div>
-        <aside class="notes">Slide ripresa dal deck MBA (gsom-april-2026, «L'API è stateless»). Prepara la slide 42 della sezione 4, che riprende lo stateless dal lato del modello.</aside>
+        <div class="footnote">42 / Sezione 5 · <span class="sid">#slide-42</span></div>
+        <aside class="notes">Slide ripresa dal deck MBA (gsom-april-2026, «L'API è stateless»). Prepara la slide 43 della sezione 4, che riprende lo stateless dal lato del modello.</aside>
       </section>
 
-      <section id="slide-42">
+      <section id="slide-43">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>Il modello è stateless: il contesto è tutto</h2>
         <div class="content">
@@ -1048,10 +1059,10 @@
           </div>
           <div class="nota small">E abbiamo visto che il contesto costa — e vedremo tra poco che, oltre a costare, a un certo punto inizia a far male.</div>
         </div>
-        <div class="footnote">42 / Sezione 5 · <span class="sid">#slide-42</span></div>
+        <div class="footnote">43 / Sezione 5 · <span class="sid">#slide-43</span></div>
       </section>
 
-      <section id="slide-43">
+      <section id="slide-44">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>Il modello è figlio dei suoi training set</h2>
         <div class="content">
@@ -1065,10 +1076,10 @@
             <p>La conoscenza sui modelli fa parte dei training set: un'AI ha letto i paper che descrivono il suo stesso funzionamento interno. L'uomo non sa progettare un cervello — un'AI ha conoscenza di dettaglio del proprio.</p>
           </div>
         </div>
-        <div class="footnote">43 / Sezione 5 · <span class="sid">#slide-43</span></div>
+        <div class="footnote">44 / Sezione 5 · <span class="sid">#slide-44</span></div>
       </section>
 
-      <section id="slide-44">
+      <section id="slide-45">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>Context rot</h2>
         <div class="content">
@@ -1085,11 +1096,11 @@
           </div>
           <div class="nota dark">Governarlo — decidere cosa entra, cosa esce, cosa si riassume — non lo fa il modello. Serve qualcuno fuori: l'harness.</div>
         </div>
-        <div class="footnote">44 / Sezione 5 · <span class="sid">#slide-44</span></div>
+        <div class="footnote">45 / Sezione 5 · <span class="sid">#slide-45</span></div>
         <aside class="notes">Il visual è uno stand-in: la specifica prevede qui il grafico esterno già disponibile sul degrado con contesto lungo. Sostituirlo prima della lezione.</aside>
       </section>
 
-      <section id="slide-45">
+      <section id="slide-46">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>I tool accelerano il context rot</h2>
         <div class="content">
@@ -1105,11 +1116,11 @@
           </div>
           <div class="nota">I tool sono la risposta al limite più evidente del modello da solo: non sa quello che non sa, e non può agire nel mondo. Ma ogni tool call deposita nel contesto il suo risultato — e lì resta per tutta la sessione.</div>
         </div>
-        <div class="footnote">45 / Sezione 5 · <span class="sid">#slide-45</span></div>
+        <div class="footnote">46 / Sezione 5 · <span class="sid">#slide-46</span></div>
         <aside class="notes">Ripresa dal deck MBA (gsom-april-2026, «I tool accelerano il context rot»). Là la slide chiudeva rimandando ai sub-agent; qui i sub-agent sono materia dell'incontro 27.</aside>
       </section>
 
-      <section id="slide-46">
+      <section id="slide-47">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>Multimodality</h2>
         <div class="content">
@@ -1125,10 +1136,10 @@
           </div>
           <div class="nota">Per questo lo stesso modello può leggere un contratto e guardarne la scansione.</div>
         </div>
-        <div class="footnote">46 / Sezione 5 · <span class="sid">#slide-46</span></div>
+        <div class="footnote">47 / Sezione 5 · <span class="sid">#slide-47</span></div>
       </section>
 
-      <section id="slide-47">
+      <section id="slide-48">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>Reasoning</h2>
         <div class="content">
@@ -1144,10 +1155,10 @@
           </div>
           <div class="nota">È sempre il 1° loop: semplicemente, lo STOP arriva molto più tardi.</div>
         </div>
-        <div class="footnote">47 / Sezione 5 · <span class="sid">#slide-47</span></div>
+        <div class="footnote">48 / Sezione 5 · <span class="sid">#slide-48</span></div>
       </section>
 
-      <section id="slide-48">
+      <section id="slide-49">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>I costi: training, inferenza, distillazione</h2>
         <div class="content">
@@ -1164,18 +1175,18 @@
           </div>
           <div class="nota">Tutto è moltiplicazione di matrici (Slide 16): per questo l'economia dei modelli è, in fondo, economia di GPU.</div>
         </div>
-        <div class="footnote">48 / Sezione 5 · <span class="sid">#slide-48</span></div>
+        <div class="footnote">49 / Sezione 5 · <span class="sid">#slide-49</span></div>
       </section>
 
-      <section id="slide-49">
+      <section id="slide-50">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>Il prezzo per token</h2>
         <div class="content">
           <div class="tv tv-40">
             <div class="col-text">
               <ul class="pts">
-                <li><strong>Input e output hanno prezzi diversi</strong>i token di output costano di più (~3–5×): vengono generati uno alla volta; quelli di input si processano in parallelo nel prefill (Slide 40).</li>
-                <li><strong>Il contesto si ripaga a ogni chiamata</strong>il modello è stateless (Slide 42): tutta la pila rientra — e si ripaga — a ogni giro.</li>
+                <li><strong>Input e output hanno prezzi diversi</strong>i token di output costano di più (~3–5×): vengono generati uno alla volta; quelli di input si processano in parallelo nel prefill (Slide 41).</li>
+                <li><strong>Il contesto si ripaga a ogni chiamata</strong>il modello è stateless (Slide 43): tutta la pila rientra — e si ripaga — a ogni giro.</li>
                 <li><strong>La cache sconta ciò che non cambia</strong>il prefisso stabile (system prompt, tool) costa una frazione se riusato: è la KV cache diventata listino.</li>
               </ul>
             </div>
@@ -1183,10 +1194,10 @@
           </div>
           <div class="nota">Ordine di grandezza oggi: da centesimi a qualche dollaro per milione di token, a seconda del modello. Le cifre invecchiano in fretta: le regole no.</div>
         </div>
-        <div class="footnote">49 / Sezione 5 · <span class="sid">#slide-49</span></div>
+        <div class="footnote">50 / Sezione 5 · <span class="sid">#slide-50</span></div>
       </section>
 
-      <section id="slide-50">
+      <section id="slide-51">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>Il valore delle traiettorie</h2>
         <div class="content">
@@ -1204,10 +1215,10 @@
           <p class="hl-line">Il moat non è il modello — il modello diventa commodity. Il moat sono le traiettorie d'uso reale, che nessuno può replicare.</p>
           <div class="nota small"><strong>Tre domande da utente informato.</strong> Nel contratto, i miei dati entrano nel prossimo training? Se costruisco un prodotto AI, dove accumulo il mio flywheel di traiettorie? Quando il modello sarà commodity, dove si sarà spostato il valore?</div>
         </div>
-        <div class="footnote">50 / Sezione 5 · <span class="sid">#slide-50</span></div>
+        <div class="footnote">51 / Sezione 5 · <span class="sid">#slide-51</span></div>
       </section>
 
-      <section id="slide-51">
+      <section id="slide-52">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>Closed, open weights, open source</h2>
         <div class="content">
@@ -1241,10 +1252,10 @@
           </div>
           <div class="nota">Quasi tutto ciò che il mercato chiama "open source" è in realtà open weights. La scelta si fa sul caso d'uso — sensibilità dei dati, scala, competenze — non per principio. E la frontiera si muove: guardiamola.</div>
         </div>
-        <div class="footnote">51 / Sezione 5 · <span class="sid">#slide-51</span></div>
+        <div class="footnote">52 / Sezione 5 · <span class="sid">#slide-52</span></div>
       </section>
 
-      <section id="slide-52">
+      <section id="slide-53">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>Quando closed, quando open</h2>
         <div class="content">
@@ -1264,10 +1275,10 @@
           <div class="nota">Con closed paghi il token E regali le traiettorie. Con open paghi l'infrastruttura, e le traiettorie restano tue.</div>
           <p class="hl-line" style="font-size: 13.5pt;">Closed per sperimentare velocemente, open per scalare volumi, privacy, customization. La scelta è per use case, non ideologica.</p>
         </div>
-        <div class="footnote">52 / Sezione 5 · <span class="sid">#slide-52</span></div>
+        <div class="footnote">53 / Sezione 5 · <span class="sid">#slide-53</span></div>
       </section>
 
-      <section id="slide-53">
+      <section id="slide-54">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>Fine-tuning: riprendere la discesa</h2>
         <div class="content">
@@ -1283,10 +1294,10 @@
           </div>
           <div class="nota">Serve un'alternativa che corregga senza riscrivere. È la prossima slide.</div>
         </div>
-        <div class="footnote">53 / Sezione 5 · <span class="sid">#slide-53</span></div>
+        <div class="footnote">54 / Sezione 5 · <span class="sid">#slide-54</span></div>
       </section>
 
-      <section id="slide-54">
+      <section id="slide-55">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>LoRA: la correzione a basso rango</h2>
         <div class="content">
@@ -1301,30 +1312,30 @@
             </div>
             <div class="visual"><img src="svg/slide45-lora.svg" alt="La matrice W congelata e il ramo LoRA con il collo di bottiglia a r dimensioni"></div>
           </div>
-          <div class="nota">È questo a rendere davvero interessanti gli open weights (Slide 51): il modello resta condiviso, la specializzazione diventa tua.</div>
+          <div class="nota">È questo a rendere davvero interessanti gli open weights (Slide 52): il modello resta condiviso, la specializzazione diventa tua.</div>
         </div>
-        <div class="footnote">54 / Sezione 5 · <span class="sid">#slide-54</span></div>
+        <div class="footnote">55 / Sezione 5 · <span class="sid">#slide-55</span></div>
       </section>
 
-      <section id="slide-55">
+      <section id="slide-56">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>La fotografia del mercato</h2>
         <div class="content">
           <div class="visual"><img src="assets/images/uploads/arena-pareto-2026-09-02.png" alt="Frontiera di Pareto qualità/prezzo dei modelli linguistici: Arena score sull'asse verticale, prezzo per milione di token su quello orizzontale, con i modelli ottimali evidenziati sulla frontiera"></div>
           <p class="caption" style="font-size: 11.5pt;">Qualità (Arena score) contro prezzo: contano i modelli <strong>sulla frontiera</strong> — a parità di qualità il meno caro, a parità di prezzo il migliore. Tutto il resto è dominato. <span style="color: var(--q-greydark);">Fonte: arena.ai/leaderboard/text/pareto, dati al 2 settembre 2026 (7.999.020 voti, 400 modelli). La fotografia invecchia in settimane: da rifare a ridosso della lezione.</span></p>
         </div>
-        <div class="footnote">55 / Sezione 5 · <span class="sid">#slide-55</span></div>
-        <aside class="notes">Lettura in aula: evidenziare la frontiera di Pareto e il concetto di "dominato" (tutto ciò che sta sotto/destra della frontiera); indicare un paio di closed di punta e almeno un open weights competitivo (aggancio Slide 51); i punti in basso a destra della frontiera sono dove lavora la distillazione (aggancio Slide 48).</aside>
+        <div class="footnote">56 / Sezione 5 · <span class="sid">#slide-56</span></div>
+        <aside class="notes">Lettura in aula: evidenziare la frontiera di Pareto e il concetto di "dominato" (tutto ciò che sta sotto/destra della frontiera); indicare un paio di closed di punta e almeno un open weights competitivo (aggancio Slide 52); i punti in basso a destra della frontiera sono dove lavora la distillazione (aggancio Slide 49).</aside>
       </section>
 
-      <section id="slide-56">
+      <section id="slide-57">
         <p class="eyebrow">SEZIONE 5 · LO SCENARIO, PIÙ O MENO COMPLETO</p>
         <h2>La formula, riletta</h2>
         <div class="content">
           <div class="visual"><img src="svg/slide56-formula-avanzamento.svg" alt="La formula Agent = LLM + Harness + System Prompt + Tools + KB + Skills usata come barra di avanzamento del corso: acceso il solo blocco LLM, con sotto la sintesi di giornata; gli altri cinque termini sbiaditi"></div>
           <p class="caption">Dei sei termini della formula, oggi ne abbiamo aperto <strong>uno</strong>.</p>
         </div>
-        <div class="footnote">56 / Sezione 5 · <span class="sid">#slide-56</span></div>
+        <div class="footnote">57 / Sezione 5 · <span class="sid">#slide-57</span></div>
         <aside class="notes">Slide di chiusura. La stessa figura torna in apertura dell'incontro 27 con Harness acceso, e in chiusura del 27 con System Prompt, Tools e Skills accesi; il 28 completa con KB. Il passaggio all'incontro 27 si fa a voce, senza cliffhanger in slide: basta far notare che i cinque blocchi spenti sono il programma dei prossimi due incontri.</aside>
       </section>
 

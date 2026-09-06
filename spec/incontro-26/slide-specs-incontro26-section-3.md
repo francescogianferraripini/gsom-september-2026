@@ -31,8 +31,8 @@
 | `slides/slide20b-contesto.html` | Slide 28 — Lo stesso token, due contesti |
 | `slides/slide21-positional-encoding.html` | Slide 29 — Positional encoding: l'ordine conta |
 | `slides/slide22-reverse-embedding.html` | Slide 30 — Reverse embedding: tornare ai token |
-| `slides/slide23-costo-contesto.html` | Slide 40 — Il contesto ha un costo |
-| `slides/slide23b-api-stateless.html` | Slide 41 — L'API è stateless: cosa significa davvero |
+| `slides/slide23-costo-contesto.html` | Slide 41 — Il contesto ha un costo |
+| `slides/slide23b-api-stateless.html` | Slide 42 — L'API è stateless: cosa significa davvero |
 | `slides/slide25-compressore-lossy.html` | Slide 31 — L'LLM come compressore lossy |
 | `slides/slide26-conseguenze-compressione.html` | Slide 32 — Conseguenze della compressione |
 | `slides/slide27-moe.html` | Slide 33 — MoE: non tutti i pesi lavorano sempre |
@@ -63,7 +63,7 @@
 >
 > **Stato dell'allineamento**: le Slide **10, 10b, 11, 11b, 12 e 14** *insegnano* l'alfabeto (il vettore a 4 celle, riga per colonna, la griglia 4×3, la tessera-token); dalla 20 alla 33 lo *usano*. Resta indietro la **Slide 17** (lo spazio delle idee), che non è mai stata rifatta: il suo idioma — piano punteggiato, cluster, frecce parallele — è già vicino a quello usato nella Slide 23, ma il disegno è quello originale e non nasce dai generatori. Due eccezioni dichiarate: la **Slide 16** si legge dall'alto (è una lista di passi), e la **Slide 31** resta una slide-metafora, con l'imbuto della compressione che scende — non usa l'alfabeto perché non parla di vettori ma di che cosa succede a un archivio quando lo comprimi. La **Slide 32** non ha figura.
 >
-> **Mini-mappa "sei qui"**: le slide 22–30 portano, in fondo alla colonna di testo, la torre della Slide 20 ridotta a silhouette grigia con **un solo elemento in burgundy** — la parte trattata da quella slide. Varianti: `minimap-fc` (16), `minimap-somma` (17), `minimap-attn` (18, 19, 20, 20b), `minimap-pos` (21), `minimap-testa` (22). Esiste anche `minimap-corsie`, pronta per la Slide 40 ma non ancora cablata.
+> **Mini-mappa "sei qui"**: le slide 22–30 portano, in fondo alla colonna di testo, la torre della Slide 20 ridotta a silhouette grigia con **un solo elemento in burgundy** — la parte trattata da quella slide. Varianti: `minimap-fc` (16), `minimap-somma` (17), `minimap-attn` (18, 19, 20, 20b), `minimap-pos` (21), `minimap-testa` (22). Esiste anche `minimap-corsie`, pronta per la Slide 41 ma non ancora cablata.
 
 ---
 
@@ -440,7 +440,7 @@
 
 Le righe non ancora raggiunte restano disegnate ma **spente**: si vede che manca qualcosa. Le tre matrici di proiezione, disegnate come griglie 4×3, stanno **sul lato destro** della griglia, fuori dalle colonne dei token: **le tre proiezioni partono tutte dall'embedding**, non l'una dall'altra, e fra `W^Q` e `W^K` **non c'è alcun collegamento** — sarebbe fuorviante. `W^K` e `W^V` agiscono su tutti i token (una linea orizzontale con una freccia per colonna: *è la stessa matrice per tutta la frase*), mentre **`W^Q` è alimentata dall'embedding della sola colonna `calcio`**, la più a destra — coerente col fatto che la riga `q` è popolata solo lì.
 
-La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni token, Q solo per quello che sta cercando. È già, disegnata, la nota della Slide 40 (*«Q del passato: calcolate e buttate»*) — e per questo `W^Q` pesca da quella colonna e non da tutta la frase.
+La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni token, Q solo per quello che sta cercando. È già, disegnata, la nota della Slide 41 (*«Q del passato: calcolate e buttate»*) — e per questo `W^Q` pesca da quella colonna e non da tutta la frase.
 
 **Numeri, unici per tutte e quattro le slide** — `calcio` guarda anche sé stesso, quindi i punteggi sono cinque e le percentuali sono una softmax vera sui punteggi:
 

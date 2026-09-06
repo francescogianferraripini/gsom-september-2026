@@ -36,12 +36,53 @@
   <text x="726" y="152" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="400" fill="#838383">preferirebbero gli umani</text>
   <line x1="890" y1="190" x2="890" y2="266" stroke="#a1245a" stroke-width="3" marker-end="url(#fb)"/>
   <text x="910" y="218" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#a1245a">reward</text>
-  <text x="910" y="240" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="400" fill="#838383">stesso metodo: gradient descent —</text>
-  <text x="910" y="258" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="400" fill="#838383">cambia solo il punteggio</text>
-  <rect x="700" y="276" width="380" height="130" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
-  <text x="726" y="320" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" fill="#161719">modello</text>
-  <text x="726" y="348" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="400" fill="#838383">aggiorna i pesi, un passo alla volta</text>
-  <path d="M1040 372 A 26 26 0 1 1 1026 360" fill="none" stroke="#838383" stroke-width="2.5" stroke-linecap="round" marker-end="url(#fg)"/>
+  <text x="910" y="234" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="400" fill="#838383">stesso metodo: gradient</text>
+  <text x="910" y="250" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="400" fill="#838383">descent — cambia solo il</text>
+  <text x="910" y="266" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="400" fill="#838383">punteggio</text>
+  <!-- Il blocco "modello" e' ora nero e porta le tre matrici della TAPPA 4 della
+       slide 35 (embedding, Q K V, rilevatori), ricopiate: stesse etichette, stesso
+       schema di celle gialle. E' una citazione, non un disegno nuovo — chi guarda
+       deve riconoscere l'oggetto del pretraining e vedere che a cambiare e' solo
+       da dove arriva il punteggio. Se cambiano la' , vanno cambiate anche qui.
+       Niente linea gialla di distribuzione come nella 35: il blocco e' alto 130 e
+       non ce n'e' lo spazio; la freccia burgundy "reward" che arriva da sopra fa
+       gia' quel lavoro. -->
+  <rect x="700" y="276" width="380" height="130" rx="8" fill="#161719"/>
+  <text x="726" y="304" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#ffffff">modello</text>
+  <text x="726" y="325" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="400" fill="#9aa0a6">aggiorna i pesi, un passo alla volta</text>
+  <path d="M1060 306 A 14 14 0 1 1 1053 294" fill="none" stroke="#838383" stroke-width="2" stroke-linecap="round" marker-end="url(#fg)"/>
+  <g id="matrici-del-modello">
+    <text x="790" y="346" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#dee2e6">embedding</text>
+    <text x="893" y="346" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#dee2e6">Q K V</text>
+    <text x="996" y="346" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#dee2e6">rilevatori</text>
+    <rect x="770" y="352" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="784" y="352" width="12" height="12" rx="2" fill="#ffbe0b"/>
+    <rect x="798" y="352" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="770" y="366" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="784" y="366" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="798" y="366" width="12" height="12" rx="2" fill="#ffbe0b"/>
+    <rect x="770" y="380" width="12" height="12" rx="2" fill="#ffbe0b"/>
+    <rect x="784" y="380" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="798" y="380" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="873" y="352" width="12" height="12" rx="2" fill="#ffbe0b"/>
+    <rect x="887" y="352" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="901" y="352" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="873" y="366" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="887" y="366" width="12" height="12" rx="2" fill="#ffbe0b"/>
+    <rect x="901" y="366" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="873" y="380" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="887" y="380" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="901" y="380" width="12" height="12" rx="2" fill="#ffbe0b"/>
+    <rect x="976" y="352" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="990" y="352" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="1004" y="352" width="12" height="12" rx="2" fill="#ffbe0b"/>
+    <rect x="976" y="366" width="12" height="12" rx="2" fill="#ffbe0b"/>
+    <rect x="990" y="366" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="1004" y="366" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="976" y="380" width="12" height="12" rx="2" fill="#f6f6f6"/>
+    <rect x="990" y="380" width="12" height="12" rx="2" fill="#ffbe0b"/>
+    <rect x="1004" y="380" width="12" height="12" rx="2" fill="#f6f6f6"/>
+  </g>
   <rect x="20" y="430" width="1060" height="106" rx="8" fill="#161719"/>
   <rect x="21" y="448" width="4" height="70" rx="0" fill="#ffbe0b"/>
   <text x="48" y="476" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="600" fill="#ffffff">il punteggio non arriva dagli umani: arriva dal reward model.</text>

@@ -25,7 +25,7 @@
 
 > **Filo della sezione — la finestra a strati, in cinque tempi.** Le Slide 7, 8, 11, 12 e 13 portano la stessa figura (`slide7-finestra-strati-{0..4}.svg`, stesso viewBox, pattern `.visual.stack` + fragment come la torre della slide 20 del 26): uno scheletro di strati vuoti che si riempie uno strato per slide. **Si legge dall'alto**, come i riquadri di payload delle slide 8 e 9 del 26 dove `[system]` è la prima riga: `system prompt` in cima, poi `dichiarazione dei tool`, `indice delle skill`, e `messaggi` in fondo, che crescono verso il basso.
 >
-> ⚠️ **Coerenza con il 26**: la slide 42 del 26 (la pila che cresce) ha gli strati stabili **in fondo**. Quando viene ripresa in sezione 4 va ridisegnata dall'alto, altrimenti contraddice questa figura.
+> ⚠️ **Coerenza con il 26**: la slide 43 del 26 (la pila che cresce) ha gli strati stabili **in fondo**. Quando viene ripresa in sezione 4 va ridisegnata dall'alto, altrimenti contraddice questa figura.
 >
 > **MCP in questa sezione**: una riga sola (nella Slide 10 e nella Slide 11, "è lì che MCP si innesta"), senza spiegare che cos'è: la sezione 2 mostra *che cosa c'è nella finestra*, la 3 spiega *da dove arriva e chi lo esegue*.
 >
@@ -120,7 +120,7 @@
 
 ## Slide 10 — Com'è fatta una chiamata al modello
 
-> Slide nuova nel corso: il 26 non ha mai mostrato la struttura dell'API (la sua slide 41 parla solo di costo). I nomi sono quelli dell'API Messages di Anthropic (verificati a set 2026); gli altri provider hanno la stessa forma con nomi diversi.
+> Il 26 la struttura dell'API la mostra gia', nella sua Slide 40: due chiamate a `chat/completions` di OpenAI, per far vedere che l'API e' stateless. Qui la novita' e' un'altra: **la richiesta con i tool** — il campo `tools`, i blocchi della risposta, lo `stop_reason` — e i nomi sono quelli dell'API Messages di Anthropic (verificati a set 2026); gli altri provider hanno la stessa forma con nomi diversi. Vale la pena richiamare a voce la slide del 26 e dire che cosa si aggiunge.
 
 **Messaggio**: il modello si raggiunge con una chiamata HTTP la cui struttura è esattamente la finestra a strati; la risposta dice che cosa ha generato e perché si è fermato.
 

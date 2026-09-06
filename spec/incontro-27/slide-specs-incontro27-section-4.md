@@ -31,7 +31,7 @@
 >
 > **Perimetro della memoria (deciso in intervista)**: la memoria è **ciò che l'agente decide di salvare da solo**. I file di istruzioni (`AGENTS.md`, `CLAUDE.md`) non sono memoria: sono espliciti, li scrive una persona, e l'harness li appende sempre al system prompt (Slide 9). Non si usa il termine "deflazionistico".
 >
-> **Riprese dal 26**: la pila che cresce (slide 42 → Slide 31, **ridisegnata dall'alto** per coerenza con la sezione 2), KV cache e curve di costo (40 e 41 → Slide 32), context rot e tool a scalini (44 e 45 → Slide 34, riusate tali e quali).
+> **Riprese dal 26**: la pila che cresce (slide 43 → Slide 31, **ridisegnata dall'alto** per coerenza con la sezione 2), KV cache e curve di costo (41 e 42 → Slide 32), context rot e tool a scalini (45 e 46 → Slide 34, riusate tali e quali).
 >
 > **Fatti verificati (set 2026)**: i token letti dalla cache costano circa 0,1× il prezzo base (sconto ~90%; 0,025× su alcuni modelli); la prima scrittura costa 1,25× (cache a 5 minuti) o 2× (a un'ora); massimo 4 checkpoint per chiamata; l'ordine di resa è tools → system → messages. Il pruning dei risultati dei tool, nell'API di Anthropic e in Claude Code, sostituisce i risultati vecchi con un segnaposto (non un riassunto), tenendo intatti gli ultimi.
 >
@@ -76,7 +76,7 @@
 
 **Messaggio**: tool, skill e script non sono alternative in gara: rispondono a esigenze diverse. La regola è "chi deve poter essere chiamato in qualsiasi momento" contro "chi serve in pochi task ed è lungo da spiegare".
 
-**Layout**: titolo in alto; tabella comparativa a tre righe nella metà superiore (~55%); i due punti sotto; nota in basso. Nessuna figura: la tabella è il visual, come la slide 52 del 26.
+**Layout**: titolo in alto; tabella comparativa a tre righe nella metà superiore (~55%); i due punti sotto; nota in basso. Nessuna figura: la tabella è il visual, come la slide 53 del 26.
 
 **Testo**:
 - Titolo: *Quando conviene cosa*
@@ -99,7 +99,7 @@
 
 ## Slide 31 — La finestra a ogni giro: tre parti, tre velocità
 
-> Ripresa della slide 42 del 26 (la pila che cresce), **ridisegnata dall'alto**: lì gli strati stabili stavano in fondo, qui il prefisso sta in cima come in tutta la sezione 2.
+> Ripresa della slide 43 del 26 (la pila che cresce), **ridisegnata dall'alto**: lì gli strati stabili stavano in fondo, qui il prefisso sta in cima come in tutta la sezione 2.
 
 **Messaggio**: a ogni giro la finestra ha tre parti che crescono a velocità diverse: il prefisso non cresce, la storia cresce di un turno per volta, i risultati dei tool crescono più in fretta di tutto.
 
@@ -126,7 +126,7 @@
 
 ## Slide 32 — Il prefisso non si tocca: prefix caching
 
-> Ripresa delle slide 40 e 41 del 26 (KV cache, curve di costo), rilette sulla finestra a strati.
+> Ripresa delle slide 41 e 42 del 26 (KV cache, curve di costo), rilette sulla finestra a strati.
 
 **Messaggio**: la KV cache del 26 diventa un servizio dell'API: se il prefisso è identico a quello della chiamata precedente, il provider non lo ricalcola e lo fa pagare una frazione. Ma vale solo per un prefisso esatto, e solo per il prezzo: i token restano lì.
 
@@ -140,7 +140,7 @@
   3. **Sconto, non cancellazione**: *i token in cache costano circa un decimo (sconto del 90%, e su alcuni modelli di più); la prima scrittura costa un po' più del normale, e conviene già dalla seconda chiamata. Ma sono ancora nella finestra: il modello li rilegge, e i cinquanta tool MCP inutilizzati pesano sulla scelta come prima.*
 - Nota in basso: *Le curve del 26 avevano tre linee: teorica, in fattura, reale. La cache sposta quella in fattura verso quella reale, e vale solo se l'harness non tocca il prefisso.*
 
-**Visual**: `slide32-prefix-caching.svg` — il pannello `con KV cache` della slide 40 del 26, riletto sulla finestra a strati.
+**Visual**: `slide32-prefix-caching.svg` — il pannello `con KV cache` della slide 41 del 26, riletto sulla finestra a strati.
 
 **Prompt per schema SVG**:
 > **A sinistra**, due finestre a strati affiancate, `chiamata n` e `chiamata n+1`, lette dall'alto: il prefisso identico in entrambe (stesso contenuto, stessa altezza), racchiuso in un'area grigia etichettata `in cache: K, V già calcolati` con una freccia dalla prima alla seconda etichettata `riusati, non ricalcolati`; sotto il prefisso, la storia e i risultati, diversi fra le due (nella seconda una riga in più, con l'anello burgundy del 26: *solo questo si calcola*).
@@ -178,7 +178,7 @@
 
 ## Slide 34 — Non basta che ci stia: il context rot
 
-> Ripresa delle slide 44 e 45 del 26, affiancate, con gli SVG del 26 **riusati tali e quali**. È l'unica slide della lezione che riusa due SVG del 26 senza modifiche.
+> Ripresa delle slide 45 e 46 del 26, affiancate, con gli SVG del 26 **riusati tali e quali**. È l'unica slide della lezione che riusa due SVG del 26 senza modifiche.
 
 **Messaggio**: anche quando la finestra è lontana dal limite tecnico, un contesto lungo peggiora le risposte; e i risultati dei tool lo allungano molto più in fretta della conversazione. La cache risolve il prezzo, non questo.
 

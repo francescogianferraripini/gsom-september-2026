@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 380" width="1140" height="380" role="img">
+  <title>Due chiamate successive all'API chat completions di OpenAI: la seconda rispedisce per intero i messaggi della prima piu' il turno nuovo, e prompt_tokens passa da 24 a 71</title>
+
+  <!-- Idioma dei payload della Sezione 2 (slide 8 e 9), qui sul formato vero: grigio = gia'
+       spedito, nero = input nuovo dell'utente, burgundy = generato adesso dal modello.
+       Scritto a mano e non in gen_sez2.py: le righe qui sono JSON di lunghezza fissa,
+       non una lista di messaggi che cresce, quindi non c'e' niente da calcolare. -->
+
+  <defs><marker id="gg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 z" fill="#838383"/></marker></defs>
+
+  <text x="0" y="13" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a1245a" letter-spacing="1.6">CHIAMATA 1</text>
+  <rect x="0" y="24" width="262" height="24" rx="6" fill="#f6f6f6"/>
+  <text x="12" y="41" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#a1245a">POST</text>
+  <text x="48" y="41" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="400" fill="#212529">/v1/chat/completions</text>
+  <rect x="0" y="74" width="552" height="94" rx="7" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="16" y="68" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#838383" letter-spacing="1.2">richiesta</text>
+  <text x="16" y="93.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">{ "model": "gpt-4o",</tspan></text>
+  <text x="16" y="109.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">  "messages": [</tspan></text>
+  <text x="16" y="125.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">    {"role": "system", "content": </tspan><tspan fill="#161719" font-weight="600">"Sei un assistente utile."</tspan><tspan fill="#212529" font-weight="400">},</tspan></text>
+  <text x="16" y="141.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">    {"role": "user", "content": </tspan><tspan fill="#161719" font-weight="600">"Ciao, chi sei?"</tspan><tspan fill="#212529" font-weight="400">}</tspan></text>
+  <text x="16" y="157.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">  ] }</tspan></text>
+  <line x1="524" y1="178" x2="524" y2="220" stroke="#838383" stroke-width="1.5" marker-end="url(#gg)"/>
+  <rect x="0" y="226" width="552" height="62" rx="7" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+  <rect x="0" y="236" width="3" height="42" rx="0" fill="#a1245a"/>
+  <text x="16" y="220" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#838383" letter-spacing="1.2">risposta · 200 OK</text>
+  <text x="16" y="245.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">{ "choices": [{"message": {"role": "assistant",</tspan></text>
+  <text x="16" y="261.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">      "content": </tspan><tspan fill="#a1245a" font-weight="600">"Sono un assistente virtuale."</tspan><tspan fill="#212529" font-weight="400">}}],</tspan></text>
+  <text x="16" y="277.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">  "usage": {"prompt_tokens": </tspan><tspan fill="#a1245a" font-weight="600">24</tspan><tspan fill="#212529" font-weight="400">, "completion_tokens": 9} }</tspan></text>
+  <text x="588" y="13" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a1245a" letter-spacing="1.6">CHIAMATA 2 — SUBITO DOPO</text>
+  <rect x="588" y="24" width="262" height="24" rx="6" fill="#f6f6f6"/>
+  <text x="600" y="41" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#a1245a">POST</text>
+  <text x="636" y="41" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="400" fill="#212529">/v1/chat/completions</text>
+  <rect x="588" y="74" width="552" height="126" rx="7" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="604" y="68" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#838383" letter-spacing="1.2">richiesta</text>
+  <text x="604" y="93.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">{ "model": "gpt-4o",</tspan></text>
+  <text x="604" y="109.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">  "messages": [</tspan></text>
+  <text x="604" y="125.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#9aa0a6" font-weight="400">    {"role": "system", "content": "Sei un assistente utile."},</tspan></text>
+  <text x="604" y="141.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#9aa0a6" font-weight="400">    {"role": "user", "content": "Ciao, chi sei?"},</tspan></text>
+  <text x="604" y="157.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#9aa0a6" font-weight="400">    {"role": "assistant", "content": "Sono un assistente virtuale."},</tspan></text>
+  <text x="604" y="173.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">    {"role": "user", "content": </tspan><tspan fill="#161719" font-weight="600">"E cosa sai fare?"</tspan><tspan fill="#212529" font-weight="400">}</tspan></text>
+  <text x="604" y="189.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">  ] }</tspan></text>
+  <line x1="1112" y1="210" x2="1112" y2="220" stroke="#838383" stroke-width="1.5" marker-end="url(#gg)"/>
+  <rect x="588" y="226" width="552" height="62" rx="7" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+  <rect x="588" y="236" width="3" height="42" rx="0" fill="#a1245a"/>
+  <text x="604" y="220" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#838383" letter-spacing="1.2">risposta · 200 OK</text>
+  <text x="604" y="245.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">{ "choices": [{"message": {"role": "assistant",</tspan></text>
+  <text x="604" y="261.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">      "content": </tspan><tspan fill="#a1245a" font-weight="600">"Posso rispondere, scrivere, cercare."</tspan><tspan fill="#212529" font-weight="400">}}],</tspan></text>
+  <text x="604" y="277.5" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" xml:space="preserve"><tspan fill="#212529" font-weight="400">  "usage": {"prompt_tokens": </tspan><tspan fill="#a1245a" font-weight="600">71</tspan><tspan fill="#212529" font-weight="400">, "completion_tokens": 11} }</tspan></text>
+  <rect x="0" y="316" width="1140" height="60" rx="7" fill="#f6f6f6"/>
+  <rect x="0" y="316" width="4" height="60" fill="#a1245a"/>
+  <text x="24" y="342" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="600" fill="#161719">Nessun identificatore di sessione, da nessuna parte.</text>
+  <text x="24" y="364" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#212529">Le righe grigie erano già state spedite: l’API non le ricorda, e la seconda chiamata le rispedisce tutte. <tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#a1245a" font-weight="700">prompt_tokens</tspan>: <tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#a1245a" font-weight="700">24 → 71</tspan>.</text>
+</svg>

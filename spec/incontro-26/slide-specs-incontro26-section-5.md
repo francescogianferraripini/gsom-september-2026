@@ -2,10 +2,10 @@
 ## Francesco Gianferrari Pini — Corso PC AI
 
 **Sezione 5 — Lo scenario, più o meno completo**
-**Obiettivo di apprendimento**: il partecipante rilegge il loop conversazionale alla luce del **context rot** (la pila della Slide 42 non solo costa: degrada il modello), conosce multimodality e reasoning, inquadra gli elementi economici (raccogliendo il seme GPU della Slide 16) e la scelta open vs closed, e inquadra la scelta open vs closed.
-**Nota di chiusura**: il deck chiude sulla **Slide 56 — «La formula, riletta»**, che riprende il diagramma della Slide 3 come *barra di avanzamento del corso* (acceso il solo `LLM`). Non c'è invece nessuna slide-cliffhanger verso l'incontro 27: il passaggio si fa a voce, e in slide resta la sola legenda *acceso = visto in questo incontro*.
+**Obiettivo di apprendimento**: il partecipante rilegge il loop conversazionale alla luce del **context rot** (la pila della Slide 43 non solo costa: degrada il modello), conosce multimodality e reasoning, inquadra gli elementi economici (raccogliendo il seme GPU della Slide 16) e la scelta open vs closed, e inquadra la scelta open vs closed.
+**Nota di chiusura**: il deck chiude sulla **Slide 57 — «La formula, riletta»**, che riprende il diagramma della Slide 3 come *barra di avanzamento del corso* (acceso il solo `LLM`). Non c'è invece nessuna slide-cliffhanger verso l'incontro 27: il passaggio si fa a voce, e in slide resta la sola legenda *acceso = visto in questo incontro*.
 **Messaggio chiave (takeaway)**: Più contesto non è meglio: oltre una soglia il modello degrada. Da questo limite — e dal "chi esegue?" — nasce il bisogno dell'harness.
-**Budget**: ~30 min, 17 slide. I contenuti "bonus" (multimodality, reasoning) NON sono sacrificabili.
+**Budget**: ~30 min, 18 slide. I contenuti "bonus" (multimodality, reasoning) NON sono sacrificabili.
 **Stato**: bozza
 
 ### Tabella file → slide
@@ -13,33 +13,59 @@
 | File | Slide |
 |------|-------|
 | `slides/slide-div-sec5.html` | Separatore — Sezione 5: Lo scenario, più o meno completo |
-| `slides/slide23-costo-contesto.html` | Slide 40 — Il contesto ha un costo *(da Sez. 3)* |
-| `slides/slide23b-api-stateless.html` | Slide 41 — L'API è stateless *(da Sez. 3)* |
-| `slides/slide34-stateless.html` | Slide 42 — Il modello è stateless *(da Sez. 4)* |
-| `slides/slide35-figlio-dei-dati.html` | Slide 43 — Il modello è figlio dei suoi training set *(da Sez. 4)* |
-| `slides/slide36-context-rot.html` | Slide 44 — Context rot |
-| `slides/slide36b-tool-context-rot.html` | Slide 45 — I tool accelerano il context rot |
-| `slides/slide37-multimodality.html` | Slide 46 — Multimodality |
-| `slides/slide38-reasoning.html` | Slide 47 — Reasoning |
-| `slides/slide39-costi-training-inferenza.html` | Slide 48 — I costi: training, inferenza, distillazione |
-| `slides/slide40-prezzo-per-token.html` | Slide 49 — Il prezzo per token |
-| `slides/slide41-valore-traiettorie.html` | Slide 50 — Il valore delle traiettorie |
-| `slides/slide42-closed-openweights-opensource.html` | Slide 51 — Closed, open weights, open source |
-| `slides/slide43-tradeoff-closed-open.html` | Slide 52 — Quando closed, quando open |
-| `slides/slide44-fine-tuning.html` | Slide 53 — Fine-tuning: riprendere la discesa |
-| `slides/slide45-lora.html` | Slide 54 — LoRA: la correzione a basso rango |
-| `slides/slide46-pareto.html` | Slide 55 — La fotografia del mercato: il Pareto qualità/costo |
-| `slides/slide56-formula-riletta.html` | Slide 56 — La formula, riletta (barra di avanzamento del corso) |
+| `slides/slide23c-api-formato.html` | Slide 40 — L'API: come si parla al modello |
+| `slides/slide23-costo-contesto.html` | Slide 41 — Il contesto ha un costo *(da Sez. 3)* |
+| `slides/slide23b-api-stateless.html` | Slide 42 — L'API è stateless *(da Sez. 3)* |
+| `slides/slide34-stateless.html` | Slide 43 — Il modello è stateless *(da Sez. 4)* |
+| `slides/slide35-figlio-dei-dati.html` | Slide 44 — Il modello è figlio dei suoi training set *(da Sez. 4)* |
+| `slides/slide36-context-rot.html` | Slide 45 — Context rot |
+| `slides/slide36b-tool-context-rot.html` | Slide 46 — I tool accelerano il context rot |
+| `slides/slide37-multimodality.html` | Slide 47 — Multimodality |
+| `slides/slide38-reasoning.html` | Slide 48 — Reasoning |
+| `slides/slide39-costi-training-inferenza.html` | Slide 49 — I costi: training, inferenza, distillazione |
+| `slides/slide40-prezzo-per-token.html` | Slide 50 — Il prezzo per token |
+| `slides/slide41-valore-traiettorie.html` | Slide 51 — Il valore delle traiettorie |
+| `slides/slide42-closed-openweights-opensource.html` | Slide 52 — Closed, open weights, open source |
+| `slides/slide43-tradeoff-closed-open.html` | Slide 53 — Quando closed, quando open |
+| `slides/slide44-fine-tuning.html` | Slide 54 — Fine-tuning: riprendere la discesa |
+| `slides/slide45-lora.html` | Slide 55 — LoRA: la correzione a basso rango |
+| `slides/slide46-pareto.html` | Slide 56 — La fotografia del mercato: il Pareto qualità/costo |
+| `slides/slide56-formula-riletta.html` | Slide 57 — La formula, riletta (barra di avanzamento del corso) |
 | ~~`slides/slide47-chiusura.html`~~ | *Slide 47 (numerazione precedente) — rimossa: era la chiusura col cliffhanger sull'harness* |
 
 ---
 
-> **Nota di provenienza**: le Slide 40 e 41 arrivavano dalla Sezione 3 (erano il costo del
-> contesto e l'API stateless), le Slide 42 e 43 dalla Sezione 4. Sono state spostate qui
+> **Nota di provenienza**: le Slide 41 e 41 arrivavano dalla Sezione 3 (erano il costo del
+> contesto e l'API stateless), le Slide 43 e 43 dalla Sezione 4. Sono state spostate qui
 > quando la sezione è diventata «Lo scenario, più o meno completo»: il filo non è più
 > *come funziona* o *come si addestra*, ma *che cosa comporta nell'uso reale*.
 
-## Slide 40 — Il contesto ha un costo
+## Slide 40 — L'API: come si parla al modello
+
+> Apre la sezione. Fino a qui il modello si è visto da dentro; da qui in avanti si vede da fuori, cioè da come lo si chiama. È la premessa concreta delle due slide che seguono (il costo del contesto, e che cosa significa davvero *stateless*), e torna nell'incontro 27, dove la stessa richiesta porta anche i tool.
+
+**Layout**: titolo in alto; figura a piena larghezza (~75%); didascalia in basso. **Nessun testo sopra la figura**: il JSON deve rendersi a corpo pieno — con una `.defn` in testa la figura scende a 935px e il monospaziato sotto i 10px.
+
+**Testo**:
+- Titolo: *L'API: come si parla al modello*
+- Didascalia: *Un modello non si «usa»: si chiama. Una richiesta HTTP con dentro un JSON, e dentro il JSON tutta la conversazione. Sono le API di OpenAI, nel formato che tutti hanno poi copiato: **stateless per costruzione** — il server non tiene niente fra una chiamata e l'altra, quindi la storia la rimetti tu, ogni volta, per intero. È il meccanismo dietro i tre riquadri della Slide 8, qui sul formato vero.*
+
+**Visual**: `slide23c-api-formato.svg` — due chiamate successive a `POST /v1/chat/completions`, affiancate, con richiesta e risposta per ciascuna.
+
+**Prompt per schema SVG**:
+> Due colonne, `CHIAMATA 1` e `CHIAMATA 2 — SUBITO DOPO`. Ognuna ha, dall'alto: la riga dell'endpoint (`POST` in burgundy, il path in nero, su fondo grigio chiaro); il riquadro `richiesta` col JSON; una freccia verso il basso; il riquadro `risposta · 200 OK`, con una barra burgundy a sinistra.
+>
+> **Colori dell'idioma della Sezione 2** (slide 8 e 9), qui sul formato vero: grigio attenuato = messaggio già spedito in una chiamata precedente; nero = il turno nuovo; burgundy = ciò che il modello ha appena generato, e i due valori di `prompt_tokens`.
+>
+> **I due riquadri `richiesta` hanno altezza diversa** — cinque righe contro sette — ed è il punto della figura: la seconda chiamata è più grossa perché rispedisce tutto. I due riquadri `risposta` invece partono alla stessa y, così le due righe `usage` sono confrontabili a colpo d'occhio.
+>
+> **Fascia in basso**, a piena larghezza: *Nessun identificatore di sessione, da nessuna parte.* e sotto, in piccolo, *Le righe grigie erano già state spedite: l'API non le ricorda, e la seconda chiamata le rispedisce tutte. `prompt_tokens`: 24 → 71.*
+>
+> **Elemento focale**: la differenza di altezza fra i due riquadri `richiesta`, e i due numeri di `prompt_tokens`.
+
+**Note per il relatore**: la primissima API di OpenAI (2020) era ancora più semplice — un solo campo `prompt`, una stringa di testo; il formato con `messages` e i ruoli arriva nel 2023. Le API più recenti offrono anche uno stato lato server, ma opzionale: il modello mentale che conta resta questo. Il nome del modello nell'esempio non conta.
+
+## Slide 41 — Il contesto ha un costo
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~30%); visual a due pannelli al centro-destra (~65%); nota in basso.
 
@@ -70,9 +96,9 @@
 
 ---
 
-## Slide 41 — L'API è stateless: cosa significa davvero
+## Slide 42 — L'API è stateless: cosa significa davvero
 
-> Slide **ripresa dal deck MBA** (`gsom-april-2026`, `slide18-api-stateless.html`). Sta subito dopo la 40 perché è lo stesso costo, visto dall'altro lato: la 40 lo guarda dentro il modello (prefill, KV cache), la 41 lo guarda dalla conversazione e dalla bolletta. Prepara la Slide 42 della sezione 4, che riprende lo stateless dal lato del modello.
+> Slide **ripresa dal deck MBA** (`gsom-april-2026`, `slide18-api-stateless.html`). Sta subito dopo la 41 perché è lo stesso costo, visto dall'altro lato: la 41 lo guarda dentro il modello (prefill, KV cache), la 42 lo guarda dalla conversazione e dalla bolletta. Prepara la Slide 43 della sezione 4, che riprende lo stateless dal lato del modello.
 
 **Layout**: titolo in alto; due punti di testo e una nota a sinistra (~40%); il grafico delle curve a destra (~57%); blocco nero in fondo.
 
@@ -98,7 +124,7 @@
 
 ---
 
-## Slide 42 — Il modello è stateless: il contesto è tutto
+## Slide 43 — Il modello è stateless: il contesto è tutto
 
 **Layout**: titolo in alto; blocco analogia in apertura; i due punti di testo a sinistra (~30%); visual al centro-destra (~60%); nota in basso.
 
@@ -124,7 +150,7 @@
 >
 > **Elementi focali**: la crescita dell'altezza tra la foto 1 e la foto 4 (il contesto si accumula) e la freccia "rilegge tutta la pila da capo" (la statelessness). Gli strati stabili in fondo (`system prompt`, `tool dichiarati`) devono restare riconoscibili e identici in tutte le foto.
 
-## Slide 43 — Il modello è figlio dei suoi training set
+## Slide 44 — Il modello è figlio dei suoi training set
 
 **Layout**: titolo in alto; i tre punti di testo al centro; box di riflessione in basso (~30% della slide), visivamente distinto.
 
@@ -139,7 +165,7 @@
 
 **Visual**: nessuno. È una slide di riflessione: i tre punti e il box finale in evidenza sono essi stessi la struttura visiva; un diagramma diluirebbe il peso della chiusura.
 
-## Slide 44 — Context rot
+## Slide 45 — Context rot
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~40%); grafico a destra (~55%); nota-cliffhanger in basso.
 
@@ -158,9 +184,9 @@
 
 **Prompt per schema SVG**: — (asset esterno; se si deciderà di rifarlo: curva qualità vs lunghezza del contesto con salita, plateau e declino evidente, e il punto di piega come elemento focale, marcato *prima del limite tecnico della finestra*).
 
-## Slide 45 — I tool accelerano il context rot
+## Slide 46 — I tool accelerano il context rot
 
-> Ripresa dal deck MBA (`gsom-april-2026`, `slide27-context-rot.html`). Sta subito dopo la 44 perché è lo stesso fenomeno con l'acceleratore: la 44 dice che il contesto degrada, la 45 dice che i tool lo riempiono molto più in fretta.
+> Ripresa dal deck MBA (`gsom-april-2026`, `slide27-context-rot.html`). Sta subito dopo la 45 perché è lo stesso fenomeno con l'acceleratore: la 45 dice che il contesto degrada, la 46 dice che i tool lo riempiono molto più in fretta.
 
 **Layout**: titolo in alto; i tre consigli pratici a sinistra (~40%); il grafico a due pannelli a destra (~57%); nota in basso.
 
@@ -185,7 +211,7 @@
 
 > **Nota di adattamento**: il grafico di aprile è stato **rifatto**, non copiato. Quello importava Poppins da Google Fonts (qui il font è già in locale) e usava grigi generici fuori palette. La chiusa di aprile rimandava ai sub-agent: qui è tolta, perché i sub-agent sono materia dell'incontro 27.
 
-## Slide 46 — Multimodality
+## Slide 47 — Multimodality
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -210,7 +236,7 @@
 >
 > **Elemento focale**: la vicinanza dei due punti nel piano — due mezzi diversi, stessa posizione nello spazio del significato. La griglia di patch è il secondo elemento didattico (l'immagine "tokenizzata").
 
-## Slide 47 — Reasoning
+## Slide 48 — Reasoning
 
 > **La figura è stata rifatta**: al posto del confronto astratto fra modello standard e modello di reasoning, ora c'è **un esempio di conversazione con e senza**.
 > Due colonne sulla stessa domanda — *«Un prodotto costa 80€. Applico −25%, poi +25%. Quanto costa?»*. A sinistra risponde subito **80€**, e sbaglia; a destra genera prima il blocco `[thinking]` (−25% → 60, +25% → 75, il secondo % si applica a 60) e poi risponde **75€**.
@@ -238,7 +264,7 @@
 >
 > **Elementi focali**: il blocco di ragionamento interposto (la novità: il tempo/calcolo speso prima di rispondere) e il contrasto `✗` / `✓` tra le due corsie.
 
-## Slide 48 — I costi: training, inferenza, distillazione
+## Slide 49 — I costi: training, inferenza, distillazione
 
 **Layout**: titolo in alto; i quattro punti di testo a sinistra (~40%); visual al centro-destra (~55%); nota in basso.
 
@@ -264,15 +290,15 @@
 >
 > **Elementi focali**: il contrasto tra le due economie (l'investimento unico della zona 1 vs il flusso perpetuo della zona 2) e la freccia di distillazione — il meccanismo che le ricuce.
 
-## Slide 49 — Il prezzo per token
+## Slide 50 — Il prezzo per token
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~40%); visual-fattura a destra (~55%); nota in basso.
 
 **Testo**:
 - Titolo: *Il prezzo per token*
 - Punti:
-  1. **Input e output hanno prezzi diversi**: *i token di output costano di più (~3–5×): vengono generati uno alla volta; quelli di input si processano in parallelo nel prefill (Slide 40).*
-  2. **Il contesto si ripaga a ogni chiamata**: *il modello è stateless (Slide 42): tutta la pila rientra — e si ripaga — a ogni giro.*
+  1. **Input e output hanno prezzi diversi**: *i token di output costano di più (~3–5×): vengono generati uno alla volta; quelli di input si processano in parallelo nel prefill (Slide 41).*
+  2. **Il contesto si ripaga a ogni chiamata**: *il modello è stateless (Slide 43): tutta la pila rientra — e si ripaga — a ogni giro.*
   3. **La cache sconta ciò che non cambia**: *il prefisso stabile (system prompt, tool) costa una frazione se riusato: è la KV cache diventata listino.*
 - Nota in basso: *Ordine di grandezza oggi: da centesimi a qualche dollaro per milione di token, a seconda del modello. Le cifre invecchiano in fretta: le regole no.*
 
@@ -292,7 +318,7 @@
 >
 > **Elementi focali**: il prezzo maggiorato delle voci di output (generati uno alla volta) e lo sconto-cache sulla voce 1 — le due regole economiche che discendono dalla meccanica vista. La postilla sul ripagarsi è il richiamo alla statelessness.
 
-## Slide 50 — Il valore delle traiettorie
+## Slide 51 — Il valore delle traiettorie
 
 **Layout**: titolo in alto; mini-definizione sotto il titolo; due blocchi asimmetrici al centro (utente piccolo, provider grande); conclusione evidenziata; tre domande in chiusura.
 
@@ -309,7 +335,7 @@
 
 **Visual**: nessuno. L'asimmetria dei due blocchi (utente piccolo, provider grande) è l'elemento visivo.
 
-## Slide 51 — Closed, open weights, open source
+## Slide 52 — Closed, open weights, open source
 
 **Layout**: titolo in alto; tre colonne contrastive che occupano il corpo della slide; nota in basso.
 
@@ -334,7 +360,7 @@
 
 **Visual**: nessuno. Le tre colonne contrastive sono la struttura visiva; il gradiente di apertura (da closed a open source) si legge nell'ordine delle colonne.
 
-## Slide 52 — Quando closed, quando open
+## Slide 53 — Quando closed, quando open
 
 **Layout**: titolo in alto; tabella comparativa nella metà superiore; nota moat sotto la tabella; take-home in chiusura evidenziato.
 
@@ -351,12 +377,12 @@
 | Effort di adozione | Zero infrastruttura | GPU, MLOps, competenze |
 | Geopolitica / compliance | Dipendenza da vendor USA o Cina | Sovranità, compatibilità AI Act |
 
-- Nota moat (in evidenza, aggancio alla Slide 50): *Con closed paghi il token E regali le traiettorie. Con open paghi l'infrastruttura, e le traiettorie restano tue.*
+- Nota moat (in evidenza, aggancio alla Slide 51): *Con closed paghi il token E regali le traiettorie. Con open paghi l'infrastruttura, e le traiettorie restano tue.*
 - Take-home (in chiusura): *Closed per sperimentare velocemente, open per scalare volumi, privacy, customization. La scelta è per use case, non ideologica.*
 
 **Visual**: nessuno. La tabella è l'elemento visivo.
 
-## Slide 53 — Fine-tuning: riprendere la discesa
+## Slide 54 — Fine-tuning: riprendere la discesa
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~40%); visual a destra (~55%); nota in basso.
 
@@ -379,7 +405,7 @@
 >
 > **Elemento focale**: la brevità della discesa secondaria rispetto alla discesa originaria — il fine-tuning riparte da un modello già addestrato, non da zero.
 
-## Slide 54 — LoRA: la correzione a basso rango
+## Slide 55 — LoRA: la correzione a basso rango
 
 **Layout**: titolo in alto; i quattro punti di testo a sinistra (~40%); visual a destra (~55%); nota in basso.
 
@@ -390,7 +416,7 @@
   2. **Il vincolo (low-rank)**: *ΔW è costretta a essere il prodotto di due matrici sottili, A e B: poche direzioni nuove, non una riscrittura — la specializzazione è un piccolo insieme di spostamenti nello spazio delle idee.*
   3. **I numeri**: *r piccolo (8–64) contro dimensioni in migliaia: da d×d parametri a 2·d·r — meno dell'1%.*
   4. **In pratica**: *l'adattatore (A, B) è un file di pochi MB: si monta, si smonta, se ne tengono molti — uno per dominio.*
-- Nota in basso: *È questo a rendere davvero interessanti gli open weights (Slide 51): il modello resta condiviso, la specializzazione diventa tua.*
+- Nota in basso: *È questo a rendere davvero interessanti gli open weights (Slide 52): il modello resta condiviso, la specializzazione diventa tua.*
 
 **Visual**: la matrice W congelata e, in parallelo, il ramo LoRA con il collo di bottiglia a r dimensioni; accanto, la pila di adattatori intercambiabili.
 
@@ -407,7 +433,7 @@
 >
 > **Elementi focali**: la sproporzione visiva tra `W` (enorme, col lucchetto) e le strisce `A`/`B` (sottilissime), e il collo di bottiglia `r` — poche direzioni bastano a specializzare. I numeri di dimensione sono di natura token/codice.
 
-## Slide 55 — La fotografia del mercato: il Pareto qualità/costo
+## Slide 56 — La fotografia del mercato: il Pareto qualità/costo
 
 > **Il placeholder è stato sostituito dall'immagine vera**: `assets/images/uploads/arena-pareto-2026-09-02.png`, screenshot di `arena.ai/leaderboard/text/pareto` con i dati al **2 settembre 2026** (7.999.020 voti, 400 modelli).
 > Due accorgimenti da ripetere quando la si rifà: (1) il sito è in tema scuro — va catturato forzando `prefers-color-scheme: light`, altrimenti stona in un deck tutto chiaro; (2) va catturato con un **viewport largo e basso** (~2400×980), perché la card del grafico è responsive e con un viewport alto esce in rapporto ~1.7, che nello slot della slide si renderebbe a ~660px con le etichette illeggibili. Con 2400×980 esce ~2700×1348 e rende a **781px**.
@@ -424,10 +450,10 @@
 
 **Lettura in aula (appunti per il docente, non testo slide)**:
 - evidenziare la frontiera di Pareto e il concetto di "dominato" (tutto ciò che sta sotto/destra della frontiera);
-- indicare un paio di closed di punta e almeno un open weights competitivo (aggancio Slide 51);
-- i punti in basso a destra della frontiera: è lì che lavora la distillazione (aggancio Slide 48).
+- indicare un paio di closed di punta e almeno un open weights competitivo (aggancio Slide 52);
+- i punti in basso a destra della frontiera: è lì che lavora la distillazione (aggancio Slide 49).
 
-## Slide 56 — La formula, riletta
+## Slide 57 — La formula, riletta
 
 > Slide di chiusura del deck. Non è un riepilogo dell'incontro: è **la barra di avanzamento del corso**. La formula della Slide 3 torna identica, con acceso il solo termine che abbiamo aperto oggi.
 
@@ -464,4 +490,4 @@ Era una seconda slide di chiusura, dopo la formula riletta. Il suo contenuto:
 
 - Nota-cliffhanger: *Il modello sa volere. Non sa eseguire. Chi fa parsing, dispatch, sandbox, memoria? Prossimo incontro: dentro l'harness.*
 
-**Rimossa e non recuperata**: il passaggio all'incontro 27 si fa a voce. La formula riletta, invece, è tornata come Slide 56 — non più tipografica ma come diagramma di avanzamento.
+**Rimossa e non recuperata**: il passaggio all'incontro 27 si fa a voce. La formula riletta, invece, è tornata come Slide 57 — non più tipografica ma come diagramma di avanzamento.
