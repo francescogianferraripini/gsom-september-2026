@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 232" width="1140" height="232" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>La scena della slide 14 completata: nel giro 1 il modello chiede cerca_ordine(4471) e si ferma; nel giro 2 la stessa finestra ha in più la riga [tool] con il risultato, e il modello risponde all'utente con stop_reason end_turn</title>
+  <!-- Stessa scala di slide14-giro-uno.svg (righe da 18px, mono 12.5); il giro 2 è il riquadro «giro 2» di slide9b-tool-call.svg del 26. -->
+
+  <!-- giro 1 -->
+  <text x="56" y="56" text-anchor="end" font-size="12.5" font-weight="600" fill="#838383">giro 1</text>
+  <rect x="68" y="36" width="490" height="140" rx="7" fill="#f6f6f6" stroke="#dee2e6"/>
+  <rect x="74" y="47" width="3" height="52" fill="#1ab197"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5">
+    <text x="84" y="58" fill="#6c757d" font-weight="600">[system]</text><text x="170" y="58" fill="#6c757d">Sei l'assistente di Acme… (ruolo e regole)</text>
+    <text x="84" y="76" fill="#6c757d" font-weight="600">[tools]</text><text x="170" y="76" fill="#6c757d">cerca_ordine(id_ordine) — stato di un ordine</text>
+    <text x="84" y="94" fill="#6c757d" font-weight="600">[skills]</text><text x="170" y="94" fill="#6c757d">rimborsi-acme · risposta-reclami-acme</text>
+    <text x="84" y="112" fill="#161719" font-weight="600">[user]</text><text x="170" y="112" fill="#212529">Dov'è il mio ordine 4471?</text>
+  </g>
+  <text x="558" y="28" text-anchor="end" font-size="11.5" font-weight="600" fill="#838383">la slide 14, com'era</text>
+
+  <rect x="76" y="120" width="474" height="18" rx="5" fill="#a1245a"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5">
+    <text x="84" y="133" fill="#ecd3de">[assistant]</text><text x="170" y="133" fill="#ffffff">→ cerca_ordine("4471")</text>
+  </g>
+  <rect x="170" y="146" width="176" height="20" rx="4" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+  <text x="178" y="160" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#a1245a">stop_reason: tool_use</text>
+  <text x="358" y="160" font-size="12" font-weight="500" fill="#838383">il modello si ferma, e aspetta</text>
+
+  <!-- giro 2: il «?» riempito -->
+  <text x="598" y="56" text-anchor="end" font-size="12.5" font-weight="600" fill="#838383">giro 2</text>
+  <rect x="610" y="36" width="462" height="176" rx="7" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="1072" y="28" text-anchor="end" font-size="11.5" font-weight="600" fill="#0e7c6a">il «?» della slide 14, riempito come nel 26</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" fill="#9aa0a6">
+    <text x="626" y="58" font-weight="600">[system]</text><text x="712" y="58">Sei l'assistente di Acme… (ruolo e regole)</text>
+    <text x="626" y="76" font-weight="600">[tools]</text><text x="712" y="76">cerca_ordine(id_ordine) — stato di un ordine</text>
+    <text x="626" y="94" font-weight="600">[skills]</text><text x="712" y="94">rimborsi-acme · risposta-reclami-acme</text>
+    <text x="626" y="112" font-weight="600">[user]</text><text x="712" y="112">Dov'è il mio ordine 4471?</text>
+    <text x="626" y="130" font-weight="600">[assistant]</text><text x="712" y="130">→ cerca_ordine("4471")</text>
+  </g>
+  <!-- la riga che il modello non ha scritto -->
+  <rect x="618" y="138" width="446" height="18" rx="5" fill="#d1efea" stroke="#1ab197"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5">
+    <text x="626" y="151" fill="#0e7c6a" font-weight="600">[tool]</text><text x="712" y="151" fill="#212529">{ stato: "in consegna", data: "6 set" }</text>
+  </g>
+  <rect x="618" y="160" width="446" height="18" rx="5" fill="#a1245a"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5">
+    <text x="626" y="173" fill="#ecd3de">[assistant]</text><text x="712" y="173" fill="#ffffff">Il tuo ordine è in consegna, arriva il 6.</text>
+  </g>
+  <rect x="712" y="186" width="182" height="20" rx="4" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+  <text x="720" y="200" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#a1245a">stop_reason: end_turn</text>
+  <text x="906" y="200" font-size="12" font-weight="500" fill="#838383">turno finito</text>
+
+  <!-- fra i due giri: l'harness -->
+  <path d="M 558 128 H 584 V 147 H 608" fill="none" stroke="#0e7c6a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="584" y="222" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0e7c6a">fra i due giri: l'harness</text>
+
+  <!-- un solo turno dell'utente -->
+  <path d="M 1084 36 C 1090 36 1088 42 1088 42 L 1088 118 C 1088 124 1090 122 1094 124 C 1090 126 1088 124 1088 130 L 1088 206 C 1088 206 1090 212 1084 212" fill="none" stroke="#838383" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text transform="rotate(90 1118 124)" x="1118" y="124" text-anchor="middle" font-size="12.5" font-weight="500" fill="#212529">un solo turno dell'utente</text>
+</svg>

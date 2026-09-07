@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 384" width="660" height="384" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Tre tool dichiarati al modello con la stessa forma (nome, descrizione, schema); dietro il primo un'API HTTP, dietro il secondo puro codice, dietro il terzo il sandbox con una shell</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+  </defs>
+
+  <!-- intestazioni di colonna -->
+  <text x="12" y="20" font-size="11.5" font-weight="700" letter-spacing="1.4" fill="#a1245a">CIÒ CHE VEDE IL MODELLO</text>
+  <text x="12" y="34" font-size="10" fill="#838383">sempre la stessa forma: nome, descrizione, schema</text>
+  <text x="400" y="20" font-size="11.5" font-weight="700" letter-spacing="1.4" fill="#a1245a">CIÒ CHE C'È DIETRO</text>
+  <text x="400" y="34" font-size="10" fill="#838383">una scelta di chi costruisce l'harness</text>
+  <text x="325" y="34" text-anchor="middle" font-size="9.5" font-weight="600" fill="#838383">la funzione nel registro</text>
+
+  <!-- ===== riga 1: un proxy verso un'API ===== -->
+  <rect x="12" y="46" width="248" height="90" rx="6" fill="#f6f6f6" stroke="#dee2e6"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#212529">
+    <text x="24" y="66" font-weight="700">cerca_ordine</text>
+    <text x="24" y="84" font-family="Poppins, system-ui, sans-serif" font-size="10">stato di un ordine dato l'identificativo.</text>
+    <text x="24" y="98" font-family="Poppins, system-ui, sans-serif" font-size="10">Usalo quando il cliente chiede dov'è…</text>
+    <text x="24" y="120" fill="#6c757d">id_ordine: string</text>
+  </g>
+  <line x1="262" y1="91" x2="286" y2="91" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="288" y="76" width="74" height="30" rx="5" fill="#fff2ce" stroke="#ffbe0b"/>
+  <text x="325" y="95" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700" fill="#161719">def …():</text>
+  <line x1="364" y1="91" x2="396" y2="91" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="400" y="46" width="248" height="90" rx="6" fill="#ffffff" stroke="#838383" stroke-dasharray="5 4"/>
+  <text x="412" y="66" font-size="11.5" font-weight="700" fill="#161719">un'API esterna</text>
+  <text x="412" y="84" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#212529">GET /orders/4471</text>
+  <text x="412" y="100" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#6c757d">→ JSON, 5.000 righe → 3 campi</text>
+  <text x="412" y="124" font-size="10" font-weight="600" fill="#0e7c6a">il caso più comune: un proxy, che traduce</text>
+
+  <!-- ===== riga 2: puro codice ===== -->
+  <rect x="12" y="152" width="248" height="90" rx="6" fill="#f6f6f6" stroke="#dee2e6"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#212529">
+    <text x="24" y="172" font-weight="700">calcola_totale</text>
+    <text x="24" y="190" font-family="Poppins, system-ui, sans-serif" font-size="10">totale di un carrello, IVA e spedizione</text>
+    <text x="24" y="204" font-family="Poppins, system-ui, sans-serif" font-size="10">comprese. Usalo prima di ogni preventivo.</text>
+    <text x="24" y="226" fill="#6c757d">righe: array · paese: string</text>
+  </g>
+  <line x1="262" y1="197" x2="286" y2="197" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="288" y="182" width="74" height="30" rx="5" fill="#fff2ce" stroke="#ffbe0b"/>
+  <text x="325" y="201" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700" fill="#161719">def …():</text>
+  <line x1="364" y1="197" x2="396" y2="197" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="400" y="152" width="248" height="90" rx="6" fill="#ffffff" stroke="#dee2e6"/>
+  <text x="412" y="172" font-size="11.5" font-weight="700" fill="#161719">puro codice</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#212529">
+    <text x="412" y="188">tot = sum(r.prezzo * r.qta</text>
+    <text x="412" y="201">          for r in righe)</text>
+    <text x="412" y="214">return tot * iva[paese] + sped</text>
+  </g>
+  <text x="412" y="232" font-size="10" font-weight="600" fill="#0e7c6a">nessuna rete: calcola, legge, interroga</text>
+
+  <!-- ===== riga 3: il sandbox ===== -->
+  <rect x="12" y="258" width="248" height="90" rx="6" fill="#f6f6f6" stroke="#dee2e6"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#212529">
+    <text x="24" y="278" font-weight="700">bash</text>
+    <text x="24" y="296" font-family="Poppins, system-ui, sans-serif" font-size="10">esegue un comando nella shell del sandbox.</text>
+    <text x="24" y="310" font-family="Poppins, system-ui, sans-serif" font-size="10">Usalo per leggere file, lanciare script…</text>
+    <text x="24" y="332" fill="#6c757d">command: string</text>
+  </g>
+  <line x1="262" y1="303" x2="286" y2="303" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="288" y="288" width="74" height="30" rx="5" fill="#fff2ce" stroke="#ffbe0b"/>
+  <text x="325" y="307" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700" fill="#161719">def …():</text>
+  <line x1="364" y1="303" x2="396" y2="303" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="400" y="258" width="248" height="90" rx="6" fill="#161719"/>
+  <text x="412" y="278" font-size="11.5" font-weight="700" fill="#ffffff">un intero computer</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10" fill="#e9ecef">
+    <text x="412" y="296">$ grep stato export_4471.json</text>
+    <text x="412" y="310">$ python3 analisi.py ordini_08.json</text>
+  </g>
+  <text x="412" y="336" font-size="10" font-weight="600" fill="#ffbe0b">il sandbox: slide 20 e 21</text>
+
+  <text x="12" y="372" font-size="10.5" font-style="italic" fill="#838383">Tre contratti con la stessa forma. Dal contesto, il modello non può distinguere che cosa c'è dietro.</text>
+</svg>

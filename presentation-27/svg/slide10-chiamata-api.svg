@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 392" width="1140" height="392" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
-  <title>Com'è fatta una chiamata al modello: a sinistra la richiesta (model, system, tools, messages, max_tokens) che corrisponde campo per campo agli strati della finestra; a destra la risposta con i blocchi generati e lo stop_reason; sotto, la freccia del giro successivo con il tool_result</title>
+  <title>Com'è fatta una chiamata al modello: a sinistra la richiesta (model, system, tools, messages, max_tokens) con dentro la conversazione del 26, campo per campo; a destra la risposta con i blocchi generati e lo stop_reason; sotto, la freccia del giro successivo con il tool_result</title>
   <defs>
     <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0 0 L10 5 L0 10 z" fill="#161719"/>
@@ -16,16 +16,16 @@
   <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13.5" fill="#212529">
     <text x="28" y="74"><tspan fill="#a1245a" font-weight="600">model:</tspan>      "…"</text>
     <text x="28" y="102"><tspan fill="#a1245a" font-weight="600">system:</tspan>     "Sei l'assistente di Acme…"</text>
-    <text x="28" y="130"><tspan fill="#a1245a" font-weight="600">tools:</tspan>      [ {name, description, input_schema}, … ]</text>
-    <text x="28" y="158"><tspan fill="#a1245a" font-weight="600">messages:</tspan>   [ {role: "user", content: "…"} ]</text>
+    <text x="28" y="130"><tspan fill="#a1245a" font-weight="600">tools:</tspan>      [ {name: "cerca_ordine", description, schema} ]</text>
+    <text x="28" y="158"><tspan fill="#a1245a" font-weight="600">messages:</tspan>   [ {role: "user", content: "Dov'è l'ordine 4471?"} ]</text>
     <text x="28" y="186"><tspan fill="#a1245a" font-weight="600">max_tokens:</tspan> 4096</text>
   </g>
   <use href="#flag" x="366" y="104"/>
-  <use href="#flag" x="470" y="132"/>
+  <use href="#flag" x="476" y="132"/>
   <g text-anchor="end" font-size="12.5" font-weight="600" fill="#0e7c6a">
-    <text x="586" y="102">← lo strato 1</text>
-    <text x="586" y="130">← lo strato 2</text>
-    <text x="586" y="158">← la storia</text>
+    <text x="586" y="102">← [system]</text>
+    <text x="586" y="130">← Tool:</text>
+    <text x="586" y="158">← [user]</text>
   </g>
   <use href="#flag" x="30" y="228"/>
   <text x="48" y="226" font-size="12.5" font-weight="500" fill="#838383"><tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-weight="600" fill="#212529">cache_control</tspan>: fin qui non cambia, riusalo (il prefix caching: sezione 4)</text>

@@ -335,6 +335,17 @@
         <aside class="notes">Secondo dei quattro stati della formula lungo il corso: 26 chiusura LLM; 27 apertura Harness; 27 chiusura anche System Prompt, Tools, Skills; 28 KB. Stessa figura della slide 3 del 26, cambia solo lo stato dei blocchi.</aside>
       </section>
 
+      <section id="slide-3a">
+        <p class="eyebrow">SEZIONE 1 · DALL'INCONTRO 26</p>
+        <h2>Com'è fatta una chiamata al modello</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide10-chiamata-api.svg" alt="La richiesta all'API (system, tools, messages) con dentro la conversazione del 26: Acme, cerca_ordine, l'ordine 4471; la risposta porta i blocchi generati e lo stop_reason; sotto, la freccia del giro successivo con il tool_result"></div>
+          <p class="caption small">È la scena della slide 9 del 26 (Acme, l'ordine 4471), vista da chi la esegue: una richiesta HTTP. I nomi sono quelli dell'API di Anthropic; gli altri provider hanno la stessa forma con nomi diversi. Ogni riquadro del 26 è un campo della richiesta; la risposta porta i blocchi generati e uno <code>stop_reason</code>: è il bit che l'harness legge per decidere se il giro continua.</p>
+        </div>
+        <div class="footnote">3a / Sezione 1 · <span class="sid">#slide-3a</span></div>
+        <aside class="notes">Slide nuova nel corso, anticipata qui subito dopo la formula: il 26 non ha mai mostrato la struttura dell'API. Nomi dell'API Messages di Anthropic, verificati a settembre 2026. La sezione 2 riprende questi campi uno per uno come strati della finestra. Le bandierine cache_control anticipano il prefix caching della sezione 4.</aside>
+      </section>
+
       <section id="slide-4">
         <p class="eyebrow">SEZIONE 1 · DALL'INCONTRO 26</p>
         <h2>La mappa dell'harness</h2>
@@ -375,7 +386,7 @@
           <div class="nota dark center">Questo è il minimo. Senza, il modello aspetta per sempre.</div>
         </div>
         <div class="footnote">06 / Sezione 1 · <span class="sid">#slide-6</span></div>
-        <aside class="notes">Il flusso legge lo stop_reason della risposta (la slide 10 lo chiamerà per nome); qui si dice "è una tool call?" e basta. Il resto dell'harness è nascosto in tre parole: finestra, esegui, done.</aside>
+        <aside class="notes">Il flusso legge lo stop_reason della risposta (la slide 3a l'ha chiamato per nome); qui si dice "è una tool call?" e basta. Il resto dell'harness è nascosto in tre parole: finestra, esegui, done.</aside>
       </section>
 
       <!-- ══════════ SEZIONE 2 ══════════ -->
@@ -394,7 +405,7 @@
             <div class="col-text">
               <ul class="pts">
                 <li><strong>Il giro zero</strong>il momento prima della prima chiamata. L'utente non ha ancora scritto nulla; l'harness sì.</li>
-                <li><strong>A strati</strong>ciò che entra non è un testo solo: sono strati distinti, ognuno con un compito, e l'ordine conta: ciò che sta in cima non cambia mai.</li>
+                <li><strong>A strati</strong>ciò che entra non è un testo solo: sono strati distinti, ognuno con un compito, e l'ordine conta: ciò che sta in cima non cambia mai. Sono i campi della richiesta della slide 3a, letti come li vede il modello.</li>
               </ul>
             </div>
             <div class="visual"><img src="svg/slide7-finestra-strati-0.svg" alt="La finestra di contesto al giro zero: quattro strati vuoti, dall'alto system prompt, dichiarazione dei tool, indice delle skill, messaggi"></div>
@@ -411,16 +422,18 @@
         <div class="content">
           <div class="tv tv-30">
             <div class="col-text">
-              <ul class="pts tight">
-                <li><strong>Che cos'è</strong>il testo che l'harness mette in cima alla finestra, prima di ogni conversazione: chi sei, che cosa fai, come rispondi, che cosa non fai mai.</li>
-                <li><strong>Due ruoli, non uno</strong>quasi tutti i modelli distinguono il ruolo <code>system</code> dal ruolo <code>user</code>. Non è solo etichetta: il post-addestramento ha premiato il modello che segue con più rigore ciò che sta nel system prompt, anche quando l'utente chiede il contrario.</li>
+              <ul class="pts micro">
+                <li><strong>Che cos'è</strong>il testo che l'harness mette in cima alla finestra, prima di ogni conversazione: chi sei, che cosa fai, che cosa non fai mai.</li>
+                <li><strong>Due ruoli, non uno</strong>quasi tutti i modelli distinguono il ruolo <code>system</code> dal ruolo <code>user</code>. Non è solo etichetta: il post-addestramento ha premiato chi segue con più rigore il system prompt, anche quando l'utente chiede il contrario.</li>
                 <li><strong>Chi lo scrive</strong>non l'utente: chi costruisce l'agente. È la prima leva di miglioramento, e la più economica.</li>
+                <li><strong>Una parte non la vedi</strong>sopra il tuo testo il provider ne inietta di norma una sezione sua: istruzioni di base, per lo più di sicurezza, uguali per tutti. Chi sviluppa non la legge e non la toglie: c'è sempre.</li>
               </ul>
             </div>
             <div class="side2">
               <div class="stackcol">
                 <p class="boxlab">lo strato 1 · testo esatto</p>
                 <div class="payload">
+                  <div class="row gl dim"><span class="tg">[provider]</span><span>Istruzioni di base del provider<br>(sicurezza; non visibili)</span><span class="gloss">iniettato</span></div>
                   <div class="row gl"><span class="tg">[system]</span><span>Sei l'assistente del servizio<br>clienti di Acme.</span><span class="gloss">ruolo</span></div>
                   <div class="row gl"><span class="tg"></span><span>Rispondi in italiano, in modo breve.</span><span class="gloss">stile</span></div>
                   <div class="row gl"><span class="tg"></span><span>Puoi consultare lo stato degli ordini.</span><span class="gloss">capacità</span></div>
@@ -433,6 +446,7 @@
           <div class="nota">Nel 26, la mira arrivava con il RL. Qui la vediamo all'opera: la gerarchia fra system e user è una cosa che il modello ha imparato, non una regola del software.</div>
         </div>
         <div class="footnote">08 / Sezione 2 · <span class="sid">#slide-8</span></div>
+        <aside class="notes">La riga [provider]: i prodotti ospitati (Claude.ai, ChatGPT, Copilot) e molte API con agente integrato antepongono al system prompt dello sviluppatore una sezione propria di regole di sicurezza e condotta, non leggibile e non rimovibile. Sull'API grezza di Anthropic questa parte è più sottile (le regole stanno nel post-addestramento), ma il principio vale: sopra ciò che scrivi c'è sempre qualcosa che non hai scritto tu.</aside>
       </section>
 
       <section id="slide-9">
@@ -441,9 +455,9 @@
         <div class="content">
           <div class="tv tv-30">
             <div class="col-text">
-              <ul class="pts tight">
+              <ul class="pts micro">
                 <li><strong>Un file nella cartella del progetto</strong>si chiama <code>AGENTS.md</code>, <code>CLAUDE.md</code>, o come l'harness si aspetta. Lo scrive chi lavora sul progetto, in linguaggio naturale: convenzioni, comandi, cose da non toccare. È versionato con il codice e lo leggono persone e agenti.</li>
-                <li><strong>L'harness lo appende sempre</strong>al giro zero lo legge e lo mette nel system prompt, sotto le regole generali dell'agente. Non c'è nulla da chiedere: è lì a ogni sessione, e ha lo stesso peso delle regole.</li>
+                <li><strong>L'harness lo appende sempre</strong>al giro zero guarda la cartella in cui è lanciato, legge il file e lo mette nel system prompt, sotto le regole generali. È un modo pratico di inizializzare l'agente in base a dove sta nel file system; ma l'effetto netto è identico alla slide 8: l'harness carica istruzioni da un file.</li>
                 <li><strong>Non è memoria</strong>è un'istruzione esplicita, scritta da una persona. Ciò che l'agente decide di annotare da solo mentre lavora è un'altra cosa, e la vediamo nella sezione 4.</li>
               </ul>
             </div>
@@ -467,17 +481,6 @@
         </div>
         <div class="footnote">09 / Sezione 2 · <span class="sid">#slide-9</span></div>
         <aside class="notes">Le istruzioni di progetto sono esplicite e gestite dall'harness, e vanno distinte dalla memoria (sezione 4, slide 37): la memoria è ciò che l'agente salva da solo.</aside>
-      </section>
-
-      <section id="slide-10">
-        <p class="eyebrow">SEZIONE 2 · CONTEXT INITIALIZATION</p>
-        <h2>Com'è fatta una chiamata al modello</h2>
-        <div class="content">
-          <div class="visual"><img src="svg/slide10-chiamata-api.svg" alt="La richiesta all'API (system, tools, messages) corrisponde uno a uno agli strati della finestra; la risposta porta i blocchi generati e lo stop_reason; sotto, la freccia del giro successivo con il tool_result"></div>
-          <p class="caption small">I nomi sono quelli dell'API di Anthropic; gli altri provider hanno la stessa forma con nomi diversi. La richiesta è la finestra a strati, campo per campo. La risposta porta i blocchi generati e uno <code>stop_reason</code>: è il bit che l'harness legge per decidere se il giro continua.</p>
-        </div>
-        <div class="footnote">10 / Sezione 2 · <span class="sid">#slide-10</span></div>
-        <aside class="notes">Slide nuova nel corso: il 26 non ha mai mostrato la struttura dell'API. Nomi dell'API Messages di Anthropic, verificati a settembre 2026. Le bandierine cache_control anticipano il prefix caching della sezione 4.</aside>
       </section>
 
       <section id="slide-11">
@@ -587,25 +590,37 @@
         <div class="divmap"><img src="svg/minimap-sec3.svg" alt="Mini-mappa dell'harness: accesa la zona environment management"><span>sei qui · environment management</span></div>
       </section>
 
-      <section id="slide-15">
+      <section id="slide-15" data-auto-animate>
+        <p class="eyebrow">SEZIONE 3 · DALL'INCONTRO 26</p>
+        <h2>Il giro, visto dall'harness</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide15-giro-completo.svg" alt="La scena della slide 14 completata: nel giro 1 il modello chiede cerca_ordine(4471) e si ferma; nel giro 2 la stessa finestra ha in più la riga [tool] con il risultato, e il modello risponde all'utente con stop_reason end_turn"></div>
+          <p class="caption small">Il «?» della slide 14, riempito come nel 26: nel giro 2 la finestra è la stessa, più una riga <code>[tool]</code> che il modello non ha scritto. Poi il modello risponde e si ferma con <code>stop_reason: end_turn</code>. Fra i due giri c'è tutto il lavoro dell'harness: apriamolo.</p>
+          <div class="nota dark center">Che cosa è successo fra la riga <code>[assistant] → cerca_ordine("4471")</code> e la riga <code>[tool]</code>?</div>
+        </div>
+        <div class="footnote">15 / Sezione 3 · <span class="sid">#slide-15</span></div>
+        <aside class="notes">Transizione: prima la conversazione della slide 14 completa con la risposta, nello stesso formato del 26; al click successivo (auto-animate) la slide 15b apre la stessa scena come sequence diagram.</aside>
+      </section>
+
+      <section id="slide-15b" data-auto-animate>
         <p class="eyebrow">SEZIONE 3 · ENVIRONMENT MANAGEMENT</p>
         <h2>Il giro, visto dall'harness</h2>
         <div class="content">
           <div class="tv tv-30">
             <div class="col-text">
-              <ul class="pts tight">
+              <ul class="pts micro">
                 <li><strong>Parsing</strong>legge la risposta: se c'è un blocco <code>tool_use</code>, estrae nome e parametri.</li>
-                <li><strong>Dispatch</strong>cerca il tool con quel nome nel proprio registro e lo invoca: qui si esegue del codice. A volte quel codice calcola o legge un file; molto spesso chiama un'API esterna e ne traduce la risposta.</li>
+                <li><strong>Dispatch</strong>cerca il tool con quel nome nel proprio registro e chiama la funzione corrispondente: per ogni tool dichiarato al modello c'è una funzione nel runtime dell'harness. Qui si esegue codice, non testo: a volte calcola o legge un file, molto spesso chiama un'API esterna e ne traduce la risposta.</li>
                 <li><strong>Iniezione</strong>impacchetta il risultato in un blocco <code>tool_result</code> con lo stesso <code>id</code>, e lo appende alla finestra.</li>
                 <li><strong>Giro successivo</strong>richiama il modello con la finestra allungata. Il modello non sa che è passato del tempo: vede solo una riga in più.</li>
               </ul>
             </div>
-            <div class="visual"><img src="svg/slide15-sequence-giro.svg" alt="Sequence diagram su due giri: modello, harness, il tool cerca_ordine come funzione dell'harness, e dietro l'API ordini. Nel giro 1 l'harness fa parsing, dispatch, esecuzione e iniezione; nel giro 2 legge la risposta testuale e chiude il turno"></div>
+            <div class="visual"><img src="svg/slide15-sequence-giro.svg" alt="Sequence diagram su due giri: modello, harness, il registro dei tool con tre funzioni nel runtime (lista_ordini, cerca_ordine, apri_reso) e dietro l'API ordini. Nel giro 1 l'harness fa parsing, dispatch verso la funzione cerca_ordine, esecuzione e iniezione; nel giro 2 legge la risposta testuale e chiude il turno"></div>
           </div>
           <div class="nota">Il modello ha generato testo. Tutto il resto, dal parsing alla nuova chiamata, è software deterministico: la parte simbolica dell'esoscheletro. Un tool è codice dell'harness; il caso più comune: un adattatore fra il modello e un'API.</div>
         </div>
-        <div class="footnote">15 / Sezione 3 · <span class="sid">#slide-15</span></div>
-        <aside class="notes">È il riquadro «?» della slide 14, aperto. La linea API dietro il tool torna nelle slide 18, 22 e 28: ciò che cambia è dove sta la funzione che chiama l'API, mai ciò che vede il modello.</aside>
+        <div class="footnote">15b / Sezione 3 · <span class="sid">#slide-15b</span></div>
+        <aside class="notes">È il riquadro «?» della slide 14, aperto. La linea API dietro il tool torna nelle slide 18, 18b, 22 e 28: ciò che cambia è dove sta la funzione che chiama l'API, mai ciò che vede il modello.</aside>
       </section>
 
       <section id="slide-16">
@@ -643,7 +658,7 @@
           <div class="tv tv-35">
             <div class="col-text">
               <ul class="pts tight">
-                <li><strong>Più <code>tool_use</code> in una risposta</strong>se il modello ha bisogno di tre cose indipendenti, le chiede tutte insieme: tre blocchi nella stessa risposta, un solo <code>stop_reason</code>.</li>
+                <li><strong>Più <code>tool_use</code> in una risposta</strong>è il modello a deciderlo: se dalle descrizioni dei tool capisce che tre chiamate sono indipendenti, le chiede tutte insieme: tre blocchi nella stessa risposta, un solo <code>stop_reason</code>. Nessuno glielo impone; lo legge nel contratto della slide 11.</li>
                 <li><strong>L'harness le esegue insieme</strong>tre thread, tre chiamate, e i tre <code>tool_result</code> tornano in un unico messaggio, ognuno con il proprio <code>id</code>. Se ne manca uno, il modello smette di fidarsi e torna a chiederli uno alla volta.</li>
                 <li><strong>Un giro invece di tre</strong>meno chiamate al modello, meno latenza, e la finestra cresce di tre risultati una volta sola invece di rileggere tutto tre volte.</li>
               </ul>
@@ -657,21 +672,60 @@
 
       <section id="slide-18">
         <p class="eyebrow">SEZIONE 3 · ENVIRONMENT MANAGEMENT</p>
-        <h2>Un tool non è un'API</h2>
+        <h2>Dietro un tool: spesso un'API, non sempre</h2>
         <div class="content">
           <div class="tv tv-40">
             <div class="col-text">
               <ul class="pts tight">
-                <li><strong>Due lettori diversi</strong>l'API espone venti parametri e restituisce tutto: è per un programmatore che sa cosa cercare. Il tool ne espone due, dice quando usarlo e restituisce i tre campi che servono: è per un modello che legge tutto ciò che gli arriva.</li>
-                <li><strong>Le response grandi</strong>un tool che inietta 50.000 token di JSON grezzo non è un tool: è un carico. Abbiamo imparato che dobbiamo essere sempre parsimoniosi nell'uso del contesto; ora sappiamo dove intervenire: nell'adattatore.</li>
-                <li><strong>Il pattern: salva e cerca</strong>quando il risultato è davvero grande (un log, un documento, un export), l'harness lo scrive su un file nel sandbox e restituisce al modello solo un riassunto e il percorso. Il modello poi ci cerca dentro con <code>grep</code> o <code>head</code>, e nella finestra entrano solo le righe che contano.</li>
+                <li><strong>Il caso più comune: un proxy</strong>la funzione che l'harness ha dichiarato come tool chiama un'API esterna e ne traduce la risposta. È <code>cerca_ordine</code> della slide 15b: dietro c'è <code>GET /orders/4471</code>, e il modello non lo sa.</li>
+                <li><strong>Ma non sempre</strong>un tool può essere puro codice: un calcolo, una lettura da file, una query locale. E può essere un intero computer: <code>bash</code>, alla slide 20, è un tool come gli altri dietro cui non c'è un'API ma un sandbox.</li>
+                <li><strong>Il modello vede sempre la stessa cosa</strong>nome, descrizione, schema. Che cosa c'è dietro (una chiamata HTTP, dieci righe di Python, una shell) è una scelta di chi costruisce l'harness, invisibile dal contesto.</li>
               </ul>
             </div>
-            <div class="visual"><img src="svg/slide18-tool-vs-api.svg" alt="A sinistra l'API con venti parametri e una risposta di cinquemila righe, al centro l'adattatore, a destra il tool con due parametri e tre campi di risposta; sotto, la variante salva e cerca con il file nel sandbox e il grep del modello"></div>
+            <div class="visual"><img src="svg/slide18-dietro-un-tool.svg" alt="Tre tool dichiarati al modello con la stessa forma (nome, descrizione, schema); dietro il primo un'API HTTP, dietro il secondo puro codice, dietro il terzo il sandbox con una shell"></div>
           </div>
-          <div class="nota">È il primo caso in cui il sandbox serve a governare il contesto, non a eseguire un compito. Lo ritroveremo: l'offload su file è la tecnica principe della sezione 4.</div>
+          <div class="nota">Il contratto della slide 11 è la stessa cosa in tutti e tre i casi. La differenza sta nel registro dell'harness: che cosa fa la funzione quando viene chiamata.</div>
         </div>
         <div class="footnote">18 / Sezione 3 · <span class="sid">#slide-18</span></div>
+      </section>
+
+      <section id="slide-18b">
+        <p class="eyebrow">SEZIONE 3 · ENVIRONMENT MANAGEMENT</p>
+        <h2>Un tool non è un'API: non mappare 1:1</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>La tentazione</strong>il sistema (spesso legacy) ha già le sue API: prendile tutte, una per una, e dichiarale come tool. Venti endpoint, venti tool, zero lavoro di progetto. È quasi sempre una cattiva scelta.</li>
+                <li><strong>Due lettori diversi</strong>le API sono atomiche e disperse: tre endpoint, venti parametri, e restituiscono tutto. Sono per un programmatore che sa cosa cercare. Il tool espone un parametro, dice quando usarlo e restituisce tre campi: è per un modello che legge tutto ciò che gli arriva. In mezzo, l'adattatore orchestra.</li>
+                <li><strong>Le response grandi</strong>un tool che inietta 50.000 token di JSON grezzo non è un tool: è un carico. Ora sappiamo dove intervenire: nell'adattatore, che sceglie i campi e li traduce.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide18-tool-vs-api.svg" alt="A sinistra il tool come lo vede il modello: un parametro, una descrizione, tre campi di risposta; al centro l'adattatore dentro l'harness che orchestra le chiamate; a destra tre API atomiche del sistema, venti parametri e cinquemila righe di risposta"></div>
+          </div>
+          <div class="nota">Il tool è progettato per il modello, non per l'API: pochi parametri, una descrizione che dice quando usarlo, una risposta corta. Quando la risposta non si può accorciare, c'è un pattern apposta: dopo bash, alla slide 20b.</div>
+        </div>
+        <div class="footnote">18b / Sezione 3 · <span class="sid">#slide-18b</span></div>
+        <aside class="notes">Figura orientata come la 15b e la 18: il modello a sinistra, il sistema a destra. Qui il punto è il singolo tool: due lettori diversi, due interfacce diverse. La 18c, subito dopo, fa il conto di che cosa succede quando si mappa 1:1 un sistema intero.</aside>
+      </section>
+
+      <section id="slide-18c">
+        <p class="eyebrow">SEZIONE 3 · ENVIRONMENT MANAGEMENT</p>
+        <h2>Non mappare 1:1 le API: il costo nascosto</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>La tentazione, in grande</strong>l'API del CRM ha cinquanta endpoint; il generatore automatico ne fa cinquanta tool, con la descrizione presa dalla documentazione. Ci vuole un pomeriggio, e sembra completo.</li>
+                <li><strong>Il conto</strong>cinquanta definizioni, ognuna da uno a qualche centinaio di token, entrano nel prefisso a ogni giro. Con tre sistemi così la finestra parte da decine di migliaia di token (slide 13), e il modello sceglie fra centocinquanta nomi che si somigliano.</li>
+                <li><strong>La regola</strong>un tool per compito del modello, non per endpoint dell'API: pochi tool, con nomi che dicono quando usarli, che accorpano le chiamate e restituiscono solo ciò che serve. E solo i sistemi che servono a quel task.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide25-peso-mcp.svg" alt="L'harness al centro con la finestra a strati; intorno i tool di quattro sistemi: ordini con 4 tool, CRM con 50, posta con 12, calendario con 8. Le frecce verso lo strato delle dichiarazioni hanno spessore proporzionale; lo strato è enorme: circa 13.000 token a ogni giro prima della domanda. In basso il CRM ridisegnato con 6 tool e circa 900 token"></div>
+          </div>
+          <div class="nota">La cache riduce il costo in denaro del prefisso, ma non la confusione decisionale, e non il fatto che la finestra cresce. Come si governa una finestra che cresce: sezione 4. E quando i tool arrivano da un server esterno (MCP, fra poco), il conto è lo stesso.</div>
+        </div>
+        <div class="footnote">18c / Sezione 3 · <span class="sid">#slide-18c</span></div>
       </section>
 
       <section id="slide-19">
@@ -735,6 +789,26 @@
         <div class="footnote">20 / Sezione 3 · <span class="sid">#slide-20</span></div>
       </section>
 
+      <section id="slide-20b">
+        <p class="eyebrow">SEZIONE 3 · ENVIRONMENT MANAGEMENT</p>
+        <h2>Il pattern salva e cerca, con bash</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Il problema</strong>un risultato che non si può accorciare: un log, un export, un documento intero. Cinquantamila token che entrerebbero nella finestra in un colpo solo, e ci resterebbero a ogni giro.</li>
+                <li><strong>Il pattern</strong>l'harness (o il tool stesso) scrive il risultato su un file nel sandbox e al modello restituisce solo un riassunto e il percorso. Il modello ci cerca dentro con <code>bash</code>: <code>grep</code>, <code>head</code>, quattro righe di Python. In finestra entrano solo le righe che contano.</li>
+                <li><strong>Perché serve bash</strong>senza un tool universale il file sarebbe irraggiungibile: bisognerebbe prevedere un tool "cerca nel file" per ogni formato e ogni domanda. È l'esempio della slide 20, letto come pattern: <code>esporta_ordini</code> ha salvato, <code>bash</code> ha cercato.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide20b-salva-e-cerca.svg" alt="Salva e cerca: la risposta grande dell'API va su un file nel sandbox tramite l'adattatore; al modello torna una riga con il percorso; il modello chiama bash con grep sul file e in finestra entrano due righe invece di cinquemila"></div>
+          </div>
+          <div class="nota">È il primo caso in cui il sandbox serve a governare il contesto, non a eseguire un compito. Lo ritroveremo: l'offload su file è la tecnica principe della sezione 4.</div>
+        </div>
+        <div class="footnote">20b / Sezione 3 · <span class="sid">#slide-20b</span></div>
+        <aside class="notes">Nel 26 la parsimonia con il contesto era una regola generale; qui è un pezzo dell'harness. Il file nel sandbox è la memoria di lavoro fuori dalla finestra: la sezione 4 (slide 36) lo promuove a regola.</aside>
+      </section>
+
       <section id="slide-21">
         <p class="eyebrow">SEZIONE 3 · ENVIRONMENT MANAGEMENT</p>
         <h2>Perché non gira in produzione: il sandbox</h2>
@@ -761,16 +835,19 @@
           <div class="tv tv-30">
             <div class="col-text">
               <ul class="pts tight">
-                <li><strong>Il problema</strong>ogni harness riscrive lo stesso adattatore: la funzione che dichiara <code>cerca_ordine</code> e chiama l'API degli ordini esiste in dieci versioni, una per prodotto. Chi possiede l'API non ha un modo standard per offrirla agli agenti.</li>
-                <li><strong>La soluzione</strong>il Model Context Protocol sposta l'adattatore fuori dall'harness, in un server, e standardizza le due cose che abbiamo appena visto: come un server dichiara i suoi tool (nome, descrizione, schema) e come l'harness li chiama e riceve il risultato.</li>
+                <li><strong>Il problema</strong>ogni harness riscrive lo stesso registro: le tre funzioni della slide 15b esistono in dieci versioni, una per prodotto. Chi possiede l'API degli ordini non ha un modo standard per offrirle agli agenti.</li>
+                <li class="fragment" data-fragment-index="1"><strong>La soluzione</strong>il Model Context Protocol sposta il registro fuori dall'harness, in un server, e standardizza le due cose che abbiamo appena visto: come il server dichiara i suoi tool (<code>tools/list</code>: nome, descrizione, schema) e come l'harness li chiama e riceve il risultato (<code>tools/call</code>). Le funzioni sono le stesse; cambia chi le ospita.</li>
               </ul>
             </div>
-            <div class="visual"><img src="svg/slide22-mcp-specchio.svg" alt="Lo stesso sequence diagram due volte: senza MCP la funzione cerca_ordine è codice dell'harness; con MCP sta in un server MCP fuori dall'harness, raggiunto con tools/list e tools/call. La colonna del modello è identica nei due pannelli"></div>
+            <div class="visual stack">
+              <img src="svg/slide15-sequence-giro.svg" alt="La figura della slide 15b: il giro con il registro dei tool dentro l'harness">
+              <img class="fragment" data-fragment-index="1" src="svg/slide22-mcp-registro.svg" alt="La stessa figura con il registro spostato fuori dall'harness, in un server MCP ordini: le stesse tre funzioni, raggiunte con tools/list al giro zero e tools/call al momento della chiamata; la colonna del modello è identica">
+            </div>
           </div>
           <div class="nota">Dal punto di vista dell'LLM non cambia nulla: nella finestra trova la stessa definizione e riceve lo stesso <code>tool_result</code>. MCP è un accordo fra harness e fornitori di tool; il modello non è parte del contratto.</div>
         </div>
         <div class="footnote">22 / Sezione 3 · <span class="sid">#slide-22</span></div>
-        <aside class="notes">MCP standardizza dichiarazione ed esecuzione, le due metà mostrate nelle slide 11 e 15. Sandbox e MCP non sono in gerarchia: due porte, quale si usa lo decide chi possiede l'accesso.</aside>
+        <aside class="notes">Due tempi: prima la figura della 15b tale e quale (il registro dentro l'harness), al click la stessa figura con il registro spostato nel server MCP «ordini»: stesse funzioni, stessa colonna del modello, in più tools/list al giro zero e tools/call al posto della chiamata diretta. MCP standardizza dichiarazione ed esecuzione, le due metà mostrate nelle slide 11 e 15b. Sandbox e MCP non sono in gerarchia: due porte, quale si usa lo decide chi possiede l'accesso.</aside>
       </section>
 
       <section id="slide-23">
@@ -807,25 +884,6 @@
         </div>
         <div class="footnote">24 / Sezione 3 · <span class="sid">#slide-24</span></div>
         <aside class="notes">Nessuna versione numerata, solo revisioni datate. Numeri da fonti ufficiali a settembre 2026 (blog MCP, annuncio Anthropic di dicembre 2025); in slide restano ordini di grandezza.</aside>
-      </section>
-
-      <section id="slide-25">
-        <p class="eyebrow">SEZIONE 3 · ENVIRONMENT MANAGEMENT</p>
-        <h2>Non mappare 1:1 le API: il costo nascosto</h2>
-        <div class="content">
-          <div class="tv tv-35">
-            <div class="col-text">
-              <ul class="pts tight">
-                <li><strong>La tentazione</strong>l'API del CRM ha cinquanta endpoint; il generatore automatico ne fa cinquanta tool, con la descrizione presa dalla documentazione. Ci vuole un pomeriggio, e sembra completo.</li>
-                <li><strong>Il conto</strong>cinquanta definizioni, ognuna da uno a qualche centinaio di token, entrano nel prefisso a ogni giro. Con tre server così, la finestra parte da decine di migliaia di token prima della prima parola (slide 13), e il modello deve scegliere fra centocinquanta nomi che si somigliano.</li>
-                <li><strong>La regola</strong>un tool per compito del modello, non per endpoint dell'API: pochi tool, con nomi che dicono quando usarli, che accorpano le chiamate e restituiscono solo ciò che serve. Ed esporre solo i server che servono a quel task.</li>
-              </ul>
-            </div>
-            <div class="visual"><img src="svg/slide25-peso-mcp.svg" alt="L'harness al centro con la finestra a strati; intorno quattro server MCP: ordini con 4 tool, CRM con 50, posta con 12, calendario con 8. Le frecce verso lo strato delle dichiarazioni hanno spessore proporzionale; lo strato è enorme: circa 13.000 token a ogni giro prima della domanda. In basso il CRM ridisegnato con 6 tool e circa 900 token"></div>
-          </div>
-          <div class="nota">La cache riduce il costo in denaro del prefisso, ma non la confusione decisionale, e non il fatto che la finestra cresce. Come si governa una finestra che cresce: sezione 4.</div>
-        </div>
-        <div class="footnote">25 / Sezione 3 · <span class="sid">#slide-25</span></div>
       </section>
 
       <section id="slide-26">
@@ -880,16 +938,16 @@
             <div class="col-text">
               <ul class="pts tight">
                 <li><strong>Il modello sceglie dall'indice</strong>legge la richiesta del cliente e riconosce nella descrizione di <code>risposta-reclami-acme</code> il compito.</li>
-                <li><strong>L'harness porta il corpo nel contesto</strong>lo appende ai messaggi, come un testo in più. Come ci arriva dipende dall'harness: in alcuni è il modello a chiederlo con una tool call, in altri è l'harness ad appenderlo quando riconosce il compito. In tutti i casi, da quel giro in poi la procedura è davanti agli occhi del modello.</li>
+                <li><strong>E la chiede con un tool</strong>nella dichiarazione dei tool c'è uno strumento apposta, <code>skill(nome)</code>: il modello lo chiama con un <code>tool_use</code> come per <code>cerca_ordine</code>, e l'harness appende il corpo come <code>tool_result</code>. È il giro della slide 15b, con una differenza: il risultato non è un dato, è una procedura. Da quel giro in poi è davanti agli occhi del modello.</li>
                 <li><strong>Progressive disclosure</strong>prima due righe per ogni skill, poi il corpo di una sola. Venti skill nell'indice pesano quanto tre tool; il corpo pesa solo quando serve, e solo quello scelto.</li>
               </ul>
             </div>
-            <div class="visual"><img src="svg/slide27-skill-caricamento.svg" alt="La finestra a strati in tre fotogrammi: al giro 0 l'indice delle skill e la richiesta del cliente; al giro 1 entra nei messaggi il corpo della skill risposta-reclami-acme; al giro 2 la risposta del modello, senza tool call. Sotto, i token: indice circa 80, più corpo circa 300, più risposta circa 120"></div>
+            <div class="visual"><img src="svg/slide27-skill-caricamento.svg" alt="La finestra a strati in tre fotogrammi: al giro 0 l'indice delle skill e la richiesta del cliente; al giro 1 il modello chiama il tool skill e il corpo di risposta-reclami-acme entra nei messaggi come tool_result; al giro 2 la risposta del modello, senza altre tool call. Sotto, i token: indice circa 80, più corpo circa 300, più risposta circa 120"></div>
           </div>
-          <div class="nota">Il conto preciso, e il confronto con cinquanta tool MCP sempre presenti, è la prima slide della sezione 4.</div>
+          <div class="nota">Il conto preciso, e il confronto con i cinquanta tool sempre presenti della slide 18c, è la prima slide della sezione 4.</div>
         </div>
         <div class="footnote">27 / Sezione 3 · <span class="sid">#slide-27</span></div>
-        <aside class="notes">I due meccanismi di caricamento con esempi: in Claude Code il modello chiama uno strumento Skill e il corpo torna come risultato; nell'API di Anthropic i file della skill sono montati nel sandbox e il modello li legge con il tool di esecuzione codice; in altri harness il corpo è appeso dall'harness su match della descrizione.</aside>
+        <aside class="notes">Il meccanismo tipico è una tool call del modello: in Claude Code c'è un tool dedicato (Skill) e il corpo torna come tool_result; nell'API di Anthropic (Agent Skills) i file sono montati nel container e il modello legge SKILL.md con il tool di esecuzione codice, quindi ancora una tool call, con un tool generico. L'eccezione: il comando /nome digitato dall'utente, o gli harness che appendono il corpo da soli su match della descrizione; in slide si mostra il caso normale.</aside>
       </section>
 
       <section id="slide-28">
@@ -935,7 +993,7 @@
           <div class="nota">La cache abbatte il prezzo del prefisso, non la sua lunghezza: il modello lo rilegge comunque, e sceglie fra cinquanta nomi invece che fra venti descrizioni. È il conto della confusione decisionale della slide 13.</div>
         </div>
         <div class="footnote">29 / Sezione 4 · <span class="sid">#slide-29</span></div>
-        <aside class="notes">I numeri sono ordini di grandezza coerenti con la slide 13 (prefisso ~4.000) e la slide 25; vanno dichiarati come tali.</aside>
+        <aside class="notes">I numeri sono ordini di grandezza coerenti con la slide 13 (prefisso ~4.000) e la slide 18c; vanno dichiarati come tali.</aside>
       </section>
 
       <section id="slide-30">
@@ -1008,7 +1066,7 @@
             <div class="col-text">
               <ul class="pts tight">
                 <li><strong>L'ordine è fisso</strong>l'API rende la finestra sempre nello stesso ordine: prima i tool, poi il system prompt, poi i messaggi. Il confronto parte dall'inizio: ciò che sta in alto deve essere identico, ciò che cambia va in fondo.</li>
-                <li><strong>I checkpoint</strong>le bandierine <code>cache_control</code> della slide 10 dicono al provider "fin qui salva". Al massimo quattro per chiamata; la si mette in fondo alla parte condivisa, non in fondo a tutto, altrimenti si scrive una cache che nessuno rileggerà.</li>
+                <li><strong>I checkpoint</strong>le bandierine <code>cache_control</code> della slide 3a dicono al provider "fin qui salva". Al massimo quattro per chiamata; la si mette in fondo alla parte condivisa, non in fondo a tutto, altrimenti si scrive una cache che nessuno rileggerà.</li>
                 <li><strong>I tre errori classici</strong>una data o un'ora nel system prompt (cambia a ogni chiamata); la lista dei tool in ordine diverso (per esempio perché un server MCP la restituisce così); un prefisso troppo corto per essere salvato (sotto le poche centinaia o migliaia di token, dipende dal modello).</li>
               </ul>
             </div>
@@ -1066,7 +1124,7 @@
           <div class="tv tv-35">
             <div class="col-text">
               <ul class="pts tight">
-                <li><strong>Il pattern</strong>un risultato grande, un documento letto, un piano di lavoro: l'harness (o il modello stesso, con bash) lo scrive su un file nel sandbox e in finestra lascia una riga: nome, dimensione, come cercarci dentro. È la slide 18, promossa a regola generale.</li>
+                <li><strong>Il pattern</strong>un risultato grande, un documento letto, un piano di lavoro: l'harness (o il modello stesso, con bash) lo scrive su un file nel sandbox e in finestra lascia una riga: nome, dimensione, come cercarci dentro. È la slide 20b, promossa a regola generale.</li>
                 <li><strong>Niente si perde</strong>a differenza di pruning e compaction, il contenuto esiste ancora: il modello lo riapre con <code>grep</code>, <code>head</code>, o rileggendolo per intero se serve. La finestra resta corta, l'informazione resta intera.</li>
                 <li><strong>Anche ciò che il modello produce</strong>non solo risultati in ingresso: appunti, decisioni, la lista di cose fatte e da fare. Un agente che lavora a lungo scrive per sé stesso, perché sa che la finestra non basterà.</li>
               </ul>

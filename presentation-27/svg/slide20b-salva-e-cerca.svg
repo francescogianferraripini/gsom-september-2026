@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 384" width="660" height="384" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Salva e cerca: la risposta grande dell'API va su un file nel sandbox tramite l'adattatore; al modello torna una riga con il percorso; il modello chiama bash con grep sul file e in finestra entrano due righe invece di cinquemila</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+    <marker id="at" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0e7c6a"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+  </defs>
+
+  <!-- ===== 1 · SALVA ===== -->
+  <text x="12" y="20" font-size="11.5" font-weight="700" letter-spacing="1.4" fill="#a1245a">① SALVA</text>
+  <text x="90" y="20" font-size="10" fill="#838383">il risultato grande non entra in finestra: va su un file</text>
+
+  <!-- la risposta dell'API -->
+  <rect x="12" y="32" width="200" height="120" rx="6" fill="#ffffff" stroke="#838383" stroke-dasharray="5 4"/>
+  <text x="24" y="50" font-size="10.5" font-weight="600" fill="#212529">la risposta dell'API</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10">
+    <text x="24" y="68" fill="#212529">{ "id": 4471,</text>
+    <text x="24" y="82" fill="#495057">  "customer": { … },</text>
+    <text x="24" y="96" fill="#6c757d">  "items": [ {…}, {…}, … ],</text>
+    <text x="24" y="110" fill="#9aa0a6">  "shipments": [ … ],</text>
+    <text x="24" y="124" fill="#c4c8cc">  "history": [ … ],</text>
+    <text x="24" y="138" fill="#dee2e6">  …</text>
+  </g>
+  <text x="12" y="170" font-size="11" font-weight="700" fill="#a1245a">5.000 righe · ~50.000 token</text>
+
+  <!-- l'adattatore -->
+  <line x1="214" y1="92" x2="250" y2="92" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="252" y="66" width="110" height="52" rx="8" fill="#161719"/>
+  <text x="307" y="88" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">adattatore</text>
+  <text x="307" y="104" text-anchor="middle" font-size="9.5" font-weight="500" fill="#ffbe0b">dentro l'harness</text>
+  <text x="307" y="136" text-anchor="middle" font-size="9.5" fill="#838383">scrive, invece</text>
+  <text x="307" y="149" text-anchor="middle" font-size="9.5" fill="#838383">di iniettare</text>
+
+  <!-- il file nel sandbox -->
+  <line x1="364" y1="92" x2="404" y2="92" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="408" y="32" width="240" height="120" rx="6" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="420" y="50" font-size="10.5" font-weight="600" fill="#212529">il sandbox</text>
+  <path d="M432 62 h48 l16 16 v56 h-64 z" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+  <path d="M480 62 v16 h16" fill="none" stroke="#161719" stroke-width="1.5"/>
+  <g font-size="9" fill="#9aa0a6" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">
+    <text x="440" y="92">{ … }</text><text x="440" y="104">{ … }</text><text x="440" y="116">{ … }</text><text x="440" y="128">{ … }</text>
+  </g>
+  <text x="512" y="96" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="700" fill="#161719">export_4471.json</text>
+  <text x="512" y="112" font-size="9.5" fill="#838383">tutto il risultato, fuori</text>
+  <text x="512" y="125" font-size="9.5" fill="#838383">dalla finestra</text>
+
+  <!-- al modello: solo il puntatore -->
+  <path d="M307 118 V186" fill="none" stroke="#0e7c6a" stroke-width="1.5" marker-end="url(#at)"/>
+  <text x="316" y="176" font-size="9.5" font-weight="600" fill="#0e7c6a">al modello torna solo il puntatore</text>
+  <rect x="12" y="190" width="636" height="20" rx="5" fill="#d1efea" stroke="#1ab197"/>
+  <text x="20" y="204" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#212529"><tspan font-weight="600" fill="#0e7c6a">[tool]</tspan>       salvato in export_4471.json (5.000 righe): cerca con grep o elabora con bash</text>
+
+  <!-- ===== 2 · CERCA ===== -->
+  <text x="12" y="238" font-size="11.5" font-weight="700" letter-spacing="1.4" fill="#a1245a">② CERCA</text>
+  <text x="90" y="238" font-size="10" fill="#838383">il modello va a prendere solo ciò che gli serve, con bash</text>
+
+  <rect x="12" y="248" width="636" height="20" rx="5" fill="#a1245a"/>
+  <text x="20" y="262" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#ffffff"><tspan fill="#ecd3de">[assistant]</tspan>  → bash("grep -n -E 'stato|data_consegna' export_4471.json")</text>
+
+  <!-- bash legge nel sandbox -->
+  <path d="M600 248 V158" fill="none" stroke="#838383" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+  <text x="596" y="228" text-anchor="end" font-size="9.5" font-style="italic" fill="#838383">legge nel sandbox</text>
+
+  <rect x="12" y="274" width="636" height="34" rx="5" fill="#d1efea" stroke="#1ab197"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#212529">
+    <text x="20" y="288"><tspan font-weight="600" fill="#0e7c6a">[tool]</tspan>       312:  "stato": "in consegna",</text>
+    <text x="20" y="302">             318:  "data_consegna": "2026-09-06"</text>
+  </g>
+
+  <rect x="12" y="320" width="636" height="20" rx="5" fill="#a1245a"/>
+  <text x="20" y="334" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#ffffff"><tspan fill="#ecd3de">[assistant]</tspan>  Il tuo ordine è in consegna, arriva il 6.</text>
+
+  <text x="12" y="366" font-size="11" font-weight="700" fill="#0e7c6a">in finestra: ~60 token invece di 50.000</text>
+  <text x="648" y="366" text-anchor="end" font-size="10" font-style="italic" fill="#838383">e il file resta lì, se al giro dopo serve un'altra riga</text>
+</svg>
