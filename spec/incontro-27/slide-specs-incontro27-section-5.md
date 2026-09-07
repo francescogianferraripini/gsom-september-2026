@@ -27,11 +27,11 @@
 
 ---
 
-> **Filo della sezione.** La fascia `Observability` della mappa si accende. La Slide 40 apre il menu delle leve (prompt, KB, tool, harness, modello); le 41–42 dicono che cosa si misura (la traiettoria) e come non si misura (il vibe eval); la 43 è la **mappa del processo**, che le Slide 44–49 richiamano in miniatura con la tappa corrente accesa (come la slide 34 del 26 con le tre fasi); la 46 chiude il cerchio con le leve: **tipicamente un cluster di fallimento è legato a una leva**; la 50 chiude la sezione e il cerchio con il 26 (le traiettorie di oggi sono i dati di domani).
+> **Filo della sezione.** La fascia `Observability` della mappa si accende. La Slide 40 apre il menu delle leve (prompt, KB, tool, harness, modello); le 41–42 dicono che cosa si misura (la traiettoria) e come non si misura (il vibe eval); la 43 è la **mappa del processo**, che le Slide 44–49 richiamano in miniatura con la tappa corrente accesa (come la slide 33 del 26 con le tre fasi); la 46 chiude il cerchio con le leve: **tipicamente un cluster di fallimento è legato a una leva**; la 50 chiude la sezione e il cerchio con il 26 (le traiettorie di oggi sono i dati di domani).
 >
 > **Due ruoli** (decisi in intervista): l'**esperto di dominio** costruisce i dataset, decide i pass/fail e valida il giudice; il **team di sviluppo dell'agente** scrive checker e giudice, esegue i test e li rigira a ogni modifica. Si incontrano sulla validazione del giudice (Slide 47).
 >
-> **Riprese dal 26**: le traiettorie premiate (slide 38) e il valore delle traiettorie (slide 51) → Slide 41 e Slide 50.
+> **Riprese dal 26**: le traiettorie premiate (slide 37) e il valore delle traiettorie (slide 50) → Slide 41 e Slide 50.
 >
 > **La traccia annotata** (l'immagine del brief) compare due volte: incompleta nella Slide 44, completa e letta da tre lati nella Slide 50.
 
@@ -64,7 +64,7 @@
 
 ## Slide 41 — Tre livelli di successo, e la traiettoria
 
-> Ripresa delle slide 38 e 51 del 26.
+> Ripresa delle slide 37 e 50 del 26.
 
 **Messaggio**: "funziona?" ha tre risposte a scale diverse: il singolo colpo, il turno con le sue tool call, il processo intero. E l'oggetto da guardare per rispondere non è mai la risposta finale: è la traiettoria.
 
@@ -81,7 +81,7 @@
 **Visual**: `slide41-tre-livelli.svg` — ripresa di `slide32-rl-agentico.svg` del 26 riletta a tre livelli.
 
 **Prompt per schema SVG**:
-> Una sola traiettoria orizzontale, disegnata come nella slide 38 del 26 (nodi `pensiero`, `tool call`, `risultato`, in fila da sinistra a destra), ma più lunga: attraversa **tre turni** dell'utente, separati da due tacche verticali `turno 1`, `turno 2`, `turno 3`, e finisce in un traguardo `rimborso gestito`.
+> Una sola traiettoria orizzontale, disegnata come nella slide 37 del 26 (nodi `pensiero`, `tool call`, `risultato`, in fila da sinistra a destra), ma più lunga: attraversa **tre turni** dell'utente, separati da due tacche verticali `turno 1`, `turno 2`, `turno 3`, e finisce in un traguardo `rimborso gestito`.
 >
 > Sopra la traiettoria, tre graffe a scale diverse, impilate: la più piccola abbraccia un solo nodo `risposta` (`1 · task single shot: la risposta è giusta?`); la media abbraccia un turno intero con le sue tre tool call (`2 · il turno: tool giusti, ordine giusto, risultati usati?`); la più grande abbraccia tutto (`3 · il processo: l'obiettivo è raggiunto?`).
 >
@@ -310,7 +310,7 @@
 > ai:    pytest                                  → 20 passed
 > ai:    submit                                  → target: True    reward 1
 > ```
-> con a lato, sbiadita, una seconda riga-riassunto del contro-esempio: `93 turni · target: False · reward 0`. Accanto, un riquadro piccolo `il grader` con la formula, nel formato del reinforcement fine-tuning: `reward = 0.5 · checker + 0.5 · giudice`, e la glossa *il checker e il giudice della Slide 47, diventati funzione di reward*. Dalla traiettoria con il reward parte la freccia verso un blocco `modello`, con l'etichetta *le traiettorie di oggi sono i dati di domani*, disegnata come la reward che scorre all'indietro nella slide 38 del 26.
+> con a lato, sbiadita, una seconda riga-riassunto del contro-esempio: `93 turni · target: False · reward 0`. Accanto, un riquadro piccolo `il grader` con la formula, nel formato del reinforcement fine-tuning: `reward = 0.5 · checker + 0.5 · giudice`, e la glossa *il checker e il giudice della Slide 47, diventati funzione di reward*. Dalla traiettoria con il reward parte la freccia verso un blocco `modello`, con l'etichetta *le traiettorie di oggi sono i dati di domani*, disegnata come la reward che scorre all'indietro nella slide 37 del 26.
 >
 > **Elemento focale**: le tre lenti sulla stessa traccia.
 

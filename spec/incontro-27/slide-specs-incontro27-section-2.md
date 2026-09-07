@@ -23,13 +23,13 @@
 
 ---
 
-> **Filo della sezione — la finestra a strati, in cinque tempi.** Le Slide 7, 8, 11, 12 e 13 portano la stessa figura (`slide7-finestra-strati-{0..4}.svg`, stesso viewBox, pattern `.visual.stack` + fragment come la torre della slide 20 del 26): uno scheletro di strati vuoti che si riempie uno strato per slide. **Si legge dall'alto**, come i riquadri di payload delle slide 8 e 9 del 26 dove `[system]` è la prima riga: `system prompt` in cima, poi `dichiarazione dei tool`, `indice delle skill`, e `messaggi` in fondo, che crescono verso il basso.
+> **Filo della sezione — la finestra a strati, in cinque tempi.** Le Slide 7, 8, 11, 12 e 13 portano la stessa figura (`slide7-finestra-strati-{0..4}.svg`, stesso viewBox, pattern `.visual.stack` + fragment come la torre della slide 19 del 26): uno scheletro di strati vuoti che si riempie uno strato per slide. **Si legge dall'alto**, come i riquadri di payload delle slide 7 e 8 del 26 dove `[system]` è la prima riga: `system prompt` in cima, poi `dichiarazione dei tool`, `indice delle skill`, e `messaggi` in fondo, che crescono verso il basso.
 >
-> ⚠️ **Coerenza con il 26**: la slide 43 del 26 (la pila che cresce) ha gli strati stabili **in fondo**. Quando viene ripresa in sezione 4 va ridisegnata dall'alto, altrimenti contraddice questa figura.
+> ⚠️ **Coerenza con il 26**: la slide 42 del 26 (la pila che cresce) ha gli strati stabili **in fondo**. Quando viene ripresa in sezione 4 va ridisegnata dall'alto, altrimenti contraddice questa figura.
 >
 > **MCP in questa sezione**: una riga sola (nella Slide 10 e nella Slide 11, "è lì che MCP si innesta"), senza spiegare che cos'è: la sezione 2 mostra *che cosa c'è nella finestra*, la 3 spiega *da dove arriva e chi lo esegue*.
 >
-> **L'esempio che attraversa la sezione**: l'assistente clienti di Acme, il tool `cerca_ordine` (lo stesso della slide 9 del 26) e le skill `rimborsi-acme` (che rima con il limite del system prompt) e `risposta-reclami-acme` (di sole istruzioni, usata nella Slide 27) ("non promettere mai rimborsi").
+> **L'esempio che attraversa la sezione**: l'assistente clienti di Acme, il tool `cerca_ordine` (lo stesso della slide 8 del 26) e le skill `rimborsi-acme` (che rima con il limite del system prompt) e `risposta-reclami-acme` (di sole istruzioni, usata nella Slide 27) ("non promettere mai rimborsi").
 
 ---
 
@@ -120,7 +120,7 @@
 
 ## Slide 10 — Com'è fatta una chiamata al modello
 
-> Il 26 la struttura dell'API la mostra gia', nella sua Slide 40: due chiamate a `chat/completions` di OpenAI, per far vedere che l'API e' stateless. Qui la novita' e' un'altra: **la richiesta con i tool** — il campo `tools`, i blocchi della risposta, lo `stop_reason` — e i nomi sono quelli dell'API Messages di Anthropic (verificati a set 2026); gli altri provider hanno la stessa forma con nomi diversi. Vale la pena richiamare a voce la slide del 26 e dire che cosa si aggiunge.
+> Il 26 la struttura dell'API la mostra gia', nella sua Slide 39: due chiamate a `chat/completions` di OpenAI, per far vedere che l'API e' stateless. Qui la novita' e' un'altra: **la richiesta con i tool** — il campo `tools`, i blocchi della risposta, lo `stop_reason` — e i nomi sono quelli dell'API Messages di Anthropic (verificati a set 2026); gli altri provider hanno la stessa forma con nomi diversi. Vale la pena richiamare a voce la slide del 26 e dire che cosa si aggiunge.
 
 **Messaggio**: il modello si raggiunge con una chiamata HTTP la cui struttura è esattamente la finestra a strati; la risposta dice che cosa ha generato e perché si è fermato.
 
@@ -241,7 +241,7 @@
 
 ## Slide 14 — Ora l'utente scrive
 
-> Ripresa della slide 9 del 26 (i due giri), **solo la metà destra e solo il `giro 1`**. È la cerniera verso la sezione 3.
+> Ripresa della slide 8 del 26 (i due giri), **solo la metà destra e solo il `giro 1`**. È la cerniera verso la sezione 3.
 
 **Messaggio**: la prima domanda entra nello strato `messaggi`, il modello genera, vuole un tool, e si ferma. Da qui in poi tocca all'harness.
 
@@ -255,7 +255,7 @@
 **Visual**: `slide14-giro-uno.svg` — ripresa di `slide9b-tool-call.svg` del 26.
 
 **Prompt per schema SVG**:
-> Riprende il riquadro `giro 1` della metà destra della slide 9 dell'incontro 26, alla stessa scala. Le prime righe del riquadro sono ora i tre strati della finestra della Slide 13 (system prompt, dichiarazione dei tool, indice delle skill) in forma compatta; poi la riga `[user] Dov'è il mio ordine 4471?`; poi la pill del modello con la richiesta `→ cerca_ordine("4471")` e, accanto, in piccolo, `stop_reason: tool_use`.
+> Riprende il riquadro `giro 1` della metà destra della slide 8 dell'incontro 26, alla stessa scala. Le prime righe del riquadro sono ora i tre strati della finestra della Slide 13 (system prompt, dichiarazione dei tool, indice delle skill) in forma compatta; poi la riga `[user] Dov'è il mio ordine 4471?`; poi la pill del modello con la richiesta `→ cerca_ordine("4471")` e, accanto, in piccolo, `stop_reason: tool_use`.
 >
 > A destra, dove nel 26 stava il `giro 2`, un riquadro tratteggiato vuoto con un `?` al centro.
 >

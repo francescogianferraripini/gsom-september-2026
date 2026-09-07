@@ -12,32 +12,32 @@
 | File | Slide |
 |------|-------|
 | `slides/slide-div-sec2.html` | Separatore — Sezione 2: L'LLM: cos'è e come genera |
-| `slides/slide5-modello-linguistico.html` | Slide 5 — Che cos'è un modello linguistico |
-| `slides/slide6-generazione-autoregressiva.html` | Slide 6 — La generazione: un token alla volta |
-| `slides/slide7-golfista.html` | Slide 7 — Il golfista |
-| `slides/slide9-secondo-loop.html` | Slide 8 — Il 2° loop: la conversazione (comparazione col 1°) |
-| `slides/slide9b-tool-call.html` | Slide 9 — Il 3° loop: la tool call |
-| `slides/slide9c-secondo-addestramento.html` | Slide 10 — Perché serve un secondo addestramento |
-| `slides/slide9d-golfista-mira.html` | Slide 11 — Il colpo non basta: serve la mira |
+| `slides/slide5-modello-linguistico.html` | Slide 4 — Che cos'è un modello linguistico |
+| `slides/slide6-generazione-autoregressiva.html` | Slide 5 — La generazione: un token alla volta |
+| `slides/slide7-golfista.html` | Slide 6 — Il golfista |
+| `slides/slide9-secondo-loop.html` | Slide 7 — Il 2° loop: la conversazione (comparazione col 1°) |
+| `slides/slide9b-tool-call.html` | Slide 8 — Il 3° loop: la tool call |
+| `slides/slide9c-secondo-addestramento.html` | Slide 9 — Perché serve un secondo addestramento |
+| `slides/slide9d-golfista-mira.html` | Slide 10 — Il colpo non basta: serve la mira |
 
 > **Nota di filo rosso (i tre loop, numerazione storica — non per annidamento):**
 > 1° = generazione (fino a STOP), 2° = conversazione (turno dopo turno), 3° = task/agentico (N giri di tool call dentro un turno). Annidamento: conversazione ⊃ task ⊃ generazione — il 3° non si aggiunge in coda, si infila in mezzo.
 >
-> **Cambio rispetto alla versione precedente**: i tre loop si aprono ora **tutti e tre qui**, nella Sezione 2 — la Slide 9 mostra la meccanica della tool call e nomina il 3° loop. Prima il 3° era tenuto per la Sezione 4 (Slide 39, lato RL) con un cliffhanger sulla Slide 8; quel cliffhanger è stato rimosso.
+> **Cambio rispetto alla versione precedente**: i tre loop si aprono ora **tutti e tre qui**, nella Sezione 2 — la Slide 8 mostra la meccanica della tool call e nomina il 3° loop. Prima il 3° era tenuto per la Sezione 4 (Slide 38, lato RL) con un cliffhanger sulla Slide 7; quel cliffhanger è stato rimosso.
 >
 > ⚠️ **Questione aperta**: la Sezione 2 anticipa ora due slide della Sezione 4.
-> - La **Slide 39** («Nasce il 3° loop») copre gli stessi punti meccanici della 9 — *la tool call è testo*, *i tool vanno dichiarati*, *il giro*.
-> - La **Slide 37** («RLHF: arriva la mira») usa la stessa vignetta della 10 e dice la stessa cosa — che la mira arriva con un addestramento successivo.
+> - La **Slide 38** («Nasce il 3° loop») copre gli stessi punti meccanici della 9 — *la tool call è testo*, *i tool vanno dichiarati*, *il giro*.
+> - La **Slide 36** («RLHF: arriva la mira») usa la stessa vignetta della 10 e dice la stessa cosa — che la mira arriva con un addestramento successivo.
 >
 > In entrambi i casi quello che resta **solo** alla Sezione 4 è il *come*: le preferenze umane e il reward model (31), l'RL sulle traiettorie (32), e la chiusa sull'harness (33). È lì che vanno rifocalizzate. Decisione rimandata.
 
 > **Nota di filo rosso (compressione, due fronti distinti — non confonderli):**
-> 1. **Il modello come compressore di messaggi**: prevedere bene il prossimo token = codificare il testo con meno bit (Shannon, cross-entropy). Seminato in Slide 5, raccolto in sezione 4 (cross-entropy loss).
+> 1. **Il modello come compressore di messaggi**: prevedere bene il prossimo token = codificare il testo con meno bit (Shannon, cross-entropy). Seminato in Slide 4, raccolto in sezione 4 (cross-entropy loss).
 > 2. **La conoscenza compressa nei pesi**: i fatti del training set sono compressi con perdita dentro il modello. Raccolto in sezione 3 ("LLM come compressore lossy", knowledge nei pesi).
 
 ---
 
-## Slide 5 — Che cos'è un modello linguistico
+## Slide 4 — Che cos'è un modello linguistico
 
 **Layout**: titolo in alto; definizione centrale subito sotto; visual al centro (~50% della slide); box narrativo "1951" a sinistra del visual; nota-seme in basso.
 
@@ -63,7 +63,7 @@
 >
 > **Elementi focali**: il blocco centrale `LLM` e il contrasto di forma tra le due distribuzioni (una appuntita, una piatta) — è il contrasto a portare il messaggio: la distribuzione misura quanto è prevedibile il seguito. I testi dei contesti e i token delle barre sono di natura "token/codice".
 
-## Slide 6 — La generazione: un token alla volta
+## Slide 5 — La generazione: un token alla volta
 
 **Layout**: titolo in alto, grande visual narrativo al centro (~70% della slide), didascalia sotto.
 
@@ -71,7 +71,7 @@
 - Titolo: *La generazione: un token alla volta*
 - Didascalia (sotto il diagramma): *Il modello non pianifica una risposta. Produce un token alla volta. Ogni nuovo token viene appeso al contesto e il contesto completo viene rivalutato per produrre il successivo. Da questo punto di vista il modello è stateless e ragiona solo in termini di parola successiva.*
 
-**Visual**: sequenza narrativa che mostra il contesto che cresce token dopo token, con freccia laterale che chiarisce che ogni riga è una chiamata indipendente al modello. Ogni riga è divisa in due zone: il context (sfondo scuro) e il token appena generato (sfondo accento). Una legenda in alto spiega i due colori. L'esempio prosegue deliberatamente il contesto "Il gatto è…" della Slide 5.
+**Visual**: sequenza narrativa che mostra il contesto che cresce token dopo token, con freccia laterale che chiarisce che ogni riga è una chiamata indipendente al modello. Ogni riga è divisa in due zone: il context (sfondo scuro) e il token appena generato (sfondo accento). Una legenda in alto spiega i due colori. L'esempio prosegue deliberatamente il contesto "Il gatto è…" della Slide 4.
 
 **Prompt per schema SVG**:
 > Visual narrativo verticale che mostra l'evoluzione del contesto token dopo token.
@@ -91,7 +91,7 @@
 
 ---
 
-## Slide 7 — Il golfista
+## Slide 6 — Il golfista
 
 **Layout**: titolo in alto, visual a tutta larghezza al centro (~70% della slide), didascalia sotto.
 
@@ -116,11 +116,11 @@
 
 ## Slide 8 (numerazione precedente) — Il 1° loop: la generazione — **RIMOSSA**
 
-> Slide tagliata: lo pseudocodice del loop di generazione era ridondante col riquadro laterale della Slide 6, e la comparazione della Slide 8 dà al 1° loop tutto lo spazio che gli serve. Gli `id` e i numeri in footnote delle slide successive non sono stati rinumerati: resta un buco sul numero 08.
+> Slide tagliata: lo pseudocodice del loop di generazione era ridondante col riquadro laterale della Slide 5, e la comparazione della Slide 7 dà al 1° loop tutto lo spazio che gli serve. Gli `id` e i numeri in footnote delle slide successive non sono stati rinumerati: resta un buco sul numero 08.
 
 ---
 
-## Slide 8 — Il 2° loop: la conversazione
+## Slide 7 — Il 2° loop: la conversazione
 
 > **Slide di comparazione.** Il punto non è più solo "esiste un secondo loop": è che i due loop sono **lo stesso meccanismo a due scale**. A sinistra si aggiunge un token al contesto, a destra si aggiunge un turno alla storia — e in entrambi i casi si rilegge tutto da capo.
 
@@ -137,20 +137,20 @@
 > Un unico diagramma orizzontale diviso in due metà da un filo verticale sottile. Ogni metà ha la propria intestazione e la propria sotto-intestazione, che è il perno della comparazione.
 >
 > **Metà sinistra — «IL 1° LOOP — LA GENERAZIONE»**, sotto-intestazione *l'unità che si aggiunge è il token*.
-> È la pila della Slide 6 **ricopiata**, stessa frase e stessi colori: otto righe, ognuna un contesto a un certo istante, composta da un rettangolo chiaro (il context) e un rettangolo accento (il token appena generato). Ultima riga con badge `STOP`. Graffa verticale a lato: *il contesto cresce di un token per volta*. Piede: *ogni riga è una passata completa del modello: stessi pesi, contesto più lungo*.
+> È la pila della Slide 5 **ricopiata**, stessa frase e stessi colori: otto righe, ognuna un contesto a un certo istante, composta da un rettangolo chiaro (il context) e un rettangolo accento (il token appena generato). Ultima riga con badge `STOP`. Graffa verticale a lato: *il contesto cresce di un token per volta*. Piede: *ogni riga è una passata completa del modello: stessi pesi, contesto più lungo*.
 >
 > **Metà destra — «IL 2° LOOP — LA CONVERSAZIONE»**, sotto-intestazione *l'unità che si aggiunge è il turno*.
 > Tre riquadri impilati, etichettati `turno 1`, `turno 2`, `turno 3`, di altezza crescente: ognuno contiene **l'intero payload rispedito all'API a quel turno**, riga per riga, con i tag di ruolo `[system]` / `[user]` / `[assistant]` in stile "codice". Il **`[system]` sta in testa a ogni riquadro**, non solo al primo: è lui a rendere visibile che *tutto* viene rispedito, system prompt compreso. Le righe ereditate dai turni precedenti sono sbiadite; la riga `[assistant]` appena generata è un blocco pieno nel colore accento, esattamente come il token generato a sinistra. Graffa verticale a lato: *la storia cresce di un turno per volta*.
 >
 > **Elemento focale**: la rima visiva fra le due metà — a sinistra cresce di un token, a destra di un turno, ma la meccanica (appendi, rileggi tutto) è la stessa. La crescita in altezza dei tre riquadri di destra deve essere evidente a colpo d'occhio: è lei a dire che la storia viene rispedita per intero ogni volta.
 >
-> Riferimento di partenza: gli SVG `slide12-conversation-step{1,2,3}.svg` del deck `gsom-april-2026` (chat UI a sinistra / payload API a destra), qui ricondotti alla forma "pila che cresce" per rimare con la Slide 6.
+> Riferimento di partenza: gli SVG `slide12-conversation-step{1,2,3}.svg` del deck `gsom-april-2026` (chat UI a sinistra / payload API a destra), qui ricondotti alla forma "pila che cresce" per rimare con la Slide 5.
 
 
 
-## Slide 9 — Il 3° loop: la tool call
+## Slide 8 — Il 3° loop: la tool call
 
-> Comparazione, come la Slide 8, e costruita per **citazione**: la metà sinistra è, identica, la metà destra della Slide 8. Chi guarda riconosce la figura di due minuti prima e vede solo che cosa cambia.
+> Comparazione, come la Slide 7, e costruita per **citazione**: la metà sinistra è, identica, la metà destra della Slide 7. Chi guarda riconosce la figura di due minuti prima e vede solo che cosa cambia.
 
 **Layout**: titolo in alto; un unico visual a piena larghezza diviso in due metà da un filo verticale (~70% della slide); didascalia sotto; nota in basso.
 
@@ -162,9 +162,9 @@
 **Visual**: `slide9b-tool-call.svg`, generato da `presentation/svg-src/gen_sez2.py`.
 
 **Prompt per schema SVG**:
-> Stessa impaginazione della Slide 8: due metà, filo verticale al centro, ogni metà con intestazione e sotto-intestazione.
+> Stessa impaginazione della Slide 7: due metà, filo verticale al centro, ogni metà con intestazione e sotto-intestazione.
 >
-> **Metà sinistra — «SENZA TOOL»**, sotto-intestazione *un giro di generazione per turno*: è **la metà destra della Slide 8, invariata** — tre riquadri `turno 1/2/3`, ognuno col payload completo, `[system]` in testa, storia sbiadita e risposta appena generata come pill accesa.
+> **Metà sinistra — «SENZA TOOL»**, sotto-intestazione *un giro di generazione per turno*: è **la metà destra della Slide 7, invariata** — tre riquadri `turno 1/2/3`, ognuno col payload completo, `[system]` in testa, storia sbiadita e risposta appena generata come pill accesa.
 >
 > **Metà destra — «CON UNA TOOL CALL»**, sotto-intestazione *due giri dentro un solo turno*: due riquadri `giro 1` e `giro 2`, che stanno **dentro un unico turno dell'utente** (una graffa a lato lo dichiara). Il `[system]` porta ora, su una seconda riga indentata, la **dichiarazione del tool** — uno solo, per semplicità: `Tool: cerca_ordine(id_ordine) — stato di un ordine`.
 >   - `giro 1`: system + dichiarazione, la domanda dell'utente, e la richiesta del modello come pill — `→ cerca_ordine("4471")`. Il modello si ferma qui.
@@ -177,9 +177,9 @@
 > **Elemento focale**: il fatto che a destra ci siano **due** riquadri dove a sinistra ce n'era uno per turno. Il resto della macchina è identico.
 
 
-## Slide 10 — Perché serve un secondo addestramento
+## Slide 9 — Perché serve un secondo addestramento
 
-> Ripresa dal deck MBA (`gsom-april-2026`, `slide14-secondo-addestramento.html`). Introduce la mira con **un esempio concreto**, prima che la Slide 11 la generalizzi con la metafora del golfista: prima il fatto, poi la figura.
+> Ripresa dal deck MBA (`gsom-april-2026`, `slide14-secondo-addestramento.html`). Introduce la mira con **un esempio concreto**, prima che la Slide 10 la generalizzi con la metafora del golfista: prima il fatto, poi la figura.
 
 **Layout**: titolo in alto; visual a tutta larghezza al centro; blocco nero centrato in fondo. Nessuna didascalia.
 
@@ -198,29 +198,29 @@
 >
 > **Elemento focale**: il contrasto **tipografico** prima ancora che di contenuto — monospaziato sbiadito contro testo pieno. Si vede che è la stessa macchina, con un obiettivo diverso.
 
-> **Nota di riuso**: le due risposte sono **le stesse della Slide 37** (RLHF), dove tornano come la coppia che gli umani confrontano. Stesso esempio, due letture: qui è il prima e il dopo, là è il come. Se cambia una, va cambiata l'altra.
+> **Nota di riuso**: le due risposte sono **le stesse della Slide 36** (RLHF), dove tornano come la coppia che gli umani confrontano. Stesso esempio, due letture: qui è il prima e il dopo, là è il come. Se cambia una, va cambiata l'altra.
 
-## Slide 11 — Il colpo non basta: serve la mira
+## Slide 10 — Il colpo non basta: serve la mira
 
-> Chiude la Sezione 2 e fa da cerniera verso la Sezione 4. Riprende **la stessa vignetta della Slide 7**, con una cosa in più: la mira. È un richiamo visivo, quindi la figura deve leggersi come *la stessa* — stessa inquadratura, stessa scala a schermo, stessi archi.
+> Chiude la Sezione 2 e fa da cerniera verso la Sezione 4. Riprende **la stessa vignetta della Slide 6**, con una cosa in più: la mira. È un richiamo visivo, quindi la figura deve leggersi come *la stessa* — stessa inquadratura, stessa scala a schermo, stessi archi.
 
-**Layout**: titolo in alto; visual a tutta larghezza al centro; didascalia sotto. **Nessuna nota**: la Slide 7 non ce l'ha, e ogni riga in più rimpicciolisce la figura rompendo il richiamo (vedi *Nota sulla scala*).
+**Layout**: titolo in alto; visual a tutta larghezza al centro; didascalia sotto. **Nessuna nota**: la Slide 6 non ce l'ha, e ogni riga in più rimpicciolisce la figura rompendo il richiamo (vedi *Nota sulla scala*).
 
 **Testo**:
 - Titolo: *Il colpo non basta: serve la mira*
 - Didascalia: *Il pretraining insegna **il colpo**: prevedere il token successivo dato il contesto precedente, nient'altro. Ma un turno di conversazione, o un giro di tool call, ha una meta: serve un addestramento **dopo** il pretraining, che non ottimizzi più il prossimo token sul solo contesto precedente, ma **il percorso autoregressivo lungo l'intera traiettoria**.*
 
-**Visual**: `slide9c-golfista-mira.svg` — la scena della Slide 7 con in più il gruppo `mira` e la buca in primo piano, presi pari pari dalla Slide 37.
+**Visual**: `slide9c-golfista-mira.svg` — la scena della Slide 6 con in più il gruppo `mira` e la buca in primo piano, presi pari pari dalla Slide 36.
 
 **Prompt per schema SVG**:
-> Identica alla Slide 7 — stesso viewBox `0 0 1300 500`, stesso terreno, stessi quattro archi decrescenti, stessi punti di atterraggio, stesso golfista — con due aggiunte, entrambe copiate dalla Slide 37:
+> Identica alla Slide 6 — stesso viewBox `0 0 1300 500`, stesso terreno, stessi quattro archi decrescenti, stessi punti di atterraggio, stesso golfista — con due aggiunte, entrambe copiate dalla Slide 36:
 >   - il gruppo **`mira`**: quattro linee tratteggiate burgundy che partono da ciascun punto di atterraggio e convergono tutte sulla bandierina;
 >   - la **buca in primo piano** (non più sbiadita): asta nera, bandierina in tinta burgundy, il punto di mira marcato.
 >
-> Al posto dell'annotazione *«la buca? / per ora, nessuna mira»* della Slide 7, **nello stesso angolo**, si legge che cosa è cambiato: *«ora ogni colpo mira alla buca / e a essere ottimizzato è il percorso, non il singolo colpo»*.
+> Al posto dell'annotazione *«la buca? / per ora, nessuna mira»* della Slide 6, **nello stesso angolo**, si legge che cosa è cambiato: *«ora ogni colpo mira alla buca / e a essere ottimizzato è il percorso, non il singolo colpo»*.
 >
-> **Elemento focale**: il fascio di tratteggi che converge sulla bandierina — nella Slide 7 quello spazio era vuoto.
+> **Elemento focale**: il fascio di tratteggi che converge sulla bandierina — nella Slide 6 quello spazio era vuoto.
 
-> **Nota sulla scala (verificata a schermo)**: perché il richiamo funzioni, la vignetta deve rendersi **della stessa dimensione** della Slide 7. Il viewBox è 2.6 di rapporto contro uno slot da ~3.0, quindi la figura è vincolata in **altezza**: ogni riga di testo sotto le ruba larghezza in proporzione 1:2.6. La Slide 7 ha una didascalia di 2 righe e rende la vignetta a **1026px**; con 4 righe di didascalia a 12.5pt scendeva a 860px (−16%, e si vedeva). La didascalia della 10 è quindi a **11.5pt**: quattro righe che occupano quanto due, e la vignetta torna a **1013px**. Se aggiungi testo qui, ricontrolla questa misura.
+> **Nota sulla scala (verificata a schermo)**: perché il richiamo funzioni, la vignetta deve rendersi **della stessa dimensione** della Slide 6. Il viewBox è 2.6 di rapporto contro uno slot da ~3.0, quindi la figura è vincolata in **altezza**: ogni riga di testo sotto le ruba larghezza in proporzione 1:2.6. La Slide 6 ha una didascalia di 2 righe e rende la vignetta a **1026px**; con 4 righe di didascalia a 12.5pt scendeva a 860px (−16%, e si vedeva). La didascalia della 10 è quindi a **11.5pt**: quattro righe che occupano quanto due, e la vignetta torna a **1013px**. Se aggiungi testo qui, ricontrolla questa misura.
 
 <!-- I blocchi slide successivi verranno aggiunti qui durante l'intervista (Fase 2). -->

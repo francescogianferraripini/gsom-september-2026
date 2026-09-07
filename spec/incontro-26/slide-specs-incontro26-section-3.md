@@ -5,45 +5,45 @@
 **Obiettivo di apprendimento**: il partecipante si costruisce un modello mentale dell'interno dell'LLM — embeddings come "spazio delle idee", prodotto scalare come sovrapposizione, fully connected e attention, context / complessità quadratica / KV cache, conoscenza intrinseca nei pesi, MoE.
 **Messaggio chiave (takeaway)**: Nello spazio degli embedding il significato è geometria: vicinanza è affinità, direzioni sono relazioni. (Il "compressore lossy" ha una slide dedicata, ma non è il takeaway della sezione.)
 **Budget**: ~40 min — la sezione più lunga dell'incontro.
-**Stato**: bozza — impianto visivo rifatto per tutte le slide 12–30 (vedi *Alfabeto visivo* più sotto)
+**Stato**: bozza — impianto visivo rifatto per tutte le slide 11–32 (vedi *Alfabeto visivo* più sotto)
 
 ### Tabella file → slide
 
 | File | Slide |
 |------|-------|
 | `slides/slide-div-sec3.html` | Separatore — Sezione 3: Perché funziona |
-| `slides/slide10-parola-vettore.html` | Slide 12 — La base di tutto: a ogni parola il suo vettore |
-| `slides/slide10b-che-cos-e-un-vettore.html` | Slide 13 — Che cos'è un vettore |
-| `slides/slide11-vettori-prodotto-scalare.html` | Slide 14 — Vettori e prodotto scalare |
-| `slides/slide11b-somma-vettori.html` | Slide 15 — La somma: spostarsi nello spazio |
-| `slides/slide12-scala-del-calcolo.html` | Slide 16 — La scala del calcolo: vettori e matrici |
-| `slides/slide13-embeddings.html` | Slide 17 — Embeddings: lo spazio delle idee |
-| `slides/slide14-tokenizzazione.html` | Slide 18 — La tokenizzazione |
-| `slides/slide14b-cosa-serve.html` | Slide 19 — Cosa serve, per prevedere la parola successiva |
-| `slides/slide15-architettura.html` | Slide 20 — L'architettura, in un colpo d'occhio (in tre tempi) |
-| `slides/slide15b-fully-connected.html` | Slide 21 — Il fully connected: fanout, gate, compressione |
-| `slides/slide16-fanout.html` | Slide 22 — Fanout: il matching concettuale |
-| `slides/slide17-compressione.html` | Slide 23 — Compressione: la sovrapposizione |
-| `slides/slide17b-attention-intro.html` | Slide 24 — L'attention: a che cosa serve |
-| `slides/slide18-attention-qk.html` | Slide 25 — Attention: domande e chiavi (Q e K) |
-| `slides/slide19-softmax.html` | Slide 26 — Softmax: il budget di ascolto |
-| `slides/slide20-attention-v.html` | Slide 27 — V: il contenuto del libro |
-| `slides/slide20b-contesto.html` | Slide 28 — Lo stesso token, due contesti |
-| `slides/slide21-positional-encoding.html` | Slide 29 — Positional encoding: l'ordine conta |
-| `slides/slide22-reverse-embedding.html` | Slide 30 — Reverse embedding: tornare ai token |
-| `slides/slide23-costo-contesto.html` | Slide 41 — Il contesto ha un costo |
-| `slides/slide23b-api-stateless.html` | Slide 42 — L'API è stateless: cosa significa davvero |
-| `slides/slide25-compressore-lossy.html` | Slide 31 — L'LLM come compressore lossy |
-| `slides/slide26-conseguenze-compressione.html` | Slide 32 — Conseguenze della compressione |
-| `slides/slide27-moe.html` | Slide 33 — MoE: non tutti i pesi lavorano sempre |
+| `slides/slide10-parola-vettore.html` | Slide 11 — La base di tutto: a ogni parola il suo vettore |
+| `slides/slide10b-che-cos-e-un-vettore.html` | Slide 12 — Che cos'è un vettore |
+| `slides/slide11-vettori-prodotto-scalare.html` | Slide 13 — Vettori e prodotto scalare |
+| `slides/slide11b-somma-vettori.html` | Slide 14 — La somma: spostarsi nello spazio |
+| `slides/slide12-scala-del-calcolo.html` | Slide 15 — La scala del calcolo: vettori e matrici |
+| `slides/slide13-embeddings.html` | Slide 16 — Embeddings: lo spazio delle idee |
+| `slides/slide14-tokenizzazione.html` | Slide 17 — La tokenizzazione |
+| `slides/slide14b-cosa-serve.html` | Slide 18 — Cosa serve, per prevedere la parola successiva |
+| `slides/slide15-architettura.html` | Slide 19 — L'architettura, in un colpo d'occhio (in tre tempi) |
+| `slides/slide15b-fully-connected.html` | Slide 20 — Il fully connected: fanout, gate, compressione |
+| `slides/slide16-fanout.html` | Slide 21 — Fanout: il matching concettuale |
+| `slides/slide17-compressione.html` | Slide 22 — Compressione: la sovrapposizione |
+| `slides/slide17b-attention-intro.html` | Slide 23 — L'attention: a che cosa serve |
+| `slides/slide18-attention-qk.html` | Slide 24 — Attention: domande e chiavi (Q e K) |
+| `slides/slide19-softmax.html` | Slide 25 — Softmax: il budget di ascolto |
+| `slides/slide20-attention-v.html` | Slide 26 — V: il contenuto del libro |
+| `slides/slide20b-contesto.html` | Slide 27 — Lo stesso token, due contesti |
+| `slides/slide21-positional-encoding.html` | Slide 28 — Positional encoding: l'ordine conta |
+| `slides/slide22-reverse-embedding.html` | Slide 29 — Reverse embedding: tornare ai token |
+| `slides/slide23-costo-contesto.html` | Slide 40 — Il contesto ha un costo |
+| `slides/slide23b-api-stateless.html` | Slide 41 — L'API è stateless: cosa significa davvero |
+| `slides/slide25-compressore-lossy.html` | Slide 30 — L'LLM come compressore lossy |
+| `slides/slide26-conseguenze-compressione.html` | Slide 31 — Conseguenze della compressione |
+| `slides/slide27-moe.html` | Slide 32 — MoE: non tutti i pesi lavorano sempre |
 
-> **Logica dell'ordine**: 12–17 i mattoni (parola→vettore, che cos'è un vettore, prodotto scalare, la somma come spostamento, la scala del calcolo, spazio delle idee) → 14 la tokenizzazione corregge "parola" in "token" → **14b il perché dell'architettura**: quali capacità servono per prevedere la parola successiva, e quale pezzo del transformer risponde a ognuna → 15 la mappa dell'architettura → **15b l'introduzione al fully connected** → 22–23 i suoi due zoom (fanout+gate, compressione) → **17b l'introduzione all'attention** → 25–28 i suoi zoom (Q·K, softmax, V, la prova del contesto) → 21 positional encoding → 22 reverse embedding → 23 il costo del contesto → **23b l'API stateless**, lo stesso costo visto dal lato della conversazione → 31–32 la natura compressa della conoscenza e le conseguenze pratiche (fronte 2) → 27 MoE.
+> **Logica dell'ordine**: 11–16 i mattoni (parola→vettore, che cos'è un vettore, prodotto scalare, la somma come spostamento, la scala del calcolo, spazio delle idee) → 17 la tokenizzazione corregge "parola" in "token" e mostra l'embedding lookup → **18 il perché dell'architettura**: quali capacità servono per prevedere la parola successiva, e quale pezzo del transformer risponde a ognuna → 19 la mappa dell'architettura → **20 l'introduzione al fully connected** → 21–22 i suoi due zoom (fanout+gate, compressione) → **23 l'introduzione all'attention** → 24–27 i suoi zoom (Q·K, softmax, V, la prova del contesto) → 28 positional encoding → 29 reverse embedding → 30–31 la natura compressa della conoscenza e le conseguenze pratiche (fronte 2) → 32 MoE. *(Il costo del contesto e l'API stateless, che stavano qui, sono passati alla Sezione 5.)*
 >
 > **Le tre slide di introduzione (14b, 15b, 17b)**: la 19 enuncia le capacità necessarie; la 21 e la 24 **ne richiamano una alla lettera** in apertura, prima di scomporre il blocco che la implementa. È il filo che tiene insieme la sezione: prima *a che cosa serve*, poi *com'è fatto*. Se cambia il testo della 19, va cambiato anche il richiamo nelle altre due.
 >
-> **Filo rosso della sezione — le operazioni di manipolazione degli embeddings**: l'LLM come manipolatore di embeddings (punchline Slide 17) si articola in operazioni nominate slide per slide: **spostamento** (Slide 15, dove la somma viene definita come spostamento, e Slide 17, direzioni come relazioni), **matching/fanout** (Slide 22), **compressione/sovrapposizione** (Slide 23), e l'attention come manipolazione guidata dal contesto (Slide 31–28: match Q·K, budget softmax, consegna dei value, e la prova che il contesto sposta il significato); anche la posizione è uno spostamento (Slide 29).
+> **Filo rosso della sezione — le operazioni di manipolazione degli embeddings**: l'LLM come manipolatore di embeddings (punchline Slide 16) si articola in operazioni nominate slide per slide: **spostamento** (Slide 14, dove la somma viene definita come spostamento, e Slide 16, direzioni come relazioni), **matching/fanout** (Slide 21), **compressione/sovrapposizione** (Slide 22), e l'attention come manipolazione guidata dal contesto (Slide 24–27: match Q·K, budget softmax, consegna dei value, e la prova che il contesto sposta il significato); anche la posizione è uno spostamento (Slide 28).
 >
-> **Alfabeto visivo della sezione** — fissato nella Slide 20. Ogni disegno di questa sezione deve rispettarlo, altrimenti il pubblico ricostruisce il modello mentale da capo a ogni slide.
+> **Alfabeto visivo della sezione** — fissato nella Slide 19. Ogni disegno di questa sezione deve rispettarlo, altrimenti il pubblico ricostruisce il modello mentale da capo a ogni slide.
 >
 > | elemento | forma | colore |
 > |---|---|---|
@@ -55,19 +55,19 @@
 > | corsia | linea verticale continua | grigio; burgundy per il token attivo |
 > | token | tessera con testo monospaziato | — |
 >
-> La griglia 4×3 non è decorativa: è letteralmente `vettore 4 × matrice 4×3 = vettore 3`, cioè il livello 2 della Slide 16. Chi ha visto quella slide riconosce l'operazione senza rispiegazioni.
+> La griglia 4×3 non è decorativa: è letteralmente `vettore 4 × matrice 4×3 = vettore 3`, cioè il livello 2 della Slide 15. Chi ha visto quella slide riconosce l'operazione senza rispiegazioni.
 >
-> **Direzione di lettura: dal basso verso l'alto** in tutti i diagrammi che rappresentano un **flusso** — l'input entra in fondo, il risultato esce in cima. Vale per la torre (15), per la griglia dell'attention (25–28), per la mini-mappa e per gli zoom 10, 14, 16, 17, 21, 22.
+> **Direzione di lettura: dal basso verso l'alto** in tutti i diagrammi che rappresentano un **flusso** — l'input entra in fondo, il risultato esce in cima. Vale per la torre (19), per la griglia dell'attention (24–27), per la mini-mappa e per gli zoom 11, 17, 21, 22, 28, 29.
 >
-> **Unica eccezione: la Slide 16**, che va **dall'alto verso il basso**. Non è un flusso di dati ma una lista numerata di tre passi, e una lista si legge dall'alto. Livello 1 in cima, livello 3 in fondo.
+> **Unica eccezione: la Slide 15**, che va **dall'alto verso il basso**. Non è un flusso di dati ma una lista numerata di tre passi, e una lista si legge dall'alto. Livello 1 in cima, livello 3 in fondo.
 >
-> **Stato dell'allineamento**: le Slide **10, 10b, 11, 11b, 12 e 14** *insegnano* l'alfabeto (il vettore a 4 celle, riga per colonna, la griglia 4×3, la tessera-token); dalla 20 alla 33 lo *usano*. Resta indietro la **Slide 17** (lo spazio delle idee), che non è mai stata rifatta: il suo idioma — piano punteggiato, cluster, frecce parallele — è già vicino a quello usato nella Slide 23, ma il disegno è quello originale e non nasce dai generatori. Due eccezioni dichiarate: la **Slide 16** si legge dall'alto (è una lista di passi), e la **Slide 31** resta una slide-metafora, con l'imbuto della compressione che scende — non usa l'alfabeto perché non parla di vettori ma di che cosa succede a un archivio quando lo comprimi. La **Slide 32** non ha figura.
+> **Stato dell'allineamento**: le Slide **10, 10b, 11, 11b, 12 e 14** *insegnano* l'alfabeto (il vettore a 4 celle, riga per colonna, la griglia 4×3, la tessera-token); dalla 20 alla 33 lo *usano*. Resta indietro la **Slide 16** (lo spazio delle idee), che non è mai stata rifatta: il suo idioma — piano punteggiato, cluster, frecce parallele — è già vicino a quello usato nella Slide 22, ma il disegno è quello originale e non nasce dai generatori. Due eccezioni dichiarate: la **Slide 15** si legge dall'alto (è una lista di passi), e la **Slide 30** resta una slide-metafora, con l'imbuto della compressione che scende — non usa l'alfabeto perché non parla di vettori ma di che cosa succede a un archivio quando lo comprimi. La **Slide 31** non ha figura.
 >
-> **Mini-mappa "sei qui"**: le slide 22–30 portano, in fondo alla colonna di testo, la torre della Slide 20 ridotta a silhouette grigia con **un solo elemento in burgundy** — la parte trattata da quella slide. Varianti: `minimap-fc` (16), `minimap-somma` (17), `minimap-attn` (18, 19, 20, 20b), `minimap-pos` (21), `minimap-testa` (22). Esiste anche `minimap-corsie`, pronta per la Slide 41 ma non ancora cablata.
+> **Mini-mappa "sei qui"**: le slide 21–29 (tranne la 23) e la 32 portano, in fondo alla colonna di testo, la torre della Slide 19 ridotta a silhouette grigia con **un solo elemento in burgundy** — la parte trattata da quella slide. Varianti: `minimap-fc` (16), `minimap-somma` (17), `minimap-attn` (18, 19, 20, 20b), `minimap-pos` (21), `minimap-testa` (22). Esiste anche `minimap-corsie`, pronta per la Slide 40 ma non ancora cablata.
 
 ---
 
-## Slide 12 — La base di tutto: a ogni parola il suo vettore
+## Slide 11 — La base di tutto: a ogni parola il suo vettore
 
 **Layout**: titolo in alto; visual al centro (~55%); le due frasi di testo sotto il visual; nota in basso.
 
@@ -78,12 +78,12 @@
   2. *Quell'associazione non la scrive nessuno a mano: viene appresa.*
 - Nota in basso: *Perché proprio dei numeri? Perché sui numeri si può calcolare — è la prossima slide.*
 
-**Visual**: tre colonne, ognuna dal basso verso l'alto — la tessera-token in fondo, il vettore sopra. È la coppia di righe che sta alla base della torre (Slide 20).
+**Visual**: tre colonne, ognuna dal basso verso l'alto — la tessera-token in fondo, il vettore sopra. È la coppia di righe che sta alla base della torre (Slide 19).
 
 **Prompt per schema SVG**:
 > Tre colonne affiancate: `gatto`, `cane`, `Parigi`. In ciascuna, dal basso: la **tessera-token** (testo monospaziato), una freccia verso l'alto, e il **vettore: quattro celle teal con i numeri dentro**. È l'unica slide della sezione in cui le celle portano i numeri — serve a dire "una lista di numeri"; da qui in poi le celle restano colorate e mute.
 >
-> `gatto` `[0.8, −1.3, 2.1, 0.4]` e `cane` `[0.7, −1.1, 1.9, 0.5]` hanno numeri visibilmente simili; `Parigi` `[−2.4, 0.6, −0.3, 1.8]` visibilmente diverso. Non commentarlo: è un seme per la Slide 17.
+> `gatto` `[0.8, −1.3, 2.1, 0.4]` e `cane` `[0.7, −1.1, 1.9, 0.5]` hanno numeri visibilmente simili; `Parigi` `[−2.4, 0.6, −0.3, 1.8]` visibilmente diverso. Non commentarlo: è un seme per la Slide 16.
 >
 > Etichette di riga a sinistra: `vettore / l'embedding` e `parola`. In fondo, una riga sola: *quattro celle nel disegno, migliaia di numeri nella realtà — e l'associazione è appresa durante l'addestramento, non scritta a mano*.
 >
@@ -91,7 +91,7 @@
 
 ---
 
-## Slide 13 — Che cos'è un vettore
+## Slide 12 — Che cos'è un vettore
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso. Apre la terna **10b / 11 / 11b**: stesso viewBox, stesso impianto a tre pannelli, così le tre si leggono come una famiglia.
 
@@ -114,11 +114,11 @@
 >
 > Il messaggio delle migliaia di dimensioni sta **solo nella nota della slide**, non ripetuto dentro la figura.
 >
-> **Elemento focale**: la progressione 2 → 3 → "tutte della stessa lunghezza". È il pannello della sfera a preparare la Slide 14: se la lunghezza è fissa, il prodotto scalare misura soltanto l'angolo.
+> **Elemento focale**: la progressione 2 → 3 → "tutte della stessa lunghezza". È il pannello della sfera a preparare la Slide 13: se la lunghezza è fissa, il prodotto scalare misura soltanto l'angolo.
 
 ---
 
-## Slide 14 — Vettori e prodotto scalare
+## Slide 13 — Vettori e prodotto scalare
 
 **Layout**: titolo in alto; definizioni a sinistra (~35%); visual a tre pannelli al centro-destra (~60%); nota in basso.
 
@@ -147,7 +147,7 @@
 >
 > Nel caso **affini** i due vettori sono collineari: le frecce vanno sfalsate di pochi pixel, altrimenti si sovrappongono e se ne vede una sola. È il caso limite — sovrapposizione totale — e va bene che lo sia.
 >
-> **Riga per colonna** non è un dettaglio tipografico: è la scrittura corretta del prodotto scalare, ed è la stessa forma del livello 1 della Slide 16. Le due slide devono disegnarlo allo stesso modo.
+> **Riga per colonna** non è un dettaglio tipografico: è la scrittura corretta del prodotto scalare, ed è la stessa forma del livello 1 della Slide 15. Le due slide devono disegnarlo allo stesso modo.
 >
 > In cima, una riga: *sopra la direzione, sotto gli stessi numeri: sono lo stesso oggetto* — è la "doppia natura" del vettore, dimostrata tre volte invece che enunciata una. In fondo: *il prodotto scalare: una riga per una colonna, e ne esce un numero solo*.
 >
@@ -155,9 +155,9 @@
 
 ---
 
-## Slide 15 — La somma: spostarsi nello spazio
+## Slide 14 — La somma: spostarsi nello spazio
 
-**Layout**: titolo in alto; i due punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso. È la **gemella della Slide 14**: stesso viewBox, stesso impianto a tre pannelli, così le due si leggono in coppia.
+**Layout**: titolo in alto; i due punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso. È la **gemella della Slide 13**: stesso viewBox, stesso impianto a tre pannelli, così le due si leggono in coppia.
 
 **Testo**:
 - Titolo: *La somma: spostarsi nello spazio*
@@ -169,9 +169,9 @@
 **Visual**: tre casi affiancati — `CONCORDI`, `DIVERSI`, `OPPOSTI` — e in ognuno lo stesso oggetto due volte: sopra come spostamento, sotto come numeri.
 
 **Prompt per schema SVG**:
-> Stesso impianto della Slide 14. In ciascun pannello, dall'alto: l'etichetta del caso; un quadrante con due frecce; le stesse quantità come celle; una riga che dice cosa significa.
+> Stesso impianto della Slide 13. In ciascun pannello, dall'alto: l'etichetta del caso; un quadrante con due frecce; le stesse quantità come celle; una riga che dice cosa significa.
 >
-> Le frecce si disegnano **in fila, non dalla stessa origine**: `a` parte dall'origine, `b` parte **dalla punta di `a`**, e la somma è la freccia burgundy dall'origine alla punta di `b`. È la costruzione che rende la somma un movimento invece che un confronto — ed è anche ciò che evita la sovrapposizione che affligge il caso collineare della Slide 14.
+> Le frecce si disegnano **in fila, non dalla stessa origine**: `a` parte dall'origine, `b` parte **dalla punta di `a`**, e la somma è la freccia burgundy dall'origine alla punta di `b`. È la costruzione che rende la somma un movimento invece che un confronto — ed è anche ciò che evita la sovrapposizione che affligge il caso collineare della Slide 13.
 >
 > | caso | `a` | `b` | `a + b` |
 > |---|---|---|---|
@@ -181,13 +181,13 @@
 >
 > Nel caso **opposti** `b` ripercorre la strada di `a` all'indietro: va sfalsato di una decina di pixel verso l'alto, altrimenti le due frecce si coprono. La somma risultante è lunga pochi pixel — ed è giusto che si veda quasi nulla.
 >
-> Sotto, le celle: **riga più riga uguale riga**. È il contrasto deliberato con la Slide 14, dove riga per colonna dà un *numero*: qui la somma restituisce un oggetto della stessa specie degli operandi. In fondo: *due righe, e ne esce un'altra riga: un punto nuovo nello spazio*.
+> Sotto, le celle: **riga più riga uguale riga**. È il contrasto deliberato con la Slide 13, dove riga per colonna dà un *numero*: qui la somma restituisce un oggetto della stessa specie degli operandi. In fondo: *due righe, e ne esce un'altra riga: un punto nuovo nello spazio*.
 >
 > **Elemento focale**: la freccia burgundy della somma, che nei tre casi è lunga, obliqua e quasi nulla — e la riga di celle in uscita, che è sempre un vettore.
 
 ---
 
-## Slide 16 — La scala del calcolo: vettori e matrici
+## Slide 15 — La scala del calcolo: vettori e matrici
 
 **Layout**: titolo in alto; visual a tre livelli impilati al centro (~70%); nota in basso.
 
@@ -202,7 +202,7 @@
 **Visual**: tre gradini impilati **dall'alto verso il basso** — è l'unica slide della sezione a leggersi in questo verso, perché è una lista numerata di passi e non un flusso di dati. È la slide che insegna la griglia 4×3, quindi la forma dev'essere identica a quella che comparirà in W^Q, W^K e W^V.
 
 **Prompt per schema SVG**:
-> Tre livelli, dall'alto: a sinistra il disegno, a destra la spiegazione in due righe, un filetto sottile a separarli. Tutto in teal (vettori) e grigio (matrici): **i colori di ruolo non esistono ancora**, arrivano alla Slide 25.
+> Tre livelli, dall'alto: a sinistra il disegno, a destra la spiegazione in due righe, un filetto sottile a separarli. Tutto in teal (vettori) e grigio (matrici): **i colori di ruolo non esistono ancora**, arrivano alla Slide 24.
 >
 > **Livello 1 (in cima) — `vettore · vettore = numero`**: il primo vettore **orizzontale** (4 celle), il simbolo `·`, il secondo vettore **verticale** (4 celle impilate), l'`=`, e in uscita un riquadro con `0,83`. Sotto i due vettori, due etichette: *una riga* e *per una colonna*. L'orientamento non è un vezzo: è la scrittura corretta del prodotto scalare, ed è ciò che rende leggibile il livello 2.
 >
@@ -214,7 +214,7 @@
 
 ---
 
-## Slide 17 — Embeddings: lo spazio delle idee
+## Slide 16 — Embeddings: lo spazio delle idee
 
 **Layout**: titolo in alto; definizione sotto il titolo; grande visual al centro (~65%); nota-punchline in basso.
 
@@ -238,45 +238,62 @@
 >
 > **Elemento focale**: il parallelismo delle frecce — è quello a dimostrare che una relazione semantica è una direzione geometrica. I cluster fanno da supporto. Etichetta d'ambiente in un angolo del piano: *proiezione 2D di uno spazio a migliaia di dimensioni*.
 
-## Slide 18 — La tokenizzazione
+## Slide 17 — La tokenizzazione
 
-**Layout**: titolo in alto; i due punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
+**Layout**: titolo in alto; i tre punti di testo a sinistra (~35%); visual al centro-destra (~60%). Nessuna nota HTML: è dentro la figura.
 
 **Testo**:
 - Titolo: *La tokenizzazione*
 - Punti:
   1. **L'unità non è la parola: è il token** — *frammenti di testo da un vocabolario fisso, ~100.000 voci.*
   2. **Le parole comuni sono un token intero; quelle rare vengono spezzate.**
+  3. **L'id è un numero di riga** — *cercare la riga 28741 nella matrice degli embedding è moltiplicare per quella matrice un vettore one-hot: lungo ~100.000, tutto zeri tranne un 1.*
 - Nota in basso: **non è un elemento HTML**: è entrata nella figura, in fondo, unita al glifo che la illustra — *È per questo che a un modello riesce difficile contare le lettere di una parola: le lettere, lui, non le ha mai viste. D'ora in poi diremo: token.*
 
-**Visual**: **una frase sola**, letta dal basso: il testo grezzo in fondo, le tessere-token sopra (con l'id dentro), e sopra ancora il vettore di ciascuna. Il contrasto parole comuni / parola rara sta dentro la stessa riga.
+**Visual**: **una frase sola**, letta dal basso, in **cinque bande e una pipeline sola**: testo grezzo → vocabolario → one-hot → matrice degli embedding → vettore. La frase compare una volta soltanto come testo e una volta come voci del vocabolario: **non ci sono più le tessere-token**, che ripetevano lo stesso testo e lo stesso id della fascia di encoding.
 
 **Prompt per schema SVG**:
-> La frase è `Il gatto ha un elettroencefalogramma` — quattro parole comuni e una rara, così il contrasto non richiede due scene separate.
+> La frase è `Il gatto ha un elettroencefalogramma` — quattro parole comuni e una rara, così il contrasto non richiede due scene separate. Tutte le bande condividono **un solo asse orizzontale**: le stesse sette x, quelle delle celle del vocabolario.
 >
-> **In fondo**, il testo grezzo in monospaziato **grande**, disegnato con `textLength` in modo che ogni carattere occupi esattamente 15px: è questo che permette di allineare le tessere al carattere. Due tacche burgundy verticali lo attraversano nei punti in cui la parola lunga viene tagliata.
+> **In fondo**, il testo grezzo in monospaziato **grande**, disegnato con `textLength` in modo che ogni carattere occupi esattamente 15px. Due tacche burgundy verticali lo attraversano nei punti in cui la parola lunga viene tagliata, e sotto la parola rara una **sottolineatura burgundy** con l'etichetta *una parola, tre token*: senza le tessere è l'unico posto in cui il taglio si vede come un fatto e non come tre id.
 >
-> **Sopra**, le **tessere**, ognuna larga esattamente quanto la sua porzione di testo e allineata sopra di essa. Le quattro comuni sono neutre e separate da uno spazio; le tre della parola rara sono burgundy e **contigue** — si vede che erano una parola sola. Una freccia sale da ogni porzione di testo alla sua tessera.
+> **Sopra**, la **tabella di encoding del tokenizer**: una singola riga orizzontale di celle su fondo grigio (una cella = una voce del vocabolario, col suo testo e il suo id), etichettata `encoding` / *~100.000 voci*, con `⋯` ai due estremi **e nei vuoti** perché si legga come il troncone di una tabella molto più grande. È il passaggio *stringa → id*: da ogni porzione di testo sale una curva nella cella corrispondente. Le tre voci della parola rara sono burgundy. La fascia deve restare **sottile**: è un passaggio, non il protagonista.
 >
-> **Fra il testo grezzo e le tessere**, la **tabella di encoding del tokenizer**: una singola riga orizzontale di celle (una cella = una voce del vocabolario, col suo testo e il suo id), etichettata `encoding` / *~100.000 voci*, con `⋯` ai due estremi perché si legga come il troncone di una tabella molto più grande. È il passaggio *stringa → id*: da ogni porzione di testo sale una freccia nella cella corrispondente, e da quella cella la freccia sale alla tessera che porta quell'id. Le tre voci della parola rara sono burgundy anche qui. La fascia deve restare **sottile**: è un passaggio, non il protagonista.
+> **Sopra ancora, il `one-hot`**: un quadratino per voce, alle stesse x, tutti vuoti tranne uno — teal, con dentro `1` — quello di `gatto`. Etichetta di gutter `one-hot` / *di «gatto»*.
 >
-> L'**id** sta dentro la tessera, sotto al testo: una tessera è un oggetto solo.
+> **Sopra il one-hot, la matrice degli embedding**: per ogni voce una **colonna** di 4 celle, alle stesse x, con `⋯` nei vuoti. Etichetta di gutter `E` / *~100.000 × 4*. Tutte spente tranne quella di `gatto`, teal piena, esattamente **sopra l'uno**. Un `×` nel margine sinistro, fra le due bande, dice l'operazione.
 >
-> **Sopra le tessere**, il **vettore di ogni token**: 4 celle teal, come nella Slide 12 e alla base della torre. I vettori sono **equispaziati e tutti della stessa larghezza**, mentre le tessere sotto hanno larghezze diverse; brevi curve grigie collegano ciascuna tessera al suo vettore. Questo disallineamento è deliberato ed è il secondo insegnamento della slide: *l'embedding non si allunga se il token è più lungo*.
+> **In cima**, il **vettore di ogni token**: 4 celle teal, come nella Slide 11 e alla base della torre. I vettori sono **equispaziati e tutti della stessa larghezza**, mentre le colonne sotto stanno sulle x del vocabolario; brevi curve collegano ciascuna colonna al suo vettore. Questo disallineamento è deliberato ed è il secondo insegnamento della slide: *l'embedding non si allunga se il token è più lungo*.
 >
-> **In fondo**, un riquadro nero che riunisce il glifo e la nota: `11621` in giallo, *e non*, `e l e t t r o` sbarrato, con sotto *dentro la tessera le lettere spariscono*; a destra il testo della nota della slide. Non c'è un elemento `.nota` in HTML: sta tutto qui.
+> **Il filo di `gatto` è acceso in teal per tutta l'altezza**: dalla sua voce del vocabolario all'uno, dall'uno alla colonna, dalla colonna al vettore. Gli altri sei restano neutri e saltano il one-hot — il meccanismo si insegna una volta sola: sette one-hot sovrapposti non sarebbero un vettore.
 >
-> **Elemento focale**: le tre tessere contigue sotto un'unica parola. Il secondo è la riga dei vettori, tutti uguali.
+> Due righe di titolo in cima: *la lookup è una moltiplicazione: one-hot × E* (burgundy) e *ogni token diventa un vettore, sempre di 4 celle* (teal).
+>
+> **In fondo**, un riquadro nero che riunisce il glifo e la nota: `11621` in giallo, *e non*, `e l e t t r o` sbarrato, con sotto *dentro il token le lettere spariscono*; a destra il testo della nota della slide. Non c'è un elemento `.nota` in HTML: sta tutto qui.
+>
+> **Deroga all'alfabeto, dichiarata**: qui l'embedding è una **colonna** di 4 celle e non una riga, perché l'asse orizzontale è il vocabolario e va tenuto allineato per tutte le bande. È la stessa deroga della Slide 29, che disegna il vocabolario in uscita una colonna per token — e quel parallelo torna utile in aula: è la stessa matrice, vista dai due lati.
+>
+> **Elemento focale**: il filo teal che attraversa tutta la figura. Il secondo è la riga dei vettori, tutti uguali.
 
 > **Nota di revisione**: una versione precedente usava due scene impilate (parole comuni sotto, parola rara sopra) e un grande rettangolo-vocabolario in cima. Non funzionava: il vocabolario era l'elemento più grande e il meno informativo, le due scene avevano tessere di larghezze diverse — quindi non sembravano lo stesso oggetto — e chi guarda dall'alto incontrava l'eccezione prima del caso normale.
 >
 > **Attenzione**: la fascia di encoding aggiunta poi è lo stesso oggetto — il vocabolario — ma in una forma che quel problema non ha: una riga sottile *dentro* il flusso, non un blocco grande in cima. Se ricomincia a rubare la scena, è quel difetto che sta tornando.
 
+> **Nota di revisione (7 set 2026) — `one-hot × E`, e via le tessere.** In due passi.
+>
+> **1. La banda `one-hot × E`.** Nella figura ci sono due lookup diverse: *testo → id* (la fascia di encoding) è il tokenizer, string matching, e lì il one-hot non c'entra; *id → vettore* è quella che è letteralmente `one-hot × E`, ed era l'unico passaggio della figura senza spiegazione. La banda spiega quella.
+>
+> **2. Via le tessere.** Nate come primo tentativo, dicevano `Il` + `243` esattamente come la cella di enciclopedia sotto: la frase finiva disegnata due volte in forma tokenizzata. Tolte, la figura è una pipeline sola e non ripete niente. **Quello che si è perso**: le tre tessere burgundy contigue sotto un'unica parola, che erano l'elemento focale. Compensato con la sottolineatura *una parola, tre token* sotto il testo grezzo — meno vivace, ma nel posto giusto, cioè sul testo che viene tagliato.
+>
+> **Semplificazione ereditata**: la fascia mostra sette voci in ordine di frase, non di id (243, 28741, 1274, …), quindi non è davvero una fetta contigua del vocabolario. Era già così; le bande one-hot ed E la ereditano, e per il one-hot pesa un po' di più, perché la posizione dell'uno *è* un indice. Per il pubblico non cambia nulla — il punto è che una sola cella è accesa — ma se un giorno si vuole essere rigorosi, va ordinata per id.
+>
+> **Vincolo di misura**: il viewBox è `784×416`. La figura è **vincolata in larghezza** (rende 706,9px in uno slot alto 468,8 e ne usa 375,1): **94px di margine**. Oltre `784×520` diventa vincolata in altezza e tutto rimpicciolisce insieme. Chi aggiunge bande a questa figura ricontrolli questa misura.
+
 ---
 
-## Slide 19 — Cosa serve, per prevedere la parola successiva
+## Slide 18 — Cosa serve, per prevedere la parola successiva
 
-> **Slide di introduzione all'architettura, solo testo.** Il testo è **verbatim del docente**: non parafrasarlo. Sta prima della mappa (Slide 20) perché dà il *perché* di quella mappa — ogni capacità elencata qui viene poi rivendicata da un pezzo del transformer.
+> **Slide di introduzione all'architettura, solo testo.** Il testo è **verbatim del docente**: non parafrasarlo. Sta prima della mappa (Slide 19) perché dà il *perché* di quella mappa — ogni capacità elencata qui viene poi rivendicata da un pezzo del transformer.
 
 **Layout**: titolo in alto; la frase di apertura in evidenza; i tre punti al centro; i due vincoli in fondo, come due blocchi grigi affiancati. Nessuna figura.
 
@@ -290,9 +307,9 @@
 - Blocco *il vincolo del calcolo*: *Tutte queste capability devono essere implementate in modo "denso" computazionalmente, in modo da rendere il training e l'inferenza efficienti.*
 - Blocco *il vincolo del dataset*: *La decisione di avere un modello autoregressivo parola per parola è data dalla struttura stessa dell'unico dataset di training sufficientemente grande per addestrare modelli di questa complessità: l'interezza del testo presente su internet.*
 
-**Visual**: nessuno. È la slide-tesi della sezione: un diagramma qui anticiperebbe la Slide 20 e le ruberebbe l'effetto.
+**Visual**: nessuno. È la slide-tesi della sezione: un diagramma qui anticiperebbe la Slide 19 e le ruberebbe l'effetto.
 
-## Slide 20 — L'architettura, in un colpo d'occhio
+## Slide 19 — L'architettura, in un colpo d'occhio
 
 **Layout**: titolo in alto; il diagramma occupa quasi tutta la slide (~80%), **sviluppo verticale dal basso verso l'alto**; didascalia e note in basso. La slide si apre in **tre tempi** (fragment reveal.js: tre SVG sovrapposti con lo stesso viewBox e lo stesso contorno, così nulla si sposta fra un tempo e l'altro).
 
@@ -302,7 +319,7 @@
 - Note in basso (piccole):
   - *Il canale centrale scorre: ogni sottoblocco non sostituisce l'embedding, gli somma il suo contributo.*
   - *Dopo la distribuzione, il sampling sceglie il token effettivo.*
-  - *Semplificato: omesse le normalizzazioni e le teste dell'attention (Slide 25).*
+  - *Semplificato: omesse le normalizzazioni e le teste dell'attention (Slide 24).*
 
 **Visual**: la torre — il transformer decoder-only disegnato in verticale, con una corsia per token che sale attraverso i blocchi.
 
@@ -323,9 +340,9 @@
 >
 > **Elementi focali**: (1) il contrasto attention-vs-fully-connected — è l'unica figura del deck che lo mostra, e risolve metà delle domande in aula; (2) la profondità, che si **vede** invece di essere scritta; (3) la mascheratura, gratis, dalle frecce che vanno in una direzione sola; (4) il fatto che solo l'ultima corsia esce in cima verso la testa.
 
-## Slide 21 — Il fully connected: fanout, gate, compressione
+## Slide 20 — Il fully connected: fanout, gate, compressione
 
-> **Slide di introduzione al blocco, solo testo.** Apre richiamando **alla lettera** la seconda capacità della Slide 19, poi anticipa i tre stadi che le Slide 22 e 17 aprono uno per uno. Raccoglie anche i due punti della **ex Slide 24** («La conoscenza è nei pesi», rimossa): stanno qui perché è il fully connected il posto dove quella conoscenza abita.
+> **Slide di introduzione al blocco, solo testo.** Apre richiamando **alla lettera** la seconda capacità della Slide 18, poi anticipa i tre stadi che le Slide 21 e 17 aprono uno per uno. Raccoglie anche i due punti della **ex Slide 23** («La conoscenza è nei pesi», rimossa): stanno qui perché è il fully connected il posto dove quella conoscenza abita.
 
 **Layout**: titolo in alto; il richiamo in evidenza; i tre stadi come tre colonne numerate al centro; i due punti sulla conoscenza in fondo. Nessuna figura.
 
@@ -333,16 +350,16 @@
 - Titolo: *Il fully connected: fanout, gate, compressione*
 - Richiamo (in evidenza): *Serve **conoscenza fattuale su tutti i domini dello scibile**: questo, più o meno, è il ruolo dei fully connected layers. Ecco di che cosa sono fatti.*
 - I tre stadi, numerati, ognuno con il rimando alla slide che lo apre:
-  1. **Fanout** — *l'embedding in transito viene confrontato con migliaia di rilevatori — un rilevatore per concetto. Lo spazio si espande.* (Slide 22)
-  2. **Non linearità** — *un gate: passa solo ciò che è davvero affine, tutto il resto viene azzerato. È la ReLU.* (Slide 22)
-  3. **Compressione** — *i concetti sopravvissuti tornano in un solo vettore: molti rilevatori, quattro celle. Lo spazio si ricontrae.* (Slide 23)
+  1. **Fanout** — *l'embedding in transito viene confrontato con migliaia di rilevatori — un rilevatore per concetto. Lo spazio si espande.* (Slide 21)
+  2. **Non linearità** — *un gate: passa solo ciò che è davvero affine, tutto il resto viene azzerato. È la ReLU.* (Slide 21)
+  3. **Compressione** — *i concetti sopravvissuti tornano in un solo vettore: molti rilevatori, quattro celle. Lo spazio si ricontrae.* (Slide 22)
 - Punti in fondo (ereditati dalla ex slide «La conoscenza è nei pesi»):
   1. **Ciò che è scritto** — *la conoscenza abita nei vettori appresi — gli embedding dei token e le colonne delle matrici: i pattern dei rilevatori e i loro contributi.*
   2. **Ciò che emerge** — *le regolarità geometriche tra quei vettori — le direzioni-relazione dello spazio delle idee. Nessuno le ha scritte: si sono formate perché servivano a predire.*
 
 **Visual**: nessuno. I tre stadi sono già la figura, e le due slide successive li disegnano per esteso: anticiparli in un diagramma li brucerebbe.
 
-## Slide 22 — Fanout: il matching concettuale
+## Slide 21 — Fanout: il matching concettuale
 
 **Layout**: titolo in alto; tre bullet a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -352,14 +369,14 @@
   1. **Un rilevatore per concetto**: *ogni colonna della matrice è un pattern memorizzato; il prodotto scalare misura quanto l'embedding in transito gli somiglia.*
   2. **Tutti in parallelo (fanout)**: *migliaia di rilevatori scattano insieme, a ogni token, a ogni strato — lo spazio si espande.*
   3. **La non linearità è un gate: la ReLU**: *sotto zero azzera, sopra zero lascia passare invariato. Passa solo ciò che è davvero affine; tutto il resto viene azzerato.*
-- Nota in basso: *È il rilevatore di affinità della Slide 14, moltiplicato per migliaia: da un rilevatore a una batteria di rilevatori.*
+- Nota in basso: *È il rilevatore di affinità della Slide 13, moltiplicato per migliaia: da un rilevatore a una batteria di rilevatori.*
 
 **Visual**: il fanout dal basso verso l'alto — l'embedding interroga in parallelo una batteria di rilevatori, le attivazioni salgono come barre, il gate le filtra.
 
 **Prompt per schema SVG**:
 > Dal basso: il **vettore in transito** (4 celle teal) da cui parte un ventaglio di frecce verso sei colonne.
 >
-> **La batteria**: sei **vettori-colonna** grigi (4 celle impilate ciascuno) — è la matrice della Slide 16, disegnata come batteria di rilevatori. Etichetta: *un rilevatore per concetto, migliaia a ogni token*.
+> **La batteria**: sei **vettori-colonna** grigi (4 celle impilate ciascuno) — è la matrice della Slide 15, disegnata come batteria di rilevatori. Etichetta: *un rilevatore per concetto, migliaia a ogni token*.
 >
 > **Le attivazioni**: sopra ogni colonna una **barra verticale** alta quanto l'attivazione, burgundy piena se forte, tinta se debole. Accanto a ogni barra, il nome del concetto **ruotato di 90°**: `animale domestico`, `arriva un luogo`, `frase al presente` (forti), `contesto giuridico`, `linguaggio matematico` (mute), `… e altre migliaia`.
 >
@@ -369,13 +386,13 @@
 >
 > **Come è realizzata**: la spezzata sta in un **riquadro-inset nel gutter di sinistra**, all'altezza della barra del gate, con i due assi (`in` / `out`), lo zero marcato, e **due punti campione** — uno pieno sul ramo diagonale (passa), uno vuoto sul ramo piatto (azzerato). L'inset fa da legenda alla barra: l'etichetta del gutter diventa `non linearità · ReLU`.
 >
-> Perché non disegnare la spezzata *dentro* la barra, con le colonne appoggiate sopra: la batteria è ordinata **per concetto**, non per valore di attivazione, mentre l'asse x di una ReLU è il valore in ingresso. Sovrapporre le due cose richiederebbe di riordinare le colonne per attivazione crescente — cambio più grosso di quanto chiesto, e romperebbe la continuità con le barre che la Slide 23 ridisegna.
+> Perché non disegnare la spezzata *dentro* la barra, con le colonne appoggiate sopra: la batteria è ordinata **per concetto**, non per valore di attivazione, mentre l'asse x di una ReLU è il valore in ingresso. Sovrapporre le due cose richiederebbe di riordinare le colonne per attivazione crescente — cambio più grosso di quanto chiesto, e romperebbe la continuità con le barre che la Slide 22 ridisegna.
 >
 > **Elemento focale**: il contrasto fra le tre frecce che passano e gli zeri che restano.
 
 ---
 
-## Slide 23 — Compressione: la sovrapposizione
+## Slide 22 — Compressione: la sovrapposizione
 
 **Layout**: titolo in alto; i due punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -384,28 +401,28 @@
 - Punti:
   1. **Da migliaia a quattro**: *i concetti sopravvissuti al gate vengono ri-sommati in un unico vettore di quattro celle. Lo spazio si era espanso col fanout: qui si ricontrae.*
   2. **La sovrapposizione**: *più significati coesistono, sovrapposti, nello stesso embedding: non c'è una cella per concetto — ce ne sono migliaia, sommati.*
-- Nota in basso: *Quel vettore è una direzione nello spazio delle idee: sommato all'embedding — il nodo `+` del canale centrale della Slide 20 — ne sposta il significato. È la stessa geometria della Slide 17.*
+- Nota in basso: *Quel vettore è una direzione nello spazio delle idee: sommato all'embedding — il nodo `+` del canale centrale della Slide 19 — ne sposta il significato. È la stessa geometria della Slide 16.*
 
 **Visual**: **solo** la compressione, dal basso verso l'alto: molti rilevatori scattati che rientrano in un vettore da 4 celle.
 
 **Prompt per schema SVG**:
-> **In basso**, le **attivazioni sopravvissute al gate**: barre burgundy disegnate esattamente come nella Slide 22 — la continuità visiva è il punto — con i nomi dei concetti sotto. Devono essere **visibilmente molte** (6-8, non tre): tutto il messaggio della slide sta nel contrasto numerico *molti rilevatori → 4 celle*, e con tre barre quel contrasto non si vede.
+> **In basso**, le **attivazioni sopravvissute al gate**: barre burgundy disegnate esattamente come nella Slide 21 — la continuità visiva è il punto — con i nomi dei concetti sotto. Devono essere **visibilmente molte** (6-8, non tre): tutto il messaggio della slide sta nel contrasto numerico *molti rilevatori → 4 celle*, e con tre barre quel contrasto non si vede.
 >
 > Le barre convergono verso l'alto in **un unico vettore da 4 celle teal**, con l'etichetta che dichiara il contrasto.
 >
 > **Elemento focale**: il collo di bottiglia — tanti ingressi, quattro uscite. Una sola annotazione lo dichiara: *molti rilevatori accesi → quattro celle*.
 >
-> **Come è realizzata**: sette barre (le prime tre con gli stessi nomi delle tre sopravvissute della Slide 22, per continuità; poi `soggetto singolare`, `registro informale`, `spazio chiuso`, `… e altre migliaia`), etichette ruotate a −90° accanto a ciascuna come nella Slide 22, e sette curve che convergono sotto il vettore.
+> **Come è realizzata**: sette barre (le prime tre con gli stessi nomi delle tre sopravvissute della Slide 21, per continuità; poi `soggetto singolare`, `registro informale`, `spazio chiuso`, `… e altre migliaia`), etichette ruotate a −90° accanto a ciascuna come nella Slide 21, e sette curve che convergono sotto il vettore.
 >
 > **Niente testo che ripeta i bullet**: una prima versione portava dentro la figura sia il titolo *Da migliaia a quattro* sia la frase sulla sovrapposizione, che sono già i due bullet dell'HTML — a schermo si leggevano due volte. In figura restano solo le etichette strutturali.
 
-> **Nota di revisione**: una versione precedente aggiungeva in cima un piano punteggiato con due nuvole e il punto che si spostava, e a metà il nodo `+` con l'embedding originale in ingresso (*skip connection*). Rimossi su richiesta del docente: erano due messaggi in più su una slide che ne ha uno solo, e lo spostamento nello spazio delle idee è già la Slide 17. Il nodo `+` resta disegnato dov'è il suo posto: il canale centrale della torre, Slide 20.
+> **Nota di revisione**: una versione precedente aggiungeva in cima un piano punteggiato con due nuvole e il punto che si spostava, e a metà il nodo `+` con l'embedding originale in ingresso (*skip connection*). Rimossi su richiesta del docente: erano due messaggi in più su una slide che ne ha uno solo, e lo spostamento nello spazio delle idee è già la Slide 16. Il nodo `+` resta disegnato dov'è il suo posto: il canale centrale della torre, Slide 19.
 
 ---
 
-## Slide 24 — L'attention: a che cosa serve
+## Slide 23 — L'attention: a che cosa serve
 
-> **Slide di introduzione al blocco, solo testo.** Apre richiamando **alla lettera** la prima capacità della Slide 19, poi anticipa i tre passi che le Slide 25, 19 e 20 accendono uno per uno sulla stessa griglia.
+> **Slide di introduzione al blocco, solo testo.** Apre richiamando **alla lettera** la prima capacità della Slide 18, poi anticipa i tre passi che le Slide 24, 19 e 20 accendono uno per uno sulla stessa griglia.
 
 **Layout**: titolo in alto; il richiamo in evidenza; il punto sul contrasto con il fully connected; i tre passi come tre colonne numerate; nota in basso. Nessuna figura.
 
@@ -414,14 +431,14 @@
 - Richiamo (in evidenza): *Serve **estrarre significato dalla relazione, sequenziale e non solo, delle parole** — grammatica, sintassi, risoluzione delle omonimie: questo, più o meno, è il ruolo dell'attention.*
 - Punto: **È l'unico punto in cui le corsie si parlano** — *il fully connected lavora su ogni token per conto suo. L'attention no: è lì che il significato di un token viene deciso dagli altri token del contesto.*
 - I tre passi, numerati, col rimando alla slide che li apre:
-  1. **Il match — Q·K** — *ogni token emette una domanda e una chiave; il prodotto scalare dice quanto una chiave risponde a una domanda.* (Slide 25)
-  2. **Il budget — softmax** — *le affinità grezze diventano percentuali che sommano a 1: quanta attenzione va a chi.* (Slide 26)
-  3. **La consegna — V** — *ciò su cui fai match non è ciò che ricevi: i value, pesati dal budget, si sommano all'embedding.* (Slide 27)
+  1. **Il match — Q·K** — *ogni token emette una domanda e una chiave; il prodotto scalare dice quanto una chiave risponde a una domanda.* (Slide 24)
+  2. **Il budget — softmax** — *le affinità grezze diventano percentuali che sommano a 1: quanta attenzione va a chi.* (Slide 25)
+  3. **La consegna — V** — *ciò su cui fai match non è ciò che ricevi: i value, pesati dal budget, si sommano all'embedding.* (Slide 26)
 - Nota in basso: *Tre passi sulla stessa griglia: le prossime tre slide accendono una riga per volta, e la tabella non si sposta mai.*
 
-**Visual**: nessuno — e deliberatamente: la griglia condivisa delle Slide 25–28 è l'effetto della sequenza, e mostrarla qui la sprecherebbe. Il contrasto *corsie separate / corsie che si parlano* è già disegnato nel tempo 3 della Slide 20.
+**Visual**: nessuno — e deliberatamente: la griglia condivisa delle Slide 24–27 è l'effetto della sequenza, e mostrarla qui la sprecherebbe. Il contrasto *corsie separate / corsie che si parlano* è già disegnato nel tempo 3 della Slide 19.
 
-## Slide 25 — Attention: domande e chiavi (Q e K)
+## Slide 24 — Attention: domande e chiavi (Q e K)
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~35%, classe `micro`: è la slide più piena della sezione); la griglia al centro-destra (~60%); il box metafora affiancato alla mini-mappa, e la nota multi-head in basso.
 
@@ -440,7 +457,7 @@
 
 Le righe non ancora raggiunte restano disegnate ma **spente**: si vede che manca qualcosa. Le tre matrici di proiezione, disegnate come griglie 4×3, stanno **sul lato destro** della griglia, fuori dalle colonne dei token: **le tre proiezioni partono tutte dall'embedding**, non l'una dall'altra, e fra `W^Q` e `W^K` **non c'è alcun collegamento** — sarebbe fuorviante. `W^K` e `W^V` agiscono su tutti i token (una linea orizzontale con una freccia per colonna: *è la stessa matrice per tutta la frase*), mentre **`W^Q` è alimentata dall'embedding della sola colonna `calcio`**, la più a destra — coerente col fatto che la riga `q` è popolata solo lì.
 
-La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni token, Q solo per quello che sta cercando. È già, disegnata, la nota della Slide 41 (*«Q del passato: calcolate e buttate»*) — e per questo `W^Q` pesca da quella colonna e non da tutta la frase.
+La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni token, Q solo per quello che sta cercando. È già, disegnata, la nota della Slide 40 (*«Q del passato: calcolate e buttate»*) — e per questo `W^Q` pesca da quella colonna e non da tutta la frase.
 
 **Numeri, unici per tutte e quattro le slide** — `calcio` guarda anche sé stesso, quindi i punteggi sono cinque e le percentuali sono una softmax vera sui punteggi:
 
@@ -453,7 +470,7 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
 
 **Elemento focale**: le due righe `q` e `k` con le rispettive matrici — è qui che il terzo bullet ("tre proiezioni della stessa cosa") smette di essere solo testo e diventa disegno.
 
-## Slide 26 — Softmax: il budget di ascolto
+## Slide 25 — Softmax: il budget di ascolto
 
 **Layout**: titolo in alto; i due punti di testo a sinistra (~35%); la griglia al centro-destra (~60%); mini-mappa in fondo alla colonna di testo; nota in basso.
 
@@ -464,36 +481,36 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
   2. **Esagera le differenze**: *chi è più affine prende quasi tutto il budget: è un "max morbido".*
 - Nota in basso: *La stessa macchina la ritroveremo all'uscita del modello, quando i punteggi diventeranno la distribuzione sul prossimo token.*
 
-**Visual (stadio 2 di 3)**: `slide19-griglia-softmax.svg`. La stessa griglia della Slide 25, con in più la riga `softmax` accesa. Ogni cella porta la percentuale e, in fondo, una barretta sottile proporzionale — il confronto si legge senza che la barra passi sotto al numero. In cima, il callout: *«Le stesse affinità, ora come budget. I divari si allargano: 3.1 contro 1.9 diventa 63% contro 19%.»*
+**Visual (stadio 2 di 3)**: `slide19-griglia-softmax.svg`. La stessa griglia della Slide 24, con in più la riga `softmax` accesa. Ogni cella porta la percentuale e, in fondo, una barretta sottile proporzionale — il confronto si legge senza che la barra passi sotto al numero. In cima, il callout: *«Le stesse affinità, ora come budget. I divari si allargano: 3.1 contro 1.9 diventa 63% contro 19%.»*
 
 **Elemento focale**: il passaggio fra due righe adiacenti della stessa tabella — `q · k` sopra, `softmax` sotto — che è il modo più diretto di mostrare cosa fa la softmax: normalizza e amplifica.
 
-## Slide 27 — V: il contenuto del libro
+## Slide 26 — V: il contenuto del libro
 
 **Layout**: titolo in alto; i due punti di testo a sinistra (~30%); la griglia al centro-destra (~65%); mini-mappa in fondo alla colonna di testo; nota in basso. La slide ha **due tempi** (fragment reveal.js): al click un secondo SVG si sovrappone al primo, con lo stesso viewBox, e compare contestualmente la frase sulle teste.
 
 **Testo**:
-- Titolo: *V: il contenuto del libro* — riprende alla lettera la metafora della biblioteca fissata nella Slide 25 (`Q` = la richiesta al banco, `K` = l'etichetta sul dorso, `V` = il contenuto del libro). Il titolo precedente era *V: la consegna*.
+- Titolo: *V: il contenuto del libro* — riprende alla lettera la metafora della biblioteca fissata nella Slide 24 (`Q` = la richiesta al banco, `K` = l'etichetta sul dorso, `V` = il contenuto del libro). Il titolo precedente era *V: la consegna*.
 - Punti:
   1. **Il terzo volto del token: il value**: *la proiezione V è ottimizzata per estrarre la semantica di quel token in quel contesto — ciò che consegna, se ascoltato, per arricchire il token in arrivo. Il libro, non l'etichetta.*
   2. **La somma pesata è lo spostamento**: *i value, pesati dal budget di ascolto, si sommano all'embedding: il significato si muove verso l'interpretazione giusta.*
 - Frase del 2° tempo (a comparsa, insieme al secondo visual): *Tanti blocchi attention sono applicati in parallelo, per modellare relazioni diverse e estrarre semantiche differenti dal contesto precedente.*
-- Nota in basso: *È la manipolazione della Slide 23 — ma qui guidata dal contesto: sono gli altri token a decidere la direzione.*
+- Nota in basso: *È la manipolazione della Slide 22 — ma qui guidata dal contesto: sono gli altri token a decidere la direzione.*
 
 **Visual (stadio 3 di 3)**: `slide20-griglia-v.svg`. La griglia completa: si accendono `× W^V`, `v`, `v × peso` — dove le celle sbiadiscono in proporzione al peso — e `somma`, con le frecce che convergono da tutte le colonne nel nuovo embedding di `calcio` (4 celle teal con bordo burgundy: è un embedding, ma non più quello del vocabolario). In cima, il callout: *«Il contesto ha consegnato. L'embedding di "calcio" non è più quello del vocabolario: è quello di questa frase.»*
 
-**Elementi focali**: la sbiadatura della riga `v × peso` (il budget che pesa la consegna) e la convergenza nella somma. Il callout prepara la Slide 28.
+**Elementi focali**: la sbiadatura della riga `v × peso` (il budget che pesa la consegna) e la convergenza nella somma. Il callout prepara la Slide 27.
 
 **Visual del 2° tempo — le teste in parallelo**: `slide20-multihead.svg`, **stesso viewBox** di `slide20-griglia-v.svg` (si sovrappone col pattern `.visual.stack`, così al click nulla si sposta).
 
 **Prompt per schema SVG**:
-> La griglia completa della slide resta riconoscibile in primo piano — è `testa 1` — e dietro compaiono **altre copie della stessa griglia, sfalsate in profondità**: silhouette smorzate, senza testo leggibile, etichettate `testa 2`, `testa 3`, `⋯`, con l'idea che siano molte. Accanto alle teste sul fondo, due o tre esempi brevi di che cosa cerca ciascuna — *sintassi*, *riferimenti*, *tono* — gli stessi della nota multi-head della Slide 25.
+> La griglia completa della slide resta riconoscibile in primo piano — è `testa 1` — e dietro compaiono **altre copie della stessa griglia, sfalsate in profondità**: silhouette smorzate, senza testo leggibile, etichettate `testa 2`, `testa 3`, `⋯`, con l'idea che siano molte. Accanto alle teste sul fondo, due o tre esempi brevi di che cosa cerca ciascuna — *sintassi*, *riferimenti*, *tono* — gli stessi della nota multi-head della Slide 24.
 >
 > **Elemento focale**: la profondità. Il messaggio è che la macchina appena vista è **una** di molte, non che ne cambia il funzionamento: per questo la griglia in primo piano non va modificata.
 
-> **Nota di revisione**: la scena "spazio delle idee con le due frasi divergenti", che in una versione precedente stava in questa slide, è diventata la Slide 28. Serviva un confronto fra due frasi, e la griglia ne mostra una alla volta.
+> **Nota di revisione**: la scena "spazio delle idee con le due frasi divergenti", che in una versione precedente stava in questa slide, è diventata la Slide 27. Serviva un confronto fra due frasi, e la griglia ne mostra una alla volta.
 
-## Slide 28 — Lo stesso token, due contesti
+## Slide 27 — Lo stesso token, due contesti
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~35%); la griglia al centro-destra (~60%); mini-mappa in fondo alla colonna di testo; nota in basso. La slide ha **due fotogrammi** che si scambiano con un fragment reveal.js: due SVG sovrapposti, stesso viewBox e stessa geometria, così cambia solo il contenuto.
 
@@ -511,7 +528,7 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
 
 **Prompt per schema SVG**:
 
-> Stessa griglia delle Slide 25–27, con tutte le righe accese. Al posto del callout scuro, in cima una fascia `DOVE FINISCE «CALCIO»`: a sinistra il punto `calcio (dal vocabolario)`, una freccia orizzontale, e a destra **una sola nuvola** con il titolo dell'area semantica e tre parole vicine. La nuvola cambia insieme alla frase: la transizione muove i pesi **e** la destinazione, così si vede che la seconda è conseguenza dei primi.
+> Stessa griglia delle Slide 24–26, con tutte le righe accese. Al posto del callout scuro, in cima una fascia `DOVE FINISCE «CALCIO»`: a sinistra il punto `calcio (dal vocabolario)`, una freccia orizzontale, e a destra **una sola nuvola** con il titolo dell'area semantica e tre parole vicine. La nuvola cambia insieme alla frase: la transizione muove i pesi **e** la destinazione, così si vede che la seconda è conseguenza dei primi.
 >
 > **Fotogramma 1** — frase `Il portiere diede un calcio`; nuvola `SPORT`: `pallone`, `rigore`, `partita`.
 >
@@ -528,7 +545,7 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
 >
 > **Elemento focale**: il fatto che a cambiare sia **solo la riga dei token**. Tutto il resto della macchina — le tre matrici, la struttura, i passi — è identico: è il contesto, e nient'altro, a spostare il significato.
 
-## Slide 29 — Positional encoding: l'ordine conta
+## Slide 28 — Positional encoding: l'ordine conta
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -538,7 +555,7 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
   1. **L'attention è cieca all'ordine**: *nel match Q·K nulla dice chi viene prima: "il gatto morde il cane" e "il cane morde il gatto" sarebbero lo stesso sacchetto di embedding.*
   2. **La correzione**: *a ogni embedding si somma un vettore che codifica la sua posizione nella sequenza.*
   3. **Ancora uno spostamento**: *anche la posizione è una direzione nello spazio delle idee: "gatto, secondo token della frase" è il punto `gatto`, spostato un po'.*
-- Nota in basso: *È l'innesto "+ positional encoding" già visto nella mappa dell'architettura (Slide 20).*
+- Nota in basso: *È l'innesto "+ positional encoding" già visto nella mappa dell'architettura (Slide 19).*
 
 **Visual**: due scene impilate — in basso il problema (senza posizione), in alto la correzione.
 
@@ -553,7 +570,7 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
 
 ---
 
-## Slide 30 — Reverse embedding: tornare ai token
+## Slide 29 — Reverse embedding: tornare ai token
 
 **Layout**: titolo in alto; i due punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 
@@ -564,14 +581,14 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
   2. **Ancora prodotti scalari**: *l'embedding finale viene confrontato con il vettore di ogni token del vocabolario: ~100.000 affinità — i logits — che la softmax trasforma nella distribuzione.*
 - Nota in basso: *È la distribuzione da cui siamo partiti: il cerchio del "manipolatore di embeddings" si chiude.*
 
-**Visual**: la testa del modello, dal basso verso l'alto — è lo stesso percorso che chiude la torre della Slide 20.
+**Visual**: la testa del modello, dal basso verso l'alto — è lo stesso percorso che chiude la torre della Slide 19.
 
 **Prompt per schema SVG**:
 > Dal basso: l'**embedding finale** (4 celle teal, *dopo tutti i blocchi*), con accanto la nota della simmetria: *all'ingresso da token a vettore. Qui il percorso si inverte: da vettore a token.*
 >
 > Sopra, il **vocabolario**, disegnato **in orizzontale**: ogni token è una **colonna** — un vettore-colonna di 4 celle grigie impilate — e le colonne affiancate formano una matrice rettangolare. Il **nome del token** sta sotto la sua colonna, in monospaziato; il **logit in cima** ad essa: `sul 4.2`, `un 3.9`, `morbido 3.5`, `nero 3.3`, `stanco 2.8`, `Parigi −3.1`, più una colonna `⋯ ~100.000`. Le due note restano: *ogni colonna è un prodotto scalare fra l'embedding finale e il vettore del token* e *Parigi ha logit negativo: l'affinità non seleziona soltanto, esclude*.
 >
-> L'orientamento non è un dettaglio estetico: **riga per colonna** è la convenzione fissata nella Slide 16 e usata nella Slide 22 — una voce del vocabolario è una colonna, come un rilevatore è una colonna. Una versione precedente la disegnava per righe e rompeva la convenzione.
+> L'orientamento non è un dettaglio estetico: **riga per colonna** è la convenzione fissata nella Slide 15 e usata nella Slide 21 — una voce del vocabolario è una colonna, come un rilevatore è una colonna. Una versione precedente la disegnava per righe e rompeva la convenzione.
 >
 > Le colonne sono **contigue**: devono comporre una matrice rettangolare, non leggersi come sei vettori separati. Dopo l'ultima, una colonna tratteggiata con `⋯` e `~100.000` dice che la matrice continua.
 >
@@ -579,7 +596,7 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
 >
 > Sopra ancora il blocco **`softmax`** (nero, come nella torre), con il richiamo *la stessa macchina del budget di ascolto*.
 >
-> **In cima**, la distribuzione a barre: `sul` 30%, `un` 22%, `morbido` 15%, `nero` 12%, `stanco` 8%, poi *… e gli altri ~100.000 token*. Sono gli stessi valori della Slide 5 e della Slide 20.
+> **In cima**, la distribuzione a barre: `sul` 30%, `un` 22%, `morbido` 15%, `nero` 12%, `stanco` 8%, poi *… e gli altri ~100.000 token*. Sono gli stessi valori della Slide 4 e della Slide 19.
 >
 > **Elemento focale**: la simmetria ingresso/uscita, e il logit negativo di `Parigi`.
 
@@ -587,15 +604,15 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
 
 ## Slide 24 (numerazione precedente) — La conoscenza è nei pesi — **RIMOSSA**
 
-> Slide tagliata su richiesta del docente. I suoi due punti (**Ciò che è scritto** / **Ciò che emerge**) sono stati **spostati nella Slide 21**, l'introduzione al fully connected: è lì che quella conoscenza abita, e il discorso è lo stesso.
+> Slide tagliata su richiesta del docente. I suoi due punti (**Ciò che è scritto** / **Ciò che emerge**) sono stati **spostati nella Slide 20**, l'introduzione al fully connected: è lì che quella conoscenza abita, e il discorso è lo stesso.
 >
-> La sua nota portava il ponte verso la Slide 31 (*«niente archivio consultabile → il recupero può sbagliare»*): quel ponte è stato ricostruito come **primo punto della Slide 31** (*Niente archivio consultabile*), altrimenti la 31 restava senza attacco.
+> La sua nota portava il ponte verso la Slide 30 (*«niente archivio consultabile → il recupero può sbagliare»*): quel ponte è stato ricostruito come **primo punto della Slide 30** (*Niente archivio consultabile*), altrimenti la 31 restava senza attacco.
 >
 > **Non** è stato riportato il confronto disegnato `UN DATABASE` / `UN LLM` (`slide24-conoscenza-nei-pesi.svg`): era una figura a sé, e la 21 è una slide di solo testo. Il file SVG e la funzione `slide24()` in `gen_c.py` **restano nel repo ma non sono più referenziati**: se la decisione è definitiva, vanno rimossi anche loro.
 
 ---
 
-## Slide 31 — L'LLM come compressore lossy
+## Slide 30 — L'LLM come compressore lossy
 
 **Layout**: titolo in alto; concetto centrale in evidenza; tre punti sotto; visual a destra (~45%); pull-quote in basso.
 
@@ -624,7 +641,7 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
 >
 > **Punto visivo centrale (elemento focale)**: ciò che sta sotto l'imbuto NON è una versione rimpicciolita di ciò che sta sopra — è qualitativamente diverso. La compressione è concettuale, non letterale.
 
-## Slide 32 — Conseguenze della compressione
+## Slide 31 — Conseguenze della compressione
 
 **Layout**: titolo in alto; due colonne contrastive al centro; regola pratica in basso come blocco evidenziato.
 
@@ -644,7 +661,7 @@ La riga `q` è popolata **solo nella colonna `calcio`**: K e V esistono per ogni
 
 **Visual**: nessuno — è l'unica slide della sezione senza figura. Il contrasto tra le due colonne di testo è l'elemento visivo.
 
-## Slide 33 — MoE: non tutti i pesi lavorano sempre
+## Slide 32 — MoE: non tutti i pesi lavorano sempre
 
 **Layout**: titolo in alto; i due punti di testo a sinistra (~35%); visual al centro-destra (~60%); nota in basso.
 

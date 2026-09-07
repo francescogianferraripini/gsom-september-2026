@@ -257,26 +257,40 @@ def slide12():
 
 # ================= SLIDE 14 — la tokenizzazione =================
 def slide14():
-    G, DY = 84, 46                          # gutter dell'etichetta; di quanto scende la parte bassa
-    W, H = 700 + G, 322 + DY
+    """La tokenizzazione, letta dal basso: testo grezzo, vocabolario, one-hot, E, vettore.
+
+    Le tessere-token che stavano fra il vocabolario e i vettori sono state tolte: la
+    fascia di encoding portava gia' lo stesso testo e lo stesso id, e la frase finiva
+    disegnata due volte. Al loro posto ci sono i due oggetti che spiegano il passaggio
+    che prima era muto — il one-hot e la matrice degli embedding.
+    """
+    G = 84                                  # gutter delle etichette
+    W = 700 + G
     RAW = "Il gatto ha un elettroencefalogramma"
     X0, CW = 30, 640 / 36.0                 # 36 caratteri, allineati al pixel
     TOKENS = [(0, 2, "243", False), (3, 5, "28741", False), (9, 2, "1274", False),
               (12, 2, "553", False), (15, 7, "11621", True), (22, 7, "45093", True),
               (29, 7, "30818", True)]
-    VY, VC = 44, 18                         # riga dei vettori
-    TY0, TY1 = 104, 156                     # riga delle tessere
-    LK0, LKH = 178, 30                      # riga di lookup: un troncone del vocabolario
+    SEL = 1                                 # la voce su cui si mostra il meccanismo: "gatto"
+    VY, VC = 48, 18                         # riga dei vettori
+    EC, EY0 = 16, 96                        # matrice degli embedding: cella, cima
+    EY1 = EY0 + 4 * EC                      # 96..160
+    OC, OY0 = 20, 172                       # one-hot: cella, cima
+    OY1 = OY0 + OC                          # 172..192
+    LK0, LKH = 212, 30                      # fascia di encoding: un troncone del vocabolario
     LK1, LKM = LK0 + LKH, LK0 + LKH / 2.0
-    RY = 184 + DY                           # il testo grezzo, spinto in basso per far posto
+    RY = 266                                # il testo grezzo
+    NY = 326                                # il riquadro nero: sotto la sottolineatura della parola rara
+    H = NY + 82 + 8
     PITCH = 640 / 7.0
     FS_C, FS_I = 11, 10                     # dentro la cella: la voce, e sotto il suo id
     o = []
 
-    o.append(txt(X0, 30, "ogni tessera diventa un vettore, sempre di 4 celle", 11, TEAL_D,
+    o.append(txt(X0, 16, "la lookup è una moltiplicazione: one-hot × E", 11, BUR, "start", "600"))
+    o.append(txt(X0, 34, "ogni token diventa un vettore, sempre di 4 celle", 11, TEAL_D,
                  "start", "600"))
 
-    # --- le celle del lookup: larghe quanto il loro contenuto, tenute il piu' possibile
+    # --- le celle del vocabolario: larghe quanto il loro contenuto, tenute il piu' possibile
     #     sotto il token che le pesca, con un gioco minimo fra l'una e l'altra
     GAP, LB, RB = 22, X0 + 22, X0 + 610
     cells = []
@@ -313,54 +327,87 @@ def slide14():
         o.append(txt(c["cx"], LK0 + 25, c["id"], FS_I, BUR if c["rara"] else GREYD,
                      "middle", "400", MONO))
 
+    # --- one-hot e matrice degli embedding, sulle STESSE x delle celle del vocabolario:
+    #     cosi' il one-hot non e' un oggetto nuovo, e' la fascia con una cella accesa,
+    #     e la colonna che pesca sta esattamente sopra l'uno.
+    #     Deroga all'alfabeto, dichiarata: qui l'embedding e' una COLONNA di 4 celle e non
+    #     una riga. E' il prezzo per tenere l'asse del vocabolario orizzontale; e' la stessa
+    #     deroga della slide 30, che disegna il vocabolario in uscita una colonna per token.
+    #     Il one-hot mostrato e' UNO solo dei sette: sette one-hot sovrapposti non sarebbero
+    #     un vettore. Per gli altri sei la colonna di E resta spenta e sale lo stesso al suo
+    #     vettore — il meccanismo si insegna una volta.
+    pb = ([X0] + [v for c in cells for v in (c["cx"] - OC / 2.0, c["cx"] + OC / 2.0)]
+          + [X0 + 640])
+    for a, b in zip(pb[0::2], pb[1::2]):
+        if b - a < 24:
+            continue
+        m = (a + b) / 2.0
+        for k in (-5, 0, 5):
+            for cy in ((EY0 + EY1) / 2.0, OY0 + OC / 2.0):
+                o.append('<circle cx="%.1f" cy="%s" r="1.15" fill="%s"/>' % (m + k, cy, ARROW))
+    for i, c in enumerate(cells):
+        cx, sel = c["cx"], i == SEL
+        for r in range(4):                                   # la colonna di E
+            o.append(rect(cx - EC / 2.0, EY0 + r * EC, EC, EC, TEAL_F if sel else SOFT,
+                          TEAL if sel else OFF_T, rx=2, sw=1.2 if sel else 0.8))
+        o.append(rect(cx - OC / 2.0, OY0, OC, OC, TEAL_F if sel else "#ffffff",
+                      TEAL if sel else OFF_T, rx=2, sw=1.3 if sel else 0.8))
+        if sel:
+            o.append(txt(cx, OY0 + OC - 6, "1", 11, TEAL_D, "middle", "700", MONO))
+    o.append(txt(40, (EY1 + OY0) / 2.0 + 5, "×", 16, BODY, "middle", "600"))
+
+    # --- il filo di "gatto", acceso: dalla sua voce all'uno, dall'uno alla colonna
+    cxs = cells[SEL]["cx"]
+    o.append(arrow(cxs, LK0 - 2, cxs, OY1 + 3, TEAL, 1.4, "at"))
+    o.append(arrow(cxs, OY0 - 2, cxs, EY1 + 3, TEAL, 1.4, "at"))
+
     for i, ((start, ln, tid, rara), c) in enumerate(zip(TOKENS, cells)):
-        x = X0 + start * CW
-        w = ln * CW
-        cxt = x + w / 2.0                                  # centro della tessera
         cxv = X0 + PITCH / 2.0 + i * PITCH                 # centro del vettore
-        st, mk = (BUR, "ab") if rara else ("#c3c8cd", "a")
+        st, mk = (TEAL, "at") if i == SEL else ("#c3c8cd", "a")
         o.append(vec(cxv, VY, 4, VC, TEAL, TEAL_F))
-        o.append(curve(cxt, TY0 - 4, cxt, TY0 - 22, cxv, VY + VC + 20, cxv, VY + VC + 4,
-                       "#c3c8cd", 1.2))
-        o.append(rect(x + 1, TY0, w - 2, TY1 - TY0, BUR_F if rara else "#ffffff",
-                      BUR if rara else LINE, rx=5, sw=1.6 if rara else 1.2))
-        o.append(txt(cxt, TY0 + 30, RAW[start:start + ln], 22,
-                     BUR if rara else BODY, "middle", "500", MONO))
-        o.append(txt(cxt, TY0 + 46, tid, 9.5, BUR if rara else GREYD, "middle", "400", MONO))
-        # dalla voce del vocabolario alla tessera che porta quell'id
-        o.append(curve(c["cx"], LK0 - 1, c["cx"], LK0 - 9, cxt, TY1 + 11, cxt, TY1 + 3,
-                       st, 1.2, marker=mk))
+        # dalla colonna di E al vettore in cima
+        o.append(curve(c["cx"], EY0 - 3, c["cx"], EY0 - 22, cxv, VY + VC + 20, cxv,
+                       VY + VC + 4, st, 1.4 if i == SEL else 1.2, marker=mk))
         # dalla porzione di testo grezzo alla sua voce nel vocabolario
+        cxt = X0 + (start + ln / 2.0) * CW
         o.append(curve(cxt, RY - 2, cxt, RY - 10, c["cx"], LK1 + 10, c["cx"], LK1 + 2,
-                       st, 1.2, marker=mk))
+                       BUR if rara else "#c3c8cd", 1.2, marker="ab" if rara else "a"))
 
     o.append('<text x="%s" y="%s" textLength="640" lengthAdjust="spacingAndGlyphs" '
              'font-family="%s" font-size="27" fill="%s">%s</text>'
              % (X0, RY + 22, MONO, BODY, RAW))
     for cut in (22, 29):
         o.append(line(X0 + cut * CW, RY, X0 + cut * CW, RY + 28, BUR, 1.8))
+    # la parola rara, sottolineata: tre token da una parola sola. Senza le tessere
+    # questo e' l'unico posto in cui il taglio si vede come un fatto e non come un id.
+    o.append(line(X0 + 15 * CW, RY + 32, X0 + 36 * CW, RY + 32, BUR, 1.6))
+    o.append(txt(X0 + 25.5 * CW, RY + 44, "una parola, tre token", 10, BUR, "middle", "600"))
 
     # --- la nota, in fondo: il glifo e il testo insieme
-    NY = 226 + DY
     o.append(rect(20, NY, 660, 82, BLACK, "none", rx=8))
     o.append(txt(44, NY + 36, "11621", 19, YEL, "start", "700", MONO))
     o.append(txt(118, NY + 35, "e non", 11, "#c9ccd1", "start"))
     o.append(txt(158, NY + 36, "e l e t t r o", 15, "#8a8f96", "start", "400", MONO))
     o.append(line(156, NY + 31, 272, NY + 31, "#8a8f96", 1.4))
-    o.append(txt(44, NY + 62, "dentro la tessera le lettere spariscono", 10, "#8a8f96", "start"))
+    o.append(txt(44, NY + 62, "dentro il token le lettere spariscono", 10, "#8a8f96", "start"))
     o.append(txt(316, NY + 24, "È per questo che a un modello riesce difficile contare le",
                  11.5, "#ffffff", "start"))
     o.append(txt(316, NY + 41, "lettere di una parola: le lettere, lui, non le ha mai viste.",
                  11.5, "#ffffff", "start"))
-    o.append(txt(316, NY + 64, "D'ora in poi diremo: token.", 11.5, YEL, "start", "700"))
+    o.append(txt(316, NY + 64, "D\'ora in poi diremo: token.", 11.5, YEL, "start", "700"))
 
-    # --- l'etichetta della fascia, nel gutter: fuori dalla traslazione del disegno
-    gut = (txt(G + X0 - 14, LK0 + 12, "encoding", 12, BODY, "end", "700") +
+    # --- le etichette nel gutter: fuori dalla traslazione del disegno
+    gut = (txt(G + X0 - 14, EY0 + 26, "E", 12, BODY, "end", "700") +
+           txt(G + X0 - 14, EY0 + 40, "~100.000 × 4", 10, GREYD, "end") +
+           txt(G + X0 - 14, OY0 + 8, "one-hot", 11, BODY, "end", "700") +
+           txt(G + X0 - 14, OY0 + 20, "di «gatto»", 9, GREYD, "end") +
+           txt(G + X0 - 14, LK0 + 12, "encoding", 12, BODY, "end", "700") +
            txt(G + X0 - 14, LK0 + 26, "~100.000 voci", 10, GREYD, "end"))
     return svg(W, H, gut + '<g transform="translate(%s 0)">%s</g>' % (G, "".join(o)),
                "Dal basso: la frase grezza, la riga di encoding del vocabolario che trasforma "
-               "ogni porzione di testo nel suo id, le tessere-token e infine i vettori di quattro "
-               "celle; la parola rara pesca tre voci diverse del vocabolario")
+               "ogni porzione di testo nel suo id, il vettore one-hot che accende una sola voce, "
+               "la matrice degli embedding da cui quella voce pesca la sua colonna, e in cima i "
+               "vettori di quattro celle; la parola rara pesca tre voci diverse del vocabolario")
 
 for fn, body in (("slide10-parola-vettore.svg", slide10()),
                  ("slide10b-che-cos-e-un-vettore.svg", slide10b()),

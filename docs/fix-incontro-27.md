@@ -23,8 +23,8 @@ Per commentare, scrivi sotto la riga della slide.
 		- ⚠️ Non ho rinumerato le slide 4-9: `#slide-4` resta `#slide-4`. Il numero 10 non esiste più nel deck (dopo la 09 viene la 11). Come nel 26, le slide nuove o spostate prendono la lettera; se vuoi la numerazione contigua la faccio come passo a sé.
 - **03a · Com'è fatta una chiamata al modello** — `#slide-3a` — `slide10-chiamata-api.svg` — **SPOSTATA (ex 10)**
 	- ✅ FATTO — «riprendiamo l'esempio dell'incontro 26»
-		- *Figura*: la richiesta ora contiene la conversazione della slide 9 del 26: `system: "Sei l'assistente di Acme…"`, `tools: [ {name: "cerca_ordine", description, schema} ]`, `messages: [ {role: "user", content: "Dov'è l'ordine 4471?"} ]`. Le etichette a destra non dicono più «lo strato 1 / 2 / la storia» (gli strati arrivano in sezione 2) ma **`← [system]` · `← Tool:` · `← [user]`**: i riquadri del 26, uno per campo.
-		- *Didascalia*: «È la scena della slide 9 del 26 (Acme, l'ordine 4471), vista da chi la esegue: una richiesta HTTP. […] Ogni riquadro del 26 è un campo della richiesta; la risposta porta i blocchi generati e uno `stop_reason` […]».
+		- *Figura*: la richiesta ora contiene la conversazione della slide 8 del 26: `system: "Sei l'assistente di Acme…"`, `tools: [ {name: "cerca_ordine", description, schema} ]`, `messages: [ {role: "user", content: "Dov'è l'ordine 4471?"} ]`. Le etichette a destra non dicono più «lo strato 1 / 2 / la storia» (gli strati arrivano in sezione 2) ma **`← [system]` · `← Tool:` · `← [user]`**: i riquadri del 26, uno per campo.
+		- *Didascalia*: «È la scena della slide 8 del 26 (Acme, l'ordine 4471), vista da chi la esegue: una richiesta HTTP. […] Ogni riquadro del 26 è un campo della richiesta; la risposta porta i blocchi generati e uno `stop_reason` […]».
 		- Riferimenti aggiornati: la slide 7 («A strati») chiude con *«Sono i campi della richiesta della slide 3a, letti come li vede il modello»*; le note della 6 e il punto sui checkpoint della 33 (`cache_control`) citano la 3a invece della 10.
 
 - **04 · La mappa dell'harness** — `#slide-4` — `slide4-mappa-harness.svg`

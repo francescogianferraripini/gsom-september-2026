@@ -23,7 +23,7 @@
 
 > **Impianto della lezione (decisioni prese in intervista, 4 set 2026 — valgono per tutte le sezioni):**
 >
-> **Le sette sezioni seguono la mappa dell'harness** (la slide 4 del 26, estesa nella Slide 4 di questa lezione): 1 Apertura e anello · 2 Context Initialization · 3 Environment management · 4 Context management a runtime · 5 Observability · 6 Orchestrazione · 7 L'offerta di harness. Budget: 6 / 8 / 14 / 11 / 11 / 7 / 6 = **63 slide**, ±2 per sezione. Ogni separatore ripropone la mappa in miniatura con la zona corrente accesa (mini-mappa "sei qui", come le `minimap-*` della sezione 3 del 26).
+> **Le sette sezioni seguono la mappa dell'harness** (la slide 57 del 26, estesa nella Slide 4 di questa lezione): 1 Apertura e anello · 2 Context Initialization · 3 Environment management · 4 Context management a runtime · 5 Observability · 6 Orchestrazione · 7 L'offerta di harness. Budget: 6 / 8 / 14 / 11 / 11 / 7 / 6 = **63 slide**, ±2 per sezione. Ogni separatore ripropone la mappa in miniatura con la zona corrente accesa (mini-mappa "sei qui", come le `minimap-*` della sezione 3 del 26).
 >
 > **La mappa estesa**: tre zone del 26 (`Context management` teal, `Agentic loop management` lightblue, `Environment management` giallo) attorno all'`LLM`, con: i **tre anelli concentrici** al posto dell'anello singolo; `Context Initialization` aperta in tre sottoblocchi (`System prompt: ruolo e regole` · `Dichiarazione dei tool: nativi e via MCP` · `Skill initialization: indice nome + descrizione`); `Skill management` rinominato **`Skill progressive disclosure (runtime)`**; una **fascia trasversale `Observability`** sotto le tre zone, con quattro sottoblocchi `Tracing · Logging · Metrics · Eval`. MCP non è un blocco: le sue definizioni entrano in Context Initialization, le sue chiamate in Tool Calling execution. Nessun numero di sezione dentro la figura.
 >
@@ -45,7 +45,7 @@
 
 **Messaggio**: il 26 ha spiegato che cosa il modello sa fare e come impara a *volere* un tool; oggi si guarda tutto il resto, cioè chi trasforma quella volontà in un task completato.
 
-**Layout**: titolo in alto; tre righe di ripresa al centro-sinistra, allineate come un elenco che si conclude; sotto, staccata, la riga sull'attesa e la domanda in burgundy; il blocco nero centrato in basso (classe `.nota.dark.center`, quella delle slide 1 e 10 del 26). Nessuna figura.
+**Layout**: titolo in alto; tre righe di ripresa al centro-sinistra, allineate come un elenco che si conclude; sotto, staccata, la riga sull'attesa e la domanda in burgundy; il blocco nero centrato in basso (classe `.nota.dark.center`, quella delle slide 1 e 9 del 26). Nessuna figura.
 
 **Testo**:
 - Eyebrow: *SEZIONE 1 · TUTTO CIÒ CHE NON È IL MODELLO*
@@ -102,11 +102,11 @@
 
 ## Slide 4 — La mappa dell'harness
 
-> Ripresa della slide 4 del 26, **estesa**: è la figura madre della lezione. Ogni separatore di sezione la ripropone in miniatura con la zona corrente accesa.
+> Ripresa della slide 57 del 26, **estesa**: è la figura madre della lezione. Ogni separatore di sezione la ripropone in miniatura con la zona corrente accesa.
 
 **Messaggio**: l'harness ha una struttura, ed è l'indice della lezione: tre zone attorno all'anello, una fascia sotto, e i problemi si presentano in quest'ordine.
 
-**Layout**: titolo in alto; la figura occupa quasi tutta la slide (~80%), come la torre della slide 20 del 26; didascalia in basso. Eyebrow *dall'incontro 26*.
+**Layout**: titolo in alto; la figura occupa quasi tutta la slide (~80%), come la torre della slide 19 del 26; didascalia in basso. Eyebrow *dall'incontro 26*.
 
 **Testo**:
 - Titolo: *La mappa dell'harness*
@@ -115,7 +115,7 @@
 **Visual**: `slide4-mappa-harness.svg` — evoluzione di `slide4-ruolo-harness.svg` del 26 (viewBox `0 0 1000 714`, da allargare in basso per la fascia).
 
 **Prompt per schema SVG**:
-> Riprende l'esoscheletro della slide 4 dell'incontro 26 senza spostare le zone esistenti: al centro il blocco `LLM` (*la CPU*), intorno le tre zone contigue che formano la cornice, ognuna con la propria intestazione.
+> Riprende l'esoscheletro della slide 57 dell'incontro 26 senza spostare le zone esistenti: al centro il blocco `LLM` (*la CPU*), intorno le tre zone contigue che formano la cornice, ognuna con la propria intestazione.
 >
 > **`Agentic loop management`**: al posto dell'anello singolo, **tre anelli concentrici** attorno all'`LLM`, etichettati dall'interno: `1° loop · generazione (fino a STOP)`, `3° loop · task (giro dopo giro di tool call)`, `2° loop · conversazione (turno dopo turno)`. L'ordine degli anelli è l'annidamento, non la numerazione: il 3° sta in mezzo, ed è questo che la figura deve far vedere.
 >
@@ -131,7 +131,7 @@
 
 ## Slide 5 — I tre anelli: dove si infila il loop agentico
 
-> Ripresa della slide 39 del 26 (i tre anelli). Non è un doppione della Slide 4: là gli anelli stanno nel contesto della mappa, qui si spiegano.
+> Ripresa della slide 38 del 26 (i tre anelli). Non è un doppione della Slide 4: là gli anelli stanno nel contesto della mappa, qui si spiegano.
 
 **Messaggio**: il 3° loop non si aggiunge in coda, si infila in mezzo: dentro un turno di conversazione, N giri di tool call, ognuno con dentro una generazione.
 
@@ -145,10 +145,10 @@
   3. **3° loop, il task**: *dentro un solo turno, N giri: il modello chiede un tool e si ferma, qualcuno esegue, il risultato rientra, il modello riparte. Fino a task completato.*
 - Nota in basso: *I numeri sono storici, l'annidamento no: conversazione ⊃ task ⊃ generazione. Il 3° è nato per ultimo ma sta in mezzo. E "qualcuno" adesso ha un nome: l'harness.*
 
-**Visual**: `slide5-tre-anelli.svg` — lo zoom sull'anello della mappa: gli stessi tre anelli della slide 39 del 26, con l'etichetta `chi? → prossimo incontro` sostituita da `l'harness`.
+**Visual**: `slide5-tre-anelli.svg` — lo zoom sull'anello della mappa: gli stessi tre anelli della slide 38 del 26, con l'etichetta `chi? → prossimo incontro` sostituita da `l'harness`.
 
 **Prompt per schema SVG**:
-> Tre anelli concentrici, identici per posizione ed etichette a quelli della slide 39 dell'incontro 26 (esterno conversazione, mezzo task, interno generazione, con i passi scritti lungo ciascun anello).
+> Tre anelli concentrici, identici per posizione ed etichette a quelli della slide 38 dell'incontro 26 (esterno conversazione, mezzo task, interno generazione, con i passi scritti lungo ciascun anello).
 >
 > L'unica differenza: sul passo `qualcuno la esegue` della corona di mezzo, dove prima pendeva l'etichetta `chi? → prossimo incontro`, ora pende `l'harness`, ed è l'elemento focale. Accanto, in piccolo: *risposto*.
 >

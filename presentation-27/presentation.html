@@ -340,7 +340,7 @@
         <h2>Com'è fatta una chiamata al modello</h2>
         <div class="content">
           <div class="visual"><img src="svg/slide10-chiamata-api.svg" alt="La richiesta all'API (system, tools, messages) con dentro la conversazione del 26: Acme, cerca_ordine, l'ordine 4471; la risposta porta i blocchi generati e lo stop_reason; sotto, la freccia del giro successivo con il tool_result"></div>
-          <p class="caption small">È la scena della slide 9 del 26 (Acme, l'ordine 4471), vista da chi la esegue: una richiesta HTTP. I nomi sono quelli dell'API di Anthropic; gli altri provider hanno la stessa forma con nomi diversi. Ogni riquadro del 26 è un campo della richiesta; la risposta porta i blocchi generati e uno <code>stop_reason</code>: è il bit che l'harness legge per decidere se il giro continua.</p>
+          <p class="caption small">È la scena della slide 8 del 26 (Acme, l'ordine 4471), vista da chi la esegue: una richiesta HTTP. I nomi sono quelli dell'API di Anthropic; gli altri provider hanno la stessa forma con nomi diversi. Ogni riquadro del 26 è un campo della richiesta; la risposta porta i blocchi generati e uno <code>stop_reason</code>: è il bit che l'harness legge per decidere se il giro continua.</p>
         </div>
         <div class="footnote">3a / Sezione 1 · <span class="sid">#slide-3a</span></div>
         <aside class="notes">Slide nuova nel corso, anticipata qui subito dopo la formula: il 26 non ha mai mostrato la struttura dell'API. Nomi dell'API Messages di Anthropic, verificati a settembre 2026. La sezione 2 riprende questi campi uno per uno come strati della finestra. Le bandierine cache_control anticipano il prefix caching della sezione 4.</aside>
@@ -374,7 +374,7 @@
           <div class="nota">I numeri sono storici, l'annidamento no: conversazione ⊃ task ⊃ generazione. Il 3° è nato per ultimo ma sta in mezzo. E "qualcuno" adesso ha un nome: l'harness.</div>
         </div>
         <div class="footnote">05 / Sezione 1 · <span class="sid">#slide-5</span></div>
-        <aside class="notes">Stessi anelli della slide 39 del 26: l'unica differenza è l'etichetta che chiude la domanda lasciata aperta.</aside>
+        <aside class="notes">Stessi anelli della slide 38 del 26: l'unica differenza è l'etichetta che chiude la domanda lasciata aperta.</aside>
       </section>
 
       <section id="slide-6">
@@ -574,12 +574,12 @@
         <p class="eyebrow">SEZIONE 2 · DALL'INCONTRO 26</p>
         <h2>Ora l'utente scrive</h2>
         <div class="content">
-          <div class="visual"><img src="svg/slide14-giro-uno.svg" alt="Il giro 1 della slide 9 del 26: i tre strati del prefisso, la domanda dell'utente, la richiesta del modello cerca_ordine(4471) con stop_reason tool_use; accanto, il riquadro del giro 2 vuoto con un punto interrogativo"></div>
+          <div class="visual"><img src="svg/slide14-giro-uno.svg" alt="Il giro 1 della slide 8 del 26: i tre strati del prefisso, la domanda dell'utente, la richiesta del modello cerca_ordine(4471) con stop_reason tool_use; accanto, il riquadro del giro 2 vuoto con un punto interrogativo"></div>
           <p class="caption small">La stessa scena del 26: il system prompt in testa con il tool dichiarato, la domanda dell'utente, e la richiesta del modello: <code>cerca_ordine("4471")</code>. Lì il modello si ferma, con <code>stop_reason: tool_use</code>. Nel 26 dicevamo "qualcun altro esegue". Ora entriamo nella zona gialla della mappa.</p>
           <div class="nota dark center">Il modello ha chiesto. Chi esegue, come, e che cosa torna indietro: sezione 3.</div>
         </div>
         <div class="footnote">14 / Sezione 2 · <span class="sid">#slide-14</span></div>
-        <aside class="notes">Ripresa della slide 9 del 26, solo la metà destra e solo il giro 1. È la cerniera verso la sezione 3.</aside>
+        <aside class="notes">Ripresa della slide 8 del 26, solo la metà destra e solo il giro 1. È la cerniera verso la sezione 3.</aside>
       </section>
 
       <!-- ══════════ SEZIONE 3 ══════════ -->
@@ -1035,7 +1035,7 @@
           <div class="nota">Nel 26: "il modello rilegge tutta la pila da capo, a ogni chiamata". Ora la pila ha un nome per ogni strato, e un responsabile: l'harness decide che cosa ci resta dentro.</div>
         </div>
         <div class="footnote">31 / Sezione 4 · <span class="sid">#slide-31</span></div>
-        <aside class="notes">Ripresa della slide 42 del 26 (la pila che cresce), ridisegnata dall'alto per coerenza con la finestra a strati della sezione 2.</aside>
+        <aside class="notes">Ripresa della slide 41 del 26 (la pila che cresce), ridisegnata dall'alto per coerenza con la finestra a strati della sezione 2.</aside>
       </section>
 
       <section id="slide-32">
@@ -1094,7 +1094,7 @@
           <div class="nota">Nel 26 le regole erano per chi usa un chatbot: nuova chat, non riempire. Qui le regole sono per l'harness, che deve decidere da solo che cosa togliere. Sono le prossime due slide.</div>
         </div>
         <div class="footnote">34 / Sezione 4 · <span class="sid">#slide-34</span></div>
-        <aside class="notes">La figura è l'SVG della slide 45 del 26, riusato tale e quale. Il grafico del context rot (slide 44 del 26) affiancato non reggeva lo spazio: resta come richiamo verbale nel primo punto, come previsto dalla spec.</aside>
+        <aside class="notes">La figura è l'SVG della slide 44 del 26, riusato tale e quale. Il grafico del context rot (slide 43 del 26) affiancato non reggeva lo spazio: resta come richiamo verbale nel primo punto, come previsto dalla spec.</aside>
       </section>
 
       <section id="slide-35">

@@ -4,7 +4,7 @@
 **Sezione 1 — Cosa è un agente?**
 **Obiettivo di apprendimento**: il partecipante sa dire cosa ci si aspetta funzionalmente da un agente e sa scomporlo nei suoi componenti tecnici (le due formule `Agent =` e `Harness =`).
 **Messaggio chiave (takeaway)**: Un agente non è un modello: è un modello dentro un'impalcatura. `Agent = LLM + Harness + System Prompt + Tools + KB + Skills`.
-**Budget**: ~15 min, 4 slide + separatore. Copertina della lezione fuori sezione (slide 0 a parte). Il passaggio finale all'LLM ("oggi apriamo il primo termine della formula") è fatto a voce, senza slide dedicata.
+**Budget**: ~12 min, 3 slide + separatore. Copertina della lezione fuori sezione (slide 0 a parte). Il passaggio finale all'LLM ("oggi apriamo il primo termine della formula") è fatto a voce, senza slide dedicata.
 **Stato**: bozza
 
 ### Tabella file → slide
@@ -15,7 +15,7 @@
 | `slides/slide1-aspettative.html` | Slide 1 — Cosa è un agente? Le aspettative |
 | `slides/slide2-spazio-soluzioni.html` | Slide 2 — Lo spazio delle soluzioni |
 | `slides/slide3-formula-agent.html` | Slide 3 — La formula: Agent = |
-| `slides/slide4-ruolo-harness.html` | Slide 4 — Il ruolo dell'harness |
+| ~~`slides/slide4-ruolo-harness.html`~~ | *spostata in fondo al deck: è la **Slide 57**, la chiusura che apre l'incontro 27 — vedi la spec della Sezione 5* |
 
 ---
 
@@ -79,7 +79,7 @@
 
 ## Slide 3 — La formula: Agent =
 
-**Layout**: titolo in alto; il diagramma-formula occupa il centro della slide (~65%), protagonista assoluto; nota in basso. I sei termini della formula devono restare blocchi visivamente distinti e autonomi, **e alle coordinate fissate qui**: la stessa geometria è riusata dalla Slide 57 come barra di avanzamento del corso, e la riprendono gli incontri 27 e 28 cambiando solo quali blocchi sono accesi.
+**Layout**: titolo in alto; il diagramma-formula occupa il centro della slide (~65%), protagonista assoluto; nota in basso. I sei termini della formula devono restare blocchi visivamente distinti e autonomi, **e alle coordinate fissate qui**: la stessa geometria è riusata dalla Slide 56 come barra di avanzamento del corso, e la riprendono gli incontri 27 e 28 cambiando solo quali blocchi sono accesi.
 
 **La metafora è a tre livelli, non a due** (decisione del 4 settembre 2026, presa mentre si specificava l'incontro 27): `LLM` = **la CPU** — calcola, non decide cosa gira; `Harness` = **il sistema operativo** — scheduler, memoria, I/O, cioè il loop, il contesto e i tool; `System Prompt` + `Tools` + `KB` + `Skills` = **il software installato**. La versione precedente metteva LLM e Harness insieme sotto *il sistema operativo*: separarli serve perché il 27 apre con «oggi apriamo il sistema operativo», e quella frase regge solo se il sistema operativo è l'harness e nient'altro.
 
@@ -108,35 +108,6 @@
 >   - una sotto il solo `Harness`, con etichetta *il sistema operativo*;
 >   - una che abbraccia `System Prompt`, `Tools`, `KB` e `Skills`, con etichetta *il software installato*.
 >
-> **Elementi focali**: le tre graffe con le loro etichette — portano il messaggio (il modello è la CPU, cioè uno solo dei sei ingredienti e nemmeno quello che decide; è il "software installato" a distinguere un agente da un altro). I sei blocchi devono essere visivamente distinti e autonomi (ognuno un rettangolo a sé) e **non devono mai cambiare posizione**, perché la Slide 57 e gli incontri 27 e 28 riprendono i medesimi blocchi cambiando solo l'opacità.
+> **Elementi focali**: le tre graffe con le loro etichette — portano il messaggio (il modello è la CPU, cioè uno solo dei sei ingredienti e nemmeno quello che decide; è il "software installato" a distinguere un agente da un altro). I sei blocchi devono essere visivamente distinti e autonomi (ognuno un rettangolo a sé) e **non devono mai cambiare posizione**, perché la Slide 56 e gli incontri 27 e 28 riprendono i medesimi blocchi cambiando solo l'opacità.
 >
 > Le etichette *la CPU* e *il sistema operativo* stanno su blocchi adiacenti e larghi 150: vanno tenute a un corpo che lasci fra loro uno stacco visibile (nel file sono a 21, non a 24 come nella versione a due graffe).
-
-## Slide 4 — Il ruolo dell'harness
-
-**Layout**: titolo in alto; le tre affermazioni sulla sinistra (~40% della larghezza); il visual esoscheletro sulla destra (~60%).
-
-**Testo**:
-- Titolo: *Il ruolo dell'harness*
-- Testo: *L'Harness è un software "classico", deterministico, che orchestra le attività che fa l'agente sotto la direzione del LLM. Se pensiamo all'agente come un'entità neuro-simbolica, l'LLM è la parte Neuro, l'Harness quella simbolica. È come l'esoscheletro operativo, all'interno del quale c'è un cervello, l'LLM.*
-
-**Visual**: l'esoscheletro a blocchi — cornice composta dalle **3 categorie** di componenti, con al centro il blocco `LLM` (il cervello). Nessun blocco-titolo `Harness` dentro la figura: il titolo della slide basta.
-
-**Prompt per schema SVG**:
-> Diagramma "esoscheletro": una cornice che racchiude un blocco centrale, organizzata in **tre categorie distinte da colori**.
->
-> **Al centro**: un blocco `LLM`, con sotto-etichetta *il cervello (neuro)*, in burgundy — colore riservato a lui.
->
-> **Intorno**, tre zone contigue che insieme formano l'involucro. Ogni zona ha un'intestazione col nome della categoria, nel colore pieno della categoria, e contiene i propri sotto-blocchi:
->
->   1. **`Context management`** — quattro sotto-blocchi:
->      `Context Initialization` · `Context Optimization (compaction, pruning, etc.)` · `Memory management` · `Skill management`
->   2. **`Agentic loop management`** — blocco unico, senza sotto-blocchi: è l'anello che gira attorno all'LLM.
->   3. **`Environment management`** — tre sotto-blocchi:
->      `Tool Calling execution and response management` · `Execution Sandbox` · `Skill execution management`
->
-> Le tre zone non sono satelliti staccati: sono i segmenti della cornice, a comunicare che l'harness *è* l'involucro. Il blocco `LLM` è dentro, completamente racchiuso.
->
-> **Elemento focale**: il contrasto tra il centro (`LLM`, la parte neuro) e la cornice (la parte simbolica/deterministica) — le due nature devono leggersi come zone distinte; e, dentro la cornice, la tripartizione per colore. I nomi delle categorie e dei sotto-blocchi sono etichette esatte, da non parafrasare.
-
-<!-- I blocchi slide successivi verranno aggiunti qui durante l'intervista (Fase 2). -->
