@@ -3,7 +3,13 @@
 Lista di lavoro nell'ordine del deck. Ogni riga: numero, titolo, ancora HTML in `presentation-26/presentation.html`, figure usate.
 Per commentare, scrivi sotto la riga della slide.
 
-> **Come si numerano le slide nuove** (regola del docente, 7 set 2026): una slide inserita prende **il numero di quella che la precede, più `b`** — dopo la 35 viene la **35b**, dopo la 36 la **36b**. Così non si rinumera nient'altro. È nata dopo tre rinumerazioni globali in due giorni: ognuna tocca centinaia di riferimenti in deck, spec e in questo file, e ogni volta lascia indietro i numeri nudi dentro elenchi e intervalli. Se servisse una terza slide dopo la stessa, si continua con `c`.
+> **Come si numerano le slide** (regola del docente, 7 set 2026).
+>
+> **Inserimento in mezzo → suffisso.** Una slide aggiunta prende **il numero di quella che la precede, più `b`**: dopo la 35 viene la **35b**, dopo la 36 la **36b**. Se ne serve una terza nello stesso punto, si continua con `c`. Non si rinumera nient'altro.
+>
+> **Riordino grosso → rinumerazione.** Se invece si spostano molte slide, o si cambia l'ordine di una sezione, la rinumerazione ha senso: un deck pieno di suffissi accumulati diventa illeggibile quanto uno coi buchi. È una scelta di misura — un inserimento non la giustifica, un riordino sì.
+>
+> **Perché la distinzione**: tre rinumerazioni globali in due giorni. Ognuna tocca centinaia di riferimenti fra deck, spec, questo file e le spec del 27, e ogni volta lascia indietro i **numeri nudi dentro elenchi e intervalli** («Slide 25–28» diventa «24–28»), che nessun pattern riconosce. Quando si rinumera davvero: un passaggio solo, decrescente se i numeri crescono e ascendente se calano, e poi gli intervalli si rileggono a mano uno per uno.
 
 ---
 
@@ -406,4 +412,5 @@ Passaggio **ascendente** questa volta (5→4, poi 6→5, …): ogni passo produc
 - Slide 17 (tokenizzazione): viewBox `784×416`, vincolata in larghezza, 94px di margine.
 - Slide 37 (RL agentico): viewBox `1120×560`, vincolata in larghezza, rende a **763,9px**.
 - Slide 39 (API): la figura rende **1:1**, 1140×380, monospaziato a 12px CSS.
+- Slide 42 (stateless): viewBox `1176×700`, vincolata in **altezza** — rende a **721px**, scala 0,613. È l'unica figura del deck vincolata in altezza: qualunque cosa si rimetta sopra gliela toglie.
 - `regen.py` idempotente: generatori e SVG della Sezione 3 sono allineati.
