@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 593 400" width="593" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Le dimensioni conformi: in alto i fatti fatto_spedizioni, fatto_reclami e, tratteggiato e marcato come nuovo, fatto_fatture_corrieri; in basso le tre dimensioni condivise dim_corriere, dim_data e dim_cliente. I primi due fatti si collegano alle dimensioni con linee piene, il terzo con linee tratteggiate che arrivano alle stesse dimensioni: si aggancia a cio che c'e, ed e compounding</title>
+
+  <text x="36" y="32" font-size="11" font-weight="700" letter-spacing="0.8" fill="#838383">I FATTI</text>
+  <text x="46" y="238" font-size="11" font-weight="700" letter-spacing="0.8" fill="#838383">LE DIMENSIONI CONFORMI</text>
+
+  <!-- le join dei due fatti che ci sono gia -->
+  <g stroke="#838383" stroke-width="1.2" fill="none">
+    <path d="M116 108 L111 250 M116 108 L297 250 M116 108 L483 250"/>
+    <path d="M296 108 L111 250 M296 108 L297 250 M296 108 L483 250"/>
+  </g>
+  <!-- il terzo fatto si aggancia alle stesse dimensioni -->
+  <g stroke="#a1245a" stroke-width="2" stroke-dasharray="7 5" fill="none">
+    <path d="M476 108 L111 250 M476 108 L297 250 M476 108 L483 250"/>
+  </g>
+
+  <!-- i fatti -->
+  <g text-anchor="middle">
+    <rect x="36" y="44" width="160" height="64" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="116" y="74" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="700" fill="#161719">fatto_spedizioni</text>
+    <text x="116" y="94" font-size="11" fill="#838383">una riga = una spedizione</text>
+
+    <rect x="216" y="44" width="160" height="64" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="296" y="74" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="700" fill="#161719">fatto_reclami</text>
+    <text x="296" y="94" font-size="11" fill="#838383">una riga = un reclamo</text>
+
+    <rect x="396" y="44" width="160" height="64" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="2" stroke-dasharray="7 5"/>
+    <text x="476" y="74" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="700" fill="#a1245a">fatto_fatture_corrieri</text>
+    <text x="476" y="94" font-size="11" fill="#838383">una riga = una fattura</text>
+
+    <rect x="500" y="16" width="56" height="22" rx="6" fill="#ecd3de" stroke="#a1245a"/>
+    <text x="528" y="31" font-size="11" font-weight="700" fill="#a1245a">nuovo</text>
+  </g>
+
+  <!-- le dimensioni condivise -->
+  <g text-anchor="middle">
+    <rect x="46" y="250" width="130" height="64" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="111" y="278" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#161719">dim_corriere</text>
+    <text x="111" y="298" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#838383">nome · tipo</text>
+
+    <rect x="232" y="250" width="130" height="64" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="297" y="278" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#161719">dim_data</text>
+    <text x="297" y="298" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#838383">giorno · mese</text>
+
+    <rect x="418" y="250" width="130" height="64" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="483" y="278" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#161719">dim_cliente</text>
+    <text x="483" y="298" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#838383">regione · segmento</text>
+  </g>
+
+  <text x="296" y="352" text-anchor="middle" font-size="13" font-weight="700" fill="#a1245a">si aggancia a ciò che c'è: compounding</text>
+</svg>

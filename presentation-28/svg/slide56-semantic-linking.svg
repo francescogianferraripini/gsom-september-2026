@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Il semantic linking: le classi, le proprietà e le relazioni dell'ontologia di dominio collegate alle tabelle, alle colonne e alla join dello star schema, e lo schema annotato che entra nel system prompt</title>
+
+  <defs>
+    <marker id="l-gr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#838383"/>
+    </marker>
+    <marker id="l-bu" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/>
+    </marker>
+    <marker id="l-bu3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- ==================== ontologia ==================== -->
+  <text x="12" y="24" font-size="11" font-weight="700" fill="#838383">ontologia · dominio logistica</text>
+
+  <g id="ontologia">
+    <ellipse cx="110" cy="56" rx="54" ry="16" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <text x="110" y="61" text-anchor="middle" font-size="12.5" font-weight="600" fill="#161719">Spedizione</text>
+
+    <ellipse cx="420" cy="56" rx="46" ry="16" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <text x="420" y="61" text-anchor="middle" font-size="12.5" font-weight="600" fill="#161719">Corriere</text>
+
+    <ellipse cx="420" cy="120" rx="48" ry="16" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <text x="420" y="125" text-anchor="middle" font-size="12.5" font-weight="600" fill="#161719">Contratto</text>
+
+    <line x1="166" y1="56" x2="370" y2="56" stroke="#838383" stroke-width="1.5" marker-end="url(#l-gr)"/>
+    <text x="268" y="48" text-anchor="middle" font-size="11" fill="#212529">consegnata da</text>
+
+    <line x1="420" y1="104" x2="420" y2="76" stroke="#838383" stroke-width="1.5" marker-end="url(#l-gr)"/>
+    <text x="428" y="94" font-size="11" fill="#212529">vincola</text>
+
+    <!-- proprietà di Spedizione -->
+    <line x1="110" y1="72" x2="110" y2="78" stroke="#838383" stroke-width="1"/>
+    <rect x="56" y="78" width="260" height="76" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <g stroke="#dee2e6" stroke-width="1">
+      <line x1="56" y1="97" x2="316" y2="97"/>
+      <line x1="56" y1="116" x2="316" y2="116"/>
+      <line x1="56" y1="135" x2="316" y2="135"/>
+    </g>
+    <g font-size="11" fill="#212529">
+      <text x="66" y="92">data prevista</text>
+      <text x="66" y="111">data consegna</text>
+      <text x="66" y="130">giorni lavorativi di ritardo</text>
+      <text x="66" y="149">margine</text>
+    </g>
+    <text x="308" y="130" text-anchor="end" font-size="11" font-style="italic" fill="#838383">festivi esclusi</text>
+    <text x="308" y="149" text-anchor="end" font-size="11" font-style="italic" fill="#838383">non mappata: il modello lo sa</text>
+    <g stroke="#838383" stroke-width="1.5" stroke-dasharray="4 4">
+      <line x1="120" y1="156" x2="120" y2="176"/>
+    </g>
+    <line x1="112" y1="176" x2="128" y2="176" stroke="#838383" stroke-width="1.5"/>
+  </g>
+
+  <!-- ==================== schema fisico ==================== -->
+  <g id="fatto">
+    <rect x="56" y="234" width="230" height="144" rx="8" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <path d="M56 254 L56 242 A8 8 0 0 1 64 234 L278 234 A8 8 0 0 1 286 242 L286 254 Z" fill="#f6f6f6"/>
+    <g stroke="#dee2e6" stroke-width="1">
+      <line x1="56" y1="254" x2="286" y2="254"/>
+      <line x1="56" y1="270" x2="286" y2="270"/>
+      <line x1="56" y1="285" x2="286" y2="285"/>
+      <line x1="56" y1="300" x2="286" y2="300"/>
+      <line x1="56" y1="316" x2="286" y2="316"/>
+      <line x1="56" y1="332" x2="286" y2="332"/>
+      <line x1="56" y1="347" x2="286" y2="347"/>
+      <line x1="56" y1="362" x2="286" y2="362"/>
+    </g>
+    <text x="66" y="249" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#161719">fatto_spedizioni</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529">
+      <text x="66" y="265">id_spedizione</text>
+      <text x="66" y="281">id_corriere</text>
+      <text x="66" y="296">id_cliente</text>
+      <text x="66" y="312">id_data</text>
+      <text x="66" y="327">importo</text>
+      <text x="66" y="343">giorni_ritardo</text>
+      <text x="66" y="358">giorni_lavorativi_ritardo</text>
+      <text x="66" y="374">data_consegna</text>
+    </g>
+    <g font-size="11" font-weight="700" fill="#a1245a" text-anchor="end">
+      <text x="278" y="265">PK</text>
+      <text x="278" y="281">FK</text>
+      <text x="278" y="296">FK</text>
+      <text x="278" y="312">FK</text>
+    </g>
+  </g>
+
+  <g id="dim">
+    <rect x="360" y="234" width="130" height="68" rx="8" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <path d="M360 254 L360 242 A8 8 0 0 1 368 234 L482 234 A8 8 0 0 1 490 242 L490 254 Z" fill="#f6f6f6"/>
+    <g stroke="#dee2e6" stroke-width="1">
+      <line x1="360" y1="254" x2="490" y2="254"/>
+      <line x1="360" y1="270" x2="490" y2="270"/>
+      <line x1="360" y1="286" x2="490" y2="286"/>
+    </g>
+    <text x="370" y="249" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#161719">dim_corriere</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529">
+      <text x="370" y="265">id_corriere</text>
+      <text x="370" y="281">nome</text>
+      <text x="370" y="297">tipo</text>
+    </g>
+    <text x="482" y="265" text-anchor="end" font-size="11" font-weight="700" fill="#a1245a">PK</text>
+  </g>
+
+  <text x="56" y="394" font-size="11" font-weight="700" fill="#838383">data warehouse · star schema</text>
+
+  <!-- ==================== i link ==================== -->
+  <g id="link-proprieta" fill="none" stroke="#a1245a" stroke-width="2" marker-end="url(#l-bu)">
+    <path d="M56 60 C 40 88, 40 200, 50 242"/>
+    <path d="M56 107 C 14 150, 12 330, 48 368"/>
+    <path d="M56 126 C 28 170, 26 320, 48 353"/>
+  </g>
+  <text x="70" y="226" font-size="11" font-weight="600" fill="#a1245a">classe → tabella: il grano</text>
+
+  <!-- la relazione che diventa join: elemento focale -->
+  <g id="link-join" fill="none" stroke="#a1245a" stroke-width="3">
+    <path d="M269 58 C 340 62, 350 100, 346 170 C 342 240, 330 272, 322 294"/>
+    <path d="M322 294 L292 279" marker-end="url(#l-bu3)"/>
+    <path d="M322 294 L352 266" marker-end="url(#l-bu3)"/>
+  </g>
+  <text x="308" y="330" font-size="11" font-weight="700" fill="#a1245a">relazione → join</text>
+
+  <!-- ==================== verso il system prompt ==================== -->
+  <path d="M354 190 C 420 190, 470 174, 508 162" fill="none" stroke="#a1245a" stroke-width="2" marker-end="url(#l-bu)"/>
+  <rect x="376" y="168" width="106" height="19" rx="4" fill="#ecd3de"/>
+  <text x="429" y="182" text-anchor="middle" font-size="11" font-weight="600" fill="#a1245a">schema annotato</text>
+
+  <!-- ==================== finestra a strati in miniatura ==================== -->
+  <g id="finestra-mini">
+    <text x="576" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="#838383">la finestra dell'agente</text>
+    <rect x="512" y="140" width="104" height="130" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="622" y="140" width="18" height="130" rx="5" fill="none" stroke="#838383" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+    <rect x="518" y="146" width="92" height="30" rx="4" fill="#d1efea" stroke="#1ab197" stroke-width="1.8"/>
+    <text x="564" y="165" text-anchor="middle" font-size="11" font-weight="600" fill="#0e7c6a">system prompt</text>
+
+    <g fill="none" stroke="#838383" stroke-width="1.2" stroke-dasharray="5 4">
+      <rect x="518" y="182" width="92" height="26" rx="4"/>
+      <rect x="518" y="214" width="92" height="26" rx="4"/>
+      <rect x="518" y="246" width="92" height="18" rx="4"/>
+    </g>
+    <g font-size="11" font-weight="600" fill="#838383" text-anchor="middle">
+      <text x="564" y="199">tool</text>
+      <text x="564" y="231">skill</text>
+      <text x="564" y="259">messaggi</text>
+    </g>
+  </g>
+</svg>

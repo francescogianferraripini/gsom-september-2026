@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 420" width="650" height="420" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>La piramide dati, informazione, conoscenza, intelligenza, primo tempo: e acceso il gradino DATI con l'esempio Acme dei sette numeri senza contesto; gli altri gradini sono in sagoma attenuata</title>
+  <defs>
+    <marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+    <marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+  </defs>
+  <style>
+    .band polygon{fill:#f6f6f6;stroke:#dee2e6;stroke-width:1.5}
+    .band text{fill:#838383}
+    .mk path.arw{fill:none;stroke:#838383;stroke-width:1.8;marker-end:url(#mg)}
+    .mk circle{fill:#ffffff;stroke:#838383;stroke-width:1.5}
+    .mk text{fill:#838383}
+    .ex .frame{stroke:#dee2e6}
+    .ex .cell{fill:#f6f6f6;stroke:#dee2e6}
+    .ex ellipse{fill:#ffffff;stroke:#838383;stroke-width:1.5}
+    .b-dati polygon{fill:#ecd3de;stroke:#a1245a;stroke-width:2.5}
+    .b-dati text{fill:#161719}
+    .b-info,.b-cono,.b-intel,.m-1,.m-2,.m-3,.e-tab,.e-graph,.e-pill{opacity:.28}
+    .e-strip .cell{fill:#ecd3de;stroke:#a1245a;stroke-width:2.5}
+  </style>
+
+  <!-- ============ la piramide ============ -->
+  <g class="band b-dati">
+    <polygon points="87,310 253,310 266,408 74,408"/>
+    <text x="170" y="369" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="0.6">DATI</text>
+  </g>
+  <g class="band b-info">
+    <polygon points="100,212 240,212 253,310 87,310"/>
+    <text x="170" y="271" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="0.4">INFORMAZIONE</text>
+  </g>
+  <g class="band b-cono">
+    <polygon points="113,114 227,114 240,212 100,212"/>
+    <text x="170" y="173" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="0.4">CONOSCENZA</text>
+  </g>
+  <g class="band b-intel">
+    <polygon points="126,16 214,16 227,114 113,114"/>
+    <text x="170" y="75" text-anchor="middle" font-size="11.5" font-weight="700" letter-spacing="0.2">INTELLIGENZA</text>
+  </g>
+
+  <!-- ============ che cosa si aggiunge a ogni gradino ============ -->
+  <g class="mk m-1">
+    <path class="arw" d="M71 340 V292 Q71 284 79 284 H81"/>
+    <text x="63" y="322" text-anchor="end" font-size="11.5" font-weight="500">contesto</text>
+    <circle cx="267" cy="310" r="9"/>
+    <text x="267" y="314.5" text-anchor="middle" font-size="12" font-weight="700">+</text>
+    <text x="280" y="314" font-size="11.5" font-weight="500">metadati</text>
+  </g>
+  <g class="mk m-2">
+    <path class="arw" d="M84 242 V194 Q84 186 92 186 H94"/>
+    <text x="76" y="224" text-anchor="end" font-size="11.5" font-weight="500">semantica</text>
+    <circle cx="254" cy="212" r="9"/>
+    <text x="254" y="216.5" text-anchor="middle" font-size="12" font-weight="700">+</text>
+    <text x="267" y="216" font-size="11.5" font-weight="500">relazioni</text>
+  </g>
+  <g class="mk m-3">
+    <path class="arw" d="M97 144 V96 Q97 88 105 88 H107"/>
+    <text x="89" y="126" text-anchor="end" font-size="11.5" font-weight="500">azioni</text>
+    <circle cx="241" cy="114" r="9"/>
+    <text x="241" y="118.5" text-anchor="middle" font-size="12" font-weight="700">+</text>
+    <text x="254" y="118" font-size="11.5" font-weight="500">algoritmi</text>
+  </g>
+
+  <!-- ============ l'esempio Acme, un elemento per gradino ============ -->
+
+  <!-- intelligenza: l'agente -->
+  <g class="ex e-pill">
+    <circle cx="349" cy="54" r="6.5" fill="#161719" stroke="none"/>
+    <path d="M337 78 A12 12 0 0 1 361 78 Z" fill="#161719"/>
+    <rect class="frame" x="368" y="38" width="270" height="54" rx="8" fill="#a1245a" stroke="none"/>
+    <text x="382" y="60" font-size="11" fill="#ffffff">→ “quanti ordini in ritardo, per corriere,</text>
+    <text x="382" y="78" font-size="11" fill="#ffffff">e che cosa prevede il contratto?”</text>
+  </g>
+
+  <!-- conoscenza: l'ontologia -->
+  <g class="ex e-graph">
+    <g stroke="#838383" stroke-width="1.5" fill="none" marker-end="url(#mg)">
+      <line x1="398" y1="126" x2="410" y2="126"/>
+      <line x1="470" y1="126" x2="482" y2="126"/>
+      <line x1="558" y1="126" x2="570" y2="126"/>
+      <line x1="500" y1="136" x2="396" y2="159"/>
+      <line x1="402" y1="172" x2="436" y2="172"/>
+      <line x1="496" y1="172" x2="554" y2="172"/>
+      <line x1="600" y1="160" x2="604" y2="140"/>
+    </g>
+    <g font-size="11" fill="#838383" text-anchor="middle">
+      <text x="406" y="110">ordina</text>
+      <text x="478" y="110">spedito con</text>
+      <text x="566" y="110">consegnata da</text>
+      <text x="460" y="140">ha</text>
+      <text x="421" y="166">attiva</text>
+      <text x="527" y="166">prevista da</text>
+      <text x="576" y="150">vincola</text>
+    </g>
+    <ellipse cx="368" cy="126" rx="30" ry="12"/>
+    <ellipse cx="442" cy="126" rx="28" ry="12"/>
+    <ellipse cx="522" cy="126" rx="36" ry="12"/>
+    <ellipse cx="606" cy="126" rx="32" ry="12"/>
+    <ellipse cx="372" cy="172" rx="30" ry="12"/>
+    <ellipse cx="468" cy="172" rx="28" ry="12"/>
+    <ellipse cx="594" cy="172" rx="36" ry="12"/>
+    <g font-size="11" font-weight="600" fill="#212529" text-anchor="middle">
+      <text x="368" y="130">Cliente</text>
+      <text x="442" y="130">Ordine</text>
+      <text x="522" y="130">Spedizione</text>
+      <text x="606" y="130">Corriere</text>
+      <text x="372" y="176">Ritardo</text>
+      <text x="468" y="176">Penale</text>
+      <text x="594" y="176">Contratto</text>
+    </g>
+    <text class="onto" x="336" y="200" font-size="11" font-weight="600" fill="#838383">l'ontologia</text>
+  </g>
+
+  <!-- informazione: la tabella -->
+  <g class="ex e-tab">
+    <text x="336" y="214" font-size="12" font-weight="700" fill="#161719">Ritardi di consegna</text>
+    <rect class="frame" x="336" y="218" width="302" height="131" rx="8" fill="#ffffff"/>
+    <path d="M344 218 h286 a8 8 0 0 1 8 8 v18 h-302 v-18 a8 8 0 0 1 8 -8 z" fill="#f6f6f6"/>
+    <g stroke="#dee2e6">
+      <line x1="336" y1="244" x2="638" y2="244"/>
+      <line x1="336" y1="259" x2="638" y2="259"/>
+      <line x1="336" y1="274" x2="638" y2="274"/>
+      <line x1="336" y1="289" x2="638" y2="289"/>
+      <line x1="336" y1="304" x2="638" y2="304"/>
+      <line x1="336" y1="319" x2="638" y2="319"/>
+      <line x1="336" y1="334" x2="638" y2="334"/>
+      <line x1="396" y1="218" x2="396" y2="349"/>
+      <line x1="500" y1="218" x2="500" y2="349"/>
+      <line x1="560" y1="218" x2="560" y2="349"/>
+    </g>
+    <rect class="frame" x="336" y="218" width="302" height="131" rx="8" fill="none"/>
+    <g font-size="11" font-weight="700" fill="#161719" text-anchor="middle">
+      <text x="366" y="230">giorni di</text>
+      <text x="366" y="241">ritardo</text>
+      <text x="448" y="236">corriere</text>
+      <text x="530" y="236">settimana</text>
+      <text x="599" y="236">regione</text>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" fill="#212529" text-anchor="middle">
+      <text x="366" y="255">3</text><text x="448" y="255">SpedFast</text><text x="530" y="255">35</text><text x="599" y="255">Lombardia</text>
+      <text x="366" y="270">5</text><text x="448" y="270">Corriere Nord</text><text x="530" y="270">35</text><text x="599" y="270">Lazio</text>
+      <text x="366" y="285">2</text><text x="448" y="285">PostaPro</text><text x="530" y="285">35</text><text x="599" y="285">Veneto</text>
+      <text x="366" y="300">0</text><text x="448" y="300">SpedFast</text><text x="530" y="300">35</text><text x="599" y="300">Lombardia</text>
+      <text x="366" y="315">4</text><text x="448" y="315">Corriere Nord</text><text x="530" y="315">36</text><text x="599" y="315">Lazio</text>
+      <text x="366" y="330">1</text><text x="448" y="330">PostaPro</text><text x="530" y="330">36</text><text x="599" y="330">Veneto</text>
+      <text x="366" y="345">3</text><text x="448" y="345">SpedFast</text><text x="530" y="345">36</text><text x="599" y="345">Lombardia</text>
+    </g>
+  </g>
+
+  <!-- dati: i sette numeri -->
+  <g class="ex e-strip">
+    <rect class="cell" x="337" y="356" width="39" height="32" rx="6"/>
+    <rect class="cell" x="380.5" y="356" width="39" height="32" rx="6"/>
+    <rect class="cell" x="424" y="356" width="39" height="32" rx="6"/>
+    <rect class="cell" x="467.5" y="356" width="39" height="32" rx="6"/>
+    <rect class="cell" x="511" y="356" width="39" height="32" rx="6"/>
+    <rect class="cell" x="554.5" y="356" width="39" height="32" rx="6"/>
+    <rect class="cell" x="598" y="356" width="39" height="32" rx="6"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="15" font-weight="700" fill="#161719" text-anchor="middle">
+      <text x="356.5" y="378">3</text>
+      <text x="400" y="378">5</text>
+      <text x="443.5" y="378">2</text>
+      <text x="487" y="378">0</text>
+      <text x="530.5" y="378">4</text>
+      <text x="574" y="378">1</text>
+      <text x="617.5" y="378">3</text>
+    </g>
+  </g>
+</svg>

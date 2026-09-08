@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 456 400" width="456" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Il grafo Acme a cinque strati, tempo 4: dagli archi VINCOLA, che puntano dal contratto al corriere, si accendono i tre contratti</title>
+
+  <defs>
+    <marker id="a-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+    <marker id="a-bur" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+    <marker id="a-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1ab197"/></marker>
+    <marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4da0d7"/></marker>
+    <marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#ffbe0b"/></marker>
+    <style>
+      .node ellipse { fill:#f6f6f6; stroke:#838383; stroke-width:1.6 }
+      .node text { font-size:12px; font-weight:600; fill:#161719; text-anchor:middle }
+      .edge { fill:none; stroke:#838383; stroke-width:1.6; marker-end:url(#a-grey) }
+      .lbl { font-size:11.5px; font-weight:700; fill:#838383; font-family:'SFMono-Regular', Menlo, Monaco, Consolas, monospace }
+      .row { font-size:11px; font-weight:500; fill:#838383; letter-spacing:0.8px }
+      .note { font-size:12px; font-style:italic; fill:#838383 }
+      .off { opacity:0.28 }
+      .hide { display:none }
+      .t1 ellipse { fill:#ecd3de; stroke:#a1245a; stroke-width:2.4 }
+      .edge.t1 { stroke:#a1245a; stroke-width:2.6; marker-end:url(#a-bur) }
+      .lbl.t1 { fill:#a1245a }
+      .t2 ellipse { fill:#d1efea; stroke:#1ab197; stroke-width:2.4 }
+      .edge.t2 { stroke:#1ab197; stroke-width:2.6; marker-end:url(#a-teal) }
+      .lbl.t2 { fill:#1ab197 }
+      .t3 ellipse { fill:#dbeaf6; stroke:#4da0d7; stroke-width:2.4 }
+      .edge.t3 { stroke:#4da0d7; stroke-width:2.6; marker-end:url(#a-blue) }
+      .lbl.t3 { fill:#4da0d7 }
+      .t4 ellipse { fill:#fff2ce; stroke:#ffbe0b; stroke-width:2.8 }
+      .edge.t4 { stroke:#ffbe0b; stroke-width:2.8; marker-end:url(#a-amber) }
+      .lbl.t4 { fill:#b8860b }
+      .ans ellipse { stroke:#a1245a; stroke-width:4.5 }
+    </style>
+  </defs>
+
+  <!-- ===== archi ===== -->
+  <path id="e-apre-1" class="edge t1" d="M149 67 L119 110"/>
+  <path id="e-apre-2" class="edge off" d="M171 67 L200 110"/>
+  <path id="e-apre-3" class="edge t1" d="M355 67 L326 110"/>
+  <path id="e-apre-4" class="edge t1" d="M377 67 L407 110"/>
+  <path id="e-rig-1" class="edge t2" d="M108 147 L108 188"/>
+  <path id="e-rig-2" class="edge off" d="M211 147 L211 188"/>
+  <path id="e-rig-3" class="edge t2" d="M315 147 L315 188"/>
+  <path id="e-rig-4" class="edge t2" d="M418 147 L418 188"/>
+  <path id="e-sped-1" class="edge t3" d="M109 227 L118 265"/>
+  <path id="e-sped-3" class="edge t3" d="M313 227 L293 263"/>
+  <path id="e-sped-4" class="edge t3" d="M416 227 L403 265"/>
+  <path id="e-vinc-1" class="edge t4" d="M120 352 L120 316"/>
+  <path id="e-vinc-2" class="edge t4" d="M290 352 L290 318"/>
+  <path id="e-vinc-3" class="edge t4" d="M400 352 L400 316"/>
+
+  <!-- ===== nodi ===== -->
+  <g id="cli-rossi" class="node t1"><ellipse cx="160" cy="50" rx="32" ry="18"/><text x="160" y="54">Rossi</text></g>
+  <g id="cli-verdi" class="node off"><ellipse cx="262" cy="50" rx="32" ry="18"/><text x="262" y="54">Verdi</text></g>
+  <g id="cli-bianchi" class="node t1"><ellipse cx="366" cy="50" rx="38" ry="18"/><text x="366" y="54">Bianchi</text></g>
+
+  <g id="rec-1" class="node t1"><ellipse cx="108" cy="130" rx="26" ry="17"/><text x="108" y="134">#88</text></g>
+  <g id="rec-2" class="node off"><ellipse cx="211" cy="130" rx="26" ry="17"/><text x="211" y="134">#91</text></g>
+  <g id="rec-3" class="node t1"><ellipse cx="315" cy="130" rx="26" ry="17"/><text x="315" y="134">#93</text></g>
+  <g id="rec-4" class="node t1"><ellipse cx="418" cy="130" rx="26" ry="17"/><text x="418" y="134">#95</text></g>
+
+  <g id="ord-1" class="node t2"><ellipse cx="108" cy="210" rx="28" ry="17"/><text x="108" y="214">4471</text></g>
+  <g id="ord-2" class="node off"><ellipse cx="211" cy="210" rx="28" ry="17"/><text x="211" y="214">4512</text></g>
+  <g id="ord-3" class="node t2"><ellipse cx="315" cy="210" rx="28" ry="17"/><text x="315" y="214">4530</text></g>
+  <g id="ord-4" class="node t2"><ellipse cx="418" cy="210" rx="28" ry="17"/><text x="418" y="214">4544</text></g>
+
+  <g id="cor-sped" class="node t3"><ellipse cx="120" cy="290" rx="36" ry="20"/><text x="120" y="294">SpedFast</text></g>
+  <g id="cor-nord" class="node t3"><ellipse cx="290" cy="290" rx="40" ry="22"/><text x="290" y="287">Corriere</text><text x="290" y="301">Nord</text></g>
+  <g id="cor-posta" class="node t3"><ellipse cx="400" cy="290" rx="36" ry="20"/><text x="400" y="294">PostaPro</text></g>
+
+  <g id="con-1" class="node t4"><ellipse cx="120" cy="370" rx="36" ry="18"/><text x="120" y="374">penale 2%</text></g>
+  <g id="con-2" class="node t4"><ellipse cx="290" cy="370" rx="40" ry="18"/><text x="290" y="374">penale 1,5%</text></g>
+  <g id="con-3" class="node t4"><ellipse cx="400" cy="370" rx="34" ry="18"/><text x="400" y="374">penale 0</text></g>
+
+  <!-- ===== rail di sinistra: strati e tipi di arco ===== -->
+  <g class="row">
+    <text x="14" y="54">CLIENTE</text>
+    <text x="14" y="134">RECLAMO</text>
+    <text x="14" y="214">ORDINE</text>
+    <text x="14" y="294">CORRIERE</text>
+    <text x="14" y="374">CONTRATTO</text>
+  </g>
+  <text id="l-apre" class="lbl t1" x="14" y="94">APRE</text>
+  <text id="l-rig" class="lbl t2" x="14" y="174">RIGUARDA</text>
+  <text id="l-sped" class="lbl t3" x="14" y="254">SPEDITO_DA</text>
+  <text id="l-vinc" class="lbl t4" x="14" y="334">VINCOLA</text>
+
+  <!-- ===== annotazioni dei tempi ===== -->
+  <text id="n-chiude" class="note hide" x="211" y="252" text-anchor="middle">il pattern non chiude</text>
+  <g id="n-freccia">
+    <text class="note" x="140" y="330">la freccia è al contrario,</text>
+    <text class="note" x="140" y="345">e nel grafo si vede</text>
+  </g>
+  <g id="n-risposta" class="hide">
+    <path d="M88 18 H366" stroke="#a1245a" stroke-width="2" fill="none"/>
+    <path d="M154 19 L166 19 L160 29 z" fill="#a1245a"/>
+    <path d="M360 19 L372 19 L366 29 z" fill="#a1245a"/>
+    <text x="14" y="23" font-size="12.5" font-weight="700" fill="#a1245a">la risposta</text>
+  </g>
+</svg>

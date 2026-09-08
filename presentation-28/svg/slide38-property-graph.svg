@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 764 400" width="764" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Il property graph del caso Acme: sei nodi con etichetta e proprietà (Cliente, Ordine, Corriere, Contratto, Reclamo, Prodotto) e sei archi tipizzati; l'arco SPEDITO_DA, in evidenza, porta le proprie proprietà di data prevista e data di consegna</title>
+
+  <defs>
+    <marker id="a-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#838383"/>
+    </marker>
+    <marker id="a-bur" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- ===== archi ===== -->
+  <g stroke="#838383" stroke-width="1.5" fill="none" marker-end="url(#a-grey)">
+    <path d="M135 92 L339 92"/>
+    <path d="M105 122 L105 254"/>
+    <path d="M129 272 L347 113"/>
+    <path d="M375 122 L375 254"/>
+    <path d="M665 260 L665 130"/>
+  </g>
+  <!-- arco focale -->
+  <path d="M405 92 L629 92" stroke="#a1245a" stroke-width="3" fill="none" marker-end="url(#a-bur)"/>
+
+  <!-- ===== tipi degli archi e loro proprietà ===== -->
+  <g font-size="12.5" font-weight="700" fill="#161719">
+    <text x="240" y="82" text-anchor="middle">ORDINA</text>
+    <text x="117" y="196">APRE</text>
+    <text x="228" y="176" text-anchor="end">RIGUARDA</text>
+    <text x="388" y="178">CONTIENE</text>
+    <text x="652" y="186" text-anchor="end">VINCOLA</text>
+  </g>
+  <text x="517" y="80" font-size="13.5" font-weight="700" fill="#a1245a" text-anchor="middle">SPEDITO_DA</text>
+
+  <g font-size="12" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#212529">
+    <rect x="174" y="104" width="132" height="30" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="182" y="124">data: 2026-08-10</text>
+
+    <rect x="388" y="188" width="64" height="30" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="396" y="208">q: 2</text>
+
+    <rect x="532" y="196" width="124" height="30" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="540" y="216">dal: 2026-03-01</text>
+
+    <!-- proprietà dell'arco focale -->
+    <rect x="434" y="104" width="166" height="46" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+    <text x="442" y="124">prevista: 2026-08-12</text>
+    <text x="442" y="142">consegna: 2026-08-19</text>
+  </g>
+  <g font-size="12.5" font-weight="600" font-style="italic" fill="#a1245a" text-anchor="middle">
+    <text x="522" y="30">le proprietà stanno</text>
+    <text x="522" y="48">dove appartengono</text>
+  </g>
+
+  <!-- ===== riquadri di proprietà dei nodi ===== -->
+  <g font-size="12" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#212529">
+    <rect x="30" y="10" width="150" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="38" y="30">nome: Rossi</text>
+    <text x="38" y="48">regione: Lombardia</text>
+
+    <rect x="312" y="10" width="126" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="320" y="30">id: 4471</text>
+    <text x="320" y="48">importo: 184.30</text>
+
+    <rect x="606" y="10" width="118" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="614" y="30">nome: SpedFast</text>
+    <text x="614" y="48">tipo: espresso</text>
+
+    <rect x="20" y="328" width="170" height="62" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="28" y="348">id: 88</text>
+    <text x="28" y="364">testo: "terza</text>
+    <text x="28" y="380">consegna in ritardo"</text>
+
+    <rect x="326" y="328" width="98" height="30" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="334" y="348">sku: AX-210</text>
+
+    <rect x="608" y="328" width="114" height="46" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="616" y="348">id: C-2026-07</text>
+    <text x="616" y="366">penale: 2%</text>
+  </g>
+
+  <!-- ===== nodi ===== -->
+  <g fill="#ffffff" stroke="#161719" stroke-width="1.8">
+    <circle cx="105" cy="92" r="30"/>
+    <circle cx="375" cy="92" r="30"/>
+    <circle cx="665" cy="92" r="30"/>
+    <circle cx="105" cy="290" r="30"/>
+    <circle cx="375" cy="290" r="30"/>
+    <circle cx="665" cy="290" r="30"/>
+  </g>
+  <g font-size="11.5" font-weight="600" fill="#161719" text-anchor="middle">
+    <text x="105" y="96">Cliente</text>
+    <text x="375" y="96">Ordine</text>
+    <text x="665" y="96">Corriere</text>
+    <text x="105" y="294">Reclamo</text>
+    <text x="375" y="294">Prodotto</text>
+    <text x="665" y="294">Contratto</text>
+  </g>
+</svg>

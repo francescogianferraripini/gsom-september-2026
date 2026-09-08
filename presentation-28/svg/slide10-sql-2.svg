@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 456 400" width="456" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>FROM e JOIN: le tabelle ordini e spedizioni si accendono per intero e la freccia fra le due colonne id_ordine unisce ogni spedizione al suo ordine, sei coppie in tutto; la colonna corriere resta accesa</title>
+  <defs>
+    <marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+    <marker id="mt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1ab197"/></marker>
+  </defs>
+
+  <!-- tabella ordini: accesa -->
+  <g id="ordini">
+    <text x="12" y="16" font-size="12" font-weight="700" fill="#161719">ordini</text>
+    <rect x="12" y="22" width="238" height="126" rx="8" fill="#d1efea" opacity="0.4"/>
+    <path d="M20 22 h222 a8 8 0 0 1 8 8 v16 h-238 v-16 a8 8 0 0 1 8 -8 z" fill="#d1efea"/>
+    <g stroke="#dee2e6">
+      <line x1="12" y1="46" x2="250" y2="46"/><line x1="12" y1="63" x2="250" y2="63"/><line x1="12" y1="80" x2="250" y2="80"/>
+      <line x1="12" y1="97" x2="250" y2="97"/><line x1="12" y1="114" x2="250" y2="114"/><line x1="12" y1="131" x2="250" y2="131"/>
+      <line x1="84" y1="22" x2="84" y2="148"/><line x1="164" y1="22" x2="164" y2="148"/>
+    </g>
+    <rect x="12" y="22" width="238" height="126" rx="8" fill="none" stroke="#1ab197" stroke-width="2.5"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#212529" text-anchor="middle">
+      <text x="48" y="38">id_ordine</text><text x="124" y="38">id_cliente</text><text x="207" y="38">data_ordine</text>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#161719" text-anchor="middle">
+      <text x="48" y="58">4471</text><text x="124" y="58">812</text><text x="207" y="58">2026-08-03</text>
+      <text x="48" y="75">4472</text><text x="124" y="75">415</text><text x="207" y="75">2026-08-05</text>
+      <text x="48" y="92">4473</text><text x="124" y="92">812</text><text x="207" y="92">2026-08-11</text>
+      <text x="48" y="109">4310</text><text x="124" y="109">207</text><text x="207" y="109">2026-07-14</text>
+      <text x="48" y="126">4322</text><text x="124" y="126">415</text><text x="207" y="126">2026-07-22</text>
+      <text x="48" y="143">4335</text><text x="124" y="143">630</text><text x="207" y="143">2026-07-29</text>
+    </g>
+  </g>
+
+  <!-- freccia fra le chiavi: accesa, elemento focale -->
+  <g id="giunzione">
+    <path d="M48 182 V152" fill="none" stroke="#1ab197" stroke-width="2.5" marker-end="url(#mt)"/>
+    <text x="70" y="170" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#1ab197">id_ordine → id_ordine</text>
+  </g>
+
+  <!-- tabella spedizioni: accesa -->
+  <g id="spedizioni">
+    <text x="304" y="181" font-size="12" font-weight="700" fill="#161719" text-anchor="end">spedizioni</text>
+    <rect x="12" y="186" width="292" height="130" rx="8" fill="#d1efea" opacity="0.4"/>
+    <path d="M20 186 h276 a8 8 0 0 1 8 8 v20 h-292 v-20 a8 8 0 0 1 8 -8 z" fill="#d1efea"/>
+    <g stroke="#dee2e6">
+      <line x1="12" y1="214" x2="304" y2="214"/><line x1="12" y1="231" x2="304" y2="231"/><line x1="12" y1="248" x2="304" y2="248"/>
+      <line x1="12" y1="265" x2="304" y2="265"/><line x1="12" y1="282" x2="304" y2="282"/><line x1="12" y1="299" x2="304" y2="299"/>
+      <line x1="84" y1="186" x2="84" y2="316"/><line x1="180" y1="186" x2="180" y2="316"/><line x1="242" y1="186" x2="242" y2="316"/>
+    </g>
+    <rect x="12" y="186" width="292" height="130" rx="8" fill="none" stroke="#1ab197" stroke-width="2.5"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#212529" text-anchor="middle">
+      <text x="48" y="205">id_ordine</text><text x="132" y="205">corriere</text>
+      <text x="211" y="198">data_</text><text x="211" y="211">prevista</text>
+      <text x="273" y="198">data_</text><text x="273" y="211">consegna</text>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#161719" text-anchor="middle">
+      <text x="48" y="226">4471</text><text x="132" y="226">SpedFast</text><text x="211" y="226">08-12</text><text x="273" y="226">08-19</text>
+      <text x="48" y="243">4471</text><text x="132" y="243">Corriere Nord</text><text x="211" y="243">08-13</text><text x="273" y="243">08-13</text>
+      <text x="48" y="260">4472</text><text x="132" y="260">PostaPro</text><text x="211" y="260">08-09</text><text x="273" y="260">08-13</text>
+      <text x="48" y="277">4473</text><text x="132" y="277">SpedFast</text><text x="211" y="277">08-18</text><text x="273" y="277">08-21</text>
+      <text x="48" y="294">4310</text><text x="132" y="294">SpedFast</text><text x="211" y="294">07-20</text><text x="273" y="294">07-24</text>
+      <text x="48" y="311">4322</text><text x="132" y="311">Corriere Nord</text><text x="211" y="311">07-28</text><text x="273" y="311">07-28</text>
+    </g>
+  </g>
+
+  <!-- la colonna corriere resta accesa dal tempo precedente -->
+  <g id="corriere-acceso">
+    <rect x="84" y="186" width="96" height="130" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+    <text x="132" y="205" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#a1245a" text-anchor="middle">corriere</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#161719" text-anchor="middle">
+      <text x="132" y="226">SpedFast</text>
+      <text x="132" y="243">Corriere Nord</text>
+      <text x="132" y="260">PostaPro</text>
+      <text x="132" y="277">SpedFast</text>
+      <text x="132" y="294">SpedFast</text>
+      <text x="132" y="311">Corriere Nord</text>
+    </g>
+  </g>
+
+  <!-- le due colonne calcolate: attenuate -->
+  <g id="colonne-calcolate" opacity="0.3">
+    <rect x="304" y="186" width="140" height="130" rx="8" fill="none" stroke="#a1245a" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <g stroke="#a1245a" stroke-width="1.5" stroke-dasharray="5 4">
+      <line x1="374" y1="186" x2="374" y2="316"/>
+      <line x1="304" y1="214" x2="444" y2="214"/>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#a1245a" text-anchor="middle">
+      <text x="339" y="198">ordini_in</text><text x="339" y="211">_ritardo</text>
+      <text x="409" y="198">ritardo_</text><text x="409" y="211">medio_gg</text>
+    </g>
+  </g>
+
+  <text x="12" y="334" font-size="12" font-weight="600" fill="#1ab197">6 coppie spedizione–ordine</text>
+</svg>

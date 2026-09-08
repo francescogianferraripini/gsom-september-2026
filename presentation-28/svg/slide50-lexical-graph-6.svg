@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 456 400" width="456" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Il lexical graph, tempo 6: il percorso completo dal chunk d'ingresso all'articolo 7 del contratto, passando per l'entità SpedFast</title>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+  </defs>
+  <g id="scena" opacity="0.28">
+    <g id="docs">
+      <g>
+        <rect x="8" y="6" width="162" height="18" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+        <text x="16" y="19" font-size="11" font-weight="600" fill="#161719">contratto_SpedFast_2026</text>
+        <path d="M16 24 L16 69 M16 39 L24 39 M16 69 L24 69" fill="none" stroke="#adb5bd" stroke-width="1"/>
+        <rect x="24" y="30" width="146" height="18" rx="4" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <rect x="24" y="60" width="146" height="18" rx="4" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <line x1="60" y1="48" x2="60" y2="58" stroke="#838383" stroke-width="1.2" marker-end="url(#ag)"/>
+        <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529">
+          <text x="32" y="43">chunk 1</text>
+          <text x="32" y="73">chunk 2 · art. 7</text>
+        </g>
+      </g>
+      <g>
+        <rect x="8" y="82" width="162" height="18" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+        <text x="16" y="95" font-size="11" font-weight="600" fill="#161719">reclamo #88</text>
+        <path d="M16 100 L16 145 M16 115 L24 115 M16 145 L24 145" fill="none" stroke="#adb5bd" stroke-width="1"/>
+        <rect x="24" y="106" width="146" height="18" rx="4" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <rect x="24" y="136" width="146" height="18" rx="4" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <line x1="60" y1="124" x2="60" y2="134" stroke="#838383" stroke-width="1.2" marker-end="url(#ag)"/>
+        <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529">
+          <text x="32" y="119">chunk 1</text>
+          <text x="32" y="149">chunk 2</text>
+        </g>
+      </g>
+      <g>
+        <rect x="8" y="158" width="162" height="18" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+        <text x="16" y="171" font-size="11" font-weight="600" fill="#161719">reclamo #903</text>
+        <path d="M16 176 L16 221 M16 191 L24 191 M16 221 L24 221" fill="none" stroke="#adb5bd" stroke-width="1"/>
+        <rect x="24" y="182" width="146" height="18" rx="4" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <rect x="24" y="212" width="146" height="18" rx="4" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <line x1="60" y1="200" x2="60" y2="210" stroke="#838383" stroke-width="1.2" marker-end="url(#ag)"/>
+        <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529">
+          <text x="32" y="195">chunk 1</text>
+          <text x="32" y="225">chunk 2</text>
+        </g>
+      </g>
+      <g>
+        <rect x="8" y="234" width="162" height="18" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+        <text x="16" y="247" font-size="11" font-weight="600" fill="#161719">reclamo #77</text>
+        <path d="M16 252 L16 297 M16 267 L24 267 M16 297 L24 297" fill="none" stroke="#adb5bd" stroke-width="1"/>
+        <rect x="24" y="258" width="146" height="18" rx="4" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <rect x="24" y="288" width="146" height="18" rx="4" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <line x1="60" y1="276" x2="60" y2="286" stroke="#838383" stroke-width="1.2" marker-end="url(#ag)"/>
+        <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529">
+          <text x="32" y="271">chunk 1</text>
+          <text x="32" y="301">chunk 2</text>
+        </g>
+      </g>
+      <g>
+        <rect x="8" y="310" width="162" height="18" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+        <text x="16" y="323" font-size="11" font-weight="600" fill="#161719">policy_rimborsi</text>
+        <path d="M16 328 L16 373 M16 343 L24 343 M16 373 L24 373" fill="none" stroke="#adb5bd" stroke-width="1"/>
+        <rect x="24" y="334" width="146" height="18" rx="4" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <rect x="24" y="364" width="146" height="18" rx="4" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+        <line x1="60" y1="352" x2="60" y2="362" stroke="#838383" stroke-width="1.2" marker-end="url(#ag)"/>
+        <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529">
+          <text x="32" y="347">chunk 1</text>
+          <text x="32" y="377">chunk 2</text>
+        </g>
+      </g>
+    </g>
+    <g id="modello">
+      <g stroke="#838383" stroke-width="1" stroke-dasharray="4 3">
+        <line x1="170" y1="39" x2="180" y2="39"/>
+        <line x1="170" y1="69" x2="180" y2="69"/>
+        <line x1="170" y1="115" x2="180" y2="115"/>
+        <line x1="170" y1="145" x2="180" y2="145"/>
+        <line x1="170" y1="191" x2="180" y2="191"/>
+        <line x1="170" y1="221" x2="180" y2="221"/>
+        <line x1="170" y1="267" x2="180" y2="267"/>
+        <line x1="170" y1="297" x2="180" y2="297"/>
+        <line x1="170" y1="343" x2="180" y2="343"/>
+        <line x1="170" y1="373" x2="180" y2="373"/>
+      </g>
+      <path d="M180 373 L180 28 L190 28" fill="none" stroke="#838383" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+      <rect x="196" y="8" width="180" height="40" rx="8" fill="#161719"/>
+      <rect x="199" y="14" width="3" height="28" fill="#ffbe0b"/>
+      <text x="210" y="26" font-size="11.5" font-weight="700" fill="#ffbe0b">modello:</text>
+      <text x="210" y="41" font-size="12" font-weight="500" fill="#ffffff">estrai entità e relazioni</text>
+      <line x1="286" y1="48" x2="286" y2="68" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)"/>
+    </g>
+    <g id="hasentity" stroke="#adb5bd" stroke-width="1" fill="none">
+      <line x1="170" y1="145" x2="219.1" y2="113.4"/>
+      <line x1="170" y1="145" x2="278.6" y2="165.6"/>
+      <line x1="170" y1="145" x2="364.4" y2="236"/>
+      <path d="M170 69 Q 240 230 358 239"/>
+      <line x1="170" y1="69" x2="378" y2="304.2"/>
+      <line x1="170" y1="221" x2="355.2" y2="243.7"/>
+      <line x1="170" y1="221" x2="282.9" y2="182"/>
+      <line x1="170" y1="297" x2="357.4" y2="255.3"/>
+      <line x1="170" y1="297" x2="295" y2="187"/>
+      <path d="M170 343 Q 300 362 363.4 259.5"/>
+      <line x1="170" y1="343" x2="232.3" y2="312.5"/>
+    </g>
+    <g id="arcs">
+      <g stroke="#838383" stroke-width="1.5" fill="none" marker-end="url(#ag)">
+        <line x1="276" y1="100" x2="334" y2="100"/>
+        <line x1="363.4" y1="115.9" x2="326.3" y2="156.4"/>
+        <line x1="327.7" y1="187.3" x2="374.3" y2="232.7"/>
+        <line x1="390" y1="265" x2="391" y2="301"/>
+        <line x1="305" y1="188.7" x2="265" y2="283.3"/>
+      </g>
+      <g font-size="11" fill="#495057" paint-order="stroke" stroke="#ffffff" stroke-width="3.5">
+        <text x="305" y="92" text-anchor="middle">apre</text>
+        <text x="352" y="136">riguarda</text>
+        <text x="344" y="214">di</text>
+        <text x="400" y="288">ha_penale</text>
+        <text x="296" y="258" text-anchor="end">dà_diritto_a</text>
+      </g>
+    </g>
+    <g id="entities" font-size="12" font-weight="600" text-anchor="middle">
+      <ellipse cx="240" cy="100" rx="34" ry="17" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+      <ellipse cx="378" cy="100" rx="42" ry="17" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+      <ellipse cx="312" cy="172" rx="36" ry="17" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+      <ellipse cx="390" cy="248" rx="36" ry="17" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+      <ellipse cx="258" cy="300" rx="38" ry="17" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+      <ellipse cx="392" cy="320" rx="38" ry="17" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+      <g fill="#161719">
+        <text x="240" y="104">Rossi</text>
+        <text x="378" y="104">reclamo #88</text>
+        <text x="312" y="176">ritardo</text>
+        <text x="390" y="252">SpedFast</text>
+        <text x="258" y="304">buono 10%</text>
+        <text x="392" y="324">penale 2%</text>
+      </g>
+    </g>
+    <g id="legenda" font-size="11.5" fill="#838383" paint-order="stroke" stroke="#ffffff" stroke-width="3.5">
+      <text x="196" y="356">PART_OF: il chunk viene da un documento</text>
+      <text x="196" y="372">NEXT: il chunk che viene dopo</text>
+      <text x="196" y="388">HAS_ENTITY: il chunk cita l'entità</text>
+    </g>
+  </g>
+  <g id="acceso">
+    <g fill="none" stroke="#4da0d7" stroke-width="2.2" stroke-linecap="round">
+      <line x1="170" y1="221" x2="355.2" y2="243.7"/>
+      <line x1="170" y1="297" x2="357.4" y2="255.3"/>
+      <path d="M170 343 Q 300 362 363.4 259.5"/>
+    </g>
+    <g fill="none" stroke="#1ab197" stroke-width="2.2" stroke-linecap="round">
+      <line x1="170" y1="145" x2="219.1" y2="113.4"/>
+      <line x1="170" y1="145" x2="278.6" y2="165.6"/>
+    </g>
+    <g id="percorso" fill="none" stroke-linecap="round">
+      <g stroke="#161719" stroke-width="4.2">
+        <line x1="170" y1="145" x2="364.4" y2="236"/>
+        <path d="M170 69 Q 240 230 358 239"/>
+      </g>
+      <g stroke="#ffbe0b" stroke-width="3">
+        <line x1="170" y1="145" x2="364.4" y2="236"/>
+        <path d="M170 69 Q 240 230 358 239"/>
+      </g>
+    </g>
+    <g fill="#ffffff" stroke="#4da0d7" stroke-width="1.8">
+      <rect x="8" y="158" width="162" height="18" rx="5"/>
+      <rect x="8" y="234" width="162" height="18" rx="5"/>
+      <rect x="8" y="310" width="162" height="18" rx="5"/>
+    </g>
+    <g fill="#dcecf7" stroke="#4da0d7" stroke-width="2.5">
+      <rect x="24" y="212" width="146" height="18" rx="4"/>
+      <rect x="24" y="288" width="146" height="18" rx="4"/>
+      <rect x="24" y="334" width="146" height="18" rx="4"/>
+    </g>
+    <rect x="8" y="6" width="162" height="18" rx="5" fill="#ffffff" stroke="#ffbe0b" stroke-width="2.2"/>
+    <rect x="24" y="60" width="146" height="18" rx="4" fill="#fff2ce" stroke="#ffbe0b" stroke-width="3.5"/>
+    <rect x="8" y="82" width="162" height="18" rx="5" fill="#ffffff" stroke="#a1245a" stroke-width="1.8"/>
+    <rect x="24" y="136" width="146" height="18" rx="4" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+    <g font-size="11" font-weight="600" fill="#161719">
+      <text x="16" y="19">contratto_SpedFast_2026</text>
+      <text x="16" y="95">reclamo #88</text>
+      <text x="16" y="171">reclamo #903</text>
+      <text x="16" y="247">reclamo #77</text>
+      <text x="16" y="323">policy_rimborsi</text>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#161719">
+      <text x="32" y="73">chunk 2 · art. 7</text>
+      <text x="32" y="149">chunk 2</text>
+      <text x="32" y="225">chunk 2</text>
+      <text x="32" y="301">chunk 2</text>
+      <text x="32" y="347">chunk 1</text>
+    </g>
+    <g fill="#d1efea" stroke="#1ab197" stroke-width="2.5">
+      <ellipse cx="240" cy="100" rx="34" ry="17"/>
+      <ellipse cx="312" cy="172" rx="36" ry="17"/>
+      <ellipse cx="390" cy="248" rx="36" ry="17"/>
+    </g>
+    <g font-size="12" font-weight="600" text-anchor="middle" fill="#161719">
+      <text x="240" y="104">Rossi</text>
+      <text x="312" y="176">ritardo</text>
+      <text x="390" y="252">SpedFast</text>
+    </g>
+    <text x="188" y="170" font-size="12" font-weight="600" fill="#a1245a" paint-order="stroke" stroke="#ffffff" stroke-width="4">search: 0,84</text>
+    <rect x="290" y="55" width="3" height="17" fill="#ffbe0b"/>
+    <text x="302" y="68" font-size="11.5" font-weight="600" fill="#212529">tre documenti, un percorso</text>
+  </g>
+</svg>

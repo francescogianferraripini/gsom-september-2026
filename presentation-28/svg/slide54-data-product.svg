@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Il prodotto dati fatto_spedizioni v3 con il suo contratto — owner e controlli in evidenza — altri tre prodotti dati, e il contratto letto dal modello nel system prompt</title>
+
+  <defs>
+    <marker id="fr-burg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- ============ scheda prodotto grande ============ -->
+  <g id="scheda-grande">
+    <rect x="8" y="14" width="286" height="342" rx="8" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+
+    <!-- testata -->
+    <path d="M8 50 L8 22 A8 8 0 0 1 16 14 L286 14 A8 8 0 0 1 294 22 L294 50 Z" fill="#f6f6f6"/>
+    <line x1="8" y1="50" x2="294" y2="50" stroke="#dee2e6" stroke-width="1"/>
+    <text x="20" y="36" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="700" fill="#161719">fatto_spedizioni · v3</text>
+    <text x="282" y="36" text-anchor="end" font-size="11" font-weight="600" fill="#838383">prodotto dati</text>
+
+    <!-- owner (in evidenza) -->
+    <rect x="9" y="50" width="284" height="36" fill="#ecd3de"/>
+    <rect x="9" y="50" width="3" height="36" fill="#a1245a"/>
+    <text x="22" y="66" font-size="11" font-weight="700" fill="#a1245a">owner</text>
+    <text x="22" y="81" font-size="12.5" font-weight="600" fill="#161719">team logistica (Giulia)</text>
+    <line x1="8" y1="86" x2="294" y2="86" stroke="#dee2e6" stroke-width="1"/>
+
+    <!-- grano -->
+    <text x="20" y="103" font-size="11" font-weight="700" fill="#838383">grano</text>
+    <text x="66" y="103" font-size="12" fill="#212529">una riga = una spedizione</text>
+    <line x1="8" y1="112" x2="294" y2="112" stroke="#dee2e6" stroke-width="1"/>
+
+    <!-- schema -->
+    <text x="20" y="129" font-size="11" font-weight="700" fill="#838383">schema</text>
+    <text x="72" y="129" font-size="12" fill="#212529">+ descrizioni</text>
+    <line x1="8" y1="138" x2="294" y2="138" stroke="#dee2e6" stroke-width="1"/>
+
+    <!-- metriche -->
+    <text x="20" y="154" font-size="11" font-weight="700" fill="#838383">metriche</text>
+    <text x="20" y="169" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">ordini_in_ritardo, ritardo_medio_gg</text>
+    <line x1="8" y1="176" x2="294" y2="176" stroke="#dee2e6" stroke-width="1"/>
+
+    <!-- aggiornamento -->
+    <text x="20" y="193" font-size="11" font-weight="700" fill="#838383">aggiornamento</text>
+    <text x="110" y="193" font-size="12" fill="#212529">ogni notte alle 02:00</text>
+    <line x1="8" y1="202" x2="294" y2="202" stroke="#dee2e6" stroke-width="1"/>
+
+    <!-- controlli (in evidenza) -->
+    <rect x="9" y="202" width="284" height="58" fill="#ecd3de"/>
+    <rect x="9" y="202" width="3" height="58" fill="#a1245a"/>
+    <text x="22" y="219" font-size="11" font-weight="700" fill="#a1245a">controlli</text>
+    <text x="22" y="235" font-size="12.5" font-weight="500" fill="#161719">ritardo ≥ 0 · corriere non nullo</text>
+    <text x="22" y="251" font-size="12.5" font-weight="500" fill="#161719">righe ≥ 95% del giorno prima</text>
+    <line x1="8" y1="260" x2="294" y2="260" stroke="#dee2e6" stroke-width="1"/>
+
+    <!-- consumatori -->
+    <text x="20" y="277" font-size="11" font-weight="700" fill="#838383">consumatori</text>
+    <text x="20" y="292" font-size="12" fill="#212529">report ritardi · dashboard ·</text>
+    <text x="20" y="306" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">esegui_sql <tspan font-family="Poppins, system-ui, sans-serif">(agente)</tspan></text>
+    <line x1="8" y1="314" x2="294" y2="314" stroke="#dee2e6" stroke-width="1"/>
+
+    <!-- changelog -->
+    <text x="20" y="331" font-size="11" font-weight="700" fill="#838383">changelog</text>
+    <text x="20" y="346" font-size="12" fill="#212529">v3: aggiunta <tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5">giorni_lavorativi_ritardo</tspan></text>
+  </g>
+
+  <!-- ============ freccia verso il system prompt ============ -->
+  <path d="M298 200 C 382 200, 396 58, 498 46" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#fr-burg)"/>
+  <text x="392" y="28" text-anchor="middle" font-size="12" font-style="italic" fill="#838383">il contratto, letto dal modello</text>
+
+  <!-- ============ finestra a strati in miniatura ============ -->
+  <g id="finestra-mini">
+    <rect x="508" y="20" width="104" height="130" rx="5" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <rect x="620" y="20" width="18" height="130" rx="5" fill="none" stroke="#838383" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+    <rect x="514" y="26" width="92" height="30" rx="4" fill="#d1efea" stroke="#1ab197" stroke-width="1.8"/>
+    <text x="560" y="45" text-anchor="middle" font-size="11" font-weight="600" fill="#0e7c6a">system prompt</text>
+
+    <g fill="none" stroke="#838383" stroke-width="1.2" stroke-dasharray="5 4">
+      <rect x="514" y="62" width="92" height="26" rx="4"/>
+      <rect x="514" y="94" width="92" height="26" rx="4"/>
+      <rect x="514" y="126" width="92" height="18" rx="4"/>
+    </g>
+    <g font-size="11" font-weight="600" fill="#838383" text-anchor="middle">
+      <text x="560" y="79">tool</text>
+      <text x="560" y="111">skill</text>
+      <text x="560" y="139">messaggi</text>
+    </g>
+  </g>
+
+  <!-- ============ tre schede piccole ============ -->
+  <g id="schede-piccole">
+    <g>
+      <rect x="306" y="170" width="320" height="64" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1.5"/>
+      <text x="318" y="187" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">indice contratti · v2</text>
+      <text x="318" y="203" font-size="11" font-weight="700" fill="#838383">owner</text>
+      <text x="364" y="203" font-size="11.5" fill="#212529">acquisti</text>
+      <text x="318" y="217" font-size="11" font-weight="700" fill="#838383">contratto</text>
+      <text x="382" y="217" font-size="11.5" fill="#212529">quali documenti, quale versione vale</text>
+      <text x="318" y="231" font-size="11" font-weight="700" fill="#838383">controlli</text>
+      <text x="378" y="231" font-size="11.5" fill="#212529">nessuna bozza nell'indice</text>
+    </g>
+    <g>
+      <rect x="306" y="242" width="320" height="64" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1.5"/>
+      <text x="318" y="259" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">grafo logistica · v1</text>
+      <text x="318" y="275" font-size="11" font-weight="700" fill="#838383">owner</text>
+      <text x="364" y="275" font-size="11.5" fill="#212529">team logistica</text>
+      <text x="318" y="289" font-size="11" font-weight="700" fill="#838383">contratto</text>
+      <text x="382" y="289" font-size="11.5" fill="#212529">quali entità, estratte come</text>
+      <text x="318" y="303" font-size="11" font-weight="700" fill="#838383">controlli</text>
+      <text x="378" y="303" font-size="11.5" fill="#212529">affidabilità dichiarata per classe</text>
+    </g>
+    <g>
+      <rect x="306" y="314" width="320" height="64" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1.5"/>
+      <text x="318" y="331" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">policy rimborsi · 2026</text>
+      <text x="318" y="347" font-size="11" font-weight="700" fill="#838383">owner</text>
+      <text x="364" y="347" font-size="11.5" fill="#212529">servizio clienti</text>
+      <text x="318" y="361" font-size="11" font-weight="700" fill="#838383">contratto</text>
+      <text x="382" y="361" font-size="11.5" fill="#212529">quale versione è in vigore, da quando</text>
+      <text x="318" y="375" font-size="11" font-weight="700" fill="#838383">controlli</text>
+      <text x="378" y="375" font-size="11.5" fill="#212529">una sola versione attiva</text>
+    </g>
+  </g>
+</svg>

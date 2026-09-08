@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 707 230" width="707" height="230" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Lo star schema: al centro la tabella dei fatti fatto_spedizioni con le tre chiavi id_corriere, id_cliente, id_data e le tre misure importo, giorni_ritardo, giorni_lavorativi_ritardo; intorno le tre dimensioni dim_corriere, dim_cliente e dim_data, ognuna collegata al fatto da una linea sola etichettata con la chiave</title>
+
+  <!-- le tre join, identiche -->
+  <g stroke="#a1245a" stroke-width="2" fill="none">
+    <path d="M258 73 H170"/>
+    <path d="M456 73 H538"/>
+    <path d="M357 142 V154"/>
+  </g>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" fill="#838383">
+    <text x="214" y="64" text-anchor="middle">id_corriere</text>
+    <text x="497" y="64" text-anchor="middle">id_cliente</text>
+    <text x="365" y="151">id_data</text>
+  </g>
+
+  <!-- il fatto -->
+  <g id="fatto">
+    <rect x="258" y="4" width="198" height="138" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+    <path d="M258 27 h198" stroke="#a1245a"/>
+    <path d="M258 12 a8,8 0 0 1 8,-8 h182 a8,8 0 0 1 8,8 v15 h-198 z" fill="#ecd3de"/>
+    <text x="357" y="21" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13.5" font-weight="700" fill="#a1245a">fatto_spedizioni</text>
+    <path d="M267 83 V133" stroke="#a1245a" stroke-width="3"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12">
+      <text x="266" y="40" fill="#212529">id_corriere</text>
+      <text x="266" y="58" fill="#212529">id_cliente</text>
+      <text x="266" y="76" fill="#212529">id_data</text>
+      <text x="274" y="94" fill="#a1245a" font-weight="700">importo</text>
+      <text x="274" y="112" fill="#a1245a" font-weight="700">giorni_ritardo</text>
+      <text x="274" y="130" fill="#a1245a" font-weight="700">giorni_lavorativi_ritardo</text>
+    </g>
+    <g font-size="11" font-weight="700" fill="#838383" text-anchor="end">
+      <text x="448" y="40">FK</text>
+      <text x="448" y="58">FK</text>
+      <text x="448" y="76">FK</text>
+    </g>
+  </g>
+
+  <!-- dim_corriere -->
+  <g id="dim-corriere">
+    <rect x="10" y="40" width="160" height="76" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <path d="M10 48 a8,8 0 0 1 8,-8 h144 a8,8 0 0 1 8,8 v14 h-160 z" fill="#f6f6f6"/>
+    <path d="M10 62 h160" stroke="#dee2e6"/>
+    <text x="90" y="56" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">dim_corriere</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">
+      <text x="20" y="76">nome</text>
+      <text x="20" y="93">tipo</text>
+      <text x="20" y="110">contratto_dal</text>
+    </g>
+  </g>
+
+  <!-- dim_cliente -->
+  <g id="dim-cliente">
+    <rect x="538" y="40" width="160" height="76" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <path d="M538 48 a8,8 0 0 1 8,-8 h144 a8,8 0 0 1 8,8 v14 h-160 z" fill="#f6f6f6"/>
+    <path d="M538 62 h160" stroke="#dee2e6"/>
+    <text x="618" y="56" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">dim_cliente</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">
+      <text x="548" y="76">nome</text>
+      <text x="548" y="93">regione</text>
+      <text x="548" y="110">segmento</text>
+    </g>
+  </g>
+
+  <!-- dim_data -->
+  <g id="dim-data">
+    <rect x="258" y="154" width="198" height="72" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <path d="M258 162 a8,8 0 0 1 8,-8 h182 a8,8 0 0 1 8,8 v14 h-198 z" fill="#f6f6f6"/>
+    <path d="M258 176 h198" stroke="#dee2e6"/>
+    <text x="357" y="170" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">dim_data</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">
+      <text x="268" y="190">giorno</text>
+      <text x="268" y="206">mese</text>
+      <text x="268" y="222">festivo</text>
+    </g>
+  </g>
+</svg>

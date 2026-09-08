@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1302 754" width="1302" height="754" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>La figura madre: la formula con il blocco KB esploso verso l'alto in una callout. Dentro, la banda dell'ontologia come grafo di classi steso in orizzontale e tre fasce su tre colonne: gli oggetti (dato strutturato la tabella, grafo le relazioni, dato non strutturato il documento) con la freccia bidirezionale strutturato - non strutturato, l'accesso (si interroga, si percorre, si cerca) e i pattern agentici (Text2SQL, GraphRAG, RAG e agentic search)</title>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#838383"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+  <!-- ===== La callout sopra KB: riquadro largo quanto la fila dei sei blocchi ===== -->
+  <rect id="callout" x="210" y="12" width="1080" height="380" rx="10" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+  <!-- ===== La banda dell'ontologia: un grafo di classi steso in orizzontale,
+       che tocca tutte e tre le colonne e non appartiene a nessuna ===== -->
+  <g id="banda-ontologia">
+    <text x="230" y="28" font-size="16" font-weight="600" fill="#212529">Ontologia: il significato, da un capo all'altro</text>
+    <rect x="230" y="34" width="1040" height="62" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <g fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)">
+      <path d="M328 65 H473"/>
+      <path d="M561 65 H706"/>
+      <path d="M794 65 H939"/>
+      <path d="M1172 65 H1027"/>
+    </g>
+    <g text-anchor="middle" font-size="12" fill="#838383">
+      <text x="400" y="59">ordina</text>
+      <text x="633" y="59">spedito con</text>
+      <text x="866" y="59">consegnata da</text>
+      <text x="1100" y="59">vincola</text>
+    </g>
+    <g fill="#ffffff" stroke="#838383" stroke-width="1.5">
+      <ellipse cx="284" cy="65" rx="44" ry="18"/>
+      <ellipse cx="517" cy="65" rx="44" ry="18"/>
+      <ellipse cx="750" cy="65" rx="44" ry="18"/>
+      <ellipse cx="983" cy="65" rx="44" ry="18"/>
+      <ellipse cx="1216" cy="65" rx="44" ry="18"/>
+    </g>
+    <g text-anchor="middle" font-size="12" font-weight="600" fill="#161719">
+      <text x="284" y="69">Cliente</text>
+      <text x="517" y="69">Ordine</text>
+      <text x="750" y="69">Spedizione</text>
+      <text x="983" y="69">Corriere</text>
+      <text x="1216" y="69">Contratto</text>
+    </g>
+  </g>
+  <!-- ===== Fascia OGGETTI: le tre forme, su tre colonne uguali ===== -->
+  <g id="fascia-oggetti">
+    <g fill="#ecd3de" stroke="#a1245a" stroke-width="2.5">
+      <rect x="240" y="156" width="300" height="66" rx="8"/>
+      <rect x="600" y="156" width="300" height="66" rx="8"/>
+      <rect x="960" y="156" width="300" height="66" rx="8"/>
+    </g>
+    <!-- icona: la griglia della tabella -->
+    <g fill="#a1245a">
+      <rect x="254" y="175" width="8" height="8" rx="1"/><rect x="264" y="175" width="8" height="8" rx="1"/><rect x="274" y="175" width="8" height="8" rx="1"/>
+      <rect x="254" y="185" width="8" height="8" rx="1"/><rect x="264" y="185" width="8" height="8" rx="1"/><rect x="274" y="185" width="8" height="8" rx="1"/>
+      <rect x="254" y="195" width="8" height="8" rx="1"/><rect x="264" y="195" width="8" height="8" rx="1"/><rect x="274" y="195" width="8" height="8" rx="1"/>
+    </g>
+    <!-- icona: tre nodi collegati -->
+    <g stroke="#a1245a" stroke-width="1.5">
+      <path d="M628 180 L617 199 M628 180 L639 199 M617 199 H639"/>
+    </g>
+    <g fill="#a1245a">
+      <circle cx="628" cy="179" r="4.5"/><circle cx="617" cy="199" r="4.5"/><circle cx="639" cy="199" r="4.5"/>
+    </g>
+    <!-- icona: il foglio con le righe -->
+    <g fill="none" stroke="#a1245a" stroke-width="1.5">
+      <rect x="978" y="175" width="22" height="28" rx="2"/>
+      <path d="M984 183 H994 M984 190 H994 M984 197 H990"/>
+    </g>
+    <g font-size="17" font-weight="700" fill="#a1245a">
+      <text x="292" y="184">Dato strutturato:</text>
+      <text x="292" y="206">la tabella</text>
+      <text x="652" y="184">Grafo:</text>
+      <text x="652" y="206">le relazioni</text>
+      <text x="1012" y="184">Dato non strutturato:</text>
+      <text x="1012" y="206">il documento</text>
+    </g>
+  </g>
+
+  <!-- ===== Lo spettro: una sola freccia, due sole parole ===== -->
+  <g id="spettro">
+    <text x="250" y="244" font-size="14" font-weight="600" fill="#838383">strutturato</text>
+    <text x="1250" y="244" text-anchor="end" font-size="14" font-weight="600" fill="#838383">non strutturato</text>
+    <path d="M250 256 H1250" fill="none" stroke="#838383" stroke-width="2" marker-start="url(#ag)" marker-end="url(#ag)"/>
+  </g>
+
+  <!-- ===== Fascia ACCESSO: il verbo di ogni forma ===== -->
+  <g id="fascia-accesso" text-anchor="middle" font-size="15" font-weight="600" fill="#161719">
+    <text x="390" y="296">si interroga (query)</text>
+    <text x="750" y="296">si percorre (traversal)</text>
+    <text x="1110" y="296">si cerca (search)</text>
+  </g>
+
+  <!-- ===== Fascia PATTERN AGENTICI ===== -->
+  <g id="fascia-pattern">
+    <g fill="#f6f6f6" stroke="#dee2e6" stroke-width="1">
+      <rect x="270" y="318" width="240" height="42" rx="6"/>
+      <rect x="630" y="318" width="240" height="42" rx="6"/>
+      <rect x="990" y="318" width="240" height="42" rx="6"/>
+    </g>
+    <g text-anchor="middle" font-size="15" font-weight="700" fill="#161719">
+      <text x="390" y="345">Text2SQL</text>
+      <text x="750" y="345">GraphRAG</text>
+      <text x="1110" y="345">RAG · agentic search</text>
+    </g>
+  </g>
+  <!-- raccordo (coda di fumetto) dalla callout al blocco KB -->
+  <g id="raccordo-kb">
+    <path d="M999 389 L1009 434 L1049 434 L1059 389 Z" fill="#ffffff"/>
+    <path d="M999 391 L1009 434" fill="none" stroke="#a1245a" stroke-width="2"/>
+    <path d="M1059 391 L1049 434" fill="none" stroke="#a1245a" stroke-width="2"/>
+  </g>
+  <!-- ===== La formula: geometria identica a slide62-formula-riletta.svg del 27,
+       traslata di (0 420) per lasciare spazio alla callout. Le coordinate locali
+       qui sotto sono LE STESSE del 62 e del 26: nulla si e' mosso. ===== -->
+  <g id="formula" transform="translate(0 420)">
+
+    <g id="agent">
+      <rect x="12" y="57" width="130" height="130" rx="8" fill="#161719"/>
+      <text x="77" y="134" text-anchor="middle" font-size="30" font-weight="700" fill="#ffffff">Agent</text>
+    </g>
+    <text x="176" y="134" text-anchor="middle" font-size="36" font-weight="500" fill="#838383">=</text>
+    <g id="operatori" font-size="28" font-weight="500" fill="#838383" text-anchor="middle">
+      <text x="378" y="132">+</text>
+      <text x="564" y="132">+</text>
+      <text x="750" y="132">+</text>
+      <text x="936" y="132">+</text>
+      <text x="1122" y="132">+</text>
+    </g>
+
+    <!-- fatto: LLM, incontro 26 -->
+    <g id="blocco-llm">
+      <g opacity="0.38">
+        <rect x="210" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+        <text x="285" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#a1245a">LLM</text>
+        <text x="285" y="151" text-anchor="middle" font-size="15" fill="#212529">il motore</text>
+        <text x="285" y="173" text-anchor="middle" font-size="15" fill="#212529">che genera</text>
+      </g>
+      <circle cx="343" cy="29" r="12" fill="#a1245a"/>
+      <path d="M337 29 l4 4 l8 -8" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="285" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">INCONTRO 26</text>
+    </g>
+
+    <!-- fatti: Harness, System Prompt, Tools, Skills, incontro 27 -->
+    <g id="blocco-harness">
+      <g opacity="0.38">
+        <rect x="396" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+        <text x="471" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#a1245a">Harness</text>
+        <text x="471" y="140" text-anchor="middle" font-size="15" fill="#212529">l'impalcatura</text>
+        <text x="471" y="162" text-anchor="middle" font-size="15" fill="#212529">che lo fa</text>
+        <text x="471" y="184" text-anchor="middle" font-size="15" fill="#212529">lavorare</text>
+      </g>
+      <circle cx="529" cy="29" r="12" fill="#a1245a"/>
+      <path d="M523 29 l4 4 l8 -8" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="471" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">INCONTRO 27</text>
+    </g>
+    <g id="blocco-system-prompt">
+      <g opacity="0.38">
+        <rect x="582" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+        <text x="657" y="88" text-anchor="middle" font-size="26" font-weight="700" fill="#a1245a">System</text>
+        <text x="657" y="118" text-anchor="middle" font-size="26" font-weight="700" fill="#a1245a">Prompt</text>
+        <text x="657" y="162" text-anchor="middle" font-size="15" fill="#212529">ruolo e regole</text>
+      </g>
+      <circle cx="715" cy="29" r="12" fill="#a1245a"/>
+      <path d="M709 29 l4 4 l8 -8" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="657" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">INCONTRO 27</text>
+    </g>
+    <g id="blocco-tools">
+      <g opacity="0.38">
+        <rect x="768" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+        <text x="843" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#a1245a">Tools</text>
+        <text x="843" y="151" text-anchor="middle" font-size="15" fill="#212529">interagire con</text>
+        <text x="843" y="173" text-anchor="middle" font-size="15" fill="#212529">l'ecosistema IT</text>
+      </g>
+      <circle cx="901" cy="29" r="12" fill="#a1245a"/>
+      <path d="M895 29 l4 4 l8 -8" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="843" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">INCONTRO 27</text>
+    </g>
+    <g id="blocco-skills">
+      <g opacity="0.38">
+        <rect x="1140" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+        <text x="1215" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#a1245a">Skills</text>
+        <text x="1215" y="151" text-anchor="middle" font-size="15" fill="#212529">il know-how</text>
+        <text x="1215" y="173" text-anchor="middle" font-size="15" fill="#212529">procedurale</text>
+      </g>
+      <circle cx="1273" cy="29" r="12" fill="#a1245a"/>
+      <path d="M1267 29 l4 4 l8 -8" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="1215" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">INCONTRO 27</text>
+    </g>
+
+    <!-- si apre oggi: KB, incontro 28 -->
+    <g id="blocco-kb">
+      <rect x="954" y="12" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+      <text x="1029" y="100" text-anchor="middle" font-size="30" font-weight="700" fill="#a1245a">KB</text>
+      <text x="1029" y="140" text-anchor="middle" font-size="15" fill="#212529">ciò che</text>
+      <text x="1029" y="162" text-anchor="middle" font-size="15" fill="#212529">l'organizzazione</text>
+      <text x="1029" y="184" text-anchor="middle" font-size="15" fill="#212529">sa: il know-what</text>
+      <text x="1029" y="221" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#a1245a">INCONTRO 28</text>
+    </g>
+
+    <!-- Graffe: identiche al 62; accesa quella del software installato -->
+    <g id="raggruppamenti" fill="none" stroke="#a1245a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M210 252 q0 12 12 12 H273 q12 0 12 12 q0 -12 12 -12 H348 q12 0 12 -12" opacity="0.38"/>
+      <path d="M396 252 q0 12 12 12 H459 q12 0 12 12 q0 -12 12 -12 H534 q12 0 12 -12" opacity="0.38"/>
+      <path d="M582 252 q0 12 12 12 H924 q12 0 12 12 q0 -12 12 -12 H1278 q12 0 12 -12"/>
+    </g>
+    <g id="etichette-gruppi" text-anchor="middle" font-size="21" font-weight="600" fill="#a1245a">
+      <text x="285" y="312" opacity="0.38">la CPU</text>
+      <text x="471" y="312" opacity="0.38">il sistema operativo</text>
+      <text x="936" y="312">il software installato</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Reranking a due stadi: dai milioni di chunk allo stadio 1 hybrid, ai cento candidati, allo stadio 2 reranker, ai cinque scelti; sotto le due vignette del cross-encoder, dove domanda e chunk entrano insieme e esce 0,94, e di ColBERT, con i vettori di ogni token e il legame 4471 con 4471; in basso la scala di costo dei tre modi</title>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#838383"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <text x="12" y="26" font-size="12" font-weight="700" letter-spacing="1.6" fill="#838383">LA PIPELINE A DUE STADI</text>
+
+  <!-- ===== L'imbuto ===== -->
+  <g id="pipeline">
+    <rect x="12" y="50" width="100" height="100" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <text x="62" y="94" font-size="13" font-weight="600" fill="#161719" text-anchor="middle">milioni di</text>
+    <text x="62" y="112" font-size="13" font-weight="600" fill="#161719" text-anchor="middle">chunk</text>
+
+    <rect x="130" y="60" width="150" height="80" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <text x="205" y="95" font-size="13" font-weight="600" fill="#161719" text-anchor="middle">stadio 1: hybrid</text>
+    <text x="205" y="115" font-size="12" fill="#838383" text-anchor="middle">(bi-encoder + BM25)</text>
+
+    <rect x="298" y="70" width="110" height="60" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <text x="353" y="105" font-size="13" font-weight="600" fill="#161719" text-anchor="middle">100 candidati</text>
+
+    <rect x="426" y="77" width="124" height="46" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="2.5"/>
+    <text x="488" y="105" font-size="12" font-weight="600" fill="#a1245a" text-anchor="middle">stadio 2: reranker</text>
+
+    <rect x="568" y="84" width="70" height="32" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+    <text x="603" y="105" font-size="13" font-weight="600" fill="#a1245a" text-anchor="middle">5 scelti</text>
+
+    <g fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)">
+      <path d="M116 100 H126"/><path d="M284 100 H294"/><path d="M412 100 H422"/>
+    </g>
+    <path d="M554 100 H564" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#ab)"/>
+  </g>
+
+  <g fill="none" stroke="#a1245a" stroke-width="1.5" stroke-dasharray="4 4">
+    <path d="M488 125 V140"/>
+    <path d="M165 140 H611"/>
+    <path d="M165 140 V164"/>
+    <path d="M611 140 V164"/>
+  </g>
+
+  <!-- ===== Vignetta: cross-encoder ===== -->
+  <g id="cross-encoder">
+    <rect x="12" y="166" width="306" height="160" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <text x="28" y="192" font-size="13" font-weight="700" fill="#161719">cross-encoder</text>
+
+    <rect x="28" y="206" width="90" height="28" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <text x="73" y="225" font-size="12" fill="#212529" text-anchor="middle">domanda</text>
+    <rect x="28" y="248" width="90" height="28" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <text x="73" y="267" font-size="12" fill="#212529" text-anchor="middle">chunk</text>
+    <g fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)">
+      <path d="M122 220 L144 228"/>
+      <path d="M122 262 L144 254"/>
+    </g>
+
+    <rect x="150" y="198" width="86" height="86" rx="8" fill="#161719"/>
+    <text x="193" y="234" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">transformer</text>
+    <text x="193" y="252" font-size="12" fill="#838383" text-anchor="middle">attention</text>
+
+    <path d="M240 241 H254" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#ab)"/>
+    <rect x="258" y="223" width="48" height="36" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+    <text x="282" y="246" font-size="13" font-weight="700" fill="#a1245a" text-anchor="middle">0,94</text>
+
+    <text x="28" y="310" font-size="12" fill="#838383">entrano insieme, esce un solo numero</text>
+  </g>
+
+  <!-- ===== Vignetta: ColBERT ===== -->
+  <g id="colbert">
+    <rect x="334" y="166" width="304" height="160" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <text x="350" y="192" font-size="13" font-weight="700" fill="#161719">ColBERT</text>
+
+    <g id="token-domanda" font-size="11" fill="#212529" text-anchor="middle">
+      <g>
+        <rect x="380" y="200" width="60" height="38" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <text x="410" y="216">penale</text>
+        <g fill="#dee2e6"><rect x="389" y="222" width="12" height="5" rx="1"/><rect x="404" y="222" width="12" height="5" rx="1"/><rect x="419" y="222" width="12" height="5" rx="1"/></g>
+      </g>
+      <g>
+        <rect x="450" y="200" width="60" height="38" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <text x="480" y="216">oltre</text>
+        <g fill="#dee2e6"><rect x="459" y="222" width="12" height="5" rx="1"/><rect x="474" y="222" width="12" height="5" rx="1"/><rect x="489" y="222" width="12" height="5" rx="1"/></g>
+      </g>
+      <g>
+        <rect x="520" y="200" width="60" height="38" rx="6" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+        <text x="550" y="216" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#a1245a" font-weight="700">4471</text>
+        <g fill="#a1245a"><rect x="529" y="222" width="12" height="5" rx="1"/><rect x="544" y="222" width="12" height="5" rx="1"/><rect x="559" y="222" width="12" height="5" rx="1"/></g>
+      </g>
+    </g>
+
+    <g fill="none" stroke="#838383" stroke-width="1.5">
+      <path d="M410 238 L380 266"/>
+      <path d="M480 238 L516 266"/>
+    </g>
+    <path d="M550 238 L584 266" fill="none" stroke="#a1245a" stroke-width="2.5"/>
+
+    <g id="token-chunk" font-size="11" fill="#212529" text-anchor="middle">
+      <g>
+        <rect x="350" y="266" width="60" height="38" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <text x="380" y="282">penale</text>
+        <g fill="#dee2e6"><rect x="359" y="288" width="12" height="5" rx="1"/><rect x="374" y="288" width="12" height="5" rx="1"/><rect x="389" y="288" width="12" height="5" rx="1"/></g>
+      </g>
+      <g>
+        <rect x="418" y="266" width="60" height="38" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <text x="448" y="282">art. 7</text>
+        <g fill="#dee2e6"><rect x="427" y="288" width="12" height="5" rx="1"/><rect x="442" y="288" width="12" height="5" rx="1"/><rect x="457" y="288" width="12" height="5" rx="1"/></g>
+      </g>
+      <g>
+        <rect x="486" y="266" width="60" height="38" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+        <text x="516" y="282">termini</text>
+        <g fill="#dee2e6"><rect x="495" y="288" width="12" height="5" rx="1"/><rect x="510" y="288" width="12" height="5" rx="1"/><rect x="525" y="288" width="12" height="5" rx="1"/></g>
+      </g>
+      <g>
+        <rect x="554" y="266" width="60" height="38" rx="6" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+        <text x="584" y="282" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#a1245a" font-weight="700">4471</text>
+        <g fill="#a1245a"><rect x="563" y="288" width="12" height="5" rx="1"/><rect x="578" y="288" width="12" height="5" rx="1"/><rect x="593" y="288" width="12" height="5" rx="1"/></g>
+      </g>
+    </g>
+
+    <text x="350" y="320" font-size="12" font-weight="600" fill="#a1245a">4471 &#8596; 4471</text>
+    <text x="622" y="320" font-size="12" font-weight="600" fill="#161719" text-anchor="end">&#931; dei massimi</text>
+  </g>
+
+  <!-- ===== La scala di costo ===== -->
+  <g id="costo">
+    <text x="12" y="346" font-size="11" font-weight="700" letter-spacing="1.4" fill="#838383">COSTO PER CANDIDATO</text>
+    <path d="M12 364 H634" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)"/>
+    <circle cx="90" cy="364" r="5" fill="#838383"/>
+    <circle cx="290" cy="364" r="5" fill="#838383"/>
+    <circle cx="560" cy="364" r="5" fill="#a1245a"/>
+    <g font-size="12" fill="#212529">
+      <text x="90" y="386" text-anchor="middle">bi-encoder: 1 prodotto scalare</text>
+      <text x="290" y="386" text-anchor="middle">ColBERT: n &#215; m confronti</text>
+      <text x="638" y="386" text-anchor="end" font-weight="600" fill="#a1245a">cross-encoder: una chiamata al modello</text>
+    </g>
+  </g>
+</svg>

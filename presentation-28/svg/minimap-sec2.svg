@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1302 672" width="1302" height="672" role="img">
+  <title>Mini-mappa dello spettro: sezione 2, accesa la colonna del dato strutturato (la tabella)</title>
+  <!-- Silhouette della figura madre (slide7-spettro.svg), stesse coordinate, senza testo:
+       la callout con la banda dell'ontologia, le tre fasce, e la fila dei blocchi della formula. -->
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="3">
+    <!-- la callout e il raccordo verso KB -->
+    <rect x="210" y="12" width="1080" height="380" rx="10"/>
+    <path d="M999 391 L1009 432"/>
+    <path d="M1059 391 L1049 432"/>
+    <!-- la banda dell'ontologia -->
+    <rect x="230" y="34" width="1040" height="62" rx="8"/>
+    <!-- fascia oggetti -->
+    <rect x="240" y="156" width="300" height="66" rx="8"/>
+    <rect x="600" y="156" width="300" height="66" rx="8"/>
+    <rect x="960" y="156" width="300" height="66" rx="8"/>
+    <!-- lo spettro -->
+    <path d="M250 256 H1250"/>
+    <path d="M264 248 L250 256 L264 264"/>
+    <path d="M1236 248 L1250 256 L1236 264"/>
+    <!-- fascia accesso -->
+    <rect x="300" y="276" width="180" height="24" rx="6"/>
+    <rect x="660" y="276" width="180" height="24" rx="6"/>
+    <rect x="1020" y="276" width="180" height="24" rx="6"/>
+    <!-- fascia pattern agentici -->
+    <rect x="270" y="318" width="240" height="42" rx="6"/>
+    <rect x="630" y="318" width="240" height="42" rx="6"/>
+    <rect x="990" y="318" width="240" height="42" rx="6"/>
+    <!-- la formula -->
+    <rect x="12" y="477" width="130" height="130" rx="8"/>
+    <rect x="210" y="432" width="150" height="220" rx="8"/>
+    <rect x="396" y="432" width="150" height="220" rx="8"/>
+    <rect x="582" y="432" width="150" height="220" rx="8"/>
+    <rect x="768" y="432" width="150" height="220" rx="8"/>
+    <rect x="954" y="432" width="150" height="220" rx="8"/>
+    <rect x="1140" y="432" width="150" height="220" rx="8"/>
+  </g>
+
+  <!-- il blocco KB e' sempre pieno: e' lui che si apre in questa lezione -->
+  <rect x="954" y="432" width="150" height="220" rx="8" fill="#ffffff" fill-opacity="0.92"/>
+
+  <!-- zona accesa: la colonna della tabella -->
+  <g fill="#ffffff" fill-opacity="0.92">
+    <rect x="240" y="156" width="300" height="66" rx="8"/>
+    <rect x="300" y="276" width="180" height="24" rx="6"/>
+    <rect x="270" y="318" width="240" height="42" rx="6"/>
+  </g>
+  <g fill="#000000" fill-opacity="0.16">
+    <rect x="254" y="170" width="272" height="16" rx="3"/>
+    <rect x="254" y="192" width="272" height="16" rx="3"/>
+  </g>
+</svg>

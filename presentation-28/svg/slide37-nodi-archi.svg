@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Nodi e archi: a sinistra i ponti di Königsberg del 1736 e lo schizzo del CERN del 1989; a destra i cinque nodi e i quattro archi del caso Acme, con il percorso in tre passi da Rossi al contratto SpedFast 2026</title>
+
+  <defs>
+    <marker id="a-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#838383"/>
+    </marker>
+    <marker id="a-bur" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- ===== vignetta storica, attenuata ===== -->
+  <g opacity="0.55">
+    <!-- 1736: Königsberg -->
+    <rect x="12" y="30" width="170" height="160" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="24" y="52" font-size="12.5" font-weight="700" fill="#838383">1736</text>
+    <g fill="none" stroke="#838383" stroke-width="1.3">
+      <path d="M96 84 C 76 92, 76 116, 96 124"/>
+      <path d="M96 84 C 116 92, 116 116, 96 124"/>
+      <path d="M96 164 C 76 156, 76 132, 96 124"/>
+      <path d="M96 164 C 116 156, 116 132, 96 124"/>
+      <path d="M96 84 C 124 86, 144 104, 146 124"/>
+      <path d="M96 164 C 124 162, 144 144, 146 124"/>
+      <path d="M96 124 L 146 124"/>
+    </g>
+    <g fill="#838383">
+      <circle cx="96" cy="84" r="4.5"/>
+      <circle cx="96" cy="124" r="4.5"/>
+      <circle cx="96" cy="164" r="4.5"/>
+      <circle cx="146" cy="124" r="4.5"/>
+    </g>
+    <text x="97" y="182" font-size="11" text-anchor="middle" fill="#838383">Königsberg: 4 punti, 7 linee</text>
+
+    <!-- 1989: la proposta del CERN -->
+    <rect x="12" y="210" width="170" height="160" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="24" y="232" font-size="12.5" font-weight="700" fill="#838383">1989</text>
+    <g fill="none" stroke="#838383" stroke-width="1.3" marker-end="url(#a-grey)">
+      <path d="M58 271 L92 261"/>
+      <path d="M108 263 L134 285"/>
+      <path d="M56 279 L68 312"/>
+      <path d="M80 322 L114 330"/>
+      <path d="M138 300 L128 324"/>
+    </g>
+    <g fill="none" stroke="#838383" stroke-width="1.4">
+      <circle cx="50" cy="272" r="8"/>
+      <circle cx="100" cy="260" r="8"/>
+      <circle cx="142" cy="292" r="8"/>
+      <circle cx="72" cy="320" r="8"/>
+      <circle cx="122" cy="332" r="8"/>
+    </g>
+    <text x="97" y="356" font-size="11" text-anchor="middle" fill="#838383">nodi e link</text>
+  </g>
+
+  <!-- ===== il grafo dei fatti ===== -->
+  <!-- archi non focali -->
+  <g stroke="#838383" stroke-width="1.5" fill="none" marker-end="url(#a-grey)">
+    <path d="M307 198 L423 102"/>
+  </g>
+  <text x="350" y="154" font-size="13" fill="#838383" text-anchor="end">riguarda</text>
+
+  <!-- percorso focale: tre passi -->
+  <g stroke="#a1245a" stroke-width="3" fill="none" marker-end="url(#a-bur)">
+    <path d="M322 80 L392 80"/>
+    <path d="M470 104 L537 183"/>
+    <path d="M560 298 L560 240"/>
+  </g>
+  <g font-size="13" font-weight="600" fill="#a1245a">
+    <text x="359" y="60" text-anchor="middle">ordina</text>
+    <text x="550" y="150">spedito da</text>
+    <text x="578" y="274">vincola</text>
+  </g>
+
+  <!-- nodi -->
+  <g stroke-width="2">
+    <ellipse cx="268" cy="80" rx="54" ry="26" fill="#ecd3de" stroke="#a1245a"/>
+    <ellipse cx="450" cy="80" rx="54" ry="26" fill="#ffffff" stroke="#a1245a"/>
+    <ellipse cx="560" cy="212" rx="54" ry="26" fill="#ffffff" stroke="#a1245a"/>
+    <ellipse cx="560" cy="330" rx="66" ry="32" fill="#ecd3de" stroke="#a1245a"/>
+    <ellipse cx="280" cy="220" rx="54" ry="26" fill="#f6f6f6" stroke="#dee2e6"/>
+  </g>
+  <g font-size="14" font-weight="600" fill="#161719" text-anchor="middle">
+    <text x="268" y="85">Rossi</text>
+    <text x="450" y="85">ordine 4471</text>
+    <text x="560" y="217">SpedFast</text>
+    <text x="560" y="325">contratto</text>
+    <text x="560" y="343">SpedFast 2026</text>
+    <text x="280" y="225" fill="#838383">reclamo #88</text>
+  </g>
+
+  <!-- badge dei tre passi -->
+  <g>
+    <circle cx="359" cy="80" r="10" fill="#a1245a"/>
+    <circle cx="503" cy="143" r="10" fill="#a1245a"/>
+    <circle cx="560" cy="269" r="10" fill="#a1245a"/>
+    <g font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">
+      <text x="359" y="84">1</text>
+      <text x="503" y="147">2</text>
+      <text x="560" y="273">3</text>
+    </g>
+  </g>
+
+  <!-- etichetta del percorso -->
+  <rect x="372" y="236" width="110" height="30" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+  <text x="427" y="256" font-size="14" font-weight="700" fill="#a1245a" text-anchor="middle">tre passi</text>
+</svg>

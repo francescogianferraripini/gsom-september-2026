@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Il grafo delle dipendenze: dalle fonti transazionali ordini, spedizioni e reclami del ticketing a un blocco ETL che ricompone, calcola, integra e storicizza; poi le tabelle del data warehouse fatto_spedizioni con owner team logistica, fatto_reclami e dim_corriere; infine i consumatori report ritardi, dashboard direzione e il tool esegui_sql dell'agente. La colonna spedizioni.data_prevista e evidenziata e un'onda si propaga da lei fino ai tre consumatori: se cambia questa, si rompono questi</title>
+  <defs>
+    <marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+    <marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+    <g id="clock">
+      <circle r="6.5" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+      <path d="M0 -3.5 V0 h2.6" fill="none" stroke="#838383" stroke-width="1.2"/>
+    </g>
+  </defs>
+
+  <g text-anchor="middle" font-size="11" font-weight="700" letter-spacing="0.8" fill="#838383">
+    <text x="75" y="28">FONTI</text>
+    <text x="231" y="28">TRASFORMAZIONE</text>
+    <text x="396" y="28">DATA WAREHOUSE</text>
+    <text x="573" y="28">CONSUMATORI</text>
+  </g>
+
+  <!-- archi grigi -->
+  <g stroke="#838383" stroke-width="1.5" fill="none" marker-end="url(#mg)">
+    <path d="M140 62 L170 106"/>
+    <path d="M140 220 L170 184"/>
+    <path d="M286 146 H316"/>
+    <path d="M286 190 L316 196"/>
+    <path d="M470 146 L500 150"/>
+  </g>
+
+  <!-- l'onda: dalla colonna a monte ai consumatori -->
+  <g stroke="#a1245a" stroke-width="3" fill="none" marker-end="url(#mb)">
+    <path d="M140 153 L170 147"/>
+    <path d="M286 128 L316 90"/>
+    <path d="M470 76 L500 74"/>
+    <path d="M470 88 L500 146"/>
+    <path d="M470 98 L500 224"/>
+  </g>
+
+  <!-- fonti transazionali -->
+  <g id="fonti" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">
+    <rect x="10" y="48" width="130" height="28" rx="6" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="75" y="67" text-anchor="middle" font-size="12" font-weight="700" fill="#161719">ordini</text>
+
+    <rect x="10" y="96" width="130" height="90" rx="6" fill="#ffffff" stroke="#dee2e6"/>
+    <path d="M10 102 a6,6 0 0 1 6,-6 h118 a6,6 0 0 1 6,6 v18 h-130 z" fill="#f6f6f6"/>
+    <path d="M10 120 h130" stroke="#dee2e6"/>
+    <text x="75" y="113" text-anchor="middle" font-size="12" font-weight="700" fill="#161719">spedizioni</text>
+    <rect x="11" y="142" width="128" height="22" fill="#ecd3de"/>
+    <path d="M12.5 142 V164" stroke="#a1245a" stroke-width="3"/>
+    <g font-size="11" fill="#212529">
+      <text x="20" y="136">id_spedizione</text>
+      <text x="20" y="158" fill="#a1245a" font-weight="700">data_prevista</text>
+      <text x="20" y="180">data_consegna</text>
+    </g>
+
+    <rect x="10" y="206" width="130" height="28" rx="6" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="75" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="#161719">reclami (ticketing)</text>
+  </g>
+
+  <use href="#clock" x="156" y="86"/>
+  <use href="#clock" x="156" y="200"/>
+  <text x="168" y="216" font-size="11" fill="#838383">ogni ora</text>
+
+  <!-- ETL -->
+  <g id="etl">
+    <rect x="176" y="76" width="110" height="136" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="231" y="108" text-anchor="middle" font-size="20" font-weight="800" fill="#161719">ETL</text>
+    <g text-anchor="middle" font-size="11.5" fill="#838383">
+      <text x="231" y="134">ricompone</text>
+      <text x="231" y="153">calcola</text>
+      <text x="231" y="172">integra</text>
+      <text x="231" y="191">storicizza</text>
+    </g>
+    <use href="#clock" x="204" y="232"/>
+    <text x="216" y="236" font-size="11.5" fill="#838383">ogni notte</text>
+  </g>
+
+  <!-- tabelle del data warehouse -->
+  <g id="dwh">
+    <rect x="322" y="60" width="148" height="50" rx="6" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+    <text x="396" y="84" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#a1245a">fatto_spedizioni</text>
+    <text x="396" y="101" text-anchor="middle" font-size="11" fill="#838383">owner: team logistica</text>
+
+    <rect x="322" y="130" width="148" height="32" rx="6" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="396" y="151" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#161719">fatto_reclami</text>
+
+    <rect x="322" y="182" width="148" height="32" rx="6" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="396" y="203" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#161719">dim_corriere</text>
+  </g>
+
+  <!-- consumatori -->
+  <g id="consumatori">
+    <rect x="506" y="58" width="134" height="32" rx="6" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="573" y="79" text-anchor="middle" font-size="12" font-weight="600" fill="#161719">report ritardi</text>
+
+    <rect x="506" y="130" width="134" height="32" rx="6" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="573" y="151" text-anchor="middle" font-size="11.5" font-weight="600" fill="#161719">dashboard direzione</text>
+
+    <rect x="506" y="204" width="134" height="46" rx="6" fill="#ffffff" stroke="#dee2e6"/>
+    <text x="573" y="224" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700" fill="#161719">tool: esegui_sql</text>
+    <text x="573" y="240" text-anchor="middle" font-size="11" fill="#838383">(agente)</text>
+  </g>
+
+  <text x="325" y="332" text-anchor="middle" font-size="13.5" font-weight="700" fill="#a1245a">se cambia questa, si rompono questi</text>
+</svg>

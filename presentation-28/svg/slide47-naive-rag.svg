@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>La naive RAG a un colpo solo: la domanda va all'indice, tornano cinque chunk che entrano nella finestra a strati appesi allo strato dei messaggi, e il modello scrive la risposta; sotto, le due graffe dei due stadi, retrieval con la leva KB e sintesi con la leva Prompt; in un angolo il grafico a scalini del contesto</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+  </defs>
+
+  <!-- pipeline -->
+  <rect x="10" y="126" width="70" height="38" rx="8" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+  <text x="45" y="150" text-anchor="middle" font-size="12" font-weight="600" fill="#161719">domanda</text>
+  <line x1="82" y1="145" x2="94" y2="145" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="96" y="126" width="96" height="38" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+  <text x="144" y="150" text-anchor="middle" font-size="12" font-weight="600" fill="#212529">indice (sez. 4)</text>
+  <line x1="194" y1="145" x2="206" y2="145" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <text x="244" y="106" text-anchor="middle" font-size="11.5" font-weight="600" fill="#838383">5 chunk</text>
+  <rect x="208" y="112" width="72" height="72" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+  <g fill="#d1efea" stroke="#1ab197" stroke-width="1.2">
+    <rect x="214" y="120" width="60" height="9" rx="2"/>
+    <rect x="214" y="132" width="60" height="9" rx="2"/>
+    <rect x="214" y="144" width="60" height="9" rx="2"/>
+    <rect x="214" y="156" width="60" height="9" rx="2"/>
+    <rect x="214" y="168" width="60" height="9" rx="2"/>
+  </g>
+  <line x1="282" y1="145" x2="288" y2="145" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- la finestra a strati -->
+  <text x="290" y="14" font-size="11.5" font-weight="600" fill="#838383">la finestra</text>
+  <rect x="290" y="20" width="162" height="250" rx="8" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+  <g>
+    <rect x="298" y="30" width="146" height="26" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="306" y="47" font-size="11" font-weight="600" fill="#838383">system prompt</text>
+    <rect x="298" y="62" width="146" height="26" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="306" y="79" font-size="11" font-weight="600" fill="#838383">dichiarazione dei tool</text>
+    <rect x="298" y="94" width="146" height="26" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="306" y="111" font-size="11" font-weight="600" fill="#838383">indice delle skill</text>
+  </g>
+  <rect x="298" y="126" width="146" height="134" rx="5" fill="#ffffff" stroke="#dee2e6"/>
+  <text x="306" y="143" font-size="11.5" font-weight="600" fill="#161719">messaggi</text>
+  <g>
+    <rect x="304" y="150" width="134" height="18" rx="4" fill="#d1efea" stroke="#1ab197" stroke-width="2"/>
+    <rect x="304" y="172" width="134" height="18" rx="4" fill="#d1efea" stroke="#1ab197" stroke-width="2"/>
+    <rect x="304" y="194" width="134" height="18" rx="4" fill="#d1efea" stroke="#1ab197" stroke-width="2"/>
+    <rect x="304" y="216" width="134" height="18" rx="4" fill="#d1efea" stroke="#1ab197" stroke-width="2"/>
+    <rect x="304" y="238" width="134" height="18" rx="4" fill="#d1efea" stroke="#1ab197" stroke-width="2"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#0e7c6a">
+      <text x="311" y="163">chunk 1</text>
+      <text x="311" y="185">chunk 2</text>
+      <text x="311" y="207">chunk 3</text>
+      <text x="311" y="229">chunk 4</text>
+      <text x="311" y="251">chunk 5</text>
+    </g>
+  </g>
+  <line x1="454" y1="145" x2="464" y2="145" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="466" y="126" width="80" height="38" rx="8" fill="#a1245a"/>
+  <text x="506" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">risposta</text>
+
+  <!-- il grafico a scalini, in miniatura -->
+  <text x="470" y="176" font-size="11" font-weight="600" fill="#838383">il contesto, a scalini (dal 26)</text>
+  <g stroke="#dee2e6" stroke-width="1.4">
+    <line x1="486" y1="252" x2="634" y2="252"/>
+    <line x1="486" y1="252" x2="486" y2="186"/>
+  </g>
+  <polyline points="486,250 500,244 500,231 520,231 534,225 534,212 554,212 568,206 568,193 588,193 602,187 632,187" fill="none" stroke="#a1245a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="470" y="270" font-size="11.5" font-weight="600" fill="#a1245a">cinque chunk a domanda</text>
+
+  <!-- le due graffe -->
+  <g fill="none" stroke="#838383" stroke-width="1.5">
+    <path d="M10 288 L10 296 L280 296 L280 288"/>
+    <path d="M145 296 L145 304"/>
+    <path d="M290 288 L290 296 L546 296 L546 288"/>
+    <path d="M418 296 L418 304"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="145" y="322" font-size="13" font-weight="700" fill="#161719">stadio 1: retrieval</text>
+    <text x="145" y="339" font-size="11.5" fill="#212529">ha trovato i chunk giusti, in cima?</text>
+    <text x="418" y="322" font-size="13" font-weight="700" fill="#161719">stadio 2: sintesi</text>
+    <text x="418" y="339" font-size="11.5" fill="#212529">li ha usati bene, senza aggiungere?</text>
+  </g>
+
+  <rect x="95" y="350" width="100" height="24" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+  <text x="145" y="366" text-anchor="middle" font-size="12" font-weight="700" fill="#a1245a">leva: KB</text>
+  <rect x="359" y="350" width="118" height="24" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+  <text x="418" y="366" text-anchor="middle" font-size="12" font-weight="700" fill="#a1245a">leva: Prompt</text>
+</svg>

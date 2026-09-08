@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 456 220" width="456" height="220" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Analisi e search a confronto: da una tabella si arriva a un numero unico, 121; da una pila di documenti si arriva a una lista di cinque passaggi ordinati, con il dubbio se il primo sia quello giusto</title>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#838383"/>
+    </marker>
+  </defs>
+
+  <path d="M228 24 V196" stroke="#dee2e6" stroke-width="1"/>
+
+  <!-- ===== Analisi: un numero ===== -->
+  <text x="12" y="26" font-size="12" font-weight="700" letter-spacing="1.6" fill="#838383">ANALISI</text>
+  <g id="tabella">
+    <rect x="16" y="62" width="88" height="76" rx="4" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <path d="M16 62 h88 v22 h-88 z" fill="#f6f6f6"/>
+    <g stroke="#dee2e6" stroke-width="1">
+      <path d="M16 84 H104"/><path d="M16 102 H104"/><path d="M16 120 H104"/>
+      <path d="M45 62 V138"/><path d="M75 62 V138"/>
+    </g>
+  </g>
+  <path d="M114 100 H140" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)"/>
+  <text x="180" y="118" font-size="46" font-weight="700" fill="#161719" text-anchor="middle">121</text>
+  <text x="180" y="150" font-size="12" fill="#838383" text-anchor="middle">un numero</text>
+
+  <!-- ===== Search: una lista ordinata ===== -->
+  <text x="242" y="26" font-size="12" font-weight="700" letter-spacing="1.6" fill="#838383">SEARCH</text>
+  <g id="pila-documenti">
+    <rect x="244" y="70" width="38" height="50" rx="3" fill="#ffffff" stroke="#dee2e6" stroke-width="1.2"/>
+    <rect x="249" y="64" width="38" height="50" rx="3" fill="#ffffff" stroke="#dee2e6" stroke-width="1.2"/>
+    <rect x="254" y="58" width="38" height="50" rx="3" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+    <g stroke="#dee2e6" stroke-width="1.5">
+      <path d="M262 72 h22"/><path d="M262 80 h22"/><path d="M262 88 h14"/>
+    </g>
+  </g>
+  <path d="M298 88 H310" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)"/>
+
+  <g id="lista" font-size="11" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">
+    <g>
+      <rect x="316" y="52" width="104" height="20" rx="5" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="324" y="66" fill="#a1245a" font-weight="700">1</text>
+      <rect x="338" y="59" width="72" height="6" rx="3" fill="#a1245a"/>
+    </g>
+    <g opacity="0.85">
+      <rect x="316" y="76" width="104" height="20" rx="5" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="324" y="90" fill="#838383">2</text>
+      <rect x="338" y="83" width="72" height="6" rx="3" fill="#dee2e6"/>
+    </g>
+    <g opacity="0.7">
+      <rect x="316" y="100" width="104" height="20" rx="5" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="324" y="114" fill="#838383">3</text>
+      <rect x="338" y="107" width="72" height="6" rx="3" fill="#dee2e6"/>
+    </g>
+    <g opacity="0.55">
+      <rect x="316" y="124" width="104" height="20" rx="5" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="324" y="138" fill="#838383">4</text>
+      <rect x="338" y="131" width="72" height="6" rx="3" fill="#dee2e6"/>
+    </g>
+    <g opacity="0.4">
+      <rect x="316" y="148" width="104" height="20" rx="5" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="324" y="162" fill="#838383">5</text>
+      <rect x="338" y="155" width="72" height="6" rx="3" fill="#dee2e6"/>
+    </g>
+  </g>
+
+  <circle cx="434" cy="110" r="13" fill="#a1245a"/>
+  <text x="434" y="116" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">?</text>
+  <text x="444" y="190" font-size="12" font-weight="600" fill="#a1245a" text-anchor="end">&#232; quello giusto?</text>
+</svg>

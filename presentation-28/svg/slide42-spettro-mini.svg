@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1302 672" width="1302" height="672" role="img">
+  <title>Mini-mappa dello spettro: le tre colonne degli oggetti spuntate, la fascia dei pattern agentici che si accende</title>
+  <g fill="none" stroke="#b8bcc2" stroke-width="2.5">
+    <rect x="210" y="12" width="1080" height="380" rx="10"/>
+    <path d="M999 391 L1009 432"/><path d="M1059 391 L1049 432"/>
+    <rect x="230" y="34" width="1040" height="62" rx="8"/>
+    <rect x="240" y="156" width="300" height="66" rx="8"/><rect x="600" y="156" width="300" height="66" rx="8"/><rect x="960" y="156" width="300" height="66" rx="8"/>
+    <path d="M250 256 H1250"/><path d="M264 248 L250 256 L264 264"/><path d="M1236 248 L1250 256 L1236 264"/>
+    <rect x="300" y="276" width="180" height="24" rx="6"/><rect x="660" y="276" width="180" height="24" rx="6"/><rect x="1020" y="276" width="180" height="24" rx="6"/>
+    <rect x="270" y="318" width="240" height="42" rx="6"/><rect x="630" y="318" width="240" height="42" rx="6"/><rect x="990" y="318" width="240" height="42" rx="6"/>
+    <rect x="12" y="477" width="130" height="130" rx="8"/>
+    <rect x="210" y="432" width="150" height="220" rx="8"/><rect x="396" y="432" width="150" height="220" rx="8"/><rect x="582" y="432" width="150" height="220" rx="8"/><rect x="768" y="432" width="150" height="220" rx="8"/><rect x="1140" y="432" width="150" height="220" rx="8"/>
+  </g>
+  <rect x="954" y="432" width="150" height="220" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+  <text x="1029" y="552" text-anchor="middle" font-family="Poppins, system-ui, sans-serif" font-size="30" font-weight="700" fill="#a1245a">KB</text>
+  <g fill="#f6f6f6" stroke="#838383" stroke-width="2.5"><rect x="240" y="156" width="300" height="66" rx="8"/><rect x="300" y="276" width="180" height="24" rx="6"/><rect x="270" y="318" width="240" height="42" rx="6"/><rect x="600" y="156" width="300" height="66" rx="8"/><rect x="660" y="276" width="180" height="24" rx="6"/><rect x="630" y="318" width="240" height="42" rx="6"/><rect x="960" y="156" width="300" height="66" rx="8"/><rect x="1020" y="276" width="180" height="24" rx="6"/><rect x="990" y="318" width="240" height="42" rx="6"/></g>
+  <g fill="#ecd3de" stroke="#a1245a" stroke-width="4"><rect x="270" y="318" width="240" height="42" rx="6"/><rect x="630" y="318" width="240" height="42" rx="6"/><rect x="990" y="318" width="240" height="42" rx="6"/></g>
+  <g font-family="Poppins, system-ui, sans-serif" font-size="22" font-weight="600" text-anchor="middle"><text x="390" y="198" fill="#838383">la tabella</text><text x="750" y="198" fill="#838383">il grafo</text><text x="1110" y="198" fill="#838383">il documento</text></g>
+  <text x="750" y="385" text-anchor="middle" font-family="Poppins, system-ui, sans-serif" font-size="20" font-weight="700" fill="#a1245a">si accende: i pattern agentici, sezione 6</text>
+  <g transform="translate(540 156)"><circle r="13" fill="#a1245a"/><path d="M-6 0 l4 4 l8 -8" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g transform="translate(900 156)"><circle r="13" fill="#a1245a"/><path d="M-6 0 l4 4 l8 -8" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g transform="translate(1260 156)"><circle r="13" fill="#a1245a"/><path d="M-6 0 l4 4 l8 -8" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg>

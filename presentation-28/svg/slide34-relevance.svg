@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Trovare e facile, ordinare e difficile: BM25 e indice vettoriale versano in cento candidati hybrid; quattro colonne di segnali (somiglianza, data, fonte, autorita dai link) riordinano tre candidati, la bozza vince per sola somiglianza ma il contratto firmato vince sul totale e finisce primo nei cinque scelti</title>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#838383"/>
+    </marker>
+  </defs>
+
+  <!-- ===== I due imbuti e i cento candidati ===== -->
+  <g id="imbuti">
+    <polygon points="20,38 140,38 112,76 48,76" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <text x="80" y="62" font-size="13" font-weight="600" fill="#161719" text-anchor="middle">BM25</text>
+    <polygon points="176,38 296,38 268,76 204,76" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <text x="236" y="62" font-size="13" font-weight="600" fill="#161719" text-anchor="middle">vettoriale</text>
+    <g fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)">
+      <path d="M80 78 V88"/><path d="M236 78 V88"/>
+    </g>
+    <rect x="40" y="90" width="256" height="34" rx="8" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <text x="168" y="112" font-size="13" font-weight="600" fill="#161719" text-anchor="middle">100 candidati (hybrid)</text>
+  </g>
+
+  <!-- ===== I tre candidati ===== -->
+  <g id="legenda">
+    <text x="340" y="30" font-size="11" font-weight="700" letter-spacing="1.4" fill="#838383">I TRE CANDIDATI</text>
+    <rect x="340" y="45" width="14" height="14" rx="3" fill="#a1245a"/>
+    <text x="364" y="57" font-size="13" font-weight="600" fill="#212529">contratto 2026 firmato</text>
+    <rect x="340" y="73" width="14" height="14" rx="3" fill="#1ab197"/>
+    <text x="364" y="85" font-size="13" fill="#212529">bozza 2025</text>
+    <rect x="340" y="101" width="14" height="14" rx="3" fill="#4da0d7"/>
+    <text x="364" y="113" font-size="13" fill="#212529">mail che lo cita</text>
+  </g>
+
+  <!-- ===== Le quattro colonne di segnali ===== -->
+  <g id="segnali">
+    <g font-size="13" font-weight="600" fill="#161719" text-anchor="middle">
+      <text x="62" y="158">somiglianza</text>
+      <text x="168" y="158">data</text>
+      <text x="274" y="158">fonte</text>
+      <text x="380" y="158">autorit&#224; (link)</text>
+    </g>
+    <path d="M12 282 H430" stroke="#dee2e6" stroke-width="1"/>
+    <g stroke="none">
+      <rect x="21" y="198" width="22" height="84" fill="#a1245a"/>
+      <rect x="51" y="182" width="22" height="100" fill="#1ab197"/>
+      <rect x="81" y="212" width="22" height="70" fill="#4da0d7"/>
+
+      <rect x="127" y="182" width="22" height="100" fill="#a1245a"/>
+      <rect x="157" y="236" width="22" height="46" fill="#1ab197"/>
+      <rect x="187" y="220" width="22" height="62" fill="#4da0d7"/>
+
+      <rect x="233" y="182" width="22" height="100" fill="#a1245a"/>
+      <rect x="263" y="227" width="22" height="55" fill="#1ab197"/>
+      <rect x="293" y="252" width="22" height="30" fill="#4da0d7"/>
+
+      <rect x="339" y="182" width="22" height="100" fill="#a1245a"/>
+      <rect x="369" y="248" width="22" height="34" fill="#1ab197"/>
+      <rect x="399" y="236" width="22" height="46" fill="#4da0d7"/>
+    </g>
+    <text x="62" y="300" font-size="12" font-weight="600" fill="#1ab197" text-anchor="middle">vince la bozza</text>
+    <text x="430" y="300" font-size="12" font-weight="600" fill="#a1245a" text-anchor="end">sul totale vince il contratto firmato</text>
+  </g>
+
+  <!-- ===== Il mini-grafo dell'autorita ===== -->
+  <g id="grafo-autorita">
+    <rect x="446" y="150" width="192" height="150" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <text x="460" y="172" font-size="12" fill="#838383">chi cita chi</text>
+    <g fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)">
+      <path d="M491 202 L536 222"/>
+      <path d="M487 250 L536 236"/>
+      <path d="M503 276 L544 250"/>
+      <path d="M604 203 L582 220"/>
+    </g>
+    <g fill="#ffffff" stroke="#838383" stroke-width="1.2">
+      <circle cx="480" cy="196" r="11"/>
+      <circle cx="476" cy="250" r="11"/>
+      <circle cx="492" cy="282" r="11"/>
+      <circle cx="612" cy="196" r="11"/>
+    </g>
+    <circle cx="560" cy="232" r="24" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+    <text x="560" y="237" font-size="12" font-weight="700" fill="#a1245a" text-anchor="middle">1&#176;</text>
+    <text x="560" y="284" font-size="11" font-weight="600" fill="#a1245a" text-anchor="middle">contratto firmato</text>
+  </g>
+
+  <!-- ===== I cinque scelti ===== -->
+  <path d="M12 312 H638" stroke="#dee2e6" stroke-width="1"/>
+  <g id="scelti">
+    <text x="12" y="350" font-size="14" font-weight="700" fill="#161719">5 scelti</text>
+    <rect x="86" y="326" width="196" height="38" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+    <text x="102" y="350" font-size="13" font-weight="600" fill="#a1245a">1 &#183; contratto 2026 firmato</text>
+    <g font-size="12" fill="#838383">
+      <rect x="292" y="326" width="76" height="38" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="304" y="350">2</text>
+      <rect x="318" y="342" width="38" height="6" rx="3" fill="#dee2e6"/>
+      <rect x="378" y="326" width="76" height="38" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="390" y="350">3</text>
+      <rect x="404" y="342" width="38" height="6" rx="3" fill="#dee2e6"/>
+      <rect x="464" y="326" width="76" height="38" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="476" y="350">4</text>
+      <rect x="490" y="342" width="38" height="6" rx="3" fill="#dee2e6"/>
+      <rect x="550" y="326" width="76" height="38" rx="8" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="562" y="350">5</text>
+      <rect x="576" y="342" width="38" height="6" rx="3" fill="#dee2e6"/>
+    </g>
+  </g>
+</svg>

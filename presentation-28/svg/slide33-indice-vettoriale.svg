@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Cercare per significato: il contratto in PDF viene tagliato in chunk che si accavallano, ogni chunk passa nel modello di chunk embedding e diventa un vettore nell'indice vettoriale ANN; la domanda entra nello stesso modello e nell'indice, che restituisce cinque chunk ordinati con il punteggio; in basso la vignetta del cieco, ordine 4471 che porta al chunk dell'ordine 4417</title>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#838383"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <text x="12" y="26" font-size="12" font-weight="700" letter-spacing="1.6" fill="#838383">DAL DOCUMENTO ALL&#8217;INDICE</text>
+
+  <!-- La domanda, dall'alto -->
+  <g id="domanda">
+    <rect x="200" y="36" width="250" height="48" rx="8" fill="#f6f6f6"/>
+    <rect x="200" y="36" width="3" height="48" fill="#a1245a"/>
+    <text x="216" y="58" font-size="12" font-weight="600" fill="#a1245a">&#8220;che cosa prevede il contratto</text>
+    <text x="216" y="76" font-size="12" font-weight="600" fill="#a1245a">per i ritardi?&#8221;</text>
+  </g>
+  <g fill="none" stroke="#a1245a" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#ab)">
+    <path d="M263 84 V94"/>
+    <path d="M406 84 V94"/>
+  </g>
+
+  <!-- Il documento -->
+  <g id="documento">
+    <path d="M14 104 h48 l18 18 v76 h-66 z" fill="#ffffff" stroke="#838383" stroke-width="1.5"/>
+    <path d="M62 104 v18 h18" fill="none" stroke="#838383" stroke-width="1.5"/>
+    <g stroke="#dee2e6" stroke-width="1.5">
+      <path d="M26 134 h40"/><path d="M26 146 h40"/><path d="M26 158 h40"/><path d="M26 170 h28"/>
+    </g>
+    <text x="12" y="228" font-size="12" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#161719">contratto_SpedFast.pdf</text>
+    <text x="12" y="246" font-size="12" fill="#838383">40 pagine</text>
+  </g>
+  <path d="M86 150 H100" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)"/>
+
+  <!-- I chunk che si accavallano -->
+  <g id="chunk">
+    <g fill="#ffffff" stroke="#dee2e6" stroke-width="1">
+      <rect x="104" y="96" width="112" height="36" rx="6"/>
+      <rect x="104" y="124" width="112" height="36" rx="6"/>
+      <rect x="104" y="152" width="112" height="36" rx="6"/>
+      <rect x="104" y="180" width="112" height="36" rx="6"/>
+    </g>
+    <g fill="#ecd3de" stroke="#a1245a" stroke-width="1">
+      <rect x="104" y="124" width="112" height="8"/>
+      <rect x="104" y="152" width="112" height="8"/>
+      <rect x="104" y="180" width="112" height="8"/>
+    </g>
+    <g font-size="12" fill="#212529">
+      <text x="116" y="116">chunk 1</text>
+      <text x="116" y="146">chunk 2</text>
+      <text x="116" y="174">chunk 3</text>
+      <text x="116" y="202">chunk 4</text>
+    </g>
+  </g>
+  <g fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)">
+    <path d="M220 110 H234"/><path d="M220 141 H234"/><path d="M220 169 H234"/><path d="M220 198 H234"/>
+  </g>
+
+  <!-- Il modello -->
+  <g id="modello">
+    <rect x="240" y="94" width="46" height="146" rx="8" fill="#161719"/>
+    <g transform="rotate(-90 263 160)" text-anchor="middle" font-size="12" font-weight="600">
+      <text x="263" y="155" fill="#ffffff">modello di chunk</text>
+      <text x="263" y="173" fill="#838383">embedding</text>
+    </g>
+  </g>
+
+  <!-- I vettori -->
+  <g id="vettori">
+    <g fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)">
+      <path d="M292 120 H344"/><path d="M292 150 H344"/><path d="M292 180 H344"/><path d="M292 210 H344"/>
+    </g>
+    <g fill="#838383">
+      <circle cx="292" cy="120" r="3"/><circle cx="292" cy="150" r="3"/>
+      <circle cx="292" cy="180" r="3"/><circle cx="292" cy="210" r="3"/>
+    </g>
+    <text x="318" y="258" font-size="12" fill="#838383" text-anchor="middle">vettori</text>
+  </g>
+
+  <!-- L'indice vettoriale -->
+  <g id="indice">
+    <path d="M350 110 V228 A56 14 0 0 0 462 228 V110" fill="#f6f6f6" stroke="#838383" stroke-width="1.5"/>
+    <ellipse cx="406" cy="110" rx="56" ry="14" fill="#ffffff" stroke="#838383" stroke-width="1.5"/>
+    <text x="406" y="170" font-size="13" font-weight="600" fill="#161719" text-anchor="middle">indice vettoriale</text>
+    <text x="406" y="190" font-size="13" font-weight="600" fill="#838383" text-anchor="middle">(ANN)</text>
+  </g>
+  <path d="M466 169 H482" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)"/>
+
+  <!-- I cinque chunk ordinati -->
+  <g id="risultati" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12">
+    <text x="488" y="88" font-size="12" font-family="Poppins, system-ui, sans-serif" fill="#838383">i pi&#249; vicini alla domanda</text>
+    <g>
+      <rect x="488" y="96" width="150" height="28" rx="6" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="502" y="115" fill="#a1245a" font-weight="700">chunk 12</text>
+      <text x="624" y="115" fill="#a1245a" font-weight="700" text-anchor="end">0,88</text>
+    </g>
+    <g opacity="0.85">
+      <rect x="488" y="128" width="150" height="28" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="502" y="147" fill="#212529">chunk 07</text>
+      <text x="624" y="147" fill="#838383" text-anchor="end">0,84</text>
+    </g>
+    <g opacity="0.7">
+      <rect x="488" y="160" width="150" height="28" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="502" y="179" fill="#212529">chunk 31</text>
+      <text x="624" y="179" fill="#838383" text-anchor="end">0,79</text>
+    </g>
+    <g opacity="0.55">
+      <rect x="488" y="192" width="150" height="28" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="502" y="211" fill="#212529">chunk 04</text>
+      <text x="624" y="211" fill="#838383" text-anchor="end">0,71</text>
+    </g>
+    <g opacity="0.4">
+      <rect x="488" y="224" width="150" height="28" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+      <text x="502" y="243" fill="#212529">chunk 19</text>
+      <text x="624" y="243" fill="#838383" text-anchor="end">0,66</text>
+    </g>
+  </g>
+
+  <!-- La sovrapposizione -->
+  <g id="sovrapposizione">
+    <rect x="12" y="284" width="298" height="98" rx="8" fill="#f6f6f6"/>
+    <rect x="12" y="284" width="3" height="98" fill="#a1245a"/>
+    <text x="30" y="312" font-size="13" font-weight="600" fill="#a1245a">i chunk si accavallano</text>
+    <text x="30" y="336" font-size="12" fill="#212529">una frase tagliata a met&#224;</text>
+    <text x="30" y="356" font-size="12" fill="#212529">non perde senso</text>
+  </g>
+
+  <!-- La vignetta del cieco -->
+  <g id="cieco">
+    <rect x="326" y="284" width="312" height="98" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+    <text x="344" y="308" font-size="11" font-weight="700" letter-spacing="1.4" fill="#a1245a">DOVE &#200; CIECO</text>
+    <text x="344" y="336" font-size="12" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#161719">&#8220;ordine 4471&#8221;</text>
+    <path d="M352 344 V358" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)"/>
+    <text x="344" y="370" font-size="12" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#161719">chunk: ordine 4417 &#183; 0,91</text>
+    <g stroke="#a1245a" stroke-width="3" stroke-linecap="round">
+      <path d="M590 320 L616 346 M616 320 L590 346"/>
+    </g>
+  </g>
+</svg>

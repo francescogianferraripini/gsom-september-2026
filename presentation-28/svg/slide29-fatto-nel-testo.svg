@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Il fatto deciso prima e il fatto dentro il testo: a sinistra la tabella fatto_spedizioni con la cella giorni_ritardo uguale a 5, a destra il paragrafo dell'articolo 7 del contratto con la clausola della penale evidenziata e tre estrazioni verso penale 2 per cento, soglia 3 giorni lavorativi e base valore spedizione, con il dubbio sui giorni lavorativi</title>
+  <defs>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <text x="12" y="26" font-size="12" font-weight="700" letter-spacing="1.6" fill="#838383">NEL DATA WAREHOUSE</text>
+  <text x="228" y="26" font-size="12" font-weight="700" letter-spacing="1.6" fill="#838383">NEL CONTRATTO</text>
+
+  <!-- ===== A sinistra: la cella ===== -->
+  <g id="tabella">
+    <text x="12" y="54" font-size="14" font-weight="600" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#161719">fatto_spedizioni</text>
+    <rect x="12" y="64" width="200" height="194" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <path d="M12 72 h200 v26 h-200 z" fill="#f6f6f6"/>
+    <g stroke="#dee2e6" stroke-width="1">
+      <path d="M12 98 H212"/><path d="M12 130 H212"/><path d="M12 162 H212"/><path d="M12 194 H212"/><path d="M12 226 H212"/>
+      <path d="M90 64 V258"/>
+    </g>
+    <g font-size="11" font-weight="700" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#838383">
+      <text x="20" y="89">spedizione</text>
+      <text x="98" y="89">giorni_ritardo</text>
+    </g>
+    <text x="20" y="80" font-size="9" font-weight="700" fill="#838383">PK</text>
+
+    <rect x="90" y="98" width="122" height="32" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+
+    <g font-size="12" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#212529">
+      <text x="20" y="118">SP-4471</text>
+      <text x="20" y="150">SP-4472</text>
+      <text x="20" y="182">SP-4473</text>
+      <text x="20" y="214">SP-4474</text>
+      <text x="20" y="246">SP-4475</text>
+      <text x="150" y="150" text-anchor="middle">0</text>
+      <text x="150" y="182" text-anchor="middle">2</text>
+      <text x="150" y="214" text-anchor="middle">1</text>
+      <text x="150" y="246" text-anchor="middle">0</text>
+      <text x="150" y="118" text-anchor="middle" font-weight="700" fill="#a1245a">5</text>
+    </g>
+  </g>
+
+  <!-- ===== A destra: il paragrafo del contratto ===== -->
+  <g id="paragrafo">
+    <rect x="228" y="40" width="228" height="170" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="331" y="58" width="108" height="18" fill="#ecd3de"/>
+    <rect x="240" y="80" width="208" height="110" fill="#ecd3de"/>
+    <g font-size="12" fill="#212529">
+      <text x="242" y="72">Art. 7 &#8211; Ritardi. Per consegne</text>
+      <text x="242" y="94">effettuate oltre il terzo giorno</text>
+      <text x="242" y="116">lavorativo successivo alla data</text>
+      <text x="242" y="138">concordata, il Vettore</text>
+      <text x="242" y="160">riconoscer&#224; una penale pari al 2%</text>
+      <text x="242" y="182">del valore della spedizione&#8230;</text>
+    </g>
+  </g>
+
+  <!-- Le tre estrazioni -->
+  <g id="estrazioni" fill="none" stroke="#a1245a" stroke-width="2" marker-end="url(#ab)">
+    <path d="M448 110 C462 102 466 90 478 82"/>
+    <path d="M448 140 C460 143 466 147 478 150"/>
+    <path d="M448 172 C462 195 466 226 478 240"/>
+  </g>
+
+  <g id="fatti-estratti" font-size="13" fill="#161719">
+    <g>
+      <rect x="486" y="52" width="152" height="54" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+      <rect x="486" y="52" width="3" height="54" fill="#a1245a"/>
+      <text x="502" y="84" font-weight="600">penale: 2%</text>
+    </g>
+    <g>
+      <rect x="486" y="124" width="152" height="54" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+      <rect x="486" y="124" width="3" height="54" fill="#a1245a"/>
+      <text x="502" y="146" font-weight="600">soglia:</text>
+      <text x="502" y="166" font-weight="600">3 giorni lavorativi</text>
+      <circle cx="486" cy="124" r="12" fill="#a1245a"/>
+      <text x="486" y="129" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">?</text>
+    </g>
+    <text x="486" y="200" font-size="12" font-weight="600" fill="#a1245a">lavorativi &#8800; di ritardo?</text>
+    <g>
+      <rect x="486" y="216" width="152" height="54" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+      <rect x="486" y="216" width="3" height="54" fill="#a1245a"/>
+      <text x="502" y="238" font-weight="600">base:</text>
+      <text x="502" y="258" font-weight="600">valore spedizione</text>
+    </g>
+  </g>
+
+  <!-- ===== Le due etichette ===== -->
+  <g id="etichette">
+    <rect x="12" y="300" width="200" height="48" rx="8" fill="#f6f6f6"/>
+    <rect x="12" y="300" width="3" height="48" fill="#838383"/>
+    <text x="30" y="330" font-size="13" font-weight="600" fill="#212529">deciso prima: trovi</text>
+
+    <rect x="228" y="300" width="410" height="48" rx="8" fill="#f6f6f6"/>
+    <rect x="228" y="300" width="3" height="48" fill="#a1245a"/>
+    <text x="246" y="330" font-size="13" font-weight="600" fill="#a1245a">estratto ogni volta: interpreti</text>
+  </g>
+</svg>

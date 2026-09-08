@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>L'ontologia guida l'estrazione: nella pagina del contratto le entità sono evidenziate con un colore per classe, l'agente di estrazione riceve l'ontologia in ingresso e produce il grafo del contratto C-2026-07, con Corriere numero 17 che ha la stessa identità della riga di dim_corriere</title>
+
+  <defs>
+    <marker id="e-bu" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/>
+    </marker>
+    <marker id="e-gr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#838383"/>
+    </marker>
+  </defs>
+
+  <!-- ==================== la pagina del contratto ==================== -->
+  <text x="12" y="26" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#838383">contratto_SpedFast_v3_FINALE.docx</text>
+  <rect x="12" y="34" width="278" height="268" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+
+  <!-- le entità evidenziate nel testo -->
+  <g id="evidenze">
+    <rect x="64.3" y="79" width="130.6" height="15" rx="3" fill="#dcecf7"/>
+    <rect x="114.2" y="111" width="96.3" height="15" rx="3" fill="#fff2ce"/>
+    <rect x="26" y="143" width="54.7" height="15" rx="3" fill="#ecd3de"/>
+    <rect x="155.8" y="143" width="72.8" height="15" rx="3" fill="#ecd3de"/>
+    <rect x="49.8" y="175" width="101.3" height="15" rx="3" fill="#d1efea"/>
+    <rect x="121.5" y="207" width="104.7" height="15" rx="3" fill="#f6f6f6" stroke="#838383" stroke-width="1" stroke-dasharray="3 2"/>
+  </g>
+
+  <!-- le classi dell'ontologia, sopra la parola -->
+  <g id="classi" font-size="10.5" font-weight="600" fill="#161719">
+    <text x="66.3" y="75" textLength="157" lengthAdjust="spacing">Soglia ritardo (3 gg lavorativi)</text>
+    <text x="116.2" y="107" textLength="69.8" lengthAdjust="spacing">Data prevista</text>
+    <text x="28" y="139" textLength="64.7" lengthAdjust="spacing">Corriere #17</text>
+    <text x="157.8" y="139" textLength="108" lengthAdjust="spacing">Cliente del contratto</text>
+    <text x="51.8" y="171" textLength="64.2" lengthAdjust="spacing">Penale (2%)</text>
+  </g>
+
+  <!-- il testo dell'articolo -->
+  <g id="testo" font-size="12" fill="#212529">
+    <text x="28" y="58" textLength="89.4" lengthAdjust="spacing" font-weight="600" fill="#161719">Art. 7 – Ritardi.</text>
+    <text x="120.6" y="58" textLength="132.2" lengthAdjust="spacing">Se la consegna avviene</text>
+
+    <text x="28" y="90" textLength="35.1" lengthAdjust="spacing">oltre il</text>
+    <text x="66.3" y="90" textLength="126.6" lengthAdjust="spacing">terzo giorno lavorativo</text>
+
+    <text x="28" y="122" textLength="85" lengthAdjust="spacing">successivo alla</text>
+    <text x="116.2" y="122" textLength="92.3" lengthAdjust="spacing">data concordata</text>
+    <text x="208.5" y="122" textLength="3.6" lengthAdjust="spacing">,</text>
+
+    <text x="28" y="154" textLength="50.7" lengthAdjust="spacing">il Vettore</text>
+    <text x="81.9" y="154" textLength="72.7" lengthAdjust="spacing">riconosce ad</text>
+    <text x="157.8" y="154" textLength="68.8" lengthAdjust="spacing">Acme S.p.A.</text>
+
+    <text x="28" y="186" textLength="20.6" lengthAdjust="spacing">una</text>
+    <text x="51.8" y="186" textLength="97.3" lengthAdjust="spacing">penale pari al 2%</text>
+    <text x="152.3" y="186" textLength="85.2" lengthAdjust="spacing">del valore della</text>
+
+    <text x="28" y="218" textLength="92.3" lengthAdjust="spacing">spedizione, resa</text>
+    <text x="123.5" y="218" textLength="100.7" lengthAdjust="spacing">franco magazzino</text>
+    <text x="224.2" y="218" textLength="3.6" lengthAdjust="spacing">.</text>
+
+    <text x="28" y="250" textLength="234.7" lengthAdjust="spacing">La penale è cumulabile fino a un massimo</text>
+    <text x="28" y="282" textLength="220.8" lengthAdjust="spacing">del 10% del valore annuo del contratto.</text>
+  </g>
+
+  <circle cx="240" cy="213" r="8.5" fill="#ffffff" stroke="#838383" stroke-width="1.2"/>
+  <text x="240" y="217" text-anchor="middle" font-size="11" font-weight="700" fill="#838383">?</text>
+
+  <!-- ==================== legenda: l'ontologia di dominio ==================== -->
+  <g id="legenda">
+    <text x="12" y="322" font-size="11.5" font-weight="700" fill="#838383">l'ontologia di dominio</text>
+    <g stroke-width="1.2">
+      <rect x="12" y="334" width="12" height="12" rx="3" fill="#ecd3de" stroke="#a1245a"/>
+      <rect x="12" y="354" width="12" height="12" rx="3" fill="#ecd3de" stroke="#a1245a"/>
+      <rect x="12" y="374" width="12" height="12" rx="3" fill="#dcecf7" stroke="#4da0d7"/>
+      <rect x="156" y="334" width="12" height="12" rx="3" fill="#fff2ce" stroke="#ffbe0b"/>
+      <rect x="156" y="354" width="12" height="12" rx="3" fill="#d1efea" stroke="#1ab197"/>
+      <rect x="156" y="374" width="12" height="12" rx="3" fill="#f6f6f6" stroke="#838383" stroke-dasharray="3 2"/>
+    </g>
+    <g font-size="11" fill="#212529">
+      <text x="30" y="344">Corriere</text>
+      <text x="30" y="364">Cliente del contratto</text>
+      <text x="30" y="384">Soglia ritardo</text>
+      <text x="174" y="344">Data prevista</text>
+      <text x="174" y="364">Penale</text>
+      <text x="174" y="384" fill="#838383">non mappata</text>
+    </g>
+  </g>
+
+  <!-- ==================== l'agente di estrazione ==================== -->
+  <g id="agente">
+    <rect x="302" y="34" width="114" height="60" rx="8" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <g font-size="10.5" font-weight="600" text-anchor="middle" fill="#212529">
+      <text x="359" y="53" font-weight="700" fill="#161719">ontologia:</text>
+      <text x="359" y="69">classi, relazioni,</text>
+      <text x="359" y="85">identità</text>
+    </g>
+    <path d="M359 94 V116" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#e-bu)"/>
+    <rect x="306" y="122" width="106" height="46" rx="8" fill="#a1245a"/>
+    <g font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">
+      <text x="359" y="142">agente di</text>
+      <text x="359" y="159">estrazione</text>
+    </g>
+  </g>
+
+  <path d="M290 145 H298" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#e-bu)"/>
+  <path d="M414 158 C 430 170, 434 174, 442 182" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#e-bu)"/>
+
+  <!-- ==================== la stessa identità della tabella ==================== -->
+  <g id="mini-tabella">
+    <rect x="306" y="176" width="106" height="46" rx="6" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <path d="M306 196 v-14 a6,6 0 0 1 6,-6 h94 a6,6 0 0 1 6,6 v14 z" fill="#f6f6f6"/>
+    <line x1="306" y1="196" x2="412" y2="196" stroke="#dee2e6" stroke-width="1"/>
+    <text x="316" y="191" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700" fill="#161719">dim_corriere</text>
+    <text x="316" y="214" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529">id 17</text>
+    <g font-size="11" fill="#838383">
+      <text x="306" y="240">la stessa identità</text>
+      <text x="306" y="254">della tabella</text>
+    </g>
+  </g>
+  <path d="M452 198 H420" fill="none" stroke="#838383" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#e-gr)"/>
+
+  <!-- ==================== il grafo estratto ==================== -->
+  <text x="424" y="26" font-size="11.5" font-weight="700" fill="#838383">grafo estratto</text>
+
+  <g id="grafo">
+    <ellipse cx="531" cy="56" rx="78" ry="17" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <text x="531" y="61" text-anchor="middle" font-size="12" font-weight="600" fill="#161719">Contratto C-2026-07</text>
+
+    <line x1="531" y1="73" x2="531" y2="78" stroke="#dee2e6" stroke-width="1"/>
+    <rect x="428" y="78" width="206" height="74" rx="6" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1"/>
+    <g font-size="11" fill="#212529">
+      <text x="438" y="95">tipo: contratto · stato: firmato</text>
+      <text x="438" y="112">valido dal 2026-03-01</text>
+      <text x="438" y="129">sostituisce C-2023-02</text>
+      <text x="438" y="146">owner: acquisti</text>
+    </g>
+
+    <path d="M566 152 L554 176" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#e-gr)"/>
+    <text x="572" y="170" font-size="11" fill="#212529">vincola</text>
+
+    <path d="M620 152 V246 C 620 256, 614 262, 578 262" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#e-gr)"/>
+    <text x="566" y="240" font-size="11" fill="#212529">contiene</text>
+
+    <ellipse cx="532" cy="198" rx="76" ry="18" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+    <text x="532" y="203" text-anchor="middle" font-size="11.5" font-weight="600" fill="#a1245a">Corriere #17 (SpedFast)</text>
+
+    <ellipse cx="512" cy="262" rx="58" ry="17" fill="#f6f6f6" stroke="#161719" stroke-width="1.5"/>
+    <text x="512" y="267" text-anchor="middle" font-size="11.5" font-weight="600" fill="#161719">Clausola art. 7</text>
+
+    <path d="M540 276 L564 299" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#e-gr)"/>
+    <text x="496" y="300" font-size="11" fill="#212529">prevede</text>
+
+    <ellipse cx="578" cy="318" rx="50" ry="17" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+    <text x="578" y="323" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0e7c6a">Penale 2%</text>
+
+    <path d="M568 335 L556 350" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#e-gr)"/>
+    <text x="576" y="348" font-size="11" fill="#212529">oltre</text>
+
+    <ellipse cx="552" cy="370" rx="74" ry="18" fill="#dcecf7" stroke="#4da0d7" stroke-width="1.5"/>
+    <text x="552" y="375" text-anchor="middle" font-size="11.5" font-weight="600" fill="#161719">Soglia 3 gg lavorativi</text>
+  </g>
+</svg>

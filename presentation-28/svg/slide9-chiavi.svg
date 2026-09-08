@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 190" width="650" height="190" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Le tabelle ordini e spedizioni disegnate come griglie: la colonna id_ordine di ordini e marcata PK, quella di spedizioni FK, e una freccia burgundy risale dalla chiave esterna alla chiave primaria</title>
+  <defs>
+    <marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+  </defs>
+
+  <!-- tabella ordini -->
+  <text x="10" y="16" font-size="12" font-weight="700" fill="#161719">ordini</text>
+  <g id="ordini">
+    <rect x="10" y="22" width="274" height="71" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <path d="M18 22 h258 a8 8 0 0 1 8 8 v18 h-274 v-18 a8 8 0 0 1 8 -8 z" fill="#f6f6f6"/>
+    <path d="M18 22 H80 V93 H18 A8 8 0 0 1 10 85 V30 A8 8 0 0 1 18 22 Z" fill="#ecd3de" opacity="0.55"/>
+    <g stroke="#dee2e6">
+      <line x1="10" y1="48" x2="284" y2="48"/>
+      <line x1="10" y1="63" x2="284" y2="63"/>
+      <line x1="10" y1="78" x2="284" y2="78"/>
+      <line x1="80" y1="22" x2="80" y2="93"/>
+      <line x1="152" y1="22" x2="152" y2="93"/>
+      <line x1="230" y1="22" x2="230" y2="93"/>
+    </g>
+    <rect x="10" y="22" width="274" height="71" rx="8" fill="none" stroke="#dee2e6"/>
+    <text x="45" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="#a1245a">PK</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600" fill="#212529" text-anchor="middle">
+      <text x="45" y="45">id_ordine</text>
+      <text x="116" y="45">id_cliente</text>
+      <text x="191" y="45">data_ordine</text>
+      <text x="257" y="45">importo</text>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529" text-anchor="middle">
+      <text x="45" y="58">4471</text><text x="116" y="58">812</text><text x="191" y="58">2026-08-03</text><text x="257" y="58">129,90</text>
+      <text x="45" y="73">4472</text><text x="116" y="73">415</text><text x="191" y="73">2026-08-05</text><text x="257" y="73">84,50</text>
+      <text x="45" y="88">4473</text><text x="116" y="88">812</text><text x="191" y="88">2026-08-11</text><text x="257" y="88">212,00</text>
+    </g>
+  </g>
+
+  <!-- tabella spedizioni -->
+  <text x="204" y="111" font-size="12" font-weight="700" fill="#161719">spedizioni</text>
+  <g id="spedizioni">
+    <rect x="204" y="117" width="436" height="71" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <path d="M212 117 h420 a8 8 0 0 1 8 8 v18 h-436 v-18 a8 8 0 0 1 8 -8 z" fill="#f6f6f6"/>
+    <rect x="294" y="117" width="70" height="71" fill="#ecd3de" opacity="0.55"/>
+    <g stroke="#dee2e6">
+      <line x1="204" y1="143" x2="640" y2="143"/>
+      <line x1="204" y1="158" x2="640" y2="158"/>
+      <line x1="204" y1="173" x2="640" y2="173"/>
+      <line x1="294" y1="117" x2="294" y2="188"/>
+      <line x1="364" y1="117" x2="364" y2="188"/>
+      <line x1="460" y1="117" x2="460" y2="188"/>
+      <line x1="550" y1="117" x2="550" y2="188"/>
+    </g>
+    <rect x="204" y="117" width="436" height="71" rx="8" fill="none" stroke="#dee2e6"/>
+    <text x="329" y="129" text-anchor="middle" font-size="11" font-weight="700" fill="#a1245a">FK</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600" fill="#212529" text-anchor="middle">
+      <text x="249" y="140">id_spedizione</text>
+      <text x="329" y="140">id_ordine</text>
+      <text x="412" y="140">corriere</text>
+      <text x="505" y="140">data_prevista</text>
+      <text x="595" y="140">data_consegna</text>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529" text-anchor="middle">
+      <text x="249" y="153">9001</text><text x="329" y="153">4471</text><text x="412" y="153">SpedFast</text><text x="505" y="153">2026-08-12</text><text x="595" y="153">2026-08-19</text>
+      <text x="249" y="168">9002</text><text x="329" y="168">4471</text><text x="412" y="168">Corriere Nord</text><text x="505" y="168">2026-08-13</text><text x="595" y="168">2026-08-14</text>
+      <text x="249" y="183">9003</text><text x="329" y="183">4473</text><text x="412" y="183">SpedFast</text><text x="505" y="183">2026-08-18</text><text x="595" y="183">2026-08-18</text>
+    </g>
+  </g>
+
+  <!-- la freccia focale: chiave esterna verso chiave primaria -->
+  <path d="M329 115 V105 H45 V96" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#mb)"/>
+  <text x="380" y="101" font-size="11.5" font-weight="600" fill="#a1245a">chiave esterna → chiave primaria</text>
+</svg>

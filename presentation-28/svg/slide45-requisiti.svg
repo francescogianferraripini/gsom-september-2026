@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>I sei requisiti informativi del Text2SQL: a sinistra la finestra a strati con il system prompt aperto in sei fasce (schema e descrizioni, grano, join note, metriche definite, valori di esempio, query di esempio) e il peso in token, per un totale di circa 3.400 token in cache; a destra due colonne di spunte, lo star schema che dà i primi tre quasi gratis e il transazionale che non ne dà nessuno</title>
+
+  <text x="12" y="26" font-size="13" font-weight="600" fill="#161719">la finestra al giro zero</text>
+
+  <!-- la finestra -->
+  <rect x="12" y="36" width="290" height="356" rx="8" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+
+  <!-- strato: system prompt, aperto in sei fasce -->
+  <rect x="22" y="48" width="270" height="244" rx="6" fill="#ffffff" stroke="#dee2e6"/>
+  <text x="30" y="66" font-size="12.5" font-weight="700" fill="#161719">system prompt</text>
+
+  <g>
+    <rect x="28" y="74" width="186" height="28" rx="5" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+    <text x="38" y="92" font-size="11.5" font-weight="600" fill="#0e7c6a">schema + descrizioni</text>
+    <text x="222" y="92" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#495057">~1.500</text>
+
+    <rect x="28" y="106" width="186" height="28" rx="5" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+    <text x="38" y="124" font-size="11.5" font-weight="600" fill="#0e7c6a">grano</text>
+    <text x="222" y="124" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#495057">~30</text>
+
+    <rect x="28" y="138" width="186" height="28" rx="5" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+    <text x="38" y="156" font-size="11.5" font-weight="600" fill="#0e7c6a">join note</text>
+    <text x="222" y="156" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#495057">~200</text>
+
+    <rect x="28" y="170" width="186" height="28" rx="5" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+    <text x="38" y="188" font-size="11.5" font-weight="600" fill="#a1245a">metriche definite</text>
+    <text x="222" y="188" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#495057">~300</text>
+
+    <rect x="28" y="202" width="186" height="28" rx="5" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+    <text x="38" y="220" font-size="11.5" font-weight="600" fill="#a1245a">valori di esempio</text>
+    <text x="222" y="220" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#495057">~200</text>
+
+    <rect x="28" y="234" width="186" height="28" rx="5" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+    <text x="38" y="252" font-size="11.5" font-weight="600" fill="#a1245a">query di esempio</text>
+    <text x="222" y="252" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#495057">~1.200</text>
+  </g>
+
+  <line x1="28" y1="272" x2="264" y2="272" stroke="#dee2e6"/>
+  <text x="28" y="286" font-size="12" font-weight="700" fill="#161719">~3.400 token, in cache</text>
+
+  <!-- strati attenuati -->
+  <g>
+    <rect x="22" y="300" width="270" height="26" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="30" y="317" font-size="11.5" font-weight="600" fill="#838383">dichiarazione dei tool</text>
+    <rect x="22" y="332" width="270" height="26" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="30" y="349" font-size="11.5" font-weight="600" fill="#838383">indice delle skill</text>
+    <rect x="22" y="364" width="270" height="26" rx="5" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="30" y="381" font-size="11.5" font-weight="600" fill="#838383">messaggi</text>
+  </g>
+
+  <!-- ===== le due colonne di spunte ===== -->
+  <g stroke="#dee2e6" stroke-width="1" stroke-dasharray="3 4">
+    <line x1="310" y1="88" x2="638" y2="88"/>
+    <line x1="310" y1="120" x2="638" y2="120"/>
+    <line x1="310" y1="152" x2="638" y2="152"/>
+    <line x1="310" y1="184" x2="638" y2="184"/>
+    <line x1="310" y1="216" x2="638" y2="216"/>
+    <line x1="310" y1="248" x2="638" y2="248"/>
+  </g>
+
+  <g font-size="12.5" font-weight="700" fill="#161719" text-anchor="middle">
+    <text x="400" y="46">star schema (sez. 3)</text>
+    <text x="550" y="46">transazionale (sez. 2)</text>
+  </g>
+
+  <!-- colonna star schema -->
+  <g>
+    <g fill="#d1efea" stroke="#1ab197" stroke-width="1.8">
+      <circle cx="400" cy="88" r="12"/>
+      <circle cx="400" cy="120" r="12"/>
+      <circle cx="400" cy="152" r="12"/>
+    </g>
+    <g fill="none" stroke="#0e7c6a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M394 88 L398 93 L406 83"/>
+      <path d="M394 120 L398 125 L406 115"/>
+      <path d="M394 152 L398 157 L406 147"/>
+    </g>
+    <g fill="#ecd3de" stroke="#a1245a" stroke-width="2.2">
+      <circle cx="400" cy="184" r="12"/>
+      <circle cx="400" cy="216" r="12"/>
+      <circle cx="400" cy="248" r="12"/>
+    </g>
+    <g fill="none" stroke="#a1245a" stroke-width="2.4" stroke-linecap="round">
+      <path d="M395 179 L405 189 M405 179 L395 189"/>
+      <path d="M395 211 L405 221 M405 211 L395 221"/>
+      <path d="M395 243 L405 253 M405 243 L395 253"/>
+    </g>
+  </g>
+
+  <!-- colonna transazionale -->
+  <g>
+    <g fill="#ecd3de" stroke="#a1245a" stroke-width="1.8">
+      <circle cx="550" cy="88" r="12"/>
+      <circle cx="550" cy="120" r="12"/>
+      <circle cx="550" cy="152" r="12"/>
+      <circle cx="550" cy="184" r="12"/>
+      <circle cx="550" cy="216" r="12"/>
+      <circle cx="550" cy="248" r="12"/>
+    </g>
+    <g fill="none" stroke="#a1245a" stroke-width="2.4" stroke-linecap="round">
+      <path d="M545 83 L555 93 M555 83 L545 93"/>
+      <path d="M545 115 L555 125 M555 115 L545 125"/>
+      <path d="M545 147 L555 157 M555 147 L545 157"/>
+      <path d="M545 179 L555 189 M555 179 L545 189"/>
+      <path d="M545 211 L555 221 M555 211 L545 221"/>
+      <path d="M545 243 L555 253 M555 243 L545 253"/>
+    </g>
+  </g>
+
+  <!-- legenda -->
+  <g>
+    <circle cx="346" cy="294" r="9" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+    <path d="M341 294 L345 298 L351 290" fill="none" stroke="#0e7c6a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="362" y="298" font-size="11.5" fill="#212529">la forma lo dà quasi gratis</text>
+    <circle cx="346" cy="322" r="9" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+    <path d="M342 318 L350 326 M350 318 L342 326" fill="none" stroke="#a1245a" stroke-width="2" stroke-linecap="round"/>
+    <text x="362" y="326" font-size="11.5" fill="#212529">qualcuno deve scriverlo</text>
+  </g>
+
+  <g font-size="11.5" fill="#838383">
+    <text x="336" y="360">gli stessi requisiti che chiederebbe</text>
+    <text x="336" y="376">un analista nuovo il primo giorno</text>
+  </g>
+</svg>

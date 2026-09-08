@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Dal token al chunk: a sinistra, in miniatura e attenuata, lo spazio delle idee del 26 con i token vicini; a destra tre chunk entrano nel modello di chunk embedding e diventano tre vettori, la domanda entra nello stesso modello e atterra vicino ai primi due, con i punteggi del prodotto scalare 0,82, 0,79 e 0,11</title>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#838383"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <path d="M190 20 V386" stroke="#dee2e6" stroke-width="1"/>
+
+  <!-- ===== A sinistra: la citazione dello spazio delle idee (slide 13 del 26) ===== -->
+  <text x="12" y="30" font-size="12" font-weight="700" letter-spacing="1.6" fill="#838383">DALL&#8217;INCONTRO 26</text>
+  <g id="citazione-26" opacity="0.4">
+    <rect x="20" y="96" width="158" height="176" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <text x="32" y="118" font-size="11" font-weight="600" letter-spacing="1.2" fill="#838383">SPAZIO DELLE IDEE</text>
+    <ellipse cx="70" cy="160" rx="40" ry="34" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1" stroke-dasharray="4 4"/>
+    <ellipse cx="132" cy="228" rx="38" ry="32" fill="#f6f6f6" stroke="#dee2e6" stroke-width="1" stroke-dasharray="4 4"/>
+    <g fill="#212529" font-size="11" font-weight="600" text-anchor="middle">
+      <circle cx="58" cy="140" r="4"/><text x="58" y="156">gatto</text>
+      <circle cx="88" cy="164" r="4"/><text x="88" y="180">cane</text>
+      <circle cx="60" cy="182" r="4"/><text x="60" y="198">tigre</text>
+      <circle cx="120" cy="212" r="4"/><text x="120" y="228">Roma</text>
+      <circle cx="146" cy="234" r="4"/><text x="146" y="250">Parigi</text>
+    </g>
+    <g fill="none" stroke="#dee2e6" stroke-width="1">
+      <path d="M28 262 H166"/>
+      <path d="M28 262 V126"/>
+    </g>
+  </g>
+  <g font-size="12" fill="#838383">
+    <text x="20" y="294">dal 26:</text>
+    <text x="20" y="312">un vettore per token</text>
+  </g>
+
+  <!-- ===== A destra: la stessa scena a scala di chunk ===== -->
+  <text x="200" y="30" font-size="12" font-weight="700" letter-spacing="1.6" fill="#838383">A SCALA DI CHUNK</text>
+
+  <g id="domanda">
+    <rect x="200" y="40" width="250" height="44" rx="8" fill="#f6f6f6"/>
+    <rect x="200" y="40" width="3" height="44" fill="#a1245a"/>
+    <text x="216" y="60" font-size="12" font-weight="600" fill="#a1245a">&#8220;che cosa prevede il contratto</text>
+    <text x="216" y="76" font-size="12" font-weight="600" fill="#a1245a">per i ritardi?&#8221;</text>
+  </g>
+  <path d="M381 84 V98" fill="none" stroke="#a1245a" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#ab)"/>
+
+  <g id="chunk" font-size="12" fill="#212529">
+    <g>
+      <rect x="200" y="106" width="140" height="66" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="214" y="130">&#8220;penale del 2%</text>
+      <text x="214" y="147">oltre il terzo</text>
+      <text x="214" y="164">giorno&#8221;</text>
+      <circle cx="340" cy="106" r="11" fill="#a1245a"/>
+      <text x="340" y="111" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+    </g>
+    <g>
+      <rect x="200" y="180" width="140" height="66" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="214" y="204">&#8220;indennizzo per</text>
+      <text x="214" y="221">consegna oltre</text>
+      <text x="214" y="238">i termini&#8221;</text>
+      <circle cx="340" cy="180" r="11" fill="#a1245a"/>
+      <text x="340" y="185" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+    </g>
+    <g>
+      <rect x="200" y="254" width="140" height="66" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+      <text x="214" y="286">&#8220;il carrello &#232;</text>
+      <text x="214" y="303">stato svuotato&#8221;</text>
+      <circle cx="340" cy="254" r="11" fill="#838383"/>
+      <text x="340" y="259" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+    </g>
+  </g>
+
+  <g fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)">
+    <path d="M342 139 H354"/><path d="M342 213 H354"/><path d="M342 287 H354"/>
+    <path d="M404 139 H414"/><path d="M404 213 H414"/><path d="M404 287 H414"/>
+  </g>
+
+  <g id="modello">
+    <rect x="358" y="98" width="46" height="226" rx="8" fill="#161719"/>
+    <g transform="rotate(-90 381 211)" text-anchor="middle" font-size="12" font-weight="600">
+      <text x="381" y="206" fill="#ffffff">modello di chunk</text>
+      <text x="381" y="224" fill="#838383">embedding</text>
+    </g>
+  </g>
+
+  <g id="spazio-chunk">
+    <rect x="418" y="98" width="220" height="226" rx="8" fill="#ffffff" stroke="#dee2e6" stroke-width="1"/>
+    <text x="430" y="120" font-size="11" font-weight="600" letter-spacing="1.2" fill="#838383">SPAZIO DEI CHUNK</text>
+    <g fill="none" stroke="#838383" stroke-width="1" marker-end="url(#ag)">
+      <path d="M432 310 H626"/>
+      <path d="M432 310 V132"/>
+    </g>
+    <path d="M432 310 L612 278" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#ag)"/>
+    <g fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#ab)">
+      <path d="M432 310 L556 182"/>
+      <path d="M432 310 L574 202"/>
+    </g>
+    <path d="M432 310 L524 164" fill="none" stroke="#a1245a" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#ab)"/>
+    <g font-size="12" font-weight="600">
+      <text x="516" y="158" fill="#a1245a" font-weight="700" text-anchor="end">domanda</text>
+      <text x="562" y="178" fill="#a1245a">1 &#183; 0,82</text>
+      <text x="582" y="208" fill="#a1245a">2 &#183; 0,79</text>
+      <text x="584" y="296" fill="#838383">3 &#183; 0,11</text>
+    </g>
+  </g>
+
+  <g id="punteggi">
+    <text x="200" y="352" font-size="12" fill="#838383">prodotto scalare:</text>
+    <text x="200" y="374" font-size="14" font-weight="600" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" fill="#161719">0,82 &#183; 0,79 &#183; 0,11</text>
+  </g>
+
+  <g id="callout-vicini">
+    <rect x="418" y="336" width="220" height="52" rx="8" fill="#161719"/>
+    <rect x="418" y="336" width="4" height="52" fill="#ffbe0b"/>
+    <text x="438" y="358" font-size="12" font-weight="600" fill="#ffffff">vicini senza avere</text>
+    <text x="438" y="376" font-size="12" font-weight="600" fill="#ffbe0b">parole in comune</text>
+  </g>
+</svg>

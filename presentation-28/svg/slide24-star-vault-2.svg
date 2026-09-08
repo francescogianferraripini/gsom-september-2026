@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 707 400" width="707" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Tempo 2: la stella si apre nel data vault. Le dimensioni diventano hub con la sola chiave di business, gli attributi escono in satelliti appesi a ciascun hub, uno per fonte, e il fatto diventa il link_spedizione che tiene solo le chiavi degli hub e la data, con le misure in un satellite</title>
+
+  <defs>
+    <marker id="v-bu" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/>
+    </marker>
+    <marker id="v-gr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#838383"/>
+    </marker>
+  </defs>
+
+  <!-- ============ la stella del tempo 1, sbiadita sotto ============ -->
+  <g id="stella-tempo1" opacity="0.06">
+    <g stroke="#a1245a" stroke-width="2" fill="none">
+      <path d="M272 200 L212 98"/>
+      <path d="M436 200 L496 98"/>
+      <path d="M354 274 V306"/>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#838383">
+      <text x="234" y="166" text-anchor="end">id_corriere</text>
+      <text x="474" y="166">id_cliente</text>
+      <text x="362" y="294">id_data</text>
+    </g>
+    <g>
+      <rect x="272" y="150" width="164" height="124" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+      <path d="M272 158 a8,8 0 0 1 8,-8 h148 a8,8 0 0 1 8,8 v18 h-164 z" fill="#ecd3de"/>
+      <path d="M272 176 h164" stroke="#a1245a"/>
+      <text x="354" y="169" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700" fill="#a1245a">fatto_spedizioni</text>
+      <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5">
+        <text x="284" y="192" fill="#212529">id_corriere</text>
+        <text x="284" y="210" fill="#212529">id_cliente</text>
+        <text x="284" y="228" fill="#212529">id_data</text>
+        <text x="284" y="248" fill="#a1245a" font-weight="700">importo</text>
+        <text x="284" y="266" fill="#a1245a" font-weight="700">giorni_ritardo</text>
+      </g>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">
+      <g>
+        <rect x="48" y="56" width="164" height="84" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+        <path d="M48 64 a8,8 0 0 1 8,-8 h148 a8,8 0 0 1 8,8 v16 h-164 z" fill="#f6f6f6"/>
+        <path d="M48 80 h164" stroke="#dee2e6"/>
+        <text x="130" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="#161719">dim_corriere</text>
+        <text x="60" y="98">nome</text><text x="60" y="116">tipo</text><text x="60" y="134">contratto_dal</text>
+      </g>
+      <g>
+        <rect x="496" y="56" width="164" height="84" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+        <path d="M496 64 a8,8 0 0 1 8,-8 h148 a8,8 0 0 1 8,8 v16 h-164 z" fill="#f6f6f6"/>
+        <path d="M496 80 h164" stroke="#dee2e6"/>
+        <text x="578" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="#161719">dim_cliente</text>
+        <text x="508" y="98">nome</text><text x="508" y="116">regione</text><text x="508" y="134">segmento</text>
+      </g>
+      <g>
+        <rect x="272" y="306" width="164" height="78" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+        <path d="M272 314 a8,8 0 0 1 8,-8 h148 a8,8 0 0 1 8,8 v14 h-164 z" fill="#f6f6f6"/>
+        <path d="M272 328 h164" stroke="#dee2e6"/>
+        <text x="354" y="322" text-anchor="middle" font-size="12.5" font-weight="700" fill="#161719">dim_data</text>
+        <text x="284" y="346">giorno</text><text x="284" y="362">mese</text><text x="284" y="378">festivo</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ============ etichette di trasformazione ============ -->
+  <g id="trasformazioni">
+    <rect x="12" y="10" width="3" height="20" fill="#a1245a"/>
+    <text x="24" y="26" font-size="13" font-weight="600" fill="#a1245a">dimensione → hub + satelliti</text>
+    <rect x="262" y="10" width="3" height="20" fill="#a1245a"/>
+    <text x="274" y="26" font-size="13" font-weight="600" fill="#a1245a">fatto → link + satellite</text>
+  </g>
+
+  <!-- ============ spina: hub — link — hub ============ -->
+  <g stroke="#838383" stroke-width="1.5">
+    <line x1="168" y1="79" x2="262" y2="79"/>
+    <line x1="448" y1="79" x2="532" y2="79"/>
+  </g>
+
+  <g id="hub-corriere">
+    <ellipse cx="106" cy="79" rx="62" ry="25" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <text x="106" y="76" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">hub_corriere</text>
+    <text x="106" y="94" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" fill="#212529">cod_corriere</text>
+  </g>
+
+  <g id="hub-cliente">
+    <ellipse cx="594" cy="79" rx="62" ry="25" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <text x="594" y="76" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">hub_cliente</text>
+    <text x="594" y="94" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" fill="#212529">cod_cliente</text>
+  </g>
+
+  <g id="link-spedizione">
+    <rect x="262" y="40" width="186" height="78" rx="8" fill="#ffffff" stroke="#161719" stroke-width="1.5"/>
+    <path d="M262 60 v-12 a8,8 0 0 1 8,-8 h170 a8,8 0 0 1 8,8 v12 z" fill="#f6f6f6"/>
+    <line x1="262" y1="60" x2="448" y2="60" stroke="#dee2e6" stroke-width="1"/>
+    <text x="272" y="55" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">link_spedizione</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12" fill="#212529">
+      <text x="272" y="77">cod_corriere</text>
+      <text x="272" y="95">cod_cliente</text>
+      <text x="272" y="113">data_spedizione</text>
+    </g>
+  </g>
+
+  <!-- ============ i satelliti: elemento focale ============ -->
+  <g id="connettori-satelliti" fill="none" stroke="#a1245a" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M106 104 V118 H24 V304 H34" marker-end="url(#v-bu)"/>
+    <path d="M24 190 H34" marker-end="url(#v-bu)"/>
+    <path d="M594 104 V134" marker-end="url(#v-bu)"/>
+    <path d="M355 118 V180" marker-end="url(#v-bu)"/>
+  </g>
+
+  <g id="satelliti" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace">
+    <g>
+      <rect x="40" y="140" width="200" height="100" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+      <path d="M40 162 v-14 a8,8 0 0 1 8,-8 h184 a8,8 0 0 1 8,8 v14 z" fill="#ecd3de"/>
+      <line x1="40" y1="162" x2="240" y2="162" stroke="#a1245a" stroke-width="1"/>
+      <text x="50" y="157" font-size="12" font-weight="700" fill="#a1245a">sat_corriere_gestionale</text>
+      <g font-size="12" fill="#212529">
+        <text x="50" y="182">nome</text>
+        <text x="50" y="201">tipo</text>
+        <text x="50" y="220">contratto_dal</text>
+      </g>
+      <text x="50" y="236" font-size="12" fill="#838383">valido_dal / valido_al</text>
+    </g>
+    <g>
+      <rect x="40" y="254" width="200" height="100" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+      <path d="M40 276 v-14 a8,8 0 0 1 8,-8 h184 a8,8 0 0 1 8,8 v14 z" fill="#ecd3de"/>
+      <line x1="40" y1="276" x2="240" y2="276" stroke="#a1245a" stroke-width="1"/>
+      <text x="50" y="271" font-size="12" font-weight="700" fill="#a1245a">sat_corriere_ticketing</text>
+      <g font-size="12" fill="#212529">
+        <text x="50" y="296">nome_vettore</text>
+        <text x="50" y="315">sla_ore</text>
+        <text x="50" y="334">canale</text>
+      </g>
+      <text x="50" y="350" font-size="12" fill="#838383">valido_dal / valido_al</text>
+    </g>
+    <g>
+      <rect x="494" y="140" width="200" height="100" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+      <path d="M494 162 v-14 a8,8 0 0 1 8,-8 h184 a8,8 0 0 1 8,8 v14 z" fill="#ecd3de"/>
+      <line x1="494" y1="162" x2="694" y2="162" stroke="#a1245a" stroke-width="1"/>
+      <text x="504" y="157" font-size="12" font-weight="700" fill="#a1245a">sat_cliente_crm</text>
+      <g font-size="12" fill="#212529">
+        <text x="504" y="182">nome</text>
+        <text x="504" y="201">regione</text>
+        <text x="504" y="220">segmento</text>
+      </g>
+      <text x="504" y="236" font-size="12" fill="#838383">valido_dal / valido_al</text>
+    </g>
+    <g>
+      <rect x="262" y="186" width="200" height="80" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+      <path d="M262 208 v-14 a8,8 0 0 1 8,-8 h184 a8,8 0 0 1 8,8 v14 z" fill="#ecd3de"/>
+      <line x1="262" y1="208" x2="462" y2="208" stroke="#a1245a" stroke-width="1"/>
+      <text x="272" y="203" font-size="12" font-weight="700" fill="#a1245a">sat_spedizione_misure</text>
+      <g font-size="12" fill="#212529">
+        <text x="272" y="228">importo</text>
+        <text x="272" y="247">giorni_ritardo</text>
+      </g>
+      <text x="272" y="263" font-size="12" fill="#838383">valido_dal / valido_al</text>
+    </g>
+  </g>
+
+  <text x="40" y="374" font-size="12.5" font-weight="600" fill="#a1245a">storia completa, per fonte</text>
+  <text x="354" y="288" text-anchor="middle" font-size="12" fill="#212529">la data non è un hub: resta sul link</text>
+
+  <!-- ============ la stella che si ricostruisce ============ -->
+  <path d="M466 254 C 488 268, 490 276, 502 286" fill="none" stroke="#838383" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#v-gr)"/>
+  <g id="stella-mini" opacity="0.5">
+    <g stroke="#838383" stroke-width="1.2">
+      <line x1="567" y1="313" x2="541" y2="299"/>
+      <line x1="623" y1="313" x2="649" y2="299"/>
+      <line x1="567" y1="323" x2="541" y2="343"/>
+      <line x1="623" y1="323" x2="649" y2="343"/>
+    </g>
+    <rect x="567" y="308" width="56" height="20" rx="4" fill="#ffffff" stroke="#161719" stroke-width="1.2"/>
+    <g fill="#ffffff" stroke="#838383" stroke-width="1.2">
+      <rect x="497" y="292" width="44" height="14" rx="3"/>
+      <rect x="649" y="292" width="44" height="14" rx="3"/>
+      <rect x="497" y="336" width="44" height="14" rx="3"/>
+      <rect x="649" y="336" width="44" height="14" rx="3"/>
+    </g>
+  </g>
+  <g font-size="12" font-weight="600" fill="#838383" text-anchor="middle">
+    <text x="595" y="370">da qui si ricostruiscono</text>
+    <text x="595" y="385">le stelle per chi legge</text>
+  </g>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Dove nasce il data warehouse: a sinistra tre cilindri con le tabelle normalizzate dei sistemi di record (ordini del gestionale, CRM, reclami del ticketing) in scrittura 24 ore su 24; al centro il blocco ETL con i tre verbi estrai, trasforma, carica, che gira ogni notte; a destra il cilindro del data warehouse con dentro una stella, un fatto e tre dimensioni, in lettura su milioni di righe</title>
+  <defs>
+    <marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+    <marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+    <g id="minitab">
+      <rect x="30" y="14" width="34" height="16" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="86" y="14" width="34" height="16" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+      <rect x="58" y="40" width="34" height="16" rx="3" fill="#f6f6f6" stroke="#dee2e6"/>
+      <path d="M47 30 L75 40 M103 30 L75 40" stroke="#838383" stroke-width="1"/>
+    </g>
+  </defs>
+
+  <!-- i sistemi di record -->
+  <g id="fonti">
+    <text x="89" y="28" text-anchor="middle" font-size="12" font-weight="600" fill="#161719">ordini (gestionale)</text>
+    <path d="M14 46 v60 a75,12 0 0 0 150,0 v-60" fill="#ffffff" stroke="#dee2e6"/>
+    <ellipse cx="89" cy="46" rx="75" ry="12" fill="#f6f6f6" stroke="#dee2e6"/>
+    <use href="#minitab" y="46"/>
+
+    <text x="89" y="152" text-anchor="middle" font-size="12" font-weight="600" fill="#161719">CRM</text>
+    <path d="M14 170 v60 a75,12 0 0 0 150,0 v-60" fill="#ffffff" stroke="#dee2e6"/>
+    <ellipse cx="89" cy="170" rx="75" ry="12" fill="#f6f6f6" stroke="#dee2e6"/>
+    <use href="#minitab" y="170"/>
+
+    <text x="89" y="276" text-anchor="middle" font-size="12" font-weight="600" fill="#161719">reclami (ticketing)</text>
+    <path d="M14 294 v60 a75,12 0 0 0 150,0 v-60" fill="#ffffff" stroke="#dee2e6"/>
+    <ellipse cx="89" cy="294" rx="75" ry="12" fill="#f6f6f6" stroke="#dee2e6"/>
+    <use href="#minitab" y="294"/>
+
+    <text x="89" y="388" text-anchor="middle" font-size="11.5" fill="#838383">24/7, scritture</text>
+  </g>
+
+  <g stroke="#838383" stroke-width="1.5" fill="none" marker-end="url(#mg)">
+    <path d="M168 76 L224 138"/>
+    <path d="M168 200 H224"/>
+    <path d="M168 324 L224 262"/>
+  </g>
+
+  <!-- l'ETL -->
+  <g id="etl">
+    <g text-anchor="middle" font-size="11.5" fill="#838383">
+      <text x="312" y="72">pulisce, ricompone,</text>
+      <text x="312" y="88">calcola, allinea i nomi</text>
+    </g>
+    <rect x="232" y="100" width="160" height="200" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+    <text x="312" y="134" text-anchor="middle" font-size="22" font-weight="800" fill="#a1245a">ETL</text>
+    <g font-size="14" font-weight="600" fill="#161719" text-anchor="middle">
+      <rect x="252" y="148" width="120" height="38" rx="6" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/><text x="312" y="172">estrai</text>
+      <rect x="252" y="194" width="120" height="38" rx="6" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/><text x="312" y="218">trasforma</text>
+      <rect x="252" y="240" width="120" height="38" rx="6" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/><text x="312" y="264">carica</text>
+    </g>
+    <circle cx="281" cy="319" r="7" fill="none" stroke="#838383" stroke-width="1.2"/>
+    <path d="M281 315 v4 h3" stroke="#838383" stroke-width="1.2" fill="none"/>
+    <text x="293" y="323" font-size="12" fill="#838383">ogni notte</text>
+  </g>
+
+  <path d="M396 200 H438" stroke="#a1245a" stroke-width="3" fill="none" marker-end="url(#mb)"/>
+
+  <!-- il data warehouse -->
+  <g id="dwh">
+    <text x="542" y="72" text-anchor="middle" font-size="15" font-weight="700" fill="#161719">data warehouse</text>
+    <path d="M448 92 v194 a94,16 0 0 0 188,0 v-194" fill="#ffffff" stroke="#dee2e6"/>
+    <ellipse cx="542" cy="92" rx="94" ry="16" fill="#f6f6f6" stroke="#dee2e6"/>
+
+    <g stroke="#a1245a" stroke-width="1.5">
+      <path d="M542 176 V146"/>
+      <path d="M520 210 L500 240"/>
+      <path d="M564 210 L584 240"/>
+    </g>
+    <rect x="502" y="176" width="80" height="34" rx="6" fill="#ecd3de" stroke="#a1245a" stroke-width="2"/>
+    <text x="542" y="199" text-anchor="middle" font-size="14" font-weight="700" fill="#a1245a">fatto</text>
+    <g font-size="12" font-weight="600" fill="#212529" text-anchor="middle">
+      <rect x="512" y="120" width="60" height="26" rx="5" fill="#ffffff" stroke="#a1245a"/><text x="542" y="138">dim</text>
+      <rect x="464" y="240" width="60" height="26" rx="5" fill="#ffffff" stroke="#a1245a"/><text x="494" y="258">dim</text>
+      <rect x="560" y="240" width="60" height="26" rx="5" fill="#ffffff" stroke="#a1245a"/><text x="590" y="258">dim</text>
+    </g>
+    <text x="542" y="326" text-anchor="middle" font-size="12" fill="#838383">letture, milioni di righe</text>
+  </g>
+</svg>

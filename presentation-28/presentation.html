@@ -1,0 +1,1893 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PC AI 28 — Agentic AI: dietro i tool, la conoscenza</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <style>
+    /* ===== Aggiunte locali: slide di lezione (testo + visual SVG) — ereditate dal 26 ===== */
+    .visual { flex: 1 1 0; min-height: 0; min-width: 0; display: flex; align-items: center; justify-content: center; }
+    .visual img { max-width: 100%; max-height: 100%; width: auto; height: auto; }
+
+    /* tempi sovrapposti: stesso viewBox, nessun salto */
+    .visual.stack { position: relative; display: block; }
+    .visual.stack img {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 100%; max-height: 100%;
+    }
+
+    /* mini-mappa "sei qui" */
+    .youarehere {
+      display: flex; align-items: center; gap: 12px;
+      margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--q-line);
+    }
+    .youarehere img { height: 96px; width: auto; flex: none; }
+    .youarehere p { margin: 0; font-size: 9.5pt; line-height: 1.35; color: var(--q-greydark); }
+    .youarehere strong {
+      display: block; color: var(--q-burgundy); font-size: 9pt;
+      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 3px;
+    }
+    .pts { margin: 0; }
+    .pts li { font-size: 12.5pt; line-height: 1.4; margin-bottom: 12px; }
+    .pts li:last-child { margin-bottom: 0; }
+    .pts li strong { color: var(--q-black); display: block; margin-bottom: 1px; }
+    .pts.tight li { font-size: 11.5pt; margin-bottom: 9px; }
+    .pts.micro li { font-size: 10.5pt; line-height: 1.32; margin-bottom: 7px; }
+
+    .nota {
+      border-left: 3px solid var(--q-burgundy);
+      padding: 4px 0 4px 14px;
+      margin-top: 12px;
+      font-size: 11.5pt;
+      line-height: 1.4;
+      color: var(--q-body);
+    }
+    .nota.dark {
+      background: var(--q-black); color: var(--q-white);
+      border-left-color: var(--q-yellow);
+      border-radius: var(--box-radius);
+      padding: 10px 16px;
+    }
+    .nota.dark strong { color: var(--q-yellow); }
+    .nota.dark.center {
+      border-left: 0; text-align: center;
+      padding: 16px 26px; font-size: 15pt; font-weight: 600; line-height: 1.35;
+    }
+    .nota.small { font-size: 10.5pt; }
+
+    .caption { font-size: 12.5pt; line-height: 1.45; color: var(--q-body); margin: 10px 0 0; }
+    .caption.small { font-size: 11.5pt; }
+
+    /* griglia testo + visual */
+    .tv { flex: 1; display: grid; gap: 34px; min-height: 0; }
+    .tv > div { min-height: 0; min-width: 0; }
+    .tv .col-text { display: flex; flex-direction: column; justify-content: center; }
+    .tv-35 { grid-template-columns: 35fr 62fr; }
+    .tv-30 { grid-template-columns: 30fr 67fr; }
+    .tv-40 { grid-template-columns: 40fr 57fr; }
+    .tv-45 { grid-template-columns: 45fr 52fr; }
+    .tv-rev { grid-template-columns: 60fr 37fr; }
+
+    /* colonne contrastive */
+    .cols { flex: 1; display: grid; gap: 30px; min-height: 0; align-content: start; }
+    .cols-2 { grid-template-columns: 1fr 1fr; }
+    .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .col-head {
+      font-size: 10pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--q-burgundy); margin: 0 0 12px; padding-bottom: 8px;
+      border-bottom: 1px solid var(--q-line);
+    }
+    .col-head.neutral { color: var(--q-greydark); }
+    .cols ul { margin: 0; }
+    .cols li { font-size: 12pt; line-height: 1.4; margin-bottom: 9px; }
+
+    .story {
+      background: var(--q-grey, #f6f6f6); border-radius: var(--box-radius);
+      padding: 16px 18px; font-size: 11pt; line-height: 1.45; color: var(--q-body);
+    }
+    .story p { font-size: 11pt; margin: 0; line-height: 1.45; }
+
+    /* post-it (slide 1 del 26, ripresi nella slide 2) */
+    .board { position: relative; flex: 1; min-height: 0; }
+    .board .layer { position: absolute; inset: 0; }
+    .board .note {
+      position: absolute; font-size: 11pt; line-height: 1.35; color: var(--q-body);
+      background: #f6f6f6; border-radius: var(--box-radius); padding: 9px 13px;
+      max-width: 230px;
+    }
+    .board .note.accent { border-left: 3px solid var(--q-burgundy); }
+    .reqcols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 26px; height: 100%; align-content: start; }
+    .reqcols .note { position: static; max-width: none; margin-bottom: 10px; font-size: 12pt; padding: 11px 14px; }
+    .reqcols .req-foot {
+      margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--q-line);
+      font-size: 11.5pt; font-weight: 700; color: var(--q-burgundy); line-height: 1.3;
+    }
+    .reqcols .req-foot::before { content: '→ '; }
+    .reqcols .naif { grid-column: 1 / -1; display: flex; gap: 14px; align-items: center; margin-top: 4px; }
+    .reqcols .naif .note { opacity: 0.45; margin: 0; font-size: 10pt; padding: 6px 11px; }
+    .reqcols .naif span { font-size: 9.5pt; color: var(--q-greydark); }
+
+    .hl-line { font-size: 15pt; font-weight: 600; color: var(--q-burgundy); line-height: 1.35; margin: 14px 0 0; }
+
+    /* ===== Nuovo nel 27: riquadri con tag di ruolo (idioma della sezione 2 del 26, in HTML) ===== */
+    .payload {
+      font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+      font-size: 10pt; line-height: 1.5;
+      background: var(--q-grey); border: 1px solid var(--q-line); border-radius: var(--box-radius);
+      padding: 10px 12px; margin: 0; color: var(--q-body);
+    }
+    .payload .row {
+      display: grid; grid-template-columns: 88px 1fr; column-gap: 10px;
+      padding: 2px 8px; border-radius: 5px; align-items: baseline;
+    }
+    .payload .row.gl { grid-template-columns: 88px 1fr auto; }
+    .payload .tg { color: var(--q-greydark); font-weight: 600; white-space: nowrap; }
+    .payload .row.u .tg { color: var(--q-black); }
+    .payload .row.pill { background: var(--q-burgundy); color: #fff; margin: 2px 0; }
+    .payload .row.pill .tg { color: var(--q-burgundy-tint); }
+    .payload .row.tool { background: var(--q-teal-tint); border: 1px solid var(--q-teal); margin: 2px 0; }
+    .payload .row.tool .tg { color: #0e7c6a; }
+    .payload .row.dim, .payload .row.dim .tg { color: #9aa0a6; }
+    .payload .cont { grid-column: 2; }
+    .payload .gloss {
+      font-family: var(--body-font); font-size: 9pt; color: var(--q-greydark);
+      font-weight: 500; white-space: nowrap;
+    }
+    .payload .hl { background: var(--q-yellow-tint); }
+    .payload .k { color: var(--q-burgundy); font-weight: 600; }
+    .payload .c { color: var(--q-greydark); }
+    .payload .em { color: var(--q-black); font-weight: 600; }
+    .payload.plain { white-space: pre; }
+    .payload.file { background: var(--q-white); }
+    .payload.faded { opacity: 0.55; border-style: dashed; background: var(--q-white); }
+    .payload.micro { font-size: 9pt; line-height: 1.42; }
+    .payload .row .flag {
+      font-family: var(--body-font); font-size: 8.5pt; font-weight: 700; letter-spacing: 0.08em;
+      color: var(--q-burgundy); margin-left: 8px; white-space: nowrap;
+    }
+    .payload .row.pill .flag { color: var(--q-yellow); }
+    .payload .row.pill .x { color: var(--q-yellow); font-weight: 700; margin-left: 8px; }
+    /* skill per esteso: frontmatter e corpo con due sfondi */
+    .skill { border: 1px solid var(--q-line); border-radius: var(--box-radius); overflow: hidden; }
+    .skill .payload { border: 0; border-radius: 0; }
+    .skill .payload.fm { background: var(--q-teal-tint); }
+    .skill .payload.body { background: var(--q-white); border-top: 1px solid var(--q-line); }
+    .skill .part { display: grid; grid-template-columns: 1fr 150px; align-items: start; }
+    .skill .part .lab {
+      font-family: var(--body-font); font-size: 9pt; font-weight: 600; color: var(--q-greydark);
+      padding: 12px 12px 0 0; text-align: right; line-height: 1.3;
+    }
+    .skill .part .lab strong { display: block; color: var(--q-burgundy); font-size: 8.5pt; letter-spacing: 0.14em; text-transform: uppercase; }
+    /* colonne di testo sotto un visual a tutta larghezza */
+    .under3 { flex: none; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 26px; margin-top: 10px; }
+    .under3 p { margin: 0; font-size: 11pt; line-height: 1.4; }
+    .under3 p strong { color: var(--q-black); display: block; margin-bottom: 1px; }
+    .quote-line { font-size: 11pt; font-style: italic; color: var(--q-greydark); margin: 8px 0 0; }
+    .quote-line span { font-style: normal; font-size: 9.5pt; }
+    /* due figure affiancate (slide 34) */
+    .visual.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
+    .visual.duo img { max-width: 100%; max-height: 100%; }
+    /* tabella comparativa (slide 30, 59, 61) */
+    .tbl { width: 100%; border-collapse: collapse; margin: 6px 0 0; }
+    .tbl th, .tbl td { font-size: 11.5pt; line-height: 1.35; padding: 8px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--q-line); }
+    .tbl thead th { font-size: 9.5pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--q-greydark); border-bottom: 2px solid var(--q-black); }
+    .tbl td:first-child { font-weight: 700; color: var(--q-black); white-space: nowrap; }
+    .tbl td:first-child small { display: block; font-weight: 400; font-size: 9.5pt; color: var(--q-greydark); }
+    .tbl.micro th, .tbl.micro td { font-size: 9.5pt; padding: 5px 8px; }
+    .tbl.small th, .tbl.small td { font-size: 10.5pt; padding: 7px 10px; }
+    /* sì / no (slide 39) */
+    .reveal p.yn { margin: 0 0 14px; font-size: 12.5pt; line-height: 1.45; }
+    .yn strong { display: inline-block; min-width: 26px; font-size: 9.5pt; letter-spacing: 0.12em; text-transform: uppercase; margin-right: 6px; }
+    .yn.si strong { color: var(--q-teal); }
+    .yn.no strong { color: var(--q-burgundy); }
+    .reveal p.boxlab {
+      font-size: 9pt; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--q-burgundy); margin: 0 0 6px; line-height: 1.3;
+    }
+    .reveal p.boxlab.muted { color: var(--q-greydark); }
+    .reveal p.boxlab.after { margin: 6px 0 0; font-weight: 500; letter-spacing: 0.06em; text-transform: none; font-size: 9.5pt; }
+
+    /* colonna destra delle slide 8-12: riquadro + finestra a strati affiancati */
+    .side2 { display: grid; grid-template-columns: 1fr 290px; gap: 18px; min-height: 0; align-items: stretch; }
+    .side2 > div { min-height: 0; min-width: 0; }
+    .side2 .stackcol { display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+
+    /* mini-mappa dell'harness nei separatori */
+    .divmap { margin-top: 30px; display: flex; align-items: flex-end; gap: 16px; }
+    .divmap img { height: 128px; width: auto; }
+    .divmap span {
+      color: rgba(255,255,255,0.85); font-size: 9.5pt; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: 6px;
+    }
+
+    /* ===== sezione 5: pipeline in miniatura, slide a tre colonne, riquadro esempio reale ===== */
+    .pipemini { flex: none; margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--q-line); }
+    .pipemini img { display: block; width: 100%; max-width: 260px; height: auto; }
+    .pts.micro.dense li { font-size: 10pt; line-height: 1.28; margin-bottom: 6px; }
+    .tv-3c { grid-template-columns: 30fr 37fr 29fr; gap: 24px; }
+    .reale { display: flex; flex-direction: column; justify-content: center; gap: 8px; min-height: 0; }
+    .reale .visual { flex: none; }
+    .reale .visual img { width: 100%; height: auto; border: 1px solid var(--q-line); border-radius: 4px; }
+    .reale .q { margin: 0; font-size: 10pt; line-height: 1.35; font-style: italic; color: var(--q-body); }
+    .reale .q::before { content: "\201C"; color: var(--q-burgundy); font-weight: 700; margin-right: 2px; }
+    .reale .src { margin: 0; font-size: 8.5pt; line-height: 1.35; color: var(--q-greydark); }
+    .under3.micro p { font-size: 10pt; line-height: 1.35; }
+    .under3.micro { gap: 22px; margin-top: 8px; }
+    .reveal p.srcline { margin: 6px 0 0; font-size: 8.5pt; line-height: 1.35; color: var(--q-greydark); }
+
+    /* ===== sezioni 6-7 ===== */
+    .under2 { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 10px; }
+    .under2 p { margin: 0; font-size: 10.5pt; line-height: 1.38; }
+    .under2 p strong { color: var(--q-black); display: block; margin-bottom: 1px; }
+    .under3 p em { font-style: normal; color: var(--q-greydark); }
+    .nota.dark.center.big { font-size: 17pt; padding: 26px 40px; line-height: 1.45; }
+    .nota.dark.center.big code { color: var(--q-yellow); background: transparent; }
+    .reveal p.reqline { margin: 26px 0 0; text-align: center; font-size: 15pt; font-weight: 700; color: var(--q-burgundy); letter-spacing: 0.02em; }
+    .reveal p.reqline-gloss { margin: 6px 0 0; text-align: center; font-size: 10.5pt; color: var(--q-greydark); }
+
+    /* ===== Nuovo nel 28 ===== */
+    /* la pagella dei requisiti */
+    .pagella { display: flex; flex-direction: column; gap: 8px; margin: 0; }
+    .pagella .pr { display: grid; grid-template-columns: 30px 1fr; column-gap: 12px; align-items: start; }
+    .pagella .mark {
+      width: 30px; height: 30px; border-radius: 6px; border: 1.5px solid var(--q-line); background: var(--q-white);
+      display: flex; align-items: center; justify-content: center; font-size: 15pt; font-weight: 700; line-height: 1;
+    }
+    .pagella .mark.ok { color: #0e7c6a; border-color: var(--q-teal); background: var(--q-teal-tint); }
+    .pagella .mark.mid { color: #9a6a00; border-color: var(--q-yellow); background: var(--q-yellow-tint); }
+    .pagella .mark.no { color: var(--q-burgundy); border-color: var(--q-burgundy); background: var(--q-burgundy-tint); }
+    .pagella .lab { margin: 0; font-size: 11.5pt; font-weight: 700; color: var(--q-black); line-height: 1.25; padding-top: 3px; }
+    .pagella .why { margin: 2px 0 0; font-size: 10pt; line-height: 1.35; color: var(--q-body); }
+    .pagella.empty .pr { align-items: center; }
+    .pagella.empty .lab { padding-top: 0; font-size: 12.5pt; }
+    .pagella.mini { gap: 6px; }
+    .pagella.mini .pr { grid-template-columns: 24px 1fr; column-gap: 8px; }
+    .pagella.mini .mark { width: 24px; height: 24px; font-size: 12pt; border-radius: 5px; }
+    .pagella.mini .lab { font-size: 10pt; padding-top: 2px; }
+    .pagella.mini .why { font-size: 9pt; line-height: 1.3; }
+    .pagella.faded { opacity: 0.55; }
+    .pagella.faded .pr.hot { opacity: 1; }
+    .reveal p.plegend { margin: 8px 0 0; font-size: 9pt; color: var(--q-greydark); letter-spacing: 0.04em; }
+    .reveal p.prule { margin: 10px 0 0; padding-top: 8px; border-top: 1px solid var(--q-line); font-size: 9pt; color: var(--q-greydark); line-height: 1.3; }
+    .reveal p.prule strong { color: var(--q-burgundy); }
+    .pagella .why .sub { color: var(--q-greydark); font-size: 9pt; margin-left: 4px; }
+
+    /* riquadro di codice con la lettura in italiano a fianco */
+    .codebox { display: grid; grid-template-columns: 1fr 190px; gap: 12px; align-items: start; }
+    .codebox .payload.plain { font-size: 9.5pt; line-height: 1.5; }
+    .codebox .lettura { margin: 0; padding: 4px 0 0; }
+    .codebox .lettura li { font-size: 9.5pt; line-height: 1.32; margin-bottom: 6px; padding-left: 0; color: var(--q-body); }
+    .codebox .lettura li::before { display: none; }
+    .codebox .lettura li strong { color: var(--q-burgundy); font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, monospace; font-weight: 700; }
+    .codebox.narrow { grid-template-columns: 1fr 150px; }
+    .payload.plain .cm { color: var(--q-greydark); font-style: italic; }
+    .payload.plain.bad { border-color: var(--q-burgundy); }
+    .payload.plain.good { border-color: var(--q-teal); }
+    .payload .res { display: block; margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--q-line); color: var(--q-black); font-weight: 600; }
+
+    /* slide a tempi: righe che si accendono */
+    .reveal .fragment.custom.lit { opacity: 0.32; }
+    .reveal .fragment.custom.lit.visible { opacity: 1; }
+    .payload.plain .ln { display: block; padding: 1px 6px; margin: 0 -6px; border-radius: 4px; }
+    .payload.plain .ln.t1.visible, .payload.plain .ln.t1.on { background: var(--q-burgundy-tint); }
+    .payload.plain .ln.t2.visible, .payload.plain .ln.t2.on { background: var(--q-teal-tint); }
+    .payload.plain .ln.t3.visible, .payload.plain .ln.t3.on { background: #dcecf7; }
+    .payload.plain .ln.t4.visible, .payload.plain .ln.t4.on { background: var(--q-yellow-tint); }
+    .payload.plain .ln.t5.visible, .payload.plain .ln.t5.on { background: #e6e6e6; }
+    .pts li strong.t1 { color: var(--q-burgundy); }
+    .pts li strong.t2 { color: #0e7c6a; }
+    .pts li strong.t3 { color: #2b7fbf; }
+    .pts li strong.t4 { color: #9a6a00; }
+    .pts li strong.t5 { color: var(--q-black); }
+    .tv-3t { grid-template-columns: 27fr 33fr 37fr; gap: 22px; }
+    .tv-3t .col-text { justify-content: flex-start; padding-top: 6px; }
+
+    .pts.nano li { font-size: 9.5pt; line-height: 1.27; margin-bottom: 5px; }
+    .pagella.tight { gap: 6px; }
+    .pagella.tight .lab { font-size: 10.5pt; padding-top: 2px; }
+    .pagella.tight .why { font-size: 9.2pt; line-height: 1.3; }
+    .code-fig .payload.plain { line-height: 1.38; }
+    .code-fig .visual.fixed img { max-height: 150px; }
+    .cols.top2.small p { font-size: 8.7pt; line-height: 1.3; }
+    .pts.nano.xs li { font-size: 9pt; line-height: 1.24; margin-bottom: 4px; }
+    .code-fig .payload.plain.micro { font-size: 8.5pt; line-height: 1.32; }
+    .payload.micro.xs { font-size: 7.2pt; line-height: 1.22; padding: 5px 10px; }
+    .payload.micro.xs .row { padding: 1px 6px; }
+    /* riquadro DEMO */
+    .demo {
+      border: 1.5px dashed var(--q-burgundy); border-radius: var(--box-radius); padding: 8px 12px;
+      font-size: 10pt; line-height: 1.35; color: var(--q-burgundy); margin-top: 10px;
+    }
+    .demo strong { letter-spacing: 0.16em; font-size: 9pt; margin-right: 8px; }
+
+    /* know-what / know-how: colonne con il blocco della formula a lato */
+    .kw { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; flex: 1; min-height: 0; align-content: start; }
+    .kw .blk {
+      display: inline-block; padding: 6px 14px; border-radius: 6px; font-size: 13pt; font-weight: 700;
+      color: var(--q-burgundy); background: var(--q-burgundy-tint); border: 1.5px solid var(--q-burgundy); opacity: 0.6; margin-bottom: 10px;
+    }
+    .kw p { margin: 0; font-size: 12pt; line-height: 1.45; }
+    .kw p strong { display: block; color: var(--q-black); margin-bottom: 4px; }
+
+    /* immagine da reperire (slide 5) */
+    .imgph {
+      flex: 1; min-height: 0; border: 1.5px dashed var(--q-line); border-radius: var(--box-radius);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 20px; text-align: center;
+    }
+    .imgph p { margin: 0; font-size: 10pt; color: var(--q-greydark); line-height: 1.4; }
+    .imgph p strong { color: var(--q-burgundy); letter-spacing: 0.16em; font-size: 9pt; }
+    .reveal p.didascalia { margin: 8px 0 0; font-size: 9.5pt; line-height: 1.38; color: var(--q-greydark); }
+
+    /* colonna destra con codice sopra e figura sotto */
+    .code-fig { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+    .code-fig .visual { flex: 1 1 0; min-height: 0; }
+    .code-fig .visual.fixed { flex: none; }
+    .code-fig .visual.fixed img { max-height: 190px; }
+    /* due requisiti in testa (slide 11, 48) */
+    .cols.top2 { flex: none; margin-bottom: 12px; }
+    .cols.top2 p { margin: 0; font-size: 11pt; line-height: 1.4; }
+    .cols.top2 p strong { display: block; color: var(--q-black); margin-bottom: 2px; }
+    .cols.top2 .col-head { margin-bottom: 6px; }
+    .two-pay { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; min-height: 0; }
+    .reveal p.conto { margin: 2px 0 0; font-size: 8pt; color: var(--q-greydark); line-height: 1.3; }
+    .reveal p.conto strong { color: var(--q-burgundy); }
+    .side-flag { font-family: var(--body-font); font-size: 8pt; font-weight: 700; letter-spacing: 0.08em; color: var(--q-burgundy); }
+    /* i tre livelli + blocco agente (slide 20) */
+    .agentbox { flex: none; margin-top: 10px; padding: 10px 14px; background: var(--q-grey); border-radius: var(--box-radius); font-size: 10.5pt; line-height: 1.4; }
+    .agentbox strong { color: var(--q-burgundy); display: block; margin-bottom: 2px; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ══════════ COPERTINA ══════════ -->
+      <section id="cover" class="hero no-chrome" data-transition="fade">
+        <p class="eyebrow">CORSO PROFESSIONAL AI · INCONTRO 28</p>
+        <h1>Agentic AI: dietro i tool, la conoscenza</h1>
+        <p class="hero-lead">La preparazione della KB, regole per l'organizzazione dei dati. Il 26 ha aperto il modello, il 27 l'harness; oggi che cosa l'agente trova quando chiama un tool, e come dev'essere fatto perché gli serva.</p>
+        <div class="hero-meta">
+          <span>DATA, AT CORE</span>
+          <span>FRANCESCO GIANFERRARI PINI</span>
+        </div>
+        <aside class="notes">Ultimo dei tre incontri: si apre l'ultimo termine della formula, la KB. Sette sezioni lungo lo spettro: dal dato strutturato al non strutturato, con i grafi in mezzo; poi i pattern con cui l'agente entra in ciascuna forma, e sopra tutto l'ontologia.</aside>
+      </section>
+
+      <!-- ══════════ SEZIONE 1 ══════════ -->
+      <section id="div-sec1" class="section-divider" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 01</p>
+        <h1>La conoscenza</h1>
+        <p>La conoscenza c'è quasi sempre. Il problema è la forma in cui sta.</p>
+        <aside class="notes">Che cosa un agente trova dietro i tool; la piramide; i quattro requisiti; know-what e know-how; lo spettro come indice della lezione.</aside>
+      </section>
+
+      <section id="slide-1">
+        <p class="eyebrow">SEZIONE 1 · DALL'INCONTRO 27</p>
+        <h2>Ieri chi esegue, oggi che cosa sa</h2>
+        <div class="content">
+          <ul class="pts">
+            <li><strong>Il 26, il modello</strong>sa volere, non sa eseguire. Ciò che sa è compresso nei pesi, fermo al cut-off.</li>
+            <li><strong>Il 27, l'harness</strong>prepara la finestra, esegue i tool, governa il contesto, osserva le tracce.</li>
+            <li><strong>La domanda lasciata aperta</strong>quando l'agente chiama <code>cerca_ordine</code>, o <code>cerca_documenti</code>, che cosa trova dall'altra parte?</li>
+          </ul>
+          <p class="caption" style="margin-top: 22px;">Quasi tutto ciò che l'agente deve sapere non sta nei suoi pesi e non lo scrive lui: sta nei sistemi dell'organizzazione. Dati, documenti, procedure, in forme diverse, fatte per lettori diversi.</p>
+          <p class="hl-line">In che forma sta, e chi ce l'ha messa?</p>
+          <div class="nota dark center" style="margin-top: auto;">L'agente legge tutto ciò che trova. Oggi: che cosa trova, e come dev'essere fatto perché gli serva.</div>
+        </div>
+        <div class="footnote">01 / Sezione 1 · <span class="sid">#slide-1</span></div>
+        <aside class="notes">Ripresa della slide 63 del 27. Stessa struttura della slide 1 del 27: tre righe chiuse, una domanda aperta, il blocco nero. I tre titoli della serie si leggono in fila: Ieri il modello, oggi chi esegue; ieri chi esegue, oggi che cosa sa.</aside>
+      </section>
+
+      <section id="slide-2">
+        <p class="eyebrow">SEZIONE 1 · DALL'INCONTRO 26</p>
+        <h2>La formula: oggi la KB</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide2-formula-kb.svg" alt="Agent = LLM + Harness + System Prompt + Tools + KB + Skills: LLM con la spunta dell'incontro 26; Harness, System Prompt, Tools e Skills con la spunta dell'incontro 27; KB acceso, unico blocco pieno, e sopra di lui una callout vuota con tre blocchi grigi: la sagoma dello spettro"></div>
+          <div class="nota">L'LLM è la CPU, l'harness il sistema operativo, il resto il software installato. Del software abbiamo aperto tre programmi su quattro. Il quarto è quello che gli altri tre consultano: senza, <code>cerca_ordine</code> non ha nulla da cercare e la skill <code>rimborsi-acme</code> non ha nulla da verificare.</div>
+        </div>
+        <div class="footnote">02 / Sezione 1 · <span class="sid">#slide-2</span></div>
+        <aside class="notes">Quarto stato della formula lungo il corso: 26 LLM; 27 Harness, poi System Prompt, Tools, Skills; 28 KB. Stessa figura della slide 3 del 26 e della 62 del 27: la fila dei blocchi non si muove, il canvas cresce solo verso l'alto. La callout grigia è la sagoma dello spettro: si accende nella slide 7.</aside>
+      </section>
+
+      <section id="slide-3">
+        <p class="eyebrow">SEZIONE 1 · LA CONOSCENZA</p>
+        <h2>Dalla piramide: dati, informazione, conoscenza, intelligenza</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong class="t1">Dati</strong>numeri e stringhe senza contesto: <code>3 5 2 0 4 1 3</code>. Veri, e inutilizzabili.</li>
+                <li class="fragment custom lit" data-fragment-index="1"><strong class="t1">+ contesto → informazione</strong>gli stessi numeri con intestazioni, unità e chiavi: giorni di ritardo, per corriere, per settimana. È la tabella: sezioni 2 e 3.</li>
+                <li class="fragment custom lit" data-fragment-index="2"><strong class="t1">+ semantica → conoscenza</strong>le relazioni esplicite fra i tipi di cose: il corriere consegna la spedizione, il contratto vincola il corriere, il ritardo attiva la penale. È l'ontologia: il grafo che spiega tabelle e documenti. Sezione 7.</li>
+                <li class="fragment custom lit" data-fragment-index="3"><strong class="t1">+ azioni → intelligenza</strong>qualcuno che usa la conoscenza per agire: l'agente, con i suoi tool e i suoi pattern di accesso. Sezione 6.</li>
+              </ul>
+            </div>
+            <div class="visual stack">
+              <img src="svg/slide3-piramide-1.svg" alt="La piramide dati, informazione, conoscenza, intelligenza: acceso solo il gradino dei dati, con la striscia di sette numeri accanto">
+              <img class="fragment" data-fragment-index="1" src="svg/slide3-piramide-2.svg" alt="Si accende il gradino dell'informazione, con la freccia contesto e la tabella dei ritardi di consegna">
+              <img class="fragment" data-fragment-index="2" src="svg/slide3-piramide-3.svg" alt="Si accende il gradino della conoscenza, con la freccia semantica e il grafo delle classi: l'ontologia">
+              <img class="fragment" data-fragment-index="3" src="svg/slide3-piramide-4.svg" alt="Si accende l'apice, intelligenza, con la freccia azioni e la pill dell'agente che fa la domanda">
+            </div>
+          </div>
+          <div class="nota small">Gestire i dati non basta: ogni gradino in più rende ciò che sotto c'è già riutilizzabile, da una persona e da un agente. Dalla presentazione Quantyca "Information Architecture", 2025.</div>
+        </div>
+        <div class="footnote">03 / Sezione 1 · <span class="sid">#slide-3</span></div>
+        <aside class="notes">Quattro tempi: a ogni click si accende un livello con il suo esempio. Dal deck Quantyca Information Architecture, Podcast Knowledge Management (21 maggio 2025): là l'esempio era il meteo (31 32 33, la tabella Milano luglio 2024, il knowledge graph Food Corp/Weather, il bot); qui è rifatto su Acme. Nel gradino della conoscenza c'è solo l'ontologia: il grafo delle istanze della sezione 5 sta in mezzo allo spettro, non sulla piramide.</aside>
+      </section>
+
+      <section id="slide-4">
+        <p class="eyebrow">SEZIONE 1 · DALL'INCONTRO 27</p>
+        <h2>I quattro requisiti di una conoscenza utile</h2>
+        <div class="content">
+          <p class="caption small" style="margin: 0 0 10px;">Quattro modi di dire "di qualità". Il terzo è quello che si intende di solito; gli altri tre non si misurano sul singolo fatto, ma contano altrettanto.</p>
+          <div class="tv tv-rev">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Ricercabile in modo progressivo</strong>qualità dell'accesso: si arriva a ciò che serve per passi, dal generale al particolare, senza leggere tutto. L'agente ha una finestra limitata: trova il contratto SpedFast, poi la clausola sui ritardi, poi la penale, non l'archivio intero.</li>
+                <li><strong>Non ridondante</strong>qualità della struttura: un fatto sta in un posto solo. Se il ritardo di una spedizione è calcolato in tre report con tre regole, un agente ne trova tre valori diversi e non sa quale sia vero.</li>
+                <li><strong>Veritiera</strong>la qualità del dato in senso stretto: accurata, completa, aggiornata, con un responsabile. Un listino del 2024 senza data è una risposta sbagliata pronta per essere data.</li>
+                <li><strong>Compounding</strong>qualità nel tempo: ogni aggiunta rende più utile ciò che c'era già, perché si aggancia a ciò che esiste invece di rifarlo. Il contrario: un'altra pipeline, un altro report, un'altra copia.</li>
+              </ul>
+            </div>
+            <div class="col-text">
+              <p class="boxlab">la pagella · torna alla fine di ogni blocco</p>
+              <div class="pagella empty">
+                <div class="pr"><div class="mark"></div><p class="lab">ricercabile in modo progressivo</p></div>
+                <div class="pr"><div class="mark"></div><p class="lab">non ridondante</p></div>
+                <div class="pr"><div class="mark"></div><p class="lab">veritiera</p></div>
+                <div class="pr"><div class="mark"></div><p class="lab">compounding</p></div>
+              </div>
+              <p class="plegend">✓ sì · ~ in parte · ✗ no</p>
+            </div>
+          </div>
+        </div>
+        <div class="footnote">04 / Sezione 1 · <span class="sid">#slide-4</span></div>
+        <aside class="notes">Ripresa della riga in burgundy della slide 63 del 27. Qui nasce la pagella: torna vuota qui, e piena alla fine di ogni blocco (13, 27, 36, 42, 52, 58), sempre nella stessa posizione, sempre letta dal punto di vista di chi fa domande.</aside>
+      </section>
+
+      <section id="slide-5">
+        <p class="eyebrow">SEZIONE 1 · LA CONOSCENZA</p>
+        <h2>Non è un problema dell'AI</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>La biblioteca dell'abbazia</strong>tutto il sapere del mondo c'è, in una torre. Ma è un labirinto, e la mappa è nella testa del bibliotecario: i libri si trovano solo chiedendo a lui, e lui decide che cosa si può leggere.</li>
+                <li><strong>Che cosa manca</strong>non i libri. Manca un ordine che chiunque possa percorrere: la conoscenza c'è, ma non è ricercabile, e muore con chi la custodisce.</li>
+                <li><strong>L'AI l'ha reso evidente</strong>finché a cercare era una persona, si arrangiava: chiedeva al collega, sapeva quale report era quello buono. Un agente non ha il collega: legge ciò che trova, tutto, e con lo stesso peso. Ogni disordine che una persona aggirava diventa una risposta sbagliata.</li>
+              </ul>
+            </div>
+            <div class="col-text">
+              <div class="imgph">
+                <p><strong>IMMAGINE DA REPERIRE</strong></p>
+                <p>La pianta del labirinto della biblioteca, <em>Il nome della rosa</em>, Umberto Eco, Bompiani 1980. Fonte, file e dimensione da concordare prima del download; va in <code>assets/images/uploads/</code>.</p>
+              </div>
+              <p class="didascalia">La pianta del labirinto, dall'edizione Bompiani del 1980. Ogni stanza porta una lettera; lette in fila, le lettere compongono il nome della regione da cui vengono i libri (HIBERNIA, YSPANIA, LEONES…): dentro il labirinto c'è già l'abbozzo di un'organizzazione, per provenienza. Non basta, ma è un inizio.</p>
+            </div>
+          </div>
+        </div>
+        <div class="footnote">05 / Sezione 1 · <span class="sid">#slide-5</span></div>
+        <aside class="notes">L'unica slide storica della lezione. La ricerca di supporto (Dewey, Hoover, Bush, Otlet, Eulero, Berners-Lee) sta in docs/ricerche-28/research-storia-classificazione.md, per queste note: Dewey 1876, la classificazione decimale; Otlet e il Mundaneum; Bush e il Memex (1945); Hoover che riorganizza l'archivio dell'FBI. Tutti lo stesso problema: mettere ordine perché si trovi.</aside>
+      </section>
+
+      <section id="slide-6">
+        <p class="eyebrow">SEZIONE 1 · DALL'INCONTRO 27</p>
+        <h2>Know-what e know-how</h2>
+        <div class="content">
+          <div class="kw">
+            <div>
+              <span class="blk">KB</span>
+              <p><strong>Know-what: la KB</strong>ciò che l'organizzazione sa: quanti ordini, quali clienti, che cosa dice il contratto con SpedFast. Sta in tabelle, documenti, grafi; l'agente lo raggiunge con i tool. È ricercabile: la domanda è in che forma.</p>
+            </div>
+            <div>
+              <span class="blk">Skills</span>
+              <p><strong>Know-how: le skill</strong>ciò che l'organizzazione sa fare: come si gestisce un rimborso, come si scrive il report della settimana. Sta in procedure scritte da chi il lavoro lo sa fare; l'agente lo carica a richiesta (il 27: <code>rimborsi-acme</code>). È eseguibile: la domanda è chi lo scrive.</p>
+            </div>
+          </div>
+          <p class="caption" style="margin-top: 18px;">La skill del 27 chiamava <code>cerca_ordine</code> e <code>crea_rimborso</code>: il know-how usa il know-what. Senza il primo, il secondo non ha su che cosa lavorare.</p>
+          <div class="nota">Oggi: sezioni 2–6 sul know-what, la 7 sul know-how e su ciò che li lega.</div>
+        </div>
+        <div class="footnote">06 / Sezione 1 · <span class="sid">#slide-6</span></div>
+        <aside class="notes">Ripresa del punto 3 della slide 26 del 27: know-how, non know-what. Nella formula ci sono due termini per la conoscenza, e non è un caso.</aside>
+      </section>
+
+      <section id="slide-7">
+        <p class="eyebrow">SEZIONE 1 · LA CONOSCENZA</p>
+        <h2>Lo spettro: dal dato strutturato al non strutturato</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide7-spettro.svg" alt="La figura madre: la formula con KB acceso e, sopra, la callout piena: tre fasce su tre colonne, oggetti (la tabella, le relazioni, il documento) con la freccia strutturato e non strutturato, accesso (si interroga, si percorre, si cerca), pattern agentici (Text2SQL, GraphRAG, RAG e agentic search); sopra le fasce la banda dell'ontologia che attraversa tutto"></div>
+          <p class="caption small">A un capo il dato strutturato: la struttura è decisa prima di scrivere, il fatto sta in una cella, si interroga. All'altro il non strutturato: la struttura non c'è, il fatto va estratto dal testo, si cerca. In mezzo il grafo: la struttura si evolve nel tempo, un tipo di nodo alla volta, ma ciò che c'è si percorre in modo rigoroso, come una tabella. Sopra tutto l'ontologia: non tiene i dati, ne spiega il significato.</p>
+        </div>
+        <div class="footnote">07 / Sezione 1 · <span class="sid">#slide-7</span></div>
+        <aside class="notes">Didascalia per esteso: a un capo il dato strutturato: la struttura è decisa prima di scrivere, e il fatto sta in una cella; si interroga. All'altro il dato non strutturato: la struttura non c'è, e il fatto va estratto dal testo; si cerca. In mezzo il grafo, e sta in mezzo per una ragione precisa: la struttura non va decisa tutta prima, si crea e si evolve nel tempo, un tipo di nodo o di relazione alla volta; ma ciò che c'è si percorre e si interpreta in modo deterministico e rigoroso, come una tabella. Sopra tutto, l'ontologia: non tiene i dati, ne spiega il significato, da un capo all'altro. La figura madre della lezione: la callout grigia della slide 2 si accende. È l'indice: i separatori delle sezioni 2–7 la riprendono in miniatura con la zona corrente accesa. Gli estremi si chiamano strutturato e non strutturato, mai dato e informazione: la piramide dà a quelle parole un altro significato.</aside>
+      </section>
+
+      <!-- ══════════ SEZIONE 2 ══════════ -->
+      <section id="div-sec2" class="section-divider alt" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 02</p>
+        <h1>Il dato strutturato, 1/2:<br>dove nasce</h1>
+        <p>Il transazionale è fatto per scrivere bene, non per rispondere a domande. Sta dietro i tool; davanti all'agente serve un'altra forma dello stesso dato.</p>
+        <div class="divmap"><img src="svg/minimap-sec2.svg" alt="Mini-mappa dello spettro: accesa la colonna della tabella"><span>sei qui · la tabella</span></div>
+      </section>
+
+      <section id="slide-8">
+        <p class="eyebrow">SEZIONE 2 · IL DATO STRUTTURATO, 1/2: DOVE NASCE</p>
+        <h2>Forma e fine: due assi</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>La forma</strong>relazionale: tabelle con colonne fisse, lo schema deciso prima, le relazioni per chiave. Document: un record è un documento JSON, con i campi che servono a lui, annidati; lo schema lo decide chi scrive.</li>
+                <li><strong>Il fine</strong>transazionale: registrare ciò che succede, una riga alla volta, in fretta e senza perdere nulla. Analitico: rispondere a domande su ciò che è successo, leggendo milioni di righe insieme.</li>
+                <li><strong>Dove vive l'AI</strong>l'agente scrive poco e chiede molto: quasi tutto ciò che vediamo oggi sta nella colonna analitica. Il transazionale lo raggiunge solo attraverso i tool, e la slide 11 dice perché.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide8-due-assi.svg" alt="Matrice 2×2: righe relazionale e document, colonne transazionale e analitico; nelle celle il DB degli ordini dietro cerca_ordine, il carrello e il profilo cliente, il data warehouse vendite (qui entra l'agente), gli eventi di navigazione e i log; una freccia dal transazionale relazionale all'analitico relazionale: la struttura deriva da qui"></div>
+          </div>
+          <div class="nota">Il relazionale è la forma che non si può non conoscere: anche chi sceglie il documento, o il grafo, ragiona per differenza da lì.</div>
+        </div>
+        <div class="footnote">08 / Sezione 2 · <span class="sid">#slide-8</span></div>
+      </section>
+
+      <section id="slide-9">
+        <p class="eyebrow">SEZIONE 2 · IL DATO STRUTTURATO, 1/2: DOVE NASCE</p>
+        <h2>Il modello relazionale: tabelle, tipi, chiavi</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Colonne e tipi</strong>lo schema è deciso prima: ogni colonna ha un nome e un tipo. <code>3</code> in una colonna <code>giorni_ritardo INT</code> è un numero su cui si può sommare e confrontare; "3 giorni circa" in una cella di testo no. Il tipo è il primo pezzo di contesto della piramide.</li>
+                <li><strong>La chiave primaria</strong>una colonna che identifica la riga una volta sola: <code>4471</code> è un ordine e uno solo. È ciò che rende un fatto ritrovabile.</li>
+                <li><strong>La chiave esterna</strong>una colonna che contiene la chiave di un'altra tabella: la spedizione porta l'<code>id_ordine</code>, l'ordine porta l'<code>id_cliente</code>. Le relazioni non sono disegnate: sono valori che si rimandano.</li>
+              </ul>
+            </div>
+            <div class="code-fig">
+              <div class="payload plain micro"><span class="k">CREATE TABLE</span> ordini (
+  id_ordine    INT <span class="k">PRIMARY KEY</span>,          <span class="cm">-- un numero, unico: la chiave</span>
+  id_cliente   INT <span class="k">REFERENCES</span> clienti,   <span class="cm">-- rimanda a un cliente</span>
+  data_ordine  DATE,                     <span class="cm">-- una data, non un testo</span>
+  importo      DECIMAL(10,2)             <span class="cm">-- euro, con due decimali</span>
+);
+<span class="k">CREATE TABLE</span> spedizioni (
+  id_spedizione  INT <span class="k">PRIMARY KEY</span>,
+  id_ordine      INT <span class="k">REFERENCES</span> ordini,  <span class="cm">-- rimanda a un ordine</span>
+  corriere       VARCHAR(40),
+  data_prevista  DATE,
+  data_consegna  DATE
+);</div>
+              <div class="visual fixed"><img src="svg/slide9-chiavi.svg" alt="Le tabelle ordini e spedizioni come griglie con tre righe ciascuna: la colonna id_ordine di ordini è la chiave primaria, quella di spedizioni la chiave esterna; una freccia le unisce: chiave esterna verso chiave primaria"></div>
+            </div>
+          </div>
+          <div class="nota small">Quattro tabelle così (<code>clienti</code>, <code>ordini</code>, <code>spedizioni</code>, <code>prodotti</code>) sono ciò che sta dietro <code>cerca_ordine</code>. Il ritardo non è una colonna: è <code>data_consegna − data_prevista</code>, calcolato quando serve. Segnatevelo: torna nella sezione 3.</div>
+        </div>
+        <div class="footnote">09 / Sezione 2 · <span class="sid">#slide-9</span></div>
+        <aside class="notes">Il DDL si può saltare a voce se il tempo stringe: basta la figura sotto. I commenti a destra di ogni riga sono la lettura in italiano.</aside>
+      </section>
+
+      <section id="slide-10">
+        <p class="eyebrow">SEZIONE 2 · IL DATO STRUTTURATO, 1/2: DOVE NASCE</p>
+        <h2>Il SQL: quattro verbi</h2>
+        <div class="content">
+          <div class="tv tv-3t">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong class="t1"><code>SELECT</code>: che cosa voglio</strong>dati (colonne così come sono: il corriere) e metriche (numeri calcolati su più righe: quante spedizioni, quanti giorni di ritardo in media).</li>
+                <li class="fragment custom lit" data-fragment-index="1"><strong class="t2"><code>FROM … JOIN</code>: da dove, e con che cosa</strong>la tabella di partenza e quelle da unire, agganciate per chiave: la spedizione con il suo ordine. È la chiave esterna della slide 9, usata.</li>
+                <li class="fragment custom lit" data-fragment-index="2"><strong class="t3"><code>WHERE</code>: quali righe tengo</strong>il filtro, riga per riga: solo agosto, solo le consegne arrivate dopo la data prevista.</li>
+                <li class="fragment custom lit" data-fragment-index="3"><strong class="t4"><code>GROUP BY</code>: come le raggruppo</strong>una riga di risultato per ogni valore: un totale per corriere. È ciò che trasforma righe in metriche.</li>
+              </ul>
+            </div>
+            <div class="col-text">
+              <div class="payload plain micro"><span class="ln t1 on"><span class="k">SELECT</span>   s.corriere,
+         COUNT(*)              <span class="k">AS</span> ordini_in_ritardo,
+         AVG(s.data_consegna
+             - s.data_prevista) <span class="k">AS</span> ritardo_medio_gg</span>
+<span class="ln t2 fragment custom lit" data-fragment-index="1"><span class="k">FROM</span>     spedizioni s
+<span class="k">JOIN</span>     ordini o <span class="k">ON</span> o.id_ordine = s.id_ordine</span>
+<span class="ln t3 fragment custom lit" data-fragment-index="2"><span class="k">WHERE</span>    o.data_ordine <span class="k">BETWEEN</span> '2026-08-01'
+                            <span class="k">AND</span> '2026-08-31'
+<span class="k">AND</span>      s.data_consegna &gt; s.data_prevista</span>
+<span class="ln t4 fragment custom lit" data-fragment-index="3"><span class="k">GROUP BY</span> s.corriere;</span><span class="res fragment custom lit" data-fragment-index="3">SpedFast · 121 · 3,8
+Corriere Nord · 44 · 1,9
+PostaPro · 22 · 1,2</span></div>
+            </div>
+            <div class="visual stack">
+              <img src="svg/slide10-sql-1.svg" alt="Tempo 1, SELECT: nella tabella spedizioni si accende la colonna corriere e, a lato, due colonne tratteggiate ordini_in_ritardo e ritardo_medio_gg: non esistono nella tabella, si calcolano">
+              <img class="fragment" data-fragment-index="1" src="svg/slide10-sql-2.svg" alt="Tempo 2, FROM JOIN: si accendono le due tabelle e la freccia fra le chiavi id_ordine; le righe si allineano a coppie">
+              <img class="fragment" data-fragment-index="2" src="svg/slide10-sql-3.svg" alt="Tempo 3, WHERE: le coppie che non passano il filtro si attenuano con una riga barrata; restano accese quattro righe">
+              <img class="fragment" data-fragment-index="3" src="svg/slide10-sql-4.svg" alt="Tempo 4, GROUP BY: le righe accese si contraggono in tre righe di risultato, una per corriere, con i totali">
+            </div>
+          </div>
+          <div class="nota small">È la domanda della slide 20 del 27, quella che il modello aveva risolto con quattro righe di Python su un export. Qui è una query: la stessa domanda, fatta al dato dove sta. Nella sezione 6 la scriverà il modello.</div>
+        </div>
+        <div class="footnote">10 / Sezione 2 · <span class="sid">#slide-10</span></div>
+        <aside class="notes">Quattro tempi: a ogni click si accende un verbo a sinistra, la riga della query al centro, la parte dello schema che quel verbo tocca a destra, con la stessa tinta. Le righe di risultato compaiono con il GROUP BY.</aside>
+      </section>
+
+      <section id="slide-11">
+        <p class="eyebrow">SEZIONE 2 · IL DATO STRUTTURATO, 1/2: DOVE NASCE</p>
+        <h2>Il transazionale: per chi è fatto</h2>
+        <div class="content">
+          <div class="cols cols-2 top2 small">
+            <div>
+              <p class="col-head">Performance operativa</p>
+              <p>migliaia di scritture piccole al secondo: un ordine, una spedizione, un cambio di stato. Ogni scrittura deve toccare poche righe, con un lucchetto brevissimo, e non perdere mai un fatto. La lettura tipica è per chiave: "l'ordine 4471", non "tutti gli ordini di agosto".</p>
+            </div>
+            <div>
+              <p class="col-head">Semplicità del coding</p>
+              <p>l'applicazione che scrive deve poter cambiare un fatto in un posto solo: l'indirizzo del cliente sta in <code>clienti</code>, e basta. Ogni copia in più è un bug in attesa. È la ragione della normalizzazione, prossima slide.</p>
+            </div>
+          </div>
+          <div class="tv tv-rev" style="gap: 26px;">
+            <div class="col-text" style="justify-content: flex-start;">
+              <p class="boxlab">Perché non è opportuno che sia accessibile all'agente</p>
+              <ul class="pts micro nano">
+                <li><strong>Le regole vivono nell'applicazione, non nel database</strong>validazioni, vincoli fra tabelle, autorizzazioni, transazioni: è il codice dell'applicazione a garantirle, e con esse la sicurezza: chi può vedere e toccare che cosa lo decide l'applicazione, quindi il tool. Un <code>UPDATE</code> scritto dal modello le salta tutte, e un <code>UPDATE</code> senza <code>WHERE</code> è un danno reale sul sistema che tiene i conti. Il tool (<code>cerca_ordine</code>, <code>crea_rimborso</code>) passa dall'applicazione, quindi dalle regole.</li>
+                <li><strong>È dimensionato per scritture piccole, non per letture grandi</strong>una query analitica lanciata dal modello (una scansione di milioni di righe, una join a cinque tabelle) rallenta le operazioni di tutti. L'API espone accessi puntuali, per chiave, indicizzati: un ordine alla volta.</li>
+                <li><strong>Difficile da leggere per il modello</strong>centinaia di tabelle normalizzate con nomi tecnici (<code>ord_hdr</code>, <code>ord_ln</code>, <code>cust_addr_hist</code>): per una domanda semplice servono sei join che nessuna descrizione spiega. Il tool è il contratto scritto per il modello (il 27, slide 18); l'analitico, come vedremo, è già scritto per chi fa domande.</li>
+              </ul>
+            </div>
+            <div class="col-text">
+              <p class="boxlab muted">l'unica porta · dal 27</p>
+              <div class="payload plain micro faded"><span class="k">name:</span>        <span class="em">cerca_ordine</span>
+<span class="k">description:</span> Restituisce lo stato di un ordine dato il suo
+             identificativo. Usalo quando il cliente chiede
+             dove si trova un ordine o quando arriva.
+<span class="k">input_schema:</span>
+  id_ordine: string <span class="c">— l'identificativo, es. "4471"</span></div>
+            </div>
+          </div>
+          <div class="nota small">Vale anche per la sicurezza: dare a un agente il SQL diretto sul sistema di record è uno dei tre lati della trifecta del 27, un canale per fare danni, aperto senza motivo.</div>
+        </div>
+        <div class="footnote">11 / Sezione 2 · <span class="sid">#slide-11</span></div>
+        <aside class="notes">Nel transazionale la sicurezza sta nell'applicazione, quindi nel tool; nell'analitico sta nel database (slide 20). È la ragione per cui l'agente entra nel transazionale solo dai tool e nell'analitico direttamente, con l'identità dell'utente.</aside>
+      </section>
+
+      <section id="slide-12">
+        <p class="eyebrow">SEZIONE 2 · IL DATO STRUTTURATO, 1/2: DOVE NASCE</p>
+        <h2>La normalizzazione</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Il problema</strong>se in ogni riga d'ordine scrivo nome e indirizzo del cliente, il cliente Rossi sta in duecento righe. Cambia indirizzo: duecento aggiornamenti, e basta che uno manchi per avere due indirizzi veri. È l'anomalia di aggiornamento.</li>
+                <li><strong>La regola</strong>un fatto, una riga: il cliente sta in <code>clienti</code> una volta sola, l'ordine porta solo <code>id_cliente</code>. Le forme normali sono i gradi di questa regola; per noi basta la sostanza: niente ripetizioni, tutto per chiave.</li>
+                <li><strong>Il prezzo, dichiarato</strong>è un'ottimizzazione per chi scrive, pagata da chi legge. Per "gli ordini di Rossi con il corriere" servono tre tabelle e due join, e per sapere quali serve conoscere lo schema. Per il lavoro analitico, e per un agente, il transazionale normalizzato è il posto meno accessibile e meno chiaro in cui il dato possa stare.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide12-normalizzazione.svg" alt="Due pannelli: a sinistra una tabella ordini denormalizzata in cui Rossi con il suo indirizzo è ripetuto tre volte e una riga ha un indirizzo diverso, due indirizzi veri; a destra tre tabelle normalizzate clienti, ordini, spedizioni collegate per chiave: per leggere gli ordini di Rossi con il corriere servono 3 tabelle e 2 join"></div>
+          </div>
+          <div class="nota">"Non ridondante" (slide 4) qui è una regola di progetto che il database fa rispettare con le chiavi. L'analitico rinuncerà in parte a questa regola, di proposito, per riprendersi accessibilità e chiarezza: è la sezione 3.</div>
+        </div>
+        <div class="footnote">12 / Sezione 2 · <span class="sid">#slide-12</span></div>
+      </section>
+
+      <section id="slide-13">
+        <p class="eyebrow">SEZIONE 2 · IL DATO STRUTTURATO, 1/2: DOVE NASCE</p>
+        <h2>La pagella del transazionale, e la cerniera</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <div class="pagella tight">
+                <div class="pr"><div class="mark mid">~</div><div><p class="lab">ricercabile in modo progressivo</p><p class="why">per chiave sì: l'ordine 4471 si trova in un istante. Per domanda no: non c'è un livello generale da cui scendere, e lo schema è spesso complesso e pieno di ambiguità rischiose: nomi che si somigliano, join che sembrano giuste e non lo sono. Anche in sola lettura, l'accesso va mediato dai tool.</p></div></div>
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">non ridondante</p><p class="why">per costruzione: la normalizzazione, e le chiavi che la fanno rispettare.</p></div></div>
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">veritiera</p><p class="why">è il sistema di record: i fatti nascono qui, in tempo reale, e l'applicazione ne risponde. Con un'avvertenza: nei dati più vecchi restano errori mai sanati, e non tutto è storicizzato (l'indirizzo di ieri è sparito). Molto spesso questa pulizia si fa nel data warehouse, non qui.</p></div></div>
+                <div class="pr"><div class="mark no">✗</div><div><p class="lab">compounding</p><p class="why">ogni applicazione ha il suo: gli ordini in un sistema, i reclami in un altro, i contratti in un terzo. I fatti non si agganciano fra loro, e la conoscenza non si accumula: si moltiplicano i silos.</p></div></div>
+              </div>
+              <p class="prule"><strong>Voti dati dal punto di vista di chi fa domande:</strong> una persona, o un agente.</p>
+            </div>
+            <div class="visual"><img src="svg/slide13-assi-cerniera.svg" alt="La matrice 2×2 della slide 8 in miniatura: la cella relazionale × transazionale spuntata, la freccia la struttura deriva da qui accesa, la cella relazionale × analitico come elemento focale con l'etichetta sezione 3"></div>
+          </div>
+          <div class="nota dark center" style="font-size: 12.5pt; padding: 12px 22px;">Il transazionale è dove il dato nasce, ed è dietro i tool: <code>cerca_ordine</code> lo interroga per chiave, dall'applicazione. Il grano con cui scrive è il grano di tutto ciò che verrà dopo: nessuna trasformazione a valle inventa un dettaglio che a monte non c'è. Davanti all'agente, che fa domande, serve un'altra forma dello stesso dato. Sezione 3.</div>
+        </div>
+        <div class="footnote">13 / Sezione 2 · <span class="sid">#slide-13</span></div>
+        <aside class="notes">Prima apparizione della pagella con i voti. La cerniera dichiara che la sezione 3 è un approfondimento della 2: il grano nasce nel transazionale.</aside>
+      </section>
+
+      <!-- ══════════ SEZIONE 3 ══════════ -->
+      <section id="div-sec3" class="section-divider dark" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 03</p>
+        <h1>Il dato strutturato, 2/2:<br>dove si interroga</h1>
+        <p>L'analitico è il dato riscritto per chi fa domande. È il posto dove entra l'agente.</p>
+        <div class="divmap"><img src="svg/minimap-sec3.svg" alt="Mini-mappa dello spettro: accesa la colonna della tabella, con lo zoom sul blocco"><span>sei qui · la tabella, da vicino</span></div>
+      </section>
+
+      <section id="slide-14">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>Da Excel al data warehouse</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Perché piace</strong>una tabella sola, una riga per spedizione, con dentro cliente, corriere, importo, ritardo. Niente join, niente schema da conoscere: si filtra, si fa una pivot, si legge. È la forma in cui una persona vuole il dato.</li>
+                <li><strong>Perché non regge</strong>ogni analista se ne fa una copia, e le copie divergono: tre "ritardo medio" diversi nella stessa riunione, nessuno sa quale sia vero. E a un milione di righe il foglio si ferma. Il foglio fallisce su "non ridondante" e su "veritiera".</li>
+                <li><strong>Il data warehouse</strong>la stessa tabella larga, tenuta una volta sola, in un database, alimentata dal transazionale e con un responsabile. Kimball ne ha scritto la forma trent'anni fa: una tabella dei fatti e le sue dimensioni. Sembra il foglio; regge un milione di righe e non diverge.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide14-excel-dwh.svg" alt="A sinistra il foglio spedizioni.xlsx con due copie sfalsate dietro e tre valori di ritardo medio diversi: tre verità; a destra la stessa griglia, una sola, dentro un cilindro data warehouse: una copia, un responsabile, un milione di righe"></div>
+          </div>
+          <div class="nota">L'analitico non è "un altro database": è il transazionale riscritto per chi fa domande. Ed è dove entra l'agente, che fa domande.</div>
+        </div>
+        <div class="footnote">14 / Sezione 3 · <span class="sid">#slide-14</span></div>
+      </section>
+
+      <section id="slide-15">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>Data warehouse: dove e come nasce</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Una derivazione</strong>negli anni Novanta i database relazionali erano il solo motore serio, e servivano a scrivere transazioni. Il data warehouse è nato come un modo di usarli al contrario: pochi scriventi, molti lettori, letture su milioni di righe. Stesse tabelle, stesso SQL, un altro mestiere.</li>
+                <li><strong>Alimentato da ETL</strong>ogni notte (o ogni ora) un processo estrae dai sistemi di record (ordini, CRM, reclami), trasforma (pulisce, ricompone le join, calcola il ritardo, allinea i nomi) e carica nel data warehouse. Il dato non nasce qui: arriva qui, in un'altra forma. Chi scrive l'ETL decide quella forma.</li>
+                <li><strong>E i motori si sono adattati</strong>i database analitici moderni tengono i dati per colonna: sommare gli importi di un milione di righe legge una colonna sola. Da qui gli strumenti della slide 25, che parlano tutti lo stesso SQL.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide15-etl.svg" alt="Flusso da sinistra a destra: tre cilindri, ordini, CRM, reclami, con dentro tabelle normalizzate in miniatura e l'etichetta 24/7 scritture; al centro il blocco ETL con estrai, trasforma, carica, ogni notte; a destra il cilindro data warehouse con una stella in miniatura e l'etichetta letture, milioni di righe"></div>
+          </div>
+          <div class="nota">Per l'agente conta una cosa: la lingua è la stessa del transazionale, il SQL della slide 10. Cambia il dato che trova dall'altra parte, e quanto è leggibile.</div>
+        </div>
+        <div class="footnote">15 / Sezione 3 · <span class="sid">#slide-15</span></div>
+      </section>
+
+      <section id="slide-16">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>Fatti e dimensioni: lo star schema</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Il fatto</strong>una riga per evento: una spedizione. Porta le misure (importo, giorni di ritardo) e le chiavi verso le dimensioni. È lunga (milioni di righe) e stretta.</li>
+                <li><strong>Le dimensioni</strong>una riga per cosa: un corriere, un cliente, un giorno. Portano gli attributi con cui si filtra e si raggruppa: il nome del corriere, la regione del cliente, il mese. Sono corte e larghe.</li>
+                <li><strong>La stella</strong>ogni dimensione si aggancia al fatto con una join sola, sempre uguale. Non serve conoscere lo schema: si parte dal fatto e si esce verso la dimensione che serve. È leggibile da una persona, e da un modello.</li>
+              </ul>
+            </div>
+            <div class="code-fig">
+              <div class="payload plain micro"><span class="k">CREATE TABLE</span> dim_corriere (
+  id_corriere   INT <span class="k">PRIMARY KEY</span>,
+  nome          VARCHAR(40),        <span class="cm">-- SpedFast</span>
+  tipo          VARCHAR(20),        <span class="cm">-- espresso / standard</span>
+  contratto_dal DATE
+);
+<span class="k">CREATE TABLE</span> fatto_spedizioni (
+  id_spedizione   INT <span class="k">PRIMARY KEY</span>,
+  id_corriere     INT <span class="k">REFERENCES</span> dim_corriere,   <span class="cm">-- una join, sempre questa</span>
+  id_cliente      INT <span class="k">REFERENCES</span> dim_cliente,
+  id_data         INT <span class="k">REFERENCES</span> dim_data,
+  importo         DECIMAL(10,2),    <span class="cm">-- misura</span>
+  giorni_ritardo  INT,              <span class="cm">-- misura, già calcolata</span>
+  giorni_lavorativi_ritardo INT     <span class="cm">-- stessa cosa, festivi esclusi (torna nella sez. 6)</span>
+);</div>
+              <div class="visual fixed" style="max-height: 125px;"><img src="svg/slide16-star.svg" alt="Lo star schema: fatto_spedizioni al centro con chiavi e misure; intorno dim_corriere, dim_cliente, dim_data, ognuna collegata al fatto da una linea sola etichettata con la chiave"></div>
+            </div>
+          </div>
+          <div class="nota small">Nel transazionale il ritardo era <code>data_consegna − data_prevista</code>, da calcolare ogni volta e da sapere. Qui è una colonna: qualcuno l'ha calcolata una volta, per tutti, con una regola sola.</div>
+        </div>
+        <div class="footnote">16 / Sezione 3 · <span class="sid">#slide-16</span></div>
+        <aside class="notes">Il DDL si può saltare a voce. La colonna giorni_lavorativi_ritardo sta qui perché torna nella traccia della slide 48.</aside>
+      </section>
+
+      <section id="slide-17">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>La denormalizzazione, di proposito</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>La dimensione ripete</strong>nel transazionale il corriere, il suo tipo di contratto e la sua sede stavano in tre tabelle. In <code>dim_corriere</code> stanno in una riga: chi legge trova tutto con una join. Se l'ETL sbaglia, sbaglia in un posto solo: la ridondanza è controllata, non accidentale.</li>
+                <li><strong>La dimensione storicizza</strong>nel transazionale il nuovo indirizzo sovrascrive il vecchio (slide 13: "non tutto è storicizzato"). Qui, quando il cliente cambia regione, la dimensione aggiunge una riga con le date di validità, e le spedizioni di ieri restano agganciate alla regione di ieri. Il passato non si riscrive.</li>
+                <li><strong>Il prezzo, dichiarato anche qui</strong>più spazio, e un ETL che deve sapere che cosa ripetere e quando aprire una riga nuova. È il lavoro del data management, slide 21. Si paga una volta, lo incassano tutti i lettori.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide17-dimensione.svg" alt="A sinistra le tre tabelle transazionali corrieri, contratti, sedi con la riga di SpedFast; una freccia ETL; a destra dim_corriere con due righe per SpedFast: standard fino al 2026-02-28, espresso dal 2026-03-01, valido_al aperto: due righe, una storia"></div>
+          </div>
+          <div class="nota">Slide 12 e 17 sono la stessa scelta vista dai due lati: normalizzare ottimizza chi scrive, denormalizzare ottimizza chi legge. Il dato è lo stesso; cambia per chi è tenuto.</div>
+        </div>
+        <div class="footnote">17 / Sezione 3 · <span class="sid">#slide-17</span></div>
+      </section>
+
+      <section id="slide-18">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>Il grano e le metriche</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Il grano</strong>"una riga è una spedizione" è una frase che va scritta prima di ogni altra. Cambia tutto: una riga per spedizione risponde a "quanti ritardi per corriere"; una riga per collo risponde anche a "quanti colli in ritardo"; una riga per ordine non risponde a nessuna delle due se un ordine ha due spedizioni.</li>
+                <li><strong>Le metriche additive</strong>l'importo si somma su qualsiasi dimensione: per corriere, per mese, per regione. I giorni di ritardo si sommano, ma la media va ricalcolata dai totali, non mediando le medie. Il numero di clienti distinti non si somma affatto. Il grano dice quali somme sono legittime.</li>
+                <li><strong>Il grano viene da monte</strong>è la cerniera della slide 13: se il gestionale registra le spedizioni e non i colli, il fatto è la spedizione. Nessun ETL inventa un dettaglio che il sistema di record non ha scritto. Chi vuole un grano più fine deve cambiare il transazionale, non il data warehouse.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide18-grano.svg" alt="Tre righe, una per grano: una riga = un ordine, una riga = una spedizione (il grano scelto, evidenziato), una riga = un collo; per ciascuna una mini-tabella e tre domande con spunta o croce; sulla riga del collo la nota: solo se il gestionale lo scrive"></div>
+          </div>
+          <div class="nota">Per l'agente il grano è la prima cosa da sapere e l'ultima che gli viene detta: "una riga è una spedizione" vale più di cento descrizioni di colonne. Torna nella sezione 6 e nella 7.</div>
+        </div>
+        <div class="footnote">18 / Sezione 3 · <span class="sid">#slide-18</span></div>
+      </section>
+
+      <section id="slide-19">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>Join e fanout</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>La domanda</strong>"per corriere: importo spedito e numero di reclami". Due fatti, <code>fatto_spedizioni</code> e <code>fatto_reclami</code>, con grani diversi: una riga per spedizione, una riga per reclamo.</li>
+                <li><strong>Il fanout</strong>se li unisco per corriere prima di aggregare, ogni spedizione si accoppia con ogni reclamo dello stesso corriere: 121 spedizioni × 9 reclami = 1.089 righe, e l'importo di SpedFast esce nove volte più grande. Nessun errore, nessun avviso: un numero sbagliato con l'aria di un numero giusto.</li>
+                <li><strong>La forma giusta</strong>aggrega ciascun fatto al grano della domanda (per corriere), e unisci i due totali: una subquery per fatto, poi una join fra risultati di una riga per corriere. È la regola: mai una join fra fatti, sempre fra aggregati.</li>
+              </ul>
+            </div>
+            <div class="code-fig">
+              <div class="visual fixed" style="max-height: 130px;"><img src="svg/slide19-fanout.svg" alt="Due pannelli: a sinistra tre righe spedizione e tre righe reclamo che si incrociano in nove coppie, l'importo esce tre volte; a destra le righe convergono nei due totali, uniti in una riga sola"></div>
+              <div class="payload plain micro bad"><span class="cm">-- ✗ fanout: join prima di aggregare</span>
+<span class="k">SELECT</span> c.nome, SUM(s.importo), COUNT(r.id_reclamo)
+<span class="k">FROM</span>   fatto_spedizioni s
+<span class="k">JOIN</span>   fatto_reclami r <span class="k">ON</span> r.id_corriere = s.id_corriere
+<span class="k">JOIN</span>   dim_corriere c  <span class="k">ON</span> c.id_corriere = s.id_corriere
+<span class="k">GROUP BY</span> c.nome;                 <span class="cm">-- SpedFast: 1.658.700 € (×9)</span></div>
+              <div class="payload plain micro good"><span class="cm">-- ✓ una subquery per fatto, join fra totali</span>
+<span class="k">SELECT</span> c.nome, sp.importo, rc.reclami
+<span class="k">FROM</span>   (<span class="k">SELECT</span> id_corriere, SUM(importo) <span class="k">AS</span> importo
+        <span class="k">FROM</span> fatto_spedizioni <span class="k">GROUP BY</span> id_corriere) sp
+<span class="k">JOIN</span>   (<span class="k">SELECT</span> id_corriere, COUNT(*) <span class="k">AS</span> reclami
+        <span class="k">FROM</span> fatto_reclami <span class="k">GROUP BY</span> id_corriere) rc <span class="k">USING</span> (id_corriere)
+<span class="k">JOIN</span>   dim_corriere c <span class="k">USING</span> (id_corriere);   <span class="cm">-- SpedFast: 184.300 € · 9</span></div>
+            </div>
+          </div>
+          <div class="nota small">È l'errore più frequente di chi scrive SQL, persone e modelli: torna nella sezione 6 come primo modo in cui Text2SQL sbaglia con l'aria di aver ragione. Il semantic linking, che dichiara il grano di ogni tabella a partire dalla classe, lo impedisce alla radice: sezione 7, slide 56.</div>
+        </div>
+        <div class="footnote">19 / Sezione 3 · <span class="sid">#slide-19</span></div>
+      </section>
+
+      <section id="slide-20">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>Sicurezza: tabella, colonna, riga</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts tight">
+                <li><strong>Tabella</strong>chi può leggere <code>fatto_spedizioni</code> e chi no. È il permesso più grossolano: o tutto o niente.</li>
+                <li><strong>Colonna</strong>chi vede <code>importo</code> e chi no; chi vede il nome del cliente e chi solo il suo id. Le colonne sensibili si mascherano, non si tolgono: la query gira, il valore no.</li>
+                <li><strong>Riga</strong>il responsabile di zona vede solo le spedizioni della sua regione: la stessa tabella, filtrata per chi la legge. Il filtro lo applica il database, non la query.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide20-sicurezza.svg" alt="La tabella fatto_spedizioni disegnata tre volte: intera con un lucchetto; con la colonna importo oscurata; con le sole righe della Lombardia accese, responsabile Lombardia. Sotto, due agenti: con utenza tecnica vede tutto, segno di croce; come Marco vede solo la terza versione, segno di spunta"></div>
+          </div>
+          <div class="agentbox"><strong>Con quale identità interroga l'agente?</strong>Con un'utenza tecnica sua: semplice, e pericoloso: risponde al magazziniere con i margini che vede il direttore. Con l'identità dell'utente che gli parla: il data warehouse applica le tre regole a lui, e l'agente non può mostrare ciò che l'utente non potrebbe vedere. È la seconda scelta quella giusta, e va fatta nell'harness, dove sta il tool.</div>
+          <div class="nota small">Nel transazionale la sicurezza sta nell'applicazione, quindi nel tool (slide 11): è per questo che l'agente ci entra solo da lì. Nell'analitico sta nel database, a questi tre livelli: è per questo che un agente può interrogarlo direttamente, purché lo faccia con l'identità di chi gli parla. Il tool resta codice dell'harness (il 27), ed è lì che si decide con quali credenziali chiama.</div>
+        </div>
+        <div class="footnote">20 / Sezione 3 · <span class="sid">#slide-20</span></div>
+      </section>
+
+      <section id="slide-21">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>Il data management come trasformazione di forma</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Che cosa fa</strong>prende il dato dove nasce e lo riscrive nella forma di chi lo legge: dal transazionale allo star, dallo star alle tabelle larghe di un report, da un documento a un fatto (sezione 4). E lo arricchisce: calcola ciò che a monte non c'è come colonna (i giorni di ritardo, il margine), integra fonti che non si parlano (il corriere del gestionale e quello del ticketing sono lo stesso SpedFast), aggiunge la storia (slide 17). Non registra fatti nuovi: ne cambia la forma e ne aumenta il valore.</li>
+                <li><strong>Le pipeline</strong>ogni trasformazione è codice che gira a orari, dipende da ciò che c'è a monte e alimenta ciò che c'è a valle. Ha un proprietario, dei test, una storia di guasti. È software, e va trattato come software.</li>
+                <li><strong>Le dipendenze</strong><code>fatto_spedizioni</code> dipende da <code>spedizioni</code> e da <code>ordini</code>; il report dei ritardi dipende da <code>fatto_spedizioni</code>. Se cambia una colonna a monte, si rompe qualcosa a valle. Sapere che cosa dipende da che cosa (il lineage) è metà del mestiere.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide21-lineage.svg" alt="Grafo di dipendenze da sinistra a destra: le fonti ordini, spedizioni, reclami convergono nell'ETL che ricompone, calcola, integra, storicizza; al centro fatto_spedizioni con owner team logistica, fatto_reclami, dim_corriere; a destra i consumatori: report ritardi, dashboard direzione, tool esegui_sql dell'agente. La colonna spedizioni.data_prevista è evidenziata e un'onda si propaga fino ai tre consumatori: se cambia questa, si rompono questi"></div>
+          </div>
+          <div class="nota small">Chi ha fatto la trasformazione sa che cosa vuol dire "giorni di ritardo": festivi esclusi? dalla data prevista o da quella promessa? Quel sapere è la semantica della piramide, e di solito sta solo nel codice della pipeline. Sezione 7.</div>
+        </div>
+        <div class="footnote">21 / Sezione 3 · <span class="sid">#slide-21</span></div>
+      </section>
+
+      <section id="slide-22">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>L'antipattern: una pipeline per report</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Come nasce</strong>arriva la richiesta "voglio il report dei ritardi per regione". Il modo più veloce è una pipeline nuova: dal transazionale, con le sue join, il suo calcolo del ritardo, la sua tabella finale. Funziona in una settimana. La richiesta dopo fa lo stesso.</li>
+                <li><strong>Che cosa produce</strong>dieci report, dieci pipeline, dieci definizioni di ritardo (festivi sì, festivi no, dalla data promessa, da quella prevista). Tre "ritardo medio" nella stessa riunione: il foglio Excel della slide 14, rifatto in grande e con più fatica.</li>
+                <li><strong>Che cosa si perde</strong>il compounding. Ogni pipeline parte da zero invece di agganciarsi al fatto che esiste; il lavoro dell'undicesima non rende migliori le dieci prima. E per un agente è peggio: dieci tabelle con lo stesso nome e numeri diversi, nessun modo di sapere quale sia quella buona.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide22-pipeline-per-report.svg" alt="Due pannelli: a sinistra dal transazionale partono dieci pipeline parallele, ognuna con il suo ETL e il suo report, e tre report mostrano ritardi medi diversi: 10 pipeline, 10 definizioni; a destra una sola pipeline verso fatto_spedizioni e dieci report a ventaglio tutti con 3,8: 1 pipeline, 1 definizione, 10 lettori"></div>
+          </div>
+          <div class="nota">Il pattern giusto è la stella: un fatto, calcolato una volta con una regola sola, e dieci report che lo leggono. La pipeline in più si scrive solo quando manca un fatto, non quando manca un report.</div>
+        </div>
+        <div class="footnote">22 / Sezione 3 · <span class="sid">#slide-22</span></div>
+      </section>
+
+      <section id="slide-23">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>Pregi di Kimball</h2>
+        <div class="content">
+          <div class="tv tv-rev">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Leggibile senza lo schema</strong>un fatto al centro, le dimensioni intorno, una join per dimensione, sempre uguale. Chi arriva capisce dove sono le cose in un'ora; un modello lo capisce dalla lista delle tabelle. Gli errori restano possibili, sul grano prima di tutto (slide 18 e 19), ma sono molti meno che sui modelli transazionali tipici, e sono sempre gli stessi: si possono prevenire.</li>
+                <li><strong>Nomi di business</strong><code>dim_corriere.nome</code>, <code>fatto_spedizioni.giorni_ritardo</code>: le colonne si chiamano come le cose di cui si parla in riunione, non <code>ord_hdr.dlv_dt</code>. La traduzione l'ha fatta l'ETL, una volta.</li>
+                <li><strong>Dimensioni conformi</strong>la stessa <code>dim_corriere</code> serve al fatto delle spedizioni e a quello dei reclami. Quando arriva un terzo fatto (le fatture dei corrieri) si aggancia alla dimensione che c'è già: è il compounding, reso struttura.</li>
+                <li><strong>Metriche definite una volta</strong>"giorni di ritardo" ha una regola, scritta nell'ETL, uguale per tutti i report. La riunione con tre ritardi medi finisce.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide23-conformi.svg" alt="Tre fatti in fila, fatto_spedizioni, fatto_reclami e fatto_fatture_corrieri tratteggiato come nuovo, sopra tre dimensioni condivise dim_corriere, dim_data, dim_cliente; il terzo fatto si collega con linee tratteggiate alle stesse dimensioni: si aggancia a ciò che c'è, compounding"></div>
+          </div>
+          <div class="nota small">Misurato con la pagella: ricercabile dal generale al particolare (dal totale per corriere alla singola spedizione), non ridondante dove conta, e compounding per costruzione. È la ragione per cui l'agente entra qui e non nel transazionale.</div>
+        </div>
+        <div class="footnote">23 / Sezione 3 · <span class="sid">#slide-23</span></div>
+      </section>
+
+      <section id="slide-24">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>Limiti di Kimball, e cenni al data vault</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts micro nano">
+                <li><strong>Dove lo star non regge</strong>molte fonti che cambiano (un nuovo gestionale, un'acquisizione): ogni cambiamento a monte costringe a rifare l'ETL e a volte il fatto. La storia: la dimensione storicizza gli attributi che qualcuno ha previsto, non tutto. L'integrazione: due sistemi che chiamano "cliente" cose diverse vanno riconciliati prima di arrivare alla stella, e lo star non ha un posto per quel lavoro.</li>
+                <li><strong>Il data vault</strong>un modello in tre tipi di tabella: hub (le chiavi di business: il cliente, il corriere), link (le relazioni fra chiavi: questa spedizione, questo corriere), satellite (gli attributi, con la loro storia completa, una tabella per fonte). Si aggiunge una fonte aggiungendo satelliti, senza toccare nulla. Tutto è storicizzato, sempre.</li>
+                <li><strong>Il prezzo</strong>nessuno lo legge direttamente: decine di tabelle strette, join ovunque. Il vault sta in mezzo, fra le fonti e le stelle: integra e conserva; poi da lì si costruiscono gli star schema per i lettori. Due forme, due lavori.</li>
+              </ul>
+            </div>
+            <div class="visual stack">
+              <img src="svg/slide24-star-vault-1.svg" alt="Tempo 1: la stella della slide 16, fatto_spedizioni al centro e tre dimensioni intorno">
+              <img class="fragment" src="svg/slide24-star-vault-2.svg" alt="Tempo 2: la stella si apre nel data vault: le dimensioni diventano hub con satelliti per fonte, il fatto diventa un link con le sole chiavi e un satellite delle misure; in un angolo una stellina sbiadita: da qui si ricostruiscono le stelle per chi legge">
+            </div>
+          </div>
+          <div class="nota small">Notate la forma del vault: chiavi, relazioni fra chiavi, attributi. È un grafo scritto in tabelle, e non è un caso: quando la struttura deve evolvere nel tempo, il grafo torna. Sezione 5, e sezione 7 per le ontologie.</div>
+        </div>
+        <div class="footnote">24 / Sezione 3 · <span class="sid">#slide-24</span></div>
+        <aside class="notes">Due tempi: la stella, poi al click il vault. Detto a voce: spesso il vault è un formato intermedio, da cui vengono comunque rigenerati i data mart a star schema.</aside>
+      </section>
+
+      <section id="slide-25">
+        <p class="eyebrow">SEZIONE 3 · DALL'INCONTRO 27</p>
+        <h2>Lo spettro dei tool: da Databricks a DuckDB</h2>
+        <div class="content">
+          <table class="tbl micro">
+            <thead><tr><th></th><th>Piattaforma <small style="font-weight:400; text-transform:none; letter-spacing:0;">(Databricks, Snowflake, BigQuery)</small></th><th>Database analitico <small style="font-weight:400; text-transform:none; letter-spacing:0;">(SQL Server, ClickHouse, Postgres con estensioni)</small></th><th>Motore in-process <small style="font-weight:400; text-transform:none; letter-spacing:0;">(DuckDB)</small></th></tr></thead>
+            <tbody>
+              <tr><td>Dove gira</td><td>nel cloud, condivisa da tutta l'azienda</td><td>su un server tuo, o gestito</td><td>dentro un programma: un processo, un file</td></tr>
+              <tr><td>Per che cosa</td><td>il data warehouse aziendale, le pipeline, la governance</td><td>analisi su volumi medi, tempo reale</td><td>un export, un file Parquet, una sessione</td></tr>
+              <tr><td>Che cosa serve</td><td>un team, un contratto, un budget</td><td>un DBA</td><td><code>pip install</code>, e niente altro</td></tr>
+              <tr><td>Lo stesso SQL</td><td>sì</td><td>sì</td><td>sì</td></tr>
+            </tbody>
+          </table>
+          <div class="tv tv-45" style="margin-top: 12px; gap: 26px;">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Stesso linguaggio, tre scale</strong>la query della slide 10 gira su tutti e tre. Cambia chi la ospita, quanto costa, quanti dati regge; non cambia come si fa la domanda.</li>
+                <li><strong>Il motore piccolo entra nel sandbox</strong>nel 27 (slide 20) il modello aveva scritto quattro righe di Python su <code>ordini_08.json</code>. Con DuckDB nel sandbox scrive SQL sullo stesso file. Stessa lingua del data warehouse, senza il data warehouse, sui dati che ha davanti.</li>
+              </ul>
+            </div>
+            <div class="col-text">
+              <div class="payload micro">
+                <div class="row u"><span class="tg">[user]</span><span>Quanti ordini di agosto sono in ritardo, e per quale corriere?</span></div>
+                <div class="row pill dim"><span class="tg">[assistant]</span><span>→ esporta_ordini(mese="2026-08")</span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>salvato in ordini_08.json (12.480 righe): cerca o elabora con bash</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>→ bash("duckdb -c \"SELECT corriere, COUNT(*) AS n<br>&nbsp;&nbsp;FROM 'ordini_08.json' WHERE consegna &gt; prevista<br>&nbsp;&nbsp;GROUP BY corriere ORDER BY n DESC\"")</span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>SpedFast 121 · Corriere Nord 44 · PostaPro 22</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="nota small">Per l'agente conta la seconda riga: il data warehouse lo interroga attraverso un tool (sezione 6); un export, un file, un risultato salvato li interroga nel sandbox, con lo stesso SQL. Due porte, una lingua.</div>
+        </div>
+        <div class="footnote">25 / Sezione 3 · <span class="sid">#slide-25</span></div>
+        <aside class="notes">Ripresa del riquadro-payload della slide 20 del 27: stessa domanda, DuckDB al posto dello script Python.</aside>
+      </section>
+
+      <section id="slide-26">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>Qualità, completezza, ownership, dipendenze</h2>
+        <div class="content">
+          <div class="tv tv-rev">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Qualità</strong>il data warehouse pulisce (slide 13: gli errori vecchi del transazionale si sanano qui), ma pulisce ciò che sa: una data di consegna sbagliata di un giorno passa. Servono controlli scritti (il ritardo non può essere negativo; ogni spedizione ha un corriere) che girino a ogni carico, e qualcuno che guardi quando falliscono.</li>
+                <li><strong>Completezza</strong>ciò che manca non si vede: i reclami arrivati per telefono non stanno nel ticketing, quindi non stanno nel fatto. Un numero giusto su un insieme incompleto è un numero sbagliato con l'aria di un numero giusto: la stessa faccia del fanout.</li>
+                <li><strong>Ownership</strong>ogni tabella ha bisogno di un nome: chi risponde di <code>fatto_spedizioni</code>, chi decide che cosa vuol dire "ritardo", chi avvisa quando cambia. Senza, la definizione la dà chi l'ha usata per ultimo.</li>
+                <li><strong>Dipendenze</strong>il lineage della slide 21: se nessuno sa che il tool dell'agente legge <code>fatto_spedizioni</code>, la prima modifica alla pipeline lo rompe in silenzio. Le dipendenze vanno dichiarate, non scoperte.</li>
+              </ul>
+            </div>
+            <div class="col-text">
+              <div class="pagella faded">
+                <div class="pr"><div class="mark"></div><p class="lab">ricercabile in modo progressivo</p></div>
+                <div class="pr"><div class="mark"></div><p class="lab">non ridondante</p></div>
+                <div class="pr hot"><div class="mark mid" style="border-style: dashed;">~</div><div><p class="lab">veritiera</p><p class="why" style="color: var(--q-burgundy); font-weight: 600;">è qui che si gioca</p></div></div>
+                <div class="pr"><div class="mark"></div><p class="lab">compounding</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="nota small">Tenere sotto controllo questi quattro punti è tipicamente il mandato principale della Data Governance: chi risponde di che cosa, con quali regole, misurato come. Per l'agente sono i quattro modi in cui una risposta esce sbagliata da una query giusta. La forma che la governance prende oggi, trattare ogni tabella come un prodotto con un proprietario, un contratto e dei controlli, è la sezione 7.</div>
+        </div>
+        <div class="footnote">26 / Sezione 3 · <span class="sid">#slide-26</span></div>
+        <aside class="notes">Candidata al taglio se il budget stringe.</aside>
+      </section>
+
+      <section id="slide-27">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>La pagella dell'analitico, e la cerniera</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <div class="pagella">
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">ricercabile in modo progressivo</p><p class="why">dal totale per corriere alla singola spedizione, scendendo lungo le dimensioni; lo schema si legge senza conoscerlo. Restano gli errori di grano e di fanout: pochi, e sempre gli stessi.</p></div></div>
+                <div class="pr"><div class="mark mid">~</div><div><p class="lab">non ridondante</p><p class="why">ridondante di proposito nelle dimensioni, ma controllata: un fatto calcolato una volta, una regola sola. Diventa ✗ appena si cede all'antipattern della slide 22.</p></div></div>
+                <div class="pr"><div class="mark mid">~</div><div><p class="lab">veritiera</p><p class="why">più del transazionale, perché qui si pulisce e si storicizza; ma vale quanto la governance della slide 26: controlli, completezza, un proprietario. Senza, è un numero giusto su dati sbagliati.</p></div></div>
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">compounding</p><p class="why">dimensioni conformi, metriche definite una volta: il terzo fatto si aggancia ai primi due. È il requisito in cui l'analitico batte tutto il resto.</p></div></div>
+              </div>
+              <p class="prule"><strong>Voti dati dal punto di vista di chi fa domande:</strong> una persona, o un agente.</p>
+            </div>
+            <div class="visual"><img src="svg/slide27-spettro-mini.svg" alt="La mini-mappa dello spettro: la colonna della tabella spuntata, la colonna del documento che si accende"></div>
+          </div>
+          <div class="nota dark center" style="font-size: 12.5pt; padding: 12px 22px;">Il dato strutturato copre ciò che qualcuno ha deciso di mettere in una cella prima di scriverlo. Il contratto con SpedFast, il reclamo del cliente, la policy sui rimborsi non stanno in nessuna cella: sono testo. Come si cerca un fatto dentro un testo, e che cosa cambia per l'agente: sezione 4.</div>
+        </div>
+        <div class="footnote">27 / Sezione 3 · <span class="sid">#slide-27</span></div>
+      </section>
+
+      <!-- ══════════ SEZIONE 4 ══════════ -->
+      <section id="div-sec4" class="section-divider" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 04</p>
+        <h1>Il dato non strutturato:<br>da analisi a search</h1>
+        <p>Trovare è facile; decidere che cosa conta è il lavoro. E il testo resta senza relazioni esplicite.</p>
+        <div class="divmap"><img src="svg/minimap-sec4.svg" alt="Mini-mappa dello spettro: accesa la colonna del documento"><span>sei qui · il documento</span></div>
+      </section>
+
+      <section id="slide-28">
+        <p class="eyebrow">SEZIONE 4 · IL DATO NON STRUTTURATO: DA ANALISI A SEARCH</p>
+        <h2>Dove sta il non strutturato</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Che cos'è, e dove sta</strong>contratti, procedure, offerte, verbali, presentazioni, mail, chat, pagine di wiki. In Word, PDF, PowerPoint; su SharePoint, Drive, Teams, e nelle caselle di posta di chi li ha scritti. Per volume e per valore è la parte più grande della conoscenza di un'azienda.</li>
+                <li><strong>Che cosa non ha</strong>uno schema deciso prima; un ETL che lo porti da qualche parte; un proprietario dichiarato; un ciclo di vita: nessuno sa se <code>contratto_SpedFast_v3_FINALE.docx</code> è quello in vigore, o se la policy rimborsi del 2024 è stata sostituita. Le versioni si moltiplicano per copia, mai per sostituzione.</li>
+                <li><strong>Che cosa vuol dire per l'agente</strong>è la conoscenza che gli serve di più (che cosa prevede il contratto? come si gestisce un reclamo?) ed è quella tenuta peggio. Il transazionale aveva le chiavi, il data warehouse aveva l'ETL e un responsabile; qui non c'è nulla fra il documento e chi lo legge.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide28-dove-sta.svg" alt="Una mappa di contenitori: SharePoint e Drive con tre file contratto_SpedFast in versioni diverse, posta, Teams e chat, wiki, PDF scansionati; accanto le etichette barrate schema, ETL, owner, versione valida; a destra la pagella in miniatura con non ridondante e veritiera già in croce"></div>
+          </div>
+          <div class="nota small">Prima di cercare, la pagella è già segnata: non ridondante ✗ (le copie), veritiera ✗ (nessuno sa quale versione vale). La search, che vediamo adesso, risolve "ricercabile"; gli altri due li risolve solo la governance dei documenti, e la sezione 7.</div>
+        </div>
+        <div class="footnote">28 / Sezione 4 · <span class="sid">#slide-28</span></div>
+      </section>
+
+      <section id="slide-29">
+        <p class="eyebrow">SEZIONE 4 · IL DATO NON STRUTTURATO: DA ANALISI A SEARCH</p>
+        <h2>Il fatto dentro il testo</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Nel data warehouse</strong><code>giorni_ritardo = 5</code> è un fatto già deciso: qualcuno ha scelto la colonna, il tipo, la regola di calcolo, prima di scrivere. Chi legge non interpreta: trova.</li>
+                <li><strong>Nel contratto</strong>"Per consegne effettuate oltre il terzo giorno lavorativo successivo alla data concordata, il Vettore riconoscerà una penale pari al 2% del valore della spedizione." Il fatto (penale 2%, soglia 3 giorni lavorativi) c'è, ma sta in una frase: chi legge deve trovarla, capirla, e decidere che "giorno lavorativo" è la stessa cosa del "giorno di ritardo" del data warehouse. Forse no.</li>
+                <li><strong>Informazione spuria</strong>ogni estrazione è un'interpretazione, e può essere sbagliata: la frase giusta letta male, la frase di un contratto vecchio, una bozza mai firmata. Il data warehouse sbaglia in pochi modi noti (il grano); il testo sbaglia in modi che non si vedono.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide29-fatto-nel-testo.svg" alt="A sinistra la cella giorni_ritardo = 5 di fatto_spedizioni, deciso prima: trovi; a destra un paragrafo del contratto con la frase della penale evidenziata e tre frecce di estrazione verso penale 2%, soglia 3 giorni lavorativi con un punto interrogativo, base valore spedizione: estratto ogni volta, interpreti"></div>
+          </div>
+          <div class="nota small">È la piramide della slide 3 al contrario: il testo è informazione con dentro i fatti, e il lavoro è tirarli fuori. Il data management del non strutturato è questo: da documento a fatto, ogni volta, o una volta per tutte (sezione 7).</div>
+        </div>
+        <div class="footnote">29 / Sezione 4 · <span class="sid">#slide-29</span></div>
+      </section>
+
+      <section id="slide-30">
+        <p class="eyebrow">SEZIONE 4 · IL DATO NON STRUTTURATO: DA ANALISI A SEARCH</p>
+        <h2>Da problema di analisi a problema di search</h2>
+        <div class="content">
+          <table class="tbl micro">
+            <thead><tr><th></th><th>Analisi</th><th>Search</th></tr></thead>
+            <tbody>
+              <tr><td>L'unità</td><td>la riga di un fatto, con il suo grano</td><td>il passaggio: un paragrafo, una clausola, una pagina</td></tr>
+              <tr><td>La domanda</td><td>quanto, per chi, quando: si calcola</td><td>dove sta scritto: si trova, poi si legge</td></tr>
+              <tr><td>Lo strumento</td><td>una query su tabelle con uno schema</td><td>un indice su testi senza schema, e un punteggio</td></tr>
+              <tr><td>La risposta</td><td>un numero, esatto o sbagliato</td><td>una lista ordinata di candidati, e nessuna garanzia che il primo sia quello giusto</td></tr>
+            </tbody>
+          </table>
+          <div class="tv tv-rev" style="margin-top: 12px;">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>I documenti di Acme</strong>i contratti con i corrieri (SpedFast, Corriere Nord, PostaPro), le policy sui rimborsi e sui resi, i reclami dei clienti, le procedure del servizio clienti. Qualche migliaio di pagine.</li>
+                <li><strong>La domanda tipo</strong>"che cosa prevede il contratto con SpedFast per i ritardi?" Nessuna tabella la contiene. Un indice deve restituire il passaggio giusto fra migliaia, e in cima.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide30-analisi-search.svg" alt="Due vignette: una tabella stilizzata con una freccia verso il numero 121; una pila di documenti con una freccia verso una lista di cinque passaggi, il primo evidenziato, e un punto interrogativo: è quello giusto?"></div>
+          </div>
+          <div class="nota small">Il numero si controlla ricalcolandolo; il passaggio si controlla leggendolo. È per questo che nella search il problema non è trovare qualcosa, ma trovare quello giusto e metterlo per primo: slide 34.</div>
+        </div>
+        <div class="footnote">30 / Sezione 4 · <span class="sid">#slide-30</span></div>
+      </section>
+
+      <section id="slide-31">
+        <p class="eyebrow">SEZIONE 4 · IL DATO NON STRUTTURATO: DA ANALISI A SEARCH</p>
+        <h2>Cercare per parole: BM25</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Tre ingredienti</strong>quante volte il passaggio contiene la parola (frequenza del termine); in quanti passaggi dell'archivio quella parola compare (più è rara, più pesa: "penale" vale, "il" no); quanto è lungo il passaggio (un termine in dieci righe vale più dello stesso in cento). BM25 è la formula che li combina, ed è lo standard da trent'anni.</li>
+                <li><strong>Efficace ed efficiente</strong>nomi, codici, sigle, numeri: "SpedFast", "art. 7", "4471": se la parola c'è, la trova, e la trova in cima. Nessun modello, nessun addestramento, nessuna GPU: un indice invertito, parola → passaggi, che si costruisce in minuti su milioni di documenti e risponde in millisecondi. È il motore dentro Elasticsearch, e per una parte enorme delle ricerche reali basta da solo.</li>
+                <li><strong>I limiti, e i rimedi</strong>cerca lettere, non significato: "ritardo" non trova "consegna oltre i termini". Ma molto si sistema senza un modello: elenchi di sinonimi ("penale, indennizzo, risarcimento"), riduzione delle parole alla radice (ritardo, ritardi, ritardata), espansione con i termini del dominio. Resta cieco alle parafrasi che nessuno ha previsto: è lì che serve il significato, prossima slide.</li>
+              </ul>
+            </div>
+            <div class="col-text">
+              <div class="payload micro">
+                <div class="row u"><span class="tg">[query]</span><span><span class="em">penale ritardo SpedFast</span></span></div>
+                <div class="row tool"><span class="tg">1.</span><span><span class="em">contratto SpedFast, art. 7</span><br><span class="c">"…il Vettore riconoscerà una penale pari al 2%…"</span><br>SpedFast ×2 · penale ×1 · ritardo ×0 → <span class="em">alto</span></span></div>
+                <div class="row tool"><span class="tg">2.</span><span><span class="em">mail del 3 settembre</span><br><span class="c">"…la spedizione SpedFast è di nuovo in ritardo…"</span><br>SpedFast ×1 · ritardo ×1 → medio</span></div>
+                <div class="row dim"><span class="tg">3.</span><span><span class="em">contratto Corriere Nord</span><br><span class="c">"…indennizzo per consegna oltre i termini…"</span><br>0 parole in comune → <span class="em">non trovato</span></span></div>
+                <div class="row"><span class="tg"></span><span class="hl" style="padding: 2px 6px; border-radius: 4px;">con il sinonimo "indennizzo" nell'elenco → trovato</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footnote">31 / Sezione 4 · <span class="sid">#slide-31</span></div>
+        <aside class="notes">BM25: Robertson e Spärck Jones, formula del 1994. Nessuna figura: il riquadro con la domanda e i tre passaggi è il visual.</aside>
+      </section>
+
+      <section id="slide-32">
+        <p class="eyebrow">SEZIONE 4 · DALL'INCONTRO 26</p>
+        <h2>Dal token al chunk: l'embedding di un passaggio</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Nel 26</strong>a ogni token il suo vettore, in uno spazio a migliaia di dimensioni; la vicinanza è affinità, il prodotto scalare la misura. Era il primo strato dell'LLM.</li>
+                <li><strong>Che cosa cambia</strong>qui serve un vettore per un pezzo di testo: una frase, un paragrafo, una clausola. Quel pezzo si chiama <b>chunk</b>, ed è l'unità della search da qui in avanti. Il suo vettore non è la media dei token: è l'uscita di un modello (un piccolo transformer, lo stesso della sezione 3 del 26) addestrato a un compito diverso: mettere vicini un chunk e la domanda a cui risponde, lontani i chunk che non c'entrano. Milioni di coppie domanda–risposta, e il modello impara che "penale per ritardo" e "indennizzo oltre i termini" devono stare vicini.</li>
+                <li><strong>La ricerca</strong>la domanda diventa un vettore con lo stesso modello; il punteggio di ogni chunk è il prodotto scalare fra i due (la slide 13 del 26); vince il più alto. Contro milioni di chunk, con un indice fatto apposta, in millisecondi.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide32-chunk-embedding.svg" alt="A sinistra, in miniatura e attenuata, lo spazio delle idee del 26 con alcuni token vicini; a destra tre chunk di testo che entrano nel modello di chunk embedding e diventano tre vettori in uno spazio a due assi, i primi due vicini e il terzo lontano; la domanda sui ritardi entra nello stesso modello e atterra vicino ai primi due, con i tre punteggi del prodotto scalare"></div>
+          </div>
+          <div class="nota small">L'LLM del 26 usa i vettori per generare; questo modello li usa per confrontare. Sono parenti (stessa architettura, stesso spazio delle idee), non la stessa cosa: un modello di embedding non scrive, e un LLM non è un buon motore di ricerca.</div>
+        </div>
+        <div class="footnote">32 / Sezione 4 · <span class="sid">#slide-32</span></div>
+        <aside class="notes">Ripresa delle slide 13 (prodotto scalare) e 16 (spazio delle idee) del 26, estesa dal token embedding al chunk embedding: simile, non identico.</aside>
+      </section>
+
+      <section id="slide-33">
+        <p class="eyebrow">SEZIONE 4 · IL DATO NON STRUTTURATO: DA ANALISI A SEARCH</p>
+        <h2>Cercare per significato: l'indice vettoriale</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Il chunking</strong>ogni documento va spezzato in chunk di qualche centinaio di token, con una sovrapposizione fra l'uno e l'altro perché una frase tagliata a metà non perda senso. Troppo piccoli: il chunk non dice da che contratto viene. Troppo grandi: il vettore diventa una media di tutto e non somiglia a nulla. È la prima decisione, e la più sottovalutata.</li>
+                <li><strong>L'indice</strong>un vettore per chunk, milioni di vettori; la ricerca del più vicino esatta costerebbe un prodotto scalare per ciascuno, l'indice la approssima (ANN) e risponde in millisecondi. Lo offrono i database vettoriali dedicati, ma anche Postgres, Elasticsearch, DuckDB.</li>
+                <li><strong>Dove è cieco</strong>"4471", "art. 7", "SpedFast": per il modello sono stringhe senza significato, e due codici diversi hanno vettori quasi uguali. Il cliente che chiede dell'ordine 4471 riceve il chunk dell'ordine 4417. È esattamente ciò che BM25 faceva bene.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide33-indice-vettoriale.svg" alt="Flusso: il contratto SpedFast di 40 pagine tagliato in chunk che si accavallano, ogni chunk nel modello di chunk embedding, i vettori nel cilindro dell'indice vettoriale ANN; la domanda entra nello stesso modello e dall'indice escono cinque chunk ordinati con il punteggio; in un angolo la vignetta del cieco: ordine 4471 trova il chunk dell'ordine 4417"></div>
+          </div>
+          <div class="nota small">Chunking e modello di embedding sono scelte di progetto, non impostazioni: cambiare l'uno o l'altro vuol dire rifare l'indice. Sono la KB della leva "Knowledge Base" del 27 (slide 40), letteralmente.</div>
+        </div>
+        <div class="footnote">33 / Sezione 4 · <span class="sid">#slide-33</span></div>
+      </section>
+
+      <section id="slide-34">
+        <p class="eyebrow">SEZIONE 4 · IL DATO NON STRUTTURATO: DA ANALISI A SEARCH</p>
+        <h2>Trovare è facile, ordinare è difficile</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Hybrid: i due modi insieme</strong>BM25 trova i nomi e i codici, l'indice vettoriale trova le parafrasi. Si lanciano entrambi, si fondono le due liste, e si tengono i primi cento. Retrieval largo e a basso costo: qui dentro la risposta c'è quasi sempre.</li>
+                <li><strong>Ma quale dei cento?</strong>il primo per somiglianza è spesso una bozza mai firmata, un contratto scaduto, la mail che cita la clausola invece della clausola. La somiglianza dice "parla della stessa cosa", non "è la fonte giusta".</li>
+                <li><strong>I segnali oltre la somiglianza</strong>la data (un contratto del 2026 batte uno del 2023); la fonte (la cartella dei contratti firmati batte la posta); e l'autorità: un documento che molti altri citano, linkano, allegano vale di più. È PageRank: i link sono voti, e chi riceve voti da chi ha voti pesa di più. Sul web ha fatto Google; in azienda vale sul grafo di chi cita chi.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide34-relevance.svg" alt="Due imbuti, BM25 e vettoriale, versano in cento candidati hybrid; sotto quattro colonne di segnali, somiglianza, data, fonte, autorità, con tre barre per il contratto 2026 firmato, la bozza 2025 e la mail che lo cita: per somiglianza vince la bozza, sommando tutto vince il contratto firmato; accanto ad autorità un mini-grafo di chi cita chi; in fondo i cinque scelti con il contratto firmato primo"></div>
+          </div>
+          <div class="nota small">La rilevanza è una somma pesata di segnali, e i pesi si imparano guardando che cosa gli utenti aprono davvero. È il retrieval come tool a sua volta AI del 27 (slide 48): si valuta a parte, con documenti attesi, non a sensazione.</div>
+        </div>
+        <div class="footnote">34 / Sezione 4 · <span class="sid">#slide-34</span></div>
+        <aside class="notes">"GraphRank" del brief è letto come il ranking basato sui link fra documenti (PageRank e derivati). Il ranking sul grafo delle entità è GraphRAG, sezione 6.</aside>
+      </section>
+
+      <section id="slide-35">
+        <p class="eyebrow">SEZIONE 4 · IL DATO NON STRUTTURATO: DA ANALISI A SEARCH</p>
+        <h2>Reranking: il secondo passaggio</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Perché un secondo passaggio</strong>l'indice vettoriale confronta due vettori calcolati separatamente, la domanda senza sapere del chunk e il chunk senza sapere della domanda. È ciò che lo rende veloce su milioni, ed è ciò che lo rende approssimativo. Su cento candidati ci si può permettere di più.</li>
+                <li><strong>Il cross-encoder</strong>domanda e chunk entrano insieme nello stesso transformer, e l'attention (il 26) li legge l'uno alla luce dell'altro: esce un solo numero, quanto quel chunk risponde a quella domanda. Cento chiamate, non milioni: costa, ma si può.</li>
+                <li><strong>ColBERT: la via di mezzo</strong>un vettore per ogni token del chunk, calcolati prima e messi nell'indice; al momento della domanda ogni suo token cerca il token più simile nel chunk, e i punteggi si sommano (interazione tardiva). Quasi l'accuratezza del cross-encoder, quasi la velocità dell'indice: "4471" torna a contare come parola, perché ha il suo vettore.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide35-reranking.svg" alt="Una pipeline a imbuto: milioni di chunk, stadio 1 hybrid, cento candidati, stadio 2 reranker, cinque scelti; sotto lo stadio 2 le vignette del cross-encoder, domanda e chunk insieme, esce 0,94, e di ColBERT, due file di token con i vettori e le linee fra i token più simili, fra cui 4471 e 4471, con la somma; in basso la scala di costo dei tre modi"></div>
+          </div>
+          <div class="nota small">La regola dei due stadi vale ovunque nella search: economico e largo per non perdere nulla, caro e stretto per scegliere bene. Nella sezione 6 il secondo stadio, a volte, è l'LLM stesso.</div>
+        </div>
+        <div class="footnote">35 / Sezione 4 · <span class="sid">#slide-35</span></div>
+      </section>
+
+      <section id="slide-36">
+        <p class="eyebrow">SEZIONE 4 · IL DATO NON STRUTTURATO: DA ANALISI A SEARCH</p>
+        <h2>La pagella del non strutturato, e la cerniera</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <div class="pagella tight">
+                <div class="pr"><div class="mark mid">~</div><div><p class="lab">ricercabile in modo progressivo</p><p class="why">si trova il chunk, in cima se il ranking è buono; ma non si scende dal generale al particolare: non c'è un "totale per corriere" da cui partire, e per sapere se il chunk è la risposta bisogna leggerlo. Ricercabile, non interrogabile.</p></div></div>
+                <div class="pr"><div class="mark no">✗</div><div><p class="lab">non ridondante</p><p class="why">le copie della slide 28: tre versioni del contratto, tutte nell'indice, tutte con lo stesso vettore. La search le trova tutte e tre; quale valga lo deve decidere qualcun altro.</p></div></div>
+                <div class="pr"><div class="mark no">✗</div><div><p class="lab">veritiera</p><p class="why">l'indice non sa se un documento è in vigore, firmato, sostituito. Un chunk di una bozza pesa quanto uno del contratto. Senza un ciclo di vita gestito (sezione 7), la search è precisa su fonti di cui non si sa nulla.</p></div></div>
+                <div class="pr"><div class="mark no">✗</div><div><p class="lab">compounding</p><p class="why">un documento nuovo non rende più utili i vecchi: si aggiunge all'indice, e basta. Il contratto e il reclamo che parlano della stessa spedizione non si agganciano: la relazione esiste nel mondo, non nell'archivio.</p></div></div>
+              </div>
+              <p class="prule"><strong>Voti dati dal punto di vista di chi fa domande:</strong> una persona, o un agente.</p>
+            </div>
+            <div class="visual"><img src="svg/slide36-spettro-mini.svg" alt="La mini-mappa dello spettro: la colonna del documento spuntata, la colonna del grafo che si accende"></div>
+          </div>
+          <div class="nota dark center" style="font-size: 12.5pt; padding: 12px 22px;">Il contratto vincola SpedFast; la spedizione 4471 è di SpedFast; il reclamo di Rossi riguarda la 4471. Tre fatti, in tre posti, che nessun indice collega: le relazioni esistono, ma nessuno le ha scritte. Scriverle, una per una, e percorrerle: sezione 5.</div>
+        </div>
+        <div class="footnote">36 / Sezione 4 · <span class="sid">#slide-36</span></div>
+      </section>
+
+      <!-- ══════════ SEZIONE 5 ══════════ -->
+      <section id="div-sec5" class="section-divider alt" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 05</p>
+        <h1>In mezzo allo spettro:<br>i grafi</h1>
+        <p>Le relazioni scritte una per una si percorrono come una tabella e si aggiungono come un documento. Ma ogni forma serve le sue domande.</p>
+        <div class="divmap"><img src="svg/minimap-sec5.svg" alt="Mini-mappa dello spettro: accesa la colonna del grafo"><span>sei qui · il grafo</span></div>
+      </section>
+
+      <section id="slide-37">
+        <p class="eyebrow">SEZIONE 5 · IN MEZZO ALLO SPETTRO: I GRAFI</p>
+        <h2>Le relazioni, scritte una per una</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Da Eulero a Berners-Lee</strong>nel 1736 Eulero risolve il problema dei ponti di Königsberg riducendo la città a punti e linee: nasce la teoria dei grafi. Nel 1989 Berners-Lee propone al CERN "una rete di note con collegamenti, molto più utile di un sistema gerarchico fisso": cerchi e frecce, nodi e link, il web. In mezzo, due secoli e mezzo di matematica su nodi e archi.</li>
+                <li><strong>Nodi e archi</strong>un nodo è una cosa: Rossi, l'ordine 4471, SpedFast, il contratto. Un arco è una relazione fra due nodi, con una direzione e un nome: Rossi –ordina→ 4471; 4471 –spedito da→ SpedFast; contratto –vincola→ SpedFast. Niente altro.</li>
+                <li><strong>I tre fatti, collegati</strong>nella sezione 4 stavano in tre posti e nessun indice li univa. Qui sono cinque nodi e quattro archi, e la domanda "il reclamo di Rossi riguarda un corriere con penale?" è un percorso: da Rossi, lungo gli archi, fino al contratto. Chi legge segue le frecce; non deve sapere nulla dello schema.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide37-nodi-archi.svg" alt="A sinistra, piccola, la vignetta storica: i ponti di Königsberg ridotti a punti e linee, 1736, e lo schizzo del CERN, 1989, nodi e link; a destra il grafo dei fatti: Rossi, ordine 4471, SpedFast, contratto SpedFast 2026, reclamo 88, con gli archi ordina, spedito da, vincola, riguarda; il percorso da Rossi al contratto evidenziato: tre passi"></div>
+          </div>
+          <div class="nota small">È il grafo delle cose, non dei tipi di cose: Rossi e 4471, non "Cliente" e "Ordine". L'altro grafo, l'ontologia della slide 3, torna nella sezione 7.</div>
+        </div>
+        <div class="footnote">37 / Sezione 5 · <span class="sid">#slide-37</span></div>
+        <aside class="notes">Fatti verificati in docs/ricerche-28/research-storia-classificazione.md: Eulero, Solutio problematis ad geometriam situs pertinentis, 1736; Berners-Lee, Information Management: A Proposal, CERN, marzo 1989.</aside>
+      </section>
+
+      <section id="slide-38">
+        <p class="eyebrow">SEZIONE 5 · IN MEZZO ALLO SPETTRO: I GRAFI</p>
+        <h2>Il property graph</h2>
+        <div class="content">
+          <div class="tv tv-30">
+            <div class="col-text">
+              <ul class="pts micro nano xs">
+                <li><strong>I nodi</strong>ogni nodo ha una o più etichette, che dicono che tipo di cosa è (<code>Cliente</code>, <code>Ordine</code>, <code>Corriere</code>), e delle proprietà chiave-valore (<code>nome: "Rossi"</code>, <code>importo: 184.30</code>). Il motore non impone uno schema: due nodi <code>Cliente</code> possono avere proprietà diverse. Ma è meglio che non lo facciano: la stessa etichetta, le stesse proprietà, altrimenti chi percorre il grafo, persona o modello, non sa che cosa aspettarsi. La libertà serve per aggiungere un tipo nuovo, non per tenere in disordine quelli che ci sono.</li>
+                <li><strong>Gli archi</strong>ogni arco ha una direzione, un tipo (<code>ORDINA</code>, <code>SPEDITO_DA</code>, <code>VINCOLA</code>) e, se serve, proprietà sue: su <code>SPEDITO_DA</code> stanno <code>data_prevista</code> e <code>data_consegna</code>, perché appartengono alla relazione fra quell'ordine e quel corriere, non a uno dei due.</li>
+                <li><strong>L'altra forma: le triple</strong>il web semantico scrive lo stesso grafo come triple soggetto–predicato–oggetto (<code>4471 spedito_da SpedFast</code>), con nomi globali (URI) e senza proprietà sugli archi. Stessa idea, più rigida e più interoperabile: è la forma delle ontologie, sezione 7.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide38-property-graph.svg" alt="Il property graph di Acme: nodi Cliente Rossi, Ordine 4471, Corriere SpedFast, Contratto C-2026-07, Reclamo 88, Prodotto AX-210, ognuno con il riquadro delle proprietà; archi ORDINA, SPEDITO_DA con prevista e consegna, VINCOLA, RIGUARDA, APRE, CONTIENE; in evidenza l'arco SPEDITO_DA con le sue proprietà: le proprietà stanno dove appartengono"></div>
+          </div>
+          <div class="nota small">Nel data warehouse il ritardo era una colonna del fatto; qui è una proprietà dell'arco <code>SPEDITO_DA</code>, o si calcola dalle sue date. Il fatto di Kimball e l'arco del grafo sono la stessa cosa vista da due modelli: una relazione fra dimensioni, con delle misure sopra.</div>
+        </div>
+        <div class="footnote">38 / Sezione 5 · <span class="sid">#slide-38</span></div>
+      </section>
+
+      <section id="slide-39">
+        <p class="eyebrow">SEZIONE 5 · IN MEZZO ALLO SPETTRO: I GRAFI</p>
+        <h2>Cypher: un mini focus</h2>
+        <div class="content">
+          <div class="tv tv-3t">
+            <div class="col-text">
+              <ul class="pts micro nano xs">
+                <li><strong>La domanda</strong>"i clienti che hanno fatto un reclamo su un ordine spedito da un corriere il cui contratto prevede una penale". Quattro relazioni in fila: cliente → reclamo → ordine → corriere → contratto.</li>
+                <li><strong>In SQL</strong>quattro join, ognuna con la sua coppia di chiavi, e bisogna sapere quali. Il percorso c'è, ma è nascosto nelle condizioni <code>ON</code>.</li>
+                <li><strong>In Cypher</strong>si disegna il percorso: le parentesi tonde sono nodi, le frecce archi, i nomi fra parentesi quadre i tipi. Si legge come si pensa; e il pattern è lo schema.</li>
+              </ul>
+              <div class="payload plain micro faded" style="margin-top: 6px; font-size: 7.5pt; line-height: 1.3;"><span class="cm">-- SQL: quattro join</span>
+<span class="k">SELECT DISTINCT</span> c.nome
+<span class="k">FROM</span> clienti c
+<span class="k">JOIN</span> reclami    r <span class="k">ON</span> r.id_cliente = c.id_cliente
+<span class="k">JOIN</span> ordini     o <span class="k">ON</span> o.id_ordine  = r.id_ordine
+<span class="k">JOIN</span> spedizioni s <span class="k">ON</span> s.id_ordine  = o.id_ordine
+<span class="k">JOIN</span> contratti  t <span class="k">ON</span> t.corriere   = s.corriere
+<span class="k">WHERE</span> t.penale &gt; 0;</div>
+            </div>
+            <div class="col-text">
+              <div class="payload plain micro"><span class="cm">// Cypher: un pattern</span>
+<span class="ln t1 on"><span class="k">MATCH</span> (c:Cliente)-[:APRE]-&gt;(:Reclamo)</span>
+<span class="ln t2 fragment custom lit" data-fragment-index="1">      -[:RIGUARDA]-&gt;(:Ordine)</span>
+<span class="ln t3 fragment custom lit" data-fragment-index="2">      -[:SPEDITO_DA]-&gt;(:Corriere)</span>
+<span class="ln t4 fragment custom lit" data-fragment-index="3">      &lt;-[:VINCOLA]-(t:Contratto)</span>
+<span class="ln t5 fragment custom lit" data-fragment-index="4"><span class="k">WHERE</span> t.penale &gt; 0
+<span class="k">RETURN DISTINCT</span> c.nome</span></div>
+              <ul class="lettura" style="margin-top: 10px; list-style: none; padding: 0;">
+                <li style="padding-left:0; font-size: 9pt; margin-bottom: 4px;"><strong style="color: var(--q-burgundy);">(c:Cliente)</strong> un nodo, con etichetta e alias</li>
+                <li style="padding-left:0; font-size: 9pt; margin-bottom: 4px;"><strong style="color: #0e7c6a;">-[:RIGUARDA]-&gt;</strong> un arco, con il suo tipo e la direzione</li>
+                <li style="padding-left:0; font-size: 9pt; margin-bottom: 4px;"><strong style="color: #9a6a00;">&lt;-[:VINCOLA]-</strong> la freccia al contrario: dal contratto al corriere</li>
+                <li style="padding-left:0; font-size: 9pt; margin-bottom: 4px;"><strong style="color: var(--q-black);">WHERE · RETURN</strong> il filtro e la risposta, come in SQL</li>
+              </ul>
+            </div>
+            <div class="visual stack">
+              <img src="svg/slide39-cypher-1.svg" alt="Tempo 1: nel grafo Acme allargato si accendono i clienti che hanno aperto un reclamo, con gli archi APRE e i reclami; Verdi resta spento">
+              <img class="fragment" data-fragment-index="1" src="svg/slide39-cypher-2.svg" alt="Tempo 2: si accendono gli ordini raggiunti dai reclami via RIGUARDA">
+              <img class="fragment" data-fragment-index="2" src="svg/slide39-cypher-3.svg" alt="Tempo 3: si accendono i corrieri raggiunti via SPEDITO_DA; il reclamo il cui ordine non ha spedizione si spegne: il pattern non chiude">
+              <img class="fragment" data-fragment-index="3" src="svg/slide39-cypher-4.svg" alt="Tempo 4: si accendono i contratti via VINCOLA, la freccia è al contraria e nel grafo si vede">
+              <img class="fragment" data-fragment-index="4" src="svg/slide39-cypher-5.svg" alt="Tempo 5: il contratto di PostaPro con penale zero si spegne con il suo percorso; restano due percorsi completi e i clienti Rossi e Bianchi in evidenza: la risposta">
+            </div>
+          </div>
+          <div class="nota small">Per un modello, il secondo è più facile da scrivere giusto: il pattern è la domanda, e gli errori di join (la chiave sbagliata, il fanout) non hanno dove nascondersi. Torna nella sezione 6.</div>
+        </div>
+        <div class="footnote">39 / Sezione 5 · <span class="sid">#slide-39</span></div>
+        <aside class="notes">Cinque tempi, in rima con la slide 10: a ogni click si accende un segmento del pattern e, nel grafo, i nodi e gli archi che quel segmento raggiunge; al quinto il WHERE spegne il ramo di PostaPro e il RETURN evidenzia Rossi e Bianchi.</aside>
+      </section>
+
+      <section id="slide-40">
+        <p class="eyebrow">SEZIONE 5 · IN MEZZO ALLO SPETTRO: I GRAFI</p>
+        <h2>Perché non un database relazionale</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Rappresentare è facile</strong>due tabelle, <code>nodi (id, etichetta, proprietà)</code> e <code>archi (da, a, tipo, proprietà)</code>, tengono qualsiasi grafo. Il modello non è il problema.</li>
+                <li><strong>Percorrere è il problema</strong>ogni passo lungo un arco è una join fra <code>archi</code> e <code>nodi</code>; un percorso di quattro passi è quattro join; "tutti i nodi raggiungibili da Rossi" non ha un numero di passi noto prima, e vuole una query ricorsiva. Il costo di una join dipende dalla dimensione delle tabelle: con milioni di archi, ogni passo rilegge milioni di righe.</li>
+                <li><strong>Nel grafo un passo costa uguale</strong>un motore a grafo tiene, per ogni nodo, i puntatori ai suoi archi (adiacenza senza indice): andare da Rossi ai suoi ordini costa quanto i suoi ordini, non quanto tutti gli ordini. Il percorso più breve, i vicini a tre passi, le comunità: domande che nel relazionale sono ore, qui sono millisecondi.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide40-traversal.svg" alt="Due pannelli: a sinistra, relazionale, le tabelle nodi e archi e tre fotogrammi di join con altezze crescenti, un passo una join, due passi due join, tre passi tre join: ogni passo rilegge la tabella; a destra, grafo, Rossi al centro con tre cerchi concentrici di ordini, corrieri, contratti e un costo piatto: circa 10, 30, 90 nodi toccati"></div>
+          </div>
+          <div class="nota small">La regola pratica: se le domande hanno una profondità fissa e piccola (una o due join), il relazionale basta. Se la profondità è variabile o alta, o la domanda è "come sono collegati questi due?", serve un grafo.</div>
+        </div>
+        <div class="footnote">40 / Sezione 5 · <span class="sid">#slide-40</span></div>
+      </section>
+
+      <section id="slide-41">
+        <p class="eyebrow">SEZIONE 5 · IN MEZZO ALLO SPETTRO: I GRAFI</p>
+        <h2>Il grafo è un modello, non un motore</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>La struttura si evolve</strong>arrivano le fatture dei corrieri: un'etichetta nuova, <code>Fattura</code>, e un arco nuovo, <code>FATTURA</code>→<code>Spedizione</code>. Nessuna tabella da alterare, nessun ETL da rifare, nessun fatto da ridisegnare: i nodi vecchi non se ne accorgono. È la libertà del documento, sulla struttura invece che sul contenuto.</li>
+                <li><strong>Ma la navigazione resta rigorosa</strong>un arco c'è o non c'è; un percorso esiste o non esiste; il risultato di un pattern è lo stesso oggi e domani. Niente punteggi, niente "forse": è il determinismo della tabella, sulle relazioni.</li>
+                <li><strong>Motori diversi, stesso modello</strong>Neo4j e simili, nati per questo (Cypher, adiacenza senza indice). Ma anche due tabelle <code>nodi</code> e <code>archi</code> in Postgres o DuckDB con query ricorsive, quando i percorsi sono corti. E il data vault della slide 24: hub, link, satelliti sono un grafo scritto in tabelle. Il modello è la decisione; il motore è una conseguenza del volume e della profondità.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide41-modello-motore.svg" alt="In alto il grafo Acme in piccolo con un nodo Fattura e un arco tratteggiati: aggiunto senza toccare il resto; al centro tre riquadri con la stessa mini-figura dentro, Neo4j con Cypher e adiacenza senza indice, Postgres o DuckDB con tabelle nodi e archi e query ricorsive, data vault con hub link e satelliti, e una graffa: lo stesso modello; in basso tre celle: somme e metriche verso star schema, relazioni e percorsi verso grafo, testi e clausole verso documentale"></div>
+          </div>
+          <div class="nota small">Il grafo non è la forma migliore: è la forma giusta per le domande di relazione e di percorso. Le somme per corriere restano più semplici e più veloci nello star schema; una clausola di contratto resta un documento, e un sistema documentale ben organizzato la serve meglio di qualsiasi nodo. Ogni punto dello spettro ha i suoi casi d'uso: il lavoro è mettere ciascun dato nella forma delle domande che riceve, e collegare le forme fra loro (sezione 7).</div>
+        </div>
+        <div class="footnote">41 / Sezione 5 · <span class="sid">#slide-41</span></div>
+        <aside class="notes">Qui la tesi della sezione (perché il grafo sta in mezzo) e il principio: nessun modello è un silver bullet. Da tenere anche nelle sezioni 6 e 7.</aside>
+      </section>
+
+      <section id="slide-42">
+        <p class="eyebrow">SEZIONE 5 · IN MEZZO ALLO SPETTRO: I GRAFI</p>
+        <h2>La pagella dei grafi, e la cerniera</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <div class="pagella tight">
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">ricercabile in modo progressivo</p><p class="why">si parte da un nodo e si scende lungo gli archi, un passo alla volta: da Rossi ai suoi ordini, da un ordine al suo corriere. È la ricerca progressiva per costruzione, sulle relazioni invece che sulle dimensioni. Non sostituisce le somme (star) né la ricerca nel testo (search).</p></div></div>
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">non ridondante</p><p class="why">ogni cosa è un nodo, una volta: SpedFast è un nodo solo, e tutte le spedizioni, i contratti, i reclami lo puntano. La ridondanza del documento (SpedFast scritto in mille chunk) qui sparisce.</p></div></div>
+                <div class="pr"><div class="mark mid">~</div><div><p class="lab">veritiera</p><p class="why">un arco è vero se chi l'ha scritto aveva ragione. Se gli archi vengono da un ETL dal transazionale, valgono quanto il transazionale; se li ha estratti un modello da un testo (sezione 6 e 7), valgono quanto l'estrazione. Il grafo non ha un modo proprio di sapere che un arco è sbagliato.</p></div></div>
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">compounding</p><p class="why">il requisito in cui il grafo batte tutto: un nodo o un arco nuovo si aggancia a ciò che c'è e rende raggiungibile ciò che prima non lo era. Il contratto aggiunto oggi rende rispondibile la domanda sul reclamo di ieri.</p></div></div>
+              </div>
+              <p class="prule"><strong>Voti dati dal punto di vista di chi fa domande:</strong> una persona, o un agente.</p>
+            </div>
+            <div class="visual"><img src="svg/slide42-spettro-mini.svg" alt="La mini-mappa dello spettro: le tre colonne degli oggetti spuntate, la fascia dei pattern agentici che si accende"></div>
+          </div>
+          <div class="nota dark center" style="font-size: 12.5pt; padding: 12px 22px;">Tabelle da interrogare, documenti da cercare, grafi da percorrere: tre forme, ognuna per le sue domande. Ora la domanda la fa un agente: come entra in ciascuna forma, e dove sbaglia. Sezione 6.</div>
+        </div>
+        <div class="footnote">42 / Sezione 5 · <span class="sid">#slide-42</span></div>
+      </section>
+
+      <!-- ══════════ SEZIONE 6 ══════════ -->
+      <section id="div-sec6" class="section-divider dark" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 06</p>
+        <h1>Pattern agentici<br>di accesso al dato</h1>
+        <p>L'agente non aggiunge conoscenza: aggiunge un lettore che sbaglia con sicurezza dove la conoscenza è tenuta male.</p>
+        <div class="divmap"><img src="svg/minimap-sec6.svg" alt="Mini-mappa dello spettro: accesa la fascia dei pattern agentici"><span>sei qui · i pattern</span></div>
+      </section>
+
+      <section id="slide-43">
+        <p class="eyebrow">SEZIONE 6 · DALL'INCONTRO 27</p>
+        <h2>Tre pattern, un lettore</h2>
+        <div class="content">
+          <div class="tv tv-35">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Tre pattern, tre tool</strong>Text2SQL per le tabelle (il modello scrive la query, il tool la esegue); search per i documenti (il tool cerca, il modello legge i chunk); traversal per i grafi (il modello scrive il pattern, il tool lo percorre; nello spettro la colonna si chiama GraphRAG, che è questo traversal fatto su un grafo estratto dal testo: slide 50–51). Sono tool nel senso del 27: nome, descrizione, parametri, e un risultato che rientra come testo.</li>
+                <li><strong>Chi sceglie il pattern</strong>il modello, dalla domanda e dalle descrizioni dei tool (il 27, slide 11): "quanti" va alle tabelle, "che cosa prevede" ai documenti, "come sono collegati" al grafo. Se le descrizioni sono vaghe, sceglie il pattern sbagliato, e il risultato sembra giusto lo stesso.</li>
+                <li><strong>Che cosa non cambia</strong>la conoscenza è quella delle sezioni 2–5, con la sua pagella. L'agente non la migliora: la legge. Un tool su un data warehouse ben fatto risponde bene; lo stesso tool su dieci pipeline per report risponde con tre verità.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide43-tre-pattern.svg" alt="In alto la fascia dei pattern agentici dello spettro accesa: Text2SQL, GraphRAG, RAG e agentic search; al centro il modello con tre frecce verso tre riquadri-definizione: esegui_sql, cerca_documenti, percorri_grafo, ognuno con nome, descrizione e parametri; sotto ciascuno la forma che sta dietro: una stella, una pila di documenti, un grafo"></div>
+          </div>
+          <div class="nota small">Ripresa del 27 (slide 18): un tool non è un'API. Un tool Text2SQL non espone il database: espone "esegui questa query"; l'identità, il salvataggio del risultato grande, i limiti stanno nell'adattatore. Vale per tutti e tre i pattern.</div>
+        </div>
+        <div class="footnote">43 / Sezione 6 · <span class="sid">#slide-43</span></div>
+      </section>
+
+      <section id="slide-44">
+        <p class="eyebrow">SEZIONE 6 · DALL'INCONTRO 27</p>
+        <h2>Text2SQL: com'è fatto</h2>
+        <div class="content">
+          <div class="tv tv-3t" style="grid-template-columns: 30fr 24fr 44fr;">
+            <div class="col-text" style="justify-content: center;">
+              <ul class="pts micro nano">
+                <li><strong>Lo schema entra al giro zero</strong>nel system prompt, sotto le regole, c'è la descrizione del data warehouse: il DDL di <code>fatto_spedizioni</code> e delle dimensioni (slide 16), con una riga di descrizione per tabella e per colonna, e il grano dichiarato: "una riga è una spedizione". È il 27, slide 8: ciò che il modello deve sapere, l'harness glielo mette davanti prima della prima parola.</li>
+                <li><strong>Il modello scrive il SQL</strong>legge la domanda, legge lo schema, e chiama <code>esegui_sql</code> con la query della slide 10. Non c'è un secondo modello dentro il tool: il tool esegue, e basta.</li>
+                <li><strong>L'harness esegue, con l'identità giusta</strong>la query gira sul data warehouse come Marco (slide 20); se fallisce, l'errore rientra come testo (il 27, slide 16) e il modello la riscrive; se riesce, rientrano tre righe: <code>SpedFast 121 · Corriere Nord 44 · PostaPro 22</code>. Il conto l'ha fatto il database.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide44-finestra-schema.svg" alt="La finestra a strati del 27: lo strato system prompt diviso in due fasce, ruolo e regole attenuata e lo schema del data warehouse con DDL, descrizioni e grano in evidenza; nello strato dei tool la riga esegui_sql evidenziata"></div>
+            <div class="visual"><img src="svg/slide44-text2sql-sequence.svg" alt="Sequence diagram: l'harness chiama il modello con la finestra e la domanda; il modello risponde con tool_use esegui_sql e la query; il tool la esegue sul data warehouse come Marco; tornano tre righe come tool_result; al secondo giro il modello risponde in italiano, end_turn"></div>
+          </div>
+          <div class="nota small">Nel 27 il modello aveva scritto Python su un file; nella slide 25 SQL su un file con DuckDB; qui SQL sul data warehouse, attraverso un tool. Tre volte la stessa domanda: cambia dove sta il dato e chi fa il conto. Che cosa mettere nel system prompt perché il SQL esca giusto è la prossima slide.</div>
+        </div>
+        <div class="footnote">44 / Sezione 6 · <span class="sid">#slide-44</span></div>
+      </section>
+
+      <section id="slide-45">
+        <p class="eyebrow">SEZIONE 6 · PATTERN AGENTICI DI ACCESSO AL DATO</p>
+        <h2>Text2SQL: i requisiti informativi</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <ul class="pts micro nano">
+                <li><strong>Lo schema, con le descrizioni</strong>tabelle e colonne, e per ciascuna una riga in italiano: <code>giorni_ritardo: giorni di calendario fra consegna e data prevista, 0 se in anticipo</code>. I nomi da soli non bastano, e i nomi tecnici sono peggio di niente.</li>
+                <li><strong>Il grano</strong>"una riga di <code>fatto_spedizioni</code> è una spedizione". Una frase, e il fanout della slide 19 perde metà delle occasioni.</li>
+                <li><strong>Le join note</strong>quali tabelle si uniscono, su quali chiavi: la stella lo dice da sola; un transazionale a duecento tabelle no.</li>
+                <li><strong>Le metriche, definite</strong>"ordini in ritardo = spedizioni con <code>giorni_ritardo &gt; 0</code>"; "ritardo medio = media di <code>giorni_ritardo</code> sulle sole spedizioni in ritardo". Senza, ogni domanda inventa la sua regola: le tre verità della slide 14, generate dal modello.</li>
+                <li><strong>I valori di esempio</strong><code>corriere</code> contiene <code>SpedFast</code>, <code>Corriere Nord</code>, <code>PostaPro</code>, non <code>SPEDFAST S.R.L.</code>; <code>regione</code> è il nome, non la sigla. È il modo più economico per evitare un <code>WHERE</code> che non trova nulla.</li>
+                <li><strong>Le query di esempio</strong>dieci domande frequenti con il SQL giusto: il modello copia la forma, e la forma è quasi tutto.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide45-requisiti.svg" alt="A sinistra la finestra a strati con lo strato system prompt aperto in sei fasce, una per requisito, con il peso in token: schema e descrizioni 1.500, grano 30, join 200, metriche 300, valori di esempio 200, query di esempio 1.200, totale circa 3.400 token in cache; a destra due colonne di spunte: lo star schema dà i requisiti 1, 2, 3 e non i 4, 5, 6; il transazionale nessuno"></div>
+          </div>
+          <div class="nota small">Uno star schema con i nomi di business dà 1, 2 e 3 quasi gratis; 4, 5 e 6 li deve scrivere qualcuno. Sono la stessa cosa che serve a un collega nuovo, messa per iscritto una volta: nella sezione 7 si chiama semantic linking (slide 56): l'ontologia collegata alle tabelle, da cui descrizioni, grano, join e metriche escono senza scriverle a mano.</div>
+        </div>
+        <div class="footnote">45 / Sezione 6 · <span class="sid">#slide-45</span></div>
+      </section>
+
+      <section id="slide-46">
+        <p class="eyebrow">SEZIONE 6 · PATTERN AGENTICI DI ACCESSO AL DATO</p>
+        <h2>Text2SQL: dove sbaglia</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <ul class="pts micro dense">
+                <li><strong>La tabella o la colonna sbagliata</strong>il modo più frequente: fra <code>spedizioni</code>, <code>fatto_spedizioni</code> e <code>spedizioni_v2</code> sceglie quella con il nome più simile alla domanda, o inventa una colonna che sembra dovesse esserci (<code>data_ritardo</code>). Rimedio: descrizioni, e meno tabelle esposte.</li>
+                <li><strong>La join sbagliata, e il fanout</strong>la slide 19, scritta dal modello: unisce due fatti prima di aggregare e l'importo esce nove volte più grande. Nessun errore, un numero. Rimedio: il grano dichiarato, le join note, e un tool che sappia dire di no.</li>
+                <li><strong>L'ambiguità della domanda</strong>"ordini in ritardo": rispetto alla data prevista o a quella promessa al cliente? Festivi inclusi? Il modello sceglie, e non dice di aver scelto. Rimedio: le metriche definite; e un modello che, se la definizione manca, chiede invece di scegliere.</li>
+                <li><strong>Il risultato grande</strong>"dammi le spedizioni in ritardo" restituisce 187 righe; "tutte le spedizioni" 12.480. Iniettarle in finestra è il carico della slide 18 del 27. Rimedio: l'adattatore salva su file e restituisce le prime righe e il conteggio; il modello cerca nel file se serve.</li>
+              </ul>
+            </div>
+            <div class="col-text">
+              <div class="payload micro">
+                <div class="row pill"><span class="tg">[assistant]</span><span>→ esegui_sql("SELECT … FROM spedizioni_v2 …")<span class="flag">✗ tabella sbagliata</span></span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>187 righe <span class="c">(sembra giusto)</span></span></div>
+                <div class="row pill" style="margin-top: 8px;"><span class="tg">[assistant]</span><span>→ esegui_sql("… FROM fatto_spedizioni s JOIN fatto_reclami r …")<span class="flag">✗ fanout</span></span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>SpedFast 1.658.700 € <span class="c">(sembra giusto)</span></span></div>
+                <div class="row pill" style="margin-top: 8px;"><span class="tg">[assistant]</span><span>→ esegui_sql("… WHERE giorni_ritardo &gt; 0")<span class="flag">✗ ritardo secondo chi?</span></span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>187 <span class="c">(sembra giusto)</span></span></div>
+                <div class="row pill" style="margin-top: 8px;"><span class="tg">[assistant]</span><span>→ esegui_sql("SELECT * FROM fatto_spedizioni")<span class="flag">✗ 12.480 righe</span></span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>salvato in risultato.csv (12.480 righe): prime 5 righe … · usa grep o duckdb</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="nota small">La differenza fra un buon Text2SQL e uno cattivo non è il modello: è quanto di questi quattro errori la KB rende impossibili prima ancora che la query venga scritta. Il semantic linking trasforma i primi tre da "numero sbagliato" a "errore esplicito": sezione 7, slide 56.</div>
+        </div>
+        <div class="footnote">46 / Sezione 6 · <span class="sid">#slide-46</span></div>
+        <aside class="notes">Fatti verificati (docs/ricerche-28/research-pattern-agentici.md): Spider 2.0, fallimenti per schema linking 27,6% e join 8,3%; il risultato qualitativo dbt (aprile 2026): senza definizioni condivise l'errore è un numero plausibile, con le definizioni è un messaggio di errore.</aside>
+      </section>
+
+      <section id="slide-47">
+        <p class="eyebrow">SEZIONE 6 · DALL'INCONTRO 27</p>
+        <h2>Naive RAG: un colpo solo</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Il colpo</strong>la domanda del cliente, così com'è, va all'indice della sezione 4 (hybrid, magari con reranking); tornano i primi cinque chunk; l'harness li appende alla finestra come <code>tool_result</code>; il modello scrive la risposta citando i chunk. Retrieve once, generate once: nessuna decisione del modello, nessun secondo tentativo.</li>
+                <li><strong>Due stadi, due misure</strong>il 27 (slide 48): il retrieval ha trovato i chunk giusti, e in cima? La sintesi li ha usati bene, senza aggiungere? Si misurano separatamente perché si correggono in posti diversi: il primo nella KB (chunking, indice, ranking), il secondo nel prompt.</li>
+                <li><strong>Il peso in finestra</strong>cinque chunk da cinquecento token sono 2.500 token per domanda, a ogni domanda, per tutta la sessione. È il context rot del 26 (slide 44–45) con l'acceleratore: la RAG è il tool che riempie la finestra più in fretta di tutti, e i chunk vecchi sono i primi da potare (il 27, slide 35).</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide47-naive-rag.svg" alt="Pipeline a un colpo: domanda, indice, cinque chunk, la finestra a strati con i cinque chunk in teal appesi allo strato dei messaggi, risposta; sotto due graffe: stadio 1 retrieval con la leva KB, stadio 2 sintesi con la leva Prompt; in un angolo il grafico a scalini del 26: cinque chunk a domanda"></div>
+          </div>
+          <div class="nota small">Per una parte grande dei casi basta: una domanda, una clausola, una risposta. Fallisce quando la domanda non è la query giusta, quando la risposta sta in due documenti, o quando non sta in nessun chunk: le prossime tre slide.</div>
+        </div>
+        <div class="footnote">47 / Sezione 6 · <span class="sid">#slide-47</span></div>
+      </section>
+
+      <section id="slide-48">
+        <p class="eyebrow">SEZIONE 6 · PATTERN AGENTICI DI ACCESSO AL DATO</p>
+        <h2>Il modo agentico: iterare, e incrociare le fonti</h2>
+        <div class="content">
+          <div class="cols cols-2 top2 small" style="margin-bottom: 2px;">
+            <div>
+              <p class="col-head">Da un colpo solo a iterativo</p>
+              <p>la query fallisce o torna vuota: l'errore rientra come testo (il 27, slide 16) e il modello la riscrive. Il chunk taglia la clausola: apre il documento intero e ci cerca dentro con <code>grep</code>. La domanda è ambigua: chiede, invece di scegliere. Ogni giro del 3° loop corregge uno degli errori delle slide 46 e 47.</p>
+            </div>
+            <div>
+              <p class="col-head">Da una fonte sola a più fonti</p>
+              <p>"che cosa spetta a Rossi per il ritardo?" non sta in nessuna fonte: i giorni nel data warehouse, la penale nel contratto, il buono nella policy, il legame ordine–corriere nel grafo. Il modello chiama tre tool nello stesso turno e compone; nessuno dei tre, da solo, avrebbe risposto.</p>
+            </div>
+          </div>
+          <div class="two-pay">
+            <div>
+              <p class="boxlab">tre fonti, un turno</p>
+              <div class="payload micro xs">
+                <div class="row u"><span class="tg">[user]</span><span>Il cliente Rossi chiede cosa gli spetta per il ritardo dell'ordine 4471.</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>→ cerca_ordine("4471")</span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>{corriere: "SpedFast", prevista: "08-12", consegna: "08-19"} → 7 giorni, 5 lavorativi</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>→ cerca_documenti("penale ritardo", filtri={tipo: "contratto", corriere: "SpedFast"})<span class="flag">incrociare</span></span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>3 chunk · il migliore: contratto_SpedFast_2026.pdf, art. 7 (taglia a metà)</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>→ bash("grep -n -A4 'penale' contratti/SpedFast_2026.txt")<span class="flag">iterare</span></span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>art. 7: "…oltre il terzo giorno lavorativo… penale pari al 2% del valore…"</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>→ cerca_documenti("rimborso cliente ritardo", filtri={tipo: "policy"})<span class="flag">incrociare</span></span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>policy_rimborsi_2026.md: "…il cliente ha diritto a un buono del 10%…"</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>Ordine 4471, 7 giorni di ritardo (5 lavorativi), SpedFast: al cliente un buono del 10% (policy 2026); ad Acme una penale del 2% da SpedFast (art. 7).</span></div>
+              </div>
+              <p class="conto"><strong>4 tool call · 3 fonti · 1 turno</strong> · ~3.000 token di risultati</p>
+            </div>
+            <div>
+              <p class="boxlab">solo bash, poi il data warehouse: la ricerca agentica virtuosa</p>
+              <div class="payload micro xs">
+                <div class="row u"><span class="tg">[user]</span><span>Che cosa prevede il contratto con SpedFast se consegnano in ritardo?</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>→ bash("ls contratti/")</span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>CorriereNord_2025.txt  PostaPro_2024.txt  SpedFast_2023.txt  SpedFast_2026.txt</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>→ bash("grep -n -B2 -A4 -i 'penal' contratti/SpedFast_2026.txt")</span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>84: Art. 7 – Ritardi. …oltre il terzo giorno lavorativo… una penale pari al 2% del valore…</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>→ bash("grep -n -i 'lavorativ' contratti/SpedFast_2026.txt | head -3")</span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>12: "giorno lavorativo": dal lunedì al venerdì, festivi esclusi.</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>→ esegui_sql("SELECT COUNT(*) n, SUM(importo)*0.02 penale_stimata FROM fatto_spedizioni JOIN dim_corriere USING (id_corriere) WHERE nome='SpedFast' AND giorni_lavorativi_ritardo &gt; 3 AND id_data BETWEEN 20260801 AND 20260831")</span></div>
+                <div class="row tool"><span class="tg">[tool]</span><span>n: 97 · penale_stimata: 1.230,00</span></div>
+                <div class="row pill"><span class="tg">[assistant]</span><span>Art. 7: penale del 2% oltre il terzo giorno lavorativo (lun–ven, festivi esclusi). Ad agosto 97 spedizioni oltre la soglia: penale stimata 1.230 €. Contratto 2026, non 2023.</span></div>
+              </div>
+              <p class="conto"><strong>5 tool call · 2 fonti · nessun indice</strong> · ~800 token · la definizione di "ritardo" l'ha letta nel contratto</p>
+            </div>
+          </div>
+          <div class="under2" style="margin-top: 2px;">
+            <p style="font-size: 8.5pt; line-height: 1.3;"><strong>Il prezzo, e la regola</strong>più giri, più latenza, più token in finestra; e un modello che cerca male cerca male tre volte. Il primo colpo deve essere buono (slide 45, sezione 4); il loop serve per ciò che il primo colpo non chiude. Non un altro indice: lo stesso, con il loop davanti.</p>
+            <p style="font-size: 8.5pt; line-height: 1.3;"><strong>A volte basta grep</strong>una ricerca agentica con bash (<code>glob</code> per elencare, <code>grep</code> per cercare) a volte batte indici vettoriali complessi: chi costruisce Claude Code li ha provati sul codice e li ha tolti. Vale dove le parole sono esatte e l'archivio è ordinato; altrove serve l'indice, ma il loop davanti serve lo stesso.</p>
+          </div>
+        </div>
+        <div class="footnote">48 / Sezione 6 · <span class="sid">#slide-48</span></div>
+        <aside class="notes">Due tracce affiancate: a sinistra l'incrocio di fonti, a destra l'iterazione pura con bash e poi il data warehouse. Nella traccia di destra, fra ls e il grep sulla penale, c'era un passo in più (grep -il su ritard, penal, oltre i termini per scegliere il file): tolto per spazio, si dice a voce. La definizione di "lavorativo" il modello l'ha presa dal contratto e l'ha cercata nello schema: giorni_lavorativi_ritardo, non giorni_ritardo. Claude Code e grep/glob: intervista a Boris Cherny, marzo 2026 (docs/ricerche-28/research-pattern-agentici.md).</aside>
+      </section>
+
+      <section id="slide-49">
+        <p class="eyebrow">SEZIONE 6 · PATTERN AGENTICI DI ACCESSO AL DATO</p>
+        <h2>Il limite: sintetizzare oltre il chunk</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>La domanda che non ha un chunk</strong>"di che cosa si lamentano di più i clienti, e con quali corrieri?" Quattromila reclami. Nessun reclamo contiene la risposta: la risposta è una distribuzione sui quattromila. L'indice restituisce i cinque più simili alla domanda, cioè cinque reclami qualsiasi.</li>
+                <li><strong>Perché il loop non basta</strong>il modello può cercare "ritardo", poi "danneggiato", poi "mancante", e contare. Ma non sa che cosa cercare prima di aver letto tutto, e leggere tutto non sta in finestra (il 26: il contesto è finito, e degrada prima). Iterare aiuta a trovare; non aiuta a vedere l'insieme.</li>
+                <li><strong>Che cosa servirebbe</strong>una struttura costruita prima, una volta, che abbia già letto tutto e tenuto il riassunto: le entità di cui si parla, come si legano, e un sommario per ogni gruppo. Cioè un grafo estratto dal testo, con i suoi riassunti. È GraphRAG, prossime due slide.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide49-oltre-il-chunk.svg" alt="A sinistra la domanda e l'indice che restituisce cinque chunk di reclami sparsi: cinque su quattromila, non è una risposta; a destra, tratteggiato, l'istogramma motivo per corriere: la risposta, nessun chunk la contiene; in mezzo una freccia barrata: la search non ci arriva"></div>
+          </div>
+          <div class="nota small">Se i reclami fossero nel data warehouse, con una colonna <code>motivo</code>, la domanda sarebbe un <code>GROUP BY</code> (slide 10). Il problema è che il motivo sta nel testo: GraphRAG è, in fondo, il modo di costruire quella colonna a partire dal testo, una volta per tutte.</div>
+        </div>
+        <div class="footnote">49 / Sezione 6 · <span class="sid">#slide-49</span></div>
+      </section>
+
+      <section id="slide-50">
+        <p class="eyebrow">SEZIONE 6 · PATTERN AGENTICI DI ACCESSO AL DATO</p>
+        <h2>GraphRAG: il lexical graph</h2>
+        <div class="content">
+          <div class="tv tv-3t" style="grid-template-columns: 28fr 32fr 37fr;">
+            <div class="col-text">
+              <ul class="pts micro nano">
+                <li><strong>Il lexical graph</strong>ogni documento è un nodo; ogni chunk è un nodo, collegato al documento (<code>PART_OF</code>) e al chunk successivo (<code>NEXT</code>). È il chunking della sezione 4 scritto come grafo: si sa da dove viene un chunk e che cosa c'è prima e dopo. Solo con questo, il "chunk che taglia la clausola a metà" si risolve seguendo <code>NEXT</code>.</li>
+                <li class="fragment custom lit" data-fragment-index="1"><strong>Le entità estratte</strong>un modello legge ogni chunk e scrive le cose di cui parla e come si legano: <code>SpedFast</code> –<code>ha_penale</code>→ <code>2%</code>; <code>reclamo #88</code> –<code>riguarda</code>→ <code>ritardo</code>. Ogni entità è un nodo collegato ai chunk in cui compare (<code>HAS_ENTITY</code>). È l'estrazione della slide 29, fatta una volta per tutte e scritta come archi.</li>
+                <li class="fragment custom lit" data-fragment-index="2"><strong>Come si cerca</strong>la search vettoriale trova il chunk d'ingresso; da lì si percorre: le entità del chunk, gli altri chunk delle stesse entità, i vicini a un passo. "Quali reclami citano SpedFast e un ritardo?" diventa un pattern (sezione 5) su un grafo che prima non esisteva.</li>
+              </ul>
+            </div>
+            <div class="col-text">
+              <div class="payload micro xs">
+                <div class="row u"><span class="tg">[user]</span><span>Quali reclami citano SpedFast per un ritardo, e cosa prevede il contratto?</span></div>
+                <div class="fragment" data-fragment-index="2">
+                  <div class="row pill"><span class="tg">[assistant]</span><span>→ cerca_documenti("reclami SpedFast ritardo")</span></div>
+                  <div class="row tool"><span class="tg">[tool]</span><span>chunk d'ingresso: reclamo #88, chunk 2 (id 88-2, score 0,84)</span></div>
+                </div>
+                <div class="fragment" data-fragment-index="3">
+                  <div class="row pill"><span class="tg">[assistant]</span><span>→ percorri_grafo("(c:Chunk {id:'88-2'})-[:HAS_ENTITY]-&gt;(e)")</span></div>
+                  <div class="row tool"><span class="tg">[tool]</span><span>SpedFast · ritardo · Rossi</span></div>
+                </div>
+                <div class="fragment" data-fragment-index="4">
+                  <div class="row pill"><span class="tg">[assistant]</span><span>→ percorri_grafo("(:Entity {nome:'SpedFast'})&lt;-[:HAS_ENTITY]-(k:Chunk)")</span></div>
+                  <div class="row tool"><span class="tg">[tool]</span><span>6 chunk: reclamo #88, #903, #77 · contratto_SpedFast_2026 (art. 7) · policy_rimborsi</span></div>
+                </div>
+                <div class="fragment" data-fragment-index="5">
+                  <div class="row pill"><span class="tg">[assistant]</span><span>→ bash("grep -n -A3 'penale' contratti/SpedFast_2026.txt")</span></div>
+                  <div class="row tool"><span class="tg">[tool]</span><span>art. 7: …penale pari al 2%…</span></div>
+                  <div class="row pill"><span class="tg">[assistant]</span><span>Tre reclami citano SpedFast per ritardi (#88, #903, #77); il contratto 2026, art. 7, prevede una penale del 2%.</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="visual stack">
+              <img src="svg/slide50-lexical-graph-1.svg" alt="Tempo 1: i documenti spezzati in chunk, con gli archi PART_OF verso il documento e NEXT fra chunk consecutivi">
+              <img class="fragment" data-fragment-index="1" src="svg/slide50-lexical-graph-2.svg" alt="Tempo 2: compare il modello che estrae entità e relazioni, e a destra le entità collegate fra loro e ai chunk con HAS_ENTITY">
+              <img class="fragment" data-fragment-index="2" src="svg/slide50-lexical-graph-3.svg" alt="Tempo 3: tutto si attenua, si accende il chunk d'ingresso: reclamo 88, chunk 2, search 0,84">
+              <img class="fragment" data-fragment-index="3" src="svg/slide50-lexical-graph-4.svg" alt="Tempo 4: si accendono le tre linee HAS_ENTITY dal chunk d'ingresso e le entità SpedFast, ritardo, Rossi">
+              <img class="fragment" data-fragment-index="4" src="svg/slide50-lexical-graph-5.svg" alt="Tempo 5: da SpedFast si accendono i chunk degli altri reclami, del contratto e della policy: tre documenti, un passo">
+              <img class="fragment" data-fragment-index="5" src="svg/slide50-lexical-graph-6.svg" alt="Tempo 6: il percorso completo dal chunk d'ingresso al chunk dell'articolo 7 del contratto: tre documenti, un percorso">
+            </div>
+          </div>
+          <div class="nota small">Il termine è di Neo4j, e il grafo è quello delle cose (sezione 5): <code>SpedFast</code>, <code>#88</code>, non <code>Corriere</code>. Chi decide quali tipi di entità estrarre e con quali nomi sta già scrivendo un'ontologia, anche se non lo sa: sezione 7.</div>
+        </div>
+        <div class="footnote">50 / Sezione 6 · <span class="sid">#slide-50</span></div>
+        <aside class="notes">Sei tempi: i primi due costruiscono il grafo (documenti e chunk; poi entità estratte), dal terzo la traccia dell'agente cresce riga per riga e il grafo si colora. Fonte del lexical graph: documentazione Neo4j (Document, Chunk, PART_OF, NEXT, HAS_ENTITY).</aside>
+      </section>
+
+      <section id="slide-51">
+        <p class="eyebrow">SEZIONE 6 · PATTERN AGENTICI DI ACCESSO AL DATO</p>
+        <h2>GraphRAG: community detection</h2>
+        <div class="content">
+          <div class="tv tv-30">
+            <div class="col-text">
+              <ul class="pts micro nano">
+                <li><strong>Le comunità</strong>nel grafo delle entità, i nodi che si citano molto fra loro formano gruppi: <code>SpedFast · ritardo · penale · Lombardia</code> da una parte, <code>PostaPro · pacco danneggiato · reso</code> dall'altra. Un algoritmo (Leiden) li trova da solo, a più livelli: comunità piccole dentro comunità grandi. Nessuno le ha disegnate.</li>
+                <li><strong>I riassunti</strong>per ogni comunità, a ogni livello, un modello scrive un rapporto: chi c'è, di che cosa si parla, quanti chunk. Migliaia di chiamate al modello, una volta, all'indicizzazione: è il costo di GraphRAG, e non è piccolo (ore, milioni di token).</li>
+                <li><strong>La domanda globale</strong>"di che cosa si lamentano di più i clienti?" va a tutti i rapporti del livello scelto: ognuno produce una risposta parziale (map), poi una chiamata le fonde (reduce). La risposta è una sintesi su tutto l'archivio, e in finestra sono entrati riassunti, non quattromila reclami.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide51-community.svg" alt="A sinistra il grafo delle entità con una ventina di nodi raggruppati in tre comunità colorate e contornate, con un contorno più grande di livello 1; al centro il modello che scrive tre rapporti con tre righe di sintesi ciascuno; a destra la domanda che entra nei tre rapporti, map, tre risposte parziali e il reduce che le fonde nell'istogramma motivo per corriere, ora pieno"></div>
+          </div>
+          <div class="nota small">Microsoft, 2024: su domande di sintesi GraphRAG batte la naive RAG per completezza e varietà, giudicate da un modello; su domande puntuali la naive RAG resta più diretta, e non ha pagato un'indicizzazione di ore e milioni di token. Non è un'alternativa alla search: è la struttura per la classe di domande che la search non può vedere.</div>
+        </div>
+        <div class="footnote">51 / Sezione 6 · <span class="sid">#slide-51</span></div>
+        <aside class="notes">Fonte: Edge et al., From Local to Global: A Graph RAG Approach to Query-Focused Summarization, Microsoft Research, aprile 2024: chunk, estrazione di entità e relazioni con l'LLM, Leiden gerarchico, community report, global search map-reduce; vince su comprehensiveness (72–83%) e diversity (62–82%) con giudice LLM, perde su directness; indicizzazione di 1M token in 281 minuti. I vantaggi sono misurati su completezza e varietà, non su accuratezza fattuale.</aside>
+      </section>
+
+      <section id="slide-52">
+        <p class="eyebrow">SEZIONE 6 · PATTERN AGENTICI DI ACCESSO AL DATO</p>
+        <h2>La pagella dei pattern, e la cerniera</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <div class="pagella tight">
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">ricercabile in modo progressivo</p><p class="why">è il requisito che i pattern migliorano davvero: il SQL scende dal totale al dettaglio, la search agentica riformula e apre, il grafo percorre. A patto che la forma sotto lo permetta: sullo schema normalizzato della slide 11 nessun pattern salva il modello.</p></div></div>
+                <div class="pr"><div class="mark mid">~</div><div><p class="lab">non ridondante <span class="sub">ereditato: ~ · ✗ · ✓</span></p><p class="why">Text2SQL su dieci pipeline per report sceglie una delle dieci; la search su tre versioni del contratto ne cita una; GraphRAG estrae tre nodi <code>SpedFast</code> se il testo lo scrive in tre modi. Il pattern non toglie copie: le trova tutte.</p></div></div>
+                <div class="pr"><div class="mark mid">~</div><div><p class="lab">veritiera <span class="sub">ereditato, con un'aggravante: ~ · ✗ · ~</span></p><p class="why">il modello risponde con la stessa sicurezza su un dato buono e su uno cattivo, e la slide 46 lo mostra: l'errore è un numero plausibile. Il pattern non aggiunge verità; toglie l'esitazione che una persona avrebbe avuto.</p></div></div>
+                <div class="pr"><div class="mark mid">~</div><div><p class="lab">compounding</p><p class="why">il lexical graph e le comunità sono conoscenza nuova estratta dal testo, e si accumula. Ma senza nomi condivisi (<code>SpedFast</code> del data warehouse e <code>SpedFast</code> del grafo sono la stessa cosa?) ogni pattern accumula per sé.</p></div></div>
+              </div>
+              <p class="prule"><strong>Voti dati dal punto di vista di chi fa domande:</strong> una persona, o un agente. Fra parentesi i voti delle tre forme sotto: tabella · documento · grafo.</p>
+            </div>
+            <div class="visual"><img src="svg/slide52-spettro-mini.svg" alt="La mini-mappa dello spettro: la fascia dei pattern agentici spuntata, la banda dell'ontologia che si accende"></div>
+          </div>
+          <div class="nota dark center" style="font-size: 12.5pt; padding: 12px 22px;">Tre pattern, e a tutti manca la stessa cosa: che cosa vuol dire "ritardo", che cosa è un "corriere", che <code>SpedFast</code> della tabella e <code>SpedFast</code> del contratto sono uno. Il significato, scritto una volta, letto da persone, pipeline e agenti. Sezione 7.</div>
+        </div>
+        <div class="footnote">52 / Sezione 6 · <span class="sid">#slide-52</span></div>
+      </section>
+
+      <!-- ══════════ SEZIONE 7 ══════════ -->
+      <section id="div-sec7" class="section-divider" data-state="is-section-divider" data-transition="fade">
+        <p class="eyebrow">SEZIONE 07</p>
+        <h1>Superare i limiti,<br>e il know-how</h1>
+        <p>Il significato, scritto una volta sopra le forme che ci sono, è ciò che rende la conoscenza utile a persone, pipeline e agenti.</p>
+        <div class="divmap"><img src="svg/minimap-sec7.svg" alt="Mini-mappa dello spettro: accesa la banda dell'ontologia"><span>sei qui · l'ontologia</span></div>
+      </section>
+
+      <section id="slide-53">
+        <p class="eyebrow">SEZIONE 7 · SUPERARE I LIMITI, E IL KNOW-HOW</p>
+        <h2>Il gradino della semantica</h2>
+        <div class="content">
+          <div class="tv tv-rev" style="grid-template-columns: 52fr 45fr;">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Le definizioni</strong>la definizione di "ritardo" sta nel codice di dieci pipeline, nella testa di chi le ha scritte, in una clausola di contratto; e cambia da dipartimento a dipartimento, se non da persona a persona: per la logistica sono giorni lavorativi dalla data prevista, per il servizio clienti giorni di calendario dalla data promessa, per l'amministrazione quelli che attivano la penale. Dieci definizioni, nessuna dichiarata. Il modello ne sceglie una, e non dice di aver scelto (slide 46).</li>
+                <li><strong>Le identità</strong><code>SpedFast</code> in <code>dim_corriere</code>, "SpedFast S.r.l." nel contratto, tre nodi <code>SpedFast</code> nel grafo estratto: la stessa cosa, senza un nome che lo dica. Ogni forma accumula per sé (slide 52).</li>
+                <li><strong>Le relazioni fra i tipi</strong>che un corriere è vincolato da un contratto, che una spedizione ha un ritardo, che un ritardo attiva una penale: lo sa chi legge, non lo sa nessun sistema. È il grafo dei tipi della slide 3, che finora non abbiamo scritto.</li>
+              </ul>
+            </div>
+            <div class="col-text" style="gap: 10px;">
+              <div class="story" style="border-left: 3px solid var(--q-burgundy);"><p><strong style="color: var(--q-black);">Chi ne risponde: data as a product</strong><br>un proprietario, un contratto, dei controlli per ogni tabella, indice, grafo. Slide 54.</p></div>
+              <div class="story" style="border-left: 3px solid var(--q-burgundy);"><p><strong style="color: var(--q-black);">Che cosa vuol dire: l'ontologia</strong><br>classi, proprietà, relazioni, definizioni, scritte una volta e lette da persone, pipeline e agenti. Slide 55–58.</p></div>
+              <div class="visual" style="flex: none; max-height: 150px;"><img src="svg/slide3-piramide-4.svg" alt="La piramide della slide 3 in miniatura, con il gradino semantica evidenziato" style="max-height: 150px;"></div>
+            </div>
+          </div>
+          <div class="nota small">È la piramide della slide 3, al gradino che mancava: contesto lo abbiamo messo (le tabelle, gli indici), azioni le abbiamo viste (i pattern). La semantica è ciò che trasforma informazione in conoscenza, e non la produce nessun motore: la scrive qualcuno.</div>
+        </div>
+        <div class="footnote">53 / Sezione 7 · <span class="sid">#slide-53</span></div>
+      </section>
+
+      <section id="slide-54">
+        <p class="eyebrow">SEZIONE 7 · SUPERARE I LIMITI, E IL KNOW-HOW</p>
+        <h2>Managing data as a product</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Un prodotto, non una pipeline</strong><code>fatto_spedizioni</code> non è l'uscita di un ETL: è un prodotto che il team logistica pubblica per chi lo legge, con un nome, una versione, un proprietario che risponde alle domande e agli incidenti. Chi lo usa è un cliente, non un collega che passa di lì.</li>
+                <li><strong>Il contratto</strong>lo schema con le descrizioni, il grano, le metriche definite, la frequenza di aggiornamento, i controlli di qualità che girano a ogni carico e che cosa succede se falliscono. Scritto, versionato, e rotto solo con preavviso: le dipendenze della slide 21 diventano un accordo, non una scoperta.</li>
+                <li><strong>Vale per tutte le forme</strong>un indice di documenti è un prodotto (quali documenti, quale versione vale, chi li cura); un grafo è un prodotto (quali entità, estratte come, con quale affidabilità). I quattro punti della slide 26, qualità, completezza, ownership, dipendenze, hanno ciascuno una riga nel contratto.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide54-data-product.svg" alt="A sinistra la scheda-prodotto fatto_spedizioni v3 con owner, grano, schema, metriche, aggiornamento, controlli, consumatori e changelog, con owner e controlli in evidenza; a destra tre schede più piccole: indice contratti v2, grafo logistica v1, policy rimborsi 2026; una freccia dalla scheda grande allo strato system prompt di una finestra in miniatura: il contratto, letto dal modello"></div>
+          </div>
+          <div class="nota small">Per l'agente: la descrizione di <code>esegui_sql</code>, e lo schema nel system prompt, sono il contratto del prodotto dati, letto da un modello. Un prodotto senza contratto è un tool senza descrizione: viene usato male, o a caso. È anche il principio del data mesh: i prodotti li pubblica chi conosce il dominio, e la piattaforma dà a tutti lo stesso modo di pubblicarli.</div>
+        </div>
+        <div class="footnote">54 / Sezione 7 · <span class="sid">#slide-54</span></div>
+      </section>
+
+      <section id="slide-55">
+        <p class="eyebrow">SEZIONE 7 · SUPERARE I LIMITI, E IL KNOW-HOW</p>
+        <h2>Semantic modeling: l'ontologia</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro nano xs">
+                <li><strong>Che cos'è</strong>un elenco di classi (<code>Cliente</code>, <code>Ordine</code>, <code>Spedizione</code>, <code>Corriere</code>, <code>Contratto</code>, <code>Penale</code>), le loro proprietà, le relazioni fra classi (<code>Spedizione</code> –consegnata da→ <code>Corriere</code>; <code>Contratto</code> –vincola→ <code>Corriere</code>), e per ciascuna una definizione in italiano e i sinonimi ("corriere, vettore, trasportatore"). È il grafo della slide 3, scritto per davvero.</li>
+                <li><strong>Che cosa non è</strong>non contiene Rossi né 4471: quelli stanno nel grafo delle istanze (sezione 5), nelle tabelle, nei documenti. L'ontologia è lo schema del significato: come il DDL dice la forma di una tabella, l'ontologia dice che cosa vuol dire, e come si collega al resto.</li>
+                <li><strong>Da dove si comincia</strong>da un'ontologia piccola ma completa, non da un glossario piatto: le classi, le loro proprietà (<code>Spedizione</code>: data prevista, data consegna, importo), le relazioni fra classi, una definizione e un responsabile per ciascuna. È la relazione che permette di rispondere, e la proprietà che permette di mappare una colonna.</li>
+                <li><strong>Un'ontologia cross, e le ontologie di dominio</strong>i concetti validi per tutta l'organizzazione (<code>Cliente</code>, <code>Ordine</code>, <code>Prodotto</code>, <code>Fornitore</code>) stanno in un'ontologia principale, cross; ogni dipartimento ha la sua ontologia di dominio (la logistica: <code>Spedizione</code>, <code>Corriere</code>, <code>Ritardo</code>, <code>Penale</code>; l'amministrazione: <code>Fattura</code>, <code>Nota di credito</code>) che estende la principale e le si collega: <code>Corriere</code> è un <code>Fornitore</code>, <code>Penale</code> riduce una <code>Fattura</code>. Le definizioni locali restano locali; le identità sono condivise.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide55-ontologia.svg" alt="Un'ontologia a due livelli: in alto l'ontologia cross con Cliente, Ordine, Prodotto, Fornitore; sotto i domini logistica, con Spedizione, Corriere, Ritardo, Penale, Contratto e le loro relazioni, e amministrazione, con Fattura e Nota di credito; archi tratteggiati fra i livelli: Corriere è un Fornitore, Spedizione di Ordine, Penale riduce Fattura; accanto a Corriere e Ritardo la definizione e i sinonimi con l'owner; sotto, dalla classe Corriere tre frecce verso dim_corriere, il nodo Corriere 17 e il Vettore nel contratto"></div>
+          </div>
+          <div class="nota small">L'ontologia è compounding per definizione: ogni classe nuova si aggancia alle esistenti, e ogni fonte nuova (una tabella, un archivio, un grafo) si mappa sulle classi che ci sono invece di inventare le proprie. Ed è ciò che l'agente legge per capire che <code>dim_corriere.nome</code>, "il Vettore" del contratto e il nodo <code>SpedFast</code> sono la stessa cosa.</div>
+        </div>
+        <div class="footnote">55 / Sezione 7 · <span class="sid">#slide-55</span></div>
+        <aside class="notes">Deciso in intervista: niente RDF e OWL in slide; relazioni e proprietà dal primo passo, non dopo un glossario piatto; due livelli, cross più domini.</aside>
+      </section>
+
+      <section id="slide-56">
+        <p class="eyebrow">SEZIONE 7 · SUPERARE I LIMITI, E IL KNOW-HOW</p>
+        <h2>Nel dato strutturato: il semantic linking</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro nano xs">
+                <li><strong>Che cos'è</strong>un collegamento esplicito, mantenuto, fra gli elementi dell'ontologia e gli elementi fisici: la classe <code>Spedizione</code> → la tabella <code>fatto_spedizioni</code> (una riga = un'istanza: il grano, dichiarato dalla classe); la proprietà <code>data consegna</code> → la colonna <code>data_consegna</code>; la relazione <code>Spedizione</code> –consegnata da→ <code>Corriere</code> → la join <code>fatto_spedizioni.id_corriere = dim_corriere.id_corriere</code>. Ogni colonna sa di quale proprietà è la forma fisica, e ne eredita definizione, sinonimi, owner.</li>
+                <li><strong>Che cosa ne esce</strong>le descrizioni dello schema non le scrive nessuno a mano: vengono dall'ontologia, una volta, per tutte le tabelle che mappano la stessa classe. Le join note sono le relazioni. La definizione di "ritardo" è una sola, quella della classe, e chi calcola la colonna la deve rispettare. E <code>dim_corriere.id_corriere = 17</code> e il nodo <code>SpedFast</code> sono la stessa istanza della stessa classe: l'identità è condivisa per costruzione.</li>
+                <li><strong>Come lo usa l'agente</strong>nel system prompt entra lo schema annotato dal linking: i requisiti 1, 2, 3 e 4 della slide 45 prodotti dall'ontologia, non da un analista di buona volontà. Il modello scrive SQL su tabelle che sanno che cosa vogliono dire; e quando la domanda usa un concetto che non è mappato, la risposta giusta è "non ho una tabella per questo", non un numero plausibile.</li>
+              </ul>
+              <div class="demo" style="margin-top: 6px; padding: 5px 10px; font-size: 9pt;"><strong>DEMO</strong>l'ontologia di Quantyca e il suo linking alle tabelle. Se c'è tempo.</div>
+            </div>
+            <div class="visual"><img src="svg/slide56-semantic-linking.svg" alt="In alto l'ontologia di dominio logistica, in basso lo star schema; fra i due i link: la classe Spedizione alla tabella fatto_spedizioni, il grano; la proprietà data consegna alla colonna; giorni lavorativi di ritardo con la sua definizione alla colonna; la relazione consegnata da alla join id_corriere fra le due tabelle; la proprietà margine senza link: non mappata, il modello lo sa; a destra la finestra a strati con lo strato system prompt che riceve lo schema annotato"></div>
+          </div>
+          <div class="nota small">I semantic layer dei vendor (le semantic view di Snowflake, le metric view di Databricks, il Semantic Layer di dbt, tutti esposti agli agenti via MCP) fanno una parte di questo lavoro, quella delle metriche. Il linking è più largo: parte dall'ontologia, non dalla metrica, e copre anche ciò che non si somma.</div>
+        </div>
+        <div class="footnote">56 / Sezione 7 · <span class="sid">#slide-56</span></div>
+        <aside class="notes">Fatti verificati in docs/ricerche-28/research-pattern-agentici.md: Snowflake semantic view e MCP server gestito (novembre 2025); Databricks metric view e Genie Ontology (2026); dbt Semantic Layer e dbt MCP server (aprile/ottobre 2025). La demo resta un placeholder: nessun contenuto inventato.</aside>
+      </section>
+
+      <section id="slide-57">
+        <p class="eyebrow">SEZIONE 7 · SUPERARE I LIMITI, E IL KNOW-HOW</p>
+        <h2>Nel dato non strutturato: l'ontologia guida l'estrazione</h2>
+        <div class="content">
+          <div class="tv tv-40">
+            <div class="col-text">
+              <ul class="pts micro nano xs">
+                <li><strong>Il prompt di estrazione è l'ontologia</strong>nella slide 50 il modello estraeva "le cose di cui parla il chunk", a modo suo: tre nodi <code>SpedFast</code>, un <code>ritardo</code> che non si sa se è la classe o l'istanza. Con l'ontologia nel prompt estrae solo classi note (<code>Corriere</code>, <code>Penale</code>, <code>Clausola</code>), con le relazioni note, e ogni entità la risolve a un'identità: "il Vettore" del contratto → <code>Corriere #17</code>, lo stesso di <code>dim_corriere</code>. Il grafo estratto dal testo e la stella parlano degli stessi oggetti. Ed è un lavoro in cui agenti dedicati sono molto bravi: data un'ontologia, trovano nel testo libero le entità e le relazioni con precisione alta, pagina dopo pagina, e segnalano ciò che non sanno mappare.</li>
+                <li><strong>I metadati del documento</strong>l'ontologia ha anche la classe <code>Documento</code>, con le sue proprietà: tipo (contratto, policy, reclamo), data di validità, versione, proprietario, stato (bozza, firmato, sostituito), e le relazioni (<code>Contratto</code> –vincola→ <code>Corriere</code>, <code>Policy</code> –sostituisce→ <code>Policy</code>). Compilarle è il ciclo di vita che mancava: <code>contratto_SpedFast_v3_FINALE.docx</code> diventa <code>Contratto C-2026-07, firmato, valido dal 2026-03-01, sostituisce C-2023-02</code>.</li>
+                <li><strong>Che cosa cambia per la search</strong>i filtri della slide 34 (data, fonte, autorità) diventano proprietà dichiarate, non indovinate dal nome del file; una bozza non entra nell'indice, o entra marcata; e il retrieval può partire dal grafo ("i documenti che vincolano SpedFast") invece che dalla somiglianza.</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide57-estrazione-guidata.svg" alt="A sinistra una pagina del contratto con le entità evidenziate nel testo, un colore per classe: il Vettore è Corriere 17, la penale del 2% è Penale, il terzo giorno lavorativo è la soglia, la data concordata è la data prevista, Acme è il cliente del contratto, franco magazzino non è mappato; accanto la legenda delle classi; al centro l'agente di estrazione con l'ontologia in ingresso; a destra il grafo estratto: il contratto C-2026-07 con la sua scheda di ciclo di vita, vincola il Corriere 17, la clausola art. 7 prevede la penale oltre la soglia; una linea tratteggiata dal Corriere 17 a dim_corriere id 17: la stessa identità della tabella"></div>
+          </div>
+          <div class="nota small">È la piramide al contrario, chiusa: dal testo si estraggono fatti (slide 29), ma con i tipi e le identità decisi prima. L'estrazione resta un'interpretazione, e può sbagliare: per questo il grafo estratto è un prodotto (slide 54), con un owner e un'affidabilità dichiarata.</div>
+        </div>
+        <div class="footnote">57 / Sezione 7 · <span class="sid">#slide-57</span></div>
+      </section>
+
+      <section id="slide-58">
+        <p class="eyebrow">SEZIONE 7 · SUPERARE I LIMITI, E IL KNOW-HOW</p>
+        <h2>L'approccio convergente</h2>
+        <div class="content">
+          <div class="tv" style="grid-template-columns: 30fr 45fr 22fr; gap: 22px;">
+            <div class="col-text">
+              <ul class="pts micro nano">
+                <li><strong>Una sola ontologia, tre forme</strong><code>Corriere</code> è una classe; <code>dim_corriere</code> ne è la forma tabellare, il nodo <code>Corriere #17</code> quella a grafo, "il Vettore" evidenziato nel contratto quella testuale. Stessa definizione, stesso owner, stessa identità. Nessuna forma sostituisce le altre: la stella somma, il grafo percorre, il documento conserva la clausola intera.</li>
+                <li><strong>Le domande attraversano le forme</strong>"quanto ci costano i ritardi di SpedFast, contratto alla mano?": la metrica dalla stella, la penale dalla clausola, il legame dal grafo. L'agente della slide 48 lo faceva a fatica, indovinando che erano la stessa cosa; qui lo sa, perché l'ontologia lo dice. Il modo agentico funziona su una KB convergente; su una KB a silos funziona per fortuna.</li>
+                <li><strong>Che cosa non converge</strong>i motori, che restano diversi; la governance, che resta per prodotto; e il lavoro, che resta di persone: scrivere e mantenere l'ontologia, fare il linking, decidere le identità. Gli agenti aiutano nell'estrazione e nel controllo; non decidono che cosa vuol dire "ritardo".</li>
+              </ul>
+            </div>
+            <div class="visual"><img src="svg/slide58-convergente.svg" alt="La figura madre con la banda dell'ontologia accesa: dalla classe Corriere scendono tre linee verso la tabella dim_corriere, il nodo Corriere 17 e l'entità il Vettore nel documento: stessa classe, stessa identità; le tre colonne restano distinte e accese"></div>
+            <div class="col-text">
+              <div class="pagella mini">
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">ricercabile in modo progressivo</p><p class="why">dalla classe alla forma giusta</p></div></div>
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">non ridondante</p><p class="why">un'identità per cosa</p></div></div>
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">veritiera</p><p class="why">un owner per definizione, un contratto per prodotto</p></div></div>
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">compounding</p><p class="why">ogni fonte nuova si mappa su classi che esistono</p></div></div>
+              </div>
+              <p class="prule"><strong>Voti dal punto di vista di chi fa domande:</strong> una persona, o un agente.</p>
+            </div>
+          </div>
+          <div class="nota small">"Superare i limiti del data management" non è un altro strumento: è scrivere il significato una volta, sopra gli strumenti che ci sono. È la conoscenza della piramide, ed è ciò che il blocco <code>KB</code> della formula contiene davvero.</div>
+        </div>
+        <div class="footnote">58 / Sezione 7 · <span class="sid">#slide-58</span></div>
+        <aside class="notes">La figura madre con la banda accesa, e la prima pagella con quattro spunte.</aside>
+      </section>
+
+      <section id="slide-59">
+        <p class="eyebrow">SEZIONE 7 · DALL'INCONTRO 27</p>
+        <h2>Know-how: le skill</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <ul class="pts micro">
+                <li><strong>Il termine che mancava</strong>la formula ha due termini per la conoscenza: <code>KB</code>, ciò che l'organizzazione sa, e <code>Skills</code>, ciò che sa fare. Oggi abbiamo aperto il primo. Il secondo l'abbiamo visto nel 27: un documento di istruzioni, la procedura che un esperto scriverebbe a un collega nuovo, caricato a richiesta.</li>
+                <li><strong>Il know-how usa il know-what</strong><code>rimborsi-acme</code> chiamava <code>cerca_ordine</code> e <code>crea_rimborso</code>; una skill di oggi chiamerebbe <code>esegui_sql</code> sul data warehouse mappato, <code>cerca_documenti</code> sui contratti con i metadati, <code>percorri_grafo</code>. La procedura è buona quanto ciò che trova dall'altra parte: una skill perfetta su una KB a silos produce risposte perfette e sbagliate.</li>
+                <li><strong>Chi la scrive</strong>chi il lavoro lo sa fare, nella lingua in cui lo spiegherebbe a una persona. È il punto in cui l'organizzazione mette il proprio modo di lavorare a disposizione dell'agente, e il posto in cui l'ontologia torna: i nomi che la skill usa sono quelli delle classi.</li>
+              </ul>
+            </div>
+            <div class="col-text">
+              <div class="skill" style="opacity: 0.6;">
+                <div class="part">
+                  <div class="payload plain fm micro">---
+<span class="k">name:</span> rimborsi-acme
+<span class="k">description:</span> Procedura per gestire una richiesta
+  di rimborso: verifica, soglie, quando passare
+  a un operatore.
+---</div>
+                  <p class="lab"><strong>frontmatter</strong>dal 27, slide 26</p>
+                </div>
+                <div class="part">
+                  <div class="payload plain body micro"><span class="k">## Procedura</span>
+1. Verifica con <span class="em">cerca_ordine</span> che l'ordine esista
+   e sia consegnato.
+2. Se l'importo è sotto 50 €, apri il rimborso
+   con <span class="em">crea_rimborso</span>.
+3. Se è sopra, o se l'ordine è contestato, apri
+   un ticket con <span class="em">crea_ticket</span> e rispondi al cliente
+   che un operatore lo contatterà.
+4. Non promettere mai tempi di accredito.</div>
+                  <p class="lab"><strong>corpo</strong>caricato a richiesta</p>
+                </div>
+              </div>
+              <div class="demo"><strong>DEMO</strong>una skill vera, dal repo Quantyca: frontmatter, corpo, i tool che chiama. Se c'è tempo.</div>
+            </div>
+          </div>
+          <div class="nota small">Nel 27: "la KB dice come stanno le cose, la skill dice come si fa; nella formula sono due termini diversi, e nel 28 vedremo perché". Il perché: si scrivono in posti diversi, da persone diverse, e si leggono in momenti diversi. Ma si chiamano a vicenda.</div>
+        </div>
+        <div class="footnote">59 / Sezione 7 · <span class="sid">#slide-59</span></div>
+        <aside class="notes">Se la demo si fa, la slide resta aperta sullo schermo mentre si passa al repo. Il riquadro-skill è quello della slide 26 del 27, tale e quale, sbiadito.</aside>
+      </section>
+
+      <section id="slide-60">
+        <p class="eyebrow">SEZIONE 7 · DALL'INCONTRO 26</p>
+        <h2>La formula, completa</h2>
+        <div class="content">
+          <div class="visual"><img src="svg/slide60-formula-completa.svg" alt="La formula Agent = LLM + Harness + System Prompt + Tools + KB + Skills con tutti e sei i blocchi accesi; sopra, due callout: da Harness la mappa dell'harness del 27 in miniatura, da KB lo spettro di oggi con la banda dell'ontologia accesa; sotto ogni blocco una riga di sintesi con l'incontro in cui è stato aperto. Tutto acceso, due aperti"></div>
+        </div>
+        <div class="footnote">60 / Sezione 7 · <span class="sid">#slide-60</span></div>
+        <aside class="notes">Ultimo dei quattro stati della formula lungo il corso: 26 LLM; 27 Harness, System Prompt, Tools, Skills; 28 KB. Chiude il corso: nessun cliffhanger, nessun blocco nero. La fotografia completa di un agente.</aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0,
+      controls: true,
+      progress: true,
+      slideNumber: 'c/t',
+      hash: true,
+      transition: 'slide',
+      center: false,
+      plugins: [ RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>

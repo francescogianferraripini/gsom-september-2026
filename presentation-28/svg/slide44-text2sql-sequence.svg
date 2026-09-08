@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 400" width="520" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Sequence diagram del Text2SQL su due giri: nel primo l'harness manda al modello la finestra con lo schema e la domanda, il modello scrive la query SQL e la restituisce come tool_use, il tool esegui_sql la esegue sul data warehouse con l'identità di Marco e torna tre righe come tool_result; nel secondo il modello risponde in italiano e chiude il turno</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+  </defs>
+
+  <!-- il tool sta dentro l'harness -->
+  <rect x="184" y="2" width="224" height="46" rx="8" fill="none" stroke="#838383" stroke-width="1.2" stroke-dasharray="5 4"/>
+
+  <!-- intestazioni -->
+  <rect x="12" y="10" width="92" height="30" rx="6" fill="#a1245a"/>
+  <text x="58" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">modello</text>
+  <rect x="190" y="10" width="90" height="30" rx="6" fill="#161719"/>
+  <text x="235" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">harness</text>
+  <rect x="300" y="8" width="104" height="32" rx="6" fill="#fff2ce" stroke="#ffbe0b" stroke-width="1.5"/>
+  <text x="352" y="21" text-anchor="middle" font-size="11" font-weight="600" fill="#838383">tool:</text>
+  <text x="352" y="35" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="700" fill="#161719">esegui_sql</text>
+  <rect x="414" y="10" width="98" height="30" rx="6" fill="#ffffff" stroke="#838383" stroke-dasharray="5 4"/>
+  <text x="463" y="29" text-anchor="middle" font-size="11.5" font-weight="600" fill="#212529">data warehouse</text>
+
+  <!-- linee di vita -->
+  <g stroke="#838383" stroke-width="1.5">
+    <line x1="58" y1="50" x2="58" y2="394"/>
+    <line x1="235" y1="50" x2="235" y2="394"/>
+    <line x1="352" y1="160" x2="352" y2="262"/>
+    <line x1="463" y1="50" x2="463" y2="394" stroke-dasharray="5 4"/>
+  </g>
+
+  <!-- ===== giro 1 ===== -->
+  <text x="12" y="64" font-size="10.5" font-weight="700" letter-spacing="1" fill="#838383">GIRO 1</text>
+  <g font-size="11" fill="#212529" text-anchor="middle">
+    <text x="146" y="62">chiamata: la finestra</text>
+    <text x="146" y="74">(con lo schema) + la domanda</text>
+  </g>
+  <line x1="233" y1="82" x2="60" y2="82" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- la pill del modello: elemento focale -->
+  <rect x="24" y="92" width="270" height="48" rx="6" fill="#a1245a"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#ffffff">
+    <text x="32" y="108">tool_use: esegui_sql(</text>
+    <text x="32" y="122">"SELECT s.corriere, COUNT(*) …</text>
+    <text x="32" y="136">GROUP BY s.corriere")</text>
+  </g>
+  <line x1="60" y1="152" x2="225" y2="152" stroke="#a1245a" stroke-width="2.5" marker-end="url(#ab)"/>
+  <text x="146" y="166" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#a1245a">stop_reason: tool_use</text>
+
+  <!-- attivazione dell'harness -->
+  <rect x="227" y="150" width="16" height="108" fill="#dbecf7" stroke="#4da0d7" stroke-width="1.5"/>
+
+  <text x="296" y="182" text-anchor="middle" font-size="11" fill="#212529">esegue</text>
+  <line x1="243" y1="190" x2="350" y2="190" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- l'identità: elemento focale -->
+  <rect x="372" y="186" width="72" height="20" rx="6" fill="#ecd3de" stroke="#a1245a" stroke-width="1.5"/>
+  <text x="408" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#a1245a">come: Marco</text>
+  <text x="408" y="216" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529">la query</text>
+  <line x1="354" y1="222" x2="461" y2="222" stroke="#838383" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+
+  <text x="407" y="240" text-anchor="middle" font-size="11" fill="#212529">3 righe</text>
+  <line x1="461" y1="248" x2="356" y2="248" stroke="#838383" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+
+  <!-- il tool_result -->
+  <rect x="30" y="262" width="264" height="52" rx="6" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
+  <text x="40" y="278" font-size="11.5" font-weight="700" fill="#0e7c6a">tool_result:</text>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#161719">
+    <text x="40" y="294">SpedFast 121 · Corriere Nord 44</text>
+    <text x="40" y="308">PostaPro 22</text>
+  </g>
+
+  <!-- ===== giro 2 ===== -->
+  <line x1="12" y1="322" x2="300" y2="322" stroke="#838383" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="410" y1="322" x2="512" y2="322" stroke="#838383" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="12" y="338" font-size="10.5" font-weight="700" letter-spacing="1" fill="#838383">GIRO 2</text>
+  <text x="152" y="338" text-anchor="middle" font-size="11" fill="#212529">chiamata: + tool_result</text>
+  <line x1="233" y1="348" x2="60" y2="348" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <rect x="24" y="354" width="270" height="32" rx="6" fill="#a1245a"/>
+  <g font-size="11" fill="#ffffff">
+    <text x="32" y="370">«SpedFast 121, Corriere Nord 44,</text>
+    <text x="32" y="382">PostaPro 22. Il conto l'ha fatto il db.»</text>
+  </g>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#a1245a">
+    <text x="302" y="368">stop_reason:</text>
+    <text x="302" y="382">end_turn</text>
+  </g>
+  <line x1="60" y1="394" x2="225" y2="394" stroke="#a1245a" stroke-width="1.5" marker-end="url(#ab)"/>
+</svg>

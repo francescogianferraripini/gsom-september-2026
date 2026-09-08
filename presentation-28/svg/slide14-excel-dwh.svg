@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Da Excel al data warehouse: a sinistra il foglio spedizioni.xlsx con due copie sfalsate, v2_marco.xlsx e FINALE_def.xlsx, che portano tre valori diversi di ritardo medio (3,8 · 3,2 · 4,1), le tre verita; a destra la stessa griglia tenuta una volta sola dentro un cilindro data warehouse, con un solo ritardo medio 3,8, una copia, un responsabile, un milione di righe</title>
+  <defs>
+    <marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
+  </defs>
+
+  <!-- copia 2: FINALE_def.xlsx -->
+  <g id="copia-finale">
+    <rect x="38" y="26" width="280" height="224" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <path d="M38 44 h280" stroke="#dee2e6"/>
+    <rect x="38.5" y="26.5" width="279" height="17.5" rx="8" fill="#f6f6f6" stroke="none"/>
+    <text x="48" y="39" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#838383">FINALE_def.xlsx</text>
+    <text x="250" y="39" text-anchor="end" font-size="11" fill="#838383">ritardo medio</text>
+    <text x="256" y="40" font-size="14" font-weight="700" fill="#a1245a">4,1</text>
+  </g>
+
+  <!-- copia 1: v2_marco.xlsx -->
+  <g id="copia-v2">
+    <rect x="26" y="44" width="280" height="224" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <path d="M26 62 h280" stroke="#dee2e6"/>
+    <rect x="26.5" y="44.5" width="279" height="17.5" rx="8" fill="#f6f6f6" stroke="none"/>
+    <text x="36" y="57" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#838383">v2_marco.xlsx</text>
+    <text x="250" y="57" text-anchor="end" font-size="11" fill="#838383">ritardo medio</text>
+    <text x="256" y="58" font-size="14" font-weight="700" fill="#a1245a">3,2</text>
+  </g>
+
+  <!-- il foglio originale -->
+  <g id="foglio">
+    <rect x="14" y="62" width="280" height="224" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <rect x="14.5" y="62.5" width="279" height="25.5" rx="8" fill="#f6f6f6" stroke="none"/>
+    <path d="M14 88 h280" stroke="#dee2e6"/>
+    <text x="24" y="80" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">spedizioni.xlsx</text>
+    <text x="250" y="80" text-anchor="end" font-size="11" fill="#838383">ritardo medio</text>
+    <text x="256" y="81" font-size="14" font-weight="700" fill="#a1245a">3,8</text>
+
+    <rect x="21" y="88" width="266" height="180" fill="none" stroke="#dee2e6"/>
+    <rect x="21" y="88" width="266" height="24" fill="#f6f6f6"/>
+    <g stroke="#dee2e6">
+      <path d="M21 112 h266 M21 138 h266 M21 164 h266 M21 190 h266 M21 216 h266 M21 242 h266"/>
+      <path d="M76 88 v180 M137 88 v180 M189 88 v180"/>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700" fill="#212529" text-anchor="middle">
+      <text x="48" y="104">cliente</text>
+      <text x="106" y="104">corriere</text>
+      <text x="163" y="104">importo</text>
+      <text x="238" y="104">giorni_ritardo</text>
+    </g>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529" text-anchor="middle">
+      <text x="48" y="130">Acme</text><text x="106" y="130">SpedFast</text><text x="163" y="130">1.240 €</text><text x="238" y="130">4</text>
+      <text x="48" y="156">Bevi</text><text x="106" y="156">PostaPro</text><text x="163" y="156">890 €</text><text x="238" y="156">2</text>
+      <text x="48" y="182">Cose</text><text x="106" y="182">SpedFast</text><text x="163" y="182">2.100 €</text><text x="238" y="182">6</text>
+      <text x="48" y="208">Dora</text><text x="106" y="208">SpedFast</text><text x="163" y="208">1.010 €</text><text x="238" y="208">3</text>
+      <text x="48" y="234">Elle</text><text x="106" y="234">Corr.Nord</text><text x="163" y="234">640 €</text><text x="238" y="234">1</text>
+      <text x="154" y="259" font-size="13" fill="#838383">…</text>
+    </g>
+    <text x="21" y="281" font-size="11" fill="#838383">e a un milione di righe si ferma</text>
+  </g>
+
+  <!-- tre verita -->
+  <g id="tre-verita" stroke="#a1245a" stroke-width="1.5" fill="none">
+    <path d="M332 32 v54"/>
+    <path d="M324 39 h8 M324 57 h8 M324 80 h8"/>
+  </g>
+  <text x="340" y="63" font-size="13.5" font-weight="700" fill="#a1245a">tre verità</text>
+
+  <!-- il passaggio -->
+  <path d="M336 150 H414" stroke="#a1245a" stroke-width="3" marker-end="url(#mb)"/>
+  <text x="325" y="372" text-anchor="middle" font-size="14" font-weight="600" fill="#a1245a">lo stesso foglio, costruito perché regga</text>
+
+  <!-- il data warehouse -->
+  <g id="dwh">
+    <text x="532" y="44" text-anchor="middle" font-size="15" font-weight="700" fill="#161719">data warehouse</text>
+    <path d="M444 72 v178 a88,17 0 0 0 176,0 v-178" fill="#ffffff" stroke="#dee2e6"/>
+    <ellipse cx="532" cy="72" rx="88" ry="17" fill="#f6f6f6" stroke="#dee2e6"/>
+
+    <rect x="464" y="100" width="136" height="112" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+    <rect x="464" y="100" width="136" height="20" fill="#ecd3de"/>
+    <g stroke="#dee2e6">
+      <path d="M464 120 h136 M464 143 h136 M464 166 h136 M464 189 h136"/>
+      <path d="M498 100 v112 M532 100 v112 M566 100 v112"/>
+    </g>
+    <rect x="464" y="100" width="136" height="112" fill="none" stroke="#a1245a" stroke-width="2"/>
+
+    <text x="530" y="236" text-anchor="end" font-size="11.5" fill="#838383">ritardo medio</text>
+    <text x="536" y="238" font-size="17" font-weight="700" fill="#a1245a">3,8</text>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="500" fill="#212529">
+    <text x="532" y="296">una copia</text>
+    <text x="532" y="318">un responsabile</text>
+    <text x="532" y="340">1.000.000 di righe</text>
+  </g>
+</svg>
