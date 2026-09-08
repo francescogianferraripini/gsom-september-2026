@@ -25,7 +25,7 @@
 >
 > **Tesi della sezione** (dall'*Impianto*): il grafo sta in mezzo allo spettro perché la struttura non va decisa tutta prima, si crea e si evolve nel tempo, un tipo di nodo o di relazione alla volta; ma ciò che c'è si percorre e si interpreta in modo deterministico e rigoroso, come una tabella.
 >
-> **Principio (deciso in intervista, Slide 41)**: **nessun modello è un silver bullet**. Il warehouse resta la forma giusta per somme e metriche, un sistema documentale ben organizzato per testi e clausole, il grafo per relazioni e percorsi. Ogni punto dello spettro ha i suoi casi d'uso; il lavoro è mettere ciascun dato nella forma delle domande che riceve, e collegare le forme fra loro (sezione 7). Questo principio va tenuto anche nelle sezioni 6 e 7.
+> **Principio (deciso in intervista, Slide 41)**: **nessun modello è un silver bullet**. Il data warehouse resta la forma giusta per somme e metriche, un sistema documentale ben organizzato per testi e clausole, il grafo per relazioni e percorsi. Ogni punto dello spettro ha i suoi casi d'uso; il lavoro è mettere ciascun dato nella forma delle domande che riceve, e collegare le forme fra loro (sezione 7). Questo principio va tenuto anche nelle sezioni 6 e 7.
 >
 > **Due ruoli del grafo** (dall'*Impianto*): qui il grafo delle **cose** (Rossi, 4471, SpedFast); l'ontologia, il grafo dei **tipi di cose**, è la sezione 7. La Slide 37 lo dichiara nella nota; la Slide 38 accenna alle triple RDF come forma delle ontologie.
 >
@@ -73,7 +73,7 @@
   1. **I nodi**: *ogni nodo ha una o più etichette, che dicono che tipo di cosa è (`Cliente`, `Ordine`, `Corriere`), e delle proprietà chiave-valore (`nome: "Rossi"`, `importo: 184.30`). Il motore non impone uno schema: due nodi `Cliente` possono avere proprietà diverse. Ma è meglio che non lo facciano: la stessa etichetta, le stesse proprietà, altrimenti chi percorre il grafo, persona o modello, non sa che cosa aspettarsi. La libertà serve per aggiungere un tipo nuovo, non per tenere in disordine quelli che ci sono.*
   2. **Gli archi**: *ogni arco ha una direzione, un tipo (`ORDINA`, `SPEDITO_DA`, `VINCOLA`) e, se serve, proprietà sue: su `SPEDITO_DA` stanno `data_prevista` e `data_consegna`, perché appartengono alla relazione fra quell'ordine e quel corriere, non a uno dei due.*
   3. **L'altra forma: le triple**: *il web semantico scrive lo stesso grafo come triple soggetto–predicato–oggetto (`4471 spedito_da SpedFast`), con nomi globali (URI) e senza proprietà sugli archi. Stessa idea, più rigida e più interoperabile: è la forma delle ontologie, sezione 7.*
-- Nota in basso: *Nel warehouse il ritardo era una colonna del fatto; qui è una proprietà dell'arco `SPEDITO_DA`, o si calcola dalle sue date. Il fatto di Kimball e l'arco del grafo sono la stessa cosa vista da due modelli: una relazione fra dimensioni, con delle misure sopra.*
+- Nota in basso: *Nel data warehouse il ritardo era una colonna del fatto; qui è una proprietà dell'arco `SPEDITO_DA`, o si calcola dalle sue date. Il fatto di Kimball e l'arco del grafo sono la stessa cosa vista da due modelli: una relazione fra dimensioni, con delle misure sopra.*
 
 **Visual**: `slide38-property-graph.svg`.
 

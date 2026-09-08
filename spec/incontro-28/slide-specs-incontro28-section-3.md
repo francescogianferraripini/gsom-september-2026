@@ -29,7 +29,7 @@
 
 ---
 
-> **Filo della sezione.** È l'approfondimento della sezione 2, dichiarato nel titolo (2/2) e nella cerniera della Slide 13. Si entra dal foglio Excel (Slide 14), si vede da dove viene il warehouse (Slide 15, l'ETL), poi il modello di Kimball con le sue quattro regole (fatti e dimensioni, denormalizzazione di proposito, grano, fanout: 16–19), la sicurezza a tre livelli (20), il data management come trasformazione di forma che arricchisce (21) e il suo antipattern (22), pregi e limiti di Kimball con il data vault (23–24), gli strumenti (25), i punti aperti che sono il mandato della Data Governance (26), la pagella e la cerniera al non strutturato (27). La mini-mappa dei separatori accende la colonna della tabella, con uno zoom.
+> **Filo della sezione.** È l'approfondimento della sezione 2, dichiarato nel titolo (2/2) e nella cerniera della Slide 13. Si entra dal foglio Excel (Slide 14), si vede da dove viene il data warehouse (Slide 15, l'ETL), poi il modello di Kimball con le sue quattro regole (fatti e dimensioni, denormalizzazione di proposito, grano, fanout: 16–19), la sicurezza a tre livelli (20), il data management come trasformazione di forma che arricchisce (21) e il suo antipattern (22), pregi e limiti di Kimball con il data vault (23–24), gli strumenti (25), i punti aperti che sono il mandato della Data Governance (26), la pagella e la cerniera al non strutturato (27). La mini-mappa dei separatori accende la colonna della tabella, con uno zoom.
 >
 > **Slide 14** è quella tolta dalla sezione 2 ("Da Excel al data warehouse"): qui è l'ingresso motivazionale a Kimball.
 >
@@ -83,14 +83,14 @@
 - Titolo: *Data warehouse: dove e come nasce*
 - Punti:
   1. **Una derivazione**: *negli anni Novanta i database relazionali erano il solo motore serio, e servivano a scrivere transazioni. Il data warehouse è nato come un modo di usarli al contrario: pochi scriventi, molti lettori, letture su milioni di righe. Stesse tabelle, stesso SQL, un altro mestiere.*
-  2. **Alimentato da ETL**: *ogni notte (o ogni ora) un processo estrae dai sistemi di record (ordini, CRM, reclami), trasforma (pulisce, ricompone le join, calcola il ritardo, allinea i nomi) e carica nel warehouse. Il dato non nasce qui: arriva qui, in un'altra forma. Chi scrive l'ETL decide quella forma.*
+  2. **Alimentato da ETL**: *ogni notte (o ogni ora) un processo estrae dai sistemi di record (ordini, CRM, reclami), trasforma (pulisce, ricompone le join, calcola il ritardo, allinea i nomi) e carica nel data warehouse. Il dato non nasce qui: arriva qui, in un'altra forma. Chi scrive l'ETL decide quella forma.*
   3. **E i motori si sono adattati**: *i database analitici moderni tengono i dati per colonna: sommare gli importi di un milione di righe legge una colonna sola. Da qui gli strumenti della slide 25, che parlano tutti lo stesso SQL.*
 - Nota in basso: *Per l'agente conta una cosa: la lingua è la stessa del transazionale, il SQL della slide 10. Cambia il dato che trova dall'altra parte, e quanto è leggibile.*
 
 **Visual**: `slide15-etl.svg`.
 
 **Prompt per schema SVG**:
-> Flusso orizzontale da sinistra a destra. **A sinistra** tre cilindri, `ordini (gestionale)` · `CRM` · `reclami (ticketing)`, ognuno con dentro le proprie tabelle normalizzate in miniatura (tre o quattro rettangolini collegati) e l'etichetta `24/7, scritture`. **Al centro** un blocco `ETL` con dentro i tre verbi in verticale, `estrai · trasforma · carica`, e a lato `ogni notte`; sopra il blocco l'etichetta *pulisce, ricompone, calcola, allinea i nomi*. **A destra** un cilindro `data warehouse` con dentro una stella in miniatura (`fatto` al centro, quattro `dim` intorno) e l'etichetta `letture, milioni di righe`. Frecce dai tre cilindri all'ETL e dall'ETL al warehouse.
+> Flusso orizzontale da sinistra a destra. **A sinistra** tre cilindri, `ordini (gestionale)` · `CRM` · `reclami (ticketing)`, ognuno con dentro le proprie tabelle normalizzate in miniatura (tre o quattro rettangolini collegati) e l'etichetta `24/7, scritture`. **Al centro** un blocco `ETL` con dentro i tre verbi in verticale, `estrai · trasforma · carica`, e a lato `ogni notte`; sopra il blocco l'etichetta *pulisce, ricompone, calcola, allinea i nomi*. **A destra** un cilindro `data warehouse` con dentro una stella in miniatura (`fatto` al centro, quattro `dim` intorno) e l'etichetta `letture, milioni di righe`. Frecce dai tre cilindri all'ETL e dall'ETL al data warehouse.
 >
 > **Elemento focale**: il blocco ETL, e il cambio di forma dei dati che attraversa: a sinistra tabelle sparse, a destra una stella.
 
@@ -120,7 +120,8 @@
     id_cliente      INT REFERENCES dim_cliente,
     id_data         INT REFERENCES dim_data,
     importo         DECIMAL(10,2),    -- misura
-    giorni_ritardo  INT               -- misura, già calcolata
+    giorni_ritardo  INT,              -- misura, già calcolata
+    giorni_lavorativi_ritardo INT     -- misura: stessa cosa, festivi esclusi (torna nella sezione 6)
   );
   ```
 - Nota in basso: *Nel transazionale il ritardo era `data_consegna − data_prevista`, da calcolare ogni volta e da sapere. Qui è una colonna: qualcuno l'ha calcolata una volta, per tutti, con una regola sola.*
@@ -164,7 +165,7 @@
 - Punti:
   1. **Il grano**: *"una riga è una spedizione" è una frase che va scritta prima di ogni altra. Cambia tutto: una riga per spedizione risponde a "quanti ritardi per corriere"; una riga per collo risponde anche a "quanti colli in ritardo"; una riga per ordine non risponde a nessuna delle due se un ordine ha due spedizioni.*
   2. **Le metriche additive**: *l'importo si somma su qualsiasi dimensione: per corriere, per mese, per regione. I giorni di ritardo si sommano, ma la media va ricalcolata dai totali, non mediando le medie. Il numero di clienti distinti non si somma affatto. Il grano dice quali somme sono legittime.*
-  3. **Il grano viene da monte**: *è la cerniera della slide 13: se il gestionale registra le spedizioni e non i colli, il fatto è la spedizione. Nessun ETL inventa un dettaglio che il sistema di record non ha scritto. Chi vuole un grano più fine deve cambiare il transazionale, non il warehouse.*
+  3. **Il grano viene da monte**: *è la cerniera della slide 13: se il gestionale registra le spedizioni e non i colli, il fatto è la spedizione. Nessun ETL inventa un dettaglio che il sistema di record non ha scritto. Chi vuole un grano più fine deve cambiare il transazionale, non il data warehouse.*
 - Nota in basso: *Per l'agente il grano è la prima cosa da sapere e l'ultima che gli viene detta: "una riga è una spedizione" vale più di cento descrizioni di colonne. Torna nella sezione 6 e nella 7.*
 
 **Visual**: `slide18-grano.svg`.
@@ -218,7 +219,7 @@
 
 ## Slide 20 — Sicurezza: tabella, colonna, riga
 
-**Messaggio**: nel warehouse la sicurezza si applica a tre livelli, e per un agente la domanda che conta è con quale identità interroga: se con la propria, vede tutto ciò che il warehouse gli concede; se con quella dell'utente, vede solo ciò che l'utente vedrebbe.
+**Messaggio**: nel data warehouse la sicurezza si applica a tre livelli, e per un agente la domanda che conta è con quale identità interroga: se con la propria, vede tutto ciò che il data warehouse gli concede; se con quella dell'utente, vede solo ciò che l'utente vedrebbe.
 
 **Layout**: titolo in alto; i tre livelli a sinistra (~40%); visual al centro-destra (~55%); sotto, a tutta larghezza, il blocco per l'agente; nota in basso.
 
@@ -228,7 +229,7 @@
   1. **Tabella**: *chi può leggere `fatto_spedizioni` e chi no. È il permesso più grossolano: o tutto o niente.*
   2. **Colonna**: *chi vede `importo` e chi no; chi vede il nome del cliente e chi solo il suo id. Le colonne sensibili si mascherano, non si tolgono: la query gira, il valore no.*
   3. **Riga**: *il responsabile di zona vede solo le spedizioni della sua regione: la stessa tabella, filtrata per chi la legge. Il filtro lo applica il database, non la query.*
-- Il blocco per l'agente — **Con quale identità interroga l'agente?**: *Con un'utenza tecnica sua: semplice, e pericoloso: risponde al magazziniere con i margini che vede il direttore. Con l'identità dell'utente che gli parla: il warehouse applica le tre regole a lui, e l'agente non può mostrare ciò che l'utente non potrebbe vedere. È la seconda scelta quella giusta, e va fatta nell'harness, dove sta il tool.*
+- Il blocco per l'agente — **Con quale identità interroga l'agente?**: *Con un'utenza tecnica sua: semplice, e pericoloso: risponde al magazziniere con i margini che vede il direttore. Con l'identità dell'utente che gli parla: il data warehouse applica le tre regole a lui, e l'agente non può mostrare ciò che l'utente non potrebbe vedere. È la seconda scelta quella giusta, e va fatta nell'harness, dove sta il tool.*
 - Nota in basso: *Nel transazionale la sicurezza sta nell'applicazione, quindi nel tool (slide 11): è per questo che l'agente ci entra solo da lì. Nell'analitico sta nel database, a questi tre livelli: è per questo che un agente può interrogarlo direttamente, purché lo faccia con l'identità di chi gli parla. Il tool resta codice dell'harness (il 27), ed è lì che si decide con quali credenziali chiama.*
 
 **Visual**: `slide20-sicurezza.svg`.
@@ -257,7 +258,7 @@
 **Visual**: `slide21-lineage.svg`.
 
 **Prompt per schema SVG**:
-> Un grafo di dipendenze da sinistra a destra. **A sinistra** le fonti transazionali: `ordini`, `spedizioni`, `reclami (ticketing)`. Le tre frecce convergono in un blocco `ETL` con le etichette *ricompone · calcola · integra · storicizza*. **Al centro** le tabelle del warehouse: `fatto_spedizioni` (con l'etichetta `owner: team logistica`), `fatto_reclami`, `dim_corriere`. **A destra** i consumatori: `report ritardi`, `dashboard direzione`, `tool: ritardi_per_corriere` (il tool dell'agente). Ogni freccia porta un piccolo orologio (`ogni notte`, `ogni ora`).
+> Un grafo di dipendenze da sinistra a destra. **A sinistra** le fonti transazionali: `ordini`, `spedizioni`, `reclami (ticketing)`. Le tre frecce convergono in un blocco `ETL` con le etichette *ricompone · calcola · integra · storicizza*. **Al centro** le tabelle del data warehouse: `fatto_spedizioni` (con l'etichetta `owner: team logistica`), `fatto_reclami`, `dim_corriere`. **A destra** i consumatori: `report ritardi`, `dashboard direzione`, `tool: ritardi_per_corriere` (il tool dell'agente). Ogni freccia porta un piccolo orologio (`ogni notte`, `ogni ora`).
 >
 > La colonna `spedizioni.data_prevista` è evidenziata a sinistra, e da lei un'onda (una linea spessa di colore d'allarme) si propaga lungo le frecce fino ai tre consumatori, con l'etichetta *se cambia questa, si rompono questi*.
 >
@@ -265,7 +266,7 @@
 
 ## Slide 22 — L'antipattern: una pipeline per report
 
-**Messaggio**: il modo più comune di rompere il compounding è costruire una pipeline per ogni report, dal transazionale in giù, ognuna con le sue regole. Dieci report, dieci "ritardo medio", nessuno che riusa il lavoro dell'altro: il warehouse esiste, ma non accumula.
+**Messaggio**: il modo più comune di rompere il compounding è costruire una pipeline per ogni report, dal transazionale in giù, ognuna con le sue regole. Dieci report, dieci "ritardo medio", nessuno che riusa il lavoro dell'altro: il data warehouse esiste, ma non accumula.
 
 **Layout**: titolo in alto; i tre punti di testo a sinistra (~40%); visual al centro-destra (~55%); nota in basso.
 
@@ -350,13 +351,13 @@
 | | **Piattaforma** (Databricks, Snowflake, BigQuery) | **Database analitico** (SQL Server, ClickHouse, Postgres con estensioni) | **Motore in-process** (DuckDB) |
 |---|---|---|---|
 | Dove gira | nel cloud, condivisa da tutta l'azienda | su un server tuo, o gestito | dentro un programma: un processo, un file |
-| Per che cosa | il warehouse aziendale, le pipeline, la governance | analisi su volumi medi, tempo reale | un export, un file Parquet, una sessione |
+| Per che cosa | il data warehouse aziendale, le pipeline, la governance | analisi su volumi medi, tempo reale | un export, un file Parquet, una sessione |
 | Che cosa serve | un team, un contratto, un budget | un DBA | `pip install`, e niente altro |
 | Lo stesso SQL | sì | sì | sì |
 
 - Punti:
   1. **Stesso linguaggio, tre scale**: *la query della slide 10 gira su tutti e tre. Cambia chi la ospita, quanto costa, quanti dati regge; non cambia come si fa la domanda.*
-  2. **Il motore piccolo entra nel sandbox**: *nel 27 (slide 20) il modello aveva scritto quattro righe di Python su `ordini_08.json`. Con DuckDB nel sandbox scrive SQL sullo stesso file. Stessa lingua del warehouse, senza il warehouse, sui dati che ha davanti.*
+  2. **Il motore piccolo entra nel sandbox**: *nel 27 (slide 20) il modello aveva scritto quattro righe di Python su `ordini_08.json`. Con DuckDB nel sandbox scrive SQL sullo stesso file. Stessa lingua del data warehouse, senza il data warehouse, sui dati che ha davanti.*
 - Riquadro-payload (HTML, idioma del 26/27; le righe `[tool]` in teal, le pill del modello in burgundy):
   ```
   [user]      Quanti ordini di agosto sono in ritardo, e per quale corriere?
@@ -367,7 +368,7 @@
                 GROUP BY corriere ORDER BY n DESC\"")
   [tool]      SpedFast 121 · Corriere Nord 44 · PostaPro 22
   ```
-- Nota in basso: *Per l'agente conta la seconda riga: il warehouse lo interroga attraverso un tool (sezione 6); un export, un file, un risultato salvato li interroga nel sandbox, con lo stesso SQL. Due porte, una lingua.*
+- Nota in basso: *Per l'agente conta la seconda riga: il data warehouse lo interroga attraverso un tool (sezione 6); un export, un file, un risultato salvato li interroga nel sandbox, con lo stesso SQL. Due porte, una lingua.*
 
 **Visual**: la tabella e il riquadro-payload in HTML; nessun SVG.
 
@@ -375,14 +376,14 @@
 
 > Candidata al taglio se il budget stringe.
 
-**Messaggio**: il warehouse eredita quattro problemi che nessuna struttura risolve da sola: la qualità dei dati che arrivano, la completezza di ciò che manca, chi risponde di ogni tabella, e che cosa dipende da che cosa. Tenerli sotto controllo è il mandato della Data Governance; la sezione 7 li riprende come "data as a product".
+**Messaggio**: il data warehouse eredita quattro problemi che nessuna struttura risolve da sola: la qualità dei dati che arrivano, la completezza di ciò che manca, chi risponde di ogni tabella, e che cosa dipende da che cosa. Tenerli sotto controllo è il mandato della Data Governance; la sezione 7 li riprende come "data as a product".
 
 **Layout**: titolo in alto; le quattro righe a sinistra (~60%); a destra (~35%), sbiadita, la pagella con la sola riga *veritiera* evidenziata e un `~` a matita, con l'etichetta *è qui che si gioca*; nota in basso.
 
 **Testo**:
 - Titolo: *Qualità, completezza, ownership, dipendenze*
 - Le quattro righe:
-  1. **Qualità**: *il warehouse pulisce (slide 13: gli errori vecchi del transazionale si sanano qui), ma pulisce ciò che sa: una data di consegna sbagliata di un giorno passa. Servono controlli scritti (il ritardo non può essere negativo; ogni spedizione ha un corriere) che girino a ogni carico, e qualcuno che guardi quando falliscono.*
+  1. **Qualità**: *il data warehouse pulisce (slide 13: gli errori vecchi del transazionale si sanano qui), ma pulisce ciò che sa: una data di consegna sbagliata di un giorno passa. Servono controlli scritti (il ritardo non può essere negativo; ogni spedizione ha un corriere) che girino a ogni carico, e qualcuno che guardi quando falliscono.*
   2. **Completezza**: *ciò che manca non si vede: i reclami arrivati per telefono non stanno nel ticketing, quindi non stanno nel fatto. Un numero giusto su un insieme incompleto è un numero sbagliato con l'aria di un numero giusto: la stessa faccia del fanout.*
   3. **Ownership**: *ogni tabella ha bisogno di un nome: chi risponde di `fatto_spedizioni`, chi decide che cosa vuol dire "ritardo", chi avvisa quando cambia. Senza, la definizione la dà chi l'ha usata per ultimo.*
   4. **Dipendenze**: *il lineage della slide 21: se nessuno sa che il tool dell'agente legge `fatto_spedizioni`, la prima modifica alla pipeline lo rompe in silenzio. Le dipendenze vanno dichiarate, non scoperte.*

@@ -48,7 +48,7 @@
 - Punti:
   1. **Che cos'è, e dove sta**: *contratti, procedure, offerte, verbali, presentazioni, mail, chat, pagine di wiki. In Word, PDF, PowerPoint; su SharePoint, Drive, Teams, e nelle caselle di posta di chi li ha scritti. Per volume e per valore è la parte più grande della conoscenza di un'azienda.*
   2. **Che cosa non ha**: *uno schema deciso prima; un ETL che lo porti da qualche parte; un proprietario dichiarato; un ciclo di vita: nessuno sa se `contratto_SpedFast_v3_FINALE.docx` è quello in vigore, o se la policy rimborsi del 2024 è stata sostituita. Le versioni si moltiplicano per copia, mai per sostituzione.*
-  3. **Che cosa vuol dire per l'agente**: *è la conoscenza che gli serve di più (che cosa prevede il contratto? come si gestisce un reclamo?) ed è quella tenuta peggio. Il transazionale aveva le chiavi, il warehouse aveva l'ETL e un responsabile; qui non c'è nulla fra il documento e chi lo legge.*
+  3. **Che cosa vuol dire per l'agente**: *è la conoscenza che gli serve di più (che cosa prevede il contratto? come si gestisce un reclamo?) ed è quella tenuta peggio. Il transazionale aveva le chiavi, il data warehouse aveva l'ETL e un responsabile; qui non c'è nulla fra il documento e chi lo legge.*
 - Nota in basso: *Prima di cercare, la pagella è già segnata: non ridondante ✗ (le copie), veritiera ✗ (nessuno sa quale versione vale). La search, che vediamo adesso, risolve "ricercabile"; gli altri due li risolve solo la governance dei documenti, e la sezione 7.*
 
 **Visual**: `slide28-dove-sta.svg`.
@@ -69,9 +69,9 @@
 **Testo**:
 - Titolo: *Il fatto dentro il testo*
 - Punti:
-  1. **Nel warehouse**: *`giorni_ritardo = 5` è un fatto già deciso: qualcuno ha scelto la colonna, il tipo, la regola di calcolo, prima di scrivere. Chi legge non interpreta: trova.*
-  2. **Nel contratto**: *"Per consegne effettuate oltre il terzo giorno lavorativo successivo alla data concordata, il Vettore riconoscerà una penale pari al 2% del valore della spedizione." Il fatto (penale 2%, soglia 3 giorni lavorativi) c'è, ma sta in una frase: chi legge deve trovarla, capirla, e decidere che "giorno lavorativo" è la stessa cosa del "giorno di ritardo" del warehouse. Forse no.*
-  3. **Informazione spuria**: *ogni estrazione è un'interpretazione, e può essere sbagliata: la frase giusta letta male, la frase di un contratto vecchio, una bozza mai firmata. Il warehouse sbaglia in pochi modi noti (il grano); il testo sbaglia in modi che non si vedono.*
+  1. **Nel data warehouse**: *`giorni_ritardo = 5` è un fatto già deciso: qualcuno ha scelto la colonna, il tipo, la regola di calcolo, prima di scrivere. Chi legge non interpreta: trova.*
+  2. **Nel contratto**: *"Per consegne effettuate oltre il terzo giorno lavorativo successivo alla data concordata, il Vettore riconoscerà una penale pari al 2% del valore della spedizione." Il fatto (penale 2%, soglia 3 giorni lavorativi) c'è, ma sta in una frase: chi legge deve trovarla, capirla, e decidere che "giorno lavorativo" è la stessa cosa del "giorno di ritardo" del data warehouse. Forse no.*
+  3. **Informazione spuria**: *ogni estrazione è un'interpretazione, e può essere sbagliata: la frase giusta letta male, la frase di un contratto vecchio, una bozza mai firmata. Il data warehouse sbaglia in pochi modi noti (il grano); il testo sbaglia in modi che non si vedono.*
 - Nota in basso: *È la piramide della slide 3 al contrario: il testo è informazione con dentro i fatti, e il lavoro è tirarli fuori. Il data management del non strutturato è questo: da documento a fatto, ogni volta, o una volta per tutte (sezione 7).*
 
 **Visual**: `slide29-fatto-nel-testo.svg`.
