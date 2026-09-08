@@ -49,7 +49,7 @@
 - Punti:
   1. **Da Eulero a Berners-Lee**: *nel 1736 Eulero risolve il problema dei ponti di Königsberg riducendo la città a punti e linee: nasce la teoria dei grafi. Nel 1989 Berners-Lee propone al CERN "una rete di note con collegamenti, molto più utile di un sistema gerarchico fisso": cerchi e frecce, nodi e link, il web. In mezzo, due secoli e mezzo di matematica su nodi e archi.*
   2. **Nodi e archi**: *un nodo è una cosa: Rossi, l'ordine 4471, SpedFast, il contratto. Un arco è una relazione fra due nodi, con una direzione e un nome: Rossi –ordina→ 4471; 4471 –spedito da→ SpedFast; contratto –vincola→ SpedFast. Niente altro.*
-  3. **I tre fatti, collegati**: *nella sezione 4 stavano in tre posti e nessun indice li univa. Qui sono quattro nodi e tre archi, e la domanda "il reclamo di Rossi riguarda un corriere con penale?" è un percorso: da Rossi, lungo gli archi, fino al contratto. Chi legge segue le frecce; non deve sapere nulla dello schema.*
+  3. **I tre fatti, collegati**: *nella sezione 4 stavano in tre posti e nessun indice li univa. Qui sono cinque nodi e quattro archi, e la domanda "il reclamo di Rossi riguarda un corriere con penale?" è un percorso: da Rossi, lungo gli archi, fino al contratto. Chi legge segue le frecce; non deve sapere nulla dello schema.*
 - Nota in basso: *È il grafo delle cose, non dei tipi di cose: Rossi e 4471, non "Cliente" e "Ordine". L'altro grafo, l'ontologia della slide 3, torna nella sezione 7.*
 
 **Visual**: `slide37-nodi-archi.svg`.
@@ -79,8 +79,8 @@
 
 **Prompt per schema SVG**:
 > Il grafo Acme completo. I nodi sono cerchi con l'etichetta dentro e un riquadro di proprietà accanto; gli archi sono frecce con il tipo in maiuscolo e, dove ci sono, le proprietà in un riquadro più piccolo sull'arco:
-> - `Cliente {nome: Rossi, regione: Lombardia}` –`ORDINA {data: 2026-08-12}`→ `Ordine {id: 4471, importo: 184.30}`
-> - `Ordine 4471` –`SPEDITO_DA {prevista: 2026-08-14, consegna: 2026-08-19}`→ `Corriere {nome: SpedFast, tipo: espresso}`
+> - `Cliente {nome: Rossi, regione: Lombardia}` –`ORDINA {data: 2026-08-10}`→ `Ordine {id: 4471, importo: 184.30}`
+> - `Ordine 4471` –`SPEDITO_DA {prevista: 2026-08-12, consegna: 2026-08-19}`→ `Corriere {nome: SpedFast, tipo: espresso}`
 > - `Contratto {id: C-2026-07, penale: 2%}` –`VINCOLA {dal: 2026-03-01}`→ `Corriere SpedFast`
 > - `Reclamo {id: 88, testo: "terza consegna in ritardo"}` –`RIGUARDA`→ `Ordine 4471`; `Cliente Rossi` –`APRE`→ `Reclamo 88`
 > - `Ordine 4471` –`CONTIENE {q: 2}`→ `Prodotto {sku: AX-210}`

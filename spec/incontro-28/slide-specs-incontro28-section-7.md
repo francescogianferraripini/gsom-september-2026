@@ -74,7 +74,7 @@
 **Visual**: `slide54-data-product.svg`.
 
 **Prompt per schema SVG**:
-> **A sinistra**, una scheda-prodotto grande, `fatto_spedizioni · v3`, con le sezioni impilate: `owner: team logistica (Marco)` · `grano: una riga = una spedizione` · `schema + descrizioni` · `metriche: ordini_in_ritardo, ritardo_medio_gg` · `aggiornamento: ogni notte alle 02:00` · `controlli: ritardo ≥ 0 · corriere non nullo · righe ≥ 95% del giorno prima` · `consumatori: report ritardi · dashboard · esegui_sql (agente)` · `changelog: v3 aggiunta giorni_lavorativi_ritardo`.
+> **A sinistra**, una scheda-prodotto grande, `fatto_spedizioni · v3`, con le sezioni impilate: `owner: team logistica (Giulia)` · `grano: una riga = una spedizione` · `schema + descrizioni` · `metriche: ordini_in_ritardo, ritardo_medio_gg` · `aggiornamento: ogni notte alle 02:00` · `controlli: ritardo ≥ 0 · corriere non nullo · righe ≥ 95% del giorno prima` · `consumatori: report ritardi · dashboard · esegui_sql (agente)` · `changelog: v3 aggiunta giorni_lavorativi_ritardo`.
 >
 > **A destra**, tre schede più piccole con la stessa struttura abbreviata: `indice contratti · v2` · `grafo logistica · v1` · `policy rimborsi · 2026`.
 >

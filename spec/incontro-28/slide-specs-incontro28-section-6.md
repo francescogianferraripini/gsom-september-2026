@@ -27,7 +27,7 @@
 
 > **Filo della sezione.** La fascia dei pattern dello spettro si accende: ogni pattern è un tool (43). Text2SQL in tre slide: com'è fatto, con lo schema nel system prompt e il modello che scrive il SQL da solo (44); i sei requisiti informativi (45); i quattro modi in cui sbaglia, quasi tutti con un numero plausibile (46). Poi la naive RAG (47) e il modo agentico come risposta ai suoi errori e a quelli del Text2SQL, su due assi: iterare e incrociare le fonti (48). Il limite che nessuna search supera, la sintesi oltre il chunk (49), e GraphRAG in due slide: il lexical graph con le entità estratte, percorso da un agente (50), e le comunità con i riassunti per le domande globali (51). Pagella ereditata e cerniera verso il significato condiviso (52). La mini-mappa dei separatori accende la fascia dei pattern agentici.
 >
-> **Nomi**: la RAG a un colpo si chiama **naive RAG** (il nome delle fonti: "retrieve once, generate once"); il modo agentico non si chiama "RAG 2.0" né "agentic RAG" in slide. Il tool Text2SQL si chiama `esegui_sql(query)`: lo schema sta nel system prompt e il SQL lo scrive il modello; la variante con un modello dentro il tool non è in slide.
+> **Nomi**: la RAG a un colpo si chiama **naive RAG** (il nome delle fonti: "retrieve once, generate once"); il modo agentico non si chiama "RAG 2.0" né "agentic RAG" in slide. Il tool Text2SQL si chiama `esegui_sql(query)`: lo schema sta nel system prompt e il SQL lo scrive il modello; la variante con un modello dentro il tool non è in slide. Sulla figura madre la colonna del grafo porta l'etichetta `GraphRAG`, e resta così: la Slide 43 dice che sul grafo il pattern è il traversal (il modello scrive il pattern, `percorri_grafo` lo esegue) e che GraphRAG (Slide 50–51) è il caso in cui il grafo da percorrere è stato estratto dal testo.
 >
 > **Dispositivo delle tre slide a tempi**: la Slide 50 usa lo stesso dispositivo delle Slide 10 (SQL) e 39 (Cypher): punti a sinistra, riquadro al centro in cui compaiono le righe, figura a destra che si accende. Qui il riquadro è la traccia dell'agente e la figura è il lexical graph.
 >
@@ -35,7 +35,7 @@
 >
 > **Fatti verificati (8 set 2026)** in `docs/ricerche-28/research-pattern-agentici.md`: GraphRAG di Microsoft (paper apr 2024: chunk → entità e relazioni estratte dall'LLM → Leiden gerarchico → community report → global search map-reduce; batte la naive RAG su comprehensiveness 72–83% e diversity 62–82% con giudice LLM, perde su directness; indicizzazione di 1M token in 281 minuti); il lexical graph di Neo4j (`Document` → `Chunk` con `PART_OF` e `NEXT`, entità con `HAS_ENTITY`); Text2SQL (Spider 2.0: da ~20% nel 2024 a >90% nel 2026 sul sottoinsieme Snow con sistemi agentici; fallimenti: schema linking 27,6%, join 8,3%; CIDR 2026: annotazioni sbagliate nel 53–66% dei benchmark); Claude Code e `grep`/`glob` (intervista a Boris Cherny, mar 2026); il risultato qualitativo dbt (apr 2026): *senza semantic layer l'errore è un numero plausibile, con il semantic layer è un messaggio di errore*. Le fonti vanno nelle note del relatore.
 >
-> **Esempio Acme in questa sezione**: la domanda della slide 20 del 27 per la terza volta (Slide 44); il reclamo #88 di Rossi sull'ordine 4471 (SpedFast, 5 giorni di ritardo); il contratto SpedFast 2026 art. 7 (penale 2% oltre il terzo giorno lavorativo) contro la versione 2023; la policy rimborsi 2026 (buono del 10%); i quattromila reclami e l'istogramma motivo × corriere; la colonna `giorni_lavorativi_ritardo` di `fatto_spedizioni` (aggiunta al DDL della Slide 16).
+> **Esempio Acme in questa sezione**: la domanda della slide 20 del 27 per la terza volta (Slide 44); il reclamo #88 di Rossi sull'ordine 4471 (SpedFast, prevista mercoledì 12 agosto, consegnato mercoledì 19: 7 giorni di ritardo, 5 lavorativi, quindi oltre la soglia dell'art. 7); le 97 spedizioni SpedFast di agosto oltre la soglia dei tre giorni lavorativi (61.500 € di valore, penale 2% = 1.230 €); il contratto SpedFast 2026 art. 7 (penale 2% oltre il terzo giorno lavorativo) contro la versione 2023; la policy rimborsi 2026 (buono del 10%); i quattromila reclami e l'istogramma motivo × corriere; la colonna `giorni_lavorativi_ritardo` di `fatto_spedizioni` (aggiunta al DDL della Slide 16).
 >
 > **Codice in questa sezione**: il SQL nelle pill delle tracce (Slide 44, 46, 48), i pattern Cypher nelle tracce (Slide 50); sempre corti, con la lettura a fianco.
 
@@ -53,7 +53,7 @@
 - Eyebrow: *SEZIONE 6 · PATTERN AGENTICI DI ACCESSO AL DATO*
 - Titolo: *Tre pattern, un lettore*
 - Punti:
-  1. **Tre pattern, tre tool**: *Text2SQL per le tabelle (il modello scrive la query, il tool la esegue); search per i documenti (il tool cerca, il modello legge i chunk); traversal per i grafi (il modello scrive il pattern, il tool lo percorre). Sono tool nel senso del 27: nome, descrizione, parametri, e un risultato che rientra come testo.*
+  1. **Tre pattern, tre tool**: *Text2SQL per le tabelle (il modello scrive la query, il tool la esegue); search per i documenti (il tool cerca, il modello legge i chunk); traversal per i grafi (il modello scrive il pattern, il tool lo percorre; nello spettro la colonna si chiama GraphRAG, che è questo traversal fatto su un grafo estratto dal testo: slide 50–51). Sono tool nel senso del 27: nome, descrizione, parametri, e un risultato che rientra come testo.*
   2. **Chi sceglie il pattern**: *il modello, dalla domanda e dalle descrizioni dei tool (il 27, slide 11): "quanti" va alle tabelle, "che cosa prevede" ai documenti, "come sono collegati" al grafo. Se le descrizioni sono vaghe, sceglie il pattern sbagliato, e il risultato sembra giusto lo stesso.*
   3. **Che cosa non cambia**: *la conoscenza è quella delle sezioni 2–5, con la sua pagella. L'agente non la migliora: la legge. Un tool su un data warehouse ben fatto risponde bene; lo stesso tool su dieci pipeline per report risponde con tre verità.*
 - Nota in basso: *Ripresa del 27 (slide 18): un tool non è un'API. Un tool Text2SQL non espone il database: espone "esegui questa query"; l'identità, il salvataggio del risultato grande, i limiti stanno nell'adattatore. Vale per tutti e tre i pattern.*
@@ -112,7 +112,7 @@
   4. **Le metriche, definite**: *"ordini in ritardo = spedizioni con `giorni_ritardo > 0`"; "ritardo medio = media di `giorni_ritardo` sulle sole spedizioni in ritardo". Senza, ogni domanda inventa la sua regola: le tre verità della slide 14, generate dal modello.*
   5. **I valori di esempio**: *`corriere` contiene `SpedFast`, `Corriere Nord`, `PostaPro`, non `SPEDFAST S.R.L.`; `regione` è il nome, non la sigla. È il modo più economico per evitare un `WHERE` che non trova nulla.*
   6. **Le query di esempio**: *dieci domande frequenti con il SQL giusto: il modello copia la forma, e la forma è quasi tutto.*
-- Nota in basso: *Uno star schema con i nomi di business dà 1, 2 e 3 quasi gratis; 4, 5 e 6 li deve scrivere qualcuno. Sono la stessa cosa che serve a un collega nuovo, messa per iscritto una volta: nella sezione 7 si chiama semantic layer, e ha un posto dove stare.*
+- Nota in basso: *Uno star schema con i nomi di business dà 1, 2 e 3 quasi gratis; 4, 5 e 6 li deve scrivere qualcuno. Sono la stessa cosa che serve a un collega nuovo, messa per iscritto una volta: nella sezione 7 si chiama semantic linking (slide 56): l'ontologia collegata alle tabelle, da cui descrizioni, grano, join e metriche escono senza scriverle a mano.*
 
 **Visual**: `slide45-requisiti.svg`.
 
@@ -142,7 +142,7 @@
   [tool]      187 righe                                                           (sembra giusto)
 
   [assistant] → esegui_sql("… FROM fatto_spedizioni s JOIN fatto_reclami r …")   ✗ fanout
-  [tool]      SpedFast 1.660.000 €                                                (sembra giusto)
+  [tool]      SpedFast 1.658.700 €                                                (sembra giusto)
 
   [assistant] → esegui_sql("… WHERE giorni_ritardo > 0")                          ✗ ritardo secondo chi?
   [tool]      187                                                                 (sembra giusto)
@@ -150,7 +150,7 @@
   [assistant] → esegui_sql("SELECT * FROM fatto_spedizioni")                      ✗ 12.480 righe
   [tool]      salvato in risultato.csv (12.480 righe): prime 5 righe … · usa grep o duckdb
   ```
-- Nota in basso: *La differenza fra un buon Text2SQL e uno cattivo non è il modello: è quanto di questi quattro errori la KB rende impossibili prima ancora che la query venga scritta. Un semantic layer trasforma i primi tre da "numero sbagliato" a "errore esplicito": sezione 7.*
+- Nota in basso: *La differenza fra un buon Text2SQL e uno cattivo non è il modello: è quanto di questi quattro errori la KB rende impossibili prima ancora che la query venga scritta. Il semantic linking trasforma i primi tre da "numero sbagliato" a "errore esplicito": sezione 7, slide 56.*
 
 **Visual**: il riquadro-payload in HTML; nessun SVG.
 
@@ -197,14 +197,14 @@
   ```
   [user]      Il cliente Rossi chiede cosa gli spetta per il ritardo dell'ordine 4471.
   [assistant] → cerca_ordine("4471")
-  [tool]      {corriere: "SpedFast", prevista: "08-14", consegna: "08-19"}   → 5 giorni
+  [tool]      {corriere: "SpedFast", prevista: "08-12", consegna: "08-19"}   → 7 giorni, 5 lavorativi
   [assistant] → cerca_documenti("penale ritardo", filtri={tipo: "contratto", corriere: "SpedFast"})
   [tool]      3 chunk · il migliore: contratto_SpedFast_2026.pdf, art. 7 (taglia a metà)
   [assistant] → bash("grep -n -A4 'penale' contratti/SpedFast_2026.txt")
   [tool]      art. 7: "…oltre il terzo giorno lavorativo… penale pari al 2% del valore…"
   [assistant] → cerca_documenti("rimborso cliente ritardo corriere", filtri={tipo: "policy"})
   [tool]      policy_rimborsi_2026.md: "…il cliente ha diritto a un buono del 10%…"
-  [assistant] Per l'ordine 4471 (5 giorni di ritardo, SpedFast): al cliente spetta un buono
+  [assistant] Per l'ordine 4471 (7 giorni di ritardo, 5 lavorativi, SpedFast): al cliente spetta un buono
               del 10% (policy rimborsi 2026); ad Acme una penale del 2% da SpedFast (art. 7).
   ```
   Conto a lato: `4 tool call · 3 fonti · 1 turno · ~3.000 token di risultati`.
@@ -225,11 +225,11 @@
                 FROM fatto_spedizioni s JOIN dim_corriere c USING (id_corriere)
                 WHERE c.nome = 'SpedFast' AND s.giorni_lavorativi_ritardo > 3
                 AND s.id_data BETWEEN 20260801 AND 20260831")
-  [tool]      n: 97 · penale_stimata: 3.640,00
+  [tool]      n: 97 · penale_stimata: 1.230,00
   [assistant] Il contratto SpedFast 2026 (art. 7) prevede una penale del 2% del valore
               della spedizione oltre il terzo giorno lavorativo (lun–ven, festivi esclusi).
               Ad agosto le spedizioni SpedFast oltre la soglia sono 97: penale stimata
-              3.640 €. Ho usato la versione 2026 del contratto, non quella 2023.
+              1.230 €. Ho usato la versione 2026 del contratto, non quella 2023.
   ```
   A lato della query: *ha usato `giorni_lavorativi_ritardo`, non `giorni_ritardo`: la definizione l'ha presa dal contratto e l'ha cercata nello schema*. Conto a lato: `5 tool call · 2 fonti · nessun indice · ~800 token di risultati · ha scelto la versione giusta e ha risolto "lavorativo" da solo`.
 
@@ -277,8 +277,8 @@
 - Riquadro-payload (HTML, idioma del 26/27; le righe compaiono ai tempi 3–6):
   ```
   [user]      Quali reclami citano SpedFast per un ritardo, e cosa prevede il contratto?
-  [assistant] → cerca_grafo("reclami SpedFast ritardo")                          (tempo 3)
-  [tool]      chunk d'ingresso: reclamo #88, chunk 2 (score 0,84)
+  [assistant] → cerca_documenti("reclami SpedFast ritardo")                       (tempo 3)
+  [tool]      chunk d'ingresso: reclamo #88, chunk 2 (id 88-2, score 0,84)
   [assistant] → percorri_grafo("(c:Chunk {id:'88-2'})-[:HAS_ENTITY]->(e)")       (tempo 4)
   [tool]      SpedFast · ritardo · Rossi
   [assistant] → percorri_grafo("(:Entity {nome:'SpedFast'})<-[:HAS_ENTITY]-(k:Chunk)")  (tempo 5)
@@ -315,7 +315,7 @@
   1. **Le comunità**: *nel grafo delle entità, i nodi che si citano molto fra loro formano gruppi: `SpedFast · ritardo · penale · Lombardia` da una parte, `PostaPro · pacco danneggiato · reso` dall'altra. Un algoritmo (Leiden) li trova da solo, a più livelli: comunità piccole dentro comunità grandi. Nessuno le ha disegnate.*
   2. **I riassunti**: *per ogni comunità, a ogni livello, un modello scrive un rapporto: chi c'è, di che cosa si parla, quanti chunk. Migliaia di chiamate al modello, una volta, all'indicizzazione: è il costo di GraphRAG, e non è piccolo (ore, milioni di token).*
   3. **La domanda globale**: *"di che cosa si lamentano di più i clienti?" va a tutti i rapporti del livello scelto: ognuno produce una risposta parziale (map), poi una chiamata le fonde (reduce). La risposta è una sintesi su tutto l'archivio, e in finestra sono entrati riassunti, non quattromila reclami.*
-- Nota in basso: *Microsoft, 2024: su domande di sintesi GraphRAG batte la naive RAG per completezza e varietà, giudicate da un modello; su domande puntuali la naive RAG resta più diretta, e costa cento volte meno. Non è un'alternativa alla search: è la struttura per la classe di domande che la search non può vedere.*
+- Nota in basso: *Microsoft, 2024: su domande di sintesi GraphRAG batte la naive RAG per completezza e varietà, giudicate da un modello; su domande puntuali la naive RAG resta più diretta, e non ha pagato un'indicizzazione di ore e milioni di token. Non è un'alternativa alla search: è la struttura per la classe di domande che la search non può vedere.*
 
 **Visual**: `slide51-community.svg`.
 
@@ -338,7 +338,7 @@
 - Titolo: *La pagella dei pattern, e la cerniera*
 - Pagella (HTML, `.pagella`), letta per pattern, con il voto ereditato dalla forma sotto:
   1. **Ricercabile in modo progressivo**: **✓** — *è il requisito che i pattern migliorano davvero: il SQL scende dal totale al dettaglio, la search agentica riformula e apre, il grafo percorre. A patto che la forma sotto lo permetta: sullo schema normalizzato della slide 11 nessun pattern salva il modello.*
-  2. **Non ridondante**: **ereditato** (✓ · ✗ · ✓) — *Text2SQL su dieci pipeline per report sceglie una delle dieci; la search su tre versioni del contratto ne cita una; GraphRAG estrae tre nodi `SpedFast` se il testo lo scrive in tre modi. Il pattern non toglie copie: le trova tutte.*
+  2. **Non ridondante**: **ereditato** (~ · ✗ · ✓) — *Text2SQL su dieci pipeline per report sceglie una delle dieci; la search su tre versioni del contratto ne cita una; GraphRAG estrae tre nodi `SpedFast` se il testo lo scrive in tre modi. Il pattern non toglie copie: le trova tutte.*
   3. **Veritiera**: **ereditato, con un'aggravante** (~ · ✗ · ~) — *il modello risponde con la stessa sicurezza su un dato buono e su uno cattivo, e la slide 46 lo mostra: l'errore è un numero plausibile. Il pattern non aggiunge verità; toglie l'esitazione che una persona avrebbe avuto.*
   4. **Compounding**: **~** — *il lexical graph e le comunità sono conoscenza nuova estratta dal testo, e si accumula. Ma senza nomi condivisi (`SpedFast` del data warehouse e `SpedFast` del grafo sono la stessa cosa?) ogni pattern accumula per sé.*
 - Regola sotto la pagella: *Voti dati dal punto di vista di chi fa domande: una persona, o un agente.*

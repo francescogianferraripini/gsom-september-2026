@@ -41,7 +41,7 @@
 >
 > **Slide 26** è la candidata al taglio se il budget stringe.
 >
-> **Esempio Acme in questa sezione**: `fatto_spedizioni`, `fatto_reclami`, `dim_corriere`, `dim_cliente`, `dim_prodotto`, `dim_data`; SpedFast che passa da `standard` a `espresso` (storicizzazione); i totali del 27 (121 · 44 · 22; 184.300 €); i tre "ritardo medio" (3,8 · 3,2 · 4,1); il responsabile della Lombardia (Marco) per la row level security.
+> **Esempio Acme in questa sezione**: `fatto_spedizioni`, `fatto_reclami`, `dim_corriere`, `dim_cliente`, `dim_data` (niente `dim_prodotto`: al grano spedizione il prodotto non è una dimensione, una spedizione ne contiene più d'uno); SpedFast che passa da `standard` a `espresso` (storicizzazione); i totali del 27 (121 · 44 · 22); l'importo delle spedizioni SpedFast nel fatto (184.300 €; con il fanout ×9 diventa 1.658.700 €); i tre "ritardo medio" (3,8 · 3,2 · 4,1); il responsabile della Lombardia (Marco) per la row level security.
 >
 > **Codice in questa sezione**: DDL di fatto e dimensione (Slide 16, da saltare se serve), le due query del fanout (Slide 19), il SQL DuckDB nel sandbox (Slide 25). Sempre con la lettura in italiano a fianco.
 
@@ -57,7 +57,7 @@
 - Eyebrow: *SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA*
 - Titolo: *Da Excel al data warehouse*
 - Punti:
-  1. **Perché piace**: *una tabella sola, una riga per spedizione, con dentro cliente, prodotto, corriere, importo, ritardo. Niente join, niente schema da conoscere: si filtra, si fa una pivot, si legge. È la forma in cui una persona vuole il dato.*
+  1. **Perché piace**: *una tabella sola, una riga per spedizione, con dentro cliente, corriere, importo, ritardo. Niente join, niente schema da conoscere: si filtra, si fa una pivot, si legge. È la forma in cui una persona vuole il dato.*
   2. **Perché non regge**: *ogni analista se ne fa una copia, e le copie divergono: tre "ritardo medio" diversi nella stessa riunione, nessuno sa quale sia vero. E a un milione di righe il foglio si ferma. Il foglio fallisce su "non ridondante" e su "veritiera".*
   3. **Il data warehouse**: *la stessa tabella larga, tenuta una volta sola, in un database, alimentata dal transazionale e con un responsabile. Kimball ne ha scritto la forma trent'anni fa: una tabella dei fatti e le sue dimensioni. Sembra il foglio; regge un milione di righe e non diverge.*
 - Nota in basso: *L'analitico non è "un altro database": è il transazionale riscritto per chi fa domande. Ed è dove entra l'agente, che fa domande.*
@@ -65,7 +65,7 @@
 **Visual**: `slide14-excel-dwh.svg`.
 
 **Prompt per schema SVG**:
-> **A sinistra**, il foglio `spedizioni.xlsx`: una griglia larga con le colonne `cliente · prodotto · corriere · importo · giorni_ritardo` e alcune righe; dietro, due copie sfalsate etichettate `v2_marco.xlsx` e `FINALE_def.xlsx`. Le tre copie mostrano tre valori di `ritardo medio` diversi (`3,8` · `3,2` · `4,1`), con l'etichetta *tre verità*.
+> **A sinistra**, il foglio `spedizioni.xlsx`: una griglia larga con le colonne `cliente · corriere · importo · giorni_ritardo` e alcune righe; dietro, due copie sfalsate etichettate `v2_marco.xlsx` e `FINALE_def.xlsx`. Le tre copie mostrano tre valori di `ritardo medio` diversi (`3,8` · `3,2` · `4,1`), con l'etichetta *tre verità*.
 >
 > **A destra**, la stessa griglia, una sola, dentro un cilindro etichettato `data warehouse`, con sotto tre righe: `una copia · un responsabile · 1.000.000 di righe`.
 >
@@ -90,7 +90,7 @@
 **Visual**: `slide15-etl.svg`.
 
 **Prompt per schema SVG**:
-> Flusso orizzontale da sinistra a destra. **A sinistra** tre cilindri, `ordini (gestionale)` · `CRM` · `reclami (ticketing)`, ognuno con dentro le proprie tabelle normalizzate in miniatura (tre o quattro rettangolini collegati) e l'etichetta `24/7, scritture`. **Al centro** un blocco `ETL` con dentro i tre verbi in verticale, `estrai · trasforma · carica`, e a lato `ogni notte`; sopra il blocco l'etichetta *pulisce, ricompone, calcola, allinea i nomi*. **A destra** un cilindro `data warehouse` con dentro una stella in miniatura (`fatto` al centro, quattro `dim` intorno) e l'etichetta `letture, milioni di righe`. Frecce dai tre cilindri all'ETL e dall'ETL al data warehouse.
+> Flusso orizzontale da sinistra a destra. **A sinistra** tre cilindri, `ordini (gestionale)` · `CRM` · `reclami (ticketing)`, ognuno con dentro le proprie tabelle normalizzate in miniatura (tre o quattro rettangolini collegati) e l'etichetta `24/7, scritture`. **Al centro** un blocco `ETL` con dentro i tre verbi in verticale, `estrai · trasforma · carica`, e a lato `ogni notte`; sopra il blocco l'etichetta *pulisce, ricompone, calcola, allinea i nomi*. **A destra** un cilindro `data warehouse` con dentro una stella in miniatura (`fatto` al centro, tre `dim` intorno) e l'etichetta `letture, milioni di righe`. Frecce dai tre cilindri all'ETL e dall'ETL al data warehouse.
 >
 > **Elemento focale**: il blocco ETL, e il cambio di forma dei dati che attraversa: a sinistra tabelle sparse, a destra una stella.
 
@@ -104,7 +104,7 @@
 - Titolo: *Fatti e dimensioni: lo star schema*
 - Punti:
   1. **Il fatto**: *una riga per evento: una spedizione. Porta le misure (importo, giorni di ritardo) e le chiavi verso le dimensioni. È lunga (milioni di righe) e stretta.*
-  2. **Le dimensioni**: *una riga per cosa: un corriere, un cliente, un prodotto, un giorno. Portano gli attributi con cui si filtra e si raggruppa: il nome del corriere, la regione del cliente, la categoria del prodotto, il mese. Sono corte e larghe.*
+  2. **Le dimensioni**: *una riga per cosa: un corriere, un cliente, un giorno. Portano gli attributi con cui si filtra e si raggruppa: il nome del corriere, la regione del cliente, il mese. Sono corte e larghe.*
   3. **La stella**: *ogni dimensione si aggancia al fatto con una join sola, sempre uguale. Non serve conoscere lo schema: si parte dal fatto e si esce verso la dimensione che serve. È leggibile da una persona, e da un modello.*
 - Riquadro DDL (HTML, monospaziato, lettura a fianco; **da saltare a voce se serve**):
   ```
@@ -129,7 +129,7 @@
 **Visual**: il riquadro DDL in HTML + `slide16-star.svg`.
 
 **Prompt per schema SVG**:
-> Al centro il rettangolo `fatto_spedizioni` con le sue colonne elencate (le tre chiavi `id_corriere · id_cliente · id_data` e, in evidenza, le due misure `importo · giorni_ritardo`). Intorno, ai quattro lati, quattro rettangoli `dim_corriere` · `dim_cliente` · `dim_prodotto` · `dim_data`, ciascuno con tre attributi (es. `nome · tipo · contratto_dal`; `nome · regione · segmento`; `nome · categoria · fornitore`; `giorno · mese · festivo`). Ogni dimensione è collegata al fatto da una linea sola, etichettata con la chiave.
+> Al centro il rettangolo `fatto_spedizioni` con le sue colonne elencate (le tre chiavi `id_corriere · id_cliente · id_data` e, in evidenza, le due misure `importo · giorni_ritardo`). Intorno, tre rettangoli `dim_corriere` · `dim_cliente` · `dim_data`, ciascuno con tre attributi (es. `nome · tipo · contratto_dal`; `nome · regione · segmento`; `giorno · mese · festivo`). Ogni dimensione è collegata al fatto da una linea sola, etichettata con la chiave.
 >
 > **Elemento focale**: il fatto al centro e le quattro linee identiche: la lettura da lontano è "una stella".
 
@@ -197,7 +197,7 @@
   FROM   fatto_spedizioni s
   JOIN   fatto_reclami r ON r.id_corriere = s.id_corriere
   JOIN   dim_corriere c  ON c.id_corriere = s.id_corriere
-  GROUP BY c.nome;                 -- SpedFast: 1.660.000 € (×9)
+  GROUP BY c.nome;                 -- SpedFast: 1.658.700 € (×9)
   ```
   ```
   -- ✓ una subquery per fatto, join fra totali
@@ -208,7 +208,7 @@
           FROM fatto_reclami GROUP BY id_corriere) rc USING (id_corriere)
   JOIN   dim_corriere c USING (id_corriere);   -- SpedFast: 184.300 € · 9
   ```
-- Nota in basso: *È l'errore più frequente di chi scrive SQL, persone e modelli: torna nella sezione 6 come primo modo in cui Text2SQL sbaglia con l'aria di aver ragione. Un semantic layer che conosce i grani lo impedisce alla radice: sezione 7.*
+- Nota in basso: *È l'errore più frequente di chi scrive SQL, persone e modelli: torna nella sezione 6 come primo modo in cui Text2SQL sbaglia con l'aria di aver ragione. Il semantic linking, che dichiara il grano di ogni tabella a partire dalla classe, lo impedisce alla radice: sezione 7, slide 56.*
 
 **Visual**: i due riquadri in HTML + `slide19-fanout.svg` (piccolo, sopra i riquadri).
 
@@ -258,7 +258,7 @@
 **Visual**: `slide21-lineage.svg`.
 
 **Prompt per schema SVG**:
-> Un grafo di dipendenze da sinistra a destra. **A sinistra** le fonti transazionali: `ordini`, `spedizioni`, `reclami (ticketing)`. Le tre frecce convergono in un blocco `ETL` con le etichette *ricompone · calcola · integra · storicizza*. **Al centro** le tabelle del data warehouse: `fatto_spedizioni` (con l'etichetta `owner: team logistica`), `fatto_reclami`, `dim_corriere`. **A destra** i consumatori: `report ritardi`, `dashboard direzione`, `tool: ritardi_per_corriere` (il tool dell'agente). Ogni freccia porta un piccolo orologio (`ogni notte`, `ogni ora`).
+> Un grafo di dipendenze da sinistra a destra. **A sinistra** le fonti transazionali: `ordini`, `spedizioni`, `reclami (ticketing)`. Le tre frecce convergono in un blocco `ETL` con le etichette *ricompone · calcola · integra · storicizza*. **Al centro** le tabelle del data warehouse: `fatto_spedizioni` (con l'etichetta `owner: team logistica`), `fatto_reclami`, `dim_corriere`. **A destra** i consumatori: `report ritardi`, `dashboard direzione`, `tool: esegui_sql (agente)`. Ogni freccia porta un piccolo orologio (`ogni notte`, `ogni ora`).
 >
 > La colonna `spedizioni.data_prevista` è evidenziata a sinistra, e da lei un'onda (una linea spessa di colore d'allarme) si propaga lungo le frecce fino ai tre consumatori, con l'etichetta *se cambia questa, si rompono questi*.
 >
@@ -330,9 +330,9 @@
 **Visual**: `slide24-star-vault-{1,2}.svg` (`.visual.stack` + fragment, stesso viewBox; in reveal `data-auto-animate` se gli elementi restano gli stessi).
 
 **Prompt per schema SVG**:
-> **Tempo 1**: la stella della Slide 16, identica: `fatto_spedizioni` al centro, `dim_corriere` · `dim_cliente` · `dim_prodotto` · `dim_data` intorno, una linea per dimensione.
+> **Tempo 1**: la stella della Slide 16, identica: `fatto_spedizioni` al centro, `dim_corriere` · `dim_cliente` · `dim_data` intorno, una linea per dimensione.
 >
-> **Tempo 2**: la stella si apre nel vault, ogni pezzo nel suo posto. Le dimensioni diventano **hub** (cerchi con la sola chiave di business: `hub_corriere`, `hub_cliente`, `hub_prodotto`); gli attributi che stavano dentro le dimensioni escono in **satellite** appesi a ciascun hub, uno per fonte (`sat_corriere_gestionale`, `sat_corriere_ticketing`, ognuno con `valido_dal / valido_al` e l'etichetta *storia completa, per fonte*); il fatto diventa un **link** (`link_spedizione`) che tiene solo le chiavi degli hub che collega, e le sue misure escono in un satellite del link (`sat_spedizione_misure`). Accanto alle frecce di movimento, le etichette di trasformazione: *dimensione → hub + satelliti* · *fatto → link + satellite*. In un angolo, sbiadita, una stella piccola con l'etichetta *da qui si ricostruiscono le stelle per chi legge*.
+> **Tempo 2**: la stella si apre nel vault, ogni pezzo nel suo posto. Le dimensioni diventano **hub** (cerchi con la sola chiave di business: `hub_corriere`, `hub_cliente`; la data non è un hub, resta sul link); gli attributi che stavano dentro le dimensioni escono in **satellite** appesi a ciascun hub, uno per fonte (`sat_corriere_gestionale`, `sat_corriere_ticketing`, ognuno con `valido_dal / valido_al` e l'etichetta *storia completa, per fonte*); il fatto diventa un **link** (`link_spedizione`) che tiene solo le chiavi degli hub che collega, e le sue misure escono in un satellite del link (`sat_spedizione_misure`). Accanto alle frecce di movimento, le etichette di trasformazione: *dimensione → hub + satelliti* · *fatto → link + satellite*. In un angolo, sbiadita, una stella piccola con l'etichetta *da qui si ricostruiscono le stelle per chi legge*.
 >
 > **Elemento focale** (tempo 2): i satelliti multipli sullo stesso hub (una fonte in più = un satellite in più, nulla da toccare) e la forma complessiva a grafo.
 
