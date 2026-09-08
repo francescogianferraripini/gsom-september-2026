@@ -26,7 +26,7 @@
 >
 > **Titolo di copertina**: *Agentic AI: dietro i tool, la conoscenza* (in rima con il 27, *Agentic AI: dentro l'harness*).
 >
-> **Sette sezioni, lungo lo spettro**: 1 La conoscenza · 2 Il dato strutturato, 1/2: dove nasce (relazionale e transazionale) · 3 Il dato strutturato, 2/2: dove si interroga (l'analitico) · 4 Il dato non strutturato: da analisi a search · 5 In mezzo allo spettro: i grafi · 6 Pattern agentici di accesso al dato · 7 Superare i limiti, e il know-how. Budget: 7 / 7 / 13 / 8 / 6 / 10 / 8 = **59 slide**, ±2 per sezione; ~140 min come il 27.
+> **Sette sezioni, lungo lo spettro**: 1 La conoscenza · 2 Il dato strutturato, 1/2: dove nasce (relazionale e transazionale) · 3 Il dato strutturato, 2/2: dove si interroga (l'analitico) · 4 Il dato non strutturato: da analisi a search · 5 In mezzo allo spettro: i grafi · 6 Pattern agentici di accesso al dato · 7 Superare i limiti, e il know-how. Budget definitivo (8 set 2026): 7 / 6 / 14 / 9 / 6 / 10 / 8 = **60 slide**, più copertina e sette separatori; ~140 min come il 27. (La slide "Da Excel al data warehouse" è passata dalla sezione 2 alla 3; la sezione 4 ha guadagnato la slide "Dove sta il non strutturato".)
 >
 > **La 3 è un approfondimento della 2**, ed è dichiarato nei titoli (1/2 · 2/2) e in una slide-cerniera in chiusura della 2: il transazionale è dove il dato nasce e l'agente lo raggiunge attraverso i tool (il 27: dietro `cerca_ordine` c'è un DB transazionale, ma l'agente parla con l'API); l'analitico è dove il dato si interroga, ed è lì che l'agente entra da solo (Text2SQL funziona su uno star schema con nomi di business e metriche definite, non su duecento tabelle normalizzate). La struttura dell'analitico deriva sempre dal transazionale, soprattutto sul grano: la 2 è la premessa obbligata della 3.
 >
@@ -44,7 +44,9 @@
 >
 > **Storia**: una slide sola, in sez. 1, con *Il nome della rosa* (Slide 5) e l'immagine originale della pianta del labirinto. Dewey, Hoover, Bush, Otlet escono dalle slide; Eulero e Berners-Lee restano in sez. 5 come una riga di apertura. La ricerca verificata sta in `docs/ricerche-28/research-storia-classificazione.md` (per le note del relatore).
 >
-> **Know-how (sez. 7)**: una slide-placeholder sola, con la ripresa di "know-how, non know-what" dal 27 e lo spazio per una demo dal vivo sul repo Quantyca, se c'è tempo. Niente frontmatter inventati, niente ontologie-per-governance in slide.
+> **Know-how (sez. 7)**: una slide-placeholder sola (Slide 59), con la ripresa di "know-how, non know-what" dal 27 e lo spazio per una demo dal vivo sul repo Quantyca, se c'è tempo. Niente frontmatter inventati, niente ontologie-per-governance in slide. Seconda demo possibile nella Slide 56: l'ontologia di Quantyca e il suo semantic linking alle tabelle.
+>
+> **Nessun modello è un silver bullet** (deciso nella sezione 5, Slide 41): il data warehouse per somme e metriche, il documentale ben organizzato per testi e clausole, il grafo per relazioni e percorsi; ciò che converge è il significato (sezione 7), non la forma.
 >
 > **Chiusura (sez. 7)**: una slide sola, la formula con i sei blocchi accesi, `Harness` esploso nella mappa in miniatura del 27 (tre zone, anelli, fascia di observability) e `KB` esploso nello spettro. Nessun blocco nero, nessun cliffhanger.
 >
