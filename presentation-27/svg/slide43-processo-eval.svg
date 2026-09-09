@@ -1,20 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 360" width="1140" height="360" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
-  <title>Pipeline di sei tappe: chi giudica, il dataset di test, i cluster di fallimento, checker deterministici, il giudice, in produzione; ognuna con che cosa si fa, che cosa ne esce e il rimando alla slide. Dall'ultima tappa una freccia di ritorno verso la terza: a ogni modifica si rigira tutto. Sopra, due fasce di ownership: l'esperto di dominio sulle tappe 1, 2, 3 e 5; il team di sviluppo dell'agente sulle tappe 4, 5, 6; la tappa 5 sta sotto entrambe. Sotto, la fascia Observability con i quattro sottoblocchi e le tappe che alimentano</title>
+  <title>Pipeline di sei tappe: chi giudica, il dataset di test, i cluster di fallimento, checker deterministici, il giudice, in produzione; ognuna con che cosa si fa, che cosa ne esce e il rimando alla slide. Dall'ultima tappa una freccia di ritorno verso la terza: a ogni modifica si rigira tutto. Sopra, tre fasce: l'esperto di dominio sulle tappe 1, 2, 3 e 5; il team di sviluppo dell'agente sulle tappe 4, 5, 6, con la tappa 5 sotto entrambe; e una terza fascia bordeaux che parte dalla tappa 3 e arriva in fondo, dove si correggono i problemi. Sotto, la fascia Observability con i quattro sottoblocchi e le tappe che alimentano</title>
   <defs>
     <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
     <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
   </defs>
 
   <!-- ===== fasce di ownership ===== -->
-  <rect x="20" y="22" width="558" height="26" rx="5" fill="#d1efea" stroke="#1ab197"/>
-  <rect x="764" y="22" width="170" height="26" rx="5" fill="#d1efea" stroke="#1ab197"/>
-  <text x="32" y="40" font-size="11.5" font-weight="700" fill="#0e7c6a">l'esperto di dominio</text>
-  <text x="196" y="40" font-size="9.5" font-style="italic" fill="#0e7c6a">costruisce i dataset, decide i pass/fail, valida il giudice</text>
-  <text x="849" y="40" text-anchor="middle" font-size="9.5" font-style="italic" fill="#0e7c6a">rientra: valida il giudice</text>
-  <rect x="578" y="60" width="542" height="26" rx="5" fill="#dbeaf7" stroke="#4da0d7"/>
-  <text x="590" y="78" font-size="11.5" font-weight="700" fill="#1d5f8a">il team di sviluppo dell'agente</text>
-  <text x="820" y="78" font-size="9.5" font-style="italic" fill="#1d5f8a">scrive i checker e il giudice, esegue i test, li rigira a ogni modifica</text>
-  <text x="849" y="106" text-anchor="middle" font-size="9" font-weight="600" fill="#a1245a">↓ dove i due si incontrano</text>
+  <rect x="20" y="6" width="558" height="26" rx="5" fill="#d1efea" stroke="#1ab197"/>
+  <rect x="764" y="6" width="170" height="26" rx="5" fill="#d1efea" stroke="#1ab197"/>
+  <text x="32" y="24" font-size="11.5" font-weight="700" fill="#0e7c6a">l'esperto di dominio</text>
+  <text x="196" y="24" font-size="9.5" font-style="italic" fill="#0e7c6a">costruisce i dataset, decide i pass/fail, valida il giudice</text>
+  <text x="849" y="24" text-anchor="middle" font-size="9.5" font-style="italic" fill="#0e7c6a">rientra: valida il giudice</text>
+  <rect x="578" y="40" width="542" height="26" rx="5" fill="#dbeaf7" stroke="#4da0d7"/>
+  <text x="590" y="58" font-size="11.5" font-weight="700" fill="#1d5f8a">il team di sviluppo dell'agente</text>
+  <text x="814" y="58" font-size="9.5" font-style="italic" fill="#1d5f8a">scrive i checker e il giudice, esegue i test, li rigira a ogni modifica</text>
+  <rect x="392" y="74" width="728" height="26" rx="5" fill="#fbe3ec" stroke="#a1245a"/>
+  <text x="404" y="92" font-size="11.5" font-weight="700" fill="#a1245a">da qui in poi si correggono i problemi</text>
+  <text x="650" y="92" font-size="9.5" font-style="italic" fill="#a1245a">il cluster dice quale leva tirare; checker, giudice e produzione dicono se ha funzionato</text>
 
   <!-- ===== le sei tappe ===== -->
   <g fill="#ffffff" stroke="#161719" stroke-width="1.2">
