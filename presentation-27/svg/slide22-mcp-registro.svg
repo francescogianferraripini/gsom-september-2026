@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 440" width="840" height="440" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
-  <title>Lo stesso sequence diagram della slide 15b, con il registro dei tool spostato fuori dall'harness in un server MCP «ordini»: le stesse tre funzioni, raggiunte con tools/list al giro zero e tools/call al momento della chiamata. La colonna del modello è identica</title>
-  <!-- Overlay della slide 22: stesso viewBox e stesse coordinate di slide15-sequence-giro.svg. Cambia solo la colonna gialla e le frecce che la raggiungono. -->
+  <title>Lo stesso sequence diagram della slide 15b, con in più un server MCP «ordini» aggiunto a destra dell'harness. Il registro dei tool resta dentro l'harness: al giro zero una tools/list chiede al server i suoi tool e le tre definizioni entrano nel registro, accanto ai tool nativi. Nel giro uno il dispatch va al registro come prima, e da lì una tools/call raggiunge il server, che chiama l'API. La colonna del modello e il blocco Harness Loop sono identici al primo tempo</title>
+  <!-- Overlay della slide 22: stesso viewBox e stesse coordinate di slide15-sequence-giro.svg per modello, harness e registro. Si aggiunge la colonna del server MCP; l'API si sposta a destra. -->
   <defs>
     <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#161719"/></marker>
     <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
@@ -8,105 +8,139 @@
   </defs>
   <rect x="0" y="0" width="840" height="440" fill="#ffffff"/>
 
-  <!-- il confine dell'harness: finisce prima del server -->
-  <rect x="8" y="4" width="404" height="434" rx="8" fill="none" stroke="#dee2e6" stroke-dasharray="6 4"/>
-  <text x="404" y="432" text-anchor="end" font-size="9.5" font-weight="600" fill="#9aa0a6">dentro l'harness</text>
+  <!-- ===== l'harness: il loop e il registro, come nel primo tempo ===== -->
+  <rect x="238" y="4" width="404" height="432" rx="8" fill="none" stroke="#161719" stroke-width="1.5"/>
+  <text x="390" y="9" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.2" fill="#161719" stroke="#ffffff" stroke-width="4" paint-order="stroke">harness</text>
 
-  <!-- il server MCP: lo stesso registro, fuori dall'harness -->
-  <rect x="428" y="8" width="200" height="430" rx="8" fill="#fff2ce" stroke="#ffbe0b" stroke-width="2"/>
-  <text x="528" y="26" text-anchor="middle" font-size="11.5" font-weight="700" fill="#161719">server MCP «ordini»</text>
-  <text x="528" y="39" text-anchor="middle" font-size="9.5" font-weight="500" fill="#838383">lo stesso registro, fuori dall'harness</text>
+  <!-- il registro dei tool: resta qui, e si popola -->
+  <rect x="428" y="14" width="200" height="414" rx="8" fill="#fffbec" stroke="#ffbe0b" stroke-dasharray="6 4"/>
+  <text x="528" y="30" text-anchor="middle" font-size="11.5" font-weight="700" fill="#161719">registro dei tool</text>
+  <text x="528" y="42" text-anchor="middle" font-size="9" font-weight="500" fill="#838383">nel runtime dell'harness</text>
 
-  <rect x="436" y="48" width="184" height="46" rx="4" fill="#ffffff" stroke="#dee2e6"/>
-  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#212529">
-    <text x="443" y="62"><tspan fill="#a1245a" font-weight="700">def</tspan> cerca_ordine(id):</text>
-    <text x="443" y="75">  r = api.get(f"/orders/{id}")</text>
-    <text x="443" y="88">  <tspan fill="#a1245a" font-weight="700">return</tspan> {stato: …, data: …}</text>
-  </g>
+  <!-- ciò che il giro 0 ci ha messo dentro -->
+  <rect x="436" y="50" width="184" height="44" rx="4" fill="#fff2ce" stroke="#b8860b" stroke-width="1.5"/>
+  <text x="444" y="64" font-size="9.5" font-weight="700" fill="#b8860b">+ 3 tool dal server MCP «ordini»</text>
+  <text x="444" y="77" font-size="8.5" fill="#212529">aggiunti al giro 0, con <tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-weight="600">tools/list</tspan>:</text>
+  <text x="444" y="89" font-size="8.5" fill="#212529">l'harness non ne scrive il codice.</text>
 
   <rect x="436" y="102" width="184" height="28" rx="4" fill="#ffffff" stroke="#ffbe0b"/>
   <text x="444" y="114" font-size="10" font-weight="700" fill="#495057">tool: lista_ordini</text>
-  <text x="444" y="125" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#838383">def lista_ordini(cliente): …</text>
+  <text x="444" y="125" font-size="8.5" fill="#b8860b">da MCP «ordini»</text>
 
-  <rect x="436" y="138" width="184" height="192" rx="6" fill="#ffffff" stroke="#ffbe0b" stroke-width="1.5"/>
+  <rect x="436" y="138" width="184" height="192" rx="6" fill="#fff2ce" stroke="#ffbe0b" stroke-width="1.5"/>
   <text x="528" y="155" text-anchor="middle" font-size="12" font-weight="700" fill="#161719">tool: cerca_ordine</text>
-  <text x="528" y="168" text-anchor="middle" font-size="9.5" font-weight="500" fill="#838383">la stessa funzione, in esecuzione</text>
+  <text x="528" y="168" text-anchor="middle" font-size="9" font-weight="500" fill="#b8860b">da MCP «ordini» · in esecuzione</text>
 
   <rect x="436" y="338" width="184" height="28" rx="4" fill="#ffffff" stroke="#ffbe0b"/>
   <text x="444" y="350" font-size="10" font-weight="700" fill="#495057">tool: apri_reso</text>
-  <text x="444" y="361" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#838383">def apri_reso(id, motivo): …</text>
+  <text x="444" y="361" font-size="8.5" fill="#b8860b">da MCP «ordini»</text>
 
-  <g font-size="9.5" font-weight="500" fill="#838383" text-anchor="middle">
-    <text x="528" y="386">scritto una volta da chi possiede l'API,</text>
-    <text x="528" y="399">usato da ogni harness</text>
+  <g font-size="8.5" font-weight="500" fill="#838383" text-anchor="middle">
+    <text x="528" y="386">i tool nativi dell'harness restano al</text>
+    <text x="528" y="398">loro posto: questi si aggiungono.</text>
   </g>
 
-  <!-- intestazioni -->
+  <!-- ===== il server MCP: fuori dall'harness, a destra ===== -->
+  <rect x="656" y="4" width="124" height="432" rx="8" fill="#fff2ce" stroke="#ffbe0b" stroke-width="2"/>
+  <text x="718" y="26" text-anchor="middle" font-size="10.5" font-weight="700" fill="#161719">server MCP</text>
+  <text x="718" y="39" text-anchor="middle" font-size="10.5" font-weight="700" fill="#161719">«ordini»</text>
+  <text x="718" y="52" text-anchor="middle" font-size="8.5" font-weight="500" fill="#838383">fuori dall'harness</text>
+
+  <rect x="664" y="112" width="108" height="44" rx="4" fill="#ffffff" stroke="#dee2e6"/>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="7.5" fill="#212529">
+    <text x="670" y="125"><tspan fill="#a1245a" font-weight="700">def</tspan> cerca_ordine(id):</text>
+    <text x="670" y="137">  r = api.get(url)</text>
+    <text x="670" y="149">  <tspan fill="#a1245a" font-weight="700">return</tspan> {stato, data}</text>
+  </g>
+
+  <rect x="664" y="164" width="108" height="22" rx="4" fill="#ffffff" stroke="#ffbe0b"/>
+  <text x="670" y="179" font-size="8.5" font-weight="700" fill="#495057">lista_ordini</text>
+
+  <rect x="664" y="200" width="108" height="130" rx="6" fill="#ffffff" stroke="#ffbe0b" stroke-width="1.5"/>
+  <text x="718" y="217" text-anchor="middle" font-size="9.5" font-weight="700" fill="#161719">cerca_ordine</text>
+  <text x="718" y="229" text-anchor="middle" font-size="8" font-weight="500" fill="#838383">il codice vero</text>
+
+  <rect x="664" y="338" width="108" height="22" rx="4" fill="#ffffff" stroke="#ffbe0b"/>
+  <text x="670" y="353" font-size="8.5" font-weight="700" fill="#495057">apri_reso</text>
+
+  <g font-size="8" font-weight="500" fill="#838383" text-anchor="middle">
+    <text x="718" y="378">scritto una volta da chi</text>
+    <text x="718" y="389">possiede l'API, usato</text>
+    <text x="718" y="400">da ogni harness</text>
+  </g>
+
+  <!-- ===== intestazioni ===== -->
   <rect x="20" y="14" width="100" height="36" rx="6" fill="#a1245a"/>
   <text x="70" y="37" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">modello</text>
   <rect x="250" y="14" width="100" height="36" rx="6" fill="#161719"/>
-  <text x="300" y="37" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">harness</text>
-  <text x="300" y="62" text-anchor="middle" font-size="9.5" font-weight="600" fill="#b8860b">+ client MCP</text>
-  <rect x="700" y="14" width="120" height="36" rx="6" fill="#ffffff" stroke="#838383" stroke-dasharray="5 4"/>
-  <text x="760" y="32" text-anchor="middle" font-size="12" font-weight="600" fill="#212529">API ordini</text>
-  <text x="760" y="45" text-anchor="middle" font-size="10" fill="#838383">HTTP</text>
+  <text x="300" y="37" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">Harness Loop</text>
+  <text x="300" y="62" text-anchor="middle" font-size="9" font-weight="600" fill="#b8860b">+ client MCP</text>
+  <rect x="794" y="14" width="44" height="36" rx="6" fill="#ffffff" stroke="#838383" stroke-dasharray="5 4"/>
+  <text x="816" y="30" text-anchor="middle" font-size="9.5" font-weight="600" fill="#212529">API</text>
+  <text x="816" y="42" text-anchor="middle" font-size="8.5" fill="#838383">ordini</text>
 
-  <!-- linee di vita -->
+  <!-- ===== linee di vita ===== -->
   <g stroke="#838383" stroke-width="1.5">
     <line x1="70" y1="50" x2="70" y2="430"/>
     <line x1="300" y1="66" x2="300" y2="430"/>
-    <line x1="528" y1="176" x2="528" y2="322"/>
-    <line x1="760" y1="50" x2="760" y2="430" stroke-dasharray="5 4"/>
+    <line x1="528" y1="110" x2="528" y2="326"/>
+    <line x1="718" y1="58" x2="718" y2="366"/>
+    <line x1="816" y1="50" x2="816" y2="430" stroke-dasharray="5 4"/>
   </g>
   <g font-size="10.5" font-style="italic" fill="#9aa0a6">
     <text x="78" y="210">aspetta</text>
     <text x="78" y="318">aspetta</text>
   </g>
 
-  <!-- ===== giro zero: tools/list ===== -->
+  <!-- ===== giro zero: i tool del server entrano nel registro ===== -->
   <text x="20" y="66" font-size="10.5" font-weight="700" letter-spacing="1" fill="#838383">GIRO 0</text>
-  <text x="372" y="72" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="700" fill="#b8860b">tools/list</text>
-  <line x1="302" y1="77" x2="434" y2="77" stroke="#b8860b" stroke-width="1.5" marker-end="url(#am)"/>
-  <text x="372" y="92" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9" fill="#212529">3 × {name, description, schema}</text>
-  <line x1="434" y1="97" x2="310" y2="97" stroke="#b8860b" stroke-width="1.5" marker-end="url(#am)"/>
+  <text x="672" y="72" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700" fill="#b8860b" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">tools/list</text>
+  <line x1="630" y1="78" x2="714" y2="78" stroke="#b8860b" stroke-width="1.5" marker-end="url(#am)"/>
+  <text x="672" y="92" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8" fill="#212529" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">3 × {name, schema}</text>
+  <line x1="714" y1="98" x2="630" y2="98" stroke="#b8860b" stroke-width="1.5" marker-end="url(#am)"/>
 
   <!-- ===== giro 1 ===== -->
   <text x="20" y="112" font-size="10.5" font-weight="700" letter-spacing="1" fill="#838383">GIRO 1</text>
-  <g font-size="11" fill="#212529" text-anchor="middle">
+  <g font-size="11" fill="#212529" text-anchor="middle" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">
     <text x="185" y="98">chiamata: la finestra con</text>
     <text x="185" y="110">le 3 definizioni + la domanda</text>
   </g>
   <line x1="298" y1="116" x2="72" y2="116" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
 
-  <text x="185" y="136" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="600" fill="#a1245a">tool_use: cerca_ordine("4471")</text>
+  <text x="185" y="136" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="600" fill="#a1245a" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">tool_use: cerca_ordine("4471")</text>
   <line x1="72" y1="142" x2="290" y2="142" stroke="#a1245a" stroke-width="1.5" marker-end="url(#a)"/>
-  <text x="185" y="156" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#a1245a">stop_reason: tool_use</text>
+  <text x="185" y="156" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#a1245a" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">stop_reason: tool_use</text>
 
-  <rect x="292" y="146" width="16" height="176" fill="#dbecf7" stroke="#4da0d7" stroke-width="1.5"/>
-  <g font-size="12" font-weight="700" fill="#1f5f86" text-anchor="end">
-    <text x="284" y="172">① parsing</text>
-    <text x="284" y="196">② dispatch</text>
-    <text x="284" y="236">③ esecuzione</text>
-    <text x="284" y="308">④ iniezione</text>
+  <rect x="292" y="146" width="16" height="190" fill="#dbecf7" stroke="#4da0d7" stroke-width="1.5"/>
+  <g font-size="12" font-weight="700" fill="#1f5f86" text-anchor="end" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">
+    <text x="284" y="170">① parsing</text>
+    <text x="284" y="188">② dispatch</text>
+    <text x="284" y="240">③ esecuzione</text>
+    <text x="284" y="316">④ iniezione</text>
   </g>
 
-  <text x="372" y="178" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="700" fill="#b8860b">tools/call</text>
-  <line x1="308" y1="184" x2="434" y2="184" stroke="#b8860b" stroke-width="1.5" marker-end="url(#am)"/>
-  <text x="372" y="197" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#212529">cerca_ordine, {id: "4471"}</text>
+  <!-- dispatch: al registro, come nel primo tempo -->
+  <text x="371" y="168" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#212529">cerca_ordine(id_ordine="4471")</text>
+  <line x1="308" y1="176" x2="434" y2="176" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="371" y="188" text-anchor="middle" font-size="8.5" font-style="italic" fill="#1f5f86">il registro sa a chi girarla</text>
 
-  <text x="690" y="208" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529">GET /orders/4471</text>
-  <line x1="622" y1="214" x2="758" y2="214" stroke="#838383" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+  <!-- tools/call: esce dall'harness -->
+  <text x="672" y="194" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700" fill="#b8860b" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">tools/call</text>
+  <line x1="630" y1="200" x2="714" y2="200" stroke="#b8860b" stroke-width="1.5" marker-end="url(#am)"/>
 
-  <rect x="636" y="230" width="108" height="16" rx="3" fill="#e9ecef"/>
-  <text x="690" y="242" text-anchor="middle" font-size="10.5" font-weight="600" fill="#6c757d">JSON, 5.000 righe</text>
-  <line x1="758" y1="250" x2="622" y2="250" stroke="#838383" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+  <text x="768" y="244" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#212529" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">GET /orders/4471</text>
+  <line x1="722" y1="250" x2="812" y2="250" stroke="#838383" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+  <text x="768" y="268" text-anchor="middle" font-size="8.5" font-weight="600" fill="#6c757d" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">JSON, 5.000 righe</text>
+  <line x1="812" y1="274" x2="722" y2="274" stroke="#838383" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ag)"/>
 
-  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529" text-anchor="middle">
-    <text x="372" y="270">{stato: "in consegna",</text>
-    <text x="372" y="282">data: "6 set"}</text>
+  <text x="672" y="286" text-anchor="middle" font-size="8.5" font-style="italic" fill="#b8860b" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">la risposta del protocollo</text>
+  <line x1="714" y1="292" x2="630" y2="292" stroke="#b8860b" stroke-width="1.5" marker-end="url(#am)"/>
+
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10" fill="#212529" text-anchor="middle">
+    <text x="368" y="280">{stato: "in consegna",</text>
+    <text x="368" y="292">data: "6 set"}</text>
   </g>
-  <line x1="434" y1="288" x2="310" y2="288" stroke="#b8860b" stroke-width="1.5" marker-end="url(#am)"/>
-  <text x="372" y="300" text-anchor="middle" font-size="10" font-style="italic" fill="#b8860b">la risposta del protocollo</text>
+  <line x1="434" y1="300" x2="310" y2="300" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
 
   <rect x="316" y="306" width="150" height="26" rx="4" fill="#d1efea" stroke="#1ab197"/>
   <text x="391" y="317" text-anchor="middle" font-size="10.5" font-weight="600" fill="#0e7c6a">appende tool_result</text>
@@ -114,17 +148,16 @@
 
   <!-- ===== giro 2 ===== -->
   <line x1="20" y1="338" x2="420" y2="338" stroke="#838383" stroke-width="1" stroke-dasharray="4 4"/>
-  <line x1="640" y1="338" x2="840" y2="338" stroke="#838383" stroke-width="1" stroke-dasharray="4 4"/>
   <text x="20" y="354" font-size="10.5" font-weight="700" letter-spacing="1" fill="#838383">GIRO 2</text>
-  <g font-size="11" fill="#212529" text-anchor="middle">
+  <g font-size="11" fill="#212529" text-anchor="middle" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">
     <text x="185" y="355">chiamata: la finestra</text>
     <text x="185" y="367">+ tool_use + tool_result</text>
   </g>
   <line x1="298" y1="373" x2="72" y2="373" stroke="#161719" stroke-width="1.5" marker-end="url(#a)"/>
 
-  <text x="185" y="398" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600" fill="#a1245a">text: "…in consegna, arriva il 6."</text>
+  <text x="185" y="398" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600" fill="#a1245a" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">text: "…in consegna, arriva il 6."</text>
   <line x1="72" y1="404" x2="290" y2="404" stroke="#a1245a" stroke-width="1.5" marker-end="url(#a)"/>
-  <text x="185" y="418" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#a1245a">stop_reason: end_turn</text>
+  <text x="185" y="418" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10.5" fill="#a1245a" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">stop_reason: end_turn</text>
 
   <rect x="292" y="408" width="16" height="22" fill="#dbecf7" stroke="#4da0d7" stroke-width="1.5"/>
   <text x="316" y="424" font-size="11" font-weight="700" fill="#1f5f86">parsing → è testo: turno finito</text>

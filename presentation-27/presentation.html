@@ -835,19 +835,19 @@
           <div class="tv tv-30">
             <div class="col-text">
               <ul class="pts tight">
-                <li><strong>Il problema</strong>ogni harness riscrive lo stesso registro: le tre funzioni della slide 15b esistono in dieci versioni, una per prodotto. Chi possiede l'API degli ordini non ha un modo standard per offrirle agli agenti.</li>
-                <li class="fragment" data-fragment-index="1"><strong>La soluzione</strong>il Model Context Protocol sposta il registro fuori dall'harness, in un server, e standardizza le due cose che abbiamo appena visto: come il server dichiara i suoi tool (<code>tools/list</code>: nome, descrizione, schema) e come l'harness li chiama e riceve il risultato (<code>tools/call</code>). Le funzioni sono le stesse; cambia chi le ospita.</li>
+                <li><strong>Il problema</strong>ogni harness riscrive le stesse funzioni: le tre della slide 15b esistono in dieci versioni, una per prodotto. Chi possiede l'API degli ordini non ha un modo standard per offrirle agli agenti.</li>
+                <li class="fragment" data-fragment-index="1"><strong>La soluzione</strong>il Model Context Protocol sposta il <em>codice</em> dei tool in un server, fuori dall'harness. Il registro resta dov'era: al giro zero l'harness chiede al server quali tool espone (<code>tools/list</code>) e li <strong>aggiunge</strong> ai propri; quando il modello ne chiama uno, il registro inoltra al server (<code>tools/call</code>). I tool nativi restano al loro posto.</li>
               </ul>
             </div>
             <div class="visual stack">
               <img src="svg/slide15-sequence-giro.svg" alt="La figura della slide 15b: il giro con il registro dei tool dentro l'harness">
-              <img class="fragment" data-fragment-index="1" src="svg/slide22-mcp-registro.svg" alt="La stessa figura con il registro spostato fuori dall'harness, in un server MCP ordini: le stesse tre funzioni, raggiunte con tools/list al giro zero e tools/call al momento della chiamata; la colonna del modello è identica">
+              <img class="fragment" data-fragment-index="1" src="svg/slide22-mcp-registro.svg" alt="La stessa figura con un server MCP ordini aggiunto a destra dell'harness: il registro dei tool resta dentro, e al giro zero una tools/list ci fa entrare le tre definizioni esposte dal server; nel giro uno il dispatch va al registro e da lì una tools/call raggiunge il server, che chiama l'API">
             </div>
           </div>
           <div class="nota">Dal punto di vista dell'LLM non cambia nulla: nella finestra trova la stessa definizione e riceve lo stesso <code>tool_result</code>. MCP è un accordo fra harness e fornitori di tool; il modello non è parte del contratto.</div>
         </div>
         <div class="footnote">22 / Sezione 3 · <span class="sid">#slide-22</span></div>
-        <aside class="notes">Due tempi: prima la figura della 15b tale e quale (il registro dentro l'harness), al click la stessa figura con il registro spostato nel server MCP «ordini»: stesse funzioni, stessa colonna del modello, in più tools/list al giro zero e tools/call al posto della chiamata diretta. MCP standardizza dichiarazione ed esecuzione, le due metà mostrate nelle slide 11 e 15b. Sandbox e MCP non sono in gerarchia: due porte, quale si usa lo decide chi possiede l'accesso.</aside>
+        <aside class="notes">Due tempi: prima la figura della 15b tale e quale, al click la stessa figura con il server MCP «ordini» aggiunto a destra dell'harness. Il registro non si sposta e non sparisce: si popola. Da dire a voce: un harness ha i suoi tool nativi, e i server MCP gliene aggiungono altri; non è un aut aut. Il codice però sta nel server, ed è quello il guadagno: lo scrive una volta chi possiede l'API. MCP standardizza dichiarazione ed esecuzione, le due metà mostrate nelle slide 11 e 15b. Sandbox e MCP non sono in gerarchia: due porte, quale si usa lo decide chi possiede l'accesso.</aside>
       </section>
 
       <section id="slide-23">
@@ -1055,7 +1055,7 @@
           <div class="nota">Le curve del 26 avevano tre linee: teorica, in fattura, reale. La cache sposta quella in fattura verso quella reale, e vale solo se l'harness non tocca il prefisso.</div>
         </div>
         <div class="footnote">32 / Sezione 4 · <span class="sid">#slide-32</span></div>
-        <aside class="notes">Numeri esatti per l'API di Anthropic: lettura 0,1× (0,025× su Claude Fable 5.1), scrittura 1,25× a 5 minuti e 2× a un'ora; pareggio dalla seconda chiamata con la cache a 5 minuti.</aside>
+        <aside class="notes">In figura la fascia grigia copre il solo prefisso: il checkpoint cache_control sta in fondo alla parte condivisa (slide 33), quindi storia, risultati e riga nuova si ricalcolano a ogni giro. Numeri esatti per l'API di Anthropic: lettura 0,1× (0,025× su Claude Fable 5.1), scrittura 1,25× a 5 minuti e 2× a un'ora; pareggio dalla seconda chiamata con la cache a 5 minuti.</aside>
       </section>
 
       <section id="slide-33">
