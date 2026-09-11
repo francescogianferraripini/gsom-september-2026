@@ -103,6 +103,8 @@ Togli Per l'agente conta la seconda riga: il data warehouse lo interroga attrave
 	- Il punto del sandbox in due tempi (nel 27 era Python, con DuckDB è SQL) e, a destra, il riquadro-payload con la query DuckDB. Il riferimento incrociato della slide 46 ora punta alla 25b.
 
 - **26 · La pagella dell'analitico** — `#slide-26` — `slide26-spettro-mini.svg`
+	- «non ridondante» va a ✓ (detto a voce)
+	- → fatto: voto ✓, e il perché lo regge: la ridondanza delle dimensioni è quella innocua e voluta, il fatto è calcolato una volta con una regola sola; quella che fa danno, la stessa misura ricalcolata in dieci posti, qui non c'è. Torna ✗ con l'antipattern della 22.
 	- Inverti questa slide con la successiva
 	- → fatto: scambiate. La **26** è ora «La pagella dell'analitico» (senza cerniera) e la **27** è «Qualità, completezza, ownership, dipendenze», che chiude la sezione e porta il blocco nero della cerniera verso la sezione 4. Rinominata la figura in `slide26-spettro-mini.svg`; sistemati i riferimenti incrociati (la pagella rimanda alla governance della 27, la slide 54 ai quattro punti della 27).
 - **27 · Qualità, completezza, ownership, dipendenze** — `#slide-27` — *nessuna figura* — porta la cerniera verso la sezione 4

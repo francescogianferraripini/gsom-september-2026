@@ -1037,7 +1037,7 @@ PostaPro · 22 · 1,2</span></div>
             <div class="col-text">
               <div class="pagella">
                 <div class="pr"><div class="mark ok">✓</div><div><p class="lab">ricercabile in modo progressivo</p><p class="why">dal totale per corriere alla singola spedizione, scendendo lungo le dimensioni; lo schema si legge senza conoscerlo. Restano gli errori di granularità e di fanout: pochi, e sempre gli stessi.</p></div></div>
-                <div class="pr"><div class="mark mid">~</div><div><p class="lab">non ridondante</p><p class="why">ridondante di proposito nelle dimensioni, ma controllata: un fatto calcolato una volta, una regola sola. Diventa ✗ appena si cede all'antipattern della slide 22.</p></div></div>
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">non ridondante</p><p class="why">ridondante di proposito nelle dimensioni, ma è la ridondanza innocua: il fatto è calcolato una volta, con una regola sola, e le dimensioni sono conformi. La ridondanza che fa danno, la stessa misura ricalcolata in dieci posti, qui non c'è. Torna ✗ appena si cede all'antipattern della slide 22.</p></div></div>
                 <div class="pr"><div class="mark mid">~</div><div><p class="lab">veritiera</p><p class="why">più del transazionale, perché qui si pulisce e si storicizza; ma vale quanto la governance della slide 27: controlli, completezza, un proprietario. Senza, è un numero giusto su dati sbagliati.</p></div></div>
                 <div class="pr"><div class="mark ok">✓</div><div><p class="lab">compounding</p><p class="why">dimensioni conformi, metriche definite una volta: il terzo fatto si aggancia ai primi due. È il requisito in cui l'analitico batte tutto il resto.</p></div></div>
               </div>
