@@ -1,46 +1,75 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
-  <title>Matrice due per due del dato strutturato: sulle righe la forma (relazionale, document JSON), sulle colonne il fine (transazionale, analitico); la cella relazionale per analitico, il data warehouse vendite, e in evidenza con l'etichetta qui entra l'agente, e una freccia la collega alla cella relazionale per transazionale</title>
+  <title>Matrice due per due del dato strutturato: sulle righe la forma (relazionale, document JSON), sulle colonne il fine (transazionale, analitico). In ogni cella un'iconcina della forma del dato (tabelle collegate, stella, blocchi JSON, un listato lungo) e la porta da cui ci entra l'agente: nel DB degli ordini solo da un tool o un'API, nel data warehouse vendite diretto in SQL, nel carrello JSON da un tool o anche diretto, negli eventi di navigazione nel sandbox con gli strumenti di bash. Una freccia dagli eventi al data warehouse: spesso vengono riversati nel mondo relazionale</title>
   <defs>
     <marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
   </defs>
 
   <!-- assi -->
-  <text x="386" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#838383">il fine</text>
-  <text x="14" y="226" transform="rotate(-90 14 226)" text-anchor="middle" font-size="12" font-weight="600" fill="#838383">la forma</text>
+  <text x="386" y="16" text-anchor="middle" font-size="12" font-weight="600" fill="#838383">il fine</text>
+  <text x="14" y="214" transform="rotate(-90 14 214)" text-anchor="middle" font-size="12" font-weight="600" fill="#838383">la forma</text>
   <g text-anchor="middle" font-size="14" font-weight="700" fill="#161719">
-    <text x="258" y="42">transazionale</text>
-    <text x="514" y="42">analitico</text>
+    <text x="258" y="38">transazionale</text>
+    <text x="514" y="38">analitico</text>
   </g>
   <g text-anchor="end" font-size="13" font-weight="700" fill="#161719">
-    <text x="126" y="130">relazionale</text>
-    <text x="126" y="300">document</text>
-    <text x="126" y="317">(JSON)</text>
+    <text x="126" y="126">relazionale</text>
+    <text x="126" y="296">document</text>
+    <text x="126" y="313">(JSON)</text>
   </g>
 
-  <!-- cella relazionale x transazionale -->
-  <rect x="134" y="56" width="248" height="140" rx="8" fill="#ffffff" stroke="#dee2e6"/>
-  <text x="150" y="120" font-size="14" font-weight="700" fill="#161719">il DB degli ordini</text>
-  <text x="150" y="142" font-size="12" fill="#838383">dietro <tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">cerca_ordine</tspan></text>
+  <!-- ═══ relazionale × transazionale ═══ -->
+  <rect x="134" y="50" width="248" height="148" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+  <text x="150" y="80" font-size="13" font-weight="700" fill="#161719">il DB degli ordini</text>
+  <text x="150" y="98" font-size="10.5" fill="#838383">dietro <tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="10" fill="#212529">cerca_ordine</tspan></text>
+  <g transform="translate(150,108)" stroke="#838383" stroke-width="1.1" fill="#ffffff">
+    <path d="M26 9 H30" fill="none"/><path d="M13 16 V28" fill="none"/>
+    <rect x="0" y="1" width="26" height="15" rx="2"/><rect x="0.7" y="1.7" width="24.6" height="4.3" fill="#e9ecef" stroke="none"/>
+    <rect x="30" y="14" width="26" height="15" rx="2"/><rect x="30.7" y="14.7" width="24.6" height="4.3" fill="#e9ecef" stroke="none"/>
+    <rect x="4" y="28" width="26" height="15" rx="2"/><rect x="4.7" y="28.7" width="24.6" height="4.3" fill="#e9ecef" stroke="none"/>
+  </g>
+  <rect x="150" y="158" width="216" height="26" rx="7" fill="#f4f4f5" stroke="#dee2e6"/>
+  <text x="164" y="175.5" font-size="11" fill="#212529"><tspan fill="#a1245a" font-weight="700">→ </tspan>ci entra solo da un tool o un&apos;API</text>
 
-  <!-- cella document x transazionale -->
-  <rect x="134" y="236" width="248" height="140" rx="8" fill="#ffffff" stroke="#dee2e6"/>
-  <text x="150" y="300" font-size="14" font-weight="700" fill="#161719">il carrello e il profilo cliente</text>
-  <text x="150" y="322" font-size="12" fill="#838383">un JSON per cliente, nell'e-commerce</text>
+  <!-- ═══ relazionale × analitico: elemento focale ═══ -->
+  <rect x="390" y="50" width="248" height="148" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+  <text x="406" y="80" font-size="13" font-weight="700" fill="#161719">il data warehouse vendite</text>
+  <text x="406" y="98" font-size="10.5" fill="#212529">fatti e dimensioni (sezione 3)</text>
+  <g transform="translate(406,108)" stroke="#838383" stroke-width="1.1" fill="#ffffff">
+    <path d="M16 18 L9 11 M40 18 L47 11 M16 29 L9 35 M40 29 L47 35" fill="none"/>
+    <rect x="0" y="1" width="18" height="10" rx="2"/><rect x="38" y="1" width="18" height="10" rx="2"/>
+    <rect x="0" y="34" width="18" height="10" rx="2"/><rect x="38" y="34" width="18" height="10" rx="2"/>
+    <rect x="18" y="16" width="20" height="13" rx="2" fill="#a1245a" stroke="#a1245a"/>
+  </g>
+  <rect x="406" y="158" width="216" height="26" rx="7" fill="#a1245a"/>
+  <text x="420" y="175.5" font-size="11" font-weight="600" fill="#ffffff">→ l&apos;agente ci entra diretto, in SQL</text>
 
-  <!-- cella document x analitico -->
-  <rect x="390" y="236" width="248" height="140" rx="8" fill="#ffffff" stroke="#dee2e6"/>
-  <text x="406" y="288" font-size="14" font-weight="700" fill="#161719">gli eventi di navigazione</text>
-  <text x="406" y="306" font-size="14" font-weight="700" fill="#161719">e i log</text>
-  <text x="406" y="328" font-size="12" fill="#838383">un JSON per evento, letti a lotti</text>
+  <!-- ═══ document × transazionale ═══ -->
+  <rect x="134" y="228" width="248" height="148" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+  <text x="150" y="258" font-size="13" font-weight="700" fill="#161719">il carrello e il profilo cliente</text>
+  <text x="150" y="276" font-size="10.5" fill="#838383">un JSON per cliente, nell&apos;e-commerce</text>
+  <g transform="translate(150,286)" stroke="#838383" stroke-width="1.1" fill="#ffffff">
+    <rect x="0" y="0" width="26" height="19" rx="3"/>
+    <rect x="14" y="12" width="26" height="19" rx="3"/>
+    <rect x="28" y="24" width="26" height="19" rx="3"/>
+    <g stroke="#a1245a" stroke-width="1" stroke-linecap="round"><path d="M33 31 H47"/><path d="M33 36.5 H43"/></g>
+  </g>
+  <rect x="150" y="336" width="216" height="26" rx="7" fill="#f4f4f5" stroke="#dee2e6"/>
+  <text x="164" y="353.5" font-size="11" fill="#212529"><tspan fill="#a1245a" font-weight="700">→ </tspan>da un tool, o anche diretto</text>
 
-  <!-- cella relazionale x analitico: elemento focale -->
-  <rect x="390" y="56" width="248" height="140" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
-  <text x="406" y="108" font-size="14" font-weight="700" fill="#161719">il data warehouse vendite</text>
-  <text x="406" y="130" font-size="12" fill="#212529">fatti e dimensioni (sezione 3)</text>
-  <rect x="406" y="146" width="118" height="24" rx="8" fill="#a1245a"/>
-  <text x="465" y="162" text-anchor="middle" font-size="11.5" font-weight="600" fill="#ffffff">qui entra l'agente</text>
+  <!-- ═══ document × analitico ═══ -->
+  <rect x="390" y="228" width="248" height="148" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+  <text x="406" y="258" font-size="13" font-weight="700" fill="#161719">gli eventi di navigazione e i log</text>
+  <text x="406" y="276" font-size="10.5" fill="#838383">un JSON per evento, letti a lotti</text>
+  <g transform="translate(406,286)">
+    <rect x="4" y="0" width="44" height="44" rx="3" fill="#ffffff" stroke="#838383" stroke-width="1.1"/>
+    <g stroke="#838383" stroke-width="1.1" stroke-linecap="round">
+      <path d="M10 8 H28"/><path d="M14 14 H38"/><path d="M14 20 H32"/><path d="M18 26 H40"/><path d="M14 32 H34"/><path d="M10 38 H26"/>
+    </g>
+  </g>
+  <rect x="406" y="336" width="216" height="26" rx="7" fill="#f4f4f5" stroke="#dee2e6"/>
+  <text x="420" y="353.5" font-size="11" fill="#212529"><tspan fill="#a1245a" font-weight="700">→ </tspan>nel sandbox, con bash</text>
 
-  <!-- la struttura deriva dal transazionale -->
-  <path d="M258 196 V214 H514 V198" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#mg)"/>
-  <text x="386" y="230" text-anchor="middle" font-size="11.5" font-weight="500" fill="#838383">la struttura deriva da qui</text>
+  <!-- gli eventi finiscono spesso nel mondo relazionale -->
+  <path d="M560 226 V202" fill="none" stroke="#838383" stroke-width="1.5" marker-end="url(#mg)"/>
+  <text x="548" y="218" text-anchor="end" font-size="11" fill="#838383">spesso riversati qui</text>
 </svg>

@@ -1,47 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 593 360" width="593" height="360" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
-  <title>La matrice due per due della forma e del fine, in versione ridotta: la cella relazionale per transazionale e spuntata come fatta, la freccia la struttura deriva da qui e accesa in burgundy e punta alla cella relazionale per analitico, elemento focale con l'etichetta sezione 3</title>
-  <defs>
-    <marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a1245a"/></marker>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 593 406" width="593" height="406" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>La matrice della forma e del fine con, in ogni cella, la forma che il dato prende: un modello relazionale normalizzato nel DB degli ordini (cella spuntata, e fatta), una stella nel data warehouse vendite (cella focale, etichetta sezione 3), una serie di blocchi con dentro JSON piccoli nel carrello e nel profilo cliente, un JSON molto grande come listato negli eventi di navigazione e nei log</title>
 
   <!-- assi -->
   <text x="348" y="16" text-anchor="middle" font-size="11.5" font-weight="600" fill="#838383">il fine</text>
-  <text x="10" y="196" transform="rotate(-90 10 196)" text-anchor="middle" font-size="11.5" font-weight="600" fill="#838383">la forma</text>
+  <text x="10" y="216" transform="rotate(-90 10 216)" text-anchor="middle" font-size="11.5" font-weight="600" fill="#838383">la forma</text>
   <g text-anchor="middle" font-size="13" font-weight="700" fill="#161719">
     <text x="227" y="36">transazionale</text>
     <text x="469" y="36">analitico</text>
   </g>
   <g text-anchor="end" font-size="12" font-weight="700" fill="#161719">
-    <text x="102" y="112">relazionale</text>
-    <text x="102" y="266">document</text>
-    <text x="102" y="282">(JSON)</text>
+    <text x="102" y="126">relazionale</text>
+    <text x="102" y="310">document</text>
+    <text x="102" y="326">(JSON)</text>
   </g>
 
-  <!-- cella relazionale x transazionale: fatta -->
-  <rect x="110" y="46" width="234" height="124" rx="8" fill="#ffffff" stroke="#dee2e6"/>
-  <text x="126" y="100" font-size="12.5" font-weight="700" fill="#161719">il DB degli ordini</text>
-  <text x="126" y="120" font-size="11.5" fill="#838383">dietro <tspan font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" fill="#212529">cerca_ordine</tspan></text>
+  <!-- ═══ relazionale × transazionale: fatta ═══ -->
+  <rect x="110" y="46" width="234" height="160" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+  <text x="126" y="68" font-size="12.5" font-weight="700" fill="#161719">il DB degli ordini</text>
+  <text x="126" y="88" font-size="11" fill="#838383">tabelle normalizzate, tante join</text>
   <circle cx="324" cy="64" r="10" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
   <path d="M319.5 64 L322.8 67.6 L328.8 59.8" fill="none" stroke="#a1245a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(126,102)" stroke="#838383" stroke-width="1.1" fill="#ffffff">
+    <g fill="none"><path d="M52 24 H72"/><path d="M130 14 H150"/><path d="M101 28 V54"/><path d="M120 68 H140"/></g>
+    <rect x="0" y="10" width="52" height="28" rx="3"/><rect x="0.7" y="10.7" width="50.6" height="8" fill="#e9ecef" stroke="none"/>
+    <rect x="72" y="0" width="58" height="28" rx="3"/><rect x="72.7" y="0.7" width="56.6" height="8" fill="#e9ecef" stroke="none"/>
+    <rect x="150" y="14" width="52" height="28" rx="3"/><rect x="150.7" y="14.7" width="50.6" height="8" fill="#e9ecef" stroke="none"/>
+    <rect x="70" y="54" width="62" height="28" rx="3"/><rect x="70.7" y="54.7" width="60.6" height="8" fill="#e9ecef" stroke="none"/>
+    <rect x="140" y="58" width="56" height="28" rx="3"/><rect x="140.7" y="58.7" width="54.6" height="8" fill="#e9ecef" stroke="none"/>
+  </g>
 
-  <!-- cella document x transazionale -->
-  <rect x="110" y="208" width="234" height="124" rx="8" fill="#ffffff" stroke="#dee2e6"/>
-  <text x="126" y="264" font-size="12.5" font-weight="700" fill="#161719">il carrello e il profilo cliente</text>
-  <text x="126" y="284" font-size="11.5" fill="#838383">un JSON per cliente, nell'e-commerce</text>
+  <!-- ═══ relazionale × analitico: elemento focale ═══ -->
+  <rect x="352" y="46" width="234" height="160" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
+  <text x="368" y="68" font-size="12.5" font-weight="700" fill="#161719">il data warehouse vendite</text>
+  <rect x="368" y="78" width="76" height="22" rx="8" fill="#a1245a"/>
+  <text x="406" y="93" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">sezione 3</text>
+  <g transform="translate(368,110)" stroke="#a1245a" stroke-width="1.2" fill="#ffffff">
+    <g fill="none"><path d="M48 18 L72 34 M152 18 L130 34 M48 74 L72 52 M152 74 L130 52"/></g>
+    <rect x="0" y="6" width="48" height="22" rx="3"/><rect x="152" y="6" width="48" height="22" rx="3"/>
+    <rect x="0" y="62" width="48" height="22" rx="3"/><rect x="152" y="62" width="48" height="22" rx="3"/>
+    <rect x="72" y="32" width="58" height="26" rx="3" fill="#a1245a" stroke="#a1245a"/>
+  </g>
 
-  <!-- cella document x analitico -->
-  <rect x="352" y="208" width="234" height="124" rx="8" fill="#ffffff" stroke="#dee2e6"/>
-  <text x="368" y="264" font-size="12.5" font-weight="700" fill="#161719">gli eventi di navigazione e i log</text>
-  <text x="368" y="284" font-size="11.5" fill="#838383">un JSON per evento, letti a lotti</text>
+  <!-- ═══ document × transazionale ═══ -->
+  <rect x="110" y="236" width="234" height="160" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+  <text x="126" y="258" font-size="12.5" font-weight="700" fill="#161719">il carrello e il profilo cliente</text>
+  <text x="126" y="278" font-size="11" fill="#838383">un JSON piccolo per cliente</text>
+  <g transform="translate(126,292)" stroke="#838383" stroke-width="1.1" fill="#ffffff">
+    <g id="b1"><rect x="0" y="14" width="46" height="42" rx="4"/>
+      <g stroke="#a1245a" stroke-width="1" stroke-linecap="round"><path d="M8 26 H22"/><path d="M12 34 H36"/><path d="M12 42 H30"/></g></g>
+    <g id="b2"><rect x="52" y="4" width="46" height="42" rx="4"/>
+      <g stroke="#a1245a" stroke-width="1" stroke-linecap="round"><path d="M60 16 H74"/><path d="M64 24 H88"/><path d="M64 32 H82"/></g></g>
+    <g id="b3"><rect x="104" y="18" width="46" height="42" rx="4"/>
+      <g stroke="#a1245a" stroke-width="1" stroke-linecap="round"><path d="M112 30 H126"/><path d="M116 38 H140"/><path d="M116 46 H134"/></g></g>
+    <g id="b4"><rect x="156" y="8" width="46" height="42" rx="4"/>
+      <g stroke="#a1245a" stroke-width="1" stroke-linecap="round"><path d="M164 20 H178"/><path d="M168 28 H192"/><path d="M168 36 H186"/></g></g>
+  </g>
 
-  <!-- cella relazionale x analitico: elemento focale -->
-  <rect x="352" y="46" width="234" height="124" rx="8" fill="#ecd3de" stroke="#a1245a" stroke-width="2.5"/>
-  <text x="368" y="88" font-size="12.5" font-weight="700" fill="#161719">il data warehouse vendite</text>
-  <text x="368" y="108" font-size="11.5" fill="#212529">fatti e dimensioni</text>
-  <rect x="368" y="122" width="76" height="22" rx="8" fill="#a1245a"/>
-  <text x="406" y="137" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">sezione 3</text>
-
-  <!-- la struttura deriva dal transazionale: accesa -->
-  <path d="M227 170 V188 H469 V172" fill="none" stroke="#a1245a" stroke-width="2.5" marker-end="url(#mb)"/>
-  <text x="348" y="204" text-anchor="middle" font-size="11.5" font-weight="600" fill="#a1245a">la struttura deriva da qui</text>
+  <!-- ═══ document × analitico ═══ -->
+  <rect x="352" y="236" width="234" height="160" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+  <text x="368" y="258" font-size="12.5" font-weight="700" fill="#161719">gli eventi di navigazione e i log</text>
+  <text x="368" y="278" font-size="11" fill="#838383">un JSON solo, molto grande</text>
+  <g transform="translate(368,288)">
+    <rect x="34" y="0" width="134" height="96" rx="4" fill="#ffffff" stroke="#838383" stroke-width="1.1"/>
+    <g stroke="#838383" stroke-width="1.1" stroke-linecap="round">
+      <path d="M42 12 H58"/><path d="M50 22 H108"/><path d="M50 32 H86"/><path d="M58 42 H120"/>
+      <path d="M58 52 H96"/><path d="M50 62 H112"/>
+      <path d="M50 72 H90" opacity="0.6"/><path d="M42 82 H74" opacity="0.35"/><path d="M50 92 H104" opacity="0.15"/>
+    </g>
+  </g>
 </svg>

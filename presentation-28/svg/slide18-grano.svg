@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
-  <title>Il grano del fatto: tre righe a confronto. Una riga uguale a un ordine non risponde ai ritardi per corriere ne ai colli in ritardo; una riga uguale a una spedizione, il grano scelto ed evidenziato, risponde ai ritardi per corriere e all'importo per mese ma non ai colli; una riga uguale a un collo risponde a tutte e tre le domande, ma solo se il gestionale lo scrive</title>
+  <title>La granularità del fatto: tre righe a confronto. Una riga uguale a un ordine non risponde ai ritardi per corriere ne ai colli in ritardo; una riga uguale a una spedizione, la granularità scelta ed evidenziata, risponde ai ritardi per corriere e all'importo per mese ma non ai colli; una riga uguale a un collo risponde a tutte e tre le domande, ma solo se il gestionale lo scrive</title>
   <defs>
     <g id="ok">
       <circle r="8" fill="#d1efea" stroke="#1ab197" stroke-width="1.5"/>
@@ -12,7 +12,7 @@
   </defs>
 
   <g text-anchor="middle" font-size="11" font-weight="700" letter-spacing="0.8" fill="#838383">
-    <text x="98" y="28">IL GRANO</text>
+    <text x="98" y="28">LA GRANULARITÀ</text>
     <text x="285" y="28">CHE COSA È UNA RIGA</text>
     <text x="514" y="28">CHE COSA SI PUÒ CHIEDERE</text>
   </g>
@@ -56,7 +56,7 @@
         <text x="226" y="202" fill="#212529">8801</text><text x="301" y="202" fill="#212529">SpedFast</text><text x="360" y="202" fill="#212529">1.240 €</text>
         <text x="226" y="222" fill="#212529">8802</text><text x="301" y="222" fill="#212529">PostaPro</text><text x="360" y="222" fill="#212529">890 €</text>
       </g>
-      <text x="180" y="250" font-size="11.5" font-weight="700" fill="#a1245a">il grano scelto</text>
+      <text x="180" y="250" font-size="11.5" font-weight="700" fill="#a1245a">la granularità scelta</text>
     </g>
     <g font-size="12" fill="#212529">
       <use href="#ok" x="410" y="176"/><text x="426" y="180">ritardi per corriere</text>

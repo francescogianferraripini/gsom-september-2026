@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 352" width="650" height="352" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Primo tempo: una stella sola. Il fatto fatto_spedizioni, una riga per spedizione, si aggancia alle tre dimensioni conformi dim_corriere, dim_data e dim_cliente, una join per dimensione</title>
+
+  <text x="60" y="30" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing="1.4" fill="#838383">I FATTI</text>
+  <text x="122" y="150" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing="1.4" fill="#838383">LE DIMENSIONI CONFORMI</text>
+
+  <!-- le dimensioni, la fascia che non si muove -->
+  <g fill="#ffffff" stroke="#838383" stroke-width="1.2">
+    <rect x="30" y="160" width="150" height="46" rx="5"/><rect x="250" y="160" width="150" height="46" rx="5"/><rect x="470" y="160" width="150" height="46" rx="5"/>
+  </g>
+  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" text-anchor="middle" fill="#212529">
+    <text x="105" y="180" font-size="10.5" font-weight="700">dim_corriere</text><text x="105" y="197" font-size="9" fill="#838383">nome · tipo</text>
+    <text x="325" y="180" font-size="10.5" font-weight="700">dim_data</text><text x="325" y="197" font-size="9" fill="#838383">giorno · mese</text>
+    <text x="545" y="180" font-size="10.5" font-weight="700">dim_cliente</text><text x="545" y="197" font-size="9" fill="#838383">regione · segmento</text>
+  </g>
+
+  <!-- il primo fatto -->
+  <g stroke="#838383" stroke-width="1.2" fill="none">
+    <path d="M120 104 L100 160"/><path d="M170 104 L300 160"/><path d="M212 104 L496 160"/>
+  </g>
+  <rect x="60" y="50" width="190" height="54" rx="5" fill="#ecd3de" stroke="#a1245a" stroke-width="1.6"/>
+  <text x="155" y="74" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700" fill="#a1245a">fatto_spedizioni</text>
+  <text x="155" y="92" text-anchor="middle" font-size="9.5" fill="#212529">una riga = una spedizione</text>
+</svg>

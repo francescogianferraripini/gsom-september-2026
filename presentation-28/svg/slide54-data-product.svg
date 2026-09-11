@@ -25,7 +25,7 @@
     <line x1="8" y1="86" x2="294" y2="86" stroke="#dee2e6" stroke-width="1"/>
 
     <!-- grano -->
-    <text x="20" y="103" font-size="11" font-weight="700" fill="#838383">grano</text>
+    <text x="20" y="103" font-size="11" font-weight="700" fill="#838383">granularità</text>
     <text x="66" y="103" font-size="12" fill="#212529">una riga = una spedizione</text>
     <line x1="8" y1="112" x2="294" y2="112" stroke="#dee2e6" stroke-width="1"/>
 

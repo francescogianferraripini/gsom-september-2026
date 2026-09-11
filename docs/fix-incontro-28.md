@@ -19,7 +19,7 @@ Per commentare, scrivi sotto la riga della slide.
 - **02 · La formula: oggi la KB** — `#slide-2` — `slide2-formula-kb.svg`
 - **03 · Dalla piramide: dati, informazione, conoscenza, intelligenza** — `#slide-3` — `slide3-piramide-1.svg` · `slide3-piramide-2.svg` · `slide3-piramide-3.svg` · `slide3-piramide-4.svg`
 	- Togliere Gestire i dati non basta: ogni gradino in più rende ciò che sotto c'è già riutilizzabile, da una persona e da un agente. Dalla presentazione Quantyca "Information Architecture", 2025.
-	- → fatto: nota tolta. Il credito alla presentazione Quantyca resta solo nelle note del relatore: dimmi se lo vuoi ancora sulla slide.
+	- → fatto: nota tolta. Il credito alla presentazione Quantyca resta solo nelle note del relatore (concordato).
 - **04 · I quattro requisiti di una conoscenza utile** — `#slide-4` — *nessuna figura*
 - **05 · Non è un problema dell'AI** — `#slide-5` — *immagine da reperire (placeholder)*
 	- Immagine da https://it.wikipedia.org/wiki/Il_nome_della_rosa#/media/File:Labyrinthus_Aedificium.svg
@@ -34,9 +34,12 @@ Per commentare, scrivi sotto la riga della slide.
 	- -rendere "relazionale: tabelle con colonne fisse, lo schema deciso prima, le relazioni per chiave. Document: un record è un documento JSON, con i campi che servono a lui, annidati; lo schema lo decide chi scrive." una lista puntata
 	- → fatto: i due punti sono ora liste puntate annidate (relazionale/document, transazionale/analitico), con il pallino piccolo grigio.
 	- - **Dove vive l'AI**l'agente scrive poco e chiede molto: quasi tutto ciò che vediamo oggi sta nella colonna analitica. Il transazionale lo raggiunge solo attraverso i tool, e la slide 11 dice perché. <-- discutiamone
+	- → fatto: il punto diventa «Da dove entra l'agente», in tre voci: analitico diretto in SQL; transazionale mediato da tool o API; document diretto se la struttura è semplice, eventi e log nel sandbox con bash.
 	- Rivediamo anche la figura
+	- → fatto: quattro porte d'ingresso, una per cella, e un'iconcina della forma del dato in ognuna (tabelle collegate, stella, blocchi JSON, listato). Tolta la freccia «la struttura deriva da qui»; aggiunta la freccia dagli eventi al data warehouse, «spesso riversati qui».
 - **09 · Il modello relazionale: tabelle, tipi, chiavi** — `#slide-9` — `slide9-chiavi.svg`
 	- Rendi la slide a 3 colonne. a sinistra il testo, in mezzo il sql, a dx lo schema disegnato, in modo più ordinato. riduci pure il font dello schema
+	- → fatto: tre colonne 25/43/32. Lo schema è ridisegnato in verticale come due riquadri di colonne (ordini sopra, spedizioni sotto, PK e FK marcate) con lo stesso valore 4471 accanto alle due chiavi e la freccia che risale; font più piccolo, sia nel DDL sia nello schema.
 - **10 · Il SQL: quattro verbi** — `#slide-10` — `slide10-sql-1.svg` · `slide10-sql-2.svg` · `slide10-sql-3.svg` · `slide10-sql-4.svg`
 - **11 · Il DB transazionale: per chi è fatto** — `#slide-11` — *nessuna figura*
 	- Chiamarlo "Il DB transazionale".
@@ -45,7 +48,9 @@ Per commentare, scrivi sotto la riga della slide.
 - **12 · La normalizzazione** — `#slide-12` — `slide12-normalizzazione.svg`
 - **13 · La pagella del transazionale, e la cerniera** — `#slide-13` — `slide13-assi-cerniera.svg`
 	- ricercabile in modo progressivo è X. 
+	- → fatto: voto ✗, con il perché riscritto: trovare per chiave non è cercare in modo progressivo, si trova solo ciò di cui si sa già il numero.
 	* nel visual, in ogni cella, disegnamo un modello relazionale transazionale, un datamart, una serie di blocchi con dentro del json piccolo, un json molto grande presentato come listato 
+	- → fatto: i quattro disegni sono nelle celle, in grande; sono gli stessi oggetti delle iconcine della slide 8, stessa famiglia grafica. Via anche qui la freccia «la struttura deriva da qui».
 
 ## Separatore di sezione 3 — «Il dato strutturato, 2/2: dove si interroga»  
 `#div-sec3` — `minimap-sec3.svg`
@@ -54,18 +59,22 @@ Per commentare, scrivi sotto la riga della slide.
 - **15 · Data warehouse: dove e come nasce** — `#slide-15` — `slide15-etl.svg`
 - **16 · Fatti e dimensioni: lo star schema** — `#slide-16` — `slide16-star.svg`
 	- Vorrei una transizione tra sql e star schema, così vedo bene grandi entrambi
+	- → fatto: due tempi sullo stesso spazio (nuova classe `.swap`): prima il DDL a tutta colonna, al click lo star schema a tutta colonna al suo posto.
 - **17 · La denormalizzazione, di proposito** — `#slide-17` — `slide17-dimensione.svg`
-- **18 · Il grano e le metriche** — `#slide-18` — `slide18-grano.svg`
+- **18 · La granularità e le metriche** — `#slide-18` — `slide18-grano.svg`
 	- Non mi piace la frase "una riga è una spedizione" è una frase che va scritta prima di ogni altra. Cambia tutto: una riga per spedizione risponde a "quanti ritardi per corriere"; una riga per collo risponde anche a "quanti colli in ritardo"; una riga per ordine non risponde a nessuna delle due se un ordine ha due spedizioni
-	- ⏸ da riscrivere: il commento cita il punto così com'è oggi, quindi non so in che direzione andare. Che cosa non funziona: l'attacco, la scelta dei tre grani, o la lunghezza?
+	- → fatto: «grano» diventa **granularità** in tutto il deck (titolo della slide compreso, e nelle figure 44, 45, 54, 56); il punto ha un attacco nuovo e un tono più piano: dice che cosa rappresenta una riga, e che va decisa prima perché stabilisce a quali domande la tabella può rispondere.
 - **19 · Join e fanout** — `#slide-19` — `slide19-fanout.svg`
 - **20 · Sicurezza: tabella, colonna, riga** — `#slide-20` — `slide20-sicurezza.svg`
 - **21 · Il data management come trasformazione di forma** — `#slide-21` — `slide21-lineage.svg`
 	- Non mi piace l'svg. parliamone
-- **22 · L'antipattern: una pipeline per report** — `#slide-22` — `slide22-pipeline-per-report.svg`
+	- → fatto: rifatto. Le fonti sono un DB transazionale vero (tabelle normalizzate legate da molte join, con `data_prevista` evidenziata dentro `spedizioni`), il data warehouse è disegnato a stella, i consumatori sono disegnati: il report con le barre, la dashboard, l'agente con il suo `esegui_sql`. L'onda di impatto arriva a tutti e tre.
+- **22 · L'antipattern: una pipeline per report** — `#slide-22` — `slide22-1.svg` · `slide22-2.svg` · `slide22-3.svg`
 	- Assolutamente da rifare il visual
-- **23 · Pregi di Kimball** — `#slide-23` — `slide23-conformi.svg`
+	- → fatto: tre tempi (`slide22-1/2/3.svg`), sincronizzati con i tre punti di testo. Arriva la richiesta e nasce la prima pipeline; se ne aggiungono altre, ognuna che riparte dal transazionale con il suo numero; alla fine la riunione con 3,8 · 3,2 · 4,1 e nessuno che sappia quale sia quello giusto.
+- **23 · Pregi di Kimball** — `#slide-23` — `slide23-1.svg` · `slide23-2.svg` · `slide23-3.svg`
 	- assolutamente da rifare il visual
+	- → fatto: tre tempi (`slide23-1/2/3.svg`), con lo stile a stella delle altre slide. Le dimensioni conformi stanno in una fascia centrale: prima `fatto_spedizioni`, poi `fatto_reclami` che riusa le stesse, infine il fatto nuovo che si aggancia a ciò che c'è già.
 - **24 · Limiti di Kimball, e cenni al data vault** — `#slide-24` — `slide24-star-vault-1.svg` · `slide24-star-vault-2.svg`
 	- la transizione non fa sparire lo star schema sottostante
 	- → fatto: due cause. La stella del tempo 1 restava sotto (ora è un fragment `fade-out`, sparisce al click); e dentro `slide24-star-vault-2.svg` c'era una copia della stella a opacity 0.06, tolta. Resta solo la stellina al 50% in basso a destra.
@@ -88,10 +97,10 @@ Togli Per l'agente conta la seconda riga: il data warehouse lo interroga attrave
 - **25b · Il motore piccolo entra nel sandbox** — `#slide-25b` — *nessuna figura* — **nuova**
 	- Il punto del sandbox in due tempi (nel 27 era Python, con DuckDB è SQL) e, a destra, il riquadro-payload con la query DuckDB. Il riferimento incrociato della slide 46 ora punta alla 25b.
 
-- **26 · Qualità, completezza, ownership, dipendenze** — `#slide-26` — *nessuna figura*
+- **26 · La pagella dell'analitico** — `#slide-26` — `slide26-spettro-mini.svg`
 	- Inverti questa slide con la successiva
-	- ⏸ da decidere: la 27 è la pagella + cerniera che chiude la sezione (come 13, 36, 42, 52). Invertendo, la chiusura diventa la 26, che la cerniera non ce l'ha. Sposto anche la cerniera sulla 26, o inverto solo il corpo?
-- **27 · La pagella dell'analitico, e la cerniera** — `#slide-27` — `slide27-spettro-mini.svg`
+	- → fatto: scambiate. La **26** è ora «La pagella dell'analitico» (senza cerniera) e la **27** è «Qualità, completezza, ownership, dipendenze», che chiude la sezione e porta il blocco nero della cerniera verso la sezione 4. Rinominata la figura in `slide26-spettro-mini.svg`; sistemati i riferimenti incrociati (la pagella rimanda alla governance della 27, la slide 54 ai quattro punti della 27).
+- **27 · Qualità, completezza, ownership, dipendenze** — `#slide-27` — *nessuna figura* — porta la cerniera verso la sezione 4
 
 ## Separatore di sezione 4 — «Il dato non strutturato: da analisi a search»  
 `#div-sec4` — `minimap-sec4.svg`

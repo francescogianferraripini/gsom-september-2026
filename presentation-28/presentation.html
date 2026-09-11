@@ -16,6 +16,11 @@
     .visual { flex: 1 1 0; min-height: 0; min-width: 0; display: flex; align-items: center; justify-content: center; }
     .visual img { max-width: 100%; max-height: 100%; width: auto; height: auto; }
 
+    /* due tempi sovrapposti di natura diversa: un riquadro di codice e una figura */
+    .reveal .swap { position: relative; flex: 1 1 0; min-height: 0; min-width: 0; }
+    .reveal .swap > * { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 100%; max-height: 100%; margin: 0; }
+    .reveal .swap > img { width: auto; height: auto; }
+
     /* tempi sovrapposti: stesso viewBox, nessun salto */
     .visual.stack { position: relative; display: block; }
     .visual.stack img {
@@ -383,9 +388,9 @@
             <li><strong>Il 26, il modello</strong>sa volere, non sa eseguire. Ciò che sa è compresso nei pesi, fermo al cut-off.</li>
             <li><strong>Il 27, l'harness</strong>prepara la finestra, esegue i tool, governa il contesto, osserva le tracce.</li>
             <li><strong>La domanda lasciata aperta</strong>quando l'agente chiama <code>cerca_ordine</code>, o <code>cerca_documenti</code>, che cosa trova dall'altra parte?</li>
-            <li><strong>Quello che vediamo nei progetti</strong>accanto alle dinamiche organizzative e alle persone, il blocco principale all'adozione dell'AI è sui dati: le aziende sono mediamente indietro nell'organizzarli, e ogni tentativo di innestare l'AI rende quel gap più evidente di prima.</li>
+            <li><strong>Quello che vediamo nei progetti</strong>accanto alle dinamiche organizzative e alle persone, il blocco principale all'adozione dell'AI è sui dati: le aziende sono mediamente indietro nell'organizzarli, e innestare l'AI rende quel gap evidente.</li>
           </ul>
-          <p class="caption" style="margin-top: 22px;">Quasi tutto ciò che l'agente deve sapere non sta nei suoi pesi e non lo scrive lui: sta nei sistemi dell'organizzazione. Dati, documenti, procedure, in forme diverse, fatte per lettori diversi.</p>
+          <p class="caption" style="margin-top: 22px;">Quasi tutto ciò che l'agente deve sapere non sta nei suoi pesi: sta nei sistemi dell'organizzazione, in forme fatte per lettori diversi.</p>
           <p class="hl-line">In che forma sta, e chi ce l'ha messa?</p>
           <div class="nota dark center" style="margin-top: auto;">L'agente legge tutto ciò che trova. Oggi: che cosa trova, e come dovrebbe essere strutturato l'insieme dei dati perché gli serva davvero.</div>
         </div>
@@ -530,7 +535,7 @@
         <div class="content">
           <div class="tv tv-40">
             <div class="col-text">
-              <ul class="pts tight">
+              <ul class="pts micro">
                 <li><strong>La forma</strong>
                   <ul class="subpts">
                     <li><strong>relazionale:</strong> tabelle con colonne fisse, lo schema deciso prima, le relazioni per chiave.</li>
@@ -543,10 +548,16 @@
                     <li><strong>analitico:</strong> rispondere a domande su ciò che è successo, leggendo milioni di righe insieme.</li>
                   </ul>
                 </li>
-                <li><strong>Dove vive l'AI</strong>l'agente scrive poco e chiede molto: quasi tutto ciò che vediamo oggi sta nella colonna analitica. Il transazionale lo raggiunge solo attraverso i tool, e la slide 11 dice perché.</li>
+                <li><strong>Da dove entra l'agente</strong>
+                  <ul class="subpts">
+                    <li><strong>analitico:</strong> diretto, in SQL: la forma è fatta per chi fa domande.</li>
+                    <li><strong>transazionale:</strong> mediato, da un tool o un'API; la slide 11 dice perché.</li>
+                    <li><strong>document:</strong> se la struttura è semplice, anche diretto; eventi e log li legge nel sandbox, con bash.</li>
+                  </ul>
+                </li>
               </ul>
             </div>
-            <div class="visual"><img src="svg/slide8-due-assi.svg" alt="Matrice 2×2: righe relazionale e document, colonne transazionale e analitico; nelle celle il DB degli ordini dietro cerca_ordine, il carrello e il profilo cliente, il data warehouse vendite (qui entra l'agente), gli eventi di navigazione e i log; una freccia dal transazionale relazionale all'analitico relazionale: la struttura deriva da qui"></div>
+            <div class="visual"><img src="svg/slide8-due-assi.svg" alt="Matrice 2×2: righe relazionale e document, colonne transazionale e analitico. In ogni cella un'iconcina della forma del dato (tabelle collegate, stella, blocchi JSON, un listato lungo) e la porta da cui entra l'agente: solo da un tool o un'API nel DB degli ordini, diretto nel data warehouse vendite, da un tool o anche diretto nel carrello JSON, nel sandbox con bash per gli eventi di navigazione; una freccia dagli eventi al data warehouse: spesso riversati qui"></div>
           </div>
           <div class="nota">Il relazionale è la forma che non si può non conoscere: anche chi sceglie il documento, o il grafo, ragiona per differenza da lì.</div>
         </div>
@@ -557,16 +568,16 @@
         <p class="eyebrow">SEZIONE 2 · IL DATO STRUTTURATO, 1/2: DOVE NASCE</p>
         <h2>Il modello relazionale: tabelle, tipi, chiavi</h2>
         <div class="content">
-          <div class="tv tv-40">
+          <div class="tv tv-3t" style="grid-template-columns: 25fr 43fr 32fr;">
             <div class="col-text">
-              <ul class="pts tight">
-                <li><strong>Colonne e tipi</strong>lo schema è deciso prima: ogni colonna ha un nome e un tipo. <code>3</code> in una colonna <code>giorni_ritardo INT</code> è un numero su cui si può sommare e confrontare; "3 giorni circa" in una cella di testo no. Il tipo è il primo pezzo di contesto della piramide.</li>
+              <ul class="pts micro">
+                <li><strong>Colonne e tipi</strong>lo schema è deciso prima: ogni colonna ha un nome e un tipo. <code>3</code> in una colonna <code>giorni_ritardo INT</code> è un numero su cui si può sommare e confrontare; "3 giorni circa" in una cella di testo no. Il tipo è il primo pezzo di contesto.</li>
                 <li><strong>La chiave primaria</strong>una colonna che identifica la riga una volta sola: <code>4471</code> è un ordine e uno solo. È ciò che rende un fatto ritrovabile.</li>
                 <li><strong>La chiave esterna</strong>una colonna che contiene la chiave di un'altra tabella: la spedizione porta l'<code>id_ordine</code>, l'ordine porta l'<code>id_cliente</code>. Le relazioni non sono disegnate: sono valori che si rimandano.</li>
               </ul>
             </div>
-            <div class="code-fig">
-              <div class="payload plain micro"><span class="k">CREATE TABLE</span> ordini (
+            <div class="col-text">
+              <div class="payload plain micro" style="font-size: 7.8pt;"><span class="k">CREATE TABLE</span> ordini (
   id_ordine    INT <span class="k">PRIMARY KEY</span>,          <span class="cm">-- un numero, unico: la chiave</span>
   id_cliente   INT <span class="k">REFERENCES</span> clienti,   <span class="cm">-- rimanda a un cliente</span>
   data_ordine  DATE,                     <span class="cm">-- una data, non un testo</span>
@@ -579,13 +590,13 @@
   data_prevista  DATE,
   data_consegna  DATE
 );</div>
-              <div class="visual fixed"><img src="svg/slide9-chiavi.svg" alt="Le tabelle ordini e spedizioni come griglie con tre righe ciascuna: la colonna id_ordine di ordini è la chiave primaria, quella di spedizioni la chiave esterna; una freccia le unisce: chiave esterna verso chiave primaria"></div>
             </div>
+            <div class="visual"><img src="svg/slide9-chiavi.svg" alt="Lo schema disegnato: il riquadro ordini con le sue colonne, id_ordine marcata PK; sotto il riquadro spedizioni, id_spedizione PK e id_ordine FK. Accanto alle due colonne chiave lo stesso valore 4471, e una freccia risale dalla chiave esterna alla chiave primaria"></div>
           </div>
           <div class="nota small">Quattro tabelle così (<code>clienti</code>, <code>ordini</code>, <code>spedizioni</code>, <code>prodotti</code>) sono ciò che sta dietro <code>cerca_ordine</code>. Il ritardo non è una colonna: è <code>data_consegna − data_prevista</code>, calcolato quando serve. Segnatevelo: torna nella sezione 3.</div>
         </div>
         <div class="footnote">09 / Sezione 2 · <span class="sid">#slide-9</span></div>
-        <aside class="notes">Il DDL si può saltare a voce se il tempo stringe: basta la figura sotto. I commenti a destra di ogni riga sono la lettura in italiano.</aside>
+        <aside class="notes">Tre colonne: il testo, il DDL, lo schema disegnato. Il DDL si può saltare a voce se il tempo stringe: basta la figura a destra. I commenti a destra di ogni riga del DDL sono la lettura in italiano.</aside>
       </section>
 
       <section id="slide-10">
@@ -693,19 +704,19 @@ PostaPro · 22 · 1,2</span></div>
           <div class="tv tv-45">
             <div class="col-text">
               <div class="pagella tight">
-                <div class="pr"><div class="mark mid">~</div><div><p class="lab">ricercabile in modo progressivo</p><p class="why">per chiave sì: l'ordine 4471 si trova in un istante. Per domanda no: non c'è un livello generale da cui scendere, e lo schema è spesso complesso e pieno di ambiguità rischiose: nomi che si somigliano, join che sembrano giuste e non lo sono. Anche in sola lettura, l'accesso va mediato dai tool.</p></div></div>
+                <div class="pr"><div class="mark no">✗</div><div><p class="lab">ricercabile in modo progressivo</p><p class="why">trovare per chiave non è cercare: l'ordine 4471 si trova in un istante, ma solo se se ne sa già il numero. Non c'è un livello generale da cui scendere, e lo schema è pieno di ambiguità rischiose: nomi che si somigliano, join che sembrano giuste e non lo sono. Anche in sola lettura, l'accesso va mediato dai tool.</p></div></div>
                 <div class="pr"><div class="mark ok">✓</div><div><p class="lab">non ridondante</p><p class="why">per costruzione: la normalizzazione, e le chiavi che la fanno rispettare.</p></div></div>
                 <div class="pr"><div class="mark ok">✓</div><div><p class="lab">veritiera</p><p class="why">è il sistema di record: i fatti nascono qui, in tempo reale, e l'applicazione ne risponde. Con un'avvertenza: nei dati più vecchi restano errori mai sanati, e non tutto è storicizzato (l'indirizzo di ieri è sparito). Molto spesso questa pulizia si fa nel data warehouse, non qui.</p></div></div>
                 <div class="pr"><div class="mark no">✗</div><div><p class="lab">compounding</p><p class="why">ogni applicazione ha il suo: gli ordini in un sistema, i reclami in un altro, i contratti in un terzo. I fatti non si agganciano fra loro, e la conoscenza non si accumula: si moltiplicano i silos.</p></div></div>
               </div>
               <p class="prule"><strong>Voti dati dal punto di vista di chi fa domande:</strong> una persona, o un agente.</p>
             </div>
-            <div class="visual"><img src="svg/slide13-assi-cerniera.svg" alt="La matrice 2×2 della slide 8 in miniatura: la cella relazionale × transazionale spuntata, la freccia la struttura deriva da qui accesa, la cella relazionale × analitico come elemento focale con l'etichetta sezione 3"></div>
+            <div class="visual"><img src="svg/slide13-assi-cerniera.svg" alt="La matrice della forma e del fine con, in ogni cella, la forma che il dato prende: un modello relazionale normalizzato nel DB degli ordini, cella spuntata; una stella nel data warehouse vendite, cella focale con l'etichetta sezione 3; una serie di blocchi con dentro JSON piccoli nel carrello; un JSON solo, molto grande, come listato negli eventi di navigazione"></div>
           </div>
-          <div class="nota dark center" style="font-size: 12.5pt; padding: 12px 22px;">Il transazionale è dove il dato nasce, ed è dietro i tool: <code>cerca_ordine</code> lo interroga per chiave, dall'applicazione. Il grano con cui scrive è il grano di tutto ciò che verrà dopo: nessuna trasformazione a valle inventa un dettaglio che a monte non c'è. Davanti all'agente, che fa domande, serve un'altra forma dello stesso dato. Sezione 3.</div>
+          <div class="nota dark center" style="font-size: 12.5pt; padding: 12px 22px;">Il transazionale è dove il dato nasce, ed è dietro i tool: <code>cerca_ordine</code> lo interroga per chiave, dall'applicazione. La granularità con cui scrive è la granularità di tutto ciò che verrà dopo: nessuna trasformazione a valle inventa un dettaglio che a monte non c'è. Davanti all'agente, che fa domande, serve un'altra forma dello stesso dato. Sezione 3.</div>
         </div>
         <div class="footnote">13 / Sezione 2 · <span class="sid">#slide-13</span></div>
-        <aside class="notes">Prima apparizione della pagella con i voti. La cerniera dichiara che la sezione 3 è un approfondimento della 2: il grano nasce nel transazionale.</aside>
+        <aside class="notes">Prima apparizione della pagella con i voti. La cerniera dichiara che la sezione 3 è un approfondimento della 2: la granularità nasce nel transazionale.</aside>
       </section>
 
       <!-- ══════════ SEZIONE 3 ══════════ -->
@@ -766,8 +777,8 @@ PostaPro · 22 · 1,2</span></div>
                 <li><strong>La stella</strong>ogni dimensione si aggancia al fatto con una join sola, sempre uguale. Non serve conoscere lo schema: si parte dal fatto e si esce verso la dimensione che serve. È leggibile da una persona, e da un modello.</li>
               </ul>
             </div>
-            <div class="code-fig">
-              <div class="payload plain micro"><span class="k">CREATE TABLE</span> dim_corriere (
+            <div class="swap">
+              <div class="payload plain micro fragment fade-out" data-fragment-index="0"><span class="k">CREATE TABLE</span> dim_corriere (
   id_corriere   INT <span class="k">PRIMARY KEY</span>,
   nome          VARCHAR(40),        <span class="cm">-- SpedFast</span>
   tipo          VARCHAR(20),        <span class="cm">-- espresso / standard</span>
@@ -782,13 +793,13 @@ PostaPro · 22 · 1,2</span></div>
   giorni_ritardo  INT,              <span class="cm">-- misura, già calcolata</span>
   giorni_lavorativi_ritardo INT     <span class="cm">-- stessa cosa, festivi esclusi (torna nella sez. 6)</span>
 );</div>
-              <div class="visual fixed" style="max-height: 118px;"><img src="svg/slide16-star.svg" alt="Lo star schema: fatto_spedizioni al centro con chiavi e misure; intorno dim_corriere, dim_cliente, dim_data, ognuna collegata al fatto da una linea sola etichettata con la chiave"></div>
+              <img class="fragment" data-fragment-index="0" src="svg/slide16-star.svg" alt="Lo star schema: fatto_spedizioni al centro con chiavi e misure; intorno dim_corriere, dim_cliente, dim_data, ognuna collegata al fatto da una linea sola etichettata con la chiave">
             </div>
           </div>
           <div class="nota small">Nel transazionale il ritardo era <code>data_consegna − data_prevista</code>, da calcolare ogni volta e da sapere. Qui è una colonna: qualcuno l'ha calcolata una volta, per tutti, con una regola sola.</div>
         </div>
         <div class="footnote">16 / Sezione 3 · <span class="sid">#slide-16</span></div>
-        <aside class="notes">Il DDL si può saltare a voce. La colonna giorni_lavorativi_ritardo sta qui perché torna nella traccia della slide 48.</aside>
+        <aside class="notes">Due tempi sullo stesso spazio: prima il DDL grande, al click lo star schema grande al suo posto. Il DDL si può saltare a voce. La colonna giorni_lavorativi_ritardo sta qui perché torna nella traccia della slide 48.</aside>
       </section>
 
       <section id="slide-17">
@@ -812,19 +823,19 @@ PostaPro · 22 · 1,2</span></div>
 
       <section id="slide-18">
         <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
-        <h2>Il grano e le metriche</h2>
+        <h2>La granularità e le metriche</h2>
         <div class="content">
           <div class="tv tv-40">
             <div class="col-text">
               <ul class="pts micro">
-                <li><strong>Il grano</strong>"una riga è una spedizione" è una frase che va scritta prima di ogni altra. Cambia tutto: una riga per spedizione risponde a "quanti ritardi per corriere"; una riga per collo risponde anche a "quanti colli in ritardo"; una riga per ordine non risponde a nessuna delle due se un ordine ha due spedizioni.</li>
-                <li><strong>Le metriche additive</strong>l'importo si somma su qualsiasi dimensione: per corriere, per mese, per regione. I giorni di ritardo si sommano, ma la media va ricalcolata dai totali, non mediando le medie. Il numero di clienti distinti non si somma affatto. Il grano dice quali somme sono legittime.</li>
-                <li><strong>Il grano viene da monte</strong>è la cerniera della slide 13: se il gestionale registra le spedizioni e non i colli, il fatto è la spedizione. Nessun ETL inventa un dettaglio che il sistema di record non ha scritto. Chi vuole un grano più fine deve cambiare il transazionale, non il data warehouse.</li>
+                <li><strong>La granularità</strong>dice che cosa rappresenta una riga: "una riga è una spedizione". Va decisa prima, perché stabilisce a quali domande la tabella può rispondere: una riga per spedizione basta per i ritardi per corriere; per i colli in ritardo serve una riga per collo; con una riga per ordine non si risponde né all'una né all'altra, perché un ordine può avere due spedizioni.</li>
+                <li><strong>Le metriche additive</strong>l'importo si somma su qualsiasi dimensione: per corriere, per mese, per regione. I giorni di ritardo si sommano, ma la media va ricalcolata dai totali, non mediando le medie. Il numero di clienti distinti non si somma affatto. La granularità dice quali somme sono legittime.</li>
+                <li><strong>La granularità viene da monte</strong>è la cerniera della slide 13: se il gestionale registra le spedizioni e non i colli, il fatto è la spedizione. Nessun ETL inventa un dettaglio che il sistema di record non ha scritto. Chi vuole una granularità più fine deve cambiare il transazionale, non il data warehouse.</li>
               </ul>
             </div>
-            <div class="visual"><img src="svg/slide18-grano.svg" alt="Tre righe, una per grano: una riga = un ordine, una riga = una spedizione (il grano scelto, evidenziato), una riga = un collo; per ciascuna una mini-tabella e tre domande con spunta o croce; sulla riga del collo la nota: solo se il gestionale lo scrive"></div>
+            <div class="visual"><img src="svg/slide18-grano.svg" alt="Tre righe, una per granularità: una riga = un ordine, una riga = una spedizione (la granularità scelta, evidenziata), una riga = un collo; per ciascuna una mini-tabella e tre domande con spunta o croce; sulla riga del collo la nota: solo se il gestionale lo scrive"></div>
           </div>
-          <div class="nota">Per l'agente il grano è la prima cosa da sapere e l'ultima che gli viene detta: "una riga è una spedizione" vale più di cento descrizioni di colonne. Torna nella sezione 6 e nella 7.</div>
+          <div class="nota">Per l'agente la granularità è la prima cosa da sapere e l'ultima che gli viene detta: "una riga è una spedizione" vale più di cento descrizioni di colonne. Torna nella sezione 6 e nella 7.</div>
         </div>
         <div class="footnote">18 / Sezione 3 · <span class="sid">#slide-18</span></div>
       </section>
@@ -838,7 +849,7 @@ PostaPro · 22 · 1,2</span></div>
               <ul class="pts micro">
                 <li><strong>La domanda</strong>"per corriere: importo spedito e numero di reclami". Due fatti, <code>fatto_spedizioni</code> e <code>fatto_reclami</code>, con grani diversi: una riga per spedizione, una riga per reclamo.</li>
                 <li><strong>Il fanout</strong>se li unisco per corriere prima di aggregare, ogni spedizione si accoppia con ogni reclamo dello stesso corriere: 121 spedizioni × 9 reclami = 1.089 righe, e l'importo di SpedFast esce nove volte più grande. Nessun errore, nessun avviso: un numero sbagliato con l'aria di un numero giusto.</li>
-                <li><strong>La forma giusta</strong>aggrega ciascun fatto al grano della domanda (per corriere), e unisci i due totali: una subquery per fatto, poi una join fra risultati di una riga per corriere. È la regola: mai una join fra fatti, sempre fra aggregati.</li>
+                <li><strong>La forma giusta</strong>aggrega ciascun fatto alla granularità della domanda (per corriere), e unisci i due totali: una subquery per fatto, poi una join fra risultati di una riga per corriere. È la regola: mai una join fra fatti, sempre fra aggregati.</li>
               </ul>
             </div>
             <div class="code-fig">
@@ -858,7 +869,7 @@ PostaPro · 22 · 1,2</span></div>
 <span class="k">JOIN</span>   dim_corriere c <span class="k">USING</span> (id_corriere);   <span class="cm">-- SpedFast: 184.300 € · 9</span></div>
             </div>
           </div>
-          <div class="nota small">È l'errore più frequente di chi scrive SQL, persone e modelli: torna nella sezione 6 come primo modo in cui Text2SQL sbaglia con l'aria di aver ragione. Il semantic linking, che dichiara il grano di ogni tabella a partire dalla classe, lo impedisce alla radice: sezione 7, slide 56.</div>
+          <div class="nota small">È l'errore più frequente di chi scrive SQL, persone e modelli: torna nella sezione 6 come primo modo in cui Text2SQL sbaglia con l'aria di aver ragione. Il semantic linking, che dichiara la granularità di ogni tabella a partire dalla classe, lo impedisce alla radice: sezione 7, slide 56.</div>
         </div>
         <div class="footnote">19 / Sezione 3 · <span class="sid">#slide-19</span></div>
       </section>
@@ -895,7 +906,7 @@ PostaPro · 22 · 1,2</span></div>
                 <li><strong>Le dipendenze</strong><code>fatto_spedizioni</code> dipende da <code>spedizioni</code> e da <code>ordini</code>; il report dei ritardi dipende da <code>fatto_spedizioni</code>. Se cambia una colonna a monte, si rompe qualcosa a valle. Sapere che cosa dipende da che cosa (il lineage) è metà del mestiere.</li>
               </ul>
             </div>
-            <div class="visual"><img src="svg/slide21-lineage.svg" alt="Grafo di dipendenze da sinistra a destra: le fonti ordini, spedizioni, reclami convergono nell'ETL che ricompone, calcola, integra, storicizza; al centro fatto_spedizioni con owner team logistica, fatto_reclami, dim_corriere; a destra i consumatori: report ritardi, dashboard direzione, tool esegui_sql dell'agente. La colonna spedizioni.data_prevista è evidenziata e un'onda si propaga fino ai tre consumatori: se cambia questa, si rompono questi"></div>
+            <div class="visual"><img src="svg/slide21-lineage.svg" alt="La trasformazione di forma, da sinistra a destra: le fonti come database transazionale, molte tabelle normalizzate legate da join, con la colonna data_prevista di spedizioni evidenziata; il blocco ETL che ricompone, calcola, integra, storicizza; il data warehouse disegnato come stella, fatto_spedizioni al centro con tre dimensioni e l'owner; i consumatori disegnati: il report dei ritardi, la dashboard della direzione, l'agente con il tool esegui_sql. Un'onda parte dalla colonna evidenziata e arriva a tutti e tre: se cambia questa, si rompono questi"></div>
           </div>
           <div class="nota small">Chi ha fatto la trasformazione sa che cosa vuol dire "giorni di ritardo": festivi esclusi? dalla data prevista o da quella promessa? Quel sapere è la semantica della piramide, e di solito sta solo nel codice della pipeline. Sezione 7.</div>
         </div>
@@ -910,14 +921,19 @@ PostaPro · 22 · 1,2</span></div>
             <div class="col-text">
               <ul class="pts micro">
                 <li><strong>Come nasce</strong>arriva la richiesta "voglio il report dei ritardi per regione". Il modo più veloce è una pipeline nuova: dal transazionale, con le sue join, il suo calcolo del ritardo, la sua tabella finale. Funziona in una settimana. La richiesta dopo fa lo stesso.</li>
-                <li><strong>Che cosa produce</strong>dieci report, dieci pipeline, dieci definizioni di ritardo (festivi sì, festivi no, dalla data promessa, da quella prevista). Tre "ritardo medio" nella stessa riunione: il foglio Excel della slide 14, rifatto in grande e con più fatica.</li>
-                <li><strong>Che cosa si perde</strong>il compounding. Ogni pipeline parte da zero invece di agganciarsi al fatto che esiste; il lavoro dell'undicesima non rende migliori le dieci prima. E per un agente è peggio: dieci tabelle con lo stesso nome e numeri diversi, nessun modo di sapere quale sia quella buona.</li>
+                <li class="fragment custom lit" data-fragment-index="1"><strong>Che cosa produce</strong>dieci report, dieci pipeline, dieci definizioni di ritardo (festivi sì, festivi no, dalla data promessa, da quella prevista). Tre "ritardo medio" nella stessa riunione: il foglio Excel della slide 14, rifatto in grande e con più fatica.</li>
+                <li class="fragment custom lit" data-fragment-index="2"><strong>Che cosa si perde</strong>il compounding. Ogni pipeline parte da zero invece di agganciarsi al fatto che esiste; il lavoro dell'undicesima non rende migliori le dieci prima. E per un agente è peggio: dieci tabelle con lo stesso nome e numeri diversi, nessun modo di sapere quale sia quella buona.</li>
               </ul>
             </div>
-            <div class="visual"><img src="svg/slide22-pipeline-per-report.svg" alt="Due pannelli: a sinistra dal transazionale partono dieci pipeline parallele, ognuna con il suo ETL e il suo report, e tre report mostrano ritardi medi diversi: 10 pipeline, 10 definizioni; a destra una sola pipeline verso fatto_spedizioni e dieci report a ventaglio tutti con 3,8: 1 pipeline, 1 definizione, 10 lettori"></div>
+            <div class="visual stack">
+              <img src="svg/slide22-1.svg" alt="Tempo 1: arriva la richiesta «voglio il ritardo medio per regione» e nasce una pipeline: dal transazionale a un ETL a un report con il suo numero, 3,8. Funziona, in una settimana">
+              <img class="fragment" data-fragment-index="1" src="svg/slide22-2.svg" alt="Tempo 2: alla prima pipeline se ne aggiungono altre, una per richiesta, ognuna che riparte dal transazionale con il suo ETL e il suo report: 3,8, 3,2, 4,1, 3,9. Dieci richieste, dieci pipeline, dieci definizioni di ritardo">
+              <img class="fragment" data-fragment-index="2" src="svg/slide22-3.svg" alt="Tempo 3: la riunione. I tre numeri che dicono ritardo medio arrivano da tre pipeline diverse e non coincidono: 3,8, 3,2, 4,1, e nessuno sa quale sia quello giusto">
+            </div>
           </div>
           <div class="nota">Il pattern giusto è la stella: un fatto, calcolato una volta con una regola sola, e dieci report che lo leggono. La pipeline in più si scrive solo quando manca un fatto, non quando manca un report.</div>
         </div>
+        <aside class="notes">Tre tempi: la prima pipeline che funziona, le altre che si accumulano, la riunione con tre numeri diversi. Il punto di testo si accende insieme al suo tempo.</aside>
         <div class="footnote">22 / Sezione 3 · <span class="sid">#slide-22</span></div>
       </section>
 
@@ -928,16 +944,21 @@ PostaPro · 22 · 1,2</span></div>
           <div class="tv tv-rev">
             <div class="col-text">
               <ul class="pts micro">
-                <li><strong>Leggibile senza lo schema</strong>un fatto al centro, le dimensioni intorno, una join per dimensione, sempre uguale. Chi arriva capisce dove sono le cose in un'ora; un modello lo capisce dalla lista delle tabelle. Gli errori restano possibili, sul grano prima di tutto (slide 18 e 19), ma sono molti meno che sui modelli transazionali tipici, e sono sempre gli stessi: si possono prevenire.</li>
-                <li><strong>Nomi di business</strong><code>dim_corriere.nome</code>, <code>fatto_spedizioni.giorni_ritardo</code>: le colonne si chiamano come le cose di cui si parla in riunione, non <code>ord_hdr.dlv_dt</code>. La traduzione l'ha fatta l'ETL, una volta.</li>
-                <li><strong>Dimensioni conformi</strong>la stessa <code>dim_corriere</code> serve al fatto delle spedizioni e a quello dei reclami. Quando arriva un terzo fatto (le fatture dei corrieri) si aggancia alla dimensione che c'è già: è il compounding, reso struttura.</li>
-                <li><strong>Metriche definite una volta</strong>"giorni di ritardo" ha una regola, scritta nell'ETL, uguale per tutti i report. La riunione con tre ritardi medi finisce.</li>
+                <li><strong>Leggibile senza lo schema</strong>un fatto al centro, le dimensioni intorno, una join per dimensione, sempre uguale. Chi arriva capisce dove sono le cose in un'ora; un modello lo capisce dalla lista delle tabelle. Gli errori restano possibili, sulla granularità prima di tutto (slide 18 e 19), ma sono molti meno che sui modelli transazionali tipici, e sono sempre gli stessi: si possono prevenire.</li>
+                <li class="fragment custom lit" data-fragment-index="1"><strong>Nomi di business</strong><code>dim_corriere.nome</code>, <code>fatto_spedizioni.giorni_ritardo</code>: le colonne si chiamano come le cose di cui si parla in riunione, non <code>ord_hdr.dlv_dt</code>. La traduzione l'ha fatta l'ETL, una volta.</li>
+                <li class="fragment custom lit" data-fragment-index="1"><strong>Dimensioni conformi</strong>la stessa <code>dim_corriere</code> serve al fatto delle spedizioni e a quello dei reclami. Quando arriva un terzo fatto (le fatture dei corrieri) si aggancia alla dimensione che c'è già: è il compounding, reso struttura.</li>
+                <li class="fragment custom lit" data-fragment-index="2"><strong>Metriche definite una volta</strong>"giorni di ritardo" ha una regola, scritta nell'ETL, uguale per tutti i report. La riunione con tre ritardi medi finisce.</li>
               </ul>
             </div>
-            <div class="visual"><img src="svg/slide23-conformi.svg" alt="Tre fatti in fila, fatto_spedizioni, fatto_reclami e fatto_fatture_corrieri tratteggiato come nuovo, sopra tre dimensioni condivise dim_corriere, dim_data, dim_cliente; il terzo fatto si collega con linee tratteggiate alle stesse dimensioni: si aggancia a ciò che c'è, compounding"></div>
+            <div class="visual stack">
+              <img src="svg/slide23-1.svg" alt="Tempo 1: una stella sola, fatto_spedizioni agganciato alle tre dimensioni conformi dim_corriere, dim_data, dim_cliente">
+              <img class="fragment" data-fragment-index="1" src="svg/slide23-2.svg" alt="Tempo 2: arriva fatto_reclami e riusa le stesse dimensioni: nessun lavoro in più">
+              <img class="fragment" data-fragment-index="2" src="svg/slide23-3.svg" alt="Tempo 3: arriva il fatto nuovo, fatto_fatture_corrieri, e si aggancia anche lui alle dimensioni che ci sono già: è il compounding">
+            </div>
           </div>
           <div class="nota small">Misurato con la pagella: ricercabile dal generale al particolare (dal totale per corriere alla singola spedizione), non ridondante dove conta, e compounding per costruzione. È la ragione per cui l'agente entra qui e non nel transazionale.</div>
         </div>
+        <aside class="notes">Tre tempi: la prima stella, il secondo fatto che riusa le dimensioni, il terzo che si aggancia senza lavoro. Il compounding si vede accadere.</aside>
         <div class="footnote">23 / Sezione 3 · <span class="sid">#slide-23</span></div>
       </section>
 
@@ -1013,11 +1034,31 @@ PostaPro · 22 · 1,2</span></div>
 
       <section id="slide-26">
         <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
+        <h2>La pagella dell'analitico</h2>
+        <div class="content">
+          <div class="tv tv-45">
+            <div class="col-text">
+              <div class="pagella">
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">ricercabile in modo progressivo</p><p class="why">dal totale per corriere alla singola spedizione, scendendo lungo le dimensioni; lo schema si legge senza conoscerlo. Restano gli errori di granularità e di fanout: pochi, e sempre gli stessi.</p></div></div>
+                <div class="pr"><div class="mark mid">~</div><div><p class="lab">non ridondante</p><p class="why">ridondante di proposito nelle dimensioni, ma controllata: un fatto calcolato una volta, una regola sola. Diventa ✗ appena si cede all'antipattern della slide 22.</p></div></div>
+                <div class="pr"><div class="mark mid">~</div><div><p class="lab">veritiera</p><p class="why">più del transazionale, perché qui si pulisce e si storicizza; ma vale quanto la governance della slide 27: controlli, completezza, un proprietario. Senza, è un numero giusto su dati sbagliati.</p></div></div>
+                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">compounding</p><p class="why">dimensioni conformi, metriche definite una volta: il terzo fatto si aggancia ai primi due. È il requisito in cui l'analitico batte tutto il resto.</p></div></div>
+              </div>
+              <p class="prule"><strong>Voti dati dal punto di vista di chi fa domande:</strong> una persona, o un agente.</p>
+            </div>
+            <div class="visual"><img src="svg/slide26-spettro-mini.svg" alt="La mini-mappa dello spettro: la colonna della tabella spuntata, la colonna del documento che si accende"></div>
+          </div>
+        </div>
+        <div class="footnote">26 / Sezione 3 · <span class="sid">#slide-26</span></div>
+      </section>
+
+      <section id="slide-27">
+        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
         <h2>Qualità, completezza, ownership, dipendenze</h2>
         <div class="content">
           <div class="tv tv-rev">
             <div class="col-text">
-              <ul class="pts micro">
+              <ul class="pts micro nano">
                 <li><strong>Qualità</strong>il data warehouse pulisce (slide 13: gli errori vecchi del transazionale si sanano qui), ma pulisce ciò che sa: una data di consegna sbagliata di un giorno passa. Servono controlli scritti (il ritardo non può essere negativo; ogni spedizione ha un corriere) che girino a ogni carico, e qualcuno che guardi quando falliscono.</li>
                 <li><strong>Completezza</strong>ciò che manca non si vede: i reclami arrivati per telefono non stanno nel ticketing, quindi non stanno nel fatto. Un numero giusto su un insieme incompleto è un numero sbagliato con l'aria di un numero giusto: la stessa faccia del fanout.</li>
                 <li><strong>Ownership</strong>ogni tabella ha bisogno di un nome: chi risponde di <code>fatto_spedizioni</code>, chi decide che cosa vuol dire "ritardo", chi avvisa quando cambia. Senza, la definizione la dà chi l'ha usata per ultimo.</li>
@@ -1033,31 +1074,11 @@ PostaPro · 22 · 1,2</span></div>
               </div>
             </div>
           </div>
-          <div class="nota small">Tenere sotto controllo questi quattro punti è tipicamente il mandato principale della Data Governance: chi risponde di che cosa, con quali regole, misurato come. Per l'agente sono i quattro modi in cui una risposta esce sbagliata da una query giusta. La forma che la governance prende oggi, trattare ogni tabella come un prodotto con un proprietario, un contratto e dei controlli, è la sezione 7.</div>
-        </div>
-        <div class="footnote">26 / Sezione 3 · <span class="sid">#slide-26</span></div>
-        <aside class="notes">Candidata al taglio se il budget stringe.</aside>
-      </section>
-
-      <section id="slide-27">
-        <p class="eyebrow">SEZIONE 3 · IL DATO STRUTTURATO, 2/2: DOVE SI INTERROGA</p>
-        <h2>La pagella dell'analitico, e la cerniera</h2>
-        <div class="content">
-          <div class="tv tv-45">
-            <div class="col-text">
-              <div class="pagella">
-                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">ricercabile in modo progressivo</p><p class="why">dal totale per corriere alla singola spedizione, scendendo lungo le dimensioni; lo schema si legge senza conoscerlo. Restano gli errori di grano e di fanout: pochi, e sempre gli stessi.</p></div></div>
-                <div class="pr"><div class="mark mid">~</div><div><p class="lab">non ridondante</p><p class="why">ridondante di proposito nelle dimensioni, ma controllata: un fatto calcolato una volta, una regola sola. Diventa ✗ appena si cede all'antipattern della slide 22.</p></div></div>
-                <div class="pr"><div class="mark mid">~</div><div><p class="lab">veritiera</p><p class="why">più del transazionale, perché qui si pulisce e si storicizza; ma vale quanto la governance della slide 26: controlli, completezza, un proprietario. Senza, è un numero giusto su dati sbagliati.</p></div></div>
-                <div class="pr"><div class="mark ok">✓</div><div><p class="lab">compounding</p><p class="why">dimensioni conformi, metriche definite una volta: il terzo fatto si aggancia ai primi due. È il requisito in cui l'analitico batte tutto il resto.</p></div></div>
-              </div>
-              <p class="prule"><strong>Voti dati dal punto di vista di chi fa domande:</strong> una persona, o un agente.</p>
-            </div>
-            <div class="visual"><img src="svg/slide27-spettro-mini.svg" alt="La mini-mappa dello spettro: la colonna della tabella spuntata, la colonna del documento che si accende"></div>
-          </div>
+          <div class="nota small">Questi quattro punti sono il mandato della Data Governance: chi risponde di che cosa, con quali regole, misurato come. Per l'agente sono i quattro modi in cui una risposta esce sbagliata da una query giusta. Trattare ogni tabella come un prodotto, con un proprietario e un contratto, è la sezione 7.</div>
           <div class="nota dark center" style="font-size: 12.5pt; padding: 12px 22px;">Il dato strutturato copre ciò che qualcuno ha deciso di mettere in una cella prima di scriverlo. Il contratto con SpedFast, il reclamo del cliente, la policy sui rimborsi non stanno in nessuna cella: sono testo. Come si cerca un fatto dentro un testo, e che cosa cambia per l'agente: sezione 4.</div>
         </div>
         <div class="footnote">27 / Sezione 3 · <span class="sid">#slide-27</span></div>
+        <aside class="notes">Chiude la sezione: la pagella sbiadita richiama quella della slide 26 e accende "veritiera", il blocco nero porta alla sezione 4. Se il budget stringe si può correre sui quattro punti, ma la slide non si taglia: senza, la cerniera va rimessa sulla 26.</aside>
       </section>
 
       <!-- ══════════ SEZIONE 4 ══════════ -->
@@ -1096,7 +1117,7 @@ PostaPro · 22 · 1,2</span></div>
               <ul class="pts micro">
                 <li><strong>Nel data warehouse</strong><code>giorni_ritardo = 5</code> è un fatto già deciso: qualcuno ha scelto la colonna, il tipo, la regola di calcolo, prima di scrivere. Chi legge non interpreta: trova.</li>
                 <li><strong>Nel contratto</strong>"Per consegne effettuate oltre il terzo giorno lavorativo successivo alla data concordata, il Vettore riconoscerà una penale pari al 2% del valore della spedizione." Il fatto (penale 2%, soglia 3 giorni lavorativi) c'è, ma sta in una frase: chi legge deve trovarla, capirla, e decidere che "giorno lavorativo" è la stessa cosa del "giorno di ritardo" del data warehouse. Forse no.</li>
-                <li><strong>Informazione spuria</strong>ogni estrazione è un'interpretazione, e può essere sbagliata: la frase giusta letta male, la frase di un contratto vecchio, una bozza mai firmata. Il data warehouse sbaglia in pochi modi noti (il grano); il testo sbaglia in modi che non si vedono.</li>
+                <li><strong>Informazione spuria</strong>ogni estrazione è un'interpretazione, e può essere sbagliata: la frase giusta letta male, la frase di un contratto vecchio, una bozza mai firmata. Il data warehouse sbaglia in pochi modi noti (la granularità); il testo sbaglia in modi che non si vedono.</li>
               </ul>
             </div>
             <div class="visual"><img src="svg/slide29-fatto-nel-testo.svg" alt="A sinistra la cella giorni_ritardo = 5 di fatto_spedizioni, deciso prima: trovi; a destra un paragrafo del contratto con la frase della penale evidenziata e tre frecce di estrazione verso penale 2%, soglia 3 giorni lavorativi con un punto interrogativo, base valore spedizione: estratto ogni volta, interpreti"></div>
@@ -1113,7 +1134,7 @@ PostaPro · 22 · 1,2</span></div>
           <table class="tbl micro">
             <thead><tr><th></th><th>Analisi</th><th>Search</th></tr></thead>
             <tbody>
-              <tr><td>L'unità</td><td>la riga di un fatto, con il suo grano</td><td>il passaggio: un paragrafo, una clausola, una pagina</td></tr>
+              <tr><td>L'unità</td><td>la riga di un fatto, con la sua granularità</td><td>il passaggio: un paragrafo, una clausola, una pagina</td></tr>
               <tr><td>La domanda</td><td>quanto, per chi, quando: si calcola</td><td>dove sta scritto: si trova, poi si legge</td></tr>
               <tr><td>Lo strumento</td><td>una query su tabelle con uno schema</td><td>un indice su testi senza schema, e un punteggio</td></tr>
               <tr><td>La risposta</td><td>un numero, esatto o sbagliato</td><td>una lista ordinata di candidati, e nessuna garanzia che il primo sia quello giusto</td></tr>
@@ -1449,12 +1470,12 @@ PostaPro · 22 · 1,2</span></div>
           <div class="tv tv-3t" style="grid-template-columns: 30fr 24fr 44fr;">
             <div class="col-text" style="justify-content: center;">
               <ul class="pts micro nano">
-                <li><strong>Lo schema entra al giro zero</strong>nel system prompt, sotto le regole, c'è la descrizione del data warehouse: il DDL di <code>fatto_spedizioni</code> e delle dimensioni (slide 16), con una riga di descrizione per tabella e per colonna, e il grano dichiarato: "una riga è una spedizione". È il 27, slide 8: ciò che il modello deve sapere, l'harness glielo mette davanti prima della prima parola.</li>
+                <li><strong>Lo schema entra al giro zero</strong>nel system prompt, sotto le regole, c'è la descrizione del data warehouse: il DDL di <code>fatto_spedizioni</code> e delle dimensioni (slide 16), con una riga di descrizione per tabella e per colonna, e la granularità dichiarata: "una riga è una spedizione". È il 27, slide 8: ciò che il modello deve sapere, l'harness glielo mette davanti prima della prima parola.</li>
                 <li><strong>Il modello scrive il SQL</strong>legge la domanda, legge lo schema, e chiama <code>esegui_sql</code> con la query della slide 10. Non c'è un secondo modello dentro il tool: il tool esegue, e basta.</li>
                 <li><strong>L'harness esegue, con l'identità giusta</strong>la query gira sul data warehouse come Marco (slide 20); se fallisce, l'errore rientra come testo (il 27, slide 16) e il modello la riscrive; se riesce, rientrano tre righe: <code>SpedFast 121 · Corriere Nord 44 · PostaPro 22</code>. Il conto l'ha fatto il database.</li>
               </ul>
             </div>
-            <div class="visual"><img src="svg/slide44-finestra-schema.svg" alt="La finestra a strati del 27: lo strato system prompt diviso in due fasce, ruolo e regole attenuata e lo schema del data warehouse con DDL, descrizioni e grano in evidenza; nello strato dei tool la riga esegui_sql evidenziata"></div>
+            <div class="visual"><img src="svg/slide44-finestra-schema.svg" alt="La finestra a strati del 27: lo strato system prompt diviso in due fasce, ruolo e regole attenuata e lo schema del data warehouse con DDL, descrizioni e granularità in evidenza; nello strato dei tool la riga esegui_sql evidenziata"></div>
             <div class="visual"><img src="svg/slide44-text2sql-sequence.svg" alt="Sequence diagram: l'harness chiama il modello con la finestra e la domanda; il modello risponde con tool_use esegui_sql e la query; il tool la esegue sul data warehouse come Marco; tornano tre righe come tool_result; al secondo giro il modello risponde in italiano, end_turn"></div>
           </div>
           <div class="nota small">Nel 27 il modello aveva scritto Python su un file; nella slide 25b SQL su un file con DuckDB; qui SQL sul data warehouse, attraverso un tool. Tre volte la stessa domanda: cambia dove sta il dato e chi fa il conto. Che cosa mettere nel system prompt perché il SQL esca giusto è la prossima slide.</div>
@@ -1470,16 +1491,16 @@ PostaPro · 22 · 1,2</span></div>
             <div class="col-text">
               <ul class="pts micro nano">
                 <li><strong>Lo schema, con le descrizioni</strong>tabelle e colonne, e per ciascuna una riga in italiano: <code>giorni_ritardo: giorni di calendario fra consegna e data prevista, 0 se in anticipo</code>. I nomi da soli non bastano, e i nomi tecnici sono peggio di niente.</li>
-                <li><strong>Il grano</strong>"una riga di <code>fatto_spedizioni</code> è una spedizione". Una frase, e il fanout della slide 19 perde metà delle occasioni.</li>
+                <li><strong>La granularità</strong>"una riga di <code>fatto_spedizioni</code> è una spedizione". Una frase, e il fanout della slide 19 perde metà delle occasioni.</li>
                 <li><strong>Le join note</strong>quali tabelle si uniscono, su quali chiavi: la stella lo dice da sola; un transazionale a duecento tabelle no.</li>
                 <li><strong>Le metriche, definite</strong>"ordini in ritardo = spedizioni con <code>giorni_ritardo &gt; 0</code>"; "ritardo medio = media di <code>giorni_ritardo</code> sulle sole spedizioni in ritardo". Senza, ogni domanda inventa la sua regola: le tre verità della slide 14, generate dal modello.</li>
                 <li><strong>I valori di esempio</strong><code>corriere</code> contiene <code>SpedFast</code>, <code>Corriere Nord</code>, <code>PostaPro</code>, non <code>SPEDFAST S.R.L.</code>; <code>regione</code> è il nome, non la sigla. È il modo più economico per evitare un <code>WHERE</code> che non trova nulla.</li>
                 <li><strong>Le query di esempio</strong>dieci domande frequenti con il SQL giusto: il modello copia la forma, e la forma è quasi tutto.</li>
               </ul>
             </div>
-            <div class="visual"><img src="svg/slide45-requisiti.svg" alt="A sinistra la finestra a strati con lo strato system prompt aperto in sei fasce, una per requisito, con il peso in token: schema e descrizioni 1.500, grano 30, join 200, metriche 300, valori di esempio 200, query di esempio 1.200, totale circa 3.400 token in cache; a destra due colonne di spunte: lo star schema dà i requisiti 1, 2, 3 e non i 4, 5, 6; il transazionale nessuno"></div>
+            <div class="visual"><img src="svg/slide45-requisiti.svg" alt="A sinistra la finestra a strati con lo strato system prompt aperto in sei fasce, una per requisito, con il peso in token: schema e descrizioni 1.500, granularità 30, join 200, metriche 300, valori di esempio 200, query di esempio 1.200, totale circa 3.400 token in cache; a destra due colonne di spunte: lo star schema dà i requisiti 1, 2, 3 e non i 4, 5, 6; il transazionale nessuno"></div>
           </div>
-          <div class="nota small">Uno star schema con i nomi di business dà 1, 2 e 3 quasi gratis; 4, 5 e 6 li deve scrivere qualcuno. Sono la stessa cosa che serve a un collega nuovo, messa per iscritto una volta: nella sezione 7 si chiama semantic linking (slide 56): l'ontologia collegata alle tabelle, da cui descrizioni, grano, join e metriche escono senza scriverle a mano.</div>
+          <div class="nota small">Uno star schema con i nomi di business dà 1, 2 e 3 quasi gratis; 4, 5 e 6 li deve scrivere qualcuno. Sono la stessa cosa che serve a un collega nuovo, messa per iscritto una volta: nella sezione 7 si chiama semantic linking (slide 56): l'ontologia collegata alle tabelle, da cui descrizioni, granularità, join e metriche escono senza scriverle a mano.</div>
         </div>
         <div class="footnote">45 / Sezione 6 · <span class="sid">#slide-45</span></div>
       </section>
@@ -1492,7 +1513,7 @@ PostaPro · 22 · 1,2</span></div>
             <div class="col-text">
               <ul class="pts micro dense">
                 <li><strong>La tabella o la colonna sbagliata</strong>il modo più frequente: fra <code>spedizioni</code>, <code>fatto_spedizioni</code> e <code>spedizioni_v2</code> sceglie quella con il nome più simile alla domanda, o inventa una colonna che sembra dovesse esserci (<code>data_ritardo</code>). Rimedio: descrizioni, e meno tabelle esposte.</li>
-                <li><strong>La join sbagliata, e il fanout</strong>la slide 19, scritta dal modello: unisce due fatti prima di aggregare e l'importo esce nove volte più grande. Nessun errore, un numero. Rimedio: il grano dichiarato, le join note, e un tool che sappia dire di no.</li>
+                <li><strong>La join sbagliata, e il fanout</strong>la slide 19, scritta dal modello: unisce due fatti prima di aggregare e l'importo esce nove volte più grande. Nessun errore, un numero. Rimedio: la granularità dichiarata, le join note, e un tool che sappia dire di no.</li>
                 <li><strong>L'ambiguità della domanda</strong>"ordini in ritardo": rispetto alla data prevista o a quella promessa al cliente? Festivi inclusi? Il modello sceglie, e non dice di aver scelto. Rimedio: le metriche definite; e un modello che, se la definizione manca, chiede invece di scegliere.</li>
                 <li><strong>Il risultato grande</strong>"dammi le spedizioni in ritardo" restituisce 187 righe; "tutte le spedizioni" 12.480. Iniettarle in finestra è il carico della slide 18 del 27. Rimedio: l'adattatore salva su file e restituisce le prime righe e il conteggio; il modello cerca nel file se serve.</li>
               </ul>
@@ -1740,11 +1761,11 @@ PostaPro · 22 · 1,2</span></div>
             <div class="col-text">
               <ul class="pts micro">
                 <li><strong>Un prodotto, non una pipeline</strong><code>fatto_spedizioni</code> non è l'uscita di un ETL: è un prodotto che il team logistica pubblica per chi lo legge, con un nome, una versione, un proprietario che risponde alle domande e agli incidenti. Chi lo usa è un cliente, non un collega che passa di lì.</li>
-                <li><strong>Il contratto</strong>lo schema con le descrizioni, il grano, le metriche definite, la frequenza di aggiornamento, i controlli di qualità che girano a ogni carico e che cosa succede se falliscono. Scritto, versionato, e rotto solo con preavviso: le dipendenze della slide 21 diventano un accordo, non una scoperta.</li>
-                <li><strong>Vale per tutte le forme</strong>un indice di documenti è un prodotto (quali documenti, quale versione vale, chi li cura); un grafo è un prodotto (quali entità, estratte come, con quale affidabilità). I quattro punti della slide 26, qualità, completezza, ownership, dipendenze, hanno ciascuno una riga nel contratto.</li>
+                <li><strong>Il contratto</strong>lo schema con le descrizioni, la granularità, le metriche definite, la frequenza di aggiornamento, i controlli di qualità che girano a ogni carico e che cosa succede se falliscono. Scritto, versionato, e rotto solo con preavviso: le dipendenze della slide 21 diventano un accordo, non una scoperta.</li>
+                <li><strong>Vale per tutte le forme</strong>un indice di documenti è un prodotto (quali documenti, quale versione vale, chi li cura); un grafo è un prodotto (quali entità, estratte come, con quale affidabilità). I quattro punti della slide 27, qualità, completezza, ownership, dipendenze, hanno ciascuno una riga nel contratto.</li>
               </ul>
             </div>
-            <div class="visual"><img src="svg/slide54-data-product.svg" alt="A sinistra la scheda-prodotto fatto_spedizioni v3 con owner, grano, schema, metriche, aggiornamento, controlli, consumatori e changelog, con owner e controlli in evidenza; a destra tre schede più piccole: indice contratti v2, grafo logistica v1, policy rimborsi 2026; una freccia dalla scheda grande allo strato system prompt di una finestra in miniatura: il contratto, letto dal modello"></div>
+            <div class="visual"><img src="svg/slide54-data-product.svg" alt="A sinistra la scheda-prodotto fatto_spedizioni v3 con owner, granularità, schema, metriche, aggiornamento, controlli, consumatori e changelog, con owner e controlli in evidenza; a destra tre schede più piccole: indice contratti v2, grafo logistica v1, policy rimborsi 2026; una freccia dalla scheda grande allo strato system prompt di una finestra in miniatura: il contratto, letto dal modello"></div>
           </div>
           <div class="nota small">Per l'agente: la descrizione di <code>esegui_sql</code>, e lo schema nel system prompt, sono il contratto del prodotto dati, letto da un modello. Un prodotto senza contratto è un tool senza descrizione: viene usato male, o a caso. È anche il principio del data mesh: i prodotti li pubblica chi conosce il dominio, e la piattaforma dà a tutti lo stesso modo di pubblicarli.</div>
         </div>
@@ -1779,13 +1800,13 @@ PostaPro · 22 · 1,2</span></div>
           <div class="tv tv-40">
             <div class="col-text">
               <ul class="pts micro nano xs">
-                <li><strong>Che cos'è</strong>un collegamento esplicito, mantenuto, fra gli elementi dell'ontologia e gli elementi fisici: la classe <code>Spedizione</code> → la tabella <code>fatto_spedizioni</code> (una riga = un'istanza: il grano, dichiarato dalla classe); la proprietà <code>data consegna</code> → la colonna <code>data_consegna</code>; la relazione <code>Spedizione</code> –consegnata da→ <code>Corriere</code> → la join <code>fatto_spedizioni.id_corriere = dim_corriere.id_corriere</code>. Ogni colonna sa di quale proprietà è la forma fisica, e ne eredita definizione, sinonimi, owner.</li>
+                <li><strong>Che cos'è</strong>un collegamento esplicito, mantenuto, fra gli elementi dell'ontologia e gli elementi fisici: la classe <code>Spedizione</code> → la tabella <code>fatto_spedizioni</code> (una riga = un'istanza: la granularità, dichiarata dalla classe); la proprietà <code>data consegna</code> → la colonna <code>data_consegna</code>; la relazione <code>Spedizione</code> –consegnata da→ <code>Corriere</code> → la join <code>fatto_spedizioni.id_corriere = dim_corriere.id_corriere</code>. Ogni colonna sa di quale proprietà è la forma fisica, e ne eredita definizione, sinonimi, owner.</li>
                 <li><strong>Che cosa ne esce</strong>le descrizioni dello schema non le scrive nessuno a mano: vengono dall'ontologia, una volta, per tutte le tabelle che mappano la stessa classe. Le join note sono le relazioni. La definizione di "ritardo" è una sola, quella della classe, e chi calcola la colonna la deve rispettare. E <code>dim_corriere.id_corriere = 17</code> e il nodo <code>SpedFast</code> sono la stessa istanza della stessa classe: l'identità è condivisa per costruzione.</li>
                 <li><strong>Come lo usa l'agente</strong>nel system prompt entra lo schema annotato dal linking: i requisiti 1, 2, 3 e 4 della slide 45 prodotti dall'ontologia, non da un analista di buona volontà. Il modello scrive SQL su tabelle che sanno che cosa vogliono dire; e quando la domanda usa un concetto che non è mappato, la risposta giusta è "non ho una tabella per questo", non un numero plausibile.</li>
               </ul>
               <div class="demo" style="margin-top: 6px; padding: 5px 10px; font-size: 9pt;"><strong>DEMO</strong>l'ontologia di Quantyca e il suo linking alle tabelle. Se c'è tempo.</div>
             </div>
-            <div class="visual"><img src="svg/slide56-semantic-linking.svg" alt="In alto l'ontologia di dominio logistica, in basso lo star schema; fra i due i link: la classe Spedizione alla tabella fatto_spedizioni, il grano; la proprietà data consegna alla colonna; giorni lavorativi di ritardo con la sua definizione alla colonna; la relazione consegnata da alla join id_corriere fra le due tabelle; la proprietà margine senza link: non mappata, il modello lo sa; a destra la finestra a strati con lo strato system prompt che riceve lo schema annotato"></div>
+            <div class="visual"><img src="svg/slide56-semantic-linking.svg" alt="In alto l'ontologia di dominio logistica, in basso lo star schema; fra i due i link: la classe Spedizione alla tabella fatto_spedizioni, la granularità; la proprietà data consegna alla colonna; giorni lavorativi di ritardo con la sua definizione alla colonna; la relazione consegnata da alla join id_corriere fra le due tabelle; la proprietà margine senza link: non mappata, il modello lo sa; a destra la finestra a strati con lo strato system prompt che riceve lo schema annotato"></div>
           </div>
           <div class="nota small">I semantic layer dei vendor (le semantic view di Snowflake, le metric view di Databricks, il Semantic Layer di dbt, tutti esposti agli agenti via MCP) fanno una parte di questo lavoro, quella delle metriche. Il linking è più largo: parte dall'ontologia, non dalla metrica, e copre anche ciò che non si somma.</div>
         </div>
