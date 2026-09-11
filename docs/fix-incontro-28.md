@@ -104,6 +104,8 @@ Togli Per l'agente conta la seconda riga: il data warehouse lo interroga attrave
 
 - **26 · La pagella dell'analitico** — `#slide-26` — `slide26-spettro-mini.svg`
 	- «non ridondante» va a ✓ (detto a voce)
+	- non mi piace che si accenda la sezione 4 nel visual (detto a voce)
+	- → fatto: nella mini-mappa resta spuntata solo la colonna della tabella; grafo e documento tornano spenti, via l'etichetta «si accende: sezione 4». L'annuncio della sezione 4 ora lo fa solo il blocco nero della 27, che è dove sta la cerniera.
 	- → fatto: voto ✓, e il perché lo regge: la ridondanza delle dimensioni è quella innocua e voluta, il fatto è calcolato una volta con una regola sola; quella che fa danno, la stessa misura ricalcolata in dieci posti, qui non c'è. Torna ✗ con l'antipattern della 22.
 	- Inverti questa slide con la successiva
 	- → fatto: scambiate. La **26** è ora «La pagella dell'analitico» (senza cerniera) e la **27** è «Qualità, completezza, ownership, dipendenze», che chiude la sezione e porta il blocco nero della cerniera verso la sezione 4. Rinominata la figura in `slide26-spettro-mini.svg`; sistemati i riferimenti incrociati (la pagella rimanda alla governance della 27, la slide 54 ai quattro punti della 27).
