@@ -72,7 +72,7 @@ Per commentare, scrivi sotto la riga della slide.
 - **21 · Il data management come trasformazione di forma** — `#slide-21` — `slide21-lineage.svg`
 	- Non mi piace l'svg. parliamone
 	- → fatto: rifatto. Le fonti sono un DB transazionale vero (tabelle normalizzate legate da molte join, con `data_prevista` evidenziata dentro `spedizioni`), il data warehouse è disegnato a stella, i consumatori sono disegnati: il report con le barre, la dashboard, l'agente con il suo `esegui_sql`. L'onda di impatto arriva a tutti e tre.
-	- → fatto (2): anche qui il formato di tabelle della slide 16. `ordini` e `spedizioni` sono riquadri con testata, colonne, PK e FK, e `data_prevista` in evidenza; la stella è `dim_corriere` → `fatto_spedizioni` → `dim_data` nello stesso vocabolario. I consumatori scendono in una fascia in basso, raggiunti da una linea sola che parte dalla colonna che cambia.
+	- → fatto (2): formato di tabelle della slide 16 (`ordini`, `spedizioni` con PK e FK e `data_prevista` in evidenza; la stella `dim_corriere` → `fatto_spedizioni` → `dim_data`). I tre mondi stanno ognuno dentro il suo riquadro — fonti, data warehouse, consumatori — con l'ETL fuori, in mezzo, perché è il passaggio da un riquadro all'altro; i consumatori sono a destra e l'onda li raggiunge attraversando i confini.
 - **22 · L'antipattern: una pipeline per report** — `#slide-22` — `slide22-1.svg` · `slide22-2.svg` · `slide22-3.svg`
 	- Assolutamente da rifare il visual
 	- → fatto: tre tempi (`slide22-1/2/3.svg`), sincronizzati con i tre punti di testo. Arriva la richiesta e nasce la prima pipeline; se ne aggiungono altre, ognuna che riparte dal transazionale con il suo numero; alla fine la riunione con 3,8 · 3,2 · 4,1 e nessuno che sappia quale sia quello giusto.
