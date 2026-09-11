@@ -21,8 +21,9 @@ Per commentare, scrivi sotto la riga della slide.
 	- Togliere Gestire i dati non basta: ogni gradino in più rende ciò che sotto c'è già riutilizzabile, da una persona e da un agente. Dalla presentazione Quantyca "Information Architecture", 2025.
 	- → fatto: nota tolta. Il credito alla presentazione Quantyca resta solo nelle note del relatore (concordato).
 - **04 · I quattro requisiti di una conoscenza utile** — `#slide-4` — *nessuna figura*
-- **05 · Non è un problema dell'AI** — `#slide-5` — *immagine da reperire (placeholder)*
+- **05 · Non è un problema dell'AI** — `#slide-5` — `assets/images/uploads/labyrinthus-aedificium.svg`
 	- Immagine da https://it.wikipedia.org/wiki/Il_nome_della_rosa#/media/File:Labyrinthus_Aedificium.svg
+	- → fatto: scaricata da Wikimedia Commons in `assets/images/uploads/labyrinthus-aedificium.svg` (CC BY-SA 4.0, attribuzione richiesta: il credito è nella didascalia). Nota: la scheda di Commons attribuisce il disegno a Eco/Bompiani — per l'aula va bene, se il deck circola fuori la licenza va riverificata.
 - **06 · Know-what e know-how** — `#slide-6` — *nessuna figura*
 - **07 · Lo spettro: dal dato strutturato al non strutturato** — `#slide-7` — `slide7-spettro.svg`
 
