@@ -14,10 +14,15 @@ Per commentare, scrivi sotto la riga della slide.
 `#div-sec1`
 
 - **01 · Ieri chi esegue, oggi che cosa sa** — `#slide-1` — *nessuna figura*
+	- Testo: Rendere evidente, anche dall'esperienza consulenziale Quantyca, che il blocco principale all'adozione dell'AI, assieme a tutta una serie di dinamiche organizzative e legate alle persone, è sui Dati. Le aziende mediamente sono indietro sull'organizzazione dei loro Dati, e i tentativi di innesto dell'AI rendono ancora più evidenti questi Gap. Lo scopo della lezione è dare una visione di come dovrebbe essere strutturato l'insieme dei dati in modo da supportare al meglio gli agenti
+	- → fatto: quarto punto «Quello che vediamo nei progetti» (il blocco è sui dati, le aziende indietro, il gap che l'AI rende evidente); lo scopo della lezione è passato nel blocco nero in fondo.
 - **02 · La formula: oggi la KB** — `#slide-2` — `slide2-formula-kb.svg`
 - **03 · Dalla piramide: dati, informazione, conoscenza, intelligenza** — `#slide-3` — `slide3-piramide-1.svg` · `slide3-piramide-2.svg` · `slide3-piramide-3.svg` · `slide3-piramide-4.svg`
+	- Togliere Gestire i dati non basta: ogni gradino in più rende ciò che sotto c'è già riutilizzabile, da una persona e da un agente. Dalla presentazione Quantyca "Information Architecture", 2025.
+	- → fatto: nota tolta. Il credito alla presentazione Quantyca resta solo nelle note del relatore: dimmi se lo vuoi ancora sulla slide.
 - **04 · I quattro requisiti di una conoscenza utile** — `#slide-4` — *nessuna figura*
 - **05 · Non è un problema dell'AI** — `#slide-5` — *immagine da reperire (placeholder)*
+	- Immagine da https://it.wikipedia.org/wiki/Il_nome_della_rosa#/media/File:Labyrinthus_Aedificium.svg
 - **06 · Know-what e know-how** — `#slide-6` — *nessuna figura*
 - **07 · Lo spettro: dal dato strutturato al non strutturato** — `#slide-7` — `slide7-spettro.svg`
 
@@ -25,11 +30,22 @@ Per commentare, scrivi sotto la riga della slide.
 `#div-sec2` — `minimap-sec2.svg`
 
 - **08 · Forma e fine: due assi** — `#slide-8` — `slide8-due-assi.svg`
+	- Rendere "transazionale: registrare ciò che succede, una riga alla volta, in fretta e senza perdere nulla. Analitico: rispondere a domande su ciò che è successo, leggendo milioni di righe insieme." una lista puntata
+	- -rendere "relazionale: tabelle con colonne fisse, lo schema deciso prima, le relazioni per chiave. Document: un record è un documento JSON, con i campi che servono a lui, annidati; lo schema lo decide chi scrive." una lista puntata
+	- → fatto: i due punti sono ora liste puntate annidate (relazionale/document, transazionale/analitico), con il pallino piccolo grigio.
+	- - **Dove vive l'AI**l'agente scrive poco e chiede molto: quasi tutto ciò che vediamo oggi sta nella colonna analitica. Il transazionale lo raggiunge solo attraverso i tool, e la slide 11 dice perché. <-- discutiamone
+	- Rivediamo anche la figura
 - **09 · Il modello relazionale: tabelle, tipi, chiavi** — `#slide-9` — `slide9-chiavi.svg`
+	- Rendi la slide a 3 colonne. a sinistra il testo, in mezzo il sql, a dx lo schema disegnato, in modo più ordinato. riduci pure il font dello schema
 - **10 · Il SQL: quattro verbi** — `#slide-10` — `slide10-sql-1.svg` · `slide10-sql-2.svg` · `slide10-sql-3.svg` · `slide10-sql-4.svg`
-- **11 · Il transazionale: per chi è fatto** — `#slide-11` — *nessuna figura*
+- **11 · Il DB transazionale: per chi è fatto** — `#slide-11` — *nessuna figura*
+	- Chiamarlo "Il DB transazionale".
+	- Per l'esempio, va bene, è il classico caso in cui bisogna andare sul transazionale. Però lo contestualizzerei, dicendo che in questo caso non si va diretti sul db, ma viene wrappato in un tool o in una api.
+	- → fatto: titolo «Il DB transazionale: per chi è fatto»; sotto l'esempio dell'ordine 4471 due frasi in più: è il caso classico in cui la risposta sta solo qui, ma l'agente non ci va diretto, quella lettura gliela fa un tool o un'API.
 - **12 · La normalizzazione** — `#slide-12` — `slide12-normalizzazione.svg`
 - **13 · La pagella del transazionale, e la cerniera** — `#slide-13` — `slide13-assi-cerniera.svg`
+	- ricercabile in modo progressivo è X. 
+	* nel visual, in ogni cella, disegnamo un modello relazionale transazionale, un datamart, una serie di blocchi con dentro del json piccolo, un json molto grande presentato come listato 
 
 ## Separatore di sezione 3 — «Il dato strutturato, 2/2: dove si interroga»  
 `#div-sec3` — `minimap-sec3.svg`
@@ -37,16 +53,44 @@ Per commentare, scrivi sotto la riga della slide.
 - **14 · Da Excel al data warehouse** — `#slide-14` — `slide14-excel-dwh.svg`
 - **15 · Data warehouse: dove e come nasce** — `#slide-15` — `slide15-etl.svg`
 - **16 · Fatti e dimensioni: lo star schema** — `#slide-16` — `slide16-star.svg`
+	- Vorrei una transizione tra sql e star schema, così vedo bene grandi entrambi
 - **17 · La denormalizzazione, di proposito** — `#slide-17` — `slide17-dimensione.svg`
 - **18 · Il grano e le metriche** — `#slide-18` — `slide18-grano.svg`
+	- Non mi piace la frase "una riga è una spedizione" è una frase che va scritta prima di ogni altra. Cambia tutto: una riga per spedizione risponde a "quanti ritardi per corriere"; una riga per collo risponde anche a "quanti colli in ritardo"; una riga per ordine non risponde a nessuna delle due se un ordine ha due spedizioni
+	- ⏸ da riscrivere: il commento cita il punto così com'è oggi, quindi non so in che direzione andare. Che cosa non funziona: l'attacco, la scelta dei tre grani, o la lunghezza?
 - **19 · Join e fanout** — `#slide-19` — `slide19-fanout.svg`
 - **20 · Sicurezza: tabella, colonna, riga** — `#slide-20` — `slide20-sicurezza.svg`
 - **21 · Il data management come trasformazione di forma** — `#slide-21` — `slide21-lineage.svg`
+	- Non mi piace l'svg. parliamone
 - **22 · L'antipattern: una pipeline per report** — `#slide-22` — `slide22-pipeline-per-report.svg`
+	- Assolutamente da rifare il visual
 - **23 · Pregi di Kimball** — `#slide-23` — `slide23-conformi.svg`
+	- assolutamente da rifare il visual
 - **24 · Limiti di Kimball, e cenni al data vault** — `#slide-24` — `slide24-star-vault-1.svg` · `slide24-star-vault-2.svg`
+	- la transizione non fa sparire lo star schema sottostante
+	- → fatto: due cause. La stella del tempo 1 restava sotto (ora è un fragment `fade-out`, sparisce al click); e dentro `slide24-star-vault-2.svg` c'era una copia della stella a opacity 0.06, tolta. Resta solo la stellina al 50% in basso a destra.
 - **25 · Lo spettro dei tool: da Databricks a DuckDB** — `#slide-25` — *nessuna figura*
+	- Questo è interessante: "- **Il motore piccolo entra nel sandbox**nel 27 (slide 20) il modello aveva scritto quattro righe di Python su `ordini_08.json`. Con DuckDB nel sandbox scrive SQL sullo stesso file. Stessa lingua del data warehouse, senza il data warehouse, sui dati che ha davanti." separa questo e "[user]Quanti ordini di agosto sono in ritardo, e per quale corriere?
+
+[assistant]→ esporta_ordini(mese="2026-08")
+
+[tool]salvato in ordini_08.json (12.480 righe): cerca o elabora con bash
+
+[assistant]→ bash("duckdb -c \"SELECT corriere, COUNT(*) AS n  
+  FROM 'ordini_08.json' WHERE consegna > prevista  
+  GROUP BY corriere ORDER BY n DESC\"")
+
+[tool]SpedFast 121 · Corriere Nord 44 · PostaPro 22" in una slide separata.
+
+Togli Per l'agente conta la seconda riga: il data warehouse lo interroga attraverso un tool (sezione 6); un export, un file, un risultato salvato li interroga nel sandbox, con lo stesso SQL. Due porte, una lingua.
+
+	- → fatto: la 25 resta la tabella dei tre motori (ingrandita, ora che è sola) con il solo punto «Stesso linguaggio, tre scale»; il resto è la nuova 25b. Nota tolta.
+- **25b · Il motore piccolo entra nel sandbox** — `#slide-25b` — *nessuna figura* — **nuova**
+	- Il punto del sandbox in due tempi (nel 27 era Python, con DuckDB è SQL) e, a destra, il riquadro-payload con la query DuckDB. Il riferimento incrociato della slide 46 ora punta alla 25b.
+
 - **26 · Qualità, completezza, ownership, dipendenze** — `#slide-26` — *nessuna figura*
+	- Inverti questa slide con la successiva
+	- ⏸ da decidere: la 27 è la pagella + cerniera che chiude la sezione (come 13, 36, 42, 52). Invertendo, la chiusura diventa la 26, che la cerniera non ce l'ha. Sposto anche la cerniera sulla 26, o inverto solo il corpo?
 - **27 · La pagella dell'analitico, e la cerniera** — `#slide-27` — `slide27-spettro-mini.svg`
 
 ## Separatore di sezione 4 — «Il dato non strutturato: da analisi a search»  

@@ -11,54 +11,6 @@
   </defs>
 
   <!-- ============ la stella del tempo 1, sbiadita sotto ============ -->
-  <g id="stella-tempo1" opacity="0.06">
-    <g stroke="#a1245a" stroke-width="2" fill="none">
-      <path d="M272 200 L212 98"/>
-      <path d="M436 200 L496 98"/>
-      <path d="M354 274 V306"/>
-    </g>
-    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#838383">
-      <text x="234" y="166" text-anchor="end">id_corriere</text>
-      <text x="474" y="166">id_cliente</text>
-      <text x="362" y="294">id_data</text>
-    </g>
-    <g>
-      <rect x="272" y="150" width="164" height="124" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
-      <path d="M272 158 a8,8 0 0 1 8,-8 h148 a8,8 0 0 1 8,8 v18 h-164 z" fill="#ecd3de"/>
-      <path d="M272 176 h164" stroke="#a1245a"/>
-      <text x="354" y="169" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700" fill="#a1245a">fatto_spedizioni</text>
-      <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5">
-        <text x="284" y="192" fill="#212529">id_corriere</text>
-        <text x="284" y="210" fill="#212529">id_cliente</text>
-        <text x="284" y="228" fill="#212529">id_data</text>
-        <text x="284" y="248" fill="#a1245a" font-weight="700">importo</text>
-        <text x="284" y="266" fill="#a1245a" font-weight="700">giorni_ritardo</text>
-      </g>
-    </g>
-    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">
-      <g>
-        <rect x="48" y="56" width="164" height="84" rx="8" fill="#ffffff" stroke="#dee2e6"/>
-        <path d="M48 64 a8,8 0 0 1 8,-8 h148 a8,8 0 0 1 8,8 v16 h-164 z" fill="#f6f6f6"/>
-        <path d="M48 80 h164" stroke="#dee2e6"/>
-        <text x="130" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="#161719">dim_corriere</text>
-        <text x="60" y="98">nome</text><text x="60" y="116">tipo</text><text x="60" y="134">contratto_dal</text>
-      </g>
-      <g>
-        <rect x="496" y="56" width="164" height="84" rx="8" fill="#ffffff" stroke="#dee2e6"/>
-        <path d="M496 64 a8,8 0 0 1 8,-8 h148 a8,8 0 0 1 8,8 v16 h-164 z" fill="#f6f6f6"/>
-        <path d="M496 80 h164" stroke="#dee2e6"/>
-        <text x="578" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="#161719">dim_cliente</text>
-        <text x="508" y="98">nome</text><text x="508" y="116">regione</text><text x="508" y="134">segmento</text>
-      </g>
-      <g>
-        <rect x="272" y="306" width="164" height="78" rx="8" fill="#ffffff" stroke="#dee2e6"/>
-        <path d="M272 314 a8,8 0 0 1 8,-8 h148 a8,8 0 0 1 8,8 v14 h-164 z" fill="#f6f6f6"/>
-        <path d="M272 328 h164" stroke="#dee2e6"/>
-        <text x="354" y="322" text-anchor="middle" font-size="12.5" font-weight="700" fill="#161719">dim_data</text>
-        <text x="284" y="346">giorno</text><text x="284" y="362">mese</text><text x="284" y="378">festivo</text>
-      </g>
-    </g>
-  </g>
 
   <!-- ============ etichette di trasformazione ============ -->
   <g id="trasformazioni">

@@ -41,6 +41,12 @@
     .pts li strong { color: var(--q-black); display: block; margin-bottom: 1px; }
     .pts.tight li { font-size: 11.5pt; margin-bottom: 9px; }
     .pts.micro li { font-size: 10.5pt; line-height: 1.32; margin-bottom: 7px; }
+    /* sotto-elenco dentro un punto di .pts: pallino piccolo, grigio */
+    .reveal .pts .subpts { margin: 4px 0 0; }
+    .reveal .pts .subpts li { font-size: inherit; line-height: inherit; padding-left: 14px; margin-bottom: 4px; }
+    .reveal .pts .subpts li:last-child { margin-bottom: 0; }
+    .reveal .pts .subpts li::before { top: 0.58em; width: 4px; height: 4px; border-radius: 50%; background: var(--q-greydark); }
+    .reveal .pts .subpts li strong { display: inline; margin: 0; }
 
     .nota {
       border-left: 3px solid var(--q-burgundy);
@@ -377,10 +383,11 @@
             <li><strong>Il 26, il modello</strong>sa volere, non sa eseguire. Ciò che sa è compresso nei pesi, fermo al cut-off.</li>
             <li><strong>Il 27, l'harness</strong>prepara la finestra, esegue i tool, governa il contesto, osserva le tracce.</li>
             <li><strong>La domanda lasciata aperta</strong>quando l'agente chiama <code>cerca_ordine</code>, o <code>cerca_documenti</code>, che cosa trova dall'altra parte?</li>
+            <li><strong>Quello che vediamo nei progetti</strong>accanto alle dinamiche organizzative e alle persone, il blocco principale all'adozione dell'AI è sui dati: le aziende sono mediamente indietro nell'organizzarli, e ogni tentativo di innestare l'AI rende quel gap più evidente di prima.</li>
           </ul>
           <p class="caption" style="margin-top: 22px;">Quasi tutto ciò che l'agente deve sapere non sta nei suoi pesi e non lo scrive lui: sta nei sistemi dell'organizzazione. Dati, documenti, procedure, in forme diverse, fatte per lettori diversi.</p>
           <p class="hl-line">In che forma sta, e chi ce l'ha messa?</p>
-          <div class="nota dark center" style="margin-top: auto;">L'agente legge tutto ciò che trova. Oggi: che cosa trova, e come dev'essere fatto perché gli serva.</div>
+          <div class="nota dark center" style="margin-top: auto;">L'agente legge tutto ciò che trova. Oggi: che cosa trova, e come dovrebbe essere strutturato l'insieme dei dati perché gli serva davvero.</div>
         </div>
         <div class="footnote">01 / Sezione 1 · <span class="sid">#slide-1</span></div>
         <aside class="notes">Ripresa della slide 63 del 27. Stessa struttura della slide 1 del 27: tre righe chiuse, una domanda aperta, il blocco nero. I tre titoli della serie si leggono in fila: Ieri il modello, oggi chi esegue; ieri chi esegue, oggi che cosa sa.</aside>
@@ -417,7 +424,6 @@
               <img class="fragment" data-fragment-index="3" src="svg/slide3-piramide-4.svg" alt="Si accende l'apice, intelligenza, con la freccia azioni e la pill dell'agente che fa la domanda">
             </div>
           </div>
-          <div class="nota small">Gestire i dati non basta: ogni gradino in più rende ciò che sotto c'è già riutilizzabile, da una persona e da un agente. Dalla presentazione Quantyca "Information Architecture", 2025.</div>
         </div>
         <div class="footnote">03 / Sezione 1 · <span class="sid">#slide-3</span></div>
         <aside class="notes">Quattro tempi: a ogni click si accende un livello con il suo esempio. Dal deck Quantyca Information Architecture, Podcast Knowledge Management (21 maggio 2025): là l'esempio era il meteo (31 32 33, la tabella Milano luglio 2024, il knowledge graph Food Corp/Weather, il bot); qui è rifatto su Acme. Nel gradino della conoscenza c'è solo l'ontologia: il grafo delle istanze della sezione 5 sta in mezzo allo spettro, non sulla piramide.</aside>
@@ -525,8 +531,18 @@
           <div class="tv tv-40">
             <div class="col-text">
               <ul class="pts tight">
-                <li><strong>La forma</strong>relazionale: tabelle con colonne fisse, lo schema deciso prima, le relazioni per chiave. Document: un record è un documento JSON, con i campi che servono a lui, annidati; lo schema lo decide chi scrive.</li>
-                <li><strong>Il fine</strong>transazionale: registrare ciò che succede, una riga alla volta, in fretta e senza perdere nulla. Analitico: rispondere a domande su ciò che è successo, leggendo milioni di righe insieme.</li>
+                <li><strong>La forma</strong>
+                  <ul class="subpts">
+                    <li><strong>relazionale:</strong> tabelle con colonne fisse, lo schema deciso prima, le relazioni per chiave.</li>
+                    <li><strong>document:</strong> un record è un documento JSON, con i campi che servono a lui, annidati; lo schema lo decide chi scrive.</li>
+                  </ul>
+                </li>
+                <li><strong>Il fine</strong>
+                  <ul class="subpts">
+                    <li><strong>transazionale:</strong> registrare ciò che succede, una riga alla volta, in fretta e senza perdere nulla.</li>
+                    <li><strong>analitico:</strong> rispondere a domande su ciò che è successo, leggendo milioni di righe insieme.</li>
+                  </ul>
+                </li>
                 <li><strong>Dove vive l'AI</strong>l'agente scrive poco e chiede molto: quasi tutto ciò che vediamo oggi sta nella colonna analitica. Il transazionale lo raggiunge solo attraverso i tool, e la slide 11 dice perché.</li>
               </ul>
             </div>
@@ -614,12 +630,12 @@ PostaPro · 22 · 1,2</span></div>
 
       <section id="slide-11">
         <p class="eyebrow">SEZIONE 2 · IL DATO STRUTTURATO, 1/2: DOVE NASCE</p>
-        <h2>Il transazionale: per chi è fatto</h2>
+        <h2>Il DB transazionale: per chi è fatto</h2>
         <div class="content">
           <div class="cols cols-2 top2 small">
             <div>
               <p class="col-head">Performance operativa</p>
-              <p>migliaia di scritture piccole al secondo: un ordine, una spedizione, un cambio di stato. Ogni scrittura deve toccare poche righe, con un lucchetto brevissimo, e non perdere mai un fatto. La lettura tipica è per chiave: "l'ordine 4471", non "tutti gli ordini di agosto".</p>
+              <p>migliaia di scritture piccole al secondo: un ordine, una spedizione, un cambio di stato. Ogni scrittura deve toccare poche righe, con un lucchetto brevissimo, e non perdere mai un fatto. La lettura tipica è per chiave: "l'ordine 4471", non "tutti gli ordini di agosto": è il caso classico in cui la risposta sta solo qui, perché lo stato di adesso lo tiene lui. L'agente però non ci va diretto: quella lettura gliela fa un tool, o un'API.</p>
             </div>
             <div>
               <p class="col-head">Semplicità del coding</p>
@@ -938,8 +954,8 @@ PostaPro · 22 · 1,2</span></div>
               </ul>
             </div>
             <div class="visual stack">
-              <img src="svg/slide24-star-vault-1.svg" alt="Tempo 1: la stella della slide 16, fatto_spedizioni al centro e tre dimensioni intorno">
-              <img class="fragment" src="svg/slide24-star-vault-2.svg" alt="Tempo 2: la stella si apre nel data vault: le dimensioni diventano hub con satelliti per fonte, il fatto diventa un link con le sole chiavi e un satellite delle misure; in un angolo una stellina sbiadita: da qui si ricostruiscono le stelle per chi legge">
+              <img class="fragment fade-out" data-fragment-index="0" src="svg/slide24-star-vault-1.svg" alt="Tempo 1: la stella della slide 16, fatto_spedizioni al centro e tre dimensioni intorno">
+              <img class="fragment" data-fragment-index="0" src="svg/slide24-star-vault-2.svg" alt="Tempo 2: la stella si apre nel data vault: le dimensioni diventano hub con satelliti per fonte, il fatto diventa un link con le sole chiavi e un satellite delle misure; in un angolo una stellina sbiadita: da qui si ricostruiscono le stelle per chi legge">
             </div>
           </div>
           <div class="nota small">Notate la forma del vault: chiavi, relazioni fra chiavi, attributi. È un grafo scritto in tabelle, e non è un caso: quando la struttura deve evolvere nel tempo, il grafo torna. Sezione 5, e sezione 7 per le ontologie.</div>
@@ -952,7 +968,7 @@ PostaPro · 22 · 1,2</span></div>
         <p class="eyebrow">SEZIONE 3 · DALL'INCONTRO 27</p>
         <h2>Lo spettro dei tool: da Databricks a DuckDB</h2>
         <div class="content">
-          <table class="tbl micro">
+          <table class="tbl">
             <thead><tr><th></th><th>Piattaforma <small style="font-weight:400; text-transform:none; letter-spacing:0;">(Databricks, Snowflake, BigQuery)</small></th><th>Database analitico <small style="font-weight:400; text-transform:none; letter-spacing:0;">(SQL Server, ClickHouse, Postgres con estensioni)</small></th><th>Motore in-process <small style="font-weight:400; text-transform:none; letter-spacing:0;">(DuckDB)</small></th></tr></thead>
             <tbody>
               <tr><td>Dove gira</td><td>nel cloud, condivisa da tutta l'azienda</td><td>su un server tuo, o gestito</td><td>dentro un programma: un processo, un file</td></tr>
@@ -961,15 +977,27 @@ PostaPro · 22 · 1,2</span></div>
               <tr><td>Lo stesso SQL</td><td>sì</td><td>sì</td><td>sì</td></tr>
             </tbody>
           </table>
-          <div class="tv tv-45" style="margin-top: 12px; gap: 26px;">
+          <ul class="pts" style="margin-top: 26px;">
+            <li><strong>Stesso linguaggio, tre scale</strong>la query della slide 10 gira su tutti e tre. Cambia chi la ospita, quanto costa, quanti dati regge; non cambia come si fa la domanda.</li>
+          </ul>
+        </div>
+        <div class="footnote">25 / Sezione 3 · <span class="sid">#slide-25</span></div>
+        <aside class="notes">La riga "lo stesso SQL" è quella che conta: la scala cambia tutto tranne la lingua. Il motore piccolo, e che cosa ci fa l'agente, nella slide dopo.</aside>
+      </section>
+
+      <section id="slide-25b">
+        <p class="eyebrow">SEZIONE 3 · DALL'INCONTRO 27</p>
+        <h2>Il motore piccolo entra nel sandbox</h2>
+        <div class="content">
+          <div class="tv tv-45" style="gap: 26px;">
             <div class="col-text">
-              <ul class="pts micro">
-                <li><strong>Stesso linguaggio, tre scale</strong>la query della slide 10 gira su tutti e tre. Cambia chi la ospita, quanto costa, quanti dati regge; non cambia come si fa la domanda.</li>
-                <li><strong>Il motore piccolo entra nel sandbox</strong>nel 27 (slide 20) il modello aveva scritto quattro righe di Python su <code>ordini_08.json</code>. Con DuckDB nel sandbox scrive SQL sullo stesso file. Stessa lingua del data warehouse, senza il data warehouse, sui dati che ha davanti.</li>
+              <ul class="pts">
+                <li><strong>Nel 27 era Python</strong>alla slide 20 il modello aveva scritto quattro righe di Python su <code>ordini_08.json</code>, il file che un tool gli aveva salvato nel sandbox.</li>
+                <li><strong>Con DuckDB è SQL</strong>lo stesso file, la stessa domanda, scritta nella lingua del data warehouse. Senza il data warehouse: il motore sta dentro il processo che l'agente sta già usando.</li>
               </ul>
             </div>
             <div class="col-text">
-              <div class="payload micro">
+              <div class="payload">
                 <div class="row u"><span class="tg">[user]</span><span>Quanti ordini di agosto sono in ritardo, e per quale corriere?</span></div>
                 <div class="row pill dim"><span class="tg">[assistant]</span><span>→ esporta_ordini(mese="2026-08")</span></div>
                 <div class="row tool"><span class="tg">[tool]</span><span>salvato in ordini_08.json (12.480 righe): cerca o elabora con bash</span></div>
@@ -978,9 +1006,8 @@ PostaPro · 22 · 1,2</span></div>
               </div>
             </div>
           </div>
-          <div class="nota small">Per l'agente conta la seconda riga: il data warehouse lo interroga attraverso un tool (sezione 6); un export, un file, un risultato salvato li interroga nel sandbox, con lo stesso SQL. Due porte, una lingua.</div>
         </div>
-        <div class="footnote">25 / Sezione 3 · <span class="sid">#slide-25</span></div>
+        <div class="footnote">25b / Sezione 3 · <span class="sid">#slide-25b</span></div>
         <aside class="notes">Ripresa del riquadro-payload della slide 20 del 27: stessa domanda, DuckDB al posto dello script Python.</aside>
       </section>
 
@@ -1430,7 +1457,7 @@ PostaPro · 22 · 1,2</span></div>
             <div class="visual"><img src="svg/slide44-finestra-schema.svg" alt="La finestra a strati del 27: lo strato system prompt diviso in due fasce, ruolo e regole attenuata e lo schema del data warehouse con DDL, descrizioni e grano in evidenza; nello strato dei tool la riga esegui_sql evidenziata"></div>
             <div class="visual"><img src="svg/slide44-text2sql-sequence.svg" alt="Sequence diagram: l'harness chiama il modello con la finestra e la domanda; il modello risponde con tool_use esegui_sql e la query; il tool la esegue sul data warehouse come Marco; tornano tre righe come tool_result; al secondo giro il modello risponde in italiano, end_turn"></div>
           </div>
-          <div class="nota small">Nel 27 il modello aveva scritto Python su un file; nella slide 25 SQL su un file con DuckDB; qui SQL sul data warehouse, attraverso un tool. Tre volte la stessa domanda: cambia dove sta il dato e chi fa il conto. Che cosa mettere nel system prompt perché il SQL esca giusto è la prossima slide.</div>
+          <div class="nota small">Nel 27 il modello aveva scritto Python su un file; nella slide 25b SQL su un file con DuckDB; qui SQL sul data warehouse, attraverso un tool. Tre volte la stessa domanda: cambia dove sta il dato e chi fa il conto. Che cosa mettere nel system prompt perché il SQL esca giusto è la prossima slide.</div>
         </div>
         <div class="footnote">44 / Sezione 6 · <span class="sid">#slide-44</span></div>
       </section>
