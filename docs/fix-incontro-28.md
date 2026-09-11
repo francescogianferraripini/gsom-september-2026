@@ -41,6 +41,8 @@ Per commentare, scrivi sotto la riga della slide.
 - **09 · Il modello relazionale: tabelle, tipi, chiavi** — `#slide-9` — `slide9-chiavi.svg`
 	- Rendi la slide a 3 colonne. a sinistra il testo, in mezzo il sql, a dx lo schema disegnato, in modo più ordinato. riduci pure il font dello schema
 	- → fatto: tre colonne 25/43/32. Lo schema è ridisegnato in verticale come due riquadri di colonne (ordini sopra, spedizioni sotto, PK e FK marcate) con lo stesso valore 4471 accanto alle due chiavi e la freccia che risale; font più piccolo, sia nel DDL sia nello schema.
+	- lo schema non è ben ordinato
+	- → fatto: rifatto. I due riquadri sono allineati e della stessa larghezza, le sigle PK e FK incolonnate, le righe chiave in evidenza in tutti e due; la freccia risale in un corridoio a sinistra invece di girare intorno, e i due `4471` che galleggiavano diventano un'etichetta sola sulla freccia: «lo stesso valore: 4471».
 - **10 · Il SQL: quattro verbi** — `#slide-10` — `slide10-sql-1.svg` · `slide10-sql-2.svg` · `slide10-sql-3.svg` · `slide10-sql-4.svg`
 - **11 · Il DB transazionale: per chi è fatto** — `#slide-11` — *nessuna figura*
 	- Chiamarlo "Il DB transazionale".
