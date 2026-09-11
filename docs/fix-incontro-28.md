@@ -78,6 +78,7 @@ Per commentare, scrivi sotto la riga della slide.
 - **23 · Pregi di Kimball** — `#slide-23` — `slide23-1.svg` · `slide23-2.svg` · `slide23-3.svg`
 	- assolutamente da rifare il visual
 	- → fatto: tre tempi (`slide23-1/2/3.svg`), con lo stile a stella delle altre slide. Le dimensioni conformi stanno in una fascia centrale: prima `fatto_spedizioni`, poi `fatto_reclami` che riusa le stesse, infine il fatto nuovo che si aggancia a ciò che c'è già.
+	- → fatto (2): rifatta nel formato di tabelle della slide 16 — riquadro con testata, elenco delle colonne, sigle FK a destra, misure in burgundy con la barretta, join ad angolo retto. Le tre dimensioni conformi restano ferme nella fascia centrale e i tre fatti si dispongono intorno.
 - **24 · Limiti di Kimball, e cenni al data vault** — `#slide-24` — `slide24-star-vault-1.svg` · `slide24-star-vault-2.svg`
 	- la transizione non fa sparire lo star schema sottostante
 	- → fatto: due cause. La stella del tempo 1 restava sotto (ora è un fragment `fade-out`, sparisce al click); e dentro `slide24-star-vault-2.svg` c'era una copia della stella a opacity 0.06, tolta. Resta solo la stellina al 50% in basso a destra.

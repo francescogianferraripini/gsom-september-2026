@@ -1,33 +1,80 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 352" width="650" height="352" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
-  <title>Secondo tempo: arriva il secondo fatto, fatto_reclami, una riga per reclamo, e si aggancia alle dimensioni che ci sono gia: le stesse dimensioni, nessun lavoro in piu</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 434" width="650" height="434" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <title>Secondo tempo: arriva la tabella dei fatti fatto_reclami, una riga per reclamo, con le chiavi id_data e id_cliente, e si aggancia alle dimensioni conformi che esistono gia: le stesse dimensioni, nessun lavoro in piu</title>
 
-  <text x="60" y="30" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing="1.4" fill="#838383">I FATTI</text>
-  <text x="122" y="150" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing="1.4" fill="#838383">LE DIMENSIONI CONFORMI</text>
+  <!-- ═══ le dimensioni conformi ═══ -->
+  <text x="325" y="192" text-anchor="middle" font-size="9.5" font-weight="700" letter-spacing="1.6" fill="#838383">LE DIMENSIONI CONFORMI</text>
+  <g id="dim-corriere">
+    <rect x="15" y="200" width="190" height="76" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <path d="M15 208 a8,8 0 0 1 8,-8 h174 a8,8 0 0 1 8,8 v14 h-190 z" fill="#f6f6f6"/>
+    <path d="M15 222 h190" stroke="#dee2e6"/>
+    <text x="110" y="216" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">dim_corriere</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">
+      <text x="25" y="238">nome</text><text x="25" y="255">tipo</text><text x="25" y="272">contratto_dal</text>
+    </g>
+  </g>
+  <g id="dim-data">
+    <rect x="230" y="200" width="190" height="76" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <path d="M230 208 a8,8 0 0 1 8,-8 h174 a8,8 0 0 1 8,8 v14 h-190 z" fill="#f6f6f6"/>
+    <path d="M230 222 h190" stroke="#dee2e6"/>
+    <text x="325" y="216" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">dim_data</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">
+      <text x="240" y="238">giorno</text><text x="240" y="255">mese</text><text x="240" y="272">festivo</text>
+    </g>
+  </g>
+  <g id="dim-cliente">
+    <rect x="445" y="200" width="190" height="76" rx="8" fill="#ffffff" stroke="#dee2e6"/>
+    <path d="M445 208 a8,8 0 0 1 8,-8 h174 a8,8 0 0 1 8,8 v14 h-190 z" fill="#f6f6f6"/>
+    <path d="M445 222 h190" stroke="#dee2e6"/>
+    <text x="540" y="216" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5" font-weight="700" fill="#161719">dim_cliente</text>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">
+      <text x="455" y="238">nome</text><text x="455" y="255">regione</text><text x="455" y="272">segmento</text>
+    </g>
+  </g>
 
-  <!-- le dimensioni, la fascia che non si muove -->
-  <g fill="#ffffff" stroke="#838383" stroke-width="1.2">
-    <rect x="30" y="160" width="150" height="46" rx="5"/><rect x="250" y="160" width="150" height="46" rx="5"/><rect x="470" y="160" width="150" height="46" rx="5"/>
+  <!-- ═══ il primo fatto, con le sue tre join ═══ -->
+  <g stroke="#a1245a" stroke-width="2" fill="none">
+    <path d="M70 122 V200"/>
+    <path d="M140 122 V162 H300 V200"/>
+    <path d="M210 122 V180 H520 V200"/>
   </g>
-  <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" text-anchor="middle" fill="#212529">
-    <text x="105" y="180" font-size="10.5" font-weight="700">dim_corriere</text><text x="105" y="197" font-size="9" fill="#838383">nome · tipo</text>
-    <text x="325" y="180" font-size="10.5" font-weight="700">dim_data</text><text x="325" y="197" font-size="9" fill="#838383">giorno · mese</text>
-    <text x="545" y="180" font-size="10.5" font-weight="700">dim_cliente</text><text x="545" y="197" font-size="9" fill="#838383">regione · segmento</text>
+  <g id="fatto-spedizioni">
+    <rect x="30" y="14" width="220" height="108" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+    <path d="M30 22 a8,8 0 0 1 8,-8 h204 a8,8 0 0 1 8,8 v15 h-220 z" fill="#ecd3de"/>
+    <path d="M30 37 h220" stroke="#a1245a"/>
+    <text x="140" y="31" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700" fill="#a1245a">fatto_spedizioni</text>
+    <path d="M39 100 V114" stroke="#a1245a" stroke-width="3"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5">
+      <text x="40" y="58" fill="#212529">id_corriere</text>
+      <text x="40" y="76" fill="#212529">id_data</text>
+      <text x="40" y="94" fill="#212529">id_cliente</text>
+      <text x="46" y="112" fill="#a1245a" font-weight="700">importo</text>
+    </g>
+    <g font-size="10.5" font-weight="700" fill="#838383" text-anchor="end">
+      <text x="242" y="58">FK</text><text x="242" y="76">FK</text><text x="242" y="94">FK</text>
+    </g>
+    <text x="140" y="140" text-anchor="middle" font-size="10.5" fill="#838383">una riga = una spedizione</text>
   </g>
 
-  <!-- il primo fatto -->
-  <g stroke="#838383" stroke-width="1.2" fill="none">
-    <path d="M120 104 L100 160"/><path d="M170 104 L300 160"/><path d="M212 104 L496 160"/>
+  <!-- ═══ il secondo fatto: riusa le dimensioni che ci sono già ═══ -->
+  <g stroke="#a1245a" stroke-width="2" fill="none">
+    <path d="M440 104 V140 H360 V200"/>
+    <path d="M580 104 V200"/>
   </g>
-  <rect x="60" y="50" width="190" height="54" rx="5" fill="#ecd3de" stroke="#a1245a" stroke-width="1.6"/>
-  <text x="155" y="74" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700" fill="#a1245a">fatto_spedizioni</text>
-  <text x="155" y="92" text-anchor="middle" font-size="9.5" fill="#212529">una riga = una spedizione</text>
-
-  <!-- il secondo fatto: riusa le stesse dimensioni -->
-  <g stroke="#838383" stroke-width="1.2" fill="none">
-    <path d="M452 104 L368 160"/><path d="M520 104 L548 160"/>
+  <g id="fatto-reclami">
+    <rect x="400" y="14" width="220" height="90" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="2"/>
+    <path d="M400 22 a8,8 0 0 1 8,-8 h204 a8,8 0 0 1 8,8 v15 h-220 z" fill="#ecd3de"/>
+    <path d="M400 37 h220" stroke="#a1245a"/>
+    <text x="510" y="31" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="700" fill="#a1245a">fatto_reclami</text>
+    <path d="M409 82 V96" stroke="#a1245a" stroke-width="3"/>
+    <g font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5">
+      <text x="410" y="58" fill="#212529">id_data</text>
+      <text x="410" y="76" fill="#212529">id_cliente</text>
+      <text x="416" y="94" fill="#a1245a" font-weight="700">n_reclami</text>
+    </g>
+    <g font-size="10.5" font-weight="700" fill="#838383" text-anchor="end">
+      <text x="612" y="58">FK</text><text x="612" y="76">FK</text>
+    </g>
+    <text x="510" y="122" text-anchor="middle" font-size="10.5" fill="#838383">una riga = un reclamo</text>
   </g>
-  <rect x="400" y="50" width="175" height="54" rx="5" fill="#ffffff" stroke="#838383" stroke-width="1.4"/>
-  <text x="487" y="74" text-anchor="middle" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700" fill="#212529">fatto_reclami</text>
-  <text x="487" y="92" text-anchor="middle" font-size="9.5" fill="#212529">una riga = un reclamo</text>
-  <text x="325" y="234" text-anchor="middle" font-size="10.5" fill="#838383">le stesse dimensioni, nessun lavoro in più</text>
+  <text x="540" y="310" text-anchor="middle" font-size="11" fill="#838383">le stesse dimensioni, nessun lavoro in più</text>
 </svg>

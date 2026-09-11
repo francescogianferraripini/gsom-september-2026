@@ -948,9 +948,9 @@ PostaPro · 22 · 1,2</span></div>
               </ul>
             </div>
             <div class="visual stack">
-              <img src="svg/slide23-1.svg" alt="Tempo 1: una stella sola, fatto_spedizioni agganciato alle tre dimensioni conformi dim_corriere, dim_data, dim_cliente">
-              <img class="fragment" data-fragment-index="1" src="svg/slide23-2.svg" alt="Tempo 2: arriva fatto_reclami e riusa le stesse dimensioni: nessun lavoro in più">
-              <img class="fragment" data-fragment-index="2" src="svg/slide23-3.svg" alt="Tempo 3: arriva il fatto nuovo, fatto_fatture_corrieri, e si aggancia anche lui alle dimensioni che ci sono già: è il compounding">
+              <img src="svg/slide23-1.svg" alt="Tempo 1: una stella sola. La tabella dei fatti fatto_spedizioni, con le tre chiavi esterne e la misura importo, si aggancia alle tre dimensioni conformi dim_corriere, dim_data, dim_cliente, una join per dimensione">
+              <img class="fragment" data-fragment-index="1" src="svg/slide23-2.svg" alt="Tempo 2: arriva la tabella fatto_reclami, con le chiavi id_data e id_cliente, e riusa le dimensioni che ci sono già: nessun lavoro in più">
+              <img class="fragment" data-fragment-index="2" src="svg/slide23-3.svg" alt="Tempo 3: arriva la tabella nuova fatto_fatture_corrieri, con le chiavi id_corriere e id_data, e si aggancia anche lei alle dimensioni conformi che ci sono già: è il compounding">
             </div>
           </div>
           <div class="nota small">Misurato con la pagella: ricercabile dal generale al particolare (dal totale per corriere alla singola spedizione), non ridondante dove conta, e compounding per costruzione. È la ragione per cui l'agente entra qui e non nel transazionale.</div>
