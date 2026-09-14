@@ -574,15 +574,30 @@
               </ul>
             </div>
             <div class="col-text">
-              <div class="payload plain micro" style="font-size: 7.8pt;"><span class="k">CREATE TABLE</span> ordini (
-  id_ordine    INT <span class="k">PRIMARY KEY</span>,          <span class="cm">-- un numero, unico: la chiave</span>
-  id_cliente   INT <span class="k">REFERENCES</span> clienti,   <span class="cm">-- rimanda a un cliente</span>
-  data_ordine  DATE,                     <span class="cm">-- una data, non un testo</span>
-  importo      DECIMAL(10,2)             <span class="cm">-- euro, con due decimali</span>
+              <div class="payload plain micro" style="font-size: 7.4pt; line-height: 1.35;"><span class="k">CREATE TABLE</span> clienti (
+  id_cliente     INT <span class="k">PRIMARY KEY</span>,          <span class="cm">-- la chiave</span>
+  nome           VARCHAR(80),
+  regione        VARCHAR(40)
+);
+<span class="k">CREATE TABLE</span> prodotti (
+  id_prodotto    INT <span class="k">PRIMARY KEY</span>,
+  nome           VARCHAR(80),
+  prezzo         DECIMAL(10,2)             <span class="cm">-- euro, due decimali</span>
+);
+<span class="k">CREATE TABLE</span> ordini (
+  id_ordine      INT <span class="k">PRIMARY KEY</span>,          <span class="cm">-- un numero, unico: la chiave</span>
+  id_cliente     INT <span class="k">REFERENCES</span> clienti,   <span class="cm">-- rimanda a un cliente</span>
+  data_ordine    DATE,                     <span class="cm">-- una data, non un testo</span>
+  importo        DECIMAL(10,2)
+);
+<span class="k">CREATE TABLE</span> righe_ordine (
+  id_ordine      INT <span class="k">REFERENCES</span> ordini,    <span class="cm">-- due chiavi esterne:</span>
+  id_prodotto    INT <span class="k">REFERENCES</span> prodotti,  <span class="cm">-- una riga per articolo</span>
+  quantita       INT
 );
 <span class="k">CREATE TABLE</span> spedizioni (
   id_spedizione  INT <span class="k">PRIMARY KEY</span>,
-  id_ordine      INT <span class="k">REFERENCES</span> ordini,  <span class="cm">-- rimanda a un ordine</span>
+  id_ordine      INT <span class="k">REFERENCES</span> ordini,    <span class="cm">-- rimanda a un ordine</span>
   corriere       VARCHAR(40),
   data_prevista  DATE,
   data_consegna  DATE

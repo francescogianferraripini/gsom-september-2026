@@ -45,6 +45,8 @@ Per commentare, scrivi sotto la riga della slide.
 	- → fatto: rifatto. I due riquadri sono allineati e della stessa larghezza, le sigle PK e FK incolonnate, le righe chiave in evidenza in tutti e due; la freccia risale in un corridoio a sinistra invece di girare intorno, e i due `4471` che galleggiavano diventano un'etichetta sola sulla freccia: «lo stesso valore: 4471».
 	--> aggiungi tabella cliente e prodotti
 	- → fatto: cinque tabelle. `clienti` si lega a `ordini` per `id_cliente`; `prodotti` passa da `righe_ordine` (due chiavi esterne, `id_ordine` e `id_prodotto`), che è il modello giusto per un ordine con più articoli (concordato). Disposizione su due colonne: clienti, ordini, spedizioni a sinistra; prodotti e righe_ordine a destra; quattro frecce corte FK → PK, nessun incrocio. La nota dice ora «cinque tabelle così». Il DDL al centro resta un campione di due tabelle.
+	- metti anche le create table statement (detto a voce)
+	- → fatto: il riquadro centrale ha i cinque `CREATE TABLE`, nell'ordine in cui si possono creare (prima le tabelle a cui si rimanda: clienti, prodotti, ordini, righe_ordine, spedizioni), con le colonne allineate e la lettura in italiano solo sulle righe che insegnano qualcosa. Font e interlinea un po' più stretti per farle stare nella colonna.
 - **10 · Il SQL: quattro verbi** — `#slide-10` — `slide10-sql-1.svg` · `slide10-sql-2.svg` · `slide10-sql-3.svg` · `slide10-sql-4.svg`
 - **11 · Il DB transazionale: per chi è fatto** — `#slide-11` — *nessuna figura*
 	- Chiamarlo "Il DB transazionale".
