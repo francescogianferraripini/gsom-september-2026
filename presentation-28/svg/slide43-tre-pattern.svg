@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 707 400" width="707" height="400" role="img" font-family="Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
-  <title>Tre pattern agentici, un solo lettore: la fascia dello spettro con Text2SQL, GraphRAG e RAG agentic search; il modello che sceglie fra tre tool (esegui_sql, cerca_documenti, percorri_grafo) dalle loro descrizioni, e sotto ciascuno la forma di conoscenza che legge: la stella, i documenti, il grafo</title>
+  <title>Tre pattern agentici, un solo lettore: la fascia dello spettro con Text2SQL, GraphRAG e RAG agentic search; il modello che sceglie fra tre tool (esegui_sql, percorri_grafo, cerca_documenti) dalle loro descrizioni, ognuno sotto la sua colonna della fascia, e sotto ciascuno la forma di conoscenza che legge: la stella, il grafo, i documenti</title>
   <defs>
     <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#838383"/></marker>
   </defs>
@@ -68,36 +68,8 @@
   </g>
   <text x="121" y="390" text-anchor="middle" font-size="11.5" fill="#838383">le tabelle (sez. 3)</text>
 
-  <!-- ===== tool 2 ===== -->
-  <g>
-    <rect x="244" y="124" width="219" height="166" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
-    <text x="256" y="145" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5"><tspan font-weight="700" fill="#a1245a">name:</tspan> <tspan fill="#161719" font-weight="600">cerca_documenti</tspan></text>
-    <line x1="254" y1="156" x2="453" y2="156" stroke="#dee2e6"/>
-    <text x="256" y="170" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="700" fill="#a1245a">description:</text>
-    <rect x="254" y="176" width="199" height="76" rx="4" fill="#ecd3de"/>
-    <rect x="254" y="176" width="3" height="76" fill="#a1245a"/>
-    <g font-size="11.5" fill="#212529">
-      <text x="266" y="206">Cerca nei contratti, nelle</text>
-      <text x="266" y="220">policy e nei reclami. Usalo</text>
-      <text x="266" y="234">per clausole, regole, casi.</text>
-    </g>
-    <text x="256" y="272" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5"><tspan font-weight="700" fill="#a1245a">input:</tspan> <tspan fill="#212529">query: string</tspan></text>
-    <text x="256" y="285" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">       filtri: {tipo, corriere, anno}</text>
-  </g>
-  <!-- miniatura: la pila di documenti -->
-  <g>
-    <g fill="#ffffff" stroke="#838383" stroke-width="1.2">
-      <rect x="326" y="300" width="88" height="24" rx="4"/>
-      <rect x="318" y="320" width="88" height="24" rx="4"/>
-      <rect x="310" y="340" width="88" height="24" rx="4"/>
-    </g>
-    <g stroke="#dee2e6" stroke-width="2">
-      <line x1="318" y1="350" x2="380" y2="350"/>
-      <line x1="318" y1="357" x2="366" y2="357"/>
-    </g>
-  </g>
-  <text x="353" y="390" text-anchor="middle" font-size="11.5" fill="#838383">i documenti (sez. 4)</text>
-
+  <!-- percorri_grafo al centro, sotto GraphRAG -->
+  <g transform="translate(-232 0)">
   <!-- ===== tool 3 ===== -->
   <g>
     <rect x="476" y="124" width="219" height="166" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
@@ -131,4 +103,38 @@
     <circle cx="585" cy="340" r="10" fill="#ecd3de" stroke="#a1245a" stroke-width="1.8"/>
   </g>
   <text x="585" y="390" text-anchor="middle" font-size="11.5" fill="#838383">i grafi (sez. 5)</text>
+  </g>
+
+  <!-- cerca_documenti a destra, sotto RAG · agentic search -->
+  <g transform="translate(232 0)">
+  <!-- ===== tool 2 ===== -->
+  <g>
+    <rect x="244" y="124" width="219" height="166" rx="8" fill="#f6f6f6" stroke="#dee2e6"/>
+    <text x="256" y="145" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="12.5"><tspan font-weight="700" fill="#a1245a">name:</tspan> <tspan fill="#161719" font-weight="600">cerca_documenti</tspan></text>
+    <line x1="254" y1="156" x2="453" y2="156" stroke="#dee2e6"/>
+    <text x="256" y="170" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="700" fill="#a1245a">description:</text>
+    <rect x="254" y="176" width="199" height="76" rx="4" fill="#ecd3de"/>
+    <rect x="254" y="176" width="3" height="76" fill="#a1245a"/>
+    <g font-size="11.5" fill="#212529">
+      <text x="266" y="206">Cerca nei contratti, nelle</text>
+      <text x="266" y="220">policy e nei reclami. Usalo</text>
+      <text x="266" y="234">per clausole, regole, casi.</text>
+    </g>
+    <text x="256" y="272" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5"><tspan font-weight="700" fill="#a1245a">input:</tspan> <tspan fill="#212529">query: string</tspan></text>
+    <text x="256" y="285" font-family="'SFMono-Regular', Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#212529">       filtri: {tipo, corriere, anno}</text>
+  </g>
+  <!-- miniatura: la pila di documenti -->
+  <g>
+    <g fill="#ffffff" stroke="#838383" stroke-width="1.2">
+      <rect x="326" y="300" width="88" height="24" rx="4"/>
+      <rect x="318" y="320" width="88" height="24" rx="4"/>
+      <rect x="310" y="340" width="88" height="24" rx="4"/>
+    </g>
+    <g stroke="#dee2e6" stroke-width="2">
+      <line x1="318" y1="350" x2="380" y2="350"/>
+      <line x1="318" y1="357" x2="366" y2="357"/>
+    </g>
+  </g>
+  <text x="353" y="390" text-anchor="middle" font-size="11.5" fill="#838383">i documenti (sez. 4)</text>
+  </g>
 </svg>

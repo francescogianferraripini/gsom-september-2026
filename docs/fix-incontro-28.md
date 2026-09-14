@@ -133,15 +133,23 @@ Togli Per l'agente conta la seconda riga: il data warehouse lo interroga attrave
 
 - **37 · Le relazioni, scritte una per una** — `#slide-37` — `slide37-nodi-archi.svg`
 - **38 · Il property graph** — `#slide-38` — `slide38-property-graph.svg`
+--> Aggiungi sia nel testo che nel visual il fatto che è possibile mettere dentro embedding dentro i nodi, facendo esempio ad esempio il testo del contratto, dicendo che quindi è possibile ricercare i nodi anche rispetto al significato semantico di alcune property testuali
+	- → fatto: nuovo punto «Anche il significato, dentro il nodo»: una proprietà può contenere un embedding, il `Contratto` porta il testo della clausola e il vettore del suo significato; con un indice vettoriale i nodi si trovano anche per significato, poi si percorre il grafo. Nella figura il riquadro del `Contratto` ha ora `testo` ed `embedding` (in evidenza), con l'etichetta «il nodo si trova anche per significato». Per far stare il punto nella colonna ho tolto dal primo la frase finale «La libertà serve per aggiungere un tipo nuovo…», che ripeteva quella prima.
 - **39 · Cypher: un mini focus** — `#slide-39` — `slide39-cypher-1.svg` · `slide39-cypher-2.svg` · `slide39-cypher-3.svg` · `slide39-cypher-4.svg` · `slide39-cypher-5.svg`
 - **40 · Perché non un database relazionale** — `#slide-40` — `slide40-traversal.svg`
 - **41 · Il grafo è un modello, non un motore** — `#slide-41` — `slide41-modello-motore.svg`
+--> Il modello è la decisione in funzione del caso d'uso; il motore è una conseguenza del volume e della profondità.
+--> Il grafo non è sempre la forma migliore 
+	- → fatto: nel terzo punto ora «Il modello è la decisione in funzione del caso d'uso; il motore è una conseguenza del volume e della profondità»; nella nota «Il grafo non è sempre la forma migliore».
+
 - **42 · La pagella dei grafi, e la cerniera** — `#slide-42` — `slide42-spettro-mini.svg`
 
 ## Separatore di sezione 6 — «Pattern agentici di accesso al dato»  
 `#div-sec6` — `minimap-sec6.svg`
 
 - **43 · Tre pattern, un lettore** — `#slide-43` — `slide43-tre-pattern.svg`
+--> Visual: percorri grafo è sotto la graphrag
+	- → fatto: la fascia in alto segue l'ordine dello spettro (Text2SQL · GraphRAG · RAG), i tool sotto no, e sotto GraphRAG finiva `cerca_documenti`. Scambiati: ora `percorri_grafo` sta sotto GraphRAG e `cerca_documenti` sotto RAG, ciascuno con la sua miniatura e la sua didascalia.
 - **44 · Text2SQL: com'è fatto** — `#slide-44` — `slide44-finestra-schema.svg` · `slide44-text2sql-sequence.svg`
 - **45 · Text2SQL: i requisiti informativi** — `#slide-45` — `slide45-requisiti.svg`
 - **46 · Text2SQL: dove sbaglia** — `#slide-46` — *nessuna figura*
