@@ -588,9 +588,9 @@
   data_consegna  DATE
 );</div>
             </div>
-            <div class="visual"><img src="svg/slide9-chiavi.svg" alt="Lo schema disegnato: il riquadro ordini con le sue colonne, id_ordine in evidenza e marcata PK; sotto, allineato, il riquadro spedizioni con id_spedizione PK e id_ordine FK, anch'essa in evidenza. Una freccia risale nel corridoio a sinistra dalla chiave esterna alla chiave primaria, con l'etichetta: lo stesso valore, 4471"></div>
+            <div class="visual"><img src="svg/slide9-chiavi.svg" alt="Lo schema disegnato, cinque tabelle legate per chiave: a sinistra clienti, ordini e spedizioni in colonna, a destra prodotti e righe_ordine; le righe chiave in evidenza. Quattro frecce vanno dalla chiave esterna alla chiave primaria: ordini verso clienti, spedizioni verso ordini, righe_ordine verso ordini e verso prodotti. Sotto: lo stesso valore, per esempio 4471, in due tabelle"></div>
           </div>
-          <div class="nota small">Quattro tabelle così (<code>clienti</code>, <code>ordini</code>, <code>spedizioni</code>, <code>prodotti</code>) sono ciò che sta dietro <code>cerca_ordine</code>. Il ritardo non è una colonna: è <code>data_consegna − data_prevista</code>, calcolato quando serve. Segnatevelo: torna nella sezione 3.</div>
+          <div class="nota small">Cinque tabelle così (<code>clienti</code>, <code>ordini</code>, <code>righe_ordine</code>, <code>prodotti</code>, <code>spedizioni</code>) sono ciò che sta dietro <code>cerca_ordine</code>. Il ritardo non è una colonna: è <code>data_consegna − data_prevista</code>, calcolato quando serve. Segnatevelo: torna nella sezione 3.</div>
         </div>
         <div class="footnote">09 / Sezione 2 · <span class="sid">#slide-9</span></div>
         <aside class="notes">Tre colonne: il testo, il DDL, lo schema disegnato. Il DDL si può saltare a voce se il tempo stringe: basta la figura a destra. I commenti a destra di ogni riga del DDL sono la lettura in italiano.</aside>
